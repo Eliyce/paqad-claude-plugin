@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
+  cat <<'USAGE'
+Purpose: Validate ux-state-machine output. 3 sections; Transitions table
+         present with canonical 4-column header.
+Usage:   bash scripts/lint-output.sh <file>   (or stdin)
+USAGE
+  exit 0
+fi
+if [ "${1:-}" = "" ] || [ "${1:-}" = "-" ]; then body=$(cat)
+elif [ -f "$1" ]; then body=$(cat "$1")
+else printf 'error: file not found: %s\n' "$1" >&2; exit 2
+fi
+
+issues=0
+say() { printf '%s\n' "$1" >&2; issues=$((issues+1)); }
+
+for h in '## State Inventory' '## Transitions'; do
+  grep -qE "^${h}\$" <<<"$body" || say "missing \"${h}\""
+done
+grep -qE '(^## Gaps|^Gaps: none$)' <<<"$body" || say 'missing "## Gaps" or exact "Gaps: none"'
+grep -qE '^\| From \| Trigger \| To \| Notes \|' <<<"$body" || say 'Transitions missing canonical 4-column header'
+
+[ "$issues" -gt 0 ] && exit 1
+printf 'ok\n'
