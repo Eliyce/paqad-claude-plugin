@@ -3018,7 +3018,7 @@ var require_compile = __commonJS({
       const schOrFunc = root.refs[ref];
       if (schOrFunc)
         return schOrFunc;
-      let _sch = resolve2.call(this, root, ref);
+      let _sch = resolve3.call(this, root, ref);
       if (_sch === void 0) {
         const schema = (_a = root.localRefs) === null || _a === void 0 ? void 0 : _a[ref];
         const { schemaId } = this.opts;
@@ -3045,7 +3045,7 @@ var require_compile = __commonJS({
     function sameSchemaEnv(s1, s2) {
       return s1.schema === s2.schema && s1.root === s2.root && s1.baseId === s2.baseId;
     }
-    function resolve2(root, ref) {
+    function resolve3(root, ref) {
       let sch;
       while (typeof (sch = this.refs[ref]) == "string")
         ref = sch;
@@ -3679,7 +3679,7 @@ var require_fast_uri = __commonJS({
       }
       return uri;
     }
-    function resolve2(baseURI, relativeURI, options) {
+    function resolve3(baseURI, relativeURI, options) {
       const schemelessOptions = options ? Object.assign({ scheme: "null" }, options) : { scheme: "null" };
       const resolved = resolveComponent(parse2(baseURI, schemelessOptions), parse2(relativeURI, schemelessOptions), schemelessOptions, true);
       schemelessOptions.skipEscape = true;
@@ -3937,7 +3937,7 @@ var require_fast_uri = __commonJS({
     var fastUri = {
       SCHEMES,
       normalize: normalize2,
-      resolve: resolve2,
+      resolve: resolve3,
       resolveComponent,
       equal,
       serialize,
@@ -6653,12 +6653,14 @@ var require_ajv = __commonJS({
 
 // src/feature-evidence/adoption.ts
 init_esm_shims();
-import { readFileSync as readFileSync4 } from "fs";
-import { join as join6 } from "path";
+import { readFileSync as readFileSync5 } from "fs";
+import { join as join7 } from "path";
 
 // src/rag/git-state.ts
 init_esm_shims();
 import { execFileSync } from "child_process";
+import { opendirSync, readFileSync } from "fs";
+import { dirname, isAbsolute, join, resolve } from "path";
 function git(projectRoot, args) {
   try {
     return execFileSync("git", args, {
@@ -6701,11 +6703,11 @@ import {
   existsSync,
   mkdirSync,
   openSync,
-  readFileSync,
+  readFileSync as readFileSync2,
   readdirSync,
   writeFileSync
 } from "fs";
-import { dirname, join } from "path";
+import { dirname as dirname2, join as join2 } from "path";
 
 // src/core/constants/paths.ts
 init_esm_shims();
@@ -6885,14 +6887,14 @@ var PATHS = {
 
 // src/session-ledger/ledger.ts
 function readUnitFile(projectRoot, unitRelPath) {
-  return readJsonl(join(projectRoot, unitRelPath));
+  return readJsonl(join2(projectRoot, unitRelPath));
 }
 function readJsonl(absPath) {
   if (!existsSync(absPath)) {
     return [];
   }
   const out = [];
-  for (const line of readFileSync(absPath, "utf8").split("\n")) {
+  for (const line of readFileSync2(absPath, "utf8").split("\n")) {
     const trimmed = line.trim();
     if (trimmed.length === 0) {
       continue;
@@ -6918,7 +6920,7 @@ function isSessionLedgerRow(value) {
 // src/feature-evidence/enumerate.ts
 init_esm_shims();
 import { readdirSync as readdirSync2 } from "fs";
-import { join as join3 } from "path";
+import { join as join4 } from "path";
 
 // src/feature-evidence/paths.ts
 init_esm_shims();
@@ -6944,7 +6946,7 @@ var normalize = function(path2) {
   }
   path2 = normalizeWindowsPath(path2);
   const isUNCPath = path2.match(_UNC_REGEX);
-  const isPathAbsolute = isAbsolute(path2);
+  const isPathAbsolute = isAbsolute2(path2);
   const trailingSeparator = path2[path2.length - 1] === "/";
   path2 = normalizeString(path2, !isPathAbsolute);
   if (path2.length === 0) {
@@ -6965,9 +6967,9 @@ var normalize = function(path2) {
     }
     return `//${path2}`;
   }
-  return isPathAbsolute && !isAbsolute(path2) ? `/${path2}` : path2;
+  return isPathAbsolute && !isAbsolute2(path2) ? `/${path2}` : path2;
 };
-var join2 = function(...segments) {
+var join3 = function(...segments) {
   let path2 = "";
   for (const seg of segments) {
     if (!seg) {
@@ -7048,7 +7050,7 @@ function normalizeString(path2, allowAboveRoot) {
   }
   return res;
 }
-var isAbsolute = function(p) {
+var isAbsolute2 = function(p) {
   return _IS_ABSOLUTE_RE.test(p);
 };
 
@@ -7103,13 +7105,13 @@ var DIR_NAME_RE = new RegExp(
 );
 var ISSUE_RE = new RegExp(`^(?:${JIRA_ISSUE}|${GITHUB_ISSUE})$`);
 function featureDir(dirName) {
-  return join2(PATHS.FEATURE_EVIDENCE_DIR, dirName);
+  return join3(PATHS.FEATURE_EVIDENCE_DIR, dirName);
 }
 function featureFilePath(dirName, file) {
-  return join2(featureDir(dirName), FEATURE_BUNDLE_FILES[file]);
+  return join3(featureDir(dirName), FEATURE_BUNDLE_FILES[file]);
 }
 function featureSessionControlPath(sessionId) {
-  return join2(PATHS.FEATURE_EVIDENCE_SESSION_DIR, `${sessionId}.json`);
+  return join3(PATHS.FEATURE_EVIDENCE_SESSION_DIR, `${sessionId}.json`);
 }
 function parseFeatureDirName(dirName) {
   const match = DIR_NAME_RE.exec(dirName);
@@ -7125,7 +7127,7 @@ function isFeatureDirName(dirName) {
 // src/feature-evidence/enumerate.ts
 function listFeatureDirs(projectRoot) {
   try {
-    return readdirSync2(join3(projectRoot, PATHS.FEATURE_EVIDENCE_DIR), { withFileTypes: true }).filter((entry) => entry.isDirectory() && isFeatureDirName(entry.name)).map((entry) => entry.name).sort();
+    return readdirSync2(join4(projectRoot, PATHS.FEATURE_EVIDENCE_DIR), { withFileTypes: true }).filter((entry) => entry.isDirectory() && isFeatureDirName(entry.name)).map((entry) => entry.name).sort();
   } catch {
     return [];
   }
@@ -7133,8 +7135,8 @@ function listFeatureDirs(projectRoot) {
 
 // src/feature-evidence/feature-record.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync2, readFileSync as readFileSync2, writeFileSync as writeFileSync2 } from "fs";
-import { dirname as dirname3, join as join4 } from "path";
+import { mkdirSync as mkdirSync2, readFileSync as readFileSync3, writeFileSync as writeFileSync2 } from "fs";
+import { dirname as dirname4, join as join5 } from "path";
 
 // src/core/fs/atomic-rename.ts
 init_esm_shims();
@@ -7284,7 +7286,7 @@ var FEATURE_SCHEMA_V1 = {
     created_at: { type: "string", minLength: 1 },
     updated_at: { type: "string", minLength: 1 },
     lane,
-    status: { enum: ["active", "paused", "done", "spec-only"] },
+    status: { enum: ["active", "paused", "done", "spec-only", "abandoned"] },
     spec_id: nullableString,
     session_first_seen: { type: "string", minLength: 1 },
     adapter: { type: "string", minLength: 1 },
@@ -7317,7 +7319,7 @@ var FEATURE_SCHEMA = versionedSchema(
       title: { type: "string", minLength: 1 },
       slug: { type: "string", minLength: 1 },
       lane,
-      status: { enum: ["active", "paused", "done", "spec-only"] },
+      status: { enum: ["active", "paused", "done", "spec-only", "abandoned"] },
       spec_id: nullableString,
       adapter: { type: "string", minLength: 1 },
       branch: nullableString,
@@ -7703,7 +7705,7 @@ function fromLegacyFeatureRecord(legacy) {
 function readFeatureRecord(projectRoot, dirName) {
   try {
     const parsed = JSON.parse(
-      readFileSync2(join4(projectRoot, featureFilePath(dirName, "feature")), "utf8")
+      readFileSync3(join5(projectRoot, featureFilePath(dirName, "feature")), "utf8")
     );
     if (validateFeatureRecord(parsed).length === 0) {
       const record = parsed;
@@ -7742,8 +7744,8 @@ function readChangeConstants(projectRoot, dirName, rows) {
 
 // src/feature-evidence/session-control.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync3, readFileSync as readFileSync3, writeFileSync as writeFileSync3 } from "fs";
-import { dirname as dirname4, join as join5 } from "path";
+import { mkdirSync as mkdirSync3, readFileSync as readFileSync4, writeFileSync as writeFileSync3 } from "fs";
+import { dirname as dirname5, join as join6 } from "path";
 function emptyControl(sessionId, now = () => /* @__PURE__ */ new Date()) {
   return {
     schema_version: FEATURE_EVIDENCE_SCHEMA_VERSION,
@@ -7757,7 +7759,7 @@ function emptyControl(sessionId, now = () => /* @__PURE__ */ new Date()) {
 }
 function readSessionControl(projectRoot, sessionId, now = () => /* @__PURE__ */ new Date()) {
   try {
-    const raw = readFileSync3(join5(projectRoot, featureSessionControlPath(sessionId)), "utf8");
+    const raw = readFileSync4(join6(projectRoot, featureSessionControlPath(sessionId)), "utf8");
     const parsed = JSON.parse(raw);
     if (isControl(parsed)) {
       return parsed;
@@ -7773,8 +7775,8 @@ function writeSessionControl(projectRoot, control, now = () => /* @__PURE__ */ n
     pid: process.pid,
     updated_at: now().toISOString()
   };
-  const abs = join5(projectRoot, featureSessionControlPath(control.session_id));
-  mkdirSync3(dirname4(abs), { recursive: true });
+  const abs = join6(projectRoot, featureSessionControlPath(control.session_id));
+  mkdirSync3(dirname5(abs), { recursive: true });
   writeFileSync3(abs, `${JSON.stringify(stamped, null, 2)}
 `, "utf8");
   return stamped;
@@ -7811,7 +7813,7 @@ function featureBranch(projectRoot, dirName, rows = stageRows(projectRoot, dirNa
 function deliveryBranch(projectRoot, dirName) {
   try {
     const raw = JSON.parse(
-      readFileSync4(join6(projectRoot, featureFilePath(dirName, "delivery")), "utf8")
+      readFileSync5(join7(projectRoot, featureFilePath(dirName, "delivery")), "utf8")
     );
     const branch = raw.branch;
     return typeof branch === "string" && branch.length > 0 ? branch : null;

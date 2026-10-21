@@ -10,6 +10,8 @@ interface CommitSplit {
     base_commit: string | null;
     own: CommitGroup | null;
     inherited: CommitGroup | null;
+    own_shas?: string[];
+    inherited_shas?: string[];
 }
 interface CommitSplitInput {
     baseBranch?: string;

@@ -29,5 +29,6 @@ interface CostExpertLine extends CostLine {
     role: string;
     exact: boolean;
 }
+type CostScope = 'change' | 'whole-session';
 
-export type { CostHookPayload as C, CostWindow as a, CostTokens as b, CostStageLine as c, CostExpertLine as d, CostLine as e };
+export type { CostHookPayload as C, CostWindow as a, CostScope as b, CostTokens as c, CostStageLine as d, CostExpertLine as e, CostLine as f };

@@ -3024,7 +3024,7 @@ var require_compile = __commonJS({
       const schOrFunc = root.refs[ref];
       if (schOrFunc)
         return schOrFunc;
-      let _sch = resolve3.call(this, root, ref);
+      let _sch = resolve4.call(this, root, ref);
       if (_sch === void 0) {
         const schema = (_a = root.localRefs) === null || _a === void 0 ? void 0 : _a[ref];
         const { schemaId } = this.opts;
@@ -3051,7 +3051,7 @@ var require_compile = __commonJS({
     function sameSchemaEnv(s1, s2) {
       return s1.schema === s2.schema && s1.root === s2.root && s1.baseId === s2.baseId;
     }
-    function resolve3(root, ref) {
+    function resolve4(root, ref) {
       let sch;
       while (typeof (sch = this.refs[ref]) == "string")
         ref = sch;
@@ -3685,7 +3685,7 @@ var require_fast_uri = __commonJS({
       }
       return uri;
     }
-    function resolve3(baseURI, relativeURI, options) {
+    function resolve4(baseURI, relativeURI, options) {
       const schemelessOptions = options ? Object.assign({ scheme: "null" }, options) : { scheme: "null" };
       const resolved = resolveComponent(parse2(baseURI, schemelessOptions), parse2(relativeURI, schemelessOptions), schemelessOptions, true);
       schemelessOptions.skipEscape = true;
@@ -3943,7 +3943,7 @@ var require_fast_uri = __commonJS({
     var fastUri = {
       SCHEMES,
       normalize: normalize2,
-      resolve: resolve3,
+      resolve: resolve4,
       resolveComponent,
       equal,
       serialize,
@@ -17516,7 +17516,7 @@ var require_pattern2 = __commonJS({
       const absolute = [];
       const relative4 = [];
       for (const pattern of patterns) {
-        if (isAbsolute4(pattern)) {
+        if (isAbsolute5(pattern)) {
           absolute.push(pattern);
         } else {
           relative4.push(pattern);
@@ -17525,10 +17525,10 @@ var require_pattern2 = __commonJS({
       return [absolute, relative4];
     }
     exports.partitionAbsoluteAndRelative = partitionAbsoluteAndRelative;
-    function isAbsolute4(pattern) {
+    function isAbsolute5(pattern) {
       return path2.isAbsolute(pattern);
     }
-    exports.isAbsolute = isAbsolute4;
+    exports.isAbsolute = isAbsolute5;
   }
 });
 
@@ -18637,41 +18637,41 @@ var require_queue = __commonJS({
       queue.drained = drained;
       return queue;
       function push(value) {
-        var p = new Promise(function(resolve3, reject) {
+        var p = new Promise(function(resolve4, reject) {
           pushCb(value, function(err, result) {
             if (err) {
               reject(err);
               return;
             }
-            resolve3(result);
+            resolve4(result);
           });
         });
         p.catch(noop);
         return p;
       }
       function unshift(value) {
-        var p = new Promise(function(resolve3, reject) {
+        var p = new Promise(function(resolve4, reject) {
           unshiftCb(value, function(err, result) {
             if (err) {
               reject(err);
               return;
             }
-            resolve3(result);
+            resolve4(result);
           });
         });
         p.catch(noop);
         return p;
       }
       function drained() {
-        var p = new Promise(function(resolve3) {
+        var p = new Promise(function(resolve4) {
           process.nextTick(function() {
             if (queue.idle()) {
-              resolve3();
+              resolve4();
             } else {
               var previousDrain = queue.drain;
               queue.drain = function() {
                 if (typeof previousDrain === "function") previousDrain();
-                resolve3();
+                resolve4();
                 queue.drain = previousDrain;
               };
             }
@@ -19168,9 +19168,9 @@ var require_stream3 = __commonJS({
         });
       }
       _getStat(filepath) {
-        return new Promise((resolve3, reject) => {
+        return new Promise((resolve4, reject) => {
           this._stat(filepath, this._fsStatSettings, (error, stats) => {
-            return error === null ? resolve3(stats) : reject(error);
+            return error === null ? resolve4(stats) : reject(error);
           });
         });
       }
@@ -19195,10 +19195,10 @@ var require_async5 = __commonJS({
         this._readerStream = new stream_1.default(this._settings);
       }
       dynamic(root, options) {
-        return new Promise((resolve3, reject) => {
+        return new Promise((resolve4, reject) => {
           this._walkAsync(root, options, (error, entries) => {
             if (error === null) {
-              resolve3(entries);
+              resolve4(entries);
             } else {
               reject(error);
             }
@@ -19208,10 +19208,10 @@ var require_async5 = __commonJS({
       async static(patterns, options) {
         const entries = [];
         const stream = this._readerStream.static(patterns, options);
-        return new Promise((resolve3, reject) => {
+        return new Promise((resolve4, reject) => {
           stream.once("error", reject);
           stream.on("data", (entry) => entries.push(entry));
-          stream.once("end", () => resolve3(entries));
+          stream.once("end", () => resolve4(entries));
         });
       }
     };
@@ -19886,12 +19886,14 @@ init_esm_shims();
 
 // src/feature-evidence/adoption.ts
 init_esm_shims();
-import { readFileSync as readFileSync4 } from "fs";
-import { join as join6 } from "path";
+import { readFileSync as readFileSync5 } from "fs";
+import { join as join7 } from "path";
 
 // src/rag/git-state.ts
 init_esm_shims();
 import { execFileSync } from "child_process";
+import { opendirSync, readFileSync } from "fs";
+import { dirname, isAbsolute, join, resolve } from "path";
 function git(projectRoot, args) {
   try {
     return execFileSync("git", args, {
@@ -19934,11 +19936,11 @@ import {
   existsSync,
   mkdirSync,
   openSync,
-  readFileSync,
+  readFileSync as readFileSync2,
   readdirSync,
   writeFileSync
 } from "fs";
-import { dirname, join } from "path";
+import { dirname as dirname2, join as join2 } from "path";
 
 // src/core/constants/paths.ts
 init_esm_shims();
@@ -20118,7 +20120,7 @@ var PATHS = {
 
 // src/session-ledger/ledger.ts
 function sessionLedgerDir(docType, sessionId) {
-  return join(PATHS.EVIDENCE_LEDGER_DIR, docType, sessionId);
+  return join2(PATHS.EVIDENCE_LEDGER_DIR, docType, sessionId);
 }
 var HASH_EXCLUDED_KEYS = /* @__PURE__ */ new Set(["ts", "recorded_at", "content_hash", "note"]);
 function computeSessionRowHash(row) {
@@ -20131,20 +20133,20 @@ function computeSessionRowHash(row) {
   return createHash("sha256").update(JSON.stringify(identity)).digest("hex");
 }
 function appendStampedRowToUnit(projectRoot, unitRelPath, stamped) {
-  const abs = join(projectRoot, unitRelPath);
-  mkdirSync(dirname(abs), { recursive: true });
+  const abs = join2(projectRoot, unitRelPath);
+  mkdirSync(dirname2(abs), { recursive: true });
   appendFileSync(abs, `${JSON.stringify(stamped)}
 `, "utf8");
 }
 function readUnitFile(projectRoot, unitRelPath) {
-  return readJsonl(join(projectRoot, unitRelPath));
+  return readJsonl(join2(projectRoot, unitRelPath));
 }
 function readJsonl(absPath) {
   if (!existsSync(absPath)) {
     return [];
   }
   const out = [];
-  for (const line of readFileSync(absPath, "utf8").split("\n")) {
+  for (const line of readFileSync2(absPath, "utf8").split("\n")) {
     const trimmed = line.trim();
     if (trimmed.length === 0) {
       continue;
@@ -20170,7 +20172,7 @@ function isSessionLedgerRow(value) {
 // src/feature-evidence/enumerate.ts
 init_esm_shims();
 import { readdirSync as readdirSync2 } from "fs";
-import { join as join3 } from "path";
+import { join as join4 } from "path";
 
 // src/feature-evidence/paths.ts
 init_esm_shims();
@@ -20197,7 +20199,7 @@ var normalize = function(path2) {
   }
   path2 = normalizeWindowsPath(path2);
   const isUNCPath = path2.match(_UNC_REGEX);
-  const isPathAbsolute = isAbsolute(path2);
+  const isPathAbsolute = isAbsolute2(path2);
   const trailingSeparator = path2[path2.length - 1] === "/";
   path2 = normalizeString(path2, !isPathAbsolute);
   if (path2.length === 0) {
@@ -20218,9 +20220,9 @@ var normalize = function(path2) {
     }
     return `//${path2}`;
   }
-  return isPathAbsolute && !isAbsolute(path2) ? `/${path2}` : path2;
+  return isPathAbsolute && !isAbsolute2(path2) ? `/${path2}` : path2;
 };
-var join2 = function(...segments) {
+var join3 = function(...segments) {
   let path2 = "";
   for (const seg of segments) {
     if (!seg) {
@@ -20247,7 +20249,7 @@ function cwd() {
   }
   return "/";
 }
-var resolve = function(...arguments_) {
+var resolve2 = function(...arguments_) {
   arguments_ = arguments_.map((argument) => normalizeWindowsPath(argument));
   let resolvedPath = "";
   let resolvedAbsolute = false;
@@ -20257,10 +20259,10 @@ var resolve = function(...arguments_) {
       continue;
     }
     resolvedPath = `${path2}/${resolvedPath}`;
-    resolvedAbsolute = isAbsolute(path2);
+    resolvedAbsolute = isAbsolute2(path2);
   }
   resolvedPath = normalizeString(resolvedPath, !resolvedAbsolute);
-  if (resolvedAbsolute && !isAbsolute(resolvedPath)) {
+  if (resolvedAbsolute && !isAbsolute2(resolvedPath)) {
     return `/${resolvedPath}`;
   }
   return resolvedPath.length > 0 ? resolvedPath : ".";
@@ -20325,12 +20327,12 @@ function normalizeString(path2, allowAboveRoot) {
   }
   return res;
 }
-var isAbsolute = function(p) {
+var isAbsolute2 = function(p) {
   return _IS_ABSOLUTE_RE.test(p);
 };
 var relative = function(from, to) {
-  const _from = resolve(from).replace(_ROOT_FOLDER_RE, "$1").split("/");
-  const _to = resolve(to).replace(_ROOT_FOLDER_RE, "$1").split("/");
+  const _from = resolve2(from).replace(_ROOT_FOLDER_RE, "$1").split("/");
+  const _to = resolve2(to).replace(_ROOT_FOLDER_RE, "$1").split("/");
   if (_to[0][1] === ":" && _from[0][1] === ":" && _from[0] !== _to[0]) {
     return _to.join("/");
   }
@@ -20467,16 +20469,16 @@ var DIR_NAME_RE = new RegExp(
 );
 var ISSUE_RE = new RegExp(`^(?:${JIRA_ISSUE}|${GITHUB_ISSUE})$`);
 function featureDir(dirName) {
-  return join2(PATHS.FEATURE_EVIDENCE_DIR, dirName);
+  return join3(PATHS.FEATURE_EVIDENCE_DIR, dirName);
 }
 function featureChangeKey(dirName) {
   return parseFeatureDirName(dirName)?.ulid ?? dirName;
 }
 function featureFilePath(dirName, file) {
-  return join2(featureDir(dirName), FEATURE_BUNDLE_FILES[file]);
+  return join3(featureDir(dirName), FEATURE_BUNDLE_FILES[file]);
 }
 function featureSessionControlPath(sessionId) {
-  return join2(PATHS.FEATURE_EVIDENCE_SESSION_DIR, `${sessionId}.json`);
+  return join3(PATHS.FEATURE_EVIDENCE_SESSION_DIR, `${sessionId}.json`);
 }
 function formatFeatureDirName(parts) {
   if (!isSlugSafe(parts.slug)) {
@@ -20505,7 +20507,7 @@ function isFeatureDirName(dirName) {
 // src/feature-evidence/enumerate.ts
 function listFeatureDirs(projectRoot) {
   try {
-    return readdirSync2(join3(projectRoot, PATHS.FEATURE_EVIDENCE_DIR), { withFileTypes: true }).filter((entry) => entry.isDirectory() && isFeatureDirName(entry.name)).map((entry) => entry.name).sort();
+    return readdirSync2(join4(projectRoot, PATHS.FEATURE_EVIDENCE_DIR), { withFileTypes: true }).filter((entry) => entry.isDirectory() && isFeatureDirName(entry.name)).map((entry) => entry.name).sort();
   } catch {
     return [];
   }
@@ -20513,8 +20515,8 @@ function listFeatureDirs(projectRoot) {
 
 // src/feature-evidence/feature-record.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync2, readFileSync as readFileSync2, writeFileSync as writeFileSync2 } from "fs";
-import { dirname as dirname3, join as join4 } from "path";
+import { mkdirSync as mkdirSync2, readFileSync as readFileSync3, writeFileSync as writeFileSync2 } from "fs";
+import { dirname as dirname4, join as join5 } from "path";
 
 // src/core/fs/atomic-rename.ts
 init_esm_shims();
@@ -20871,7 +20873,7 @@ var FEATURE_SCHEMA_V1 = {
     created_at: { type: "string", minLength: 1 },
     updated_at: { type: "string", minLength: 1 },
     lane,
-    status: { enum: ["active", "paused", "done", "spec-only"] },
+    status: { enum: ["active", "paused", "done", "spec-only", "abandoned"] },
     spec_id: nullableString,
     session_first_seen: { type: "string", minLength: 1 },
     adapter: { type: "string", minLength: 1 },
@@ -20904,7 +20906,7 @@ var FEATURE_SCHEMA = versionedSchema(
       title: { type: "string", minLength: 1 },
       slug: { type: "string", minLength: 1 },
       lane,
-      status: { enum: ["active", "paused", "done", "spec-only"] },
+      status: { enum: ["active", "paused", "done", "spec-only", "abandoned"] },
       spec_id: nullableString,
       adapter: { type: "string", minLength: 1 },
       branch: nullableString,
@@ -21268,7 +21270,7 @@ function validateFeatureRecord(row) {
 
 // src/feature-evidence/feature-record.ts
 function atomicWriteJson(absPath, value) {
-  mkdirSync2(dirname3(absPath), { recursive: true });
+  mkdirSync2(dirname4(absPath), { recursive: true });
   const tmp = `${absPath}.tmp`;
   writeFileSync2(tmp, `${JSON.stringify(value, null, 2)}
 `, "utf8");
@@ -21297,7 +21299,7 @@ function fromLegacyFeatureRecord(legacy) {
 function readFeatureRecord(projectRoot, dirName) {
   try {
     const parsed = JSON.parse(
-      readFileSync2(join4(projectRoot, featureFilePath(dirName, "feature")), "utf8")
+      readFileSync3(join5(projectRoot, featureFilePath(dirName, "feature")), "utf8")
     );
     if (validateFeatureRecord(parsed).length === 0) {
       const record = parsed;
@@ -21312,7 +21314,7 @@ function writeFeatureRecord(projectRoot, dirName, record) {
   if (errors.length > 0) {
     throw new Error(`Invalid feature.json: ${errors.join("; ")}`);
   }
-  atomicWriteJson(join4(projectRoot, featureFilePath(dirName, "feature")), record);
+  atomicWriteJson(join5(projectRoot, featureFilePath(dirName, "feature")), record);
 }
 function seedFeatureRecord(projectRoot, dirName, input) {
   const existing = readFeatureRecord(projectRoot, dirName);
@@ -21419,8 +21421,8 @@ function readChangeConstants(projectRoot, dirName, rows) {
 
 // src/feature-evidence/session-control.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync3, readFileSync as readFileSync3, writeFileSync as writeFileSync3 } from "fs";
-import { dirname as dirname4, join as join5 } from "path";
+import { mkdirSync as mkdirSync3, readFileSync as readFileSync4, writeFileSync as writeFileSync3 } from "fs";
+import { dirname as dirname5, join as join6 } from "path";
 function emptyControl(sessionId, now = () => /* @__PURE__ */ new Date()) {
   return {
     schema_version: FEATURE_EVIDENCE_SCHEMA_VERSION,
@@ -21434,7 +21436,7 @@ function emptyControl(sessionId, now = () => /* @__PURE__ */ new Date()) {
 }
 function readSessionControl(projectRoot, sessionId, now = () => /* @__PURE__ */ new Date()) {
   try {
-    const raw = readFileSync3(join5(projectRoot, featureSessionControlPath(sessionId)), "utf8");
+    const raw = readFileSync4(join6(projectRoot, featureSessionControlPath(sessionId)), "utf8");
     const parsed = JSON.parse(raw);
     if (isControl(parsed)) {
       return parsed;
@@ -21450,8 +21452,8 @@ function writeSessionControl(projectRoot, control, now = () => /* @__PURE__ */ n
     pid: process.pid,
     updated_at: now().toISOString()
   };
-  const abs = join5(projectRoot, featureSessionControlPath(control.session_id));
-  mkdirSync3(dirname4(abs), { recursive: true });
+  const abs = join6(projectRoot, featureSessionControlPath(control.session_id));
+  mkdirSync3(dirname5(abs), { recursive: true });
   writeFileSync3(abs, `${JSON.stringify(stamped, null, 2)}
 `, "utf8");
   return stamped;
@@ -21503,7 +21505,7 @@ function featureBranch(projectRoot, dirName, rows = stageRows(projectRoot, dirNa
 function deliveryBranch(projectRoot, dirName) {
   try {
     const raw = JSON.parse(
-      readFileSync4(join6(projectRoot, featureFilePath(dirName, "delivery")), "utf8")
+      readFileSync5(join7(projectRoot, featureFilePath(dirName, "delivery")), "utf8")
     );
     const branch = raw.branch;
     return typeof branch === "string" && branch.length > 0 ? branch : null;
@@ -21558,8 +21560,8 @@ function adoptableInFlightOnBranch(projectRoot, sessionId, now) {
 
 // src/feature-evidence/stage-ledger.ts
 init_esm_shims();
-import { readFileSync as readFileSync11 } from "fs";
-import { join as join12 } from "path";
+import { readFileSync as readFileSync12 } from "fs";
+import { join as join13 } from "path";
 
 // src/stage-evidence/fold.ts
 init_esm_shims();
@@ -21570,18 +21572,18 @@ init_esm_shims();
 // src/pipeline/feature-development-policy.ts
 init_esm_shims();
 var import_yaml2 = __toESM(require_dist(), 1);
-import { existsSync as existsSync3, readFileSync as readFileSync8 } from "fs";
-import { join as join10 } from "path";
+import { existsSync as existsSync3, readFileSync as readFileSync9 } from "fs";
+import { join as join11 } from "path";
 
 // src/analytics/gate.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync4, readFileSync as readFileSync6, writeFileSync as writeFileSync4 } from "fs";
-import { dirname as dirname5, join as join8 } from "path";
+import { mkdirSync as mkdirSync4, readFileSync as readFileSync7, writeFileSync as writeFileSync4 } from "fs";
+import { dirname as dirname6, join as join9 } from "path";
 
 // src/analytics/detect.ts
 init_esm_shims();
-import { existsSync as existsSync2, readFileSync as readFileSync5, readdirSync as readdirSync3, statSync } from "fs";
-import { join as join7 } from "path";
+import { existsSync as existsSync2, readFileSync as readFileSync6, readdirSync as readdirSync3, statSync } from "fs";
+import { join as join8 } from "path";
 
 // src/analytics/call-sites.ts
 init_esm_shims();
@@ -21592,8 +21594,8 @@ init_esm_shims();
 // src/core/framework-config.ts
 init_esm_shims();
 var import_yaml = __toESM(require_dist(), 1);
-import { mkdirSync as mkdirSync5, readFileSync as readFileSync7, readdirSync as readdirSync4, writeFileSync as writeFileSync5 } from "fs";
-import { dirname as dirname6, join as join9 } from "path";
+import { mkdirSync as mkdirSync5, readFileSync as readFileSync8, readdirSync as readdirSync4, writeFileSync as writeFileSync5 } from "fs";
+import { dirname as dirname7, join as join10 } from "path";
 
 // src/core/version-compare.ts
 init_esm_shims();
@@ -21746,6 +21748,24 @@ var EVIDENCE_EXISTENCE_MODES = ["off", "warn"];
 var AI_ATTRIBUTION_MODES = ["keep", "strip"];
 var PLUGIN_MIGRATION_MODES = ["on", "off"];
 var CLAUDE_INSTALL_MODES = ["auto", "plugin", "settings"];
+var STAGE_EFFORT_LEVELS = ["low", "medium", "high", "xhigh", "inherit"];
+var STAGE_MODELS = ["inherit", "haiku", "sonnet", "opus"];
+var STAGE_SETTING_STAGES = [
+  "planning",
+  "specification",
+  "development",
+  "review",
+  "checks",
+  "documentation_sync"
+];
+var STAGE_EFFORT_DEFAULTS = {
+  planning: "high",
+  specification: "high",
+  development: "inherit",
+  review: "high",
+  checks: "low",
+  documentation_sync: "low"
+};
 var TRUTHY = /* @__PURE__ */ new Set(["1", "true", "yes", "on"]);
 var FALSY = /* @__PURE__ */ new Set(["0", "false", "no", "off"]);
 var FRAMEWORK_CONFIG_SPECS = [
@@ -22089,6 +22109,28 @@ var FRAMEWORK_CONFIG_SPECS = [
     section: "Research & model routing",
     comment: "Cheap/fast model for lightweight steps."
   },
+  ...STAGE_SETTING_STAGES.flatMap((stage) => [
+    {
+      key: `stage_effort_${stage}`,
+      env: `PAQAD_STAGE_EFFORT_${stage.toUpperCase()}`,
+      type: "enum",
+      enumValues: STAGE_EFFORT_LEVELS,
+      default: STAGE_EFFORT_DEFAULTS[stage],
+      group: "models",
+      section: "Stage agents",
+      comment: stageEffortComment(stage)
+    },
+    {
+      key: `stage_model_${stage}`,
+      env: `PAQAD_STAGE_MODEL_${stage.toUpperCase()}`,
+      type: "enum",
+      enumValues: STAGE_MODELS,
+      default: "inherit",
+      group: "models",
+      section: "Stage agents",
+      comment: `inherit | haiku | sonnet | opus. The model the ${stage} stage helper runs on. inherit uses the model of the main session. Run \`paqad-ai stage settings\` to apply it on the next dispatch; the helper files keep the defaults.`
+    }
+  ]),
   {
     key: "full_lane_default",
     env: "PAQAD_FULL_LANE_DEFAULT",
@@ -22405,6 +22447,10 @@ var FRAMEWORK_CONFIG_SPECS = [
     comment: "Comma-separated expert roles that sit at the table on EVERY spec run once spec_pipeline_experts_enabled is on, whatever the detector picked. Default: product-owner,application-architect,user-flow-writer,qa-engineer. The other experts stay on call and are picked per request. Empty means no standing experts (the detector alone decides, as before). A role outside the expert roster is ignored with a doctor warning. No effect while the pipeline or the experts are off."
   }
 ];
+function stageEffortComment(stage) {
+  const base = `low | medium | high | xhigh | inherit. How hard the ${stage} stage helper thinks. inherit uses the effort of the main session. Run \`paqad-ai stage settings\` to apply it on the next dispatch; the helper files keep the defaults.`;
+  return stage === "review" ? `${base} You may lower it, but a lighter review catches less.` : base;
+}
 var SPEC_BY_KEY = new Map(
   FRAMEWORK_CONFIG_SPECS.map((spec) => [spec.key, spec])
 );
@@ -22556,6 +22602,126 @@ function resolveFrameworkConfigFromMap(raw) {
 var DEFAULT_FRAMEWORK_CONFIG = resolveFrameworkConfigFromMap(
   /* @__PURE__ */ new Map()
 );
+var CONFIG_KEY_SECTIONS = [
+  { present: (p) => p.paqad !== void 0, keys: ["paqad_enable"] },
+  {
+    present: (p) => p.enterprise !== void 0,
+    keys: [
+      "enterprise",
+      "enterprise_evidence_ledger",
+      "enterprise_ai_bom",
+      "enterprise_compliance_citations"
+    ]
+  },
+  {
+    present: (p) => p.intelligence !== void 0,
+    keys: [
+      "rag_enabled",
+      "rag_embedding_provider",
+      "rag_embedding_model",
+      "rag_similarity_threshold",
+      "rag_relief_floor",
+      "rag_top_n",
+      "rag_max_file_size",
+      "rag_base_branch",
+      "existing_surface_tokens"
+    ]
+  },
+  {
+    present: (p) => p.strictness !== void 0,
+    keys: [
+      "full_lane_default",
+      "require_adversarial_review",
+      "block_on_stale_docs",
+      "require_db_review_for_migrations"
+    ]
+  },
+  {
+    present: (p) => p.escalation !== void 0,
+    keys: [
+      "escalate_destructive_operations",
+      "escalate_risky_migrations",
+      "escalate_security_findings",
+      "escalate_db_row_threshold"
+    ]
+  },
+  {
+    present: (p) => p.features !== void 0,
+    keys: [
+      "spec_only_mode",
+      "market_research",
+      "design_research",
+      "team_agents",
+      "analytics_instrumentation",
+      "site_map",
+      "lean_rules",
+      "feature_report",
+      "metrics_enabled",
+      "visual_evidence",
+      "checks_parallel",
+      "checks_max_processes"
+    ]
+  },
+  { present: (p) => p.research !== void 0, keys: ["research_depth"] },
+  {
+    present: (p) => p.model_routing !== void 0,
+    keys: ["model_default", "model_reasoning", "model_fast"]
+  },
+  {
+    present: (p) => p.custom?.decisions !== void 0,
+    keys: [
+      "decisions_ask_threshold",
+      "decisions_max_screens_per_task",
+      "decisions_idle_timeout_minutes"
+    ]
+  },
+  {
+    present: (p) => p.efficiency !== void 0,
+    keys: ["auto_update", "minimum_version", "version_check_interval_hours"]
+  },
+  {
+    present: () => false,
+    keys: [
+      "stages_mode",
+      "rule_compliance",
+      "analytics_strictness",
+      "duplication_mode",
+      "mutation_mode",
+      "duplication_similarity_threshold",
+      "duplication_min_lines",
+      "bundle_completeness",
+      "evidence_existence_gate",
+      "decision_arm_mode",
+      "decision_arm_plan_threshold",
+      "decision_arm_max_per_change",
+      "ai_attribution",
+      "spec_pipeline_enabled",
+      "spec_pipeline_clarification",
+      "spec_pipeline_final_review",
+      "spec_pipeline_token_ceiling",
+      "spec_pipeline_experts_enabled",
+      "spec_pipeline_adoption",
+      "spec_pipeline_standing_experts",
+      "visual_evidence_mode",
+      "checks_flaky_under_parallel"
+    ]
+  },
+  {
+    present: () => false,
+    keys: ["plugin_migration", "claude_install_mode"]
+  },
+  {
+    present: () => false,
+    keys: ["hud_view", "hud_chime"]
+  },
+  {
+    present: () => false,
+    keys: STAGE_SETTING_STAGES.flatMap((stage) => [
+      `stage_effort_${stage}`,
+      `stage_model_${stage}`
+    ])
+  }
+];
 
 // src/validators/validator.ts
 init_esm_shims();
@@ -22647,6 +22813,20 @@ var MANDATORY_STAGE_AGENTS = STAGE_AGENT_STAGES.map(
 var STAGE_BY_AGENT_NAME = new Map(
   MANDATORY_STAGE_AGENTS.map((def) => [def.agentName, def.ledgerStage])
 );
+var STAGE_BRIEF_FALLBACK_LINE = "Your stage brief was added to your context when you started. If it is missing, resolve `.paqad/framework-path.txt` and load `AGENT-BOOTSTRAP.md` and `AGENT-ROUTER.md` as before.";
+var AGENT_ENTRY_MARKER_FALLBACK = [
+  "You run in your own subagent context, so the entry gate tracks your load separately from",
+  "the orchestrator. If it blocks your first edit, it names a per-agent marker under",
+  "`.paqad/session/agent-entry/`. Create exactly that file (or write `.paqad/.agent-entry-loaded`",
+  "with the Write tool) and retry."
+];
+var STAGE_BRIEF_SECTION = [
+  "## Your stage brief",
+  "",
+  STAGE_BRIEF_FALLBACK_LINE,
+  "",
+  ...AGENT_ENTRY_MARKER_FALLBACK
+];
 
 // src/stage-evidence/agent-identity.ts
 var ORCHESTRATOR_AGENT = "orchestrator";
@@ -22709,6 +22889,8 @@ var STAGE_EVIDENCE_SCHEMA = {
     tokens_used: { type: "integer", minimum: 0 },
     tokens_not_recarried: { type: "integer", minimum: 0 },
     estimate: { type: "boolean" },
+    requested_effort: { enum: STAGE_EFFORT_LEVELS },
+    requested_model: { enum: STAGE_MODELS },
     step: { type: "string", minLength: 1 },
     outcome: { enum: SPEC_STEP_OUTCOMES },
     artifact_hash: { type: "string" },
@@ -22789,8 +22971,8 @@ function validateStageEvidenceRow(row) {
 // src/feature-evidence/delivery.ts
 init_esm_shims();
 import { execFileSync as execFileSync3 } from "child_process";
-import { mkdirSync as mkdirSync7, readFileSync as readFileSync10, renameSync as renameSync3, writeFileSync as writeFileSync7 } from "fs";
-import { dirname as dirname7, join as join11 } from "path";
+import { mkdirSync as mkdirSync7, readFileSync as readFileSync11, renameSync as renameSync3, writeFileSync as writeFileSync7 } from "fs";
+import { dirname as dirname8, join as join12 } from "path";
 
 // src/delivery/commit-split.ts
 init_esm_shims();
@@ -22850,13 +23032,17 @@ function computeCommitSplit(projectRoot, input = {}) {
   const own = new Set(input.ownTickets ?? []);
   const beforeStart = commitsBeforeStart(projectRoot, state.base_commit, input.startCommit);
   const split = { own: emptyGroup(), inherited: emptyGroup() };
+  const ownShas = [];
+  const inheritedShas = [];
   for (const commit of readBranchCommits(projectRoot, state.base_commit)) {
     const ours = commit.tickets.some((ticket) => own.has(ticket));
     const foreign = own.size > 0 && commit.tickets.length > 0 && !ours;
     const afterStart = beforeStart === null || !beforeStart.has(commit.sha);
     if (ours || !foreign && afterStart) {
       addTo(split.own, commit, commit.tickets);
+      ownShas.push(commit.sha);
     } else {
+      inheritedShas.push(commit.sha);
       addTo(
         split.inherited,
         commit,
@@ -22869,13 +23055,15 @@ function computeCommitSplit(projectRoot, input = {}) {
     reason: null,
     base_commit: state.base_commit,
     own: split.own,
-    inherited: split.inherited
+    inherited: split.inherited,
+    own_shas: ownShas,
+    inherited_shas: inheritedShas
   };
 }
 
 // src/feature-evidence/bundle-document.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync6, readFileSync as readFileSync9, renameSync as renameSync2, writeFileSync as writeFileSync6 } from "fs";
+import { mkdirSync as mkdirSync6, readFileSync as readFileSync10, renameSync as renameSync2, writeFileSync as writeFileSync6 } from "fs";
 var UNKNOWN_DOCUMENT_SESSION = "unknown";
 function documentSessionId(projectRoot, dirName, sessionId) {
   const given = sessionId?.trim();
@@ -22916,7 +23104,7 @@ function isDelivery(value) {
   return r.doc_type === DELIVERY_DOC_TYPE && Array.isArray(r.commits);
 }
 function atomicWriteJson2(absPath, value) {
-  mkdirSync7(dirname7(absPath), { recursive: true });
+  mkdirSync7(dirname8(absPath), { recursive: true });
   const tmp = `${absPath}.tmp`;
   writeFileSync7(tmp, `${JSON.stringify(value, null, 2)}
 `, "utf8");
@@ -22925,7 +23113,7 @@ function atomicWriteJson2(absPath, value) {
 function readFeatureDelivery(projectRoot, dirName) {
   try {
     const parsed = JSON.parse(
-      readFileSync10(join11(projectRoot, featureFilePath(dirName, "delivery")), "utf8")
+      readFileSync11(join12(projectRoot, featureFilePath(dirName, "delivery")), "utf8")
     );
     if (isDelivery(parsed)) return parsed;
   } catch {
@@ -22962,7 +23150,7 @@ function writeFeatureDelivery(projectRoot, dirName, record, recordedAt, sessionI
       ci: record.ci ?? null
     }
   });
-  atomicWriteJson2(join11(projectRoot, featureFilePath(dirName, "delivery")), stamped);
+  atomicWriteJson2(join12(projectRoot, featureFilePath(dirName, "delivery")), stamped);
   return stamped;
 }
 function recordBranch(projectRoot, dirName, branch, baseBranch) {
@@ -23050,8 +23238,8 @@ function recordChangeConstants(projectRoot, dirName, input, now) {
 function readFeatureStageUnit(projectRoot, dirName) {
   return readUnitFile(projectRoot, featureStagePath(dirName));
 }
-function currentFeature(projectRoot, sessionId) {
-  return reconcileSessionControl(projectRoot, sessionId);
+function currentFeature(projectRoot, sessionId, now) {
+  return reconcileSessionControl(projectRoot, sessionId, now);
 }
 function openFeatureChange(projectRoot, sessionId, input) {
   const dirName = resolveActiveFeature(projectRoot, sessionId, input);
@@ -23099,21 +23287,21 @@ init_esm_shims();
 
 // src/rag-ledger/session.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync8, readFileSync as readFileSync12, rmSync as rmSync2, writeFileSync as writeFileSync8 } from "fs";
-import { dirname as dirname8, join as join13 } from "path";
+import { mkdirSync as mkdirSync8, readFileSync as readFileSync13, rmSync as rmSync2, writeFileSync as writeFileSync8 } from "fs";
+import { dirname as dirname9, join as join14 } from "path";
 function resolveSessionId(projectRoot, hint) {
-  const path2 = join13(projectRoot, PATHS.LEDGER_SESSION_ID);
+  const path2 = join14(projectRoot, PATHS.LEDGER_SESSION_ID);
   const cleaned = hint?.trim();
   if (cleaned) {
     try {
-      mkdirSync8(dirname8(path2), { recursive: true });
+      mkdirSync8(dirname9(path2), { recursive: true });
       writeFileSync8(path2, cleaned, "utf8");
     } catch {
     }
     return cleaned;
   }
   try {
-    const existing = readFileSync12(path2, "utf8").trim();
+    const existing = readFileSync13(path2, "utf8").trim();
     if (existing) {
       return existing;
     }
@@ -23121,7 +23309,7 @@ function resolveSessionId(projectRoot, hint) {
   }
   const minted = `ses_${ulid().toLowerCase()}`;
   try {
-    mkdirSync8(dirname8(path2), { recursive: true });
+    mkdirSync8(dirname9(path2), { recursive: true });
     writeFileSync8(path2, minted, "utf8");
   } catch {
   }
@@ -23129,13 +23317,13 @@ function resolveSessionId(projectRoot, hint) {
 }
 function readCacheBytes(path2) {
   try {
-    return readFileSync12(path2);
+    return readFileSync13(path2);
   } catch {
     return null;
   }
 }
 function keepingLedgerSessionCache(projectRoot, run) {
-  const path2 = join13(projectRoot, PATHS.LEDGER_SESSION_ID);
+  const path2 = join14(projectRoot, PATHS.LEDGER_SESSION_ID);
   const before = readCacheBytes(path2);
   try {
     return run();
@@ -23171,25 +23359,25 @@ function isFeatureDevelopmentRoute(routed) {
 
 // src/pipeline/session-route.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync9, readFileSync as readFileSync13, writeFileSync as writeFileSync9 } from "fs";
-import { dirname as dirname9, join as join14 } from "path";
+import { mkdirSync as mkdirSync9, readFileSync as readFileSync14, writeFileSync as writeFileSync9 } from "fs";
+import { dirname as dirname10, join as join15 } from "path";
 var SESSION_ROUTE_FILE = ".session-route.json";
 var SESSION_ROUTE_DIR = ".session-route.d";
 function sessionRouteDir(projectRoot) {
-  return join14(projectRoot, dirname9(PATHS.CONTEXT_SESSION_ARTIFACT));
+  return join15(projectRoot, dirname10(PATHS.CONTEXT_SESSION_ARTIFACT));
 }
 var VALID_WORKFLOWS = new Set(ROUTED_WORKFLOWS);
 function perSessionRoutePath(projectRoot, sessionId) {
   const safe = typeof sessionId === "string" ? sessionId.trim().replace(/[^A-Za-z0-9_-]/g, "_") : "";
-  return safe.length === 0 ? null : join14(sessionRouteDir(projectRoot), SESSION_ROUTE_DIR, `${safe}.json`);
+  return safe.length === 0 ? null : join15(sessionRouteDir(projectRoot), SESSION_ROUTE_DIR, `${safe}.json`);
 }
 function readSessionRoute(projectRoot, sessionId) {
   const own = perSessionRoutePath(projectRoot, sessionId);
-  return (own ? parseRouteFile(own) : null) ?? parseRouteFile(join14(sessionRouteDir(projectRoot), SESSION_ROUTE_FILE));
+  return (own ? parseRouteFile(own) : null) ?? parseRouteFile(join15(sessionRouteDir(projectRoot), SESSION_ROUTE_FILE));
 }
 function parseRouteFile(path2) {
   try {
-    const parsed = JSON.parse(readFileSync13(path2, "utf8"));
+    const parsed = JSON.parse(readFileSync14(path2, "utf8"));
     if (typeof parsed.workflow !== "string" || !VALID_WORKFLOWS.has(parsed.workflow)) {
       return null;
     }
@@ -23205,12 +23393,12 @@ function parseRouteFile(path2) {
 
 // src/pipeline/workflow-state.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync10, readFileSync as readFileSync14, writeFileSync as writeFileSync10 } from "fs";
-import { join as join15 } from "path";
+import { mkdirSync as mkdirSync10, readFileSync as readFileSync15, writeFileSync as writeFileSync10 } from "fs";
+import { join as join16 } from "path";
 var WORKFLOW_STATE_FILE = ".workflow-state.json";
 var EMPTY_STATE = { active: null, paused: [] };
 function workflowStatePath(projectRoot, sessionId) {
-  return join15(
+  return join16(
     projectRoot,
     sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId),
     WORKFLOW_STATE_FILE
@@ -23248,7 +23436,7 @@ function toEntry(value) {
 }
 function readWorkflowState(projectRoot, sessionId) {
   try {
-    const parsed = JSON.parse(readFileSync14(workflowStatePath(projectRoot, sessionId), "utf8"));
+    const parsed = JSON.parse(readFileSync15(workflowStatePath(projectRoot, sessionId), "utf8"));
     const active = toEntry(parsed.active);
     const paused = Array.isArray(parsed.paused) ? parsed.paused.map(toEntry).filter((entry) => entry !== null) : [];
     const state = { active, paused };
@@ -23294,12 +23482,12 @@ function realOrLexical(p) {
   }
 }
 function isEscape(rel) {
-  return rel === "" || rel === ".." || rel.startsWith("../") || rel.startsWith("..\\") || isAbsolute(rel);
+  return rel === "" || rel === ".." || rel.startsWith("../") || rel.startsWith("..\\") || isAbsolute2(rel);
 }
 function normalizeArtifactPath(projectRoot, input) {
-  const rootResolved = resolve(projectRoot);
+  const rootResolved = resolve2(projectRoot);
   const rootReal = realOrLexical(rootResolved);
-  const absInput = isAbsolute(input) ? realOrLexical(input) : resolve(rootReal, input);
+  const absInput = isAbsolute2(input) ? realOrLexical(input) : resolve2(rootReal, input);
   for (const root of /* @__PURE__ */ new Set([rootReal, rootResolved])) {
     const rel = relative(root, absInput);
     if (!isEscape(rel)) {
@@ -23314,8 +23502,8 @@ init_esm_shims();
 
 // src/feature-evidence/bundle-integrity.ts
 init_esm_shims();
-import { readFileSync as readFileSync15, readdirSync as readdirSync5, statSync as statSync2 } from "fs";
-import { join as join16 } from "path";
+import { readFileSync as readFileSync16, readdirSync as readdirSync5, statSync as statSync2 } from "fs";
+import { join as join17 } from "path";
 var ALLOWED_BUNDLE_FILENAMES = /* @__PURE__ */ new Set([
   ...Object.values(FEATURE_BUNDLE_FILES),
   "report.html"
@@ -23405,23 +23593,23 @@ init_esm_shims();
 
 // src/module-map/sensitivity.ts
 init_esm_shims();
-import { isAbsolute as isAbsolute3, relative as relative3 } from "path";
+import { isAbsolute as isAbsolute4, relative as relative3 } from "path";
 
 // src/core/path-utils.ts
 init_esm_shims();
-import { isAbsolute as isAbsolute2, relative as relative2, resolve as resolve2, sep as sep2 } from "path";
+import { isAbsolute as isAbsolute3, relative as relative2, resolve as resolve3, sep as sep2 } from "path";
 
 // src/module-map/reconciler.ts
 init_esm_shims();
 var import_fast_glob = __toESM(require_out4(), 1);
 var import_yaml4 = __toESM(require_dist(), 1);
-import { existsSync as existsSync6, mkdirSync as mkdirSync13, readFileSync as readFileSync18, readdirSync as readdirSync7, writeFileSync as writeFileSync12 } from "fs";
-import { dirname as dirname11, join as join19 } from "path";
+import { existsSync as existsSync6, mkdirSync as mkdirSync13, readFileSync as readFileSync19, readdirSync as readdirSync7, writeFileSync as writeFileSync12 } from "fs";
+import { dirname as dirname12, join as join20 } from "path";
 
 // src/module-decisions/events.ts
 init_esm_shims();
-import { appendFileSync as appendFileSync2, existsSync as existsSync4, mkdirSync as mkdirSync11, readFileSync as readFileSync16 } from "fs";
-import { dirname as dirname10, join as join17 } from "path";
+import { appendFileSync as appendFileSync2, existsSync as existsSync4, mkdirSync as mkdirSync11, readFileSync as readFileSync17 } from "fs";
+import { dirname as dirname11, join as join18 } from "path";
 
 // src/module-decisions/store.ts
 init_esm_shims();
@@ -23429,12 +23617,12 @@ var import_yaml3 = __toESM(require_dist(), 1);
 import {
   existsSync as existsSync5,
   mkdirSync as mkdirSync12,
-  readFileSync as readFileSync17,
+  readFileSync as readFileSync18,
   readdirSync as readdirSync6,
   unlinkSync,
   writeFileSync as writeFileSync11
 } from "fs";
-import { join as join18 } from "path";
+import { join as join19 } from "path";
 
 // src/module-decisions/schema.ts
 init_esm_shims();
@@ -23442,22 +23630,22 @@ init_esm_shims();
 // src/stage-evidence/recorder.ts
 init_esm_shims();
 import { createHash as createHash4 } from "crypto";
-import { readFileSync as readFileSync20 } from "fs";
-import { join as join21 } from "path";
+import { readFileSync as readFileSync21 } from "fs";
+import { join as join22 } from "path";
 
 // src/stage-evidence/pending-lane.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync14, readFileSync as readFileSync19, rmSync as rmSync3, writeFileSync as writeFileSync13 } from "fs";
-import { join as join20 } from "path";
+import { mkdirSync as mkdirSync14, readFileSync as readFileSync20, rmSync as rmSync3, writeFileSync as writeFileSync13 } from "fs";
+import { join as join21 } from "path";
 var PENDING_LANE_FILE = ".pending-lane";
 var VALID_LANES = ["fast", "graduated", "full"];
 function pendingLaneDir(projectRoot, sessionId) {
-  return join20(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId));
+  return join21(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId));
 }
 function readPendingLane(projectRoot, sessionId) {
   try {
-    const raw = readFileSync19(
-      join20(pendingLaneDir(projectRoot, sessionId), PENDING_LANE_FILE),
+    const raw = readFileSync20(
+      join21(pendingLaneDir(projectRoot, sessionId), PENDING_LANE_FILE),
       "utf8"
     ).trim().toLowerCase();
     return VALID_LANES.includes(raw) ? raw : null;
@@ -23468,8 +23656,8 @@ function readPendingLane(projectRoot, sessionId) {
 var PENDING_KIND_FILE = ".pending-kind";
 function readPendingKind(projectRoot, sessionId) {
   try {
-    const raw = readFileSync19(
-      join20(pendingLaneDir(projectRoot, sessionId), PENDING_KIND_FILE),
+    const raw = readFileSync20(
+      join21(pendingLaneDir(projectRoot, sessionId), PENDING_KIND_FILE),
       "utf8"
     ).trim().toLowerCase();
     return raw === "fix" || raw === "other" ? raw : null;
@@ -23539,10 +23727,10 @@ function endStage(projectRoot, stage, input, ctx) {
 function hashArtifacts(projectRoot, artifactPaths) {
   let anyReal = false;
   const perFile = [...artifactPaths].sort().map((rel) => {
-    const abs = join21(projectRoot, rel);
+    const abs = join22(projectRoot, rel);
     let bytes;
     try {
-      bytes = readFileSync20(abs);
+      bytes = readFileSync21(abs);
     } catch {
       return `${rel}:absent`;
     }

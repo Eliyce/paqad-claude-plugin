@@ -2,8 +2,8 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 
 // src/pipeline/dirty-baseline.ts
 import { createHash as createHash2 } from "crypto";
-import { mkdirSync as mkdirSync4, readFileSync as readFileSync6, writeFileSync as writeFileSync5 } from "fs";
-import { dirname as dirname4, join as join5 } from "path";
+import { mkdirSync as mkdirSync4, readFileSync as readFileSync7, writeFileSync as writeFileSync5 } from "fs";
+import { dirname as dirname5, join as join6 } from "path";
 
 // src/rag-ledger/session.ts
 import { mkdirSync as mkdirSync2, readFileSync as readFileSync2, rmSync, writeFileSync as writeFileSync2 } from "fs";
@@ -297,7 +297,7 @@ var STAGE_FAMILY_KIND_LIST = [
 var STAGE_FAMILY_KINDS = new Set(STAGE_FAMILY_KIND_LIST);
 
 // src/pipeline/change-evidence.ts
-import { join as join4 } from "path";
+import { join as join5 } from "path";
 
 // node_modules/.pnpm/is-plain-obj@4.1.0/node_modules/is-plain-obj/index.js
 function isPlainObject(value) {
@@ -1961,8 +1961,8 @@ var disconnect = (anyProcess) => {
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/lib/utils/deferred.js
 var createDeferred = () => {
   const methods = {};
-  const promise = new Promise((resolve, reject) => {
-    Object.assign(methods, { resolve, reject });
+  const promise = new Promise((resolve2, reject) => {
+    Object.assign(methods, { resolve: resolve2, reject });
   });
   return Object.assign(promise, methods);
 };
@@ -6519,11 +6519,11 @@ var addConcurrentStream = (concurrentStreams, stream, waitName) => {
   const promises = weakMap.get(stream);
   const promise = createDeferred();
   promises.push(promise);
-  const resolve = promise.resolve.bind(promise);
-  return { resolve, promises };
+  const resolve2 = promise.resolve.bind(promise);
+  return { resolve: resolve2, promises };
 };
-var waitForConcurrentStreams = async ({ resolve, promises }, subprocess) => {
-  resolve();
+var waitForConcurrentStreams = async ({ resolve: resolve2, promises }, subprocess) => {
+  resolve2();
   const [isSubprocessExit] = await Promise.race([
     Promise.allSettled([true, subprocess]),
     Promise.all([false, ...promises])
@@ -8099,6 +8099,8 @@ var {
 
 // src/rag/git-state.ts
 import { execFileSync } from "child_process";
+import { opendirSync, readFileSync as readFileSync6 } from "fs";
+import { dirname as dirname4, isAbsolute, join as join4, resolve } from "path";
 
 // src/pipeline/change-evidence.ts
 async function readGitStatusFiles(projectRoot) {
@@ -8141,11 +8143,11 @@ function normalizePaths(files) {
 // src/pipeline/dirty-baseline.ts
 var BASELINE_FILE = ".dirty-baseline.json";
 function baselinePath(projectRoot, sessionId) {
-  return join5(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId), BASELINE_FILE);
+  return join6(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId), BASELINE_FILE);
 }
 function digestFile(projectRoot, relativePath) {
   try {
-    return createHash2("sha256").update(readFileSync6(join5(projectRoot, relativePath))).digest("hex");
+    return createHash2("sha256").update(readFileSync7(join6(projectRoot, relativePath))).digest("hex");
   } catch {
     return null;
   }
@@ -8162,7 +8164,7 @@ async function captureSessionDirtyBaseline(projectRoot, sessionHint) {
     }
   }
   try {
-    mkdirSync4(dirname4(path10), { recursive: true });
+    mkdirSync4(dirname5(path10), { recursive: true });
     writeFileSync5(
       path10,
       `${JSON.stringify({ captured_at: (/* @__PURE__ */ new Date()).toISOString(), files }, null, 2)}
@@ -8176,7 +8178,7 @@ function readSessionDirtyBaseline(projectRoot, sessionHint) {
   const sessionId = resolveSessionId(projectRoot, sessionHint);
   try {
     const parsed = JSON.parse(
-      readFileSync6(baselinePath(projectRoot, sessionId), "utf8")
+      readFileSync7(baselinePath(projectRoot, sessionId), "utf8")
     );
     if (parsed !== null && typeof parsed === "object" && typeof parsed.files === "object" && parsed.files !== null) {
       return parsed;

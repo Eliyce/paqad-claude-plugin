@@ -5,6 +5,8 @@ import { execFileSync as execFileSync2 } from "child_process";
 
 // src/rag/git-state.ts
 import { execFileSync } from "child_process";
+import { opendirSync, readFileSync } from "fs";
+import { dirname, isAbsolute, join, resolve } from "path";
 function git(projectRoot, args) {
   try {
     return execFileSync("git", args, {
@@ -139,13 +141,17 @@ function computeCommitSplit(projectRoot, input = {}) {
   const own = new Set(input.ownTickets ?? []);
   const beforeStart = commitsBeforeStart(projectRoot, state.base_commit, input.startCommit);
   const split = { own: emptyGroup(), inherited: emptyGroup() };
+  const ownShas = [];
+  const inheritedShas = [];
   for (const commit of readBranchCommits(projectRoot, state.base_commit)) {
     const ours = commit.tickets.some((ticket) => own.has(ticket));
     const foreign = own.size > 0 && commit.tickets.length > 0 && !ours;
     const afterStart = beforeStart === null || !beforeStart.has(commit.sha);
     if (ours || !foreign && afterStart) {
       addTo(split.own, commit, commit.tickets);
+      ownShas.push(commit.sha);
     } else {
+      inheritedShas.push(commit.sha);
       addTo(
         split.inherited,
         commit,
@@ -158,7 +164,9 @@ function computeCommitSplit(projectRoot, input = {}) {
     reason: null,
     base_commit: state.base_commit,
     own: split.own,
-    inherited: split.inherited
+    inherited: split.inherited,
+    own_shas: ownShas,
+    inherited_shas: inheritedShas
   };
 }
 function branchCarriesOtherWork(split) {

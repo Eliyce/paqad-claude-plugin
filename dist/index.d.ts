@@ -2,15 +2,623 @@ import { P as ProjectProfile, D as DecisionCategory, I as IntelligenceConfig, E 
 export { A as ActionRoutingConfig, w as AdaptiveRetrievalConfig, x as AppPreviewConfig, y as AutoResolveConfirmation, z as BenchmarkEvalConfig, F as CompliancePackConfig, G as CriterionSource, J as CriterionStatus, K as CustomClassificationDimension, L as DECISION_ASK_THRESHOLDS, N as DECISION_CARRY_OVER_SCOPES, O as DECISION_CATEGORIES, Q as DECISION_CATEGORY_DEFAULTS, T as DECISION_INTENTS, U as DECISION_STATUSES, W as DecisionAskThreshold, X as DecisionCarryOverScope, Y as DecisionCategoryTtlOverrides, Z as DecisionProfileConfig, _ as DecisionRecord, $ as DefectPatternSummary, a0 as DocTargetStatus, a1 as EMBEDDING_PROVIDER_NAMES, a2 as ESCALATION_MODES, a3 as EfficiencyConfig, a4 as EnterpriseConfig, a5 as EscalationConfig, a6 as EscalationMode, a7 as EscalationRuleConfig, a8 as ExecutionProgressTracker, a9 as ExecutionTrackerStatus, aa as ExistingImplementation, ab as FlakyProfileConfig, ac as ManifestRisk, ad as MetadataFiltersConfig, ae as ModelRoutingConfig, af as PaqadConfig, ag as PlanMode, ah as PriorSliceSummary, ai as ProjectCommands, aj as ProjectFeatureFlags, ak as ProjectMcpServer, al as ProjectMetadata, am as ProjectTesting, an as ProjectTestingParallel, ao as ProofType, ap as REQUIREMENT_PRIORITIES, aq as REQUIREMENT_RISKS, ar as RESEARCH_DEPTHS, as as RegressionStatus, at as RejectedAlternative, au as RequirementGraphDelta, av as RequirementNode, aw as RequirementPriority, ax as RequirementRisk, ay as RequirementType, az as RerankingConfig, aA as ResearchDepth, aB as RollbackClass, aC as SliceBudgetSummary, aD as SliceCheckpoint, aE as SliceCriteriaCheck, aF as SliceDocCheck, aG as SliceEscalationReason, aH as SliceEscalationReport, aI as SliceExecutionCancelledEvent, aJ as SliceExecutionCompletedEvent, aK as SliceExecutionEscalatedEvent, aL as SliceExecutionEvent, aM as SliceExecutionEventBase, aN as SliceExecutionEventKind, aO as SliceExecutionGateEvaluatedEvent, aP as SliceExecutionResumeAfterCrashEvent, aQ as SliceExecutionRetriedEvent, aR as SliceExecutionRunFinishedEvent, aS as SliceExecutionStartedEvent, aT as SliceExecutionStatus, aU as SliceFailingTest, aV as SliceFixAttempt, aW as SliceGateResult, aX as SliceProgressEntry, aY as SliceRegressionCheck, aZ as SliceScopeCheck, a_ as SliceScopeViolation, a$ as StrictnessConfig, b0 as TICKET_PROVIDER_KINDS, b1 as TicketProviderKind, b2 as TicketWriteBackMode, b3 as VerificationCase, b4 as VerificationPluginConfig, b5 as isDecisionPacket, b6 as isStrictDecisionId, b7 as toDecisionRecord, b8 as validateDecisionPacket } from './project-profile-CFDaJeqs.js';
 import { D as Domain, S as Stack, C as Capability, A as ActiveCapability, R as RepositoryContext, T as ToolchainInfo, I as InstalledPackage, a as StackSourceReference, b as DetectedStackProfile, c as StackDriftReport, d as StackEcosystem, e as StackSnapshot } from './introspection-CLBqo7wO.js';
 export { f as ACTIVE_CAPABILITIES, g as CAPABILITIES, h as DOMAINS, i as DOMAIN_STACK_MAP, j as DomainStackMapping, k as STACKS, l as STACK_CAPABILITIES_MAP, m as STACK_ECOSYSTEMS, n as StackDriftChange, o as StackProfileSourceKind, V as VersionBand } from './introspection-CLBqo7wO.js';
-import { A as AnalyticsGateStatus, C as ClassificationResult, L as Lane, a as Complexity, R as Risk, b as ClassificationWorkflow, c as ClassificationScope, D as DatabaseImpact, d as ApiImpact, U as UiImpact, e as ComplianceSensitivity, f as CustomerFacingImpact, g as Reversibility, h as DataSensitivity, i as ContextBudgetHint, j as ResolutionMap, W as WorkflowSource, k as ResolutionSource, l as RoutingConfig } from './classification-00f3AHgK.js';
+import { L as Lane, A as AnalyticsGateStatus, C as ClassificationResult, a as Complexity, R as Risk, b as ClassificationWorkflow, c as ClassificationScope, D as DatabaseImpact, d as ApiImpact, U as UiImpact, e as ComplianceSensitivity, f as CustomerFacingImpact, g as Reversibility, h as DataSensitivity, i as ContextBudgetHint, j as ResolutionMap, W as WorkflowSource, k as ResolutionSource, l as RoutingConfig } from './classification-00f3AHgK.js';
 export { m as API_IMPACTS, n as CLASSIFICATION_CERTAINTY, o as CLASSIFICATION_OUTPUT_TYPES, p as CLASSIFICATION_SCOPES, q as CLASSIFICATION_WORKFLOWS, r as COMPLEXITY_LEVELS, s as COMPLIANCE_SENSITIVITY_LEVELS, t as CONTEXT_BUDGET_HINTS, u as CUSTOMER_FACING_IMPACTS, v as ClassificationCertainty, w as ClassificationOutputType, x as DATABASE_IMPACTS, y as DATA_SENSITIVITY_LEVELS, z as LANES, P as PROCESS_DEPTHS, B as ProcessDepth, E as RESOLUTION_SOURCES, F as REVERSIBILITY_LEVELS, G as RISK_LEVELS, T as TARGET_CAPABILITIES, H as TargetCapability, I as UI_IMPACTS, J as WORKFLOW_SOURCES, K as selectLane } from './classification-00f3AHgK.js';
 export { HEURISTIC_TOKENIZER_VERSION, LoadedTokenizer, clearTokenizerCache, getOrLoad } from './context/tokenizer-cache.js';
 export { f as findPackageRoot, a as getPackageRoot, g as getRuntimeRoot, b as getRuntimeTemplatesRoot } from './runtime-paths-TW0qys7p.js';
 import { F as FeatureDevelopmentPolicy } from './feature-development-policy-C1GIHRa6.js';
 import { R as RuleRunFinding, D as DuplicationRowFinding } from './bundle-ledgers-3AJbkb_G.js';
-import { CommitGroup, CommitSplit } from './delivery/commit-split.js';
-import { a as CostWindow, b as CostTokens, c as CostStageLine, d as CostExpertLine, e as CostLine } from './change-cost-BP38eC_A.js';
+import { CommitSplit, CommitGroup } from './delivery/commit-split.js';
+import { a as CostWindow, b as CostScope, c as CostTokens, d as CostStageLine, e as CostExpertLine, f as CostLine } from './change-cost-wxi_e6ZH.js';
 export { HUD_REFRESH_VERBS, isHudRefreshVerb, refreshHudSnapshot } from './hud/refresh.js';
+
+declare const ADAPTER_TYPES: readonly ["claude-code", "codex-cli", "antigravity", "gemini-cli", "junie", "cursor", "github-copilot", "windsurf", "continue", "aider", "aiassistant"];
+type AdapterType = (typeof ADAPTER_TYPES)[number];
+interface AdapterConfig {
+    adapter: AdapterType;
+    config_path: string;
+    skills_root: string;
+    agents_root: string;
+    hooks_supported: boolean;
+    mcp_supported: boolean;
+}
+
+type PackInstallSource = 'built-in' | 'global' | 'project';
+interface StackPackTraitManifest {
+    name: string;
+    display_name: string;
+    detect_package?: string;
+    detect_file?: string;
+    detect_directory?: string;
+    description: string;
+}
+interface StackPackFieldRule {
+    name: string;
+    presence?: 'required' | 'absent';
+    value?: unknown;
+}
+interface StackPackDetectionRule {
+    file?: string;
+    packages?: string[];
+    patterns?: string[];
+    directory?: string;
+    content_match?: string;
+    fields?: StackPackFieldRule[];
+    field_absent?: string[];
+}
+interface StackPackToolchainManifest {
+    ecosystem: string;
+    package_managers: string[];
+    lockfiles: string[];
+    audit_command?: string;
+}
+interface StackPackMcpDefault {
+    name: string;
+    when: 'always' | 'when_trait';
+    trait?: string;
+}
+interface StackPackPentestCheckMap {
+    glob: string;
+    checks: string[];
+}
+interface StackPackAuditCommand {
+    command: string;
+    parser: string;
+}
+interface StackPackAstManifest {
+    language: string;
+    tree_sitter_grammar: string;
+    file_extensions: string[];
+}
+interface StackPackTestingFramework {
+    name: string;
+    detect_package?: string;
+    detect_file?: string;
+    run_command?: string;
+}
+declare const STRUCTURED_TEST_FORMATS: readonly ["jest-json", "junit-xml", "pytest-json", "go-json", "rspec-json", "tap", "none"];
+type StructuredTestFormat = (typeof STRUCTURED_TEST_FORMATS)[number];
+declare const TEST_RUNNER_OUTPUT_SOURCES: readonly ["stdout", "file"];
+type TestRunnerOutputSource = (typeof TEST_RUNNER_OUTPUT_SOURCES)[number];
+declare const TEST_RUNNER_PARALLEL_MODES: readonly ["native", "flag", "unavailable"];
+type TestRunnerParallelMode = (typeof TEST_RUNNER_PARALLEL_MODES)[number];
+declare const SINGLE_TEST_SELECTORS: readonly ["test_id", "file"];
+type SingleTestSelector = (typeof SINGLE_TEST_SELECTORS)[number];
+interface StackPackTestRunnerParallel {
+    mode: TestRunnerParallelMode;
+    flag?: string;
+    requires_package?: string;
+    reason?: string;
+}
+interface StackPackTestRunner {
+    runner_id: string;
+    structured_format: StructuredTestFormat;
+    structured_flags?: string;
+    default_command?: string;
+    output_source?: TestRunnerOutputSource;
+    output_path_pattern?: string;
+    parallel?: StackPackTestRunnerParallel;
+    single_test_selector?: SingleTestSelector;
+}
+interface StackPackDocsManifest {
+    overview_template?: string;
+    conventions_template?: string;
+}
+interface StackPackRagManifest {
+    exclude_directories?: string[];
+    basename_includes?: string[];
+}
+interface StackPackModuleHealthManifest {
+    source_roots: string[];
+    source_globs?: string[];
+    public_api_extractor?: string | null;
+    test_command?: string;
+    coverage_format?: string;
+    coverage_path?: string;
+    test_report_format?: string;
+    test_report_path?: string;
+    git_window_days?: number;
+}
+interface StackPackManifest {
+    name: string;
+    display_name: string;
+    ecosystem: string;
+    version: string;
+    description: string;
+    maintainer: string;
+    tier?: 'framework' | 'archetype';
+    detection: {
+        manifests?: StackPackDetectionRule[];
+        lockfiles?: StackPackDetectionRule[];
+        heuristics?: StackPackDetectionRule[];
+        priority?: number;
+        excludes?: string[];
+    };
+    traits?: StackPackTraitManifest[];
+    toolchains?: StackPackToolchainManifest[];
+    mcp_defaults?: StackPackMcpDefault[];
+    pentest?: {
+        file_check_map?: StackPackPentestCheckMap[];
+        audit_commands?: StackPackAuditCommand[];
+    };
+    ast?: StackPackAstManifest;
+    testing?: {
+        frameworks?: StackPackTestingFramework[];
+    };
+    test_runners?: StackPackTestRunner[];
+    docs?: StackPackDocsManifest;
+    rag?: StackPackRagManifest;
+    module_health?: StackPackModuleHealthManifest;
+    visual_evidence?: {
+        frontend_globs?: string[];
+    };
+}
+declare const COMPLIANCE_RELATIONS: readonly ["equivalent-to", "equal-to", "subset-of", "superset-of", "intersects-with", "no-relationship"];
+type ComplianceRelation = (typeof COMPLIANCE_RELATIONS)[number];
+declare const COMPLIANCE_EVIDENCE_STRENGTHS: readonly ["partial", "substantial"];
+type ComplianceEvidenceStrength = (typeof COMPLIANCE_EVIDENCE_STRENGTHS)[number];
+type ComplianceSignalType = 'gate' | 'obligation_category';
+interface ComplianceClause {
+    id: string;
+    title: string;
+    url?: string;
+}
+interface ComplianceSignal {
+    type: ComplianceSignalType;
+    ref: string;
+    relation: ComplianceRelation;
+}
+interface ComplianceMapping {
+    clause: ComplianceClause;
+    satisfied_by: ComplianceSignal[];
+    evidence_strength: ComplianceEvidenceStrength;
+    reviewed_by?: string;
+}
+interface ComplianceFramework {
+    id: string;
+    title: string;
+    authority_url?: string;
+    version?: string;
+}
+interface CompliancePackManifest {
+    kind: 'compliance-pack';
+    name: string;
+    description?: string;
+    maintainer?: string;
+    framework: ComplianceFramework;
+    disclaimer: string;
+    mappings: ComplianceMapping[];
+}
+interface LoadedCompliancePack {
+    manifest: CompliancePackManifest;
+    root: string;
+    manifestPath: string;
+    source: PackInstallSource;
+    validation: PackValidationResult;
+}
+interface CompliancePackRegistry {
+    packs: Map<string, LoadedCompliancePack>;
+    warnings: PackValidationIssue[];
+}
+interface PackValidationIssue {
+    level: 'error' | 'warning';
+    path: string;
+    message: string;
+}
+interface PackValidationResult {
+    valid: boolean;
+    issues: PackValidationIssue[];
+}
+interface LoadedStackPack {
+    manifest: StackPackManifest;
+    root: string;
+    manifestPath: string;
+    source: PackInstallSource;
+    validation: PackValidationResult;
+}
+interface PackRegistry {
+    packs: Map<string, LoadedStackPack>;
+    warnings: PackValidationIssue[];
+}
+
+declare const TOKEN_ARTIFACT_CLASSES: readonly ["test-output", "coverage-output", "json-report", "xml-report", "log-output", "grep-results", "route-dump", "inventory-scan-output"];
+type TokenArtifactClass = (typeof TOKEN_ARTIFACT_CLASSES)[number];
+declare const ESCALATION_REASONS: readonly ["structured-parse-failed-or-degraded", "summary-confidence-low", "compact-signals-contradict", "diagnosis-unresolved-after-compact-pass"];
+type EscalationReason = (typeof ESCALATION_REASONS)[number];
+interface TokenEfficiencyMetadata {
+    original_size: number;
+    compact_size: number;
+    reduction_ratio: number;
+    delta_mode_used: boolean;
+    escalation_occurred: boolean;
+}
+interface CompactArtifactSummary {
+    summary_counts: Record<string, number>;
+    top_failures_or_errors: string[];
+    affected_files: string[];
+    severity_or_status: string;
+    next_recommended_actions: string[];
+}
+interface CompactArtifactResult {
+    artifact_class: TokenArtifactClass;
+    summary: CompactArtifactSummary;
+    targeted_excerpts: string[];
+    confidence: number;
+    raw_artifact_path: string | null;
+    metadata: TokenEfficiencyMetadata;
+}
+interface BuildCompactArtifactInput {
+    artifact_class: TokenArtifactClass;
+    raw_content: string;
+    raw_artifact_path?: string;
+    max_excerpts?: number;
+}
+interface EscalationDecision {
+    should_escalate: boolean;
+    reason: EscalationReason | null;
+    raw_slice: string | null;
+    metadata: TokenEfficiencyMetadata;
+}
+interface EvaluateEscalationInput {
+    compact: CompactArtifactResult;
+    reason?: EscalationReason;
+    unresolved_after_compact?: boolean;
+    contradiction_detected?: boolean;
+    confidence_threshold?: number;
+    max_raw_slice_chars?: number;
+    slice_hint?: string;
+}
+interface ReasoningInputPayload {
+    compact_summary: CompactArtifactSummary;
+    targeted_excerpts: string[];
+    raw_slice: string | null;
+    escalation_reason: EscalationReason | null;
+    metadata: TokenEfficiencyMetadata;
+}
+interface DeltaReasoningPayload<TDelta> {
+    delta: TDelta;
+    payload: ReasoningInputPayload;
+}
+interface TestIssueSnapshot {
+    test_id: string;
+    message: string;
+    status: 'passed' | 'failed' | 'errored';
+}
+interface TestDelta {
+    newly_failing_tests: string[];
+    newly_passing_tests: string[];
+    newly_errored_tests: string[];
+    changed_failure_messages: Array<{
+        test_id: string;
+        before: string;
+        after: string;
+    }>;
+}
+interface VerificationGateSnapshot {
+    gate: string;
+    passed: boolean;
+    detail: string;
+    remediation?: string;
+}
+interface VerificationDelta {
+    changed_gate_outcomes: Array<{
+        gate: string;
+        before_passed: boolean;
+        after_passed: boolean;
+    }>;
+    changed_evidence: Array<{
+        gate: string;
+        before_detail: string;
+        after_detail: string;
+    }>;
+    changed_recommended_actions: Array<{
+        gate: string;
+        before: string;
+        after: string;
+    }>;
+}
+interface DriftFileSnapshot {
+    file: string;
+    status: string;
+    conclusion: string;
+}
+interface DriftDelta {
+    changed_files: string[];
+    changed_statuses: Array<{
+        file: string;
+        before: string;
+        after: string;
+    }>;
+    changed_conclusions: Array<{
+        file: string;
+        before: string;
+        after: string;
+    }>;
+}
+declare const DISCLOSURE_LEVELS: readonly ["summary", "compact", "excerpt", "raw"];
+type DisclosureLevel = (typeof DISCLOSURE_LEVELS)[number];
+declare const DISCLOSURE_ESCALATION_REASONS: readonly ["ambiguity-unresolved", "previous-layer-insufficient", "high-risk-or-cross-cutting"];
+type DisclosureEscalationReason = (typeof DISCLOSURE_ESCALATION_REASONS)[number];
+interface DisclosurePolicyInput {
+    compact: CompactArtifactResult;
+    escalation?: EscalationDecision;
+    requested_level?: DisclosureLevel;
+    escalation_reason?: DisclosureEscalationReason;
+}
+interface DisclosureAuditRecord {
+    selected_level: DisclosureLevel;
+    escalation_occurred: boolean;
+    escalation_reason: DisclosureEscalationReason | null;
+    skipped_intermediate: boolean;
+}
+interface DisclosurePolicyResult {
+    level: DisclosureLevel;
+    payload: string;
+    escalation_reason: DisclosureEscalationReason | null;
+    skipped_intermediate: boolean;
+    audit: DisclosureAuditRecord;
+}
+declare const TASK_COMPLEXITIES: readonly ["trivial", "single-file", "single-module", "cross-cutting"];
+type TaskComplexity = (typeof TASK_COMPLEXITIES)[number];
+declare const RETRIEVAL_PATHS: readonly ["direct", "lexical", "rag-shallow", "rag-deep"];
+type RetrievalPath = (typeof RETRIEVAL_PATHS)[number];
+declare const RETRIEVAL_ESCALATION_SIGNALS: readonly ["insufficient-chunks", "conflicting-evidence", "unresolved-target-file-ambiguity"];
+type RetrievalEscalationSignal = (typeof RETRIEVAL_ESCALATION_SIGNALS)[number];
+interface RetrievalGateInput {
+    task_complexity: TaskComplexity;
+    ambiguity_detected?: boolean;
+    chunk_count?: number;
+    min_chunk_threshold?: number;
+    conflicting_evidence?: boolean;
+}
+interface RetrievalAuditRecord {
+    retrieval_depth: RetrievalPath;
+    rag_skipped: boolean;
+    escalation_signal: RetrievalEscalationSignal | null;
+}
+interface RetrievalGateResult {
+    preferred_path: RetrievalPath;
+    rag_skipped: boolean;
+    escalation_signal: RetrievalEscalationSignal | null;
+    audit: RetrievalAuditRecord;
+}
+declare const ROUTING_MECHANISMS: readonly ["deterministic-rule", "metadata-lookup", "cheap-model", "reasoning-model"];
+type RoutingMechanism = (typeof ROUTING_MECHANISMS)[number];
+interface RoutingInput {
+    task_type: string;
+    target_scope?: string;
+    metadata?: Record<string, unknown>;
+}
+interface RoutingAuditRecord {
+    routing_mechanism: RoutingMechanism;
+    resolved_before_reasoning: boolean;
+}
+interface RoutingResult {
+    needs_reasoning: boolean;
+    mechanism_used: RoutingMechanism;
+    resolved_task_type: string | null;
+    audit: RoutingAuditRecord;
+}
+interface ControlLayerAuditRecord {
+    disclosure: DisclosureAuditRecord;
+    retrieval: RetrievalAuditRecord;
+    routing: RoutingAuditRecord;
+}
+
+declare const TEST_OUTPUT_SCHEMA_VERSION = "1.0.0";
+declare const UNKNOWN_TEST_OUTPUT_TIMESTAMP = "1970-01-01T00:00:00.000Z";
+declare const TEST_ISSUE_CATEGORIES: readonly ["assertion", "error", "timeout", "unknown"];
+type TestIssueCategory = (typeof TEST_ISSUE_CATEGORIES)[number];
+declare const TEST_PARSE_STRATEGIES: readonly ["structured", "plain-text-fallback", "degraded"];
+type TestParseStrategy = (typeof TEST_PARSE_STRATEGIES)[number];
+interface StructuredTestSummary {
+    total: number;
+    passed: number;
+    failed: number;
+    skipped: number;
+    errored: number;
+    duration_ms: number;
+    timestamp: string;
+    runner_id: string;
+}
+interface StructuredTestIssue {
+    test_id: string;
+    suite: string | null;
+    message: string;
+    stack_trace: string | null;
+    file_path: string | null;
+    line_number: number | null;
+    category: TestIssueCategory;
+    duration_ms: number | null;
+}
+interface StructuredTestWarning {
+    type: string;
+    message: string;
+    source_test_id: string | null;
+}
+interface StructuredTestParseMetadata {
+    raw_byte_size: number;
+    structured_byte_size: number;
+    compression_ratio: number;
+    original_size: number;
+    compact_size: number;
+    reduction_ratio: number;
+    delta_mode_used: boolean;
+    escalation_occurred: boolean;
+    escalation_reason: EscalationReason | null;
+    delta_summary: {
+        newly_failing_tests: number;
+        newly_passing_tests: number;
+        newly_errored_tests: number;
+        changed_failure_messages: number;
+    } | null;
+    parse_strategy: TestParseStrategy;
+    parse_warnings: string[];
+}
+interface StructuredTestResult {
+    schema_version: typeof TEST_OUTPUT_SCHEMA_VERSION;
+    summary: StructuredTestSummary;
+    failures: StructuredTestIssue[];
+    warnings: StructuredTestWarning[];
+    parse_metadata: StructuredTestParseMetadata;
+    errors: StructuredTestIssue[];
+    evidence_scope?: {
+        related_paths?: string[];
+        related_modules?: string[];
+    };
+}
+
+declare const MUTATION_CONFIDENCE_LEVELS: readonly ["mature", "lower"];
+type MutationConfidence = (typeof MUTATION_CONFIDENCE_LEVELS)[number];
+declare const MUTATION_GATE_STATUSES: readonly ["killed-all", "survivors", "lower-confidence", "skipped", "unsafe-tree"];
+type MutationGateStatus = (typeof MUTATION_GATE_STATUSES)[number];
+declare const MUTATION_SKIP_REASONS: readonly ["fast-lane", "no-changed-code", "tool-not-configured", "tests-not-green", "run-failed", "no-test-command"];
+type MutationSkipReason = (typeof MUTATION_SKIP_REASONS)[number];
+declare const MUTANT_STATUSES: readonly ["killed", "timeout", "survived", "no-coverage", "equivalent", "error"];
+type MutantStatus = (typeof MUTANT_STATUSES)[number];
+interface RawMutant {
+    file: string;
+    line: number;
+    operator: string;
+    status: MutantStatus;
+    description?: string;
+}
+interface SurvivingMutant {
+    file: string;
+    line: number;
+    operator: string;
+    description?: string;
+}
+interface MutationToolDescriptor {
+    tool: string;
+    languages: string[];
+    confidence: MutationConfidence;
+    run_command: string;
+    config_markers: string[];
+}
+interface MutationResult {
+    tool: string | null;
+    language: string | null;
+    confidence: MutationConfidence;
+    scoped_files: string[];
+    total_mutants: number;
+    killed: number;
+    survived: number;
+    equivalent_set_aside: number;
+    kill_rate: number | null;
+    surviving_mutants: SurvivingMutant[];
+    tree_clean: boolean;
+    status: MutationGateStatus;
+    skipped_reason: MutationSkipReason | null;
+}
+
+declare const QUALITY_MEASURES: readonly ["tangledness", "dead_code", "risky_patterns", "strictness"];
+type QualityMeasure = (typeof QUALITY_MEASURES)[number];
+declare const MEASURE_CONFIDENCE_LEVELS: readonly ["mature", "lower"];
+type MeasureConfidence = (typeof MEASURE_CONFIDENCE_LEVELS)[number];
+type RatchetMeasureOutcome = 'new' | 'unchanged' | 'tightened' | 'regressed' | 'blocked';
+interface RatchetMeasureVerdict {
+    measure: QualityMeasure;
+    module: string;
+    baseline_value: number | null;
+    current_value: number | null;
+    outcome: RatchetMeasureOutcome;
+    confidence: MeasureConfidence;
+    kind: string;
+    detail: string;
+}
+type QualityRatchetStatus = 'pass' | 'regressed' | 'captured' | 'skipped';
+interface QualityRatchetResult {
+    status: QualityRatchetStatus;
+    lane: Lane;
+    verdicts: RatchetMeasureVerdict[];
+    blocking_regressions: RatchetMeasureVerdict[];
+    excepted_regressions: RatchetMeasureVerdict[];
+    tightened: RatchetMeasureVerdict[];
+    captured_baseline: boolean;
+    skipped_reason: string | null;
+}
+
+declare const VERIFICATION_GATES: readonly ["change-completeness", "requirement-completeness", "story-quality", "ac-test-mapping", "spec-review", "architecture-compliance", "code-tests-lint", "implementation-review", "behavioral-correctness", "mutation-testing", "quality-ratchet", "database-quality", "module-docs-structure", "instructions-docs-structure", "documentation-freshness", "site-map-freshness", "extension-surface", "duplication"];
+type VerificationGate = (typeof VERIFICATION_GATES)[number];
+type GateSkipKind = 'not-required' | 'did-not-run';
+interface GateResult {
+    gate: VerificationGate;
+    passed: boolean;
+    inconclusive?: boolean;
+    outcome?: GateSkipKind;
+    detail: string;
+    remediation?: string;
+}
+interface ImplementationReviewFinding {
+    kind: 'decision-violation' | 'undeclared-decision';
+    severity: 'error' | 'warning';
+    detail: string;
+    decision_id?: string;
+    file?: string;
+}
+interface WaitingDecision {
+    decision_id: string;
+    category: string;
+    question: string;
+}
+type CanonicalDocOwnershipKind = 'direct-doc-edit' | 'implementation-drift';
+interface CanonicalDocTarget {
+    target_path: string;
+    ownership_kind: CanonicalDocOwnershipKind;
+    owners: string[];
+    reason: string;
+}
+type VerificationOrigin = 'provider-workflow' | 'paqad-cli' | 'hook-completion' | 'git-backstop' | 'ci-backstop' | 'unknown';
+declare const BACKSTOP_VERIFICATION_ORIGINS: readonly ["hook-completion", "git-backstop", "ci-backstop"];
+declare function isBackstopVerificationOrigin(origin: VerificationOrigin | undefined): origin is (typeof BACKSTOP_VERIFICATION_ORIGINS)[number];
+interface VerificationContext {
+    project_root: string;
+    verification_origin?: VerificationOrigin;
+    verification_stage?: 'provider-completion' | 'backstop-completion' | 'other';
+    modules: string[];
+    changed_files: string[];
+    changed_files_source: 'git' | 'none';
+    spec_boundary?: string[];
+    code_changed: boolean;
+    test_files_changed: boolean;
+    documentation_files_changed: boolean;
+    stale_doc_targets: CanonicalDocTarget[];
+    requirements_complete: boolean;
+    story_quality_passed: boolean;
+    ac_test_mapping_passed: boolean;
+    ac_test_mapping_detail?: string;
+    ac_test_mapping_outcome?: 'pass' | 'fail' | 'not-required' | 'did-not-run';
+    spec_review_passed: boolean;
+    architecture_compliant: boolean;
+    code_tests_lint_passed: boolean;
+    implementation_review_passed: boolean;
+    implementation_review_findings?: ImplementationReviewFinding[];
+    waiting_decisions?: WaitingDecision[];
+    behavioral_correctness_passed: boolean;
+    database_quality_passed: boolean;
+    structured_test_results?: StructuredTestResult[];
+    mutation_result?: MutationResult;
+    mutation_note?: string;
+    mutation_strict?: boolean;
+    quality_ratchet_result?: QualityRatchetResult;
+    lane?: Lane;
+    expected_ui_modules: string[];
+    expected_api_modules: string[];
+    expected_integration_modules: string[];
+    expected_error_catalog_modules: string[];
+    registry_refreshed_at: string | null;
+    glossary_updated: boolean;
+}
+
+interface EnvelopeHeader {
+    schema_version: number;
+    doc_type: string;
+    change: string;
+    session_id: string;
+    recorded_at: string;
+    content_hash: string;
+}
 
 declare const RESOLUTION_LAYERS: readonly [0, 1, 2, 3, 4, 5, 6];
 type ResolutionLayer = (typeof RESOLUTION_LAYERS)[number];
@@ -29,17 +637,6 @@ interface ResolvedArtifacts {
     antiPatterns: ResolvedArtifact$1[];
     checklists: ResolvedArtifact$1[];
     mcpConfigs: ResolvedArtifact$1[];
-}
-
-declare const ADAPTER_TYPES: readonly ["claude-code", "codex-cli", "antigravity", "gemini-cli", "junie", "cursor", "github-copilot", "windsurf", "continue", "aider", "aiassistant"];
-type AdapterType = (typeof ADAPTER_TYPES)[number];
-interface AdapterConfig {
-    adapter: AdapterType;
-    config_path: string;
-    skills_root: string;
-    agents_root: string;
-    hooks_supported: boolean;
-    mcp_supported: boolean;
 }
 
 interface AdapterCapabilities {
@@ -75,7 +672,7 @@ interface AdapterInterface {
     configureMemory(profile: ProjectProfile): Promise<GeneratedFile[]>;
 }
 
-type PaqadHookEvent = 'session-start' | 'prompt-submit' | 'pre-tool-mutation' | 'completion' | 'subagent-completion';
+type PaqadHookEvent = 'session-start' | 'prompt-submit' | 'pre-tool-mutation' | 'completion' | 'subagent-start' | 'subagent-completion';
 declare const PAQAD_HOOK_EVENT_ORDER: readonly PaqadHookEvent[];
 interface PaqadLiveHookSpec {
     id: string;
@@ -92,11 +689,13 @@ declare const PLUGIN_RUNTIME_ROOT = "${CLAUDE_PLUGIN_ROOT}/runtime";
 declare const PLUGIN_SESSION_START_HOOK = "plugin-session-start.mjs";
 declare const PAQAD_MUTATING_TOOL_MATCHER = "Edit|Write|NotebookEdit";
 declare const PAQAD_STAGE_AGENT_MATCHER = "^(paqad:)?paqad-";
+declare const PAQAD_STAGE_HELPER_MATCHER = "^(paqad:)?paqad-(planning|specification|development|review|checks|documentation-sync)$";
 declare const DEFAULT_HOOK_ADAPTER = "claude-code";
 interface HostHookEventMap {
-    nativeEvent: Record<PaqadHookEvent, string>;
+    nativeEvent: Readonly<Partial<Record<PaqadHookEvent, string>>>;
     mutatingMatcher: string;
     subagentMatcher: string;
+    subagentStartMatcher?: string;
 }
 declare const NATIVE_HOOK_EVENTS: Readonly<Record<string, HostHookEventMap>>;
 declare function rendersFullHookChain(adapterType: string): boolean;
@@ -2519,594 +3118,6 @@ interface OnboardingPreviewResult {
     warnings: string[];
 }
 
-type PackInstallSource = 'built-in' | 'global' | 'project';
-interface StackPackTraitManifest {
-    name: string;
-    display_name: string;
-    detect_package?: string;
-    detect_file?: string;
-    detect_directory?: string;
-    description: string;
-}
-interface StackPackFieldRule {
-    name: string;
-    presence?: 'required' | 'absent';
-    value?: unknown;
-}
-interface StackPackDetectionRule {
-    file?: string;
-    packages?: string[];
-    patterns?: string[];
-    directory?: string;
-    content_match?: string;
-    fields?: StackPackFieldRule[];
-    field_absent?: string[];
-}
-interface StackPackToolchainManifest {
-    ecosystem: string;
-    package_managers: string[];
-    lockfiles: string[];
-    audit_command?: string;
-}
-interface StackPackMcpDefault {
-    name: string;
-    when: 'always' | 'when_trait';
-    trait?: string;
-}
-interface StackPackPentestCheckMap {
-    glob: string;
-    checks: string[];
-}
-interface StackPackAuditCommand {
-    command: string;
-    parser: string;
-}
-interface StackPackAstManifest {
-    language: string;
-    tree_sitter_grammar: string;
-    file_extensions: string[];
-}
-interface StackPackTestingFramework {
-    name: string;
-    detect_package?: string;
-    detect_file?: string;
-    run_command?: string;
-}
-declare const STRUCTURED_TEST_FORMATS: readonly ["jest-json", "junit-xml", "pytest-json", "go-json", "rspec-json", "tap", "none"];
-type StructuredTestFormat = (typeof STRUCTURED_TEST_FORMATS)[number];
-declare const TEST_RUNNER_OUTPUT_SOURCES: readonly ["stdout", "file"];
-type TestRunnerOutputSource = (typeof TEST_RUNNER_OUTPUT_SOURCES)[number];
-declare const TEST_RUNNER_PARALLEL_MODES: readonly ["native", "flag", "unavailable"];
-type TestRunnerParallelMode = (typeof TEST_RUNNER_PARALLEL_MODES)[number];
-declare const SINGLE_TEST_SELECTORS: readonly ["test_id", "file"];
-type SingleTestSelector = (typeof SINGLE_TEST_SELECTORS)[number];
-interface StackPackTestRunnerParallel {
-    mode: TestRunnerParallelMode;
-    flag?: string;
-    requires_package?: string;
-    reason?: string;
-}
-interface StackPackTestRunner {
-    runner_id: string;
-    structured_format: StructuredTestFormat;
-    structured_flags?: string;
-    default_command?: string;
-    output_source?: TestRunnerOutputSource;
-    output_path_pattern?: string;
-    parallel?: StackPackTestRunnerParallel;
-    single_test_selector?: SingleTestSelector;
-}
-interface StackPackDocsManifest {
-    overview_template?: string;
-    conventions_template?: string;
-}
-interface StackPackRagManifest {
-    exclude_directories?: string[];
-    basename_includes?: string[];
-}
-interface StackPackModuleHealthManifest {
-    source_roots: string[];
-    source_globs?: string[];
-    public_api_extractor?: string | null;
-    test_command?: string;
-    coverage_format?: string;
-    coverage_path?: string;
-    test_report_format?: string;
-    test_report_path?: string;
-    git_window_days?: number;
-}
-interface StackPackManifest {
-    name: string;
-    display_name: string;
-    ecosystem: string;
-    version: string;
-    description: string;
-    maintainer: string;
-    tier?: 'framework' | 'archetype';
-    detection: {
-        manifests?: StackPackDetectionRule[];
-        lockfiles?: StackPackDetectionRule[];
-        heuristics?: StackPackDetectionRule[];
-        priority?: number;
-        excludes?: string[];
-    };
-    traits?: StackPackTraitManifest[];
-    toolchains?: StackPackToolchainManifest[];
-    mcp_defaults?: StackPackMcpDefault[];
-    pentest?: {
-        file_check_map?: StackPackPentestCheckMap[];
-        audit_commands?: StackPackAuditCommand[];
-    };
-    ast?: StackPackAstManifest;
-    testing?: {
-        frameworks?: StackPackTestingFramework[];
-    };
-    test_runners?: StackPackTestRunner[];
-    docs?: StackPackDocsManifest;
-    rag?: StackPackRagManifest;
-    module_health?: StackPackModuleHealthManifest;
-    visual_evidence?: {
-        frontend_globs?: string[];
-    };
-}
-declare const COMPLIANCE_RELATIONS: readonly ["equivalent-to", "equal-to", "subset-of", "superset-of", "intersects-with", "no-relationship"];
-type ComplianceRelation = (typeof COMPLIANCE_RELATIONS)[number];
-declare const COMPLIANCE_EVIDENCE_STRENGTHS: readonly ["partial", "substantial"];
-type ComplianceEvidenceStrength = (typeof COMPLIANCE_EVIDENCE_STRENGTHS)[number];
-type ComplianceSignalType = 'gate' | 'obligation_category';
-interface ComplianceClause {
-    id: string;
-    title: string;
-    url?: string;
-}
-interface ComplianceSignal {
-    type: ComplianceSignalType;
-    ref: string;
-    relation: ComplianceRelation;
-}
-interface ComplianceMapping {
-    clause: ComplianceClause;
-    satisfied_by: ComplianceSignal[];
-    evidence_strength: ComplianceEvidenceStrength;
-    reviewed_by?: string;
-}
-interface ComplianceFramework {
-    id: string;
-    title: string;
-    authority_url?: string;
-    version?: string;
-}
-interface CompliancePackManifest {
-    kind: 'compliance-pack';
-    name: string;
-    description?: string;
-    maintainer?: string;
-    framework: ComplianceFramework;
-    disclaimer: string;
-    mappings: ComplianceMapping[];
-}
-interface LoadedCompliancePack {
-    manifest: CompliancePackManifest;
-    root: string;
-    manifestPath: string;
-    source: PackInstallSource;
-    validation: PackValidationResult;
-}
-interface CompliancePackRegistry {
-    packs: Map<string, LoadedCompliancePack>;
-    warnings: PackValidationIssue[];
-}
-interface PackValidationIssue {
-    level: 'error' | 'warning';
-    path: string;
-    message: string;
-}
-interface PackValidationResult {
-    valid: boolean;
-    issues: PackValidationIssue[];
-}
-interface LoadedStackPack {
-    manifest: StackPackManifest;
-    root: string;
-    manifestPath: string;
-    source: PackInstallSource;
-    validation: PackValidationResult;
-}
-interface PackRegistry {
-    packs: Map<string, LoadedStackPack>;
-    warnings: PackValidationIssue[];
-}
-
-declare const TOKEN_ARTIFACT_CLASSES: readonly ["test-output", "coverage-output", "json-report", "xml-report", "log-output", "grep-results", "route-dump", "inventory-scan-output"];
-type TokenArtifactClass = (typeof TOKEN_ARTIFACT_CLASSES)[number];
-declare const ESCALATION_REASONS: readonly ["structured-parse-failed-or-degraded", "summary-confidence-low", "compact-signals-contradict", "diagnosis-unresolved-after-compact-pass"];
-type EscalationReason = (typeof ESCALATION_REASONS)[number];
-interface TokenEfficiencyMetadata {
-    original_size: number;
-    compact_size: number;
-    reduction_ratio: number;
-    delta_mode_used: boolean;
-    escalation_occurred: boolean;
-}
-interface CompactArtifactSummary {
-    summary_counts: Record<string, number>;
-    top_failures_or_errors: string[];
-    affected_files: string[];
-    severity_or_status: string;
-    next_recommended_actions: string[];
-}
-interface CompactArtifactResult {
-    artifact_class: TokenArtifactClass;
-    summary: CompactArtifactSummary;
-    targeted_excerpts: string[];
-    confidence: number;
-    raw_artifact_path: string | null;
-    metadata: TokenEfficiencyMetadata;
-}
-interface BuildCompactArtifactInput {
-    artifact_class: TokenArtifactClass;
-    raw_content: string;
-    raw_artifact_path?: string;
-    max_excerpts?: number;
-}
-interface EscalationDecision {
-    should_escalate: boolean;
-    reason: EscalationReason | null;
-    raw_slice: string | null;
-    metadata: TokenEfficiencyMetadata;
-}
-interface EvaluateEscalationInput {
-    compact: CompactArtifactResult;
-    reason?: EscalationReason;
-    unresolved_after_compact?: boolean;
-    contradiction_detected?: boolean;
-    confidence_threshold?: number;
-    max_raw_slice_chars?: number;
-    slice_hint?: string;
-}
-interface ReasoningInputPayload {
-    compact_summary: CompactArtifactSummary;
-    targeted_excerpts: string[];
-    raw_slice: string | null;
-    escalation_reason: EscalationReason | null;
-    metadata: TokenEfficiencyMetadata;
-}
-interface DeltaReasoningPayload<TDelta> {
-    delta: TDelta;
-    payload: ReasoningInputPayload;
-}
-interface TestIssueSnapshot {
-    test_id: string;
-    message: string;
-    status: 'passed' | 'failed' | 'errored';
-}
-interface TestDelta {
-    newly_failing_tests: string[];
-    newly_passing_tests: string[];
-    newly_errored_tests: string[];
-    changed_failure_messages: Array<{
-        test_id: string;
-        before: string;
-        after: string;
-    }>;
-}
-interface VerificationGateSnapshot {
-    gate: string;
-    passed: boolean;
-    detail: string;
-    remediation?: string;
-}
-interface VerificationDelta {
-    changed_gate_outcomes: Array<{
-        gate: string;
-        before_passed: boolean;
-        after_passed: boolean;
-    }>;
-    changed_evidence: Array<{
-        gate: string;
-        before_detail: string;
-        after_detail: string;
-    }>;
-    changed_recommended_actions: Array<{
-        gate: string;
-        before: string;
-        after: string;
-    }>;
-}
-interface DriftFileSnapshot {
-    file: string;
-    status: string;
-    conclusion: string;
-}
-interface DriftDelta {
-    changed_files: string[];
-    changed_statuses: Array<{
-        file: string;
-        before: string;
-        after: string;
-    }>;
-    changed_conclusions: Array<{
-        file: string;
-        before: string;
-        after: string;
-    }>;
-}
-declare const DISCLOSURE_LEVELS: readonly ["summary", "compact", "excerpt", "raw"];
-type DisclosureLevel = (typeof DISCLOSURE_LEVELS)[number];
-declare const DISCLOSURE_ESCALATION_REASONS: readonly ["ambiguity-unresolved", "previous-layer-insufficient", "high-risk-or-cross-cutting"];
-type DisclosureEscalationReason = (typeof DISCLOSURE_ESCALATION_REASONS)[number];
-interface DisclosurePolicyInput {
-    compact: CompactArtifactResult;
-    escalation?: EscalationDecision;
-    requested_level?: DisclosureLevel;
-    escalation_reason?: DisclosureEscalationReason;
-}
-interface DisclosureAuditRecord {
-    selected_level: DisclosureLevel;
-    escalation_occurred: boolean;
-    escalation_reason: DisclosureEscalationReason | null;
-    skipped_intermediate: boolean;
-}
-interface DisclosurePolicyResult {
-    level: DisclosureLevel;
-    payload: string;
-    escalation_reason: DisclosureEscalationReason | null;
-    skipped_intermediate: boolean;
-    audit: DisclosureAuditRecord;
-}
-declare const TASK_COMPLEXITIES: readonly ["trivial", "single-file", "single-module", "cross-cutting"];
-type TaskComplexity = (typeof TASK_COMPLEXITIES)[number];
-declare const RETRIEVAL_PATHS: readonly ["direct", "lexical", "rag-shallow", "rag-deep"];
-type RetrievalPath = (typeof RETRIEVAL_PATHS)[number];
-declare const RETRIEVAL_ESCALATION_SIGNALS: readonly ["insufficient-chunks", "conflicting-evidence", "unresolved-target-file-ambiguity"];
-type RetrievalEscalationSignal = (typeof RETRIEVAL_ESCALATION_SIGNALS)[number];
-interface RetrievalGateInput {
-    task_complexity: TaskComplexity;
-    ambiguity_detected?: boolean;
-    chunk_count?: number;
-    min_chunk_threshold?: number;
-    conflicting_evidence?: boolean;
-}
-interface RetrievalAuditRecord {
-    retrieval_depth: RetrievalPath;
-    rag_skipped: boolean;
-    escalation_signal: RetrievalEscalationSignal | null;
-}
-interface RetrievalGateResult {
-    preferred_path: RetrievalPath;
-    rag_skipped: boolean;
-    escalation_signal: RetrievalEscalationSignal | null;
-    audit: RetrievalAuditRecord;
-}
-declare const ROUTING_MECHANISMS: readonly ["deterministic-rule", "metadata-lookup", "cheap-model", "reasoning-model"];
-type RoutingMechanism = (typeof ROUTING_MECHANISMS)[number];
-interface RoutingInput {
-    task_type: string;
-    target_scope?: string;
-    metadata?: Record<string, unknown>;
-}
-interface RoutingAuditRecord {
-    routing_mechanism: RoutingMechanism;
-    resolved_before_reasoning: boolean;
-}
-interface RoutingResult {
-    needs_reasoning: boolean;
-    mechanism_used: RoutingMechanism;
-    resolved_task_type: string | null;
-    audit: RoutingAuditRecord;
-}
-interface ControlLayerAuditRecord {
-    disclosure: DisclosureAuditRecord;
-    retrieval: RetrievalAuditRecord;
-    routing: RoutingAuditRecord;
-}
-
-declare const TEST_OUTPUT_SCHEMA_VERSION = "1.0.0";
-declare const UNKNOWN_TEST_OUTPUT_TIMESTAMP = "1970-01-01T00:00:00.000Z";
-declare const TEST_ISSUE_CATEGORIES: readonly ["assertion", "error", "timeout", "unknown"];
-type TestIssueCategory = (typeof TEST_ISSUE_CATEGORIES)[number];
-declare const TEST_PARSE_STRATEGIES: readonly ["structured", "plain-text-fallback", "degraded"];
-type TestParseStrategy = (typeof TEST_PARSE_STRATEGIES)[number];
-interface StructuredTestSummary {
-    total: number;
-    passed: number;
-    failed: number;
-    skipped: number;
-    errored: number;
-    duration_ms: number;
-    timestamp: string;
-    runner_id: string;
-}
-interface StructuredTestIssue {
-    test_id: string;
-    suite: string | null;
-    message: string;
-    stack_trace: string | null;
-    file_path: string | null;
-    line_number: number | null;
-    category: TestIssueCategory;
-    duration_ms: number | null;
-}
-interface StructuredTestWarning {
-    type: string;
-    message: string;
-    source_test_id: string | null;
-}
-interface StructuredTestParseMetadata {
-    raw_byte_size: number;
-    structured_byte_size: number;
-    compression_ratio: number;
-    original_size: number;
-    compact_size: number;
-    reduction_ratio: number;
-    delta_mode_used: boolean;
-    escalation_occurred: boolean;
-    escalation_reason: EscalationReason | null;
-    delta_summary: {
-        newly_failing_tests: number;
-        newly_passing_tests: number;
-        newly_errored_tests: number;
-        changed_failure_messages: number;
-    } | null;
-    parse_strategy: TestParseStrategy;
-    parse_warnings: string[];
-}
-interface StructuredTestResult {
-    schema_version: typeof TEST_OUTPUT_SCHEMA_VERSION;
-    summary: StructuredTestSummary;
-    failures: StructuredTestIssue[];
-    warnings: StructuredTestWarning[];
-    parse_metadata: StructuredTestParseMetadata;
-    errors: StructuredTestIssue[];
-    evidence_scope?: {
-        related_paths?: string[];
-        related_modules?: string[];
-    };
-}
-
-declare const MUTATION_CONFIDENCE_LEVELS: readonly ["mature", "lower"];
-type MutationConfidence = (typeof MUTATION_CONFIDENCE_LEVELS)[number];
-declare const MUTATION_GATE_STATUSES: readonly ["killed-all", "survivors", "lower-confidence", "skipped", "unsafe-tree"];
-type MutationGateStatus = (typeof MUTATION_GATE_STATUSES)[number];
-declare const MUTATION_SKIP_REASONS: readonly ["fast-lane", "no-changed-code", "tool-not-configured", "tests-not-green", "run-failed", "no-test-command"];
-type MutationSkipReason = (typeof MUTATION_SKIP_REASONS)[number];
-declare const MUTANT_STATUSES: readonly ["killed", "timeout", "survived", "no-coverage", "equivalent", "error"];
-type MutantStatus = (typeof MUTANT_STATUSES)[number];
-interface RawMutant {
-    file: string;
-    line: number;
-    operator: string;
-    status: MutantStatus;
-    description?: string;
-}
-interface SurvivingMutant {
-    file: string;
-    line: number;
-    operator: string;
-    description?: string;
-}
-interface MutationToolDescriptor {
-    tool: string;
-    languages: string[];
-    confidence: MutationConfidence;
-    run_command: string;
-    config_markers: string[];
-}
-interface MutationResult {
-    tool: string | null;
-    language: string | null;
-    confidence: MutationConfidence;
-    scoped_files: string[];
-    total_mutants: number;
-    killed: number;
-    survived: number;
-    equivalent_set_aside: number;
-    kill_rate: number | null;
-    surviving_mutants: SurvivingMutant[];
-    tree_clean: boolean;
-    status: MutationGateStatus;
-    skipped_reason: MutationSkipReason | null;
-}
-
-declare const QUALITY_MEASURES: readonly ["tangledness", "dead_code", "risky_patterns", "strictness"];
-type QualityMeasure = (typeof QUALITY_MEASURES)[number];
-declare const MEASURE_CONFIDENCE_LEVELS: readonly ["mature", "lower"];
-type MeasureConfidence = (typeof MEASURE_CONFIDENCE_LEVELS)[number];
-type RatchetMeasureOutcome = 'new' | 'unchanged' | 'tightened' | 'regressed' | 'blocked';
-interface RatchetMeasureVerdict {
-    measure: QualityMeasure;
-    module: string;
-    baseline_value: number | null;
-    current_value: number | null;
-    outcome: RatchetMeasureOutcome;
-    confidence: MeasureConfidence;
-    kind: string;
-    detail: string;
-}
-type QualityRatchetStatus = 'pass' | 'regressed' | 'captured' | 'skipped';
-interface QualityRatchetResult {
-    status: QualityRatchetStatus;
-    lane: Lane;
-    verdicts: RatchetMeasureVerdict[];
-    blocking_regressions: RatchetMeasureVerdict[];
-    excepted_regressions: RatchetMeasureVerdict[];
-    tightened: RatchetMeasureVerdict[];
-    captured_baseline: boolean;
-    skipped_reason: string | null;
-}
-
-declare const VERIFICATION_GATES: readonly ["change-completeness", "requirement-completeness", "story-quality", "ac-test-mapping", "spec-review", "architecture-compliance", "code-tests-lint", "implementation-review", "behavioral-correctness", "mutation-testing", "quality-ratchet", "database-quality", "module-docs-structure", "instructions-docs-structure", "documentation-freshness", "site-map-freshness", "extension-surface", "duplication"];
-type VerificationGate = (typeof VERIFICATION_GATES)[number];
-type GateSkipKind = 'not-required' | 'did-not-run';
-interface GateResult {
-    gate: VerificationGate;
-    passed: boolean;
-    inconclusive?: boolean;
-    outcome?: GateSkipKind;
-    detail: string;
-    remediation?: string;
-}
-interface ImplementationReviewFinding {
-    kind: 'decision-violation' | 'undeclared-decision';
-    severity: 'error' | 'warning';
-    detail: string;
-    decision_id?: string;
-    file?: string;
-}
-interface WaitingDecision {
-    decision_id: string;
-    category: string;
-    question: string;
-}
-type CanonicalDocOwnershipKind = 'direct-doc-edit' | 'implementation-drift';
-interface CanonicalDocTarget {
-    target_path: string;
-    ownership_kind: CanonicalDocOwnershipKind;
-    owners: string[];
-    reason: string;
-}
-type VerificationOrigin = 'provider-workflow' | 'paqad-cli' | 'hook-completion' | 'git-backstop' | 'ci-backstop' | 'unknown';
-declare const BACKSTOP_VERIFICATION_ORIGINS: readonly ["hook-completion", "git-backstop", "ci-backstop"];
-declare function isBackstopVerificationOrigin(origin: VerificationOrigin | undefined): origin is (typeof BACKSTOP_VERIFICATION_ORIGINS)[number];
-interface VerificationContext {
-    project_root: string;
-    verification_origin?: VerificationOrigin;
-    verification_stage?: 'provider-completion' | 'backstop-completion' | 'other';
-    modules: string[];
-    changed_files: string[];
-    changed_files_source: 'git' | 'none';
-    spec_boundary?: string[];
-    code_changed: boolean;
-    test_files_changed: boolean;
-    documentation_files_changed: boolean;
-    stale_doc_targets: CanonicalDocTarget[];
-    requirements_complete: boolean;
-    story_quality_passed: boolean;
-    ac_test_mapping_passed: boolean;
-    ac_test_mapping_detail?: string;
-    ac_test_mapping_outcome?: 'pass' | 'fail' | 'not-required' | 'did-not-run';
-    spec_review_passed: boolean;
-    architecture_compliant: boolean;
-    code_tests_lint_passed: boolean;
-    implementation_review_passed: boolean;
-    implementation_review_findings?: ImplementationReviewFinding[];
-    waiting_decisions?: WaitingDecision[];
-    behavioral_correctness_passed: boolean;
-    database_quality_passed: boolean;
-    structured_test_results?: StructuredTestResult[];
-    mutation_result?: MutationResult;
-    mutation_note?: string;
-    mutation_strict?: boolean;
-    quality_ratchet_result?: QualityRatchetResult;
-    lane?: Lane;
-    expected_ui_modules: string[];
-    expected_api_modules: string[];
-    expected_integration_modules: string[];
-    expected_error_catalog_modules: string[];
-    registry_refreshed_at: string | null;
-    glossary_updated: boolean;
-}
-
 declare const REVIEW_TIERS: readonly ["full", "standard", "spot-check"];
 type ReviewTier = (typeof REVIEW_TIERS)[number];
 declare const REVIEW_MODES: readonly ["fresh", "diff"];
@@ -3909,6 +3920,7 @@ declare function formatVerdictSummary(input: {
 interface HudVerdictRecord {
     schema: 'paqad.hud-verdict/1';
     session_id: string;
+    change: string | null;
     word: string;
     kind: VerdictKind;
     passed: boolean;
@@ -3924,6 +3936,17 @@ declare function writeHudReceipt(projectRoot: string, hostSessionId: string | nu
 
 type FixProofState = 'none' | 'red' | 'red-green' | 'green-only' | 'not-reproduced' | 'held';
 
+declare const DELIVERY_DOC_TYPE = "paqad.delivery";
+interface DeliveryCommit {
+    sha: string;
+    subject: string;
+}
+type CommitDecisionAnswer = 'commit' | 'decline' | 'ignored' | 'user-requested' | null;
+interface CommitDecision {
+    asked: boolean;
+    answer: CommitDecisionAnswer;
+    recorded_at: string | null;
+}
 type CiState = 'pass' | 'fail' | 'pending' | 'unknown';
 interface DeliveryPush {
     state: 'pushed' | 'failed';
@@ -3931,11 +3954,21 @@ interface DeliveryPush {
     sha: string | null;
     at: string;
 }
+type DeliveryPrState = 'open' | 'merged' | 'closed';
 interface DeliveryPr {
     number: number | null;
     url: string | null;
     draft: boolean | null;
+    state?: DeliveryPrState | null;
+    head_sha?: string | null;
     at: string;
+}
+interface DeliveryCiJob {
+    name: string;
+    status: string | null;
+    conclusion: string | null;
+    started_at: string | null;
+    completed_at: string | null;
 }
 interface DeliveryCi {
     sha: string | null;
@@ -3944,7 +3977,25 @@ interface DeliveryCi {
     total: number | null;
     reason: string | null;
     source: 'deliver' | 'ci-gate' | 'stop-check';
+    jobs?: DeliveryCiJob[];
     at: string;
+}
+interface DeliveryRecord extends Partial<Omit<EnvelopeHeader, 'schema_version' | 'doc_type'>> {
+    schema_version: number;
+    doc_type: typeof DELIVERY_DOC_TYPE;
+    commits: DeliveryCommit[];
+    head_sha: string | null;
+    merge_commit: string | null;
+    branch?: string | null;
+    base_branch?: string | null;
+    captured_at?: string | null;
+    commit_decision?: CommitDecision;
+    last_link_attempt?: string | null;
+    start_commit?: string | null;
+    commit_split?: CommitSplit | null;
+    push?: DeliveryPush | null;
+    pr?: DeliveryPr | null;
+    ci?: DeliveryCi | null;
 }
 
 interface TechDebtIndexEntry {
@@ -3954,9 +4005,12 @@ interface TechDebtIndexEntry {
     severity: string;
 }
 
+type HudScopeReason = 'qualified' | 'no-active-change' | 'closed' | 'other-branch' | 'not-feature-route' | 'no-row-this-episode';
+
 interface HudCost {
     computed_at: string;
     window: CostWindow;
+    scope: CostScope;
     price_table_date: string;
     price_source: string;
     basis: string;
@@ -4066,7 +4120,7 @@ interface RuleStopRecord {
     session: string;
 }
 
-declare const HUD_SNAPSHOT_SCHEMA = "paqad.hud/2";
+declare const HUD_SNAPSHOT_SCHEMA = "paqad.hud/3";
 type HudTone = 'neutral' | 'working' | 'needs-you' | 'good' | 'warn' | 'bad';
 interface HudStage {
     stage: string;
@@ -4079,7 +4133,7 @@ interface HudStage {
     agent: string | null;
     proof_file: string | null;
 }
-type HudGateVerdict = 'pass' | 'fail' | 'inconclusive' | 'not-required' | 'did-not-run' | 'pending';
+type HudGateVerdict = 'pass' | 'fail' | 'inconclusive' | 'not-required' | 'did-not-run' | 'pending' | 'not-judged';
 interface HudGate {
     name: string;
     required: boolean;
@@ -4106,10 +4160,51 @@ interface HudFindings {
     rules: HudFindingsScan<RuleRunFinding>;
     near_copies: HudFindingsScan<DuplicationRowFinding>;
 }
+interface HudTimelineEntry {
+    at: string;
+    kind: string;
+    stage: string | null;
+    note: string | null;
+}
+declare const TIMELINE_ROWS = 20;
+declare function buildTimeline(projectRoot: string, dirName: string): HudTimelineEntry[];
+interface HudShipCommit {
+    sha: string;
+    subject: string;
+    own: boolean | null;
+}
+interface HudShip {
+    commits: number;
+    commit_list: HudShipCommit[];
+    commit_decision: string | null;
+    merge_commit: string | null;
+    push: DeliveryPush | null;
+    pr: DeliveryPr | null;
+    pr_state: DeliveryPrState | null;
+    ci: DeliveryCi | null;
+    ci_read_at: string | null;
+    all_green: boolean;
+    merged: boolean;
+    own: CommitGroup | null;
+    inherited: CommitGroup | null;
+    inherited_count: number;
+}
+interface HudWorkflow {
+    name: string;
+    started_at: string | null;
+    tokens: number | null;
+    usd: number | null;
+    unpriced: string[];
+}
 interface HudSnapshot {
     schema: typeof HUD_SNAPSHOT_SCHEMA;
     session_id: string;
     generated_at: string;
+    scope: {
+        qualified: boolean;
+        reason: HudScopeReason;
+    };
+    workflow: HudWorkflow | null;
     active: boolean;
     route: string | null;
     lane: string | null;
@@ -4131,6 +4226,7 @@ interface HudSnapshot {
         lane: string | null;
     }>;
     stages: HudStage[];
+    timeline: HudTimelineEntry[];
     table: HudHighTable | null;
     claims: HudClaim[];
     gates: HudGate[];
@@ -4156,16 +4252,7 @@ interface HudSnapshot {
         deferred: number;
     } | null;
     last_block: RuleStopRecord | null;
-    ship: {
-        commits: number;
-        commit_decision: string | null;
-        merge_commit: string | null;
-        push: DeliveryPush | null;
-        pr: DeliveryPr | null;
-        ci: DeliveryCi | null;
-        own: CommitGroup | null;
-        inherited: CommitGroup | null;
-    } | null;
+    ship: HudShip | null;
     verdict: HudVerdictRecord | null;
     receipt: {
         path: string;
@@ -4200,6 +4287,7 @@ interface HudClaim {
     verdict: 'pass' | 'inconclusive';
     test_id: string | null;
 }
+declare function buildShip(delivery: DeliveryRecord): HudShip;
 interface HudHeadlineInput {
     route: string | null;
     active: boolean;
@@ -6982,5 +7070,5 @@ declare class WorkflowEngine {
 declare const VERSION: string;
 declare function getFrameworkName(): string;
 
-export { ACTIVE_CAPABILITY_ORDER, AC_ID_PATTERN, ADAPTER_TYPES, AGENT_ROLES, AIDetector, ANALYTICS_CONFLICTS, ANALYTICS_DECISION_PATH, ANALYTICS_PROVIDERS, ANALYTICS_STRICTNESS_MODES, ANSWER_GROUNDING_STATES, ANSWER_MODES, ARTIFACT_OUTPUT_KEYS, ARTIFACT_TYPES, ATTACHMENT_RETRY_BUDGET_MS, AcTestMappingGate, ActiveCapability, AdapterFactory, AiAssistantAdapter, AiderAdapter, AnalyticsGateStatus, AntigravityAdapter, ApiImpact, ArchitectureComplianceGate, AstChunker, AttachmentPathError, BACKSTOP_VERIFICATION_ORIGINS, BOUNDARY_SCHEMA_VERSION, BehavioralCorrectnessGate, BenchmarkGateConfig, BudgetAllocator, CHUNKER_VERSION, CITATION_SOURCE_CLASSES, CLASSIFICATION_RULES, COLLISION_MAP, COMPLIANCE_EVIDENCE_STRENGTHS, COMPLIANCE_RELATIONS, COMPLIANCE_SCHEMA_VERSION, CONTEXT_LEVELS, CONTEXT_LEVEL_BUDGETS, CRITERION_STATUSES, CacheMetricsTracker, CacheWarmer, CancelledError, Capability, ChangeCompletenessGate, ChunkIndexManager, ClassificationResult, ClassificationScope, ClassificationWorkflow, ClaudeCodeAdapter, CodeTestsLintGate, CodexCliAdapter, CompiledRule, CompiledRulesStore, Complexity, ComplianceSensitivity, ConditionalSectionProcessor, ContextBudgetEnforcer, ContextBudgetHint, ContextBudgetOptimizer, ContextDeduplicator, ContextEvictor, ContextHitTracker, ContinueAdapter, ContradictionDetector, CorruptVectorIndexError, CoverageOverlayEntry, CrsBacklogQueue, CursorAdapter, CustomerFacingImpact, DECISION_AUDIT_EVENTS, DECISION_PAUSE_EVENT_TYPES, DEFAULT_ANALYTICS_STRICTNESS, DEFAULT_BOUNDARY_REPORT_PATH, DEFAULT_CONTEXT_BUDGET, DEFAULT_CRS_BACKLOG_CAP, DEFAULT_HOOK_ADAPTER, DEFAULT_OBLIGATION_INDEX_PATH, DEFAULT_PREDICTIVE_CACHE_OPTIONS, DEFAULT_REBUILD_CACHE_MAX_SIZE, DEFAULT_REDACTION_ALLOWLIST, DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY, DEFECT_PATTERN_SCHEMA_VERSION, DESIGN_TOKENS_PLACEHOLDER_NOTE, DISCLOSURE_ESCALATION_REASONS, DISCLOSURE_LEVELS, DOC_TYPES, DataRetrievalDecider, DataSensitivity, DatabaseImpact, DatabaseQualityGate, DecisionCapExceededError, DecisionCategory, DecisionHumanResponse, DecisionIntent, DecisionOption, DecisionOptionEvidence, DecisionPacket, DecisionPacketCorruptError, DecisionStatus, DecisionStore, DesignTokenService, DesignTokensMissingError, DesignTokensPlaceholderError, DetectedStackProfile, Detector, DifferentialRefresh, DocTarget, DocumentPipeline, DocumentProgressTracker, DocumentationFreshnessGate, DocumentationWorkflow, Domain, DuplicateSkillIdentifierError, ENGINE_ERROR_CODES, ESCALATION_REASONS, EVIDENCE_FAILURE_CATEGORIES, EVIDENCE_GATE_STATUSES, EVIDENCE_OVERALL_STATUSES, EcosystemParserRegistry, EmbeddingBacklogOverflow, EmbeddingProviderError, EmbeddingProviderName, EngineEventBus, EvidenceRetriever, ExecutionSlice, ExtensionSurfaceGate, FINDING_SEVERITIES, FRAMEWORK_PACKAGE_MAP, FileRegistryMapper, FileVectorIndex, FrameworkError, FrameworkUpdater, FreshnessChecker, GeminiCliAdapter, GithubCopilotAdapter, HEALTH_CHECK_STATUSES, HEALTH_TIERS, HOOK_COVERAGE_MATRIX, HOOK_EXIT_CODES, HOOK_TRIGGERS, HUD_COST_CACHE_SUFFIX, HUD_SNAPSHOT_SCHEMA, HealthChecker, HealthTier, ImplementationReviewGate, InferredTurnClassifierModel, InstalledPackage, InstructionsDocsStructureGate, IntelligenceConfig, IntelligenceContext, JunieAdapter, LANE_PHASES, LEGACY_MCP_OUTPUT_PATHS, Lane, LocalEmbeddingProvider, LoggerSinkFailedError, MANAGEABLE_ACTIVE_CAPABILITIES, MAX_PENDING_DECISIONS, MCP_SERVERS, MCP_SERVER_TYPES, MIN_CONSUMER_VERSION, ManifestClassification, ManifestComplexity, ManifestDelta, ManifestProductionTimeoutError, McpConfigManager, McpServerRegistry, MissingPolicyContextError, ModuleDocsStructureGate, ModuleHealthMetrics, ModuleHealthProfile, ModuleResolver, NATIVE_HOOK_EVENTS, OnboardingOrchestrator, OpenAiEmbeddingProvider, PAQAD_HOOK_EVENT_ORDER, PAQAD_LIVE_HOOKS, PAQAD_MUTATING_TOOL_MATCHER, PAQAD_RUNTIME_PREFIX, PAQAD_SCHEMA_VERSION, PAQAD_STAGE_AGENT_MATCHER, PATHS, PDF_PAGE_CAP, PENTEST_EFFORTS, PENTEST_FINDING_STATUSES, PENTEST_RETEST_STATUSES, PENTEST_RUN_STATUSES, PENTEST_RUN_STEP_STATUSES, PENTEST_SEVERITIES, PENTEST_SOURCE_TYPES, PENTEST_WORKFLOWS, PIPELINE_PHASES, PLACEHOLDER_DESIGN_TOKENS, PLANNING_LANES, PLANNING_MANIFEST_VERSION, PLAN_MODES, PLUGIN_RUNTIME_ROOT, PLUGIN_SESSION_START_HOOK, PROOF_TYPES, ParallelExecutor, PatternCli, PatternRecorder, PatternStore, PatternSuggester, PatternVectorService, PentestProgressTracker, PentestRetestWorkflow, PentestWorkflow, PipelineRouter, PlanVsActualDiff, PlanVsActualSnapshot, PlanningCostEntry, PlanningCostLog, PlanningLane, PlanningManifest, PostClassifier, PreClassifier, PredictiveCache, PriorityClassifier, ProjectKnowledgeAnswerer, ProjectProfile, REDACTION_PLACEHOLDER, REGISTRIES, REQUIREMENT_TYPES, RESOLUTION_LAYERS, RETRIEVAL_ESCALATION_SIGNALS, RETRIEVAL_PATHS, REVIEW_DIMENSIONS, REVIEW_MODES, REVIEW_TIERS, ROLE_TOKEN_BUDGETS, ROLLBACK_CLASSES, ROUTING_MECHANISMS, RagFileFilter, RagIngestError, RagService, RebuildCache, RebuildFailedError, RegressionEntry, RelevanceScorer, RequestClassifier, RequirementCompletenessGate, ResolutionError, ResolutionMap, ResolutionSource, Resolver, Reversibility, Risk, RootCauseAnalysisWorkflow, RoutingConfig, RunnerScriptGenerator, RuntimeSkillRegistry, SCHEMA_VERSION_UPDATE_HINT, SINGLE_TEST_SELECTORS, SKILL_MODEL_TIERS, SKILL_OUTPUT_FORMATS, SPEC_REVIEW_SCHEMA_VERSION, STABILITY_LEVELS, STRUCTURED_TEST_FORMATS, SUPPORTED_CAPABILITIES, SUPPORTED_DOMAINS, SUPPORTED_EXTRACTION_KINDS, SUPPORTED_STACKS, SUPPORTED_VISION_EXTENSIONS, SURFACE_DOC_PATH, SchemaValidator, SchemaVersionError, SemanticLoader, SessionAttachmentIndexer, SiteMapFreshnessGate, SkillAuditBuffer, SkillCacheManager, SkillFrontmatterParser, SkillLoader, SkillRegistrationError, SkillTriggerEvaluator, SliceContext, SliceFullSuiteCheck, SpecReviewGate, Stack, StackDriftReport, StackEcosystem, StackIntrospector, StackPackLoader, StackSnapshot, StackSnapshotCache, StackSourceReference, StepExecutor, StoryQualityGate, StreamTruncator, TASK_COMPLEXITIES, TEST_ISSUE_CATEGORIES, TEST_OUTPUT_SCHEMA_VERSION, TEST_PARSE_STRATEGIES, TEST_RUNNER_OUTPUT_SOURCES, TEST_RUNNER_PARALLEL_MODES, TIER_DIMENSIONS, TIER_TOKEN_LIMITS, TOKEN_ARTIFACT_CLASSES, TRACK_RECORD_BUNDLES, TemplateEngine, TemplateRegistry, ToolchainInfo, TransitionLogManager, TurnSummarizer, UNKNOWN_TEST_OUTPUT_TIMESTAMP, UiImpact, UnknownEngineError, UnsupportedFileTypeError, VERIFICATION_EVIDENCE_RELATIVE_PATH, VERIFICATION_EVIDENCE_SCHEMA_VERSION, VERIFICATION_EVIDENCE_STDERR_BUDGET_BYTES, VERIFICATION_GATES, VERSION, VERSION_UNKNOWN, ValidationError, VectorIndexStorageError, VerificationCriterion, VerificationGateRunner, VersionIncompatibleError, VoyageEmbeddingProvider, WindsurfAdapter, WorkflowAlreadyRunningError, WorkflowEngine, WorkflowRouterService, WorkflowSource, WorkflowTemplateLoader, WorkflowTemplateValidator, ZIP_DECOMPRESSED_LIMIT_BYTES, __test, __testOutputInternals, __tokenEfficiencyInternals, addActiveCapability, addWriteInOption, analyticsEventDocPath, analyticsFeatureDir, analyticsIndexPath, appendAttachmentEvent, appendAuditLog, appendAuditLogFailure, appendCostEntry, appendDecisionAuditEvent, appendMigrationRecord, appendPlanningAudit, appendRagAudit, appendSkillAuditEvent, applyDisclosurePolicy, askThresholdForProject, assembleDecisionEvidence, assembleIntelligence, assertActiveCapability, assertComplianceSummaryInvariants, assertContractDecisionId, assertSafeCloneSource, attachSpecDefectsToObligations, attachmentCollectionsRoot, backstopGates, bootstrapFramework, bootstrapFrameworkHome, buildAgentConfigContext, buildAnalyticsIndex, buildApiDocContext, buildBoundaryReport, buildCompactArtifact, buildControlLayerAudit, buildCoverageOverlay, buildCurrentPentestReport, buildDecisionPacket, buildDesignSystemContext, buildDetectedStackProfile, buildDetectionReport, buildDocumentationDriftDeltaPayload, buildDriftDeltaReasoningPayload, buildErrorCatalogContext, buildEventDoc, buildHostHookChain, buildHudSnapshot, buildIntegrationDocContext, buildModuleScaffoldContext, buildPatternAdvisories, buildPluginHookChain, buildReasoningInputPayload, buildRegistryContext, buildRegressionWatchList, buildRepoStateSignature, buildRepositoryVerificationContext, buildRepositoryVerificationVerdict, buildRunnerScriptContext, buildSkillIndex, buildTestDeltaReasoningPayload, buildTrackRecords, buildVerificationDeltaReasoningPayload, buildVerificationEvidence, buildVerificationGateDeltaPayload, capabilityGateCommand, castMerge, checkAndMigrateSchema, checkSchemaCompatibility, checkSpecCompliance, classifyDefect, cleanupLegacyMcpFiles, clearEngineLogger, clearEphemeralCollection, collectObservedAcIds, collectScopeDriftPaths, collectionVectorPaths, compareConfigurations, compareConsumerCompatibility, compareDefects, compareStackProfiles, compileRules, completionRecordCommand, computeAcTestMapping, computeClassificationConfidence, computeDecisionFingerprint, computeDelta, computeHudFlags, computeHudHeadline, computeImplementationReview, computeManifestHash, computePacketConfidence, computePlanVsActual, computeReconnect, computeSourceHash, computeSpecReview, conflictCategory, countFileReferences, createDefaultEcosystemParserRegistry, createDriftDelta, createEmbeddingProvider, createEvidence, createLogger, createPack, createPendingDecision, createTestDelta, createVerificationDelta, crsCollectionDir, crsCollectionLayout, crsCollectionPaths, decisionCapExceededEvent, decisionDiscardedEvent, decisionOptionsForCategory, decisionPacketCorruptEvent, decisionPausedEvent, decisionQuestionForCategory, decisionResolvedEvent, defaultSimilarityFor, defaultStoreRoot, deregisterCollection, deriveHealthTier, deriveOverallStatus, deriveSlug, detectAnalyticsProvider, detectAnalyticsSignals, detectBoundariesInSource, detectContractBoundaries, detectDecisionForks, detectDeltaCandidate, detectFlutterSignals, detectLaravelSignals, detectReactSignals, detectShortVideoSignals, detectSvelteSignals, detectVueSignals, discoverBusinessModules, discoverModules, discoverTargetUrl, doctorBoundaryReport, doctorObligationIndex, doctorSpecReview, ecosystemToLanguage, emitSkillAuditEvent, emitTestSkeletons, engineLog, ensureDecisionAuditLog, ensureSchemaMarkerSync, ensureStoreDir, escapeCollectionId, estimateContextBudgetHint, evaluateAnalyticsCompleteness, evaluateAnalyticsCompletenessForProject, evaluateBenchmarkGates, evaluateEscalation, evaluateRetrievalGate, extractAcIdFromIssue, extractCallSites, extractKeywords, extractModuleNamesFromRequest, extractObligationIndex, extractRelevantTestPaths, extractSourceReportPath, extractUnhandledVariants, findBracePlaceholders, findPathSegmentsInRun, findProvider, findTouchedFilePaths, formatAgentContextWarnings, formatVerdictSummary, frameworkHomeAbsolute, frameworkSymlinkType, gatesThatPassed, generateBoundaryTests, generateDocumentationScaffold, generateFeatureDevelopmentPolicy, generateInitialRegistries, generateModuleMapYaml, generateModuleScaffold, generateSkillIndex, generateVitestSkeletons, getCollectionId, getConsumerLogger, getEngineLogger, getEngineVersionReport, getFrameworkName, getGlobalPatternVectorPaths, getInheritanceDirectories, getLegacyCapabilities, getPackManifestMap, getPackTestRunners, getPacksForFrameworks, getPrimaryStack, getProjectSecret, getSecretPermissionWarning, getServersForStack, getSharedSkillAuditBuffer, getStackPromptChoices, getTaxonomyEntry, groupBySlug, hasCodeNegation, hasPreMutationBlock, hashRelevantInputs, hashSourceFiles, hookCommand, hudCostCachePath, hudLastBlockPath, hudReceiptPath, hudSnapshotPath, hudVerdictPath, indexAttachment, inferNamingConvention, inferSourceArtifacts, initializeModuleHealth, injectContractBoundaryCriteria, injectDefectAdvisoryCriteria, injectRuleCriteria, installPack, isAboutWorkPrompt, isActiveCapability, isAlwaysLoadRule, isAttachmentIndexingDegraded, isBackstopVerificationOrigin, isCancelledError, isCompiledRulesStale, isContractDecisionId, isCreateArtifactAsk, isEmbeddingBacklogOverflow, isEmbeddingProviderError, isEngineErrorCode, isEnoentError, isIndexAttachmentFailure, isLiveHookCapable, isManageableActiveCapability, isQuestionRoute, isRagIngestError, isRunningUnderPlugin, isSlugSafe, isUnderPluginPath, lexicalDocumentText, lintDecisionCopy, listAvailableActiveCapabilities, listCollections, listContractDecisions, listErrorTaxonomy, listManifestSlugs, listPacks, loadBoundaryReport, loadEntry, loadIndex, loadLoggingConfig, loadManifest, loadModuleDocs, loadModuleMap, loadObligationIndex, loadProjectPackRegistry, loadSpecReviewReport, loadTests, localModelDir, localModelsRoot, looksLikeTriggerPattern, manifestExists, markCriteriaFromOverlay, markStaleEntries, matchRuleTriggers, matchesGlobish, mergeDeltaManifest, mintDecisionId, moduleHealthPath, normalizeActiveCapabilities, normalizeDecisionQuestion, normalizeEngineVersion, normalizeEventSlug, parseAttachment, parseSecretMatches, parseSuspiciousRoutes, parseTestOutput, persistEvidence, planGeneratedFiles, predictTokenCeiling, prunePatterns, queryMatchingDefectPatterns, queryOsv, queryPatterns, readAllModuleHealth, readAnalyticsDecision, readAttachmentEvents, readCompiledRules, readContractDecisions, readCostLog, readDecisionAuditEvents, readExistingOnboardingManifest, readJsonIfExists, readModuleHealth, readProjectSecrets, readSchemaMarker, readSchemaMarkerSync, readSkillAuditEvents, readStackSnapshotSync, rebuildApiConversation, recordFindings, recordFromComplianceReport, redactFields, redactPayload, redactSecrets, registerCollection, reloadLoggingConfig, removeActiveCapability, removePack, removeProjectSecrets, renderHookCommand, renderReconnectReport, renderStackConfirmationSummary, renderVitestSkeleton, rendersFullHookChain, resetGeneratingEntries, resolveActiveLineage, resolveAnalyticsGate, resolveAnalyticsStrictness, resolveAndPersistAnalyticsGate, resolveCapabilityDirectories, resolveCollectionDir, resolveContextBudgetForModel, resolveContextBudgetForModelTier, resolveDecisionPacket, resolveDocTargets, resolveFrameworkInstallPath, resolveImpacts, resolvePackManagerRoots, resolvePendingDecision, resolveScope, resolveSelections, retrieveFromAttachments, reviewSpecification, ruleTriggersMatch, runArtifactsDir, runLogsDir, runOrphanSweep, runProjectScript, runRepositoryVerification, runRoutingDecision, runStatusForSteps, safeBaseName, sanitizeStackSnapshotRepository, saveBoundaryReport, saveManifest, saveObligationIndex, saveSpecReviewReport, scanBoundaries, schemaMarkerPath, schemaMigrationLogPath, scoreDecisionOptionOverlap, scoreFile, selectModelForTier, selectViableDecisionOptions, serializeModuleMap, setEngineLogger, shouldSkipLlm, skillPath, slugify, slugifySpec, specIndexPath, specReportPath, specReviewPath, suggestPatternsForProject, summarizeCommandAvailability, summarizeStack, syncAnalyticsDocs, syncModuleHealth, syncModuleHealthFromVerification, toCrsCollectionId, toEngineError, toEphemeralCollectionId, toLoadedSkill, toLocalTimestamp, toProjectRelative, toProjectRelativeModule, toReportId, toStackDetectionResource, toVerificationSnapshots, toolReferencePath, validateApiDoc, validateErrorCatalogMarkdown, validatePackAt, validateSpecDocument, validateUserFlow, verifyFullSuite, withSchemaMigrationLock, writeCompiledRules, writeDetectionReport, writeFileAtomic, writeFrameworkMetadata, writeFrameworkVersionPreservingTimestamp, writeGeneratedFiles, writeHudReceipt, writeHudSnapshot, writeHudSnapshotSafe, writeJson, writeJsonPreservingTimestamp, writeModuleHealth, writeModuleHealthProfile, writeModuleMap, writeOnboardingManifest, writePlanVsActual, writeProjectProfile, writeProjectSecret, writeSchemaMarker, writeSchemaMarkerSync, writeSkillIndex, writeSkillIndexFromArtifacts, writeVerificationEvidence };
-export type { AIDetectorOptions, ActionRecommendation, AdapterCapabilities, AdapterConfig, AdapterContext, AdapterHookCoverage, AdapterInterface, AdapterType, AffectedModule, AgentRole, AnalyticsCallSite, AnalyticsCompletenessResult, AnalyticsConflict, AnalyticsConflictKind, AnalyticsDetection, AnalyticsGateDecision, AnalyticsGateInput, AnalyticsProvider, AnalyticsProviderId, AnalyticsStrictness, AnalyticsSyncEntry, AnalyticsSyncResult, AnswerGroundingState, AnswerMode, AnswerQuery, ApiEndpointDoc, ApiMessage, ApiSchemaField, ArchiveInspection, ArchiveInspector, ArtifactType, AttachmentCollectionScope, AttachmentContentKind, AttachmentEvent, AttachmentEventInput, AttachmentEventKind, AttachmentEventSink, AttachmentIndexingDegradedSignal, AttachmentIndexingOutcome, AttachmentIndexingResult, AttachmentOrphanPurgeRecord, AttachmentRecord, AttachmentRecordStatus, AttachmentRejection, AttachmentRejectionOutcome, AttachmentRejectionReason, AttachmentSessionKind, AttachmentStoredChunk, BootstrapOptions, BoundaryInterface, BoundaryInterfaceReport, BoundaryManifest, BoundaryRelationship, BoundaryReport, BudgetAllocation, BudgetBand, BudgetBreakdown, BudgetBreakdownError, BudgetBreakdownSuccess, BudgetCheckResult, BudgetClassificationHints, BudgetDecision, BudgetEvaluation, BudgetOptimizerConfig, BudgetOptimizerState, BudgetTier, BudgetVerdict, BuildCompactArtifactInput, BuildDecisionPacketInput, BuildHudSnapshotOptions, BuildIndexOptions, BuildRepositoryVerificationContextOptions, BuildVerificationEvidenceInput, CacheMetrics, CacheStats, CancelledByConsumerPayload, CancelledErrorDetails, CanonicalDocOwnershipKind, CanonicalDocTarget, ChangeClosureSummary, CheckComplianceOptions, Chunk, ChunkIndex, ChunkIndexEntry, ChunkIndexSyncResult, Citation, CitationSourceClass, ClassificationHint, ClassificationRule, ClassifierInput, CollisionBehavior, CompactArtifactResult, CompactArtifactSummary, ComparisonMode, CompletedStorySummary, ComplianceClause, ComplianceEvidenceStrength, ComplianceFramework, ComplianceMapping, CompliancePackManifest, CompliancePackRegistry, ComplianceRelation, ComplianceReport, ComplianceReportObligation, ComplianceReportSummary, ComplianceSignal, ComplianceSignalType, ComplianceState, CompressionAuditRecord, ComputeBudgetInput, ConfigurationComparisonResult, ConsumerCompatibility, ContextBudget, ContextBudgetConfig, ContextBudgetEstimateInput, ContextHealthWarning, ContextHitEntry, ContextHitLog, ContextLevel, ContextPriorityTier, ContextSavingsEntry, ContextSegmentPriority, ContractBoundary, ContractDecisionListEntry, ContractDecisionOption, ContractDecisionOrigin, Contradiction, ControlLayerAuditRecord, ConversationRebuildResult, CreateDecisionInput, CreateLoggerOptions, CreatePackOptions, CrsBacklogPersist, CrsChunk, CrsChunkInput, CrsCollectionId, CrsIndexedSessionEvent, CrsRetrievalResult, DataSource, DataSourceType, DecisionAuditEvent, DecisionAuditEventType, DecisionCapExceededEvent, DecisionCopyIssue, DecisionDiscardedEvent, DecisionEventOption, DecisionEventSink, DecisionFingerprintInput, DecisionIndexFile, DecisionPacketCorruptEvent, DecisionPacketCorruptPayload, DecisionPauseEvent, DecisionPauseEventType, DecisionPausedEvent, DecisionResolutionResult, DecisionResolutionSource, DecisionResolvedEvent, DecisionStoreOptions, DeduplicationStats, DeduplicatorArtifact, DefectFinding, DefectPatternEntry, DefectPatternIndex, DefectPatternIndexEntry, DefectSource, DeferUndeclaredDecisionInput, DeltaDetectionResult, DeltaReasoningPayload, DesignTokenDocArtifact, DesignTokenGroup, DesignTokenLeaf, DesignTokenNode, DesignTokensDocument, DetectedDecisionFork, DetectionReport, DetectionSignal, DetectorOptions, DiscardDecisionInput, DisclosureAuditRecord, DisclosureEscalationReason, DisclosureLevel, DisclosurePolicyInput, DisclosurePolicyResult, DisplayMessage, DocPath, DocProgressEntry, DocProgressFile, DocProgressState, DocType, DoctorIssue, DoctorResult, DocumentPipelineOptions, DocumentRunResult, DocumentScope, DocumentationWorkflowMode, DocumentationWorkflowOptions, DocumentationWorkflowResult, DocumentationWorkflowStep, DriftDelta, DriftFileSnapshot, DuplicateSkillIdentifierPayload, EcosystemParser, EmbeddingProvider, EmbeddingProviderErrorCode, EngineErrorCode, EngineErrorPayloadBase, EngineEvent, EngineEventBase, EngineEventBusOptions, EngineEventCallback, EngineEventFilter, EngineEventKind, EngineLogEntry, EngineLogger, EngineVersionReport, EnsurePentestRunOptions, EphemeralCollectionId, ErrorCatalogEntry, EscalationDecision, EscalationReason, EvalDatasetItem, EvalQueryClass, EvalRunResult, EvalTrace, EvaluateEscalationInput, EventGroup, EventsCoalescedEvent, EvictionResult, EvidenceFailureCategory, EvidenceFile, EvidenceGateStatus, EvidenceOverallStatus, ExitCode, ExtractObligationsOptions, ExtractionKind, ExtractionResult, FileProbeResult, FileWriteResult, FilterDiagnostics, FilterStats, FindingSeverity$1 as FindingSeverity, FrameworkErrorOptions, FrameworkUpdaterOptions, FreshnessMetadata, FullSuiteRunResult, FullSuiteRunner, FusionDiagnostic, Gate, GateResult, GateSkipKind, GenerateBoundaryTestsOptions, GenerateVitestSkeletonOptions, GeneratedBoundaryTest, GeneratedFile, GeneratedSkillIndexEntry, HandoffArtifact, HealthCheckResult, HealthCheckStatus, HealthCheckerOptions, HealthEfficiencySummary, HealthReport, HitTrackerInput, HookDefinition, HookResult, HookTrigger, HostHookEventMap, HudChief, HudClaim, HudCost, HudFindings, HudFindingsScan, HudFindingsStatus, HudFlag, HudGate, HudGateVerdict, HudHeadlineInput, HudHighTable, HudSeat, HudSnapshot, HudStage, HudTone, HudTrackRecord, HudVerdictRecord, ImpactResolutionInput, ImpactResolutionResult, ImplementationReviewFinding, IndexAttachmentFailure, IndexAttachmentOutcome, IndexAttachmentParams, IndexAttachmentResult, InferenceCompleteOptions, InferenceMessage, InferenceProvider, InheritanceDirectory, InstallPackOptions, InstallResult, InstrumentedEvent, IntegrationContract, IntegrationDoc, IntegrationEvent, IntegrationEventPayloadField, JudgmentSignal, KnowledgeAnswer, LaravelDetectionResult, LegacyMcpCleanupOptions, LegacyMcpCleanupResult, ListedPack, LoadObligationIndexOptions, LoadSpecReviewOptions, LoadStats, LoadedCompliancePack, LoadedSkill, LoadedStackPack, LocalEmbeddingExtractor, LocalEmbeddingOutput, LocalEmbeddingProgress, LogLevel, LoggerSinkFailedPayload, LoggingConfig, ManifestProductionTimeoutPayload, ManifestValidationError, McpConfigOutput, McpRecommendation, McpRecommendations, McpServerConfig, McpServerDefinition, McpServerType, MissingPolicyContextPayload, ModelCatalogEntry, ModelGradedScores, ModuleDocEvidence, ModuleDocStage, ModuleFeatureEntry, ModuleHealthEvidence, ModuleHealthSyncOptions, ModuleHealthSyncResult, ModuleMap, ModuleMapEntry, ModuleResolutionResult, Obligation, ObligationCategory, ObligationIndex, ObligationIndexMetadata, OnFailureDirective, OnboardingFileTreeEntry, OnboardingManifest, OnboardingOptions, OnboardingOutput, OnboardingPreviewResult, OnboardingSelections, OpenAiEmbeddingClient, OsvVulnerabilityRecord, PackInstallSource, PackManagerRoots, PackRegistry, PackValidationIssue, PackValidationResult, PaqadHookEvent, PaqadLiveHookSpec, PaqadSchemaMarker, ParallelGroup, ParallelResult, ParseAttachmentOptions, ParseAttachmentResult, ParseTestOutputOptions, ParsedAttachment, ParsedLockfile, ParsedLockfilePackage, ParsedManifest, ParsedManifestPackage, ParsedProjectResult, ParsedSkillDocument, Pattern, PatternAdvisory, PatternFilter, PatternIndex, PatternIndexEntry, PatternMatch, PatternQueryOptions, PatternSemanticScorer, PdfExtraction, PdfTextExtractor, PendingContractDecision, PentestCoverageSummary, PentestEffort, PentestFinding, PentestFindingStatus, PentestReportIndex, PentestRetestFinding, PentestRetestStatus, PentestRetestWorkflowOptions, PentestRetestWorkflowResult, PentestRunProgress, PentestRunStatus, PentestRunStep, PentestRunStepStatus, PentestRuntimeStatus, PentestSeverity, PentestSourceType, PentestWorkflowName, PentestWorkflowOptions, PentestWorkflowResult, PhaseResult, PipelineAnalysisRole, PipelinePhase, PipelineResult, PipelineRunContext, PluginRunSignals, PostClassificationAdjustments, PreClassificationResolved, PreClassificationResult, PreClassifierInput, PredictiveCacheOptions, ProjectScriptResult, ProviderFactory, ProviderProgressUpdate, RagBenchmarkEvaluation, RagBenchmarkMetricResult, RagBenchmarkSnapshot, RagFileFilterOptions, RagIgnoreConfig, RagIndexMeta, RagIngestErrorCode, RagPromptTokenGateResult, RagRetrievalResult, RagScoredCandidate, RagStatus, ReactDetectionResult, ReadPendingResult, ReasoningInputPayload, RebuildCacheKey, RebuildInput, ReconnectContradiction, ReconnectInput, ReconnectReport, ReconnectSeam, RecordFromComplianceOptions, RecordPatternInput, RedactPayloadResult, RedactionAllowlist, RedactionEvent, RefreshResult, RegistryChangedEvent, ReindexProgressEvent, ReindexProgressHandler, RenderedHook, RepoStateSignatureInput, RepositoryVerificationContextResult, RepositoryVerificationGateVerdict, RepositoryVerificationVerdict, RequestClassifierOptions, ResolutionLayer, ResolveDecisionInput, ResolveExistingDecisionInput, ResolvedArtifact$1 as ResolvedArtifact, ResolvedArtifacts, ResolvedContractDecision, ResolverOptions, RetrievalAuditRecord, RetrievalCompletedEvent, RetrievalDepth, RetrievalEscalationSignal, RetrievalGateInput, RetrievalGateResult, RetrievalPath, RetrievalStartedEvent, RetrievedChunkRef, ReviewDimension, ReviewFinding, ReviewMode, ReviewReport, ReviewSpecOptions, ReviewTier, RootCauseAnalysisWorkflowOptions, RootCauseAnalysisWorkflowResult, RoutingAuditRecord, RoutingInput, RoutingMechanism, RoutingResult, RunRepositoryVerificationOptions, RuntimeSkillDescriptor, RuntimeSkillListEntry, SaveObligationIndexOptions, SaveSpecReviewOptions, ScanBoundariesOptions, SchemaCompatibility, SchemaMigrationRecord, SchemaValidationIssue, SchemaVersionErrorOptions, ScopeResolutionResult, ScoringContext, SemanticLoadClassification, SemanticLoadOptions, SemanticLoaderOptions, SingleTestSelector, SkillAuditEvent, SkillAuditEventType, SkillCacheEntry, SkillCacheResult, SkillCompletionTrigger, SkillDefinition, SkillInputSchema, SkillInputSchemaField, SkillLoadFailedEvent, SkillModelTier, SkillOutputFormat, SkillPackLoadFailedEvent, SkillRegistrationErrorKind, SkillRegistrationErrorOptions, SkillRequestRoutingRule, SkillResult, SkillSource, SkillTriggerCondition, SliceCompletedEvent, SliceFailedEvent, SliceStartedEvent, SpecDefectSeverity, SpecPatternAdvisory, SpecReviewDefect, SpecReviewDefectCategory, SpecReviewDefectStatus, SpecReviewLocation, SpecReviewReport, SpecReviewReportMetadata, StabilityLevel, StackContext, StackDetectionPermissions, StackDetectionResource, StackPackAstManifest, StackPackAuditCommand, StackPackDetectionRule, StackPackDocsManifest, StackPackFieldRule, StackPackLoaderOptions, StackPackManifest, StackPackMcpDefault, StackPackModuleHealthManifest, StackPackPentestCheckMap, StackPackRagManifest, StackPackTestRunner, StackPackTestRunnerParallel, StackPackTestingFramework, StackPackToolchainManifest, StackPackTraitManifest, StepCondition, StepExecutionContext, StepExecutionResult, StepExecutorOptions, StoredContractDecision, StoredPatternVector, StoredVectorChunk, StoredVectorItem, StoredVisionChunk, StructuredLogRecord, StructuredLogger, StructuredTestFormat, StructuredTestIssue, StructuredTestParseMetadata, StructuredTestResult, StructuredTestSummary, StructuredTestWarning, SubagentConfig, Subscription, SubscriptionState, SummarisationMessage, SummariseFailure, SummariseOptions, SummariseResult, SummariseSuccess, SummarizedTurn, SurfaceEntry, SuspiciousRoute, SvelteDetectionResult, TaggedTurn, TaskComplexity, TaxonomyEntry, TemplateContext, TemplateDefinition, TemplateDescriptor, TemplateStep, TestDelta, TestEvidence, TestIssueCategory, TestIssueSnapshot, TestParseStrategy, TestRunnerOutputSource, TestRunnerParallelMode, ThemeExportArtifact, ToStackDetectionResourceOptions, TokenArtifactClass, TokenBudget, TokenEfficiencyMetadata, TransformersRuntimeEnv, TransitionEntry, TransitionLog, TruncationResult, TurnClassifierModel, TurnInput, TurnPriority, TurnTagPolicy, TurnTagResult, UnhandledVariant, UnknownEngineErrorPayload, UnsupportedFileTypePayload, UpdateCandidate, UpdateDiff, UpdateReport, ValidationIssue, ValidationReport, ValidationResult, VectorIndexPayload, VectorIndexStorageErrorPayload, VectorQueryResult, VerificationContext, VerificationDelta, VerificationEvidence, VerificationEvidenceFailure, VerificationEvidenceGate, VerificationGate, VerificationGateSnapshot, VerificationGateVerdictEntry, VerificationOrigin, VerificationVerdictEvent, VersionIncompatiblePayload, VisionChunk, VisionIngestInput, VisionIngestResult, VoyageEmbeddingClient, VueDetectionResult, WaitingDecision, WorkflowAlreadyRunningPayload, WorkflowEngineOptions, WorkflowRouteResult, WorkflowRouterServiceOptions, WorkflowRunOptions, WorkflowRunProgress, WorkflowStep, WorkflowStepCompletedEvent, WorkflowStepFailedEvent, WorkflowStepProgress, WorkflowStepRunner, WorkflowStepStartedEvent, WorkflowTemplate, WorkspaceCompressionPolicy, WriteGeneratedFilesOptions, WriteVerificationEvidenceOptions, WrittenHudReceipt };
+export { ACTIVE_CAPABILITY_ORDER, AC_ID_PATTERN, ADAPTER_TYPES, AGENT_ROLES, AIDetector, ANALYTICS_CONFLICTS, ANALYTICS_DECISION_PATH, ANALYTICS_PROVIDERS, ANALYTICS_STRICTNESS_MODES, ANSWER_GROUNDING_STATES, ANSWER_MODES, ARTIFACT_OUTPUT_KEYS, ARTIFACT_TYPES, ATTACHMENT_RETRY_BUDGET_MS, AcTestMappingGate, ActiveCapability, AdapterFactory, AiAssistantAdapter, AiderAdapter, AnalyticsGateStatus, AntigravityAdapter, ApiImpact, ArchitectureComplianceGate, AstChunker, AttachmentPathError, BACKSTOP_VERIFICATION_ORIGINS, BOUNDARY_SCHEMA_VERSION, BehavioralCorrectnessGate, BenchmarkGateConfig, BudgetAllocator, CHUNKER_VERSION, CITATION_SOURCE_CLASSES, CLASSIFICATION_RULES, COLLISION_MAP, COMPLIANCE_EVIDENCE_STRENGTHS, COMPLIANCE_RELATIONS, COMPLIANCE_SCHEMA_VERSION, CONTEXT_LEVELS, CONTEXT_LEVEL_BUDGETS, CRITERION_STATUSES, CacheMetricsTracker, CacheWarmer, CancelledError, Capability, ChangeCompletenessGate, ChunkIndexManager, ClassificationResult, ClassificationScope, ClassificationWorkflow, ClaudeCodeAdapter, CodeTestsLintGate, CodexCliAdapter, CompiledRule, CompiledRulesStore, Complexity, ComplianceSensitivity, ConditionalSectionProcessor, ContextBudgetEnforcer, ContextBudgetHint, ContextBudgetOptimizer, ContextDeduplicator, ContextEvictor, ContextHitTracker, ContinueAdapter, ContradictionDetector, CorruptVectorIndexError, CoverageOverlayEntry, CrsBacklogQueue, CursorAdapter, CustomerFacingImpact, DECISION_AUDIT_EVENTS, DECISION_PAUSE_EVENT_TYPES, DEFAULT_ANALYTICS_STRICTNESS, DEFAULT_BOUNDARY_REPORT_PATH, DEFAULT_CONTEXT_BUDGET, DEFAULT_CRS_BACKLOG_CAP, DEFAULT_HOOK_ADAPTER, DEFAULT_OBLIGATION_INDEX_PATH, DEFAULT_PREDICTIVE_CACHE_OPTIONS, DEFAULT_REBUILD_CACHE_MAX_SIZE, DEFAULT_REDACTION_ALLOWLIST, DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY, DEFECT_PATTERN_SCHEMA_VERSION, DESIGN_TOKENS_PLACEHOLDER_NOTE, DISCLOSURE_ESCALATION_REASONS, DISCLOSURE_LEVELS, DOC_TYPES, DataRetrievalDecider, DataSensitivity, DatabaseImpact, DatabaseQualityGate, DecisionCapExceededError, DecisionCategory, DecisionHumanResponse, DecisionIntent, DecisionOption, DecisionOptionEvidence, DecisionPacket, DecisionPacketCorruptError, DecisionStatus, DecisionStore, DesignTokenService, DesignTokensMissingError, DesignTokensPlaceholderError, DetectedStackProfile, Detector, DifferentialRefresh, DocTarget, DocumentPipeline, DocumentProgressTracker, DocumentationFreshnessGate, DocumentationWorkflow, Domain, DuplicateSkillIdentifierError, ENGINE_ERROR_CODES, ESCALATION_REASONS, EVIDENCE_FAILURE_CATEGORIES, EVIDENCE_GATE_STATUSES, EVIDENCE_OVERALL_STATUSES, EcosystemParserRegistry, EmbeddingBacklogOverflow, EmbeddingProviderError, EmbeddingProviderName, EngineEventBus, EvidenceRetriever, ExecutionSlice, ExtensionSurfaceGate, FINDING_SEVERITIES, FRAMEWORK_PACKAGE_MAP, FileRegistryMapper, FileVectorIndex, FrameworkError, FrameworkUpdater, FreshnessChecker, GeminiCliAdapter, GithubCopilotAdapter, HEALTH_CHECK_STATUSES, HEALTH_TIERS, HOOK_COVERAGE_MATRIX, HOOK_EXIT_CODES, HOOK_TRIGGERS, HUD_COST_CACHE_SUFFIX, HUD_SNAPSHOT_SCHEMA, HealthChecker, HealthTier, ImplementationReviewGate, InferredTurnClassifierModel, InstalledPackage, InstructionsDocsStructureGate, IntelligenceConfig, IntelligenceContext, JunieAdapter, LANE_PHASES, LEGACY_MCP_OUTPUT_PATHS, Lane, LocalEmbeddingProvider, LoggerSinkFailedError, MANAGEABLE_ACTIVE_CAPABILITIES, MAX_PENDING_DECISIONS, MCP_SERVERS, MCP_SERVER_TYPES, MIN_CONSUMER_VERSION, ManifestClassification, ManifestComplexity, ManifestDelta, ManifestProductionTimeoutError, McpConfigManager, McpServerRegistry, MissingPolicyContextError, ModuleDocsStructureGate, ModuleHealthMetrics, ModuleHealthProfile, ModuleResolver, NATIVE_HOOK_EVENTS, OnboardingOrchestrator, OpenAiEmbeddingProvider, PAQAD_HOOK_EVENT_ORDER, PAQAD_LIVE_HOOKS, PAQAD_MUTATING_TOOL_MATCHER, PAQAD_RUNTIME_PREFIX, PAQAD_SCHEMA_VERSION, PAQAD_STAGE_AGENT_MATCHER, PAQAD_STAGE_HELPER_MATCHER, PATHS, PDF_PAGE_CAP, PENTEST_EFFORTS, PENTEST_FINDING_STATUSES, PENTEST_RETEST_STATUSES, PENTEST_RUN_STATUSES, PENTEST_RUN_STEP_STATUSES, PENTEST_SEVERITIES, PENTEST_SOURCE_TYPES, PENTEST_WORKFLOWS, PIPELINE_PHASES, PLACEHOLDER_DESIGN_TOKENS, PLANNING_LANES, PLANNING_MANIFEST_VERSION, PLAN_MODES, PLUGIN_RUNTIME_ROOT, PLUGIN_SESSION_START_HOOK, PROOF_TYPES, ParallelExecutor, PatternCli, PatternRecorder, PatternStore, PatternSuggester, PatternVectorService, PentestProgressTracker, PentestRetestWorkflow, PentestWorkflow, PipelineRouter, PlanVsActualDiff, PlanVsActualSnapshot, PlanningCostEntry, PlanningCostLog, PlanningLane, PlanningManifest, PostClassifier, PreClassifier, PredictiveCache, PriorityClassifier, ProjectKnowledgeAnswerer, ProjectProfile, REDACTION_PLACEHOLDER, REGISTRIES, REQUIREMENT_TYPES, RESOLUTION_LAYERS, RETRIEVAL_ESCALATION_SIGNALS, RETRIEVAL_PATHS, REVIEW_DIMENSIONS, REVIEW_MODES, REVIEW_TIERS, ROLE_TOKEN_BUDGETS, ROLLBACK_CLASSES, ROUTING_MECHANISMS, RagFileFilter, RagIngestError, RagService, RebuildCache, RebuildFailedError, RegressionEntry, RelevanceScorer, RequestClassifier, RequirementCompletenessGate, ResolutionError, ResolutionMap, ResolutionSource, Resolver, Reversibility, Risk, RootCauseAnalysisWorkflow, RoutingConfig, RunnerScriptGenerator, RuntimeSkillRegistry, SCHEMA_VERSION_UPDATE_HINT, SINGLE_TEST_SELECTORS, SKILL_MODEL_TIERS, SKILL_OUTPUT_FORMATS, SPEC_REVIEW_SCHEMA_VERSION, STABILITY_LEVELS, STRUCTURED_TEST_FORMATS, SUPPORTED_CAPABILITIES, SUPPORTED_DOMAINS, SUPPORTED_EXTRACTION_KINDS, SUPPORTED_STACKS, SUPPORTED_VISION_EXTENSIONS, SURFACE_DOC_PATH, SchemaValidator, SchemaVersionError, SemanticLoader, SessionAttachmentIndexer, SiteMapFreshnessGate, SkillAuditBuffer, SkillCacheManager, SkillFrontmatterParser, SkillLoader, SkillRegistrationError, SkillTriggerEvaluator, SliceContext, SliceFullSuiteCheck, SpecReviewGate, Stack, StackDriftReport, StackEcosystem, StackIntrospector, StackPackLoader, StackSnapshot, StackSnapshotCache, StackSourceReference, StepExecutor, StoryQualityGate, StreamTruncator, TASK_COMPLEXITIES, TEST_ISSUE_CATEGORIES, TEST_OUTPUT_SCHEMA_VERSION, TEST_PARSE_STRATEGIES, TEST_RUNNER_OUTPUT_SOURCES, TEST_RUNNER_PARALLEL_MODES, TIER_DIMENSIONS, TIER_TOKEN_LIMITS, TIMELINE_ROWS, TOKEN_ARTIFACT_CLASSES, TRACK_RECORD_BUNDLES, TemplateEngine, TemplateRegistry, ToolchainInfo, TransitionLogManager, TurnSummarizer, UNKNOWN_TEST_OUTPUT_TIMESTAMP, UiImpact, UnknownEngineError, UnsupportedFileTypeError, VERIFICATION_EVIDENCE_RELATIVE_PATH, VERIFICATION_EVIDENCE_SCHEMA_VERSION, VERIFICATION_EVIDENCE_STDERR_BUDGET_BYTES, VERIFICATION_GATES, VERSION, VERSION_UNKNOWN, ValidationError, VectorIndexStorageError, VerificationCriterion, VerificationGateRunner, VersionIncompatibleError, VoyageEmbeddingProvider, WindsurfAdapter, WorkflowAlreadyRunningError, WorkflowEngine, WorkflowRouterService, WorkflowSource, WorkflowTemplateLoader, WorkflowTemplateValidator, ZIP_DECOMPRESSED_LIMIT_BYTES, __test, __testOutputInternals, __tokenEfficiencyInternals, addActiveCapability, addWriteInOption, analyticsEventDocPath, analyticsFeatureDir, analyticsIndexPath, appendAttachmentEvent, appendAuditLog, appendAuditLogFailure, appendCostEntry, appendDecisionAuditEvent, appendMigrationRecord, appendPlanningAudit, appendRagAudit, appendSkillAuditEvent, applyDisclosurePolicy, askThresholdForProject, assembleDecisionEvidence, assembleIntelligence, assertActiveCapability, assertComplianceSummaryInvariants, assertContractDecisionId, assertSafeCloneSource, attachSpecDefectsToObligations, attachmentCollectionsRoot, backstopGates, bootstrapFramework, bootstrapFrameworkHome, buildAgentConfigContext, buildAnalyticsIndex, buildApiDocContext, buildBoundaryReport, buildCompactArtifact, buildControlLayerAudit, buildCoverageOverlay, buildCurrentPentestReport, buildDecisionPacket, buildDesignSystemContext, buildDetectedStackProfile, buildDetectionReport, buildDocumentationDriftDeltaPayload, buildDriftDeltaReasoningPayload, buildErrorCatalogContext, buildEventDoc, buildHostHookChain, buildHudSnapshot, buildIntegrationDocContext, buildModuleScaffoldContext, buildPatternAdvisories, buildPluginHookChain, buildReasoningInputPayload, buildRegistryContext, buildRegressionWatchList, buildRepoStateSignature, buildRepositoryVerificationContext, buildRepositoryVerificationVerdict, buildRunnerScriptContext, buildShip, buildSkillIndex, buildTestDeltaReasoningPayload, buildTimeline, buildTrackRecords, buildVerificationDeltaReasoningPayload, buildVerificationEvidence, buildVerificationGateDeltaPayload, capabilityGateCommand, castMerge, checkAndMigrateSchema, checkSchemaCompatibility, checkSpecCompliance, classifyDefect, cleanupLegacyMcpFiles, clearEngineLogger, clearEphemeralCollection, collectObservedAcIds, collectScopeDriftPaths, collectionVectorPaths, compareConfigurations, compareConsumerCompatibility, compareDefects, compareStackProfiles, compileRules, completionRecordCommand, computeAcTestMapping, computeClassificationConfidence, computeDecisionFingerprint, computeDelta, computeHudFlags, computeHudHeadline, computeImplementationReview, computeManifestHash, computePacketConfidence, computePlanVsActual, computeReconnect, computeSourceHash, computeSpecReview, conflictCategory, countFileReferences, createDefaultEcosystemParserRegistry, createDriftDelta, createEmbeddingProvider, createEvidence, createLogger, createPack, createPendingDecision, createTestDelta, createVerificationDelta, crsCollectionDir, crsCollectionLayout, crsCollectionPaths, decisionCapExceededEvent, decisionDiscardedEvent, decisionOptionsForCategory, decisionPacketCorruptEvent, decisionPausedEvent, decisionQuestionForCategory, decisionResolvedEvent, defaultSimilarityFor, defaultStoreRoot, deregisterCollection, deriveHealthTier, deriveOverallStatus, deriveSlug, detectAnalyticsProvider, detectAnalyticsSignals, detectBoundariesInSource, detectContractBoundaries, detectDecisionForks, detectDeltaCandidate, detectFlutterSignals, detectLaravelSignals, detectReactSignals, detectShortVideoSignals, detectSvelteSignals, detectVueSignals, discoverBusinessModules, discoverModules, discoverTargetUrl, doctorBoundaryReport, doctorObligationIndex, doctorSpecReview, ecosystemToLanguage, emitSkillAuditEvent, emitTestSkeletons, engineLog, ensureDecisionAuditLog, ensureSchemaMarkerSync, ensureStoreDir, escapeCollectionId, estimateContextBudgetHint, evaluateAnalyticsCompleteness, evaluateAnalyticsCompletenessForProject, evaluateBenchmarkGates, evaluateEscalation, evaluateRetrievalGate, extractAcIdFromIssue, extractCallSites, extractKeywords, extractModuleNamesFromRequest, extractObligationIndex, extractRelevantTestPaths, extractSourceReportPath, extractUnhandledVariants, findBracePlaceholders, findPathSegmentsInRun, findProvider, findTouchedFilePaths, formatAgentContextWarnings, formatVerdictSummary, frameworkHomeAbsolute, frameworkSymlinkType, gatesThatPassed, generateBoundaryTests, generateDocumentationScaffold, generateFeatureDevelopmentPolicy, generateInitialRegistries, generateModuleMapYaml, generateModuleScaffold, generateSkillIndex, generateVitestSkeletons, getCollectionId, getConsumerLogger, getEngineLogger, getEngineVersionReport, getFrameworkName, getGlobalPatternVectorPaths, getInheritanceDirectories, getLegacyCapabilities, getPackManifestMap, getPackTestRunners, getPacksForFrameworks, getPrimaryStack, getProjectSecret, getSecretPermissionWarning, getServersForStack, getSharedSkillAuditBuffer, getStackPromptChoices, getTaxonomyEntry, groupBySlug, hasCodeNegation, hasPreMutationBlock, hashRelevantInputs, hashSourceFiles, hookCommand, hudCostCachePath, hudLastBlockPath, hudReceiptPath, hudSnapshotPath, hudVerdictPath, indexAttachment, inferNamingConvention, inferSourceArtifacts, initializeModuleHealth, injectContractBoundaryCriteria, injectDefectAdvisoryCriteria, injectRuleCriteria, installPack, isAboutWorkPrompt, isActiveCapability, isAlwaysLoadRule, isAttachmentIndexingDegraded, isBackstopVerificationOrigin, isCancelledError, isCompiledRulesStale, isContractDecisionId, isCreateArtifactAsk, isEmbeddingBacklogOverflow, isEmbeddingProviderError, isEngineErrorCode, isEnoentError, isIndexAttachmentFailure, isLiveHookCapable, isManageableActiveCapability, isQuestionRoute, isRagIngestError, isRunningUnderPlugin, isSlugSafe, isUnderPluginPath, lexicalDocumentText, lintDecisionCopy, listAvailableActiveCapabilities, listCollections, listContractDecisions, listErrorTaxonomy, listManifestSlugs, listPacks, loadBoundaryReport, loadEntry, loadIndex, loadLoggingConfig, loadManifest, loadModuleDocs, loadModuleMap, loadObligationIndex, loadProjectPackRegistry, loadSpecReviewReport, loadTests, localModelDir, localModelsRoot, looksLikeTriggerPattern, manifestExists, markCriteriaFromOverlay, markStaleEntries, matchRuleTriggers, matchesGlobish, mergeDeltaManifest, mintDecisionId, moduleHealthPath, normalizeActiveCapabilities, normalizeDecisionQuestion, normalizeEngineVersion, normalizeEventSlug, parseAttachment, parseSecretMatches, parseSuspiciousRoutes, parseTestOutput, persistEvidence, planGeneratedFiles, predictTokenCeiling, prunePatterns, queryMatchingDefectPatterns, queryOsv, queryPatterns, readAllModuleHealth, readAnalyticsDecision, readAttachmentEvents, readCompiledRules, readContractDecisions, readCostLog, readDecisionAuditEvents, readExistingOnboardingManifest, readJsonIfExists, readModuleHealth, readProjectSecrets, readSchemaMarker, readSchemaMarkerSync, readSkillAuditEvents, readStackSnapshotSync, rebuildApiConversation, recordFindings, recordFromComplianceReport, redactFields, redactPayload, redactSecrets, registerCollection, reloadLoggingConfig, removeActiveCapability, removePack, removeProjectSecrets, renderHookCommand, renderReconnectReport, renderStackConfirmationSummary, renderVitestSkeleton, rendersFullHookChain, resetGeneratingEntries, resolveActiveLineage, resolveAnalyticsGate, resolveAnalyticsStrictness, resolveAndPersistAnalyticsGate, resolveCapabilityDirectories, resolveCollectionDir, resolveContextBudgetForModel, resolveContextBudgetForModelTier, resolveDecisionPacket, resolveDocTargets, resolveFrameworkInstallPath, resolveImpacts, resolvePackManagerRoots, resolvePendingDecision, resolveScope, resolveSelections, retrieveFromAttachments, reviewSpecification, ruleTriggersMatch, runArtifactsDir, runLogsDir, runOrphanSweep, runProjectScript, runRepositoryVerification, runRoutingDecision, runStatusForSteps, safeBaseName, sanitizeStackSnapshotRepository, saveBoundaryReport, saveManifest, saveObligationIndex, saveSpecReviewReport, scanBoundaries, schemaMarkerPath, schemaMigrationLogPath, scoreDecisionOptionOverlap, scoreFile, selectModelForTier, selectViableDecisionOptions, serializeModuleMap, setEngineLogger, shouldSkipLlm, skillPath, slugify, slugifySpec, specIndexPath, specReportPath, specReviewPath, suggestPatternsForProject, summarizeCommandAvailability, summarizeStack, syncAnalyticsDocs, syncModuleHealth, syncModuleHealthFromVerification, toCrsCollectionId, toEngineError, toEphemeralCollectionId, toLoadedSkill, toLocalTimestamp, toProjectRelative, toProjectRelativeModule, toReportId, toStackDetectionResource, toVerificationSnapshots, toolReferencePath, validateApiDoc, validateErrorCatalogMarkdown, validatePackAt, validateSpecDocument, validateUserFlow, verifyFullSuite, withSchemaMigrationLock, writeCompiledRules, writeDetectionReport, writeFileAtomic, writeFrameworkMetadata, writeFrameworkVersionPreservingTimestamp, writeGeneratedFiles, writeHudReceipt, writeHudSnapshot, writeHudSnapshotSafe, writeJson, writeJsonPreservingTimestamp, writeModuleHealth, writeModuleHealthProfile, writeModuleMap, writeOnboardingManifest, writePlanVsActual, writeProjectProfile, writeProjectSecret, writeSchemaMarker, writeSchemaMarkerSync, writeSkillIndex, writeSkillIndexFromArtifacts, writeVerificationEvidence };
+export type { AIDetectorOptions, ActionRecommendation, AdapterCapabilities, AdapterConfig, AdapterContext, AdapterHookCoverage, AdapterInterface, AdapterType, AffectedModule, AgentRole, AnalyticsCallSite, AnalyticsCompletenessResult, AnalyticsConflict, AnalyticsConflictKind, AnalyticsDetection, AnalyticsGateDecision, AnalyticsGateInput, AnalyticsProvider, AnalyticsProviderId, AnalyticsStrictness, AnalyticsSyncEntry, AnalyticsSyncResult, AnswerGroundingState, AnswerMode, AnswerQuery, ApiEndpointDoc, ApiMessage, ApiSchemaField, ArchiveInspection, ArchiveInspector, ArtifactType, AttachmentCollectionScope, AttachmentContentKind, AttachmentEvent, AttachmentEventInput, AttachmentEventKind, AttachmentEventSink, AttachmentIndexingDegradedSignal, AttachmentIndexingOutcome, AttachmentIndexingResult, AttachmentOrphanPurgeRecord, AttachmentRecord, AttachmentRecordStatus, AttachmentRejection, AttachmentRejectionOutcome, AttachmentRejectionReason, AttachmentSessionKind, AttachmentStoredChunk, BootstrapOptions, BoundaryInterface, BoundaryInterfaceReport, BoundaryManifest, BoundaryRelationship, BoundaryReport, BudgetAllocation, BudgetBand, BudgetBreakdown, BudgetBreakdownError, BudgetBreakdownSuccess, BudgetCheckResult, BudgetClassificationHints, BudgetDecision, BudgetEvaluation, BudgetOptimizerConfig, BudgetOptimizerState, BudgetTier, BudgetVerdict, BuildCompactArtifactInput, BuildDecisionPacketInput, BuildHudSnapshotOptions, BuildIndexOptions, BuildRepositoryVerificationContextOptions, BuildVerificationEvidenceInput, CacheMetrics, CacheStats, CancelledByConsumerPayload, CancelledErrorDetails, CanonicalDocOwnershipKind, CanonicalDocTarget, ChangeClosureSummary, CheckComplianceOptions, Chunk, ChunkIndex, ChunkIndexEntry, ChunkIndexSyncResult, Citation, CitationSourceClass, ClassificationHint, ClassificationRule, ClassifierInput, CollisionBehavior, CompactArtifactResult, CompactArtifactSummary, ComparisonMode, CompletedStorySummary, ComplianceClause, ComplianceEvidenceStrength, ComplianceFramework, ComplianceMapping, CompliancePackManifest, CompliancePackRegistry, ComplianceRelation, ComplianceReport, ComplianceReportObligation, ComplianceReportSummary, ComplianceSignal, ComplianceSignalType, ComplianceState, CompressionAuditRecord, ComputeBudgetInput, ConfigurationComparisonResult, ConsumerCompatibility, ContextBudget, ContextBudgetConfig, ContextBudgetEstimateInput, ContextHealthWarning, ContextHitEntry, ContextHitLog, ContextLevel, ContextPriorityTier, ContextSavingsEntry, ContextSegmentPriority, ContractBoundary, ContractDecisionListEntry, ContractDecisionOption, ContractDecisionOrigin, Contradiction, ControlLayerAuditRecord, ConversationRebuildResult, CreateDecisionInput, CreateLoggerOptions, CreatePackOptions, CrsBacklogPersist, CrsChunk, CrsChunkInput, CrsCollectionId, CrsIndexedSessionEvent, CrsRetrievalResult, DataSource, DataSourceType, DecisionAuditEvent, DecisionAuditEventType, DecisionCapExceededEvent, DecisionCopyIssue, DecisionDiscardedEvent, DecisionEventOption, DecisionEventSink, DecisionFingerprintInput, DecisionIndexFile, DecisionPacketCorruptEvent, DecisionPacketCorruptPayload, DecisionPauseEvent, DecisionPauseEventType, DecisionPausedEvent, DecisionResolutionResult, DecisionResolutionSource, DecisionResolvedEvent, DecisionStoreOptions, DeduplicationStats, DeduplicatorArtifact, DefectFinding, DefectPatternEntry, DefectPatternIndex, DefectPatternIndexEntry, DefectSource, DeferUndeclaredDecisionInput, DeltaDetectionResult, DeltaReasoningPayload, DesignTokenDocArtifact, DesignTokenGroup, DesignTokenLeaf, DesignTokenNode, DesignTokensDocument, DetectedDecisionFork, DetectionReport, DetectionSignal, DetectorOptions, DiscardDecisionInput, DisclosureAuditRecord, DisclosureEscalationReason, DisclosureLevel, DisclosurePolicyInput, DisclosurePolicyResult, DisplayMessage, DocPath, DocProgressEntry, DocProgressFile, DocProgressState, DocType, DoctorIssue, DoctorResult, DocumentPipelineOptions, DocumentRunResult, DocumentScope, DocumentationWorkflowMode, DocumentationWorkflowOptions, DocumentationWorkflowResult, DocumentationWorkflowStep, DriftDelta, DriftFileSnapshot, DuplicateSkillIdentifierPayload, EcosystemParser, EmbeddingProvider, EmbeddingProviderErrorCode, EngineErrorCode, EngineErrorPayloadBase, EngineEvent, EngineEventBase, EngineEventBusOptions, EngineEventCallback, EngineEventFilter, EngineEventKind, EngineLogEntry, EngineLogger, EngineVersionReport, EnsurePentestRunOptions, EphemeralCollectionId, ErrorCatalogEntry, EscalationDecision, EscalationReason, EvalDatasetItem, EvalQueryClass, EvalRunResult, EvalTrace, EvaluateEscalationInput, EventGroup, EventsCoalescedEvent, EvictionResult, EvidenceFailureCategory, EvidenceFile, EvidenceGateStatus, EvidenceOverallStatus, ExitCode, ExtractObligationsOptions, ExtractionKind, ExtractionResult, FileProbeResult, FileWriteResult, FilterDiagnostics, FilterStats, FindingSeverity$1 as FindingSeverity, FrameworkErrorOptions, FrameworkUpdaterOptions, FreshnessMetadata, FullSuiteRunResult, FullSuiteRunner, FusionDiagnostic, Gate, GateResult, GateSkipKind, GenerateBoundaryTestsOptions, GenerateVitestSkeletonOptions, GeneratedBoundaryTest, GeneratedFile, GeneratedSkillIndexEntry, HandoffArtifact, HealthCheckResult, HealthCheckStatus, HealthCheckerOptions, HealthEfficiencySummary, HealthReport, HitTrackerInput, HookDefinition, HookResult, HookTrigger, HostHookEventMap, HudChief, HudClaim, HudCost, HudFindings, HudFindingsScan, HudFindingsStatus, HudFlag, HudGate, HudGateVerdict, HudHeadlineInput, HudHighTable, HudScopeReason, HudSeat, HudShip, HudShipCommit, HudSnapshot, HudStage, HudTimelineEntry, HudTone, HudTrackRecord, HudVerdictRecord, HudWorkflow, ImpactResolutionInput, ImpactResolutionResult, ImplementationReviewFinding, IndexAttachmentFailure, IndexAttachmentOutcome, IndexAttachmentParams, IndexAttachmentResult, InferenceCompleteOptions, InferenceMessage, InferenceProvider, InheritanceDirectory, InstallPackOptions, InstallResult, InstrumentedEvent, IntegrationContract, IntegrationDoc, IntegrationEvent, IntegrationEventPayloadField, JudgmentSignal, KnowledgeAnswer, LaravelDetectionResult, LegacyMcpCleanupOptions, LegacyMcpCleanupResult, ListedPack, LoadObligationIndexOptions, LoadSpecReviewOptions, LoadStats, LoadedCompliancePack, LoadedSkill, LoadedStackPack, LocalEmbeddingExtractor, LocalEmbeddingOutput, LocalEmbeddingProgress, LogLevel, LoggerSinkFailedPayload, LoggingConfig, ManifestProductionTimeoutPayload, ManifestValidationError, McpConfigOutput, McpRecommendation, McpRecommendations, McpServerConfig, McpServerDefinition, McpServerType, MissingPolicyContextPayload, ModelCatalogEntry, ModelGradedScores, ModuleDocEvidence, ModuleDocStage, ModuleFeatureEntry, ModuleHealthEvidence, ModuleHealthSyncOptions, ModuleHealthSyncResult, ModuleMap, ModuleMapEntry, ModuleResolutionResult, Obligation, ObligationCategory, ObligationIndex, ObligationIndexMetadata, OnFailureDirective, OnboardingFileTreeEntry, OnboardingManifest, OnboardingOptions, OnboardingOutput, OnboardingPreviewResult, OnboardingSelections, OpenAiEmbeddingClient, OsvVulnerabilityRecord, PackInstallSource, PackManagerRoots, PackRegistry, PackValidationIssue, PackValidationResult, PaqadHookEvent, PaqadLiveHookSpec, PaqadSchemaMarker, ParallelGroup, ParallelResult, ParseAttachmentOptions, ParseAttachmentResult, ParseTestOutputOptions, ParsedAttachment, ParsedLockfile, ParsedLockfilePackage, ParsedManifest, ParsedManifestPackage, ParsedProjectResult, ParsedSkillDocument, Pattern, PatternAdvisory, PatternFilter, PatternIndex, PatternIndexEntry, PatternMatch, PatternQueryOptions, PatternSemanticScorer, PdfExtraction, PdfTextExtractor, PendingContractDecision, PentestCoverageSummary, PentestEffort, PentestFinding, PentestFindingStatus, PentestReportIndex, PentestRetestFinding, PentestRetestStatus, PentestRetestWorkflowOptions, PentestRetestWorkflowResult, PentestRunProgress, PentestRunStatus, PentestRunStep, PentestRunStepStatus, PentestRuntimeStatus, PentestSeverity, PentestSourceType, PentestWorkflowName, PentestWorkflowOptions, PentestWorkflowResult, PhaseResult, PipelineAnalysisRole, PipelinePhase, PipelineResult, PipelineRunContext, PluginRunSignals, PostClassificationAdjustments, PreClassificationResolved, PreClassificationResult, PreClassifierInput, PredictiveCacheOptions, ProjectScriptResult, ProviderFactory, ProviderProgressUpdate, RagBenchmarkEvaluation, RagBenchmarkMetricResult, RagBenchmarkSnapshot, RagFileFilterOptions, RagIgnoreConfig, RagIndexMeta, RagIngestErrorCode, RagPromptTokenGateResult, RagRetrievalResult, RagScoredCandidate, RagStatus, ReactDetectionResult, ReadPendingResult, ReasoningInputPayload, RebuildCacheKey, RebuildInput, ReconnectContradiction, ReconnectInput, ReconnectReport, ReconnectSeam, RecordFromComplianceOptions, RecordPatternInput, RedactPayloadResult, RedactionAllowlist, RedactionEvent, RefreshResult, RegistryChangedEvent, ReindexProgressEvent, ReindexProgressHandler, RenderedHook, RepoStateSignatureInput, RepositoryVerificationContextResult, RepositoryVerificationGateVerdict, RepositoryVerificationVerdict, RequestClassifierOptions, ResolutionLayer, ResolveDecisionInput, ResolveExistingDecisionInput, ResolvedArtifact$1 as ResolvedArtifact, ResolvedArtifacts, ResolvedContractDecision, ResolverOptions, RetrievalAuditRecord, RetrievalCompletedEvent, RetrievalDepth, RetrievalEscalationSignal, RetrievalGateInput, RetrievalGateResult, RetrievalPath, RetrievalStartedEvent, RetrievedChunkRef, ReviewDimension, ReviewFinding, ReviewMode, ReviewReport, ReviewSpecOptions, ReviewTier, RootCauseAnalysisWorkflowOptions, RootCauseAnalysisWorkflowResult, RoutingAuditRecord, RoutingInput, RoutingMechanism, RoutingResult, RunRepositoryVerificationOptions, RuntimeSkillDescriptor, RuntimeSkillListEntry, SaveObligationIndexOptions, SaveSpecReviewOptions, ScanBoundariesOptions, SchemaCompatibility, SchemaMigrationRecord, SchemaValidationIssue, SchemaVersionErrorOptions, ScopeResolutionResult, ScoringContext, SemanticLoadClassification, SemanticLoadOptions, SemanticLoaderOptions, SingleTestSelector, SkillAuditEvent, SkillAuditEventType, SkillCacheEntry, SkillCacheResult, SkillCompletionTrigger, SkillDefinition, SkillInputSchema, SkillInputSchemaField, SkillLoadFailedEvent, SkillModelTier, SkillOutputFormat, SkillPackLoadFailedEvent, SkillRegistrationErrorKind, SkillRegistrationErrorOptions, SkillRequestRoutingRule, SkillResult, SkillSource, SkillTriggerCondition, SliceCompletedEvent, SliceFailedEvent, SliceStartedEvent, SpecDefectSeverity, SpecPatternAdvisory, SpecReviewDefect, SpecReviewDefectCategory, SpecReviewDefectStatus, SpecReviewLocation, SpecReviewReport, SpecReviewReportMetadata, StabilityLevel, StackContext, StackDetectionPermissions, StackDetectionResource, StackPackAstManifest, StackPackAuditCommand, StackPackDetectionRule, StackPackDocsManifest, StackPackFieldRule, StackPackLoaderOptions, StackPackManifest, StackPackMcpDefault, StackPackModuleHealthManifest, StackPackPentestCheckMap, StackPackRagManifest, StackPackTestRunner, StackPackTestRunnerParallel, StackPackTestingFramework, StackPackToolchainManifest, StackPackTraitManifest, StepCondition, StepExecutionContext, StepExecutionResult, StepExecutorOptions, StoredContractDecision, StoredPatternVector, StoredVectorChunk, StoredVectorItem, StoredVisionChunk, StructuredLogRecord, StructuredLogger, StructuredTestFormat, StructuredTestIssue, StructuredTestParseMetadata, StructuredTestResult, StructuredTestSummary, StructuredTestWarning, SubagentConfig, Subscription, SubscriptionState, SummarisationMessage, SummariseFailure, SummariseOptions, SummariseResult, SummariseSuccess, SummarizedTurn, SurfaceEntry, SuspiciousRoute, SvelteDetectionResult, TaggedTurn, TaskComplexity, TaxonomyEntry, TemplateContext, TemplateDefinition, TemplateDescriptor, TemplateStep, TestDelta, TestEvidence, TestIssueCategory, TestIssueSnapshot, TestParseStrategy, TestRunnerOutputSource, TestRunnerParallelMode, ThemeExportArtifact, ToStackDetectionResourceOptions, TokenArtifactClass, TokenBudget, TokenEfficiencyMetadata, TransformersRuntimeEnv, TransitionEntry, TransitionLog, TruncationResult, TurnClassifierModel, TurnInput, TurnPriority, TurnTagPolicy, TurnTagResult, UnhandledVariant, UnknownEngineErrorPayload, UnsupportedFileTypePayload, UpdateCandidate, UpdateDiff, UpdateReport, ValidationIssue, ValidationReport, ValidationResult, VectorIndexPayload, VectorIndexStorageErrorPayload, VectorQueryResult, VerificationContext, VerificationDelta, VerificationEvidence, VerificationEvidenceFailure, VerificationEvidenceGate, VerificationGate, VerificationGateSnapshot, VerificationGateVerdictEntry, VerificationOrigin, VerificationVerdictEvent, VersionIncompatiblePayload, VisionChunk, VisionIngestInput, VisionIngestResult, VoyageEmbeddingClient, VueDetectionResult, WaitingDecision, WorkflowAlreadyRunningPayload, WorkflowEngineOptions, WorkflowRouteResult, WorkflowRouterServiceOptions, WorkflowRunOptions, WorkflowRunProgress, WorkflowStep, WorkflowStepCompletedEvent, WorkflowStepFailedEvent, WorkflowStepProgress, WorkflowStepRunner, WorkflowStepStartedEvent, WorkflowTemplate, WorkspaceCompressionPolicy, WriteGeneratedFilesOptions, WriteVerificationEvidenceOptions, WrittenHudReceipt };
