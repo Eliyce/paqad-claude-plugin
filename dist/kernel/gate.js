@@ -21500,8 +21500,8 @@ function clearRuleStopRecord(projectRoot, sessionId) {
 
 // src/visual-evidence/reminder.ts
 init_esm_shims();
-import { existsSync as existsSync13, mkdirSync as mkdirSync17, writeFileSync as writeFileSync16 } from "fs";
-import { isAbsolute as isAbsolute3, join as join27, relative as relative2 } from "path";
+import { existsSync as existsSync16, mkdirSync as mkdirSync20, writeFileSync as writeFileSync19 } from "fs";
+import { isAbsolute as isAbsolute3, join as join31, relative as relative3 } from "path";
 
 // src/feature-evidence/paths.ts
 init_esm_shims();
@@ -26250,6 +26250,7 @@ function recordShip(projectRoot, dirName, patch, at) {
       draft: null,
       ...record.pr,
       ...definedFields(patch.pr),
+      first_at: record.pr?.first_at ?? record.pr?.at ?? at,
       at
     };
   }
@@ -26637,14 +26638,14 @@ function compareActiveCapabilities(left, right) {
 // src/decisions/authoring.ts
 init_esm_shims();
 import {
-  existsSync as existsSync6,
-  mkdirSync as mkdirSync12,
-  readFileSync as readFileSync17,
-  readdirSync as readdirSync5,
-  unlinkSync,
-  writeFileSync as writeFileSync11
+  existsSync as existsSync9,
+  mkdirSync as mkdirSync15,
+  readFileSync as readFileSync21,
+  readdirSync as readdirSync7,
+  unlinkSync as unlinkSync2,
+  writeFileSync as writeFileSync14
 } from "fs";
-import { dirname as dirname12, join as join19 } from "path";
+import { dirname as dirname15, join as join23 } from "path";
 
 // src/planning/decision-packet.ts
 init_esm_shims();
@@ -26874,8 +26875,399 @@ function isIsoDate(value) {
   return typeof value === "string" && !Number.isNaN(Date.parse(value));
 }
 
-// src/decisions/packet-shape.ts
+// src/planning/decision-store.ts
 init_esm_shims();
+import {
+  existsSync as existsSync8,
+  mkdirSync as mkdirSync14,
+  readFileSync as readFileSync20,
+  readdirSync as readdirSync6,
+  renameSync as renameSync4,
+  statSync as statSync3,
+  unlinkSync,
+  writeFileSync as writeFileSync13
+} from "fs";
+import { basename as basename2, dirname as dirname14, join as join22, relative as relative2 } from "path";
+
+// src/core/errors/engine-errors.ts
+init_esm_shims();
+
+// src/core/logger-registry.ts
+init_esm_shims();
+
+// src/core/errors/framework-error.ts
+init_esm_shims();
+
+// src/core/errors/redact.ts
+init_esm_shims();
+
+// src/rag/secrets.ts
+init_esm_shims();
+import {
+  chmodSync,
+  closeSync as closeSync2,
+  existsSync as existsSync6,
+  ftruncateSync,
+  mkdirSync as mkdirSync12,
+  openSync as openSync2,
+  readFileSync as readFileSync17,
+  statSync as statSync2,
+  writeFileSync as writeFileSync11,
+  writeSync
+} from "fs";
+import { dirname as dirname12, join as join19 } from "path";
+function parseEnv(content) {
+  const result = {};
+  for (const rawLine of content.split("\n")) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const eq = line.indexOf("=");
+    if (eq === -1) continue;
+    const key = line.slice(0, eq).trim();
+    const value = line.slice(eq + 1).trim().replace(/^['"]|['"]$/g, "");
+    if (key) {
+      result[key] = value;
+    }
+  }
+  return result;
+}
+function readProjectSecrets(projectRoot) {
+  const path11 = join19(projectRoot, PATHS.SECRETS_ENV);
+  if (!existsSync6(path11)) {
+    return {};
+  }
+  try {
+    return parseEnv(readFileSync17(path11, "utf8"));
+  } catch {
+    return {};
+  }
+}
+function redactSecrets(input, projectRoot) {
+  const secrets = [
+    process.env.OPENAI_API_KEY,
+    process.env.VOYAGE_API_KEY,
+    ...Object.values(readProjectSecrets(projectRoot))
+  ].filter((value) => Boolean(value));
+  let result = input;
+  for (const secret of secrets) {
+    result = result.split(secret).join("[REDACTED]");
+  }
+  return result;
+}
+
+// src/core/errors/redact.ts
+function redactPayload(payload, projectRoot) {
+  if (!projectRoot) {
+    return { redacted: { ...payload }, redacted_fields: [] };
+  }
+  const redacted = {};
+  const redacted_fields = [];
+  for (const [key, value] of Object.entries(payload)) {
+    if (typeof value === "string") {
+      const cleaned = redactSecrets(value, projectRoot);
+      redacted[key] = cleaned;
+      if (cleaned !== value) {
+        redacted_fields.push(key);
+      }
+    } else {
+      redacted[key] = value;
+    }
+  }
+  return { redacted, redacted_fields };
+}
+
+// src/core/errors/framework-error.ts
+var FrameworkError = class extends Error {
+  code;
+  details;
+  retryable;
+  constructor(message, options) {
+    super(message, { cause: options.cause });
+    this.name = "FrameworkError";
+    this.code = options.code;
+    this.retryable = options.retryable ?? false;
+    if (options.details && options.projectRoot) {
+      const { redacted, redacted_fields } = redactPayload(options.details, options.projectRoot);
+      this.details = redacted_fields.length > 0 ? { ...redacted, redacted_fields } : redacted;
+    } else {
+      this.details = options.details;
+    }
+  }
+};
+
+// src/core/errors/taxonomy.ts
+init_esm_shims();
+var ENGINE_ERROR_CODES = {
+  MISSING_POLICY_CONTEXT: "MISSING_POLICY_CONTEXT",
+  DUPLICATE_SKILL_IDENTIFIER: "DUPLICATE_SKILL_IDENTIFIER",
+  DECISION_PACKET_CORRUPT: "DECISION_PACKET_CORRUPT",
+  UNSUPPORTED_FILE_TYPE: "UNSUPPORTED_FILE_TYPE",
+  VERSION_INCOMPATIBLE: "VERSION_INCOMPATIBLE",
+  MANIFEST_PRODUCTION_TIMEOUT: "MANIFEST_PRODUCTION_TIMEOUT",
+  WORKFLOW_ALREADY_RUNNING: "WORKFLOW_ALREADY_RUNNING",
+  VECTOR_INDEX_STORAGE_ERROR: "VECTOR_INDEX_STORAGE_ERROR",
+  CANCELLED_BY_CONSUMER: "CANCELLED_BY_CONSUMER",
+  LOGGER_SINK_FAILED: "LOGGER_SINK_FAILED",
+  UNKNOWN_ENGINE_ERROR: "UNKNOWN_ENGINE_ERROR"
+};
+
+// src/core/errors/engine-errors.ts
+var DecisionPacketCorruptError = class extends FrameworkError {
+  constructor(message, details, projectRoot) {
+    super(message, {
+      code: ENGINE_ERROR_CODES.DECISION_PACKET_CORRUPT,
+      details,
+      retryable: false,
+      projectRoot
+    });
+    this.name = "DecisionPacketCorruptError";
+  }
+};
+
+// src/decision-reuse/index.ts
+init_esm_shims();
+
+// src/decision-reuse/types.ts
+init_esm_shims();
+var DECISION_REUSE_DOC_TYPE = "paqad.decision-reuse";
+var DECISION_REUSE_SCHEMA_VERSION = 1;
+
+// src/decision-reuse/schema.ts
+init_esm_shims();
+var import_ajv4 = __toESM(require_ajv(), 1);
+var nullableString3 = { type: ["string", "null"] };
+var DECISION_REUSE_SCHEMA = {
+  $id: "paqad://schemas/decision-reuse.json",
+  type: "object",
+  additionalProperties: false,
+  required: [
+    "schema_version",
+    "doc_type",
+    "kind",
+    "session_id",
+    "conversation_ordinal",
+    "ts",
+    "adapter",
+    "content_hash"
+  ],
+  properties: {
+    schema_version: { type: "integer", const: 1 },
+    doc_type: { const: DECISION_REUSE_DOC_TYPE },
+    kind: { enum: ["open", "reuse"] },
+    session_id: { type: "string", minLength: 1 },
+    conversation_ordinal: { type: "integer", minimum: 1 },
+    ts: { type: "string", minLength: 1 },
+    adapter: { type: "string", minLength: 1 },
+    decision_id: nullableString3,
+    category: nullableString3,
+    chosen_option_key: nullableString3,
+    match_kind: { type: ["string", "null"], enum: ["exact", "fingerprint", null] },
+    source_path: nullableString3,
+    note: nullableString3,
+    content_hash: { type: "string", minLength: 1 }
+  }
+};
+var ajv3 = new import_ajv4.default({ allErrors: true, allowUnionTypes: true });
+var compiled2;
+function validator2() {
+  if (!compiled2) {
+    compiled2 = ajv3.compile(DECISION_REUSE_SCHEMA);
+  }
+  return compiled2;
+}
+function validateDecisionReuseRow(row) {
+  const validate = validator2();
+  if (validate(row)) {
+    return [];
+  }
+  return (validate.errors ?? []).map(
+    (error) => `${error.instancePath || "(root)"} ${error.message ?? "invalid"}`
+  );
+}
+
+// src/decision-reuse/recorder.ts
+init_esm_shims();
+var APPEND_OPTS = (now) => ({
+  schemaVersion: DECISION_REUSE_SCHEMA_VERSION,
+  validate: (row) => validateDecisionReuseRow(row),
+  now
+});
+function recordDecisionReuse(projectRoot, fields, ctx = {}) {
+  try {
+    const sessionId = resolveSessionId(projectRoot, ctx.sessionId);
+    const adapter = ctx.adapter ?? "unknown";
+    const ordinal = ensureUnit(projectRoot, sessionId, adapter, ctx.now);
+    return appendSessionEvent(
+      projectRoot,
+      DECISION_REUSE_DOC_TYPE,
+      sessionId,
+      ordinal,
+      {
+        kind: "reuse",
+        conversation_ordinal: ordinal,
+        adapter,
+        decision_id: fields.decisionId,
+        category: fields.category ?? null,
+        chosen_option_key: fields.chosenOptionKey ?? null,
+        match_kind: fields.matchKind,
+        source_path: fields.sourcePath ?? null,
+        note: fields.note ?? null
+      },
+      APPEND_OPTS(ctx.now)
+    );
+  } catch {
+    return null;
+  }
+}
+function ensureUnit(projectRoot, sessionId, adapter, now) {
+  const current = currentOrdinal(projectRoot, DECISION_REUSE_DOC_TYPE, sessionId);
+  if (current > 0) {
+    return current;
+  }
+  return openSessionDoc(
+    projectRoot,
+    DECISION_REUSE_DOC_TYPE,
+    sessionId,
+    { adapter },
+    APPEND_OPTS(now)
+  ).ordinal;
+}
+
+// src/planning/decision-ledger.ts
+init_esm_shims();
+
+// src/session-ledger/project-ledger.ts
+init_esm_shims();
+var PROJECT_SESSION = "_project";
+function ensureUnit2(projectRoot, docType) {
+  const current = currentOrdinal(projectRoot, docType, PROJECT_SESSION);
+  if (current > 0) {
+    return current;
+  }
+  return openSessionDoc(projectRoot, docType, PROJECT_SESSION, {}).ordinal;
+}
+function recordProjectEvent(projectRoot, docType, row, schemaVersion = 1) {
+  try {
+    const ordinal = ensureUnit2(projectRoot, docType);
+    appendSessionEvent(projectRoot, docType, PROJECT_SESSION, ordinal, row, { schemaVersion });
+  } catch {
+  }
+}
+
+// src/planning/decision-ledger.ts
+var DECISION_EVIDENCE_DOC_TYPE = "decision-evidence";
+var DECISION_EVIDENCE_SCHEMA_VERSION = 1;
+function recordDecisionOpened(projectRoot, fields) {
+  recordProjectEvent(
+    projectRoot,
+    DECISION_EVIDENCE_DOC_TYPE,
+    {
+      kind: "opened",
+      decision_id: fields.decisionId,
+      category: fields.category,
+      title: fields.title,
+      created_at: fields.createdAt
+    },
+    DECISION_EVIDENCE_SCHEMA_VERSION
+  );
+}
+function recordDecisionResolved(projectRoot, decisionId, status, resolver) {
+  recordProjectEvent(
+    projectRoot,
+    DECISION_EVIDENCE_DOC_TYPE,
+    { kind: "resolved", decision_id: decisionId, status, resolver },
+    DECISION_EVIDENCE_SCHEMA_VERSION
+  );
+}
+function recordDecisionSuperseded(projectRoot, decisionId) {
+  recordProjectEvent(
+    projectRoot,
+    DECISION_EVIDENCE_DOC_TYPE,
+    { kind: "superseded", decision_id: decisionId },
+    DECISION_EVIDENCE_SCHEMA_VERSION
+  );
+}
+function recordDecisionDiscarded(projectRoot, decisionId, reason) {
+  recordProjectEvent(
+    projectRoot,
+    DECISION_EVIDENCE_DOC_TYPE,
+    { kind: "discarded", decision_id: decisionId, reason },
+    DECISION_EVIDENCE_SCHEMA_VERSION
+  );
+}
+function recordDecisionExpired(projectRoot, decisionId) {
+  recordProjectEvent(
+    projectRoot,
+    DECISION_EVIDENCE_DOC_TYPE,
+    { kind: "expired", decision_id: decisionId },
+    DECISION_EVIDENCE_SCHEMA_VERSION
+  );
+}
+
+// src/planning/decision-audit.ts
+init_esm_shims();
+import { appendFileSync as appendFileSync3, existsSync as existsSync7, mkdirSync as mkdirSync13, readFileSync as readFileSync18, writeFileSync as writeFileSync12 } from "fs";
+import { dirname as dirname13, join as join20 } from "path";
+function appendDecisionAuditEvent(projectRoot, event) {
+  const path11 = join20(projectRoot, PATHS.DECISIONS_AUDIT_LOG);
+  mkdirSync13(dirname13(path11), { recursive: true });
+  appendFileSync3(path11, `${JSON.stringify(event)}
+`);
+  return path11;
+}
+function ensureDecisionAuditLog(projectRoot) {
+  const path11 = join20(projectRoot, PATHS.DECISIONS_AUDIT_LOG);
+  mkdirSync13(dirname13(path11), { recursive: true });
+  writeFileSync12(path11, "", { flag: "a" });
+  return path11;
+}
+
+// src/planning/decision-events.ts
+init_esm_shims();
+function isoNow() {
+  return (/* @__PURE__ */ new Date()).toISOString();
+}
+function toEventOption(option) {
+  return {
+    option_key: option.option_key,
+    label: option.label,
+    one_line_preview: option.one_line_preview,
+    trade_off: option.trade_off,
+    ...option.technical_detail !== void 0 ? { technical_detail: option.technical_detail } : {}
+  };
+}
+function decisionPausedEvent(packet, packetPath) {
+  return {
+    kind: "decision-paused",
+    at: isoNow(),
+    decisionId: packet.decision_id,
+    category: packet.category,
+    prompt: packet.question,
+    question: packet.question,
+    options: packet.options.map(toEventOption),
+    recommendation: packet.recommendation ?? null,
+    ...packet.recommendation_reason !== void 0 ? { recommendationReason: packet.recommendation_reason } : {},
+    packetPath,
+    ...packet.linked_slice_id !== void 0 ? { linkedSliceId: packet.linked_slice_id } : {}
+  };
+}
+function decisionResolvedEvent(packet, resolver) {
+  return {
+    kind: "decision-resolved",
+    at: isoNow(),
+    decisionId: packet.decision_id,
+    resolution: packet.status,
+    chosenOptionKey: packet.human_response?.chosen_option_key ?? null,
+    resolver,
+    ...packet.human_response?.intent !== void 0 ? { intent: packet.human_response.intent } : {}
+  };
+}
+function decisionCapExceededEvent(pendingCount, cap) {
+  return { kind: "decision-cap-exceeded", at: isoNow(), pendingCount, cap };
+}
+function decisionDiscardedEvent(decisionId, reason) {
+  return { kind: "decision-discarded", at: isoNow(), decisionId, reason };
+}
 
 // src/planning/decision-fingerprint.ts
 init_esm_shims();
@@ -26942,7 +27334,19 @@ function tokenize(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().split(/\s+/).filter(Boolean);
 }
 
+// src/planning/decision-precedents.ts
+init_esm_shims();
+import { readdirSync as readdirSync5, readFileSync as readFileSync19 } from "fs";
+import { join as join21 } from "path";
+
+// src/rag/lexical-bm25.ts
+init_esm_shims();
+function tokenize2(text) {
+  return text.replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2").toLowerCase().split(/[^a-z0-9]+/).filter((token) => token.length > 0);
+}
+
 // src/decisions/packet-shape.ts
+init_esm_shims();
 var DAY_MS = 24 * 60 * 60 * 1e3;
 var REQUESTED_BY = "paqad-decision-cli";
 function isDecisionCategory(value) {
@@ -27012,35 +27416,644 @@ function readAnyDecisionPacket(value) {
   return isDecisionPacket(upgraded) ? upgraded : null;
 }
 
+// src/planning/decision-precedents.ts
+var DEFAULT_PRECEDENT_LIMIT = 3;
+var PRECEDENT_SCORE_FLOOR = 0.1;
+var CATEGORY_WEIGHT = 0.5;
+function jaccard(a2, b) {
+  if (a2.size === 0 || b.size === 0) {
+    return 0;
+  }
+  let intersection = 0;
+  for (const token of a2) {
+    if (b.has(token)) {
+      intersection++;
+    }
+  }
+  const union = a2.size + b.size - intersection;
+  return union === 0 ? 0 : intersection / union;
+}
+function scorePrecedent(query, packet) {
+  const sameCategory = query.category === packet.category ? CATEGORY_WEIGHT : 0;
+  const queryTokens = new Set(tokenize2(`${query.question} ${query.context ?? ""}`));
+  const packetTokens = new Set(tokenize2(`${packet.question} ${packet.context}`));
+  return sameCategory + (1 - CATEGORY_WEIGHT) * jaccard(queryTokens, packetTokens);
+}
+function chosenLabel(packet) {
+  const key = packet.human_response?.chosen_option_key;
+  if (!key) {
+    return null;
+  }
+  return packet.options.find((option) => option.option_key === key)?.label ?? key;
+}
+function readResolvedPackets(projectRoot) {
+  const dir = join21(projectRoot, PATHS.DECISIONS_RESOLVED_DIR);
+  let files;
+  try {
+    files = readdirSync5(dir);
+  } catch {
+    return [];
+  }
+  const packets = [];
+  for (const file of files) {
+    if (!file.endsWith(".json")) {
+      continue;
+    }
+    try {
+      const packet = readAnyDecisionPacket(
+        JSON.parse(readFileSync19(join21(dir, file), "utf8"))
+      );
+      if (packet) {
+        packets.push(packet);
+      }
+    } catch {
+    }
+  }
+  return packets;
+}
+function findDecisionPrecedents(projectRoot, query, options = {}) {
+  const limit = options.limit ?? DEFAULT_PRECEDENT_LIMIT;
+  const floor = options.floor ?? PRECEDENT_SCORE_FLOOR;
+  const candidates = readResolvedPackets(projectRoot).filter(
+    (packet) => packet.decision_id !== query.decision_id && (!query.fingerprint || packet.fingerprint !== query.fingerprint) && (packet.status === "resolved" || packet.status === "delegated") && Boolean(packet.human_response?.chosen_option_key)
+  );
+  return candidates.map((packet) => ({ packet, score: scorePrecedent(query, packet) })).filter((entry) => entry.score >= floor).sort(
+    (a2, b) => b.score !== a2.score ? b.score - a2.score : a2.packet.decision_id < b.packet.decision_id ? -1 : 1
+  ).slice(0, limit).map(({ packet, score }) => ({
+    decision_id: packet.decision_id,
+    category: packet.category,
+    question: packet.question,
+    chosen: chosenLabel(packet),
+    rationale: packet.human_response?.note?.trim() || void 0,
+    resolved_at: packet.human_response?.responded_at,
+    score
+  }));
+}
+var PRECEDENT_BLOCK_HEADING = "Similar past decisions you already resolved:";
+function formatDecisionPrecedents(precedents) {
+  if (precedents.length === 0) {
+    return "";
+  }
+  const lines = precedents.map((precedent) => {
+    const choice = precedent.chosen ?? "no choice recorded";
+    const why = precedent.rationale ? ` \u2014 ${precedent.rationale}` : "";
+    return `- [${precedent.category}] "${precedent.question}" \u2192 ${choice}${why}`;
+  });
+  return `${PRECEDENT_BLOCK_HEADING}
+${lines.join("\n")}`;
+}
+
+// src/planning/decision-copy.ts
+init_esm_shims();
+var BANNED_WORDS = [
+  "abstraction",
+  "polymorphic",
+  "dry",
+  "solid",
+  "coupling",
+  "cohesion",
+  "encapsulation",
+  "idiomatic",
+  "refactor",
+  "hoist",
+  "monomorphic",
+  "deterministic",
+  "idempotent",
+  "cardinality",
+  "invariant",
+  "predicate",
+  "instantiation"
+];
+function lintDecisionCopy(packet) {
+  const issues = [];
+  if (wordCount(packet.question) > 15) {
+    issues.push({ field: "question", message: "Question must be 15 words or fewer." });
+  }
+  if (!isGrade8Friendly(packet.question)) {
+    issues.push({ field: "question", message: "Question must stay at grade-8 readability." });
+  }
+  checkBanned("question", packet.question, issues);
+  if (packet.recommendation_reason) {
+    checkBanned("recommendation_reason", packet.recommendation_reason, issues);
+    if (!isGrade8Friendly(packet.recommendation_reason)) {
+      issues.push({
+        field: "recommendation_reason",
+        message: "Recommendation reason must stay at grade-8 readability."
+      });
+    }
+  }
+  for (const [index, option] of packet.options.entries()) {
+    const prefix = `options[${index}]`;
+    const labelWords = wordCount(option.label);
+    if (labelWords < 2 || labelWords > 5) {
+      issues.push({ field: `${prefix}.label`, message: "Option label must be 2 to 5 words." });
+    }
+    if (!startsWithVerb(option.label)) {
+      issues.push({ field: `${prefix}.label`, message: "Option label must start with a verb." });
+    }
+    if (!/^if you pick this,/i.test(option.one_line_preview)) {
+      issues.push({
+        field: `${prefix}.one_line_preview`,
+        message: 'One-line preview must start with "If you pick this,".'
+      });
+    }
+    if (!/^You give up:\s/i.test(option.trade_off)) {
+      issues.push({
+        field: `${prefix}.trade_off`,
+        message: 'Trade-off must start with "You give up:".'
+      });
+    }
+    checkBanned(`${prefix}.label`, option.label, issues);
+    checkBanned(`${prefix}.one_line_preview`, option.one_line_preview, issues);
+    checkBanned(`${prefix}.trade_off`, option.trade_off, issues);
+    if (!isGrade8Friendly(option.label)) {
+      issues.push({
+        field: `${prefix}.label`,
+        message: "Option label must stay at grade-8 readability."
+      });
+    }
+  }
+  return issues;
+}
+function checkBanned(field, value, issues) {
+  const normalized = value.toLowerCase();
+  for (const banned of BANNED_WORDS) {
+    if (normalized.includes(banned)) {
+      issues.push({ field, message: `Banned word "${banned}" is not allowed here.` });
+    }
+  }
+}
+function wordCount(value) {
+  return value.trim().split(/\s+/).filter(Boolean).length;
+}
+function isGrade8Friendly(value) {
+  return value.split(/\s+/).filter(Boolean).every((word) => word.replace(/[^a-z]/gi, "").length <= 12);
+}
+function startsWithVerb(value) {
+  return /^(Reuse|Make|Keep|Extract|Take|Use|Switch|Stay|Skip|Pick)\b/i.test(value.trim());
+}
+
+// src/planning/decision-store.ts
+var MAX_PENDING_DECISIONS = 20;
+var DecisionCapExceededError = class extends Error {
+  constructor(pendingCount, cap) {
+    super(`Pending decision cap reached (${pendingCount}/${cap}).`);
+    this.pendingCount = pendingCount;
+    this.cap = cap;
+    this.name = "DecisionCapExceededError";
+  }
+  pendingCount;
+  cap;
+};
+var DecisionStore = class {
+  constructor(projectRoot, options = {}) {
+    this.projectRoot = projectRoot;
+    this.onEvent = options.onEvent;
+  }
+  projectRoot;
+  onEvent;
+  initialize() {
+    for (const relativePath of [
+      PATHS.DECISIONS_PENDING_DIR,
+      PATHS.DECISIONS_RESOLVED_DIR,
+      PATHS.DECISIONS_EXPIRED_DIR
+    ]) {
+      const dir = join22(this.projectRoot, relativePath);
+      mkdirSync14(dir, { recursive: true });
+      writeFileSync13(join22(dir, ".gitkeep"), "", { flag: "a" });
+    }
+    ensureDecisionAuditLog(this.projectRoot);
+    if (!existsSync8(this.indexPath())) {
+      this.writeIndex({ fingerprints: {}, decisions: {} });
+    }
+  }
+  nextDecisionId() {
+    return `D-${ulid()}`;
+  }
+  writePending(packet) {
+    this.initialize();
+    const existingTaskPending = this.findPendingDecisionForTask(packet.task_session_id);
+    if (existingTaskPending && existingTaskPending !== packet.decision_id) {
+      throw new Error(
+        `Task ${packet.task_session_id} already has a pending decision (${existingTaskPending}).`
+      );
+    }
+    this.enforcePendingCap(packet.decision_id);
+    this.assertWritablePacket(packet);
+    const enriched = this.enrichWithPrecedents(packet);
+    const path11 = this.packetPath(PATHS.DECISIONS_PENDING_DIR, enriched.decision_id);
+    atomicWriteJson3(path11, enriched);
+    this.appendAudit("decision-pending-written", enriched);
+    recordDecisionOpened(this.projectRoot, {
+      decisionId: enriched.decision_id,
+      category: enriched.category,
+      title: enriched.question,
+      createdAt: enriched.created_at
+    });
+    this.emit(decisionPausedEvent(enriched, this.relativePendingPath(enriched.decision_id)));
+    return path11;
+  }
+  enrichWithPrecedents(packet) {
+    if (packet.context.includes(PRECEDENT_BLOCK_HEADING)) {
+      return packet;
+    }
+    try {
+      const precedents = findDecisionPrecedents(this.projectRoot, {
+        decision_id: packet.decision_id,
+        fingerprint: packet.fingerprint,
+        category: packet.category,
+        question: packet.question,
+        context: packet.context
+      });
+      const block = formatDecisionPrecedents(precedents);
+      return block ? { ...packet, context: `${packet.context}
+
+${block}` } : packet;
+    } catch {
+      return packet;
+    }
+  }
+  enforcePendingCap(decisionId) {
+    const cap = this.maxPendingDecisions();
+    const pendingCount = this.listPendingDecisionIds().filter((id) => id !== decisionId).length;
+    if (pendingCount >= cap) {
+      this.emit(decisionCapExceededEvent(pendingCount, cap));
+      throw new DecisionCapExceededError(pendingCount, cap);
+    }
+  }
+  maxPendingDecisions() {
+    const configured = readProjectProfile(this.projectRoot)?.custom?.decisions?.max_pending;
+    return typeof configured === "number" && configured > 0 ? configured : MAX_PENDING_DECISIONS;
+  }
+  discard(input) {
+    this.initialize();
+    const result = this.readPendingResult(input.decisionId);
+    if (!result.packet) {
+      throw new Error(
+        `Cannot discard decision ${input.decisionId}: no valid pending packet${result.error ? ` (${result.error})` : ""}.`
+      );
+    }
+    const packet = result.packet;
+    this.deletePending(input.decisionId);
+    this.appendAudit("decision-discarded", packet);
+    recordDecisionDiscarded(this.projectRoot, packet.decision_id, input.reason);
+    this.emit(decisionDiscardedEvent(packet.decision_id, input.reason));
+    return packet;
+  }
+  emit(event) {
+    this.onEvent?.(event);
+  }
+  relativePendingPath(decisionId) {
+    return `${PATHS.DECISIONS_PENDING_DIR}/${decisionId}.json`;
+  }
+  resolve(input) {
+    const pending = this.readPending(input.decisionId);
+    if (!pending) {
+      throw new Error(`Pending decision ${input.decisionId} not found.`);
+    }
+    const resolved = this.writeResolvedPacket({
+      packet: pending,
+      humanResponse: input.humanResponse,
+      event: input.humanResponse.intent === "delegated" ? "decision-delegated" : "decision-resolved-by-human",
+      respondedByProvider: input.respondedByProvider
+    });
+    unlinkSync(this.packetPath(PATHS.DECISIONS_PENDING_DIR, input.decisionId));
+    return this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, resolved.decision_id);
+  }
+  resolveExisting(input) {
+    const resolved = this.writeResolvedPacket(input);
+    return this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, resolved.decision_id);
+  }
+  deferUndeclaredDecision(input) {
+    const path11 = this.writePending(input.packet);
+    this.appendAudit("undeclared-decision-flagged", input.packet, input.provider);
+    return path11;
+  }
+  findReusableDecision(packet) {
+    const index = this.readIndex();
+    const exactDecisionId = index.fingerprints[packet.fingerprint];
+    if (exactDecisionId) {
+      const exactMatch = this.readReusableDecision(exactDecisionId);
+      if (exactMatch) {
+        this.appendAudit("decision-reused", exactMatch);
+        this.recordReuseToLedger(exactMatch, "exact");
+        return exactDecisionId;
+      }
+      delete index.fingerprints[packet.fingerprint];
+      this.writeIndex(index);
+    }
+    const packetOptionKeys = packet.options.map((option) => option.option_key);
+    let bestMatch = null;
+    for (const entry of Object.values(index.decisions)) {
+      if (entry.category !== packet.category || entry.chosen_option_key === null) {
+        continue;
+      }
+      if (!packetOptionKeys.includes(entry.chosen_option_key)) {
+        continue;
+      }
+      const resolved = this.readReusableDecision(entry.decision_id);
+      if (!resolved) {
+        continue;
+      }
+      const score = scoreDecisionOptionOverlap(packetOptionKeys, entry.option_keys);
+      if (score >= 0.8 && (bestMatch === null || score > bestMatch.score)) {
+        bestMatch = { id: entry.decision_id, score };
+      }
+    }
+    if (bestMatch) {
+      const resolved = this.readResolved(bestMatch.id);
+      if (resolved) {
+        this.appendAudit("decision-reused", resolved);
+        this.recordReuseToLedger(resolved, "fingerprint");
+      }
+    }
+    return bestMatch?.id ?? null;
+  }
+  recordReuseToLedger(packet, matchKind) {
+    recordDecisionReuse(
+      this.projectRoot,
+      {
+        decisionId: packet.decision_id,
+        category: packet.category,
+        chosenOptionKey: packet.human_response?.chosen_option_key ?? null,
+        matchKind,
+        sourcePath: join22(PATHS.DECISIONS_RESOLVED_DIR, `${packet.decision_id}.json`)
+      },
+      {}
+    );
+  }
+  readPending(decisionId) {
+    return this.readPacket(this.packetPath(PATHS.DECISIONS_PENDING_DIR, decisionId));
+  }
+  readPendingResult(decisionId) {
+    const path11 = this.packetPath(PATHS.DECISIONS_PENDING_DIR, decisionId);
+    if (!existsSync8(path11)) {
+      return { packet: null };
+    }
+    try {
+      return { packet: this.readPacket(path11) };
+    } catch (error) {
+      return {
+        packet: null,
+        error: error instanceof Error ? error.message : String(error)
+      };
+    }
+  }
+  readResolved(decisionId) {
+    return this.readPacket(this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, decisionId));
+  }
+  deletePending(decisionId) {
+    const path11 = this.packetPath(PATHS.DECISIONS_PENDING_DIR, decisionId);
+    if (existsSync8(path11)) {
+      unlinkSync(path11);
+    }
+  }
+  listPendingDecisionIds() {
+    return this.listDirectoryIds(PATHS.DECISIONS_PENDING_DIR).sort(
+      (left, right) => left.localeCompare(right, void 0, { numeric: true })
+    );
+  }
+  findPendingDecisionForTask(taskSessionId) {
+    for (const decisionId of this.listPendingDecisionIds()) {
+      const result = this.readPendingResult(decisionId);
+      if (result.packet?.task_session_id === taskSessionId) {
+        return decisionId;
+      }
+    }
+    return null;
+  }
+  expireResolvedDecision(decisionId) {
+    const source = this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, decisionId);
+    const target = this.packetPath(PATHS.DECISIONS_EXPIRED_DIR, decisionId);
+    const packet = this.readResolved(decisionId);
+    if (!packet) {
+      throw new Error(`Resolved decision ${decisionId} not found.`);
+    }
+    const expired = { ...packet, status: "expired" };
+    atomicWriteJson3(target, expired);
+    unlinkSync(source);
+    const index = this.readIndex();
+    if (index.fingerprints[packet.fingerprint] === decisionId) {
+      delete index.fingerprints[packet.fingerprint];
+    }
+    if (index.decisions[decisionId]) {
+      index.decisions[decisionId] = { ...index.decisions[decisionId], status: "expired" };
+    }
+    this.writeIndex(index);
+    this.appendAudit("decision-expired", expired);
+    recordDecisionExpired(this.projectRoot, expired.decision_id);
+    return target;
+  }
+  hasInvalidation(packet) {
+    if (!packet.human_response?.responded_at) {
+      return false;
+    }
+    const respondedAt = new Date(packet.human_response.responded_at).getTime();
+    return packet.invalidation_watch.some((path11) => {
+      const absolute = join22(this.projectRoot, path11);
+      return existsSync8(absolute) && statSync3(absolute).mtimeMs > respondedAt;
+    });
+  }
+  readPacket(path11) {
+    if (!existsSync8(path11)) {
+      return null;
+    }
+    const parsed = JSON.parse(readFileSync20(path11, "utf8"));
+    const packet = readAnyDecisionPacket(parsed);
+    if (packet === null) {
+      const reasons = validateDecisionPacket(parsed).join("; ");
+      const decisionId = typeof parsed?.decision_id === "string" ? parsed.decision_id : basename2(path11).replace(/\.json$/, "");
+      throw new DecisionPacketCorruptError(`Decision packet at ${path11} is invalid. ${reasons}`, {
+        decision_id: decisionId,
+        reason: reasons,
+        packet_path: relative2(this.projectRoot, path11)
+      });
+    }
+    return packet;
+  }
+  readReusableDecision(decisionId) {
+    const packet = this.readResolved(decisionId);
+    if (!packet) {
+      return null;
+    }
+    if (packet.status !== "resolved" && packet.status !== "delegated") {
+      return null;
+    }
+    if (packet.human_response?.chosen_option_key === null) {
+      return null;
+    }
+    if (isExpired(packet)) {
+      this.expireResolvedDecision(decisionId);
+      return null;
+    }
+    if (this.hasInvalidation(packet)) {
+      this.expireResolvedDecision(decisionId);
+      return null;
+    }
+    return packet;
+  }
+  assertWritablePacket(packet) {
+    const validationErrors = validateDecisionPacket(packet);
+    if (validationErrors.length > 0) {
+      throw new Error(
+        `Decision packet ${packet.decision_id} is invalid: ${validationErrors.join("; ")}`
+      );
+    }
+    if (!isStrictDecisionId(packet.decision_id)) {
+      throw new Error(
+        `Decision id "${packet.decision_id}" must be the collision-free D-<ULID> form on creation (mint it via DecisionStore.nextDecisionId / the decision skill; never hand-write a sequential D-{N}).`
+      );
+    }
+    const copyIssues = lintDecisionCopy(packet);
+    if (copyIssues.length > 0) {
+      throw new Error(
+        `Decision packet ${packet.decision_id} failed copy lint: ${copyIssues.map((issue) => `${issue.field} ${issue.message}`).join("; ")}`
+      );
+    }
+  }
+  appendAudit(event, packet, provider = packet.requested_by) {
+    appendDecisionAuditEvent(this.projectRoot, {
+      event,
+      decision_id: packet.decision_id,
+      fingerprint: packet.fingerprint,
+      task_session_id: packet.task_session_id,
+      provider,
+      timestamp: (/* @__PURE__ */ new Date()).toISOString(),
+      category: packet.category,
+      responded_by: packet.human_response?.responded_by,
+      chosen_option_key: packet.human_response?.chosen_option_key ?? null,
+      intent: packet.human_response?.intent
+    });
+  }
+  readIndex() {
+    this.initialize();
+    return JSON.parse(readFileSync20(this.indexPath(), "utf8"));
+  }
+  writeIndex(index) {
+    atomicWriteJson3(this.indexPath(), index);
+  }
+  indexPath() {
+    return join22(this.projectRoot, PATHS.DECISIONS_INDEX);
+  }
+  packetPath(root, decisionId) {
+    return join22(this.projectRoot, root, `${decisionId}.json`);
+  }
+  listDirectoryIds(relativeDir) {
+    const absoluteDir = join22(this.projectRoot, relativeDir);
+    if (!existsSync8(absoluteDir)) {
+      return [];
+    }
+    return readdirSync6(absoluteDir).filter((file) => /^D-(?:\d+|[0-9A-HJKMNP-TV-Z]{26})\.json$/.test(file)).map((file) => file.replace(/\.json$/, ""));
+  }
+  writeResolvedPacket(input) {
+    const resolved = {
+      ...input.packet,
+      status: input.humanResponse.intent === "delegated" ? "delegated" : "resolved",
+      human_response: input.humanResponse
+    };
+    const resolvedPath = this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, resolved.decision_id);
+    this.supersedeConflictingDecision(resolved);
+    atomicWriteJson3(resolvedPath, resolved);
+    const index = this.readIndex();
+    index.fingerprints[resolved.fingerprint] = resolved.decision_id;
+    index.decisions[resolved.decision_id] = {
+      decision_id: resolved.decision_id,
+      fingerprint: resolved.fingerprint,
+      category: resolved.category,
+      chosen_option_key: resolved.human_response?.chosen_option_key ?? null,
+      responded_at: resolved.human_response?.responded_at ?? resolved.created_at,
+      status: resolved.status,
+      option_keys: resolved.options.map((option) => option.option_key).sort()
+    };
+    this.writeIndex(index);
+    this.appendAudit(input.event, resolved, input.respondedByProvider);
+    recordDecisionResolved(
+      this.projectRoot,
+      resolved.decision_id,
+      resolved.status,
+      resolverFromAuditEvent(input.event)
+    );
+    this.emit(decisionResolvedEvent(resolved, resolverFromAuditEvent(input.event)));
+    return resolved;
+  }
+  supersedeConflictingDecision(packet) {
+    const index = this.readIndex();
+    const existingDecisionId = index.fingerprints[packet.fingerprint];
+    if (!existingDecisionId || existingDecisionId === packet.decision_id) {
+      return;
+    }
+    const existing = this.readResolved(existingDecisionId);
+    if (!existing) {
+      return;
+    }
+    if (existing.human_response?.chosen_option_key === packet.human_response?.chosen_option_key) {
+      return;
+    }
+    const superseded = { ...existing, status: "superseded" };
+    atomicWriteJson3(this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, existingDecisionId), superseded);
+    index.decisions[existingDecisionId] = {
+      ...index.decisions[existingDecisionId],
+      status: "superseded"
+    };
+    this.writeIndex(index);
+    this.appendAudit("decision-superseded", superseded);
+    recordDecisionSuperseded(this.projectRoot, existingDecisionId);
+  }
+};
+function atomicWriteJson3(path11, value) {
+  mkdirSync14(dirname14(path11), { recursive: true });
+  const tempPath = `${path11}.tmp`;
+  writeFileSync13(tempPath, JSON.stringify(value, null, 2) + "\n");
+  renameSync4(tempPath, path11);
+}
+function isExpired(packet) {
+  return Date.parse(packet.ttl_until) <= Date.now();
+}
+function resolverFromAuditEvent(event) {
+  switch (event) {
+    case "decision-resolved-by-human":
+    case "decision-delegated":
+      return "human";
+    case "decision-resolved-by-rule":
+      return "rule";
+    case "decision-resolved-by-rag-confident":
+      return "rag-confident";
+    case "decision-resolved-by-memoization":
+      return "memoization";
+    default:
+      return event;
+  }
+}
+
 // src/site-map/store.ts
 init_esm_shims();
 var import_yaml4 = __toESM(require_dist(), 1);
 import {
-  existsSync as existsSync7,
-  mkdirSync as mkdirSync13,
-  readFileSync as readFileSync18,
-  readdirSync as readdirSync6,
-  renameSync as renameSync4,
+  existsSync as existsSync10,
+  mkdirSync as mkdirSync16,
+  readFileSync as readFileSync22,
+  readdirSync as readdirSync8,
+  renameSync as renameSync5,
   rmSync as rmSync5,
-  writeFileSync as writeFileSync12
+  writeFileSync as writeFileSync15
 } from "fs";
-import { dirname as dirname13, join as join20 } from "path";
+import { dirname as dirname16, join as join24 } from "path";
 
 // src/site-map/schema.ts
 init_esm_shims();
-var import_ajv4 = __toESM(require_ajv(), 1);
-var ajv3 = new import_ajv4.default({ allErrors: true, allowUnionTypes: true });
+var import_ajv5 = __toESM(require_ajv(), 1);
+var ajv4 = new import_ajv5.default({ allErrors: true, allowUnionTypes: true });
 
 // src/visual-evidence/capture-script.ts
 init_esm_shims();
-import { existsSync as existsSync8, readdirSync as readdirSync7 } from "fs";
+import { existsSync as existsSync11, readdirSync as readdirSync9 } from "fs";
 
 // src/visual-evidence/provision.ts
 init_esm_shims();
 import { createRequire } from "module";
-import { existsSync as existsSync9, mkdirSync as mkdirSync14, readFileSync as readFileSync21, writeFileSync as writeFileSync14 } from "fs";
+import { existsSync as existsSync12, mkdirSync as mkdirSync17, readFileSync as readFileSync25, writeFileSync as writeFileSync17 } from "fs";
 import { homedir } from "os";
-import { join as join21 } from "path";
+import { join as join25 } from "path";
 
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/index.js
 init_esm_shims();
@@ -29387,7 +30400,7 @@ var serializeEncoding = (encoding) => typeof encoding === "string" ? `"${encodin
 
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/lib/arguments/command-file.js
 init_esm_shims();
-import { openSync as openSync2, readSync, closeSync as closeSync2 } from "fs";
+import { openSync as openSync3, readSync, closeSync as closeSync3 } from "fs";
 import { Buffer as Buffer2 } from "buffer";
 import path6 from "path";
 import process7 from "process";
@@ -29556,11 +30569,11 @@ var readShebang = (file) => {
   const buffer = Buffer2.alloc(SHEBANG_BYTE_LENGTH);
   let bytesRead = 0;
   try {
-    const fileDescriptor = openSync2(file, "r");
+    const fileDescriptor = openSync3(file, "r");
     try {
       bytesRead = readSync(fileDescriptor, buffer, 0, SHEBANG_BYTE_LENGTH, 0);
     } finally {
-      closeSync2(fileDescriptor);
+      closeSync3(fileDescriptor);
     }
   } catch {
     return void 0;
@@ -29608,7 +30621,7 @@ var shouldQuoteArgument = (argument) => argument === "" || argument.endsWith("\\
 
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/lib/arguments/cwd.js
 init_esm_shims();
-import { statSync as statSync2 } from "fs";
+import { statSync as statSync4 } from "fs";
 import path7 from "path";
 import process8 from "process";
 var normalizeCwd = (cwd2 = getDefaultCwd()) => {
@@ -29636,7 +30649,7 @@ var fixCwdError = (originalMessage, cwd2) => {
   }
   let cwdStat;
   try {
-    cwdStat = statSync2(cwd2);
+    cwdStat = statSync4(cwd2);
   } catch (error) {
     return `The "cwd" option is invalid: ${cwd2}.
 ${error.message}
@@ -30859,7 +31872,7 @@ var handleResult = (result, verboseInfo, { reject }) => {
 
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/lib/stdio/handle-sync.js
 init_esm_shims();
-import { readFileSync as readFileSync20 } from "fs";
+import { readFileSync as readFileSync24 } from "fs";
 
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/lib/stdio/handle.js
 init_esm_shims();
@@ -31229,7 +32242,7 @@ var isStandardOutputFd = (fdNumber) => fdNumber === 1 || fdNumber === 2;
 
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/lib/stdio/native.js
 init_esm_shims();
-import { readFileSync as readFileSync19 } from "fs";
+import { readFileSync as readFileSync23 } from "fs";
 import tty2 from "tty";
 
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/lib/arguments/fd-options.js
@@ -31344,7 +32357,7 @@ var getTargetFd = ({ value, optionName, fdNumber, direction }) => {
   if (tty2.isatty(targetFdNumber)) {
     throw new TypeError(`The \`${optionName}: ${serializeOptionValue(value)}\` option is invalid: it cannot be a TTY with synchronous methods.`);
   }
-  return { type: "uint8Array", contents: () => [bufferToUint8Array(readFileSync19(targetFdNumber))], optionName };
+  return { type: "uint8Array", contents: () => [bufferToUint8Array(readFileSync23(targetFdNumber))], optionName };
 };
 var getTargetFdNumber = (value, fdNumber) => {
   if (value === "inherit") {
@@ -31740,8 +32753,8 @@ var addPropertiesSync = {
     generator: forbiddenInputTransformIfSync,
     native: forbiddenNativeInputIfSync,
     // Files and iterables are read lazily, so that a file which cannot be read, or an iterable which throws, is reported like any other early error, instead of being thrown as a raw error
-    fileUrl: ({ value }) => ({ contents: () => [bufferToUint8Array(readFileSync20(value))] }),
-    filePath: ({ value: { file } }) => ({ contents: () => [bufferToUint8Array(readFileSync20(file))] }),
+    fileUrl: ({ value }) => ({ contents: () => [bufferToUint8Array(readFileSync24(value))] }),
+    filePath: ({ value: { file } }) => ({ contents: () => [bufferToUint8Array(readFileSync24(file))] }),
     fileNumber: forbiddenIfSync,
     iterable: ({ value }) => ({ contents: () => [...value] }),
     string: ({ value }) => ({ contents: [value] }),
@@ -32046,7 +33059,7 @@ var throwOnSerializableInput = (optionName, invalidItem) => {
 
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/lib/io/output-sync.js
 init_esm_shims();
-import { writeFileSync as writeFileSync13, appendFileSync as appendFileSync3 } from "fs";
+import { writeFileSync as writeFileSync16, appendFileSync as appendFileSync4 } from "fs";
 
 // node_modules/.pnpm/execa@10.2.0/node_modules/execa/lib/verbose/output.js
 init_esm_shims();
@@ -32179,9 +33192,9 @@ var writeToFiles = (chunks, stdioItems, outputFiles) => {
     }
     writtenPaths.add(path11);
     if (append2 || outputFiles.has(path11)) {
-      appendFileSync3(path11, contents);
+      appendFileSync4(path11, contents);
     } else {
-      writeFileSync13(path11, contents);
+      writeFileSync16(path11, contents);
     }
     outputFiles.add(path11);
   }
@@ -35051,14 +36064,14 @@ init_esm_shims();
 
 // src/core/runtime-paths.ts
 init_esm_shims();
-import { readFileSync as readFileSync22 } from "fs";
-import { dirname as dirname14, join as join22 } from "path";
+import { readFileSync as readFileSync26 } from "fs";
+import { dirname as dirname17, join as join26 } from "path";
 import { fileURLToPath as fileURLToPath5 } from "url";
 var PACKAGE_NAME = "paqad-ai";
 var packageRoot = null;
 function isPaqadPackageDir(dir) {
   try {
-    const parsed = JSON.parse(readFileSync22(join22(dir, "package.json"), "utf8"));
+    const parsed = JSON.parse(readFileSync26(join26(dir, "package.json"), "utf8"));
     return parsed?.name === PACKAGE_NAME;
   } catch {
     return false;
@@ -35068,7 +36081,7 @@ function findPackageRoot(start) {
   let dir = start;
   for (; ; ) {
     if (isPaqadPackageDir(dir)) return dir;
-    const parent = dirname14(dir);
+    const parent = dirname17(dir);
     if (parent === dir) {
       throw new Error(`${PACKAGE_NAME}: could not find the package root above ${start}`);
     }
@@ -35076,11 +36089,11 @@ function findPackageRoot(start) {
   }
 }
 function getPackageRoot() {
-  packageRoot ??= findPackageRoot(dirname14(fileURLToPath5(import.meta.url)));
+  packageRoot ??= findPackageRoot(dirname17(fileURLToPath5(import.meta.url)));
   return packageRoot;
 }
 function getRuntimeRoot() {
-  return join22(getPackageRoot(), "runtime");
+  return join26(getPackageRoot(), "runtime");
 }
 
 // src/packs/project-packs.ts
@@ -35090,8 +36103,8 @@ init_esm_shims();
 init_esm_shims();
 var import_yaml5 = __toESM(require_dist(), 1);
 import { createHash as createHash5 } from "crypto";
-import { existsSync as existsSync11, readdirSync as readdirSync8, readFileSync as readFileSync24 } from "fs";
-import { basename as basename2, join as join24, resolve as resolve3 } from "path";
+import { existsSync as existsSync14, readdirSync as readdirSync10, readFileSync as readFileSync28 } from "fs";
+import { basename as basename3, join as join28, resolve as resolve3 } from "path";
 
 // src/core/types/mcp.ts
 init_esm_shims();
@@ -35108,8 +36121,8 @@ var MCP_SERVER_TYPES = [
 
 // src/skills/audit-events.ts
 init_esm_shims();
-import { appendFileSync as appendFileSync4, existsSync as existsSync10, mkdirSync as mkdirSync15, readFileSync as readFileSync23 } from "fs";
-import { dirname as dirname15, join as join23 } from "path";
+import { appendFileSync as appendFileSync5, existsSync as existsSync13, mkdirSync as mkdirSync18, readFileSync as readFileSync27 } from "fs";
+import { dirname as dirname18, join as join27 } from "path";
 var DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY = 50;
 var SkillAuditBuffer = class {
   constructor(capacity = DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY) {
@@ -35146,12 +36159,12 @@ function getSharedSkillAuditBuffer() {
   return sharedBuffer;
 }
 function eventsPath(projectRoot) {
-  return join23(projectRoot, PATHS.SKILL_AUDIT_EVENTS_LOG);
+  return join27(projectRoot, PATHS.SKILL_AUDIT_EVENTS_LOG);
 }
 function appendSkillAuditEvent(projectRoot, event) {
   const path11 = eventsPath(projectRoot);
-  mkdirSync15(dirname15(path11), { recursive: true });
-  appendFileSync4(path11, JSON.stringify(event) + "\n", "utf8");
+  mkdirSync18(dirname18(path11), { recursive: true });
+  appendFileSync5(path11, JSON.stringify(event) + "\n", "utf8");
 }
 function emitSkillAuditEvent(event, projectRoot, buffer = getSharedSkillAuditBuffer()) {
   buffer.add(event);
@@ -35182,7 +36195,7 @@ var StackPackLoader = class {
     const warnings = [];
     for (const source of SOURCE_ORDER) {
       const packsRoot = this.resolvePacksRoot(source, options);
-      if (packsRoot === null || !existsSync11(packsRoot)) {
+      if (packsRoot === null || !existsSync14(packsRoot)) {
         continue;
       }
       for (const pack of this.loadPacksFromRoot(packsRoot, source)) {
@@ -35214,20 +36227,20 @@ var StackPackLoader = class {
   }
   resolvePacksRoot(source, options) {
     if (source === "built-in") {
-      return join24(options.runtimeRoot, "capabilities", "coding", "stacks");
+      return join28(options.runtimeRoot, "capabilities", "coding", "stacks");
     }
     if (source === "global") {
       return options.globalPacksRoot ?? null;
     }
-    return options.projectRoot ? join24(options.projectRoot, ".paqad", "packs") : null;
+    return options.projectRoot ? join28(options.projectRoot, ".paqad", "packs") : null;
   }
   loadPacksFromRoot(root, source) {
-    return readdirSync8(root, { withFileTypes: true }).filter((entry) => entry.isDirectory()).filter((entry) => !entry.name.startsWith("_") && !entry.name.startsWith(".")).map((entry) => this.readPack(join24(root, entry.name), source));
+    return readdirSync10(root, { withFileTypes: true }).filter((entry) => entry.isDirectory()).filter((entry) => !entry.name.startsWith("_") && !entry.name.startsWith(".")).map((entry) => this.readPack(join28(root, entry.name), source));
   }
   readPack(packRoot, source) {
-    const manifestPath = join24(packRoot, "pack.yaml");
+    const manifestPath = join28(packRoot, "pack.yaml");
     const issues = [];
-    if (!existsSync11(manifestPath)) {
+    if (!existsSync14(manifestPath)) {
       return {
         manifest: createPlaceholderManifest(packRoot),
         root: packRoot,
@@ -35247,7 +36260,7 @@ var StackPackLoader = class {
     }
     let manifest = null;
     try {
-      manifest = import_yaml5.default.parse(readFileSync24(manifestPath, "utf8"));
+      manifest = import_yaml5.default.parse(readFileSync28(manifestPath, "utf8"));
     } catch {
       issues.push({
         level: "error",
@@ -35307,7 +36320,7 @@ function validatePackReferences(manifest, packRoot) {
   );
   for (const fileRef of fileRefs) {
     const absolutePath = resolve3(packRoot, fileRef);
-    if (!existsSync11(absolutePath)) {
+    if (!existsSync14(absolutePath)) {
       issues.push({
         level: "error",
         path: "/docs",
@@ -35433,8 +36446,8 @@ function hasMatchingRunner(frameworkName, runnersById) {
 }
 function buildPackLoadFailedEvent(pack) {
   const errorIssues = pack.validation.issues.filter((issue) => issue.level === "error");
-  const manifestExists = existsSync11(pack.manifestPath);
-  const content_hash = manifestExists ? createHash5("sha256").update(readFileSync24(pack.manifestPath)).digest("hex") : createHash5("sha256").update(pack.root).digest("hex");
+  const manifestExists = existsSync14(pack.manifestPath);
+  const content_hash = manifestExists ? createHash5("sha256").update(readFileSync28(pack.manifestPath)).digest("hex") : createHash5("sha256").update(pack.root).digest("hex");
   return {
     ts: (/* @__PURE__ */ new Date()).toISOString(),
     type: "skill.pack_load_failed",
@@ -35447,7 +36460,7 @@ function buildPackLoadFailedEvent(pack) {
 }
 function createPlaceholderManifest(packRoot) {
   return {
-    name: basename2(packRoot) || "unknown-pack",
+    name: basename3(packRoot) || "unknown-pack",
     display_name: "Unknown Pack",
     ecosystem: "unknown",
     version: "0.0.0",
@@ -35461,20 +36474,20 @@ function createPlaceholderManifest(packRoot) {
 init_esm_shims();
 import {
   cpSync,
-  existsSync as existsSync12,
-  mkdirSync as mkdirSync16,
+  existsSync as existsSync15,
+  mkdirSync as mkdirSync19,
   mkdtempSync,
-  readdirSync as readdirSync9,
+  readdirSync as readdirSync11,
   rmSync as rmSync6,
-  writeFileSync as writeFileSync15
+  writeFileSync as writeFileSync18
 } from "fs";
 import { homedir as homedir2 } from "os";
-import { join as join25, resolve as resolve4 } from "path";
+import { join as join29, resolve as resolve4 } from "path";
 function resolvePackManagerRoots(projectRoot = process.cwd(), overrides = {}) {
   return {
     runtimeRoot: overrides.runtimeRoot ?? getRuntimeRoot(),
-    globalPacksRoot: overrides.globalPacksRoot ?? process.env.PAQAD_GLOBAL_PACKS_ROOT ?? join25(homedir2(), ".paqad", "packs"),
-    projectPacksRoot: overrides.projectPacksRoot ?? join25(projectRoot, ".paqad", "packs"),
+    globalPacksRoot: overrides.globalPacksRoot ?? process.env.PAQAD_GLOBAL_PACKS_ROOT ?? join29(homedir2(), ".paqad", "packs"),
+    projectPacksRoot: overrides.projectPacksRoot ?? join29(projectRoot, ".paqad", "packs"),
     registryUrl: overrides.registryUrl ?? process.env.PAQAD_PACK_REGISTRY_URL
   };
 }
@@ -35495,7 +36508,7 @@ function getPacksForFrameworks(frameworks, projectRoot) {
 
 // src/pipeline/change-evidence.ts
 init_esm_shims();
-import { join as join26 } from "path";
+import { join as join30 } from "path";
 async function loadChangeEvidence(projectRoot) {
   const files = await readGitChangedFiles(projectRoot);
   return files.length > 0 ? { files, source: "git" } : { files: [], source: "none" };
@@ -35700,21 +36713,21 @@ function visualEvidenceFlagOn(projectRoot) {
 
 // src/visual-evidence/reminder.ts
 var VISUAL_EVIDENCE_REMINDER = "This is a frontend change and visual evidence is on. Before review, run `paqad-ai visual-evidence run` or attach screenshots with `paqad-ai visual-evidence attach`.";
-var REMINDER_MARKER_DIR = join27(PATHS.AGENCY_SESSION_DIR, "visual-evidence-reminded");
+var REMINDER_MARKER_DIR = join31(PATHS.AGENCY_SESSION_DIR, "visual-evidence-reminded");
 function visualEvidenceReminder(input) {
   const { projectRoot } = input;
   if (!visualEvidenceFlagOn(projectRoot)) return null;
   const targets = input.targetPaths.map(
-    (target) => isAbsolute3(target) ? relative2(projectRoot, target) : target
+    (target) => isAbsolute3(target) ? relative3(projectRoot, target) : target
   );
   if (!frontendTriggerOrFault(projectRoot, targets).triggered) return null;
   const dirName = currentFeature(projectRoot, resolveSessionId(projectRoot, input.sessionId));
   if (!dirName) return null;
-  if (existsSync13(join27(projectRoot, featureFilePath(dirName, "visualEvidence")))) return null;
-  const marker = join27(projectRoot, REMINDER_MARKER_DIR, dirName);
+  if (existsSync16(join31(projectRoot, featureFilePath(dirName, "visualEvidence")))) return null;
+  const marker = join31(projectRoot, REMINDER_MARKER_DIR, dirName);
   try {
-    mkdirSync17(join27(projectRoot, REMINDER_MARKER_DIR), { recursive: true });
-    writeFileSync16(marker, `${(/* @__PURE__ */ new Date()).toISOString()}
+    mkdirSync20(join31(projectRoot, REMINDER_MARKER_DIR), { recursive: true });
+    writeFileSync19(marker, `${(/* @__PURE__ */ new Date()).toISOString()}
 `, { encoding: "utf8", flag: "wx" });
   } catch {
     return null;
@@ -35769,12 +36782,12 @@ function isFeatureDevelopmentRoute(routed) {
 
 // src/pipeline/workflow-state.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync18, readFileSync as readFileSync25, writeFileSync as writeFileSync17 } from "fs";
-import { join as join28 } from "path";
+import { mkdirSync as mkdirSync21, readFileSync as readFileSync29, writeFileSync as writeFileSync20 } from "fs";
+import { join as join32 } from "path";
 var WORKFLOW_STATE_FILE = ".workflow-state.json";
 var EMPTY_STATE = { active: null, paused: [] };
 function workflowStatePath(projectRoot, sessionId) {
-  return join28(
+  return join32(
     projectRoot,
     sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId),
     WORKFLOW_STATE_FILE
@@ -35812,7 +36825,7 @@ function toEntry(value) {
 }
 function readWorkflowState(projectRoot, sessionId) {
   try {
-    const parsed = JSON.parse(readFileSync25(workflowStatePath(projectRoot, sessionId), "utf8"));
+    const parsed = JSON.parse(readFileSync29(workflowStatePath(projectRoot, sessionId), "utf8"));
     const active = toEntry(parsed.active);
     const paused = Array.isArray(parsed.paused) ? parsed.paused.map(toEntry).filter((entry) => entry !== null) : [];
     const state = { active, paused };
@@ -35903,12 +36916,12 @@ init_esm_shims();
 // src/pipeline/delivery-policy.ts
 init_esm_shims();
 var import_yaml6 = __toESM(require_dist(), 1);
-import { existsSync as existsSync15, readFileSync as readFileSync27 } from "fs";
-import { join as join30 } from "path";
+import { existsSync as existsSync18, readFileSync as readFileSync31 } from "fs";
+import { join as join34 } from "path";
 
 // src/core/path-utils.ts
 init_esm_shims();
-import { isAbsolute as isAbsolute4, relative as relative3, resolve as resolve5, sep as sep2 } from "path";
+import { isAbsolute as isAbsolute4, relative as relative4, resolve as resolve5, sep as sep2 } from "path";
 function toPosixPath(path11) {
   return path11.split(sep2).join("/");
 }
@@ -35951,45 +36964,25 @@ function overlayDetection(process14, detected, isAuto) {
 
 // src/delivery/detection-store.ts
 init_esm_shims();
-import { existsSync as existsSync14, mkdirSync as mkdirSync19, readFileSync as readFileSync26, writeFileSync as writeFileSync18 } from "fs";
-import { dirname as dirname16, join as join29 } from "path";
+import { existsSync as existsSync17, mkdirSync as mkdirSync22, readFileSync as readFileSync30, writeFileSync as writeFileSync21 } from "fs";
+import { dirname as dirname19, join as join33 } from "path";
 
 // src/delivery/delivery-ledger.ts
 init_esm_shims();
-
-// src/session-ledger/project-ledger.ts
-init_esm_shims();
-var PROJECT_SESSION = "_project";
-function ensureUnit(projectRoot, docType) {
-  const current = currentOrdinal(projectRoot, docType, PROJECT_SESSION);
-  if (current > 0) {
-    return current;
-  }
-  return openSessionDoc(projectRoot, docType, PROJECT_SESSION, {}).ordinal;
-}
-function recordProjectEvent(projectRoot, docType, row, schemaVersion = 1) {
-  try {
-    const ordinal = ensureUnit(projectRoot, docType);
-    appendSessionEvent(projectRoot, docType, PROJECT_SESSION, ordinal, row, { schemaVersion });
-  } catch {
-  }
-}
-
-// src/delivery/delivery-ledger.ts
 var DELIVERY_EVIDENCE_DOC_TYPE = "delivery-evidence";
 var DELIVERY_EVIDENCE_SCHEMA_VERSION = 1;
 
 // src/delivery/detection-store.ts
 function detectionPath(projectRoot) {
-  return join29(projectRoot, PATHS.DELIVERY_DETECTION);
+  return join33(projectRoot, PATHS.DELIVERY_DETECTION);
 }
 function readDetection(projectRoot) {
   const path11 = detectionPath(projectRoot);
-  if (!existsSync14(path11)) {
+  if (!existsSync17(path11)) {
     return null;
   }
   try {
-    return JSON.parse(readFileSync26(path11, "utf8"));
+    return JSON.parse(readFileSync30(path11, "utf8"));
   } catch {
     return null;
   }
@@ -35998,7 +36991,7 @@ function readDetection(projectRoot) {
 // src/pipeline/delivery-policy.ts
 var DELIVERY_POLICY_FILE = "delivery-policy.yaml";
 function deliveryPolicyPath(projectRoot) {
-  return toPosixPath(join30(projectRoot, PATHS.WORKFLOWS_DIR, DELIVERY_POLICY_FILE));
+  return toPosixPath(join34(projectRoot, PATHS.WORKFLOWS_DIR, DELIVERY_POLICY_FILE));
 }
 function defaultDeliveryProcess() {
   return {
@@ -36066,9 +37059,9 @@ function loadDeliveryPolicy(projectRoot) {
   const defaults = defaultDeliveryPolicy();
   const path11 = deliveryPolicyPath(projectRoot);
   let parsed = {};
-  if (existsSync15(path11)) {
+  if (existsSync18(path11)) {
     try {
-      parsed = import_yaml6.default.parse(readFileSync27(path11, "utf8")) ?? {};
+      parsed = import_yaml6.default.parse(readFileSync31(path11, "utf8")) ?? {};
     } catch (error) {
       return {
         policy: withDetection(projectRoot, defaults),
@@ -36146,12 +37139,12 @@ function appendUnique(base, additions) {
 // src/rule-scripts/execute.ts
 init_esm_shims();
 import { spawnSync as spawnSync2 } from "child_process";
-import { accessSync, constants as constants4, statSync as statSync3 } from "fs";
-import { delimiter, join as join31 } from "path";
+import { accessSync, constants as constants4, statSync as statSync5 } from "fs";
+import { delimiter, join as join35 } from "path";
 
 // src/rule-scripts/validate.ts
 init_esm_shims();
-var import_ajv5 = __toESM(require_ajv(), 1);
+var import_ajv6 = __toESM(require_ajv(), 1);
 
 // src/rule-scripts/schemas/findings.schema.json
 var findings_schema_default = {
@@ -36211,7 +37204,7 @@ var script_header_schema_default = {
 };
 
 // src/rule-scripts/validate.ts
-var ajv4 = new import_ajv5.default({ allErrors: true });
+var ajv5 = new import_ajv6.default({ allErrors: true });
 var headerValidator = null;
 var findingsValidator = null;
 function run(validator4, data) {
@@ -36225,11 +37218,11 @@ function run(validator4, data) {
   return { valid: false, errors };
 }
 function validateScriptHeader(header) {
-  headerValidator ??= ajv4.compile(script_header_schema_default);
+  headerValidator ??= ajv5.compile(script_header_schema_default);
   return run(headerValidator, header);
 }
 function validateFindings(report) {
-  findingsValidator ??= ajv4.compile(findings_schema_default);
+  findingsValidator ??= ajv5.compile(findings_schema_default);
   return run(findingsValidator, report);
 }
 
@@ -36281,7 +37274,7 @@ function executeRuleScript(scriptPath, payload, timeoutMs = DEFAULT_TIMEOUT_MS) 
 }
 function isExecutableFile(p) {
   try {
-    if (!statSync3(p).isFile()) {
+    if (!statSync5(p).isFile()) {
       return false;
     }
   } catch {
@@ -36305,7 +37298,7 @@ function isOnPath(bin) {
   const winExts = process.platform === "win32" ? (process.env.PATHEXT ?? ".EXE;.CMD;.BAT;.COM").split(";") : [];
   const alreadyHasExt = process.platform === "win32" && winExts.some((ext) => bin.toLowerCase().endsWith(ext.toLowerCase()));
   const exts = process.platform === "win32" ? alreadyHasExt ? [""] : winExts : [""];
-  return dirs.some((dir) => exts.some((ext) => isExecutableFile(join31(dir, `${bin}${ext}`))));
+  return dirs.some((dir) => exts.some((ext) => isExecutableFile(join35(dir, `${bin}${ext}`))));
 }
 function missingBinaries(binaries) {
   if (!binaries || binaries.length === 0) {
@@ -36460,6 +37453,9 @@ function upper(value) {
 function textOrNull(value) {
   return typeof value === "string" && value.length > 0 ? value : null;
 }
+function countOrNull(value) {
+  return typeof value === "number" && Number.isInteger(value) && value >= 0 ? value : null;
+}
 function rollupJobs(rollup) {
   const entries = Array.isArray(rollup) ? rollup : [];
   return entries.map((entry) => ({
@@ -36546,7 +37542,7 @@ async function evaluateDelivery(input) {
     "view",
     branch,
     "--json",
-    "number,url,state,headRefOid,statusCheckRollup,body,isDraft"
+    "number,url,state,headRefOid,statusCheckRollup,body,isDraft,title,changedFiles,additions,deletions"
   ]);
   if (prView.exitCode === 0) {
     ghAvailable = true;
@@ -36558,7 +37554,11 @@ async function evaluateDelivery(input) {
         url: typeof pr.url === "string" ? pr.url : null,
         draft: typeof pr.isDraft === "boolean" ? pr.isDraft : null,
         state: readPrState(pr.state),
-        head_sha: textOrNull(pr.headRefOid)
+        head_sha: textOrNull(pr.headRefOid),
+        title: textOrNull(pr.title),
+        changed_files: countOrNull(pr.changedFiles),
+        additions: countOrNull(pr.additions),
+        deletions: countOrNull(pr.deletions)
       };
       ciReading = readRollup(pr.statusCheckRollup);
       if (policy.process.ci.gate === "wait_for_green" && rollupHasFailure(pr.statusCheckRollup)) {
@@ -36729,17 +37729,17 @@ init_esm_shims();
 
 // src/planning/decision-evidence.ts
 init_esm_shims();
-import { existsSync as existsSync17, readFileSync as readFileSync30, readdirSync as readdirSync11, statSync as statSync5 } from "fs";
-import { join as join35, relative as relative4 } from "path";
+import { existsSync as existsSync20, readFileSync as readFileSync34, readdirSync as readdirSync13, statSync as statSync7 } from "fs";
+import { join as join39, relative as relative5 } from "path";
 
 // src/code-knowledge/store.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync20, readFileSync as readFileSync28, renameSync as renameSync5, writeFileSync as writeFileSync19 } from "fs";
-import { dirname as dirname17, join as join32 } from "path";
+import { mkdirSync as mkdirSync23, readFileSync as readFileSync32, renameSync as renameSync6, writeFileSync as writeFileSync22 } from "fs";
+import { dirname as dirname20, join as join36 } from "path";
 
 // src/code-knowledge/schema.ts
 init_esm_shims();
-var import_ajv6 = __toESM(require_ajv(), 1);
+var import_ajv7 = __toESM(require_ajv(), 1);
 
 // src/validators/schemas/code-knowledge.schema.json
 var code_knowledge_schema_default = {
@@ -36858,16 +37858,16 @@ var code_knowledge_schema_default = {
 };
 
 // src/code-knowledge/schema.ts
-var ajv5 = new import_ajv6.default({ allErrors: true, allowUnionTypes: true });
-var compiled2;
-function validator2() {
-  if (!compiled2) {
-    compiled2 = ajv5.compile(code_knowledge_schema_default);
+var ajv6 = new import_ajv7.default({ allErrors: true, allowUnionTypes: true });
+var compiled3;
+function validator3() {
+  if (!compiled3) {
+    compiled3 = ajv6.compile(code_knowledge_schema_default);
   }
-  return compiled2;
+  return compiled3;
 }
 function validateCodeKnowledgeIndex(data) {
-  const validate = validator2();
+  const validate = validator3();
   if (validate(data)) {
     return { valid: true, errors: [] };
   }
@@ -36882,12 +37882,12 @@ function validateCodeKnowledgeIndex(data) {
 
 // src/code-knowledge/store.ts
 function codeKnowledgeIndexPath(projectRoot) {
-  return join32(projectRoot, PATHS.CODE_KNOWLEDGE_INDEX);
+  return join36(projectRoot, PATHS.CODE_KNOWLEDGE_INDEX);
 }
 function readCodeKnowledgeIndex(projectRoot) {
   const target = codeKnowledgeIndexPath(projectRoot);
   try {
-    const parsed = JSON.parse(readFileSync28(target, "utf8"));
+    const parsed = JSON.parse(readFileSync32(target, "utf8"));
     return validateCodeKnowledgeIndex(parsed).valid ? parsed : null;
   } catch {
     return null;
@@ -36896,122 +37896,13 @@ function readCodeKnowledgeIndex(projectRoot) {
 
 // src/planning/decision-evidence-arm.ts
 init_esm_shims();
-import { statSync as statSync4 } from "fs";
-import { join as join34 } from "path";
-
-// src/decision-reuse/index.ts
-init_esm_shims();
-
-// src/decision-reuse/types.ts
-init_esm_shims();
-var DECISION_REUSE_DOC_TYPE = "paqad.decision-reuse";
-var DECISION_REUSE_SCHEMA_VERSION = 1;
-
-// src/decision-reuse/schema.ts
-init_esm_shims();
-var import_ajv7 = __toESM(require_ajv(), 1);
-var nullableString3 = { type: ["string", "null"] };
-var DECISION_REUSE_SCHEMA = {
-  $id: "paqad://schemas/decision-reuse.json",
-  type: "object",
-  additionalProperties: false,
-  required: [
-    "schema_version",
-    "doc_type",
-    "kind",
-    "session_id",
-    "conversation_ordinal",
-    "ts",
-    "adapter",
-    "content_hash"
-  ],
-  properties: {
-    schema_version: { type: "integer", const: 1 },
-    doc_type: { const: DECISION_REUSE_DOC_TYPE },
-    kind: { enum: ["open", "reuse"] },
-    session_id: { type: "string", minLength: 1 },
-    conversation_ordinal: { type: "integer", minimum: 1 },
-    ts: { type: "string", minLength: 1 },
-    adapter: { type: "string", minLength: 1 },
-    decision_id: nullableString3,
-    category: nullableString3,
-    chosen_option_key: nullableString3,
-    match_kind: { type: ["string", "null"], enum: ["exact", "fingerprint", null] },
-    source_path: nullableString3,
-    note: nullableString3,
-    content_hash: { type: "string", minLength: 1 }
-  }
-};
-var ajv6 = new import_ajv7.default({ allErrors: true, allowUnionTypes: true });
-var compiled3;
-function validator3() {
-  if (!compiled3) {
-    compiled3 = ajv6.compile(DECISION_REUSE_SCHEMA);
-  }
-  return compiled3;
-}
-function validateDecisionReuseRow(row) {
-  const validate = validator3();
-  if (validate(row)) {
-    return [];
-  }
-  return (validate.errors ?? []).map(
-    (error) => `${error.instancePath || "(root)"} ${error.message ?? "invalid"}`
-  );
-}
-
-// src/decision-reuse/recorder.ts
-init_esm_shims();
-var APPEND_OPTS = (now) => ({
-  schemaVersion: DECISION_REUSE_SCHEMA_VERSION,
-  validate: (row) => validateDecisionReuseRow(row),
-  now
-});
-function recordDecisionReuse(projectRoot, fields, ctx = {}) {
-  try {
-    const sessionId = resolveSessionId(projectRoot, ctx.sessionId);
-    const adapter = ctx.adapter ?? "unknown";
-    const ordinal = ensureUnit2(projectRoot, sessionId, adapter, ctx.now);
-    return appendSessionEvent(
-      projectRoot,
-      DECISION_REUSE_DOC_TYPE,
-      sessionId,
-      ordinal,
-      {
-        kind: "reuse",
-        conversation_ordinal: ordinal,
-        adapter,
-        decision_id: fields.decisionId,
-        category: fields.category ?? null,
-        chosen_option_key: fields.chosenOptionKey ?? null,
-        match_kind: fields.matchKind,
-        source_path: fields.sourcePath ?? null,
-        note: fields.note ?? null
-      },
-      APPEND_OPTS(ctx.now)
-    );
-  } catch {
-    return null;
-  }
-}
-function ensureUnit2(projectRoot, sessionId, adapter, now) {
-  const current = currentOrdinal(projectRoot, DECISION_REUSE_DOC_TYPE, sessionId);
-  if (current > 0) {
-    return current;
-  }
-  return openSessionDoc(
-    projectRoot,
-    DECISION_REUSE_DOC_TYPE,
-    sessionId,
-    { adapter },
-    APPEND_OPTS(now)
-  ).ordinal;
-}
+import { statSync as statSync6 } from "fs";
+import { join as join38 } from "path";
 
 // src/duplication/decisions.ts
 init_esm_shims();
-import { existsSync as existsSync16, readFileSync as readFileSync29, readdirSync as readdirSync10 } from "fs";
-import { join as join33 } from "path";
+import { existsSync as existsSync19, readFileSync as readFileSync33, readdirSync as readdirSync12 } from "fs";
+import { join as join37 } from "path";
 
 // src/planning/decision-arm-config.ts
 init_esm_shims();
@@ -37030,7 +37921,7 @@ function buildReuseForkEvidence(input) {
     similarity: Number(Math.min(1, Math.max(0, input.similarity)).toFixed(2))
   };
   try {
-    evidence.last_modified = statSync4(join34(input.projectRoot, input.file)).mtime.toISOString();
+    evidence.last_modified = statSync6(join38(input.projectRoot, input.file)).mtime.toISOString();
   } catch {
     evidence.evidence_partial = true;
   }
@@ -37041,8 +37932,8 @@ function buildReuseForkEvidence(input) {
 var MIN_SIMILARITY = 0.01;
 var MAX_SIMILARITY = 0.99;
 function assembleDecisionEvidence(input) {
-  const absolutePath = join35(input.projectRoot, input.file);
-  const fileExists = existsSync17(absolutePath);
+  const absolutePath = join39(input.projectRoot, input.file);
+  const fileExists = existsSync20(absolutePath);
   const indexedCallers = indexedCallerCount(input.projectRoot, input.file);
   if (indexedCallers !== null) {
     const evidence2 = buildReuseForkEvidence({
@@ -37073,18 +37964,18 @@ function assembleDecisionEvidence(input) {
     evidence.rule_match = ruleMatch;
   }
   if (fileExists) {
-    evidence.last_modified = statSync5(absolutePath).mtime.toISOString();
+    evidence.last_modified = statSync7(absolutePath).mtime.toISOString();
   } else {
     evidence.evidence_partial = true;
   }
   return evidence;
 }
 function countFileReferences(projectRoot, file) {
-  const absoluteTarget = join35(projectRoot, file);
-  if (!existsSync17(absoluteTarget)) {
+  const absoluteTarget = join39(projectRoot, file);
+  if (!existsSync20(absoluteTarget)) {
     return 0;
   }
-  const relativePath = normalizePath(relative4(projectRoot, absoluteTarget));
+  const relativePath = normalizePath(relative5(projectRoot, absoluteTarget));
   const baseName = relativePath.split("/").pop() ?? relativePath;
   const stem = baseName.replace(/\.[^.]+$/, "");
   const matcher = new RegExp(`\\b${escapeRegExp2(stem)}\\b|${escapeRegExp2(relativePath)}`, "g");
@@ -37094,7 +37985,7 @@ function countFileReferences(projectRoot, file) {
       count2 += 1;
       continue;
     }
-    const content = safeReadFile(join35(projectRoot, candidate));
+    const content = safeReadFile(join39(projectRoot, candidate));
     if (matcher.test(content)) {
       count2 += 1;
     }
@@ -37159,16 +38050,16 @@ function findSupportingRule(projectRoot, file) {
 }
 function readCompiledRulesSync(projectRoot) {
   try {
-    return JSON.parse(readFileSync30(join35(projectRoot, PATHS.COMPILED_RULES), "utf8"));
+    return JSON.parse(readFileSync34(join39(projectRoot, PATHS.COMPILED_RULES), "utf8"));
   } catch {
     return null;
   }
 }
 function walkTextFiles(projectRoot, currentDir = "") {
-  const absoluteDir = join35(projectRoot, currentDir);
+  const absoluteDir = join39(projectRoot, currentDir);
   let entries;
   try {
-    entries = readdirSync11(absoluteDir);
+    entries = readdirSync13(absoluteDir);
   } catch {
     return [];
   }
@@ -37178,9 +38069,9 @@ function walkTextFiles(projectRoot, currentDir = "") {
       continue;
     }
     const relativeEntry = currentDir ? `${currentDir}/${entry}` : entry;
-    const absoluteEntry = join35(projectRoot, relativeEntry);
+    const absoluteEntry = join39(projectRoot, relativeEntry);
     try {
-      const stat2 = statSync5(absoluteEntry);
+      const stat2 = statSync7(absoluteEntry);
       if (stat2.isDirectory()) {
         files.push(...walkTextFiles(projectRoot, relativeEntry));
       } else if (/\.(ts|tsx|js|jsx|md|json|yaml|yml|txt|mdc)$/.test(entry)) {
@@ -37194,7 +38085,7 @@ function walkTextFiles(projectRoot, currentDir = "") {
 }
 function safeReadFile(path11) {
   try {
-    return readFileSync30(path11, "utf8");
+    return readFileSync34(path11, "utf8");
   } catch {
     return "";
   }
@@ -37431,891 +38322,6 @@ function buildOption(projectRoot, category, input) {
       similarity: input.similarity
     })
   };
-}
-
-// src/planning/decision-store.ts
-init_esm_shims();
-import {
-  existsSync as existsSync20,
-  mkdirSync as mkdirSync23,
-  readFileSync as readFileSync34,
-  readdirSync as readdirSync13,
-  renameSync as renameSync6,
-  statSync as statSync7,
-  unlinkSync as unlinkSync2,
-  writeFileSync as writeFileSync22
-} from "fs";
-import { basename as basename3, dirname as dirname20, join as join39, relative as relative5 } from "path";
-
-// src/core/errors/engine-errors.ts
-init_esm_shims();
-
-// src/core/logger-registry.ts
-init_esm_shims();
-
-// src/core/errors/framework-error.ts
-init_esm_shims();
-
-// src/core/errors/redact.ts
-init_esm_shims();
-
-// src/rag/secrets.ts
-init_esm_shims();
-import {
-  chmodSync,
-  closeSync as closeSync3,
-  existsSync as existsSync18,
-  ftruncateSync,
-  mkdirSync as mkdirSync21,
-  openSync as openSync3,
-  readFileSync as readFileSync31,
-  statSync as statSync6,
-  writeFileSync as writeFileSync20,
-  writeSync
-} from "fs";
-import { dirname as dirname18, join as join36 } from "path";
-function parseEnv(content) {
-  const result = {};
-  for (const rawLine of content.split("\n")) {
-    const line = rawLine.trim();
-    if (!line || line.startsWith("#")) continue;
-    const eq = line.indexOf("=");
-    if (eq === -1) continue;
-    const key = line.slice(0, eq).trim();
-    const value = line.slice(eq + 1).trim().replace(/^['"]|['"]$/g, "");
-    if (key) {
-      result[key] = value;
-    }
-  }
-  return result;
-}
-function readProjectSecrets(projectRoot) {
-  const path11 = join36(projectRoot, PATHS.SECRETS_ENV);
-  if (!existsSync18(path11)) {
-    return {};
-  }
-  try {
-    return parseEnv(readFileSync31(path11, "utf8"));
-  } catch {
-    return {};
-  }
-}
-function redactSecrets(input, projectRoot) {
-  const secrets = [
-    process.env.OPENAI_API_KEY,
-    process.env.VOYAGE_API_KEY,
-    ...Object.values(readProjectSecrets(projectRoot))
-  ].filter((value) => Boolean(value));
-  let result = input;
-  for (const secret of secrets) {
-    result = result.split(secret).join("[REDACTED]");
-  }
-  return result;
-}
-
-// src/core/errors/redact.ts
-function redactPayload(payload, projectRoot) {
-  if (!projectRoot) {
-    return { redacted: { ...payload }, redacted_fields: [] };
-  }
-  const redacted = {};
-  const redacted_fields = [];
-  for (const [key, value] of Object.entries(payload)) {
-    if (typeof value === "string") {
-      const cleaned = redactSecrets(value, projectRoot);
-      redacted[key] = cleaned;
-      if (cleaned !== value) {
-        redacted_fields.push(key);
-      }
-    } else {
-      redacted[key] = value;
-    }
-  }
-  return { redacted, redacted_fields };
-}
-
-// src/core/errors/framework-error.ts
-var FrameworkError = class extends Error {
-  code;
-  details;
-  retryable;
-  constructor(message, options) {
-    super(message, { cause: options.cause });
-    this.name = "FrameworkError";
-    this.code = options.code;
-    this.retryable = options.retryable ?? false;
-    if (options.details && options.projectRoot) {
-      const { redacted, redacted_fields } = redactPayload(options.details, options.projectRoot);
-      this.details = redacted_fields.length > 0 ? { ...redacted, redacted_fields } : redacted;
-    } else {
-      this.details = options.details;
-    }
-  }
-};
-
-// src/core/errors/taxonomy.ts
-init_esm_shims();
-var ENGINE_ERROR_CODES = {
-  MISSING_POLICY_CONTEXT: "MISSING_POLICY_CONTEXT",
-  DUPLICATE_SKILL_IDENTIFIER: "DUPLICATE_SKILL_IDENTIFIER",
-  DECISION_PACKET_CORRUPT: "DECISION_PACKET_CORRUPT",
-  UNSUPPORTED_FILE_TYPE: "UNSUPPORTED_FILE_TYPE",
-  VERSION_INCOMPATIBLE: "VERSION_INCOMPATIBLE",
-  MANIFEST_PRODUCTION_TIMEOUT: "MANIFEST_PRODUCTION_TIMEOUT",
-  WORKFLOW_ALREADY_RUNNING: "WORKFLOW_ALREADY_RUNNING",
-  VECTOR_INDEX_STORAGE_ERROR: "VECTOR_INDEX_STORAGE_ERROR",
-  CANCELLED_BY_CONSUMER: "CANCELLED_BY_CONSUMER",
-  LOGGER_SINK_FAILED: "LOGGER_SINK_FAILED",
-  UNKNOWN_ENGINE_ERROR: "UNKNOWN_ENGINE_ERROR"
-};
-
-// src/core/errors/engine-errors.ts
-var DecisionPacketCorruptError = class extends FrameworkError {
-  constructor(message, details, projectRoot) {
-    super(message, {
-      code: ENGINE_ERROR_CODES.DECISION_PACKET_CORRUPT,
-      details,
-      retryable: false,
-      projectRoot
-    });
-    this.name = "DecisionPacketCorruptError";
-  }
-};
-
-// src/planning/decision-ledger.ts
-init_esm_shims();
-var DECISION_EVIDENCE_DOC_TYPE = "decision-evidence";
-var DECISION_EVIDENCE_SCHEMA_VERSION = 1;
-function recordDecisionOpened(projectRoot, fields) {
-  recordProjectEvent(
-    projectRoot,
-    DECISION_EVIDENCE_DOC_TYPE,
-    {
-      kind: "opened",
-      decision_id: fields.decisionId,
-      category: fields.category,
-      title: fields.title,
-      created_at: fields.createdAt
-    },
-    DECISION_EVIDENCE_SCHEMA_VERSION
-  );
-}
-function recordDecisionResolved(projectRoot, decisionId, status, resolver) {
-  recordProjectEvent(
-    projectRoot,
-    DECISION_EVIDENCE_DOC_TYPE,
-    { kind: "resolved", decision_id: decisionId, status, resolver },
-    DECISION_EVIDENCE_SCHEMA_VERSION
-  );
-}
-function recordDecisionSuperseded(projectRoot, decisionId) {
-  recordProjectEvent(
-    projectRoot,
-    DECISION_EVIDENCE_DOC_TYPE,
-    { kind: "superseded", decision_id: decisionId },
-    DECISION_EVIDENCE_SCHEMA_VERSION
-  );
-}
-function recordDecisionDiscarded(projectRoot, decisionId, reason) {
-  recordProjectEvent(
-    projectRoot,
-    DECISION_EVIDENCE_DOC_TYPE,
-    { kind: "discarded", decision_id: decisionId, reason },
-    DECISION_EVIDENCE_SCHEMA_VERSION
-  );
-}
-function recordDecisionExpired(projectRoot, decisionId) {
-  recordProjectEvent(
-    projectRoot,
-    DECISION_EVIDENCE_DOC_TYPE,
-    { kind: "expired", decision_id: decisionId },
-    DECISION_EVIDENCE_SCHEMA_VERSION
-  );
-}
-
-// src/planning/decision-audit.ts
-init_esm_shims();
-import { appendFileSync as appendFileSync5, existsSync as existsSync19, mkdirSync as mkdirSync22, readFileSync as readFileSync32, writeFileSync as writeFileSync21 } from "fs";
-import { dirname as dirname19, join as join37 } from "path";
-function appendDecisionAuditEvent(projectRoot, event) {
-  const path11 = join37(projectRoot, PATHS.DECISIONS_AUDIT_LOG);
-  mkdirSync22(dirname19(path11), { recursive: true });
-  appendFileSync5(path11, `${JSON.stringify(event)}
-`);
-  return path11;
-}
-function ensureDecisionAuditLog(projectRoot) {
-  const path11 = join37(projectRoot, PATHS.DECISIONS_AUDIT_LOG);
-  mkdirSync22(dirname19(path11), { recursive: true });
-  writeFileSync21(path11, "", { flag: "a" });
-  return path11;
-}
-
-// src/planning/decision-events.ts
-init_esm_shims();
-function isoNow() {
-  return (/* @__PURE__ */ new Date()).toISOString();
-}
-function toEventOption(option) {
-  return {
-    option_key: option.option_key,
-    label: option.label,
-    one_line_preview: option.one_line_preview,
-    trade_off: option.trade_off,
-    ...option.technical_detail !== void 0 ? { technical_detail: option.technical_detail } : {}
-  };
-}
-function decisionPausedEvent(packet, packetPath) {
-  return {
-    kind: "decision-paused",
-    at: isoNow(),
-    decisionId: packet.decision_id,
-    category: packet.category,
-    prompt: packet.question,
-    question: packet.question,
-    options: packet.options.map(toEventOption),
-    recommendation: packet.recommendation ?? null,
-    ...packet.recommendation_reason !== void 0 ? { recommendationReason: packet.recommendation_reason } : {},
-    packetPath,
-    ...packet.linked_slice_id !== void 0 ? { linkedSliceId: packet.linked_slice_id } : {}
-  };
-}
-function decisionResolvedEvent(packet, resolver) {
-  return {
-    kind: "decision-resolved",
-    at: isoNow(),
-    decisionId: packet.decision_id,
-    resolution: packet.status,
-    chosenOptionKey: packet.human_response?.chosen_option_key ?? null,
-    resolver,
-    ...packet.human_response?.intent !== void 0 ? { intent: packet.human_response.intent } : {}
-  };
-}
-function decisionCapExceededEvent(pendingCount, cap) {
-  return { kind: "decision-cap-exceeded", at: isoNow(), pendingCount, cap };
-}
-function decisionDiscardedEvent(decisionId, reason) {
-  return { kind: "decision-discarded", at: isoNow(), decisionId, reason };
-}
-
-// src/planning/decision-precedents.ts
-init_esm_shims();
-import { readdirSync as readdirSync12, readFileSync as readFileSync33 } from "fs";
-import { join as join38 } from "path";
-
-// src/rag/lexical-bm25.ts
-init_esm_shims();
-function tokenize2(text) {
-  return text.replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2").toLowerCase().split(/[^a-z0-9]+/).filter((token) => token.length > 0);
-}
-
-// src/planning/decision-precedents.ts
-var DEFAULT_PRECEDENT_LIMIT = 3;
-var PRECEDENT_SCORE_FLOOR = 0.1;
-var CATEGORY_WEIGHT = 0.5;
-function jaccard(a2, b) {
-  if (a2.size === 0 || b.size === 0) {
-    return 0;
-  }
-  let intersection = 0;
-  for (const token of a2) {
-    if (b.has(token)) {
-      intersection++;
-    }
-  }
-  const union = a2.size + b.size - intersection;
-  return union === 0 ? 0 : intersection / union;
-}
-function scorePrecedent(query, packet) {
-  const sameCategory = query.category === packet.category ? CATEGORY_WEIGHT : 0;
-  const queryTokens = new Set(tokenize2(`${query.question} ${query.context ?? ""}`));
-  const packetTokens = new Set(tokenize2(`${packet.question} ${packet.context}`));
-  return sameCategory + (1 - CATEGORY_WEIGHT) * jaccard(queryTokens, packetTokens);
-}
-function chosenLabel(packet) {
-  const key = packet.human_response?.chosen_option_key;
-  if (!key) {
-    return null;
-  }
-  return packet.options.find((option) => option.option_key === key)?.label ?? key;
-}
-function readResolvedPackets(projectRoot) {
-  const dir = join38(projectRoot, PATHS.DECISIONS_RESOLVED_DIR);
-  let files;
-  try {
-    files = readdirSync12(dir);
-  } catch {
-    return [];
-  }
-  const packets = [];
-  for (const file of files) {
-    if (!file.endsWith(".json")) {
-      continue;
-    }
-    try {
-      const packet = readAnyDecisionPacket(
-        JSON.parse(readFileSync33(join38(dir, file), "utf8"))
-      );
-      if (packet) {
-        packets.push(packet);
-      }
-    } catch {
-    }
-  }
-  return packets;
-}
-function findDecisionPrecedents(projectRoot, query, options = {}) {
-  const limit = options.limit ?? DEFAULT_PRECEDENT_LIMIT;
-  const floor = options.floor ?? PRECEDENT_SCORE_FLOOR;
-  const candidates = readResolvedPackets(projectRoot).filter(
-    (packet) => packet.decision_id !== query.decision_id && (!query.fingerprint || packet.fingerprint !== query.fingerprint) && (packet.status === "resolved" || packet.status === "delegated") && Boolean(packet.human_response?.chosen_option_key)
-  );
-  return candidates.map((packet) => ({ packet, score: scorePrecedent(query, packet) })).filter((entry) => entry.score >= floor).sort(
-    (a2, b) => b.score !== a2.score ? b.score - a2.score : a2.packet.decision_id < b.packet.decision_id ? -1 : 1
-  ).slice(0, limit).map(({ packet, score }) => ({
-    decision_id: packet.decision_id,
-    category: packet.category,
-    question: packet.question,
-    chosen: chosenLabel(packet),
-    rationale: packet.human_response?.note?.trim() || void 0,
-    resolved_at: packet.human_response?.responded_at,
-    score
-  }));
-}
-var PRECEDENT_BLOCK_HEADING = "Similar past decisions you already resolved:";
-function formatDecisionPrecedents(precedents) {
-  if (precedents.length === 0) {
-    return "";
-  }
-  const lines = precedents.map((precedent) => {
-    const choice = precedent.chosen ?? "no choice recorded";
-    const why = precedent.rationale ? ` \u2014 ${precedent.rationale}` : "";
-    return `- [${precedent.category}] "${precedent.question}" \u2192 ${choice}${why}`;
-  });
-  return `${PRECEDENT_BLOCK_HEADING}
-${lines.join("\n")}`;
-}
-
-// src/planning/decision-copy.ts
-init_esm_shims();
-var BANNED_WORDS = [
-  "abstraction",
-  "polymorphic",
-  "dry",
-  "solid",
-  "coupling",
-  "cohesion",
-  "encapsulation",
-  "idiomatic",
-  "refactor",
-  "hoist",
-  "monomorphic",
-  "deterministic",
-  "idempotent",
-  "cardinality",
-  "invariant",
-  "predicate",
-  "instantiation"
-];
-function lintDecisionCopy(packet) {
-  const issues = [];
-  if (wordCount(packet.question) > 15) {
-    issues.push({ field: "question", message: "Question must be 15 words or fewer." });
-  }
-  if (!isGrade8Friendly(packet.question)) {
-    issues.push({ field: "question", message: "Question must stay at grade-8 readability." });
-  }
-  checkBanned("question", packet.question, issues);
-  if (packet.recommendation_reason) {
-    checkBanned("recommendation_reason", packet.recommendation_reason, issues);
-    if (!isGrade8Friendly(packet.recommendation_reason)) {
-      issues.push({
-        field: "recommendation_reason",
-        message: "Recommendation reason must stay at grade-8 readability."
-      });
-    }
-  }
-  for (const [index, option] of packet.options.entries()) {
-    const prefix = `options[${index}]`;
-    const labelWords = wordCount(option.label);
-    if (labelWords < 2 || labelWords > 5) {
-      issues.push({ field: `${prefix}.label`, message: "Option label must be 2 to 5 words." });
-    }
-    if (!startsWithVerb(option.label)) {
-      issues.push({ field: `${prefix}.label`, message: "Option label must start with a verb." });
-    }
-    if (!/^if you pick this,/i.test(option.one_line_preview)) {
-      issues.push({
-        field: `${prefix}.one_line_preview`,
-        message: 'One-line preview must start with "If you pick this,".'
-      });
-    }
-    if (!/^You give up:\s/i.test(option.trade_off)) {
-      issues.push({
-        field: `${prefix}.trade_off`,
-        message: 'Trade-off must start with "You give up:".'
-      });
-    }
-    checkBanned(`${prefix}.label`, option.label, issues);
-    checkBanned(`${prefix}.one_line_preview`, option.one_line_preview, issues);
-    checkBanned(`${prefix}.trade_off`, option.trade_off, issues);
-    if (!isGrade8Friendly(option.label)) {
-      issues.push({
-        field: `${prefix}.label`,
-        message: "Option label must stay at grade-8 readability."
-      });
-    }
-  }
-  return issues;
-}
-function checkBanned(field, value, issues) {
-  const normalized = value.toLowerCase();
-  for (const banned of BANNED_WORDS) {
-    if (normalized.includes(banned)) {
-      issues.push({ field, message: `Banned word "${banned}" is not allowed here.` });
-    }
-  }
-}
-function wordCount(value) {
-  return value.trim().split(/\s+/).filter(Boolean).length;
-}
-function isGrade8Friendly(value) {
-  return value.split(/\s+/).filter(Boolean).every((word) => word.replace(/[^a-z]/gi, "").length <= 12);
-}
-function startsWithVerb(value) {
-  return /^(Reuse|Make|Keep|Extract|Take|Use|Switch|Stay|Skip|Pick)\b/i.test(value.trim());
-}
-
-// src/planning/decision-store.ts
-var MAX_PENDING_DECISIONS = 20;
-var DecisionCapExceededError = class extends Error {
-  constructor(pendingCount, cap) {
-    super(`Pending decision cap reached (${pendingCount}/${cap}).`);
-    this.pendingCount = pendingCount;
-    this.cap = cap;
-    this.name = "DecisionCapExceededError";
-  }
-  pendingCount;
-  cap;
-};
-var DecisionStore = class {
-  constructor(projectRoot, options = {}) {
-    this.projectRoot = projectRoot;
-    this.onEvent = options.onEvent;
-  }
-  projectRoot;
-  onEvent;
-  initialize() {
-    for (const relativePath of [
-      PATHS.DECISIONS_PENDING_DIR,
-      PATHS.DECISIONS_RESOLVED_DIR,
-      PATHS.DECISIONS_EXPIRED_DIR
-    ]) {
-      const dir = join39(this.projectRoot, relativePath);
-      mkdirSync23(dir, { recursive: true });
-      writeFileSync22(join39(dir, ".gitkeep"), "", { flag: "a" });
-    }
-    ensureDecisionAuditLog(this.projectRoot);
-    if (!existsSync20(this.indexPath())) {
-      this.writeIndex({ fingerprints: {}, decisions: {} });
-    }
-  }
-  nextDecisionId() {
-    return `D-${ulid()}`;
-  }
-  writePending(packet) {
-    this.initialize();
-    const existingTaskPending = this.findPendingDecisionForTask(packet.task_session_id);
-    if (existingTaskPending && existingTaskPending !== packet.decision_id) {
-      throw new Error(
-        `Task ${packet.task_session_id} already has a pending decision (${existingTaskPending}).`
-      );
-    }
-    this.enforcePendingCap(packet.decision_id);
-    this.assertWritablePacket(packet);
-    const enriched = this.enrichWithPrecedents(packet);
-    const path11 = this.packetPath(PATHS.DECISIONS_PENDING_DIR, enriched.decision_id);
-    atomicWriteJson3(path11, enriched);
-    this.appendAudit("decision-pending-written", enriched);
-    recordDecisionOpened(this.projectRoot, {
-      decisionId: enriched.decision_id,
-      category: enriched.category,
-      title: enriched.question,
-      createdAt: enriched.created_at
-    });
-    this.emit(decisionPausedEvent(enriched, this.relativePendingPath(enriched.decision_id)));
-    return path11;
-  }
-  enrichWithPrecedents(packet) {
-    if (packet.context.includes(PRECEDENT_BLOCK_HEADING)) {
-      return packet;
-    }
-    try {
-      const precedents = findDecisionPrecedents(this.projectRoot, {
-        decision_id: packet.decision_id,
-        fingerprint: packet.fingerprint,
-        category: packet.category,
-        question: packet.question,
-        context: packet.context
-      });
-      const block = formatDecisionPrecedents(precedents);
-      return block ? { ...packet, context: `${packet.context}
-
-${block}` } : packet;
-    } catch {
-      return packet;
-    }
-  }
-  enforcePendingCap(decisionId) {
-    const cap = this.maxPendingDecisions();
-    const pendingCount = this.listPendingDecisionIds().filter((id) => id !== decisionId).length;
-    if (pendingCount >= cap) {
-      this.emit(decisionCapExceededEvent(pendingCount, cap));
-      throw new DecisionCapExceededError(pendingCount, cap);
-    }
-  }
-  maxPendingDecisions() {
-    const configured = readProjectProfile(this.projectRoot)?.custom?.decisions?.max_pending;
-    return typeof configured === "number" && configured > 0 ? configured : MAX_PENDING_DECISIONS;
-  }
-  discard(input) {
-    this.initialize();
-    const result = this.readPendingResult(input.decisionId);
-    if (!result.packet) {
-      throw new Error(
-        `Cannot discard decision ${input.decisionId}: no valid pending packet${result.error ? ` (${result.error})` : ""}.`
-      );
-    }
-    const packet = result.packet;
-    this.deletePending(input.decisionId);
-    this.appendAudit("decision-discarded", packet);
-    recordDecisionDiscarded(this.projectRoot, packet.decision_id, input.reason);
-    this.emit(decisionDiscardedEvent(packet.decision_id, input.reason));
-    return packet;
-  }
-  emit(event) {
-    this.onEvent?.(event);
-  }
-  relativePendingPath(decisionId) {
-    return `${PATHS.DECISIONS_PENDING_DIR}/${decisionId}.json`;
-  }
-  resolve(input) {
-    const pending = this.readPending(input.decisionId);
-    if (!pending) {
-      throw new Error(`Pending decision ${input.decisionId} not found.`);
-    }
-    const resolved = this.writeResolvedPacket({
-      packet: pending,
-      humanResponse: input.humanResponse,
-      event: input.humanResponse.intent === "delegated" ? "decision-delegated" : "decision-resolved-by-human",
-      respondedByProvider: input.respondedByProvider
-    });
-    unlinkSync2(this.packetPath(PATHS.DECISIONS_PENDING_DIR, input.decisionId));
-    return this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, resolved.decision_id);
-  }
-  resolveExisting(input) {
-    const resolved = this.writeResolvedPacket(input);
-    return this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, resolved.decision_id);
-  }
-  deferUndeclaredDecision(input) {
-    const path11 = this.writePending(input.packet);
-    this.appendAudit("undeclared-decision-flagged", input.packet, input.provider);
-    return path11;
-  }
-  findReusableDecision(packet) {
-    const index = this.readIndex();
-    const exactDecisionId = index.fingerprints[packet.fingerprint];
-    if (exactDecisionId) {
-      const exactMatch = this.readReusableDecision(exactDecisionId);
-      if (exactMatch) {
-        this.appendAudit("decision-reused", exactMatch);
-        this.recordReuseToLedger(exactMatch, "exact");
-        return exactDecisionId;
-      }
-      delete index.fingerprints[packet.fingerprint];
-      this.writeIndex(index);
-    }
-    const packetOptionKeys = packet.options.map((option) => option.option_key);
-    let bestMatch = null;
-    for (const entry of Object.values(index.decisions)) {
-      if (entry.category !== packet.category || entry.chosen_option_key === null) {
-        continue;
-      }
-      if (!packetOptionKeys.includes(entry.chosen_option_key)) {
-        continue;
-      }
-      const resolved = this.readReusableDecision(entry.decision_id);
-      if (!resolved) {
-        continue;
-      }
-      const score = scoreDecisionOptionOverlap(packetOptionKeys, entry.option_keys);
-      if (score >= 0.8 && (bestMatch === null || score > bestMatch.score)) {
-        bestMatch = { id: entry.decision_id, score };
-      }
-    }
-    if (bestMatch) {
-      const resolved = this.readResolved(bestMatch.id);
-      if (resolved) {
-        this.appendAudit("decision-reused", resolved);
-        this.recordReuseToLedger(resolved, "fingerprint");
-      }
-    }
-    return bestMatch?.id ?? null;
-  }
-  recordReuseToLedger(packet, matchKind) {
-    recordDecisionReuse(
-      this.projectRoot,
-      {
-        decisionId: packet.decision_id,
-        category: packet.category,
-        chosenOptionKey: packet.human_response?.chosen_option_key ?? null,
-        matchKind,
-        sourcePath: join39(PATHS.DECISIONS_RESOLVED_DIR, `${packet.decision_id}.json`)
-      },
-      {}
-    );
-  }
-  readPending(decisionId) {
-    return this.readPacket(this.packetPath(PATHS.DECISIONS_PENDING_DIR, decisionId));
-  }
-  readPendingResult(decisionId) {
-    const path11 = this.packetPath(PATHS.DECISIONS_PENDING_DIR, decisionId);
-    if (!existsSync20(path11)) {
-      return { packet: null };
-    }
-    try {
-      return { packet: this.readPacket(path11) };
-    } catch (error) {
-      return {
-        packet: null,
-        error: error instanceof Error ? error.message : String(error)
-      };
-    }
-  }
-  readResolved(decisionId) {
-    return this.readPacket(this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, decisionId));
-  }
-  deletePending(decisionId) {
-    const path11 = this.packetPath(PATHS.DECISIONS_PENDING_DIR, decisionId);
-    if (existsSync20(path11)) {
-      unlinkSync2(path11);
-    }
-  }
-  listPendingDecisionIds() {
-    return this.listDirectoryIds(PATHS.DECISIONS_PENDING_DIR).sort(
-      (left, right) => left.localeCompare(right, void 0, { numeric: true })
-    );
-  }
-  findPendingDecisionForTask(taskSessionId) {
-    for (const decisionId of this.listPendingDecisionIds()) {
-      const result = this.readPendingResult(decisionId);
-      if (result.packet?.task_session_id === taskSessionId) {
-        return decisionId;
-      }
-    }
-    return null;
-  }
-  expireResolvedDecision(decisionId) {
-    const source = this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, decisionId);
-    const target = this.packetPath(PATHS.DECISIONS_EXPIRED_DIR, decisionId);
-    const packet = this.readResolved(decisionId);
-    if (!packet) {
-      throw new Error(`Resolved decision ${decisionId} not found.`);
-    }
-    const expired = { ...packet, status: "expired" };
-    atomicWriteJson3(target, expired);
-    unlinkSync2(source);
-    const index = this.readIndex();
-    if (index.fingerprints[packet.fingerprint] === decisionId) {
-      delete index.fingerprints[packet.fingerprint];
-    }
-    if (index.decisions[decisionId]) {
-      index.decisions[decisionId] = { ...index.decisions[decisionId], status: "expired" };
-    }
-    this.writeIndex(index);
-    this.appendAudit("decision-expired", expired);
-    recordDecisionExpired(this.projectRoot, expired.decision_id);
-    return target;
-  }
-  hasInvalidation(packet) {
-    if (!packet.human_response?.responded_at) {
-      return false;
-    }
-    const respondedAt = new Date(packet.human_response.responded_at).getTime();
-    return packet.invalidation_watch.some((path11) => {
-      const absolute = join39(this.projectRoot, path11);
-      return existsSync20(absolute) && statSync7(absolute).mtimeMs > respondedAt;
-    });
-  }
-  readPacket(path11) {
-    if (!existsSync20(path11)) {
-      return null;
-    }
-    const parsed = JSON.parse(readFileSync34(path11, "utf8"));
-    const packet = readAnyDecisionPacket(parsed);
-    if (packet === null) {
-      const reasons = validateDecisionPacket(parsed).join("; ");
-      const decisionId = typeof parsed?.decision_id === "string" ? parsed.decision_id : basename3(path11).replace(/\.json$/, "");
-      throw new DecisionPacketCorruptError(`Decision packet at ${path11} is invalid. ${reasons}`, {
-        decision_id: decisionId,
-        reason: reasons,
-        packet_path: relative5(this.projectRoot, path11)
-      });
-    }
-    return packet;
-  }
-  readReusableDecision(decisionId) {
-    const packet = this.readResolved(decisionId);
-    if (!packet) {
-      return null;
-    }
-    if (packet.status !== "resolved" && packet.status !== "delegated") {
-      return null;
-    }
-    if (packet.human_response?.chosen_option_key === null) {
-      return null;
-    }
-    if (isExpired(packet)) {
-      this.expireResolvedDecision(decisionId);
-      return null;
-    }
-    if (this.hasInvalidation(packet)) {
-      this.expireResolvedDecision(decisionId);
-      return null;
-    }
-    return packet;
-  }
-  assertWritablePacket(packet) {
-    const validationErrors = validateDecisionPacket(packet);
-    if (validationErrors.length > 0) {
-      throw new Error(
-        `Decision packet ${packet.decision_id} is invalid: ${validationErrors.join("; ")}`
-      );
-    }
-    if (!isStrictDecisionId(packet.decision_id)) {
-      throw new Error(
-        `Decision id "${packet.decision_id}" must be the collision-free D-<ULID> form on creation (mint it via DecisionStore.nextDecisionId / the decision skill; never hand-write a sequential D-{N}).`
-      );
-    }
-    const copyIssues = lintDecisionCopy(packet);
-    if (copyIssues.length > 0) {
-      throw new Error(
-        `Decision packet ${packet.decision_id} failed copy lint: ${copyIssues.map((issue) => `${issue.field} ${issue.message}`).join("; ")}`
-      );
-    }
-  }
-  appendAudit(event, packet, provider = packet.requested_by) {
-    appendDecisionAuditEvent(this.projectRoot, {
-      event,
-      decision_id: packet.decision_id,
-      fingerprint: packet.fingerprint,
-      task_session_id: packet.task_session_id,
-      provider,
-      timestamp: (/* @__PURE__ */ new Date()).toISOString(),
-      category: packet.category,
-      responded_by: packet.human_response?.responded_by,
-      chosen_option_key: packet.human_response?.chosen_option_key ?? null,
-      intent: packet.human_response?.intent
-    });
-  }
-  readIndex() {
-    this.initialize();
-    return JSON.parse(readFileSync34(this.indexPath(), "utf8"));
-  }
-  writeIndex(index) {
-    atomicWriteJson3(this.indexPath(), index);
-  }
-  indexPath() {
-    return join39(this.projectRoot, PATHS.DECISIONS_INDEX);
-  }
-  packetPath(root, decisionId) {
-    return join39(this.projectRoot, root, `${decisionId}.json`);
-  }
-  listDirectoryIds(relativeDir) {
-    const absoluteDir = join39(this.projectRoot, relativeDir);
-    if (!existsSync20(absoluteDir)) {
-      return [];
-    }
-    return readdirSync13(absoluteDir).filter((file) => /^D-(?:\d+|[0-9A-HJKMNP-TV-Z]{26})\.json$/.test(file)).map((file) => file.replace(/\.json$/, ""));
-  }
-  writeResolvedPacket(input) {
-    const resolved = {
-      ...input.packet,
-      status: input.humanResponse.intent === "delegated" ? "delegated" : "resolved",
-      human_response: input.humanResponse
-    };
-    const resolvedPath = this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, resolved.decision_id);
-    this.supersedeConflictingDecision(resolved);
-    atomicWriteJson3(resolvedPath, resolved);
-    const index = this.readIndex();
-    index.fingerprints[resolved.fingerprint] = resolved.decision_id;
-    index.decisions[resolved.decision_id] = {
-      decision_id: resolved.decision_id,
-      fingerprint: resolved.fingerprint,
-      category: resolved.category,
-      chosen_option_key: resolved.human_response?.chosen_option_key ?? null,
-      responded_at: resolved.human_response?.responded_at ?? resolved.created_at,
-      status: resolved.status,
-      option_keys: resolved.options.map((option) => option.option_key).sort()
-    };
-    this.writeIndex(index);
-    this.appendAudit(input.event, resolved, input.respondedByProvider);
-    recordDecisionResolved(
-      this.projectRoot,
-      resolved.decision_id,
-      resolved.status,
-      resolverFromAuditEvent(input.event)
-    );
-    this.emit(decisionResolvedEvent(resolved, resolverFromAuditEvent(input.event)));
-    return resolved;
-  }
-  supersedeConflictingDecision(packet) {
-    const index = this.readIndex();
-    const existingDecisionId = index.fingerprints[packet.fingerprint];
-    if (!existingDecisionId || existingDecisionId === packet.decision_id) {
-      return;
-    }
-    const existing = this.readResolved(existingDecisionId);
-    if (!existing) {
-      return;
-    }
-    if (existing.human_response?.chosen_option_key === packet.human_response?.chosen_option_key) {
-      return;
-    }
-    const superseded = { ...existing, status: "superseded" };
-    atomicWriteJson3(this.packetPath(PATHS.DECISIONS_RESOLVED_DIR, existingDecisionId), superseded);
-    index.decisions[existingDecisionId] = {
-      ...index.decisions[existingDecisionId],
-      status: "superseded"
-    };
-    this.writeIndex(index);
-    this.appendAudit("decision-superseded", superseded);
-    recordDecisionSuperseded(this.projectRoot, existingDecisionId);
-  }
-};
-function atomicWriteJson3(path11, value) {
-  mkdirSync23(dirname20(path11), { recursive: true });
-  const tempPath = `${path11}.tmp`;
-  writeFileSync22(tempPath, JSON.stringify(value, null, 2) + "\n");
-  renameSync6(tempPath, path11);
-}
-function isExpired(packet) {
-  return Date.parse(packet.ttl_until) <= Date.now();
-}
-function resolverFromAuditEvent(event) {
-  switch (event) {
-    case "decision-resolved-by-human":
-    case "decision-delegated":
-      return "human";
-    case "decision-resolved-by-rule":
-      return "rule";
-    case "decision-resolved-by-rag-confident":
-      return "rag-confident";
-    case "decision-resolved-by-memoization":
-      return "memoization";
-    default:
-      return event;
-  }
 }
 
 // src/planning/decision-selfarm.ts
