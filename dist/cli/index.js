@@ -14592,7 +14592,7 @@ function writeConfigsReadme(projectRoot) {
   writeFileSync(path22, generateConfigsReadme(), "utf8");
   return path22;
 }
-function generateConfigExample(version = "1.103.0") {
+function generateConfigExample(version = "1.103.1") {
   const lines = [
     "# paqad framework configuration \u2014 catalog of every knob (.paqad/.config.example)",
     `${CONFIG_EXAMPLE_STAMP}${version}`,
@@ -14629,7 +14629,7 @@ function writeConfigExample(projectRoot) {
   writeFileSync(path22, generateConfigExample(), "utf8");
   return path22;
 }
-function checkoutIsNewer(projectRoot, version = "1.103.0") {
+function checkoutIsNewer(projectRoot, version = "1.103.1") {
   let example;
   try {
     example = readFileSync2(join4(projectRoot, PATHS.PROJECT_CONFIG_EXAMPLE), "utf8");
@@ -91089,7 +91089,7 @@ init_cancelled_error();
 init_events();
 
 // src/index.ts
-var VERSION = "1.103.0";
+var VERSION = "1.103.1";
 
 // src/cli/commands/audit.ts
 init_esm_shims();
