@@ -15485,6 +15485,7 @@ function renderClaudePluginStageAgents() {
 // src/plugin/manifest-build.ts
 var PLUGIN_MOD_MODULES = ["./mod/register.tsx"];
 var PLUGIN_MOD_TYPES = "./runtime/claude-plugin/mod/types/index.d.ts";
+var PLUGIN_ICON = "./assets/icon.png";
 function buildPluginHooksConfig() {
   return { ...mergeNativeHooks({}, buildPluginHookChain()), modules: [...PLUGIN_MOD_MODULES] };
 }
@@ -15500,9 +15501,19 @@ function pluginAgentPaths() {
 function buildPluginManifest(packageVersion) {
   return {
     name: "paqad",
+    displayName: "paqad",
     description: "Your team's rules, enforced at edit time, with evidence for every change.",
     version: packageVersion,
-    author: { name: "Eliyce" },
+    author: { name: "Eliyce", email: "hello@eliyce.com", url: "https://eliyce.com" },
+    homepage: "https://paqad.ai",
+    repository: "https://github.com/Eliyce/paqad-claude-plugin",
+    license: "MIT",
+    keywords: ["governance", "code-review", "evidence", "rules", "quality-gates", "compliance"],
+    icon: PLUGIN_ICON,
+    documentationUrl: "https://paqad.ai/docs/",
+    supportUrl: "https://paqad.ai/support/",
+    privacyPolicyUrl: "https://paqad.ai/privacy/",
+    termsOfServiceUrl: "https://paqad.ai/terms/",
     hooks: "./runtime/claude-plugin/hooks.json",
     agents: pluginAgentPaths(),
     skills: "./runtime/claude-plugin/skills",
@@ -15514,6 +15525,7 @@ function serializePluginManifest(packageVersion) {
 `;
 }
 export {
+  PLUGIN_ICON,
   PLUGIN_MOD_MODULES,
   PLUGIN_MOD_TYPES,
   buildPluginHooksConfig,

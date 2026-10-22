@@ -10,9 +10,19 @@
   "plugins": [
     {
       "name": "paqad",
+      "displayName": "paqad",
       "source": "./",
       "description": "Your team's rules, enforced at edit time, with evidence for every change.",
-      "category": "governance"
+      "category": "governance",
+      "homepage": "https://paqad.ai",
+      "keywords": [
+        "governance",
+        "code-review",
+        "evidence",
+        "rules",
+        "quality-gates",
+        "compliance"
+      ]
     }
   ]
 }
