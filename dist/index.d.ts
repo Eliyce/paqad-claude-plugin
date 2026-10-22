@@ -4264,6 +4264,7 @@ interface HudSnapshot {
     active: boolean;
     route: string | null;
     lane: string | null;
+    lane_stages?: string[];
     lane_reason: string | null;
     headline: {
         text: string;

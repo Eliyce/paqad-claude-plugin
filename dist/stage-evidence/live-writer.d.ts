@@ -22,9 +22,11 @@ interface LiveWriteInput {
     agent?: string;
     now?: () => Date;
 }
-declare function highestStartedIndex(rows: readonly SessionLedgerRow[]): number;
 declare function stagesWithKind(rows: readonly SessionLedgerRow[], kind: string): Set<string>;
 declare function preCodeStagesRecorded(rows: readonly SessionLedgerRow[], lane: StageLane): boolean;
+declare function stageIsOpen(rows: readonly SessionLedgerRow[], stage: string): boolean;
+declare function liveEditStage(lane: StageLane, classified: StageId): StageId;
+declare function liveStageToStart(rows: readonly SessionLedgerRow[], lane: StageLane, classified: StageId): StageId | null;
 declare function recordLiveStageEdit(input: LiveWriteInput): StageId | null;
 interface LiveWriteBatchInput {
     projectRoot: string;
@@ -51,5 +53,5 @@ interface MarkedStageInput {
 }
 declare function recordMarkedStage(projectRoot: string, input: MarkedStageInput): boolean;
 
-export { ORCHESTRATOR_AGENT, classifyStage, highestStartedIndex, preCodeStagesRecorded, recordLiveStageEdit, recordLiveStageEdits, recordMarkedStage, resolveAgentIdentity, stagesWithKind };
+export { ORCHESTRATOR_AGENT, classifyStage, liveEditStage, liveStageToStart, preCodeStagesRecorded, recordLiveStageEdit, recordLiveStageEdits, recordMarkedStage, resolveAgentIdentity, stageIsOpen, stagesWithKind };
 export type { LiveWriteBatchInput, LiveWriteInput, MarkedStageInput, MarkedStagePhase };
