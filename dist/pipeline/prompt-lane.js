@@ -47,11 +47,11 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// node_modules/.pnpm/tsup@9.0.0_postcss@8.5.8_typescript@6.0.3_yaml@2.9.1/node_modules/tsup/assets/esm_shims.js
+// node_modules/.pnpm/tsup@9.0.0_postcss@8.5.31_typescript@6.0.3_yaml@2.9.1/node_modules/tsup/assets/esm_shims.js
 import path from "path";
 import { fileURLToPath } from "url";
 var init_esm_shims = __esm({
-  "node_modules/.pnpm/tsup@9.0.0_postcss@8.5.8_typescript@6.0.3_yaml@2.9.1/node_modules/tsup/assets/esm_shims.js"() {
+  "node_modules/.pnpm/tsup@9.0.0_postcss@8.5.31_typescript@6.0.3_yaml@2.9.1/node_modules/tsup/assets/esm_shims.js"() {
     "use strict";
   }
 });
@@ -4025,16 +4025,35 @@ var require_data = __commonJS({
   }
 });
 
-// node_modules/.pnpm/fast-uri@3.1.2/node_modules/fast-uri/lib/utils.js
+// node_modules/.pnpm/fast-uri@3.1.9/node_modules/fast-uri/lib/utils.js
 var require_utils = __commonJS({
-  "node_modules/.pnpm/fast-uri@3.1.2/node_modules/fast-uri/lib/utils.js"(exports, module) {
+  "node_modules/.pnpm/fast-uri@3.1.9/node_modules/fast-uri/lib/utils.js"(exports, module) {
     "use strict";
     init_esm_shims();
     var isUUID = RegExp.prototype.test.bind(/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/iu);
     var isIPv4 = RegExp.prototype.test.bind(/^(?:(?:25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d|\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d|\d)$/u);
+    var isPort = RegExp.prototype.test.bind(/^\d*$/u);
     var isHexPair = RegExp.prototype.test.bind(/^[\da-f]{2}$/iu);
     var isUnreserved = RegExp.prototype.test.bind(/^[\da-z\-._~]$/iu);
-    var isPathCharacter = RegExp.prototype.test.bind(/^[\da-z\-._~!$&'()*+,;=:@/]$/iu);
+    var isPathCharacter = RegExp.prototype.test.bind(/^[A-Za-z0-9\-._~!$&'()*+,;=:@/]$/u);
+    var isQueryFragmentCharacter = RegExp.prototype.test.bind(/^[A-Za-z0-9\-._~!$&'()*+,;=:@/?]$/u);
+    var isUserinfoCharacter = RegExp.prototype.test.bind(/^[A-Za-z0-9\-._~!$&'()*+,;=:]$/u);
+    var BYTE_HEX = new Array(256);
+    {
+      const HEX_DIGITS = "0123456789ABCDEF";
+      for (let i2 = 0; i2 < 256; i2++) {
+        BYTE_HEX[i2] = "%" + HEX_DIGITS[i2 >> 4] + HEX_DIGITS[i2 & 15];
+      }
+    }
+    function percentEncodeNonAscii(cp) {
+      if (cp < 2048) {
+        return BYTE_HEX[192 | cp >> 6] + BYTE_HEX[128 | cp & 63];
+      }
+      if (cp < 65536) {
+        return BYTE_HEX[224 | cp >> 12] + BYTE_HEX[128 | cp >> 6 & 63] + BYTE_HEX[128 | cp & 63];
+      }
+      return BYTE_HEX[240 | cp >> 18] + BYTE_HEX[128 | cp >> 12 & 63] + BYTE_HEX[128 | cp >> 6 & 63] + BYTE_HEX[128 | cp & 63];
+    }
     function stringArrayToHexStripped(input) {
       let acc = "";
       let code = 0;
@@ -4059,91 +4078,105 @@ var require_utils = __commonJS({
       }
       return acc;
     }
+    var isHextet = RegExp.prototype.test.bind(/^[\dA-Fa-f]{1,4}$/);
+    var isIPvFuture = RegExp.prototype.test.bind(/^[vV][\dA-Fa-f]+\.[A-Za-z\d\-._~!$&'()*+,;=:]+$/);
+    var isZoneCharacter = RegExp.prototype.test.bind(/^[A-Za-z\d\-._~]$/);
     var nonSimpleDomain = RegExp.prototype.test.bind(/[^!"$&'()*+,\-.;=_`a-z{}~]/u);
-    function consumeIsZone(buffer) {
-      buffer.length = 0;
-      return true;
-    }
-    function consumeHextets(buffer, address, output) {
-      if (buffer.length) {
-        const hex = stringArrayToHexStripped(buffer);
-        if (hex !== "") {
-          address.push(hex);
-        } else {
-          output.error = true;
-          return false;
+    function isZoneIdentifier(zone) {
+      if (zone.length === 0) return false;
+      for (let i2 = 0; i2 < zone.length; i2++) {
+        if (isZoneCharacter(zone[i2])) continue;
+        if (zone[i2] === "%" && i2 + 2 < zone.length && isHexPair(zone.slice(i2 + 1, i2 + 3))) {
+          i2 += 2;
+          continue;
         }
-        buffer.length = 0;
+        return false;
       }
       return true;
     }
-    function getIPV6(input) {
-      let tokenCount = 0;
-      const output = { error: false, address: "", zone: "" };
-      const address = [];
-      const buffer = [];
-      let endipv6Encountered = false;
-      let endIpv6 = false;
-      let consume = consumeHextets;
-      for (let i2 = 0; i2 < input.length; i2++) {
-        const cursor = input[i2];
-        if (cursor === "[" || cursor === "]") {
-          continue;
-        }
-        if (cursor === ":") {
-          if (endipv6Encountered === true) {
-            endIpv6 = true;
+    function compressIPv6ZeroRun(hextets) {
+      let bestStart = -1;
+      let bestLength = 0;
+      let runStart = -1;
+      let runLength = 0;
+      for (let i2 = 0; i2 < hextets.length; i2++) {
+        if (hextets[i2] === "0") {
+          if (runStart === -1) runStart = i2;
+          runLength++;
+          if (runLength > bestLength) {
+            bestLength = runLength;
+            bestStart = runStart;
           }
-          if (!consume(buffer, address, output)) {
-            break;
-          }
-          if (++tokenCount > 7) {
-            output.error = true;
-            break;
-          }
-          if (i2 > 0 && input[i2 - 1] === ":") {
-            endipv6Encountered = true;
-          }
-          address.push(":");
-          continue;
-        } else if (cursor === "%") {
-          if (!consume(buffer, address, output)) {
-            break;
-          }
-          consume = consumeIsZone;
         } else {
-          buffer.push(cursor);
-          continue;
+          runStart = -1;
+          runLength = 0;
         }
       }
-      if (buffer.length) {
-        if (consume === consumeIsZone) {
-          output.zone = buffer.join("");
-        } else if (endIpv6) {
-          address.push(buffer.join(""));
-        } else {
-          address.push(stringArrayToHexStripped(buffer));
-        }
+      if (bestLength < 2) return hextets.join(":");
+      const head = hextets.slice(0, bestStart).join(":");
+      const tail = hextets.slice(bestStart + bestLength).join(":");
+      return head + "::" + tail;
+    }
+    function normalizeIPv6Address(input) {
+      const compression = input.indexOf("::");
+      if (compression !== -1 && input.indexOf("::", compression + 1) !== -1) return void 0;
+      const left = compression === -1 ? input.split(":") : input.slice(0, compression).split(":");
+      const right = compression === -1 ? [] : input.slice(compression + 2).split(":");
+      if (compression !== -1) {
+        if (left.length === 1 && left[0] === "") left.length = 0;
+        if (right.length === 1 && right[0] === "") right.length = 0;
       }
-      output.address = address.join("");
-      return output;
+      const parts = left.concat(right);
+      let hextetCount = 0;
+      for (let i2 = 0; i2 < parts.length; i2++) {
+        const part = parts[i2];
+        if (part === "") return void 0;
+        if (part.indexOf(".") !== -1) {
+          if (i2 !== parts.length - 1 || compression !== -1 && right.length === 0 || !isIPv4(part)) return void 0;
+          hextetCount += 2;
+          continue;
+        }
+        if (!isHextet(part)) return void 0;
+        parts[i2] = parseInt(part, 16).toString(16);
+        hextetCount++;
+      }
+      if (compression === -1) {
+        if (hextetCount !== 8) return void 0;
+        return compressIPv6ZeroRun(parts);
+      }
+      if (hextetCount >= 8) return void 0;
+      const expanded = parts.slice(0, left.length);
+      for (let i2 = hextetCount; i2 < 8; i2++) expanded.push("0");
+      for (let i2 = left.length; i2 < parts.length; i2++) expanded.push(parts[i2]);
+      return compressIPv6ZeroRun(expanded);
     }
     function normalizeIPv6(host) {
-      if (findToken(host, ":") < 2) {
-        return { host, isIPV6: false };
+      const bracketed = host[0] === "[" && host[host.length - 1] === "]";
+      const hasBracket = host[0] === "[" || host[host.length - 1] === "]";
+      if (hasBracket && !bracketed) return { host, isIPV6: false, error: true };
+      let input = bracketed ? host.slice(1, -1) : host;
+      if (bracketed && isIPvFuture(input)) {
+        input = input.toLowerCase();
+        return { host: `[${input}]`, escapedHost: input, isIPV6: false, isIPVFuture: true };
       }
-      const ipv6 = getIPV6(host);
-      if (!ipv6.error) {
-        let newHost = ipv6.address;
-        let escapedHost = ipv6.address;
-        if (ipv6.zone) {
-          newHost += "%" + ipv6.zone;
-          escapedHost += "%25" + ipv6.zone;
-        }
-        return { host: newHost, isIPV6: true, escapedHost };
-      } else {
-        return { host, isIPV6: false };
+      if (findToken(input, ":") < 2) {
+        return { host, isIPV6: false, error: bracketed };
       }
+      let zoneIdentifier = "";
+      const zoneSeparator = input.indexOf("%");
+      if (zoneSeparator !== -1) {
+        const separatorLength = input.slice(zoneSeparator, zoneSeparator + 3).toLowerCase() === "%25" ? 3 : 1;
+        zoneIdentifier = input.slice(zoneSeparator + separatorLength);
+        if (!isZoneIdentifier(zoneIdentifier)) return { host, isIPV6: false, error: true };
+        input = input.slice(0, zoneSeparator);
+      }
+      const address = normalizeIPv6Address(input);
+      if (address === void 0) return { host, isIPV6: false, error: true };
+      return {
+        host: address + (zoneIdentifier ? "%" + zoneIdentifier : ""),
+        escapedHost: address + (zoneIdentifier ? "%25" + zoneIdentifier : ""),
+        isIPV6: true
+      };
     }
     function findToken(str, token) {
       let ind = 0;
@@ -4227,6 +4260,37 @@ var require_utils = __commonJS({
       }
       return output.join("");
     }
+    function removeDotSegmentsRelative(path12) {
+      if (path12 === "" || path12[0] === "/") {
+        return removeDotSegments(path12);
+      }
+      const segments = path12.split("/");
+      const last = segments.length - 1;
+      const output = [];
+      let trailingDirectory = false;
+      for (let i2 = 0; i2 <= last; i2++) {
+        const segment = segments[i2];
+        if (segment === "." || segment === "..") {
+          if (segment === "..") {
+            if (output.length !== 0 && output[output.length - 1] !== "..") {
+              output.pop();
+            } else {
+              output.push("..");
+            }
+          }
+          trailingDirectory = i2 === last;
+        } else {
+          output.push(segment);
+        }
+      }
+      if (trailingDirectory && output[output.length - 1] !== "..") {
+        output.push("");
+      }
+      if (output.length === 0 || output[0] === "" || output[0].includes(":")) {
+        output.unshift(".");
+      }
+      return output.join("/");
+    }
     var HOST_DELIMS = { "@": "%40", "/": "%2F", "?": "%3F", "#": "%23", ":": "%3A" };
     var HOST_DELIM_RE = /[@/?#:]/g;
     var HOST_DELIM_NO_COLON_RE = /[@/?#]/g;
@@ -4262,7 +4326,8 @@ var require_utils = __commonJS({
     function normalizePathEncoding(input) {
       let output = "";
       for (let i2 = 0; i2 < input.length; i2++) {
-        if (input[i2] === "%" && i2 + 2 < input.length) {
+        const ch = input[i2];
+        if (ch === "%" && i2 + 2 < input.length) {
           const hex = input.slice(i2 + 1, i2 + 3);
           if (isHexPair(hex)) {
             const normalizedHex = hex.toUpperCase();
@@ -4276,10 +4341,152 @@ var require_utils = __commonJS({
             continue;
           }
         }
-        if (isPathCharacter(input[i2])) {
-          output += input[i2];
+        if (isPathCharacter(ch)) {
+          output += ch;
         } else {
-          output += escape(input[i2]);
+          const code = input.charCodeAt(i2);
+          if (code < 128) {
+            output += isEscapeSafe(code) ? ch : BYTE_HEX[code];
+          } else if (code < 55296 || code > 57343) {
+            output += percentEncodeNonAscii(code);
+          } else if (code <= 56319 && i2 + 1 < input.length) {
+            const low = input.charCodeAt(i2 + 1);
+            if (low >= 56320 && low <= 57343) {
+              output += percentEncodeNonAscii(65536 + (code - 55296 << 10) + (low - 56320));
+              i2++;
+            } else {
+              output += percentEncodeNonAscii(65533);
+            }
+          } else {
+            output += percentEncodeNonAscii(65533);
+          }
+        }
+      }
+      return output;
+    }
+    function serializePathEncoding(input, pathNoScheme = false) {
+      let output = "";
+      let firstSegment = pathNoScheme && input[0] !== "/";
+      for (let i2 = 0; i2 < input.length; i2++) {
+        const ch = input[i2];
+        if (ch === "%" && i2 + 2 < input.length) {
+          const hex = input.slice(i2 + 1, i2 + 3);
+          if (isHexPair(hex)) {
+            output += "%" + hex.toUpperCase();
+            i2 += 2;
+            continue;
+          }
+        }
+        if (ch === "/") {
+          firstSegment = false;
+        }
+        if (isPathCharacter(ch) && (ch !== ":" || !firstSegment)) {
+          output += ch;
+        } else {
+          const code = input.charCodeAt(i2);
+          if (code < 128) {
+            output += BYTE_HEX[code];
+          } else if (code < 55296 || code > 57343) {
+            output += percentEncodeNonAscii(code);
+          } else if (code <= 56319 && i2 + 1 < input.length) {
+            const low = input.charCodeAt(i2 + 1);
+            if (low >= 56320 && low <= 57343) {
+              output += percentEncodeNonAscii(65536 + (code - 55296 << 10) + (low - 56320));
+              i2++;
+            } else {
+              output += percentEncodeNonAscii(65533);
+            }
+          } else {
+            output += percentEncodeNonAscii(65533);
+          }
+        }
+      }
+      return output;
+    }
+    function encodeComponent(input, isAllowed) {
+      let output = "";
+      for (let i2 = 0; i2 < input.length; i2++) {
+        const ch = input[i2];
+        if (ch === "%" && i2 + 2 < input.length) {
+          const hex = input.slice(i2 + 1, i2 + 3);
+          if (isHexPair(hex)) {
+            output += "%" + hex.toUpperCase();
+            i2 += 2;
+            continue;
+          }
+        }
+        if (isAllowed(ch)) {
+          output += ch;
+        } else {
+          const code = input.charCodeAt(i2);
+          if (code < 128) {
+            output += BYTE_HEX[code];
+          } else if (code < 55296 || code > 57343) {
+            output += percentEncodeNonAscii(code);
+          } else if (code <= 56319 && i2 + 1 < input.length) {
+            const low = input.charCodeAt(i2 + 1);
+            if (low >= 56320 && low <= 57343) {
+              output += percentEncodeNonAscii(65536 + (code - 55296 << 10) + (low - 56320));
+              i2++;
+            } else {
+              output += percentEncodeNonAscii(65533);
+            }
+          } else {
+            output += percentEncodeNonAscii(65533);
+          }
+        }
+      }
+      return output;
+    }
+    function encodeUserinfo(input) {
+      return encodeComponent(input, isUserinfoCharacter);
+    }
+    function encodeQuery(input) {
+      return encodeComponent(input, isQueryFragmentCharacter);
+    }
+    function encodeFragment(input) {
+      return encodeComponent(input, isQueryFragmentCharacter);
+    }
+    function isEscapeSafe(cp) {
+      return cp >= 48 && cp <= 57 || cp >= 65 && cp <= 90 || cp >= 97 && cp <= 122 || cp === 42 || cp === 43 || cp === 45 || cp === 46 || cp === 47 || cp === 64 || cp === 95;
+    }
+    function normalizeQueryFragmentEncoding(input) {
+      let output = "";
+      for (let i2 = 0; i2 < input.length; i2++) {
+        const ch = input[i2];
+        if (ch === "%" && i2 + 2 < input.length) {
+          const hex = input.slice(i2 + 1, i2 + 3);
+          if (isHexPair(hex)) {
+            const normalizedHex = hex.toUpperCase();
+            const decoded = String.fromCharCode(parseInt(normalizedHex, 16));
+            if (isUnreserved(decoded)) {
+              output += decoded;
+            } else {
+              output += "%" + normalizedHex;
+            }
+            i2 += 2;
+            continue;
+          }
+        }
+        if (isQueryFragmentCharacter(ch)) {
+          output += ch;
+        } else {
+          const code = input.charCodeAt(i2);
+          if (code < 128) {
+            output += isEscapeSafe(code) ? ch : BYTE_HEX[code];
+          } else if (code < 55296 || code > 57343) {
+            output += percentEncodeNonAscii(code);
+          } else if (code <= 56319 && i2 + 1 < input.length) {
+            const low = input.charCodeAt(i2 + 1);
+            if (low >= 56320 && low <= 57343) {
+              output += percentEncodeNonAscii(65536 + (code - 55296 << 10) + (low - 56320));
+              i2++;
+            } else {
+              output += percentEncodeNonAscii(65533);
+            }
+          } else {
+            output += percentEncodeNonAscii(65533);
+          }
         }
       }
       return output;
@@ -4302,14 +4509,18 @@ var require_utils = __commonJS({
     function recomposeAuthority(component) {
       const uriTokens = [];
       if (component.userinfo !== void 0) {
-        uriTokens.push(component.userinfo);
+        uriTokens.push(encodeUserinfo(component.userinfo));
         uriTokens.push("@");
       }
       if (component.host !== void 0) {
-        let host = unescape(component.host);
+        let host = component.host;
         if (!isIPv4(host)) {
-          const ipV6res = normalizeIPv6(host);
-          if (ipV6res.isIPV6 === true) {
+          let ipV6res = normalizeIPv6(host);
+          if (ipV6res.isIPV6 !== true && ipV6res.isIPVFuture !== true) {
+            host = normalizePercentEncoding(host, true);
+            ipV6res = normalizeIPv6(host);
+          }
+          if (ipV6res.isIPV6 === true || ipV6res.isIPVFuture === true) {
             host = `[${ipV6res.escapedHost}]`;
           } else {
             host = reescapeHostDelimiters(host, false);
@@ -4318,8 +4529,12 @@ var require_utils = __commonJS({
         uriTokens.push(host);
       }
       if (typeof component.port === "number" || typeof component.port === "string") {
+        const port = String(component.port);
+        if (!isPort(port)) {
+          throw new TypeError("URI port is malformed.");
+        }
         uriTokens.push(":");
-        uriTokens.push(String(component.port));
+        uriTokens.push(port);
       }
       return uriTokens.length ? uriTokens.join("") : void 0;
     }
@@ -4329,8 +4544,14 @@ var require_utils = __commonJS({
       reescapeHostDelimiters,
       normalizePercentEncoding,
       normalizePathEncoding,
+      serializePathEncoding,
+      normalizeQueryFragmentEncoding,
+      encodeUserinfo,
+      encodeQuery,
+      encodeFragment,
       escapePreservingEscapes,
       removeDotSegments,
+      removeDotSegmentsRelative,
       isIPv4,
       isUUID,
       normalizeIPv6,
@@ -4339,13 +4560,13 @@ var require_utils = __commonJS({
   }
 });
 
-// node_modules/.pnpm/fast-uri@3.1.2/node_modules/fast-uri/lib/schemes.js
+// node_modules/.pnpm/fast-uri@3.1.9/node_modules/fast-uri/lib/schemes.js
 var require_schemes = __commonJS({
-  "node_modules/.pnpm/fast-uri@3.1.2/node_modules/fast-uri/lib/schemes.js"(exports, module) {
+  "node_modules/.pnpm/fast-uri@3.1.9/node_modules/fast-uri/lib/schemes.js"(exports, module) {
     "use strict";
     init_esm_shims();
     var { isUUID } = require_utils();
-    var URN_REG = /([\da-z][\d\-a-z]{0,31}):((?:[\w!$'()*+,\-.:;=@]|%[\da-f]{2})+)/iu;
+    var URN_REG = /^([\da-z][\d\-a-z]{0,31}):((?:[\w!$'()*+,\-./:;=@]|%[\da-f]{2})+)$/iu;
     var supportedSchemeNames = (
       /** @type {const} */
       [
@@ -4406,9 +4627,10 @@ var require_schemes = __commonJS({
         wsComponent.secure = void 0;
       }
       if (wsComponent.resourceName) {
-        const [path12, query] = wsComponent.resourceName.split("?");
+        const queryIndex = wsComponent.resourceName.indexOf("?");
+        const path12 = queryIndex === -1 ? wsComponent.resourceName : wsComponent.resourceName.slice(0, queryIndex);
         wsComponent.path = path12 && path12 !== "/" ? path12 : void 0;
-        wsComponent.query = query;
+        wsComponent.query = queryIndex === -1 ? void 0 : wsComponent.resourceName.slice(queryIndex + 1);
         wsComponent.resourceName = void 0;
       }
       wsComponent.fragment = void 0;
@@ -4420,7 +4642,7 @@ var require_schemes = __commonJS({
         return urnComponent;
       }
       const matches = urnComponent.path.match(URN_REG);
-      if (matches) {
+      if (matches && matches[0] === urnComponent.path) {
         const scheme = options.scheme || urnComponent.scheme || "urn";
         urnComponent.nid = matches[1].toLowerCase();
         urnComponent.nss = matches[2];
@@ -4550,13 +4772,24 @@ var require_schemes = __commonJS({
   }
 });
 
-// node_modules/.pnpm/fast-uri@3.1.2/node_modules/fast-uri/index.js
+// node_modules/.pnpm/fast-uri@3.1.9/node_modules/fast-uri/index.js
 var require_fast_uri = __commonJS({
-  "node_modules/.pnpm/fast-uri@3.1.2/node_modules/fast-uri/index.js"(exports, module) {
+  "node_modules/.pnpm/fast-uri@3.1.9/node_modules/fast-uri/index.js"(exports, module) {
     "use strict";
     init_esm_shims();
-    var { normalizeIPv6, removeDotSegments, recomposeAuthority, normalizePercentEncoding, normalizePathEncoding, escapePreservingEscapes, reescapeHostDelimiters, isIPv4, nonSimpleDomain } = require_utils();
+    var { normalizeIPv6, removeDotSegments, removeDotSegmentsRelative, recomposeAuthority, normalizePercentEncoding, normalizePathEncoding, serializePathEncoding, normalizeQueryFragmentEncoding, encodeQuery, encodeFragment, reescapeHostDelimiters, isIPv4, nonSimpleDomain } = require_utils();
     var { SCHEMES, getSchemeHandler } = require_schemes();
+    var VALID_SCHEME = /^[A-Za-z][A-Za-z0-9+.-]*$/u;
+    var MALFORMED_SCHEME_ERROR = "URI scheme is malformed.";
+    var MALFORMED_HOST_ERROR = "URI host is malformed.";
+    var FORBIDDEN_DOMAIN_HOST_CHARACTER = /[\0-\x20"#/:<>?@[\\\]^`{|}\x7F]/u;
+    function validateScheme(scheme) {
+      const stringScheme = String(scheme);
+      if (!VALID_SCHEME.test(stringScheme)) {
+        throw new TypeError(MALFORMED_SCHEME_ERROR);
+      }
+      return stringScheme;
+    }
     function normalize2(uri, options) {
       if (typeof uri === "string") {
         uri = /** @type {T} */
@@ -4569,53 +4802,84 @@ var require_fast_uri = __commonJS({
     }
     function resolve7(baseURI, relativeURI, options) {
       const schemelessOptions = options ? Object.assign({ scheme: "null" }, options) : { scheme: "null" };
-      const resolved = resolveComponent(parse2(baseURI, schemelessOptions), parse2(relativeURI, schemelessOptions), schemelessOptions, true);
+      const {
+        parsed: baseParsed,
+        malformedAuthorityOrPort: baseMalformed,
+        malformedPercentEncoding: baseMalformedPercentEncoding,
+        malformedSchemeSpecific: baseMalformedSchemeSpecific,
+        malformedHost: baseMalformedHost,
+        malformedScheme: baseMalformedScheme
+      } = parseWithStatus(baseURI, schemelessOptions);
+      const {
+        parsed: relativeParsed,
+        malformedAuthorityOrPort: relativeMalformed,
+        malformedPercentEncoding: relativeMalformedPercentEncoding,
+        malformedSchemeSpecific: relativeMalformedSchemeSpecific,
+        malformedHost: relativeMalformedHost,
+        malformedScheme: relativeMalformedScheme
+      } = parseWithStatus(relativeURI, schemelessOptions);
+      if (baseMalformed || relativeMalformed || baseMalformedPercentEncoding || relativeMalformedPercentEncoding || baseMalformedSchemeSpecific || relativeMalformedSchemeSpecific || baseMalformedHost || relativeMalformedHost || baseMalformedScheme || relativeMalformedScheme) {
+        throw new Error(baseParsed.error || relativeParsed.error || "URI is malformed.");
+      }
+      const resolved = resolveComponent(baseParsed, relativeParsed, schemelessOptions, true);
+      const resolvedSchemeHandler = getSchemeHandler(options && options.scheme || resolved.scheme);
+      const resolvedHost = resolved.host;
+      const resolvedHostIsIP = resolvedHost !== void 0 && resolvedHost !== "" && (isIPv4(resolvedHost) || normalizeIPv6(resolvedHost).isIPV6);
+      if (hasForbiddenDomainHost(resolved, options || {}, resolvedSchemeHandler, resolvedHostIsIP)) {
+        throw new Error(MALFORMED_HOST_ERROR);
+      }
+      canonicalizeHost(resolved, options || {}, resolvedSchemeHandler, resolvedHostIsIP);
+      const encodedASCIIHost = resolvedHost && resolvedHost.indexOf("%") !== -1 && !new RegExp("\\P{ASCII}", "u").test(resolvedHost);
+      if (resolved.error && !encodedASCIIHost) {
+        throw new Error(resolved.error);
+      }
       schemelessOptions.skipEscape = true;
       return serialize2(resolved, schemelessOptions);
     }
-    function resolveComponent(base, relative7, options, skipNormalization) {
+    function resolveComponent(base, relative8, options, skipNormalization) {
       const target = {};
       if (!skipNormalization) {
         base = parse2(serialize2(base, options), options);
-        relative7 = parse2(serialize2(relative7, options), options);
+        relative8 = parse2(serialize2(relative8, options), options);
       }
       options = options || {};
-      if (!options.tolerant && relative7.scheme) {
-        target.scheme = relative7.scheme;
-        target.userinfo = relative7.userinfo;
-        target.host = relative7.host;
-        target.port = relative7.port;
-        target.path = removeDotSegments(relative7.path || "");
-        target.query = relative7.query;
+      if (!options.tolerant && relative8.scheme) {
+        target.scheme = relative8.scheme;
+        target.userinfo = relative8.userinfo;
+        target.host = relative8.host;
+        target.port = relative8.port;
+        target.path = removeDotSegments(relative8.path || "");
+        target.query = relative8.query;
       } else {
-        if (relative7.userinfo !== void 0 || relative7.host !== void 0 || relative7.port !== void 0) {
-          target.userinfo = relative7.userinfo;
-          target.host = relative7.host;
-          target.port = relative7.port;
-          target.path = removeDotSegments(relative7.path || "");
-          target.query = relative7.query;
+        if (relative8.userinfo !== void 0 || relative8.host !== void 0 || relative8.port !== void 0) {
+          target.userinfo = relative8.userinfo;
+          target.host = relative8.host;
+          target.port = relative8.port;
+          target.path = removeDotSegments(relative8.path || "");
+          target.query = relative8.query;
         } else {
-          if (!relative7.path) {
+          if (!relative8.path) {
             target.path = base.path;
-            if (relative7.query !== void 0) {
-              target.query = relative7.query;
+            if (relative8.query !== void 0) {
+              target.query = relative8.query;
             } else {
               target.query = base.query;
             }
           } else {
-            if (relative7.path[0] === "/") {
-              target.path = removeDotSegments(relative7.path);
+            if (relative8.path[0] === "/") {
+              target.path = removeDotSegments(relative8.path);
             } else {
-              if ((base.userinfo !== void 0 || base.host !== void 0 || base.port !== void 0) && !base.path) {
-                target.path = "/" + relative7.path;
+              const baseHasAuthority = base.userinfo !== void 0 || base.host !== void 0 || base.port !== void 0;
+              if (baseHasAuthority && !base.path) {
+                target.path = "/" + relative8.path;
               } else if (!base.path) {
-                target.path = relative7.path;
+                target.path = relative8.path;
               } else {
-                target.path = base.path.slice(0, base.path.lastIndexOf("/") + 1) + relative7.path;
+                target.path = base.path.slice(0, base.path.lastIndexOf("/") + 1) + relative8.path;
               }
-              target.path = removeDotSegments(target.path);
+              target.path = base.scheme === void 0 && !baseHasAuthority && target.path[0] !== "/" ? removeDotSegmentsRelative(target.path) : removeDotSegments(target.path);
             }
-            target.query = relative7.query;
+            target.query = relative8.query;
           }
           target.userinfo = base.userinfo;
           target.host = base.host;
@@ -4623,13 +4887,13 @@ var require_fast_uri = __commonJS({
         }
         target.scheme = base.scheme;
       }
-      target.fragment = relative7.fragment;
+      target.fragment = relative8.fragment;
       return target;
     }
     function equal(uriA, uriB, options) {
       const normalizedA = normalizeComparableURI(uriA, options);
       const normalizedB = normalizeComparableURI(uriB, options);
-      return normalizedA !== void 0 && normalizedB !== void 0 && normalizedA.toLowerCase() === normalizedB.toLowerCase();
+      return normalizedA !== void 0 && normalizedB !== void 0 && normalizedA === normalizedB;
     }
     function serialize2(cmpts, opts) {
       const component = {
@@ -4650,19 +4914,23 @@ var require_fast_uri = __commonJS({
       };
       const options = Object.assign({}, opts);
       const uriTokens = [];
+      if (component.scheme) {
+        component.scheme = validateScheme(component.scheme);
+      }
       const schemeHandler = getSchemeHandler(options.scheme || component.scheme);
       if (schemeHandler && schemeHandler.serialize) schemeHandler.serialize(component, options);
+      const hasAuthority = component.userinfo !== void 0 || component.host !== void 0 || component.port !== void 0;
+      const schemelessReference = (component.scheme === void 0 || options.reference === "suffix") && !hasAuthority;
+      const pathNoScheme = !options.skipEscape && schemelessReference;
       if (component.path !== void 0) {
         if (!options.skipEscape) {
-          component.path = escapePreservingEscapes(component.path);
-          if (component.scheme !== void 0) {
-            component.path = component.path.split("%3A").join(":");
-          }
+          component.path = serializePathEncoding(component.path, pathNoScheme);
         } else {
           component.path = normalizePercentEncoding(component.path);
         }
       }
       if (options.reference !== "suffix" && component.scheme) {
+        component.scheme = validateScheme(component.scheme);
         uriTokens.push(component.scheme, ":");
       }
       const authority = recomposeAuthority(component);
@@ -4678,7 +4946,10 @@ var require_fast_uri = __commonJS({
       if (component.path !== void 0) {
         let s = component.path;
         if (!options.absolutePath && (!schemeHandler || !schemeHandler.absolutePath)) {
-          s = removeDotSegments(s);
+          s = schemelessReference && s[0] !== "/" ? removeDotSegmentsRelative(s) : removeDotSegments(s);
+        }
+        if (schemelessReference) {
+          s = serializePathEncoding(s, true);
         }
         if (authority === void 0 && s[0] === "/" && s[1] === "/") {
           s = "/%2F" + s.slice(2);
@@ -4686,14 +4957,16 @@ var require_fast_uri = __commonJS({
         uriTokens.push(s);
       }
       if (component.query !== void 0) {
-        uriTokens.push("?", component.query);
+        uriTokens.push("?", encodeQuery(component.query));
       }
       if (component.fragment !== void 0) {
-        uriTokens.push("#", component.fragment);
+        uriTokens.push("#", encodeFragment(component.fragment));
       }
       return uriTokens.join("");
     }
     var URI_PARSE = /^(?:([^#/:?]+):)?(?:\/\/((?:([^#/?@]*)@)?(\[[^#/?\]]+\]|[^#/:?]*)(?::(\d*))?))?([^#?]*)(?:\?([^#]*))?(?:#((?:.|[\n\r])*))?/u;
+    var AUTHORITY_PREFIX = /^(?:[^#/:?]+:)?\/\/([^/?#]*)/;
+    var AUTHORITY_INTRODUCER_REGION = /^(?:[^#/:?]+:)?([/\\\t\n\r]*)/;
     function getParseError(parsed, matches) {
       if (matches[2] !== void 0 && parsed.path && parsed.path[0] !== "/") {
         return 'URI path must start with "/" when authority is present.';
@@ -4702,6 +4975,53 @@ var require_fast_uri = __commonJS({
         return "URI port is malformed.";
       }
       return void 0;
+    }
+    function hasMalformedPercentEncoding(component) {
+      if (component === void 0) return false;
+      let percent = component.indexOf("%");
+      while (percent !== -1) {
+        if (percent + 2 >= component.length || !/^[\da-f]{2}$/iu.test(component.slice(percent + 1, percent + 3))) {
+          return true;
+        }
+        percent = component.indexOf("%", percent + 3);
+      }
+      return false;
+    }
+    function isIPLiteral(host) {
+      return host[0] === "[" && host[host.length - 1] === "]";
+    }
+    function hasMalformedComponentPercentEncoding(matches) {
+      const host = matches[4];
+      return hasMalformedPercentEncoding(matches[3]) || host !== void 0 && !isIPLiteral(host) && hasMalformedPercentEncoding(host) || hasMalformedPercentEncoding(matches[6]) || hasMalformedPercentEncoding(matches[7]) || hasMalformedPercentEncoding(matches[8]);
+    }
+    function canonicalizeHost(parsed, options, schemeHandler, isIP) {
+      if (hasForbiddenDomainHost(parsed, options, schemeHandler, isIP)) {
+        parsed.error = parsed.error || MALFORMED_HOST_ERROR;
+        return true;
+      }
+      if (!options.unicodeSupport && (!schemeHandler || !schemeHandler.unicodeSupport) && parsed.host && !isIPLiteral(parsed.host) && (options.domainHost || schemeHandler && schemeHandler.domainHost) && isIP === false && nonSimpleDomain(parsed.host)) {
+        let url;
+        try {
+          url = new URL("http://" + parsed.host);
+        } catch (e) {
+          parsed.error = parsed.error || "Host's domain name can not be converted to ASCII: " + e;
+          return true;
+        }
+        if (!isHostOnlyURL(url)) {
+          parsed.error = parsed.error || MALFORMED_HOST_ERROR;
+          return true;
+        }
+        parsed.host = url.hostname;
+      }
+      return false;
+    }
+    function hasForbiddenDomainHost(parsed, options, schemeHandler, isIP) {
+      return Boolean(
+        parsed.host && isIP === false && !isIPLiteral(parsed.host) && (options.domainHost || schemeHandler && schemeHandler.domainHost) && FORBIDDEN_DOMAIN_HOST_CHARACTER.test(parsed.host)
+      );
+    }
+    function isHostOnlyURL(url) {
+      return url.username === "" && url.password === "" && url.port === "" && url.pathname === "/" && url.search === "" && url.hash === "" && url.hostname !== "";
     }
     function parseWithStatus(uri, opts) {
       const options = Object.assign({}, opts);
@@ -4715,12 +5035,36 @@ var require_fast_uri = __commonJS({
         fragment: void 0
       };
       let malformedAuthorityOrPort = false;
+      let malformedPercentEncoding = false;
+      let malformedSchemeSpecific = false;
+      let malformedHost = false;
+      let malformedIPLiteral = false;
+      let malformedScheme = false;
       let isIP = false;
       if (options.reference === "suffix") {
         if (options.scheme) {
           uri = options.scheme + ":" + uri;
         } else {
           uri = "//" + uri;
+        }
+      }
+      const authorityMatch = uri.match(AUTHORITY_PREFIX);
+      if (authorityMatch !== null && authorityMatch[1].indexOf("\\") !== -1) {
+        parsed.error = "URI authority must not contain a literal backslash.";
+        malformedAuthorityOrPort = true;
+      }
+      const introducerMatch = uri.match(AUTHORITY_INTRODUCER_REGION);
+      if (introducerMatch !== null) {
+        const region = introducerMatch[1];
+        const normalizedRegion = region.replace(/[\t\n\r]/g, "");
+        if (normalizedRegion.length >= 2) {
+          if (normalizedRegion.slice(0, 2) !== "//") {
+            parsed.error = parsed.error || "URI authority must not contain a literal backslash.";
+            malformedAuthorityOrPort = true;
+          } else if (region.length !== normalizedRegion.length) {
+            parsed.error = parsed.error || "URI authority introducer must not contain whitespace.";
+            malformedAuthorityOrPort = true;
+          }
         }
       }
       const matches = uri.match(URI_PARSE);
@@ -4732,6 +5076,18 @@ var require_fast_uri = __commonJS({
         parsed.path = matches[6] || "";
         parsed.query = matches[7];
         parsed.fragment = matches[8];
+        if (parsed.scheme !== void 0) {
+          if (VALID_SCHEME.test(parsed.scheme)) {
+            parsed.scheme = parsed.scheme.toLowerCase();
+          } else {
+            parsed.error = parsed.error || MALFORMED_SCHEME_ERROR;
+            malformedScheme = true;
+          }
+        }
+        malformedPercentEncoding = hasMalformedComponentPercentEncoding(matches);
+        if (malformedPercentEncoding) {
+          parsed.error = parsed.error || "URI contains malformed percent-encoding.";
+        }
         if (isNaN(parsed.port)) {
           parsed.port = matches[5];
         }
@@ -4743,9 +5099,16 @@ var require_fast_uri = __commonJS({
         if (parsed.host) {
           const ipv4result = isIPv4(parsed.host);
           if (ipv4result === false) {
+            const bracketedIPLiteral = isIPLiteral(parsed.host);
+            const hasIPLiteralBracket = parsed.host.indexOf("[") !== -1 || parsed.host.indexOf("]") !== -1;
             const ipv6result = normalizeIPv6(parsed.host);
-            parsed.host = ipv6result.host.toLowerCase();
-            isIP = ipv6result.isIPV6;
+            isIP = ipv6result.isIPV6 || ipv6result.isIPVFuture === true;
+            malformedIPLiteral = hasIPLiteralBracket && (!bracketedIPLiteral || ipv6result.error === true);
+            parsed.host = isIP ? ipv6result.host : ipv6result.host.toLowerCase();
+            if (malformedIPLiteral) {
+              parsed.error = parsed.error || MALFORMED_HOST_ERROR;
+              malformedAuthorityOrPort = true;
+            }
           } else {
             isIP = true;
           }
@@ -4763,42 +5126,37 @@ var require_fast_uri = __commonJS({
           parsed.error = parsed.error || "URI is not a " + options.reference + " reference.";
         }
         const schemeHandler = getSchemeHandler(options.scheme || parsed.scheme);
-        if (!options.unicodeSupport && (!schemeHandler || !schemeHandler.unicodeSupport)) {
-          if (parsed.host && (options.domainHost || schemeHandler && schemeHandler.domainHost) && isIP === false && nonSimpleDomain(parsed.host)) {
-            try {
-              parsed.host = URL.domainToASCII(parsed.host.toLowerCase());
-            } catch (e) {
-              parsed.error = parsed.error || "Host's domain name can not be converted to ASCII: " + e;
-            }
+        if (!malformedIPLiteral) {
+          malformedHost = canonicalizeHost(parsed, options, schemeHandler, isIP);
+        }
+        if (uri.indexOf("%") !== -1 && parsed.host !== void 0 && !malformedIPLiteral) {
+          let host = isIP ? parsed.host : normalizePercentEncoding(parsed.host, true);
+          if (!isIP) {
+            host = normalizePercentEncoding(host.toLowerCase());
           }
+          parsed.host = isIP || options.scheme !== "null" ? reescapeHostDelimiters(host, isIP) : host;
         }
         if (!schemeHandler || schemeHandler && !schemeHandler.skipNormalize) {
-          if (uri.indexOf("%") !== -1) {
-            if (parsed.scheme !== void 0) {
-              parsed.scheme = unescape(parsed.scheme);
-            }
-            if (parsed.host !== void 0) {
-              parsed.host = reescapeHostDelimiters(unescape(parsed.host), isIP);
-            }
-          }
           if (parsed.path) {
             parsed.path = normalizePathEncoding(parsed.path);
           }
+          if (parsed.query) {
+            parsed.query = normalizeQueryFragmentEncoding(parsed.query);
+          }
           if (parsed.fragment) {
-            try {
-              parsed.fragment = encodeURI(decodeURIComponent(parsed.fragment));
-            } catch {
-              parsed.error = parsed.error || "URI malformed";
-            }
+            parsed.fragment = normalizeQueryFragmentEncoding(parsed.fragment);
           }
         }
         if (schemeHandler && schemeHandler.parse) {
           schemeHandler.parse(parsed, options);
+          if (schemeHandler === SCHEMES.urn && parsed.nid === void 0) {
+            malformedSchemeSpecific = true;
+          }
         }
       } else {
         parsed.error = parsed.error || "URI can not be parsed.";
       }
-      return { parsed, malformedAuthorityOrPort };
+      return { parsed, malformedAuthorityOrPort, malformedPercentEncoding, malformedSchemeSpecific, malformedHost, malformedScheme };
     }
     function parse2(uri, opts) {
       return parseWithStatus(uri, opts).parsed;
@@ -4807,20 +5165,28 @@ var require_fast_uri = __commonJS({
       return normalizeStringWithStatus(uri, opts).normalized;
     }
     function normalizeStringWithStatus(uri, opts) {
-      const { parsed, malformedAuthorityOrPort } = parseWithStatus(uri, opts);
+      const { parsed, malformedAuthorityOrPort, malformedPercentEncoding, malformedSchemeSpecific, malformedHost, malformedScheme } = parseWithStatus(uri, opts);
       return {
-        normalized: malformedAuthorityOrPort ? uri : serialize2(parsed, opts),
-        malformedAuthorityOrPort
+        normalized: malformedAuthorityOrPort || malformedPercentEncoding || malformedSchemeSpecific || malformedHost || malformedScheme ? uri : serialize2(parsed, opts),
+        malformedAuthorityOrPort,
+        malformedPercentEncoding,
+        malformedSchemeSpecific,
+        malformedHost,
+        malformedScheme
       };
     }
     function normalizeComparableURI(uri, opts) {
-      if (typeof uri === "string") {
-        const { normalized, malformedAuthorityOrPort } = normalizeStringWithStatus(uri, opts);
-        return malformedAuthorityOrPort ? void 0 : normalized;
+      if (typeof uri !== "string" && typeof uri !== "object") {
+        return void 0;
       }
-      if (typeof uri === "object") {
-        return serialize2(uri, opts);
+      let value;
+      try {
+        value = typeof uri === "string" ? uri : serialize2(uri, opts);
+      } catch {
+        return void 0;
       }
+      const { normalized, malformedAuthorityOrPort, malformedPercentEncoding, malformedSchemeSpecific, malformedHost, malformedScheme } = normalizeStringWithStatus(value, opts);
+      return malformedAuthorityOrPort || malformedPercentEncoding || malformedSchemeSpecific || malformedHost || malformedScheme ? void 0 : normalized;
     }
     var fastUri = {
       SCHEMES,
@@ -15750,8 +16116,6 @@ function getDefaultEmbeddingModel(provider) {
   switch (provider) {
     case "openai":
       return "text-embedding-3-small";
-    case "voyageai":
-      return "voyage-code-3";
     case "local":
     default:
       return DEFAULT_LOCAL_EMBEDDING_MODEL;
@@ -16358,7 +16722,7 @@ var init_framework_config = __esm({
     init_version_compare();
     init_project_intelligence();
     init_project_profile();
-    EMBEDDING_PROVIDERS = ["local", "openai", "voyageai"];
+    EMBEDDING_PROVIDERS = ["local", "openai"];
     ASK_THRESHOLDS = ["strict", "balanced", "permissive"];
     STAGE_RULE_MODES = ["off", "warn", "strict"];
     CHECKS_FLAKY_MODES = ["pass", "warn", "fail"];
@@ -16630,7 +16994,7 @@ var init_framework_config = __esm({
         optional: true,
         group: "rag",
         section: "Intelligence / RAG",
-        comment: "local | openai | voyageai. Unset uses the local model."
+        comment: "local | openai. Unset uses the local model."
       },
       {
         key: "rag_embedding_model",
@@ -30073,21 +30437,21 @@ var require_pattern2 = __commonJS({
     exports.removeDuplicateSlashes = removeDuplicateSlashes;
     function partitionAbsoluteAndRelative(patterns) {
       const absolute = [];
-      const relative7 = [];
+      const relative8 = [];
       for (const pattern of patterns) {
-        if (isAbsolute5(pattern)) {
+        if (isAbsolute6(pattern)) {
           absolute.push(pattern);
         } else {
-          relative7.push(pattern);
+          relative8.push(pattern);
         }
       }
-      return [absolute, relative7];
+      return [absolute, relative8];
     }
     exports.partitionAbsoluteAndRelative = partitionAbsoluteAndRelative;
-    function isAbsolute5(pattern) {
+    function isAbsolute6(pattern) {
       return path12.isAbsolute(pattern);
     }
-    exports.isAbsolute = isAbsolute5;
+    exports.isAbsolute = isAbsolute6;
   }
 });
 
@@ -33060,7 +33424,7 @@ var init_plugin_install = __esm({
 import { execFileSync as execFileSync2, spawn as spawn2 } from "child_process";
 import { existsSync as existsSync9, mkdirSync as mkdirSync12, readFileSync as readFileSync18, realpathSync, writeFileSync as writeFileSync11 } from "fs";
 import { createRequire } from "module";
-import { dirname as dirname18, join as join25 } from "path";
+import { dirname as dirname18, isAbsolute as isAbsolute4, join as join25, relative as relative4 } from "path";
 function alternateBases(env) {
   const bases = [];
   const pluginData = env.CLAUDE_PLUGIN_DATA;
@@ -33104,16 +33468,23 @@ async function loadOptionalPackage(name, env = process.env) {
   } catch {
   }
   for (const base of alternateBases(env)) {
+    let loaded;
     try {
-      return createRequire(base)(name);
+      loaded = createRequire(base)(name);
     } catch {
+      continue;
     }
+    kickOffEngineInstall(env);
+    return loaded;
   }
+  kickOffEngineInstall(env);
+  throw new Error(`optional package ${name} is not installed`);
+}
+function kickOffEngineInstall(env) {
   try {
     maybeStartOptionalEngineInstall(env);
   } catch {
   }
-  throw new Error(`optional package ${name} is not installed`);
 }
 function enginePaths(pluginData) {
   return {
@@ -33146,17 +33517,40 @@ function readEngineSpecs(env) {
     return [];
   }
 }
+function isWithin(dir, file) {
+  const rel = relative4(dir, file);
+  return rel.length > 0 && !rel.startsWith("..") && !isAbsolute4(rel);
+}
+function resolvesFromPluginData(resolved, pluginData) {
+  if (isWithin(pluginData, resolved)) {
+    return true;
+  }
+  try {
+    return isWithin(realpathSync(pluginData), resolved);
+  } catch {
+    return false;
+  }
+}
+function installedSpecsMatch(marker, declared) {
+  const installed = marker?.status === "ready" ? marker.specs : void 0;
+  return Array.isArray(installed) && [...installed].sort().join(" ") === [...declared].sort().join(" ");
+}
 function maybeStartOptionalEngineInstall(env = process.env, deps = {}, options = {}) {
   const pluginData = env.CLAUDE_PLUGIN_DATA;
   if (!pluginData) {
     return "no-plugin-data";
   }
   const resolve7 = deps.resolve ?? resolveOptionalPackage;
-  if (resolve7(PRIMARY_ENGINE, env) !== null) {
+  const resolved = resolve7(PRIMARY_ENGINE, env);
+  if (resolved !== null && !resolvesFromPluginData(resolved, pluginData)) {
     return "already-present";
   }
   const paths = enginePaths(pluginData);
   const marker = readInstallMarker(paths.marker);
+  const specs = (deps.readSpecs ?? readEngineSpecs)(env);
+  if (resolved !== null && (specs.length === 0 || installedSpecsMatch(marker, specs))) {
+    return "already-present";
+  }
   if (marker?.status === "installing" && existsSync9(paths.lock)) {
     return "in-progress";
   }
@@ -33164,7 +33558,6 @@ function maybeStartOptionalEngineInstall(env = process.env, deps = {}, options =
   if (marker && now() - Date.parse(marker.attempted_at) < INSTALL_RETRY_INTERVAL_MS) {
     return "throttled";
   }
-  const specs = (deps.readSpecs ?? readEngineSpecs)(env);
   if (specs.length === 0) {
     return "no-pinned-range";
   }
@@ -33177,7 +33570,7 @@ function maybeStartOptionalEngineInstall(env = process.env, deps = {}, options =
   writeFileSync11(paths.lock, String(process.pid));
   writeFileSync11(
     paths.marker,
-    JSON.stringify({ status: "installing", attempted_at: new Date(now()).toISOString() })
+    JSON.stringify({ status: "installing", attempted_at: new Date(now()).toISOString(), specs })
   );
   (deps.startInstall ?? spawnEngineInstall)(specs, pluginData, paths, options.projectRoot);
   return "started";
@@ -33192,7 +33585,7 @@ function spawnEngineInstall(specs, dir, paths, projectRoot) {
       execFileSync('npm', ['install', ...specs, '--no-audit', '--no-fund', '--omit=dev'], {
         cwd: process.env.PAQAD_ENGINE_DIR, stdio: ['ignore', fd, fd],
       });
-      writeFileSync(process.env.PAQAD_ENGINE_MARKER, JSON.stringify({ status: 'ready', attempted_at: new Date().toISOString() }));
+      writeFileSync(process.env.PAQAD_ENGINE_MARKER, JSON.stringify({ status: 'ready', attempted_at: new Date().toISOString(), specs }));
       if (process.env.PAQAD_ENGINE_REBUILD_ROOT && process.env.PAQAD_ENGINE_CLI) {
         try {
           execFileSync(process.execPath, [process.env.PAQAD_ENGINE_CLI, 'rag', 'rebuild', '--project-root', process.env.PAQAD_ENGINE_REBUILD_ROOT], {
@@ -33233,7 +33626,7 @@ var init_optional_package = __esm({
     init_esm_shims();
     init_runtime_paths();
     init_plugin_install();
-    OPTIONAL_ENGINES = ["@huggingface/transformers", "openai", "voyageai"];
+    OPTIONAL_ENGINES = ["@huggingface/transformers", "openai"];
     PRIMARY_ENGINE = "@huggingface/transformers";
     INSTALL_RETRY_INTERVAL_MS = 24 * 60 * 60 * 1e3;
   }
@@ -33418,7 +33811,6 @@ function writeProjectSecret(projectRoot, key, value) {
 function redactSecrets(input, projectRoot) {
   const secrets = [
     process.env.OPENAI_API_KEY,
-    process.env.VOYAGE_API_KEY,
     ...Object.values(readProjectSecrets(projectRoot))
   ].filter((value) => Boolean(value));
   let result = input;
@@ -35253,7 +35645,7 @@ var init_project_profile_schema = __esm({
             rag_enabled: { type: "boolean" },
             embedding_provider: {
               type: "string",
-              enum: ["local", "openai", "voyageai"]
+              enum: ["local", "openai"]
             },
             embedding_model: { type: "string" },
             rag_similarity_threshold: { type: "number" },
@@ -36516,6 +36908,61 @@ var init_cosine = __esm({
   }
 });
 
+// src/rag/removed-provider.ts
+import { existsSync as existsSync14, readFileSync as readFileSync22 } from "fs";
+import { join as join30 } from "path";
+function findRemovedEmbeddingProvider(value) {
+  if (typeof value !== "string") {
+    return void 0;
+  }
+  const normalized = value.trim().toLowerCase();
+  return REMOVED_EMBEDDING_PROVIDERS.find((name) => name === normalized);
+}
+function profileEmbeddingProvider(projectRoot) {
+  const path12 = join30(projectRoot, PATHS.PROJECT_PROFILE);
+  if (!existsSync14(path12)) {
+    return void 0;
+  }
+  try {
+    const parsed = import_yaml7.default.parse(readFileSync22(path12, "utf8"));
+    return parsed?.intelligence?.embedding_provider;
+  } catch {
+    return void 0;
+  }
+}
+function resolveRemovedEmbeddingProvider(projectRoot, env = process.env) {
+  const configured = layeredConfigMap(projectRoot, env).get("rag_embedding_provider")?.trim();
+  return findRemovedEmbeddingProvider(
+    configured ? configured : profileEmbeddingProvider(projectRoot)
+  );
+}
+function assertEmbeddingProviderAvailable(projectRoot, explicit, env = process.env) {
+  const removed = explicit !== void 0 && explicit.trim() !== "" ? findRemovedEmbeddingProvider(explicit) : resolveRemovedEmbeddingProvider(projectRoot, env);
+  if (removed) {
+    throw new RemovedEmbeddingProviderError(removed);
+  }
+}
+var import_yaml7, REMOVED_EMBEDDING_PROVIDERS, REMOVED_EMBEDDING_PROVIDER_MESSAGE, RemovedEmbeddingProviderError;
+var init_removed_provider = __esm({
+  "src/rag/removed-provider.ts"() {
+    "use strict";
+    init_esm_shims();
+    import_yaml7 = __toESM(require_dist(), 1);
+    init_paths();
+    init_framework_config();
+    REMOVED_EMBEDDING_PROVIDERS = ["voyageai"];
+    REMOVED_EMBEDDING_PROVIDER_MESSAGE = "The Voyage embedding provider was removed from paqad-ai. Choose local or openai instead: set rag_embedding_provider (or PAQAD_RAG_EMBEDDING_PROVIDER) to local or openai, or run `paqad-ai rag init --provider local`.";
+    RemovedEmbeddingProviderError = class extends Error {
+      constructor(provider) {
+        super(REMOVED_EMBEDDING_PROVIDER_MESSAGE);
+        this.provider = provider;
+        this.name = "RemovedEmbeddingProviderError";
+      }
+      provider;
+    };
+  }
+});
+
 // src/rag/types.ts
 function isEmbeddingProviderError(error) {
   return error instanceof EmbeddingProviderError;
@@ -36571,15 +37018,15 @@ var init_types4 = __esm({
 });
 
 // src/rag/providers.ts
-import { existsSync as existsSync14 } from "fs";
+import { existsSync as existsSync15 } from "fs";
 import { rm as rm2 } from "fs/promises";
 import { homedir as homedir3 } from "os";
-import { join as join30 } from "path";
+import { join as join31 } from "path";
 function localModelsRoot() {
-  return join30(homedir3(), ".paqad", "models");
+  return join31(homedir3(), ".paqad", "models");
 }
 function localModelDir(model) {
-  return join30(localModelsRoot(), model);
+  return join31(localModelsRoot(), model);
 }
 function providerError(provider, code, message, cause) {
   return new EmbeddingProviderError(provider, code, message, cause);
@@ -36591,12 +37038,7 @@ function classifyRemoteError(provider, error) {
   const status = typeof error === "object" && error !== null && "status" in error ? Number(error.status) : typeof error === "object" && error !== null && "response" in error && typeof error.response?.status === "number" ? Number(error.response?.status) : void 0;
   const message = error instanceof Error ? error.message : String(error);
   if (status === 401 || status === 403) {
-    return providerError(
-      provider,
-      "invalid_api_key",
-      `Invalid ${provider === "openai" ? "OPENAI_API_KEY" : "VOYAGE_API_KEY"}`,
-      error
-    );
+    return providerError(provider, "invalid_api_key", "Invalid OPENAI_API_KEY", error);
   }
   if (status === 429 || /rate.?limit/i.test(message)) {
     return providerError(
@@ -36631,17 +37073,16 @@ async function withRemoteRetry(provider, operation, onProgress) {
   throw providerError(provider, "provider_error", `Unexpected ${provider} retry failure`);
 }
 async function createEmbeddingProvider(projectRoot, intelligence, onProgress) {
+  assertEmbeddingProviderAvailable(projectRoot, intelligence.embedding_provider);
   switch (intelligence.embedding_provider) {
     case "openai":
       return new OpenAiEmbeddingProvider(projectRoot, intelligence, onProgress);
-    case "voyageai":
-      return new VoyageEmbeddingProvider(projectRoot, intelligence, onProgress);
     case "local":
     default:
       return new LocalEmbeddingProvider(intelligence, onProgress);
   }
 }
-var REMOTE_RETRY_DELAYS_MS, LocalEmbeddingProvider, OpenAiEmbeddingProvider, VoyageEmbeddingProvider;
+var REMOTE_RETRY_DELAYS_MS, LocalEmbeddingProvider, OpenAiEmbeddingProvider;
 var init_providers = __esm({
   "src/rag/providers.ts"() {
     "use strict";
@@ -36649,6 +37090,7 @@ var init_providers = __esm({
     init_optional_package();
     init_project_intelligence();
     init_path_utils();
+    init_removed_provider();
     init_secrets();
     init_types4();
     REMOTE_RETRY_DELAYS_MS = [250, 500, 1e3];
@@ -36679,7 +37121,7 @@ var init_providers = __esm({
       }
       async loadExtractor() {
         const modelPath = localModelDir(this.model);
-        const cached = existsSync14(modelPath);
+        const cached = existsSync15(modelPath);
         this.onProgress?.({
           phase: "load",
           message: cached ? `Loading cached local embedding model ${this.model}` : `Preparing local embedding model ${this.model}. This shared download only happens once.`
@@ -36758,53 +37200,12 @@ var init_providers = __esm({
         return new OpenAI({ apiKey });
       }
     };
-    VoyageEmbeddingProvider = class {
-      constructor(projectRoot, intelligence, onProgress) {
-        this.projectRoot = projectRoot;
-        this.onProgress = onProgress;
-        this.model = intelligence.embedding_model ?? getDefaultEmbeddingModel("voyageai");
-      }
-      projectRoot;
-      onProgress;
-      name = "voyageai";
-      model;
-      clientPromise;
-      async validate() {
-        await this.embed("validation");
-      }
-      async embed(input) {
-        const client = await this.getClient();
-        const response = await withRemoteRetry(
-          "voyageai",
-          () => client.embed({
-            input,
-            model: this.model
-          }),
-          this.onProgress
-        );
-        return response.data.map((entry) => entry.embedding);
-      }
-      async getClient() {
-        if (!this.clientPromise) {
-          this.clientPromise = this.createClient();
-        }
-        return this.clientPromise;
-      }
-      async createClient() {
-        const apiKey = getProjectSecret(this.projectRoot, "VOYAGE_API_KEY");
-        if (!apiKey) {
-          throw providerError("voyageai", "missing_api_key", "Missing VOYAGE_API_KEY");
-        }
-        const { VoyageAIClient } = await loadOptionalPackage("voyageai");
-        return new VoyageAIClient({ apiKey });
-      }
-    };
   }
 });
 
 // src/rag/crs-paths.ts
 import { createHash as createHash9 } from "crypto";
-import { join as join31 } from "path";
+import { join as join32 } from "path";
 function escapeCollectionId(id) {
   const raw = String(id);
   if (raw.trim().length === 0) {
@@ -36821,22 +37222,22 @@ function escapeCollectionId(id) {
   return `${safe}-${hash}`;
 }
 function crsCollectionDir(projectRoot, collectionId) {
-  return join31(projectRoot, PATHS.CRS_DIR, escapeCollectionId(collectionId));
+  return join32(projectRoot, PATHS.CRS_DIR, escapeCollectionId(collectionId));
 }
 function crsCollectionPaths(collectionId) {
-  const dir = join31(PATHS.CRS_DIR, escapeCollectionId(collectionId));
-  return { indexPath: join31(dir, "index.json"), metaPath: join31(dir, "meta.json") };
+  const dir = join32(PATHS.CRS_DIR, escapeCollectionId(collectionId));
+  return { indexPath: join32(dir, "index.json"), metaPath: join32(dir, "meta.json") };
 }
 function crsCollectionLayout(projectRoot, collectionId) {
   const escaped = escapeCollectionId(collectionId);
-  const relDir = join31(PATHS.CRS_DIR, escaped);
+  const relDir = join32(PATHS.CRS_DIR, escaped);
   return {
     escaped,
-    crsRootAbs: join31(projectRoot, PATHS.CRS_DIR),
+    crsRootAbs: join32(projectRoot, PATHS.CRS_DIR),
     relDir,
-    absDir: join31(projectRoot, relDir),
-    indexPath: join31(relDir, "index.json"),
-    metaPath: join31(relDir, "meta.json")
+    absDir: join32(projectRoot, relDir),
+    indexPath: join32(relDir, "index.json"),
+    metaPath: join32(relDir, "meta.json")
   };
 }
 var SAFE_ID;
@@ -36851,8 +37252,8 @@ var init_crs_paths = __esm({
 
 // src/rag/vector-index.ts
 import { mkdir as mkdir8, readFile as readFile9, rename as rename4, rm as rm3, stat as stat2, writeFile as writeFile8 } from "fs/promises";
-import { existsSync as existsSync15 } from "fs";
-import { join as join32 } from "path";
+import { existsSync as existsSync16 } from "fs";
+import { join as join33 } from "path";
 import { dirname as dirname21 } from "path";
 async function atomicWrite(path12, content) {
   await mkdir8(dirname21(path12), { recursive: true });
@@ -36861,7 +37262,7 @@ async function atomicWrite(path12, content) {
   await rename4(tmp, path12);
 }
 async function withCollectionLock(dir, fn) {
-  const lockPath = join32(dir, ".lock");
+  const lockPath = join33(dir, ".lock");
   await mkdir8(dir, { recursive: true });
   let acquired = false;
   for (let attempt = 0; attempt < COLLECTION_LOCK_RETRIES; attempt++) {
@@ -36914,7 +37315,7 @@ var init_vector_index = __esm({
       metaPath;
       async load(projectRoot) {
         const path12 = this.resolveExistingIndexPath(projectRoot);
-        if (!existsSync15(path12)) {
+        if (!existsSync16(path12)) {
           return null;
         }
         try {
@@ -36926,7 +37327,7 @@ var init_vector_index = __esm({
       }
       async loadMeta(projectRoot) {
         const path12 = this.resolve(projectRoot, this.metaPath);
-        if (!existsSync15(path12)) {
+        if (!existsSync16(path12)) {
           return null;
         }
         try {
@@ -36941,7 +37342,7 @@ var init_vector_index = __esm({
         await atomicWrite(target, JSON.stringify(payload, null, 2));
         await atomicWrite(this.resolve(projectRoot, this.metaPath), JSON.stringify(meta, null, 2));
         const legacyPath = this.resolveLegacyIndexPath(projectRoot);
-        if (legacyPath !== target && existsSync15(legacyPath)) {
+        if (legacyPath !== target && existsSync16(legacyPath)) {
           await rm3(legacyPath, { force: true });
         }
       }
@@ -36957,7 +37358,7 @@ var init_vector_index = __esm({
       }
       async status(projectRoot) {
         const indexPath = this.resolveExistingIndexPath(projectRoot);
-        if (!existsSync15(indexPath)) {
+        if (!existsSync16(indexPath)) {
           return { present: false, sizeBytes: 0, meta: null, corrupt: false };
         }
         const info = await stat2(indexPath);
@@ -37018,9 +37419,9 @@ var init_vector_index = __esm({
         const dir = crsCollectionDir(projectRoot, collectionId);
         await mkdir8(dir, { recursive: true });
         const { indexPath, metaPath } = crsCollectionPaths(collectionId);
-        const absIndex = join32(projectRoot, indexPath);
-        const absMeta = join32(projectRoot, metaPath);
-        if (existsSync15(absIndex) || existsSync15(absMeta)) {
+        const absIndex = join33(projectRoot, indexPath);
+        const absMeta = join33(projectRoot, metaPath);
+        if (existsSync16(absIndex) || existsSync16(absMeta)) {
           return;
         }
         const payload = { version: 1, dimensions: 0, items: [] };
@@ -37037,7 +37438,7 @@ var init_vector_index = __esm({
       }
       static async destroy(projectRoot, collectionId, options) {
         const dir = crsCollectionDir(projectRoot, collectionId);
-        if (!existsSync15(dir)) {
+        if (!existsSync16(dir)) {
           return 0;
         }
         const { indexPath, metaPath } = crsCollectionPaths(collectionId);
@@ -37073,11 +37474,11 @@ var init_vector_index = __esm({
         });
       }
       resolve(projectRoot, relativePath) {
-        return join32(projectRoot, relativePath);
+        return join33(projectRoot, relativePath);
       }
       resolveExistingIndexPath(projectRoot) {
         const current = this.resolve(projectRoot, this.indexPath);
-        if (existsSync15(current)) {
+        if (existsSync16(current)) {
           return current;
         }
         return this.resolveLegacyIndexPath(projectRoot);
@@ -37094,30 +37495,30 @@ var init_vector_index = __esm({
 
 // src/patterns/pattern-store.ts
 import { readFile as readFile10, writeFile as writeFile9, mkdir as mkdir9, unlink } from "fs/promises";
-import { join as join33, dirname as dirname22 } from "path";
+import { join as join34, dirname as dirname22 } from "path";
 import { homedir as homedir4 } from "os";
 var GLOBAL_PATTERNS_DIR, PatternStore;
 var init_pattern_store = __esm({
   "src/patterns/pattern-store.ts"() {
     "use strict";
     init_esm_shims();
-    GLOBAL_PATTERNS_DIR = join33(homedir4(), ".paqad", "patterns");
+    GLOBAL_PATTERNS_DIR = join34(homedir4(), ".paqad", "patterns");
     PatternStore = class {
       get indexPath() {
-        return join33(GLOBAL_PATTERNS_DIR, "index.json");
+        return join34(GLOBAL_PATTERNS_DIR, "index.json");
       }
       get entriesDir() {
-        return join33(GLOBAL_PATTERNS_DIR, "entries");
+        return join34(GLOBAL_PATTERNS_DIR, "entries");
       }
       async save(pattern) {
         await mkdir9(this.entriesDir, { recursive: true });
-        const entryPath2 = join33(this.entriesDir, `${pattern.id}.json`);
+        const entryPath2 = join34(this.entriesDir, `${pattern.id}.json`);
         await writeFile9(entryPath2, JSON.stringify(pattern, null, 2), "utf8");
         await this.updateIndex(pattern);
       }
       async load(id) {
         try {
-          const raw = await readFile10(join33(this.entriesDir, `${id}.json`), "utf8");
+          const raw = await readFile10(join34(this.entriesDir, `${id}.json`), "utf8");
           return JSON.parse(raw);
         } catch {
           return null;
@@ -37152,7 +37553,7 @@ var init_pattern_store = __esm({
       }
       async delete(id) {
         try {
-          await unlink(join33(this.entriesDir, `${id}.json`));
+          await unlink(join34(this.entriesDir, `${id}.json`));
         } catch (error) {
           if (error.code !== "ENOENT") {
             throw error;
@@ -37457,7 +37858,7 @@ var init_pattern_rag = __esm({
 
 // src/session/handoff-parser.ts
 import { readFile as readFile11 } from "fs/promises";
-import { join as join34 } from "path";
+import { join as join35 } from "path";
 function isStructuredHandoff(data) {
   return typeof data === "object" && data !== null && data.version === 2;
 }
@@ -37477,7 +37878,7 @@ var init_handoff_parser = __esm({
     HandoffParser = class {
       async parse(projectRoot) {
         try {
-          const jsonPath = join34(projectRoot, ".paqad", "session", "handoff.json");
+          const jsonPath = join35(projectRoot, ".paqad", "session", "handoff.json");
           const raw = await readFile11(jsonPath, "utf8");
           const data = JSON.parse(raw);
           if (isStructuredHandoff(data)) {
@@ -37493,7 +37894,7 @@ var init_handoff_parser = __esm({
           }
         }
         try {
-          const mdPath = join34(projectRoot, ".paqad", "session", "handoff.md");
+          const mdPath = join35(projectRoot, ".paqad", "session", "handoff.md");
           const raw = await readFile11(mdPath, "utf8");
           return { version: 1, data: raw };
         } catch {
@@ -37565,8 +37966,8 @@ var init_evidence_ledger = __esm({
 
 // src/evidence/ledger.ts
 import { createHash as createHash11 } from "crypto";
-import { appendFileSync as appendFileSync6, existsSync as existsSync16, mkdirSync as mkdirSync16, readFileSync as readFileSync22 } from "fs";
-import { dirname as dirname23, join as join35 } from "path";
+import { appendFileSync as appendFileSync6, existsSync as existsSync17, mkdirSync as mkdirSync16, readFileSync as readFileSync23 } from "fs";
+import { dirname as dirname23, join as join36 } from "path";
 var init_ledger2 = __esm({
   "src/evidence/ledger.ts"() {
     "use strict";
@@ -37700,11 +38101,11 @@ var init_call_sites = __esm({
 });
 
 // src/analytics/detect.ts
-import { existsSync as existsSync17, readFileSync as readFileSync23, readdirSync as readdirSync8, statSync as statSync3 } from "fs";
-import { join as join36 } from "path";
+import { existsSync as existsSync18, readFileSync as readFileSync24, readdirSync as readdirSync8, statSync as statSync3 } from "fs";
+import { join as join37 } from "path";
 function readJson(path12) {
   try {
-    return JSON.parse(readFileSync23(path12, "utf8"));
+    return JSON.parse(readFileSync24(path12, "utf8"));
   } catch {
     return null;
   }
@@ -37723,7 +38124,7 @@ function sampleSourceFiles(projectRoot, limit = 200) {
     for (const entry of entries) {
       if (out.length >= limit) return;
       if (entry === "node_modules" || entry === ".git" || entry.startsWith(".")) continue;
-      const full = join36(dir, entry);
+      const full = join37(dir, entry);
       let stats;
       try {
         stats = statSync3(full);
@@ -37738,7 +38139,7 @@ function sampleSourceFiles(projectRoot, limit = 200) {
     }
   };
   for (const r of roots) {
-    walk(join36(projectRoot, r));
+    walk(join37(projectRoot, r));
   }
   return out;
 }
@@ -37806,14 +38207,14 @@ function evidenceFor(provider, ctx) {
   return { score, signals: signals2, events };
 }
 function detectAnalyticsProvider(projectRoot) {
-  const pkg = readJson(join36(projectRoot, "package.json")) ?? {};
+  const pkg = readJson(join37(projectRoot, "package.json")) ?? {};
   const deps = {
     ...pkg.dependencies,
     ...pkg.devDependencies
   };
   const readIf = (rel) => {
-    const p = join36(projectRoot, rel);
-    return existsSync17(p) ? safeRead(p) : "";
+    const p = join37(projectRoot, rel);
+    return existsSync18(p) ? safeRead(p) : "";
   };
   const envText = [".env", ".env.local", ".env.production", ".env.example"].map(readIf).join("\n");
   const entryText = ["index.html", "public/index.html", "app/index.html", "src/index.html"].map(readIf).join("\n");
@@ -37845,7 +38246,7 @@ function detectAnalyticsProvider(projectRoot) {
 }
 function safeRead(path12) {
   try {
-    return readFileSync23(path12, "utf8");
+    return readFileSync24(path12, "utf8");
   } catch {
     return "";
   }
@@ -37862,8 +38263,8 @@ var init_detect = __esm({
 });
 
 // src/analytics/gate.ts
-import { mkdirSync as mkdirSync17, readFileSync as readFileSync24, writeFileSync as writeFileSync14 } from "fs";
-import { dirname as dirname24, join as join37 } from "path";
+import { mkdirSync as mkdirSync17, readFileSync as readFileSync25, writeFileSync as writeFileSync14 } from "fs";
+import { dirname as dirname24, join as join38 } from "path";
 function resolveAnalyticsGate(input) {
   const now = input.now ?? (() => /* @__PURE__ */ new Date());
   const resolved_at = now().toISOString();
@@ -37895,14 +38296,14 @@ var init_gate = __esm({
 });
 
 // src/pipeline/feature-development-policy.ts
-import { existsSync as existsSync18, readFileSync as readFileSync25 } from "fs";
-import { join as join38 } from "path";
-var import_yaml7, STAGE_ORDER;
+import { existsSync as existsSync19, readFileSync as readFileSync26 } from "fs";
+import { join as join39 } from "path";
+var import_yaml8, STAGE_ORDER;
 var init_feature_development_policy = __esm({
   "src/pipeline/feature-development-policy.ts"() {
     "use strict";
     init_esm_shims();
-    import_yaml7 = __toESM(require_dist(), 1);
+    import_yaml8 = __toESM(require_dist(), 1);
     init_gate();
     init_paths();
     init_framework_config();
@@ -38155,7 +38556,7 @@ var init_commit_split = __esm({
 });
 
 // src/feature-evidence/bundle-document.ts
-import { mkdirSync as mkdirSync18, readFileSync as readFileSync26, renameSync as renameSync2, writeFileSync as writeFileSync15 } from "fs";
+import { mkdirSync as mkdirSync18, readFileSync as readFileSync27, renameSync as renameSync2, writeFileSync as writeFileSync15 } from "fs";
 var init_bundle_document = __esm({
   "src/feature-evidence/bundle-document.ts"() {
     "use strict";
@@ -38168,8 +38569,8 @@ var init_bundle_document = __esm({
 
 // src/feature-evidence/delivery.ts
 import { execFileSync as execFileSync4 } from "child_process";
-import { mkdirSync as mkdirSync19, readFileSync as readFileSync27, renameSync as renameSync3, writeFileSync as writeFileSync16 } from "fs";
-import { dirname as dirname25, join as join39 } from "path";
+import { mkdirSync as mkdirSync19, readFileSync as readFileSync28, renameSync as renameSync3, writeFileSync as writeFileSync16 } from "fs";
+import { dirname as dirname25, join as join40 } from "path";
 var init_delivery = __esm({
   "src/feature-evidence/delivery.ts"() {
     "use strict";
@@ -38184,8 +38585,8 @@ var init_delivery = __esm({
 });
 
 // src/feature-evidence/stage-ledger.ts
-import { readFileSync as readFileSync28 } from "fs";
-import { join as join40 } from "path";
+import { readFileSync as readFileSync29 } from "fs";
+import { join as join41 } from "path";
 function currentFeature(projectRoot, sessionId, now) {
   return reconcileSessionControl(projectRoot, sessionId, now);
 }
@@ -38545,7 +38946,7 @@ var init_audit_bridge = __esm({
 
 // src/rag/audit.ts
 import { appendFileSync as appendFileSync7, mkdirSync as mkdirSync20 } from "fs";
-import { dirname as dirname26, join as join41 } from "path";
+import { dirname as dirname26, join as join42 } from "path";
 function sanitize(value) {
   return String(value).replace(/[\r\n"]/g, (match) => {
     if (match === '"') return "'";
@@ -38553,7 +38954,7 @@ function sanitize(value) {
   });
 }
 function appendRagAudit(projectRoot, level, event, fields = {}) {
-  const path12 = join41(projectRoot, PATHS.AUDIT_LOG);
+  const path12 = join42(projectRoot, PATHS.AUDIT_LOG);
   mkdirSync20(dirname26(path12), { recursive: true });
   const ts = (/* @__PURE__ */ new Date()).toISOString();
   const suffix = Object.entries(fields).map(([key, value]) => {
@@ -38651,8 +39052,8 @@ var init_atomic_artifact = __esm({
 
 // src/rag/embedding-cache.ts
 import { createHash as createHash12 } from "crypto";
-import { existsSync as existsSync19, readFileSync as readFileSync29 } from "fs";
-import { join as join42 } from "path";
+import { existsSync as existsSync20, readFileSync as readFileSync30 } from "fs";
+import { join as join43 } from "path";
 function chunkHash(text) {
   return createHash12("sha256").update(text).digest("hex");
 }
@@ -38674,11 +39075,11 @@ var init_embedding_cache = __esm({
       entries = /* @__PURE__ */ new Map();
       dirty = false;
       static load(projectRoot, model) {
-        const path12 = join42(projectRoot, EMBEDDING_CACHE_RELPATH);
+        const path12 = join43(projectRoot, EMBEDDING_CACHE_RELPATH);
         const cache = new _EmbeddingCache(path12, model);
-        if (!existsSync19(path12)) return cache;
+        if (!existsSync20(path12)) return cache;
         try {
-          const parsed = JSON.parse(readFileSync29(path12, "utf8"));
+          const parsed = JSON.parse(readFileSync30(path12, "utf8"));
           if (parsed.version === CACHE_VERSION && parsed.model === model && parsed.entries) {
             for (const [hash, vector] of Object.entries(parsed.entries)) {
               cache.entries.set(hash, vector);
@@ -38844,10 +39245,10 @@ var init_rrf_fusion = __esm({
 });
 
 // src/rag/file-filter.ts
-import { existsSync as existsSync20, readFileSync as readFileSync30 } from "fs";
+import { existsSync as existsSync21, readFileSync as readFileSync31 } from "fs";
 import { lstat, open } from "fs/promises";
 import { homedir as homedir6 } from "os";
-import { isAbsolute as isAbsolute4, join as join43, matchesGlob as matchesGlob2, relative as relative4 } from "path";
+import { isAbsolute as isAbsolute5, join as join44, matchesGlob as matchesGlob2, relative as relative5 } from "path";
 async function isSymlink(absolutePath) {
   try {
     return (await lstat(absolutePath)).isSymbolicLink();
@@ -38856,12 +39257,12 @@ async function isSymlink(absolutePath) {
   }
 }
 function readRagIgnoreConfig(projectRoot) {
-  const configPath = join43(projectRoot, PATHS.RAG_IGNORE_CONFIG);
-  if (!existsSync20(configPath)) {
+  const configPath = join44(projectRoot, PATHS.RAG_IGNORE_CONFIG);
+  if (!existsSync21(configPath)) {
     return { ...DEFAULT_RAG_IGNORE_CONFIG };
   }
   try {
-    const parsed = import_yaml8.default.parse(readFileSync30(configPath, "utf8"));
+    const parsed = import_yaml9.default.parse(readFileSync31(configPath, "utf8"));
     if (!validateRagIgnoreConfig(parsed)) {
       engineLog("warn", `Invalid RAG ignore config at ${configPath}; using defaults`);
       return { ...DEFAULT_RAG_IGNORE_CONFIG };
@@ -38886,12 +39287,12 @@ function readRagIgnoreConfig(projectRoot) {
   }
 }
 function readAdapterFileExclusions(projectRoot) {
-  const manifestPath = join43(projectRoot, PATHS.ONBOARDING_MANIFEST);
-  if (!existsSync20(manifestPath)) {
+  const manifestPath = join44(projectRoot, PATHS.ONBOARDING_MANIFEST);
+  if (!existsSync21(manifestPath)) {
     return new Set(FALLBACK_ADAPTER_FILES);
   }
   try {
-    const manifest = JSON.parse(readFileSync30(manifestPath, "utf8"));
+    const manifest = JSON.parse(readFileSync31(manifestPath, "utf8"));
     const basenames = manifest.generated_artifacts.map((artifact) => basenameOf(artifact.path));
     return /* @__PURE__ */ new Set([...basenames, ...FALLBACK_ADAPTER_FILES]);
   } catch {
@@ -38909,16 +39310,16 @@ async function readIgnoreRules(projectRoot, config) {
     onlyFiles: true,
     followSymbolicLinks: false
   });
-  const extraRootFiles = [".ignore", ".fdignore", ".rgignore"].map((name) => join43(projectRoot, name)).filter((path12) => existsSync20(path12));
-  const globalFiles = config.use_global_gitignore ? [join43(homedir6(), ".gitignore_global"), join43(homedir6(), ".config/git/ignore")].filter(
-    (path12) => existsSync20(path12)
+  const extraRootFiles = [".ignore", ".fdignore", ".rgignore"].map((name) => join44(projectRoot, name)).filter((path12) => existsSync21(path12));
+  const globalFiles = config.use_global_gitignore ? [join44(homedir6(), ".gitignore_global"), join44(homedir6(), ".config/git/ignore")].filter(
+    (path12) => existsSync21(path12)
   ) : [];
   const rules = [];
   for (const file of [...projectIgnoreFiles.sort(), ...extraRootFiles, ...globalFiles]) {
-    const fileRelativeDir = file.startsWith(projectRoot) ? toPosixPath(relative4(projectRoot, file)).split("/").slice(0, -1).join("/") : "";
+    const fileRelativeDir = file.startsWith(projectRoot) ? toPosixPath(relative5(projectRoot, file)).split("/").slice(0, -1).join("/") : "";
     const baseDir = file.startsWith(projectRoot) ? fileRelativeDir : "";
-    const sourceName = file.startsWith(projectRoot) ? toPosixPath(relative4(projectRoot, file)) : file;
-    const lines = readFileSync30(file, "utf8").split(/\r?\n/);
+    const sourceName = file.startsWith(projectRoot) ? toPosixPath(relative5(projectRoot, file)) : file;
+    const lines = readFileSync31(file, "utf8").split(/\r?\n/);
     for (const rawLine of lines) {
       const line = rawLine.trim();
       if (!line || line.startsWith("#")) {
@@ -39034,10 +39435,10 @@ function splitSegments(path12) {
   return toPosixPath(path12).split("/").filter(Boolean);
 }
 function toProjectRelativePath(projectRoot, absolutePath) {
-  return toPosixPath(relative4(projectRoot, absolutePath));
+  return toPosixPath(relative5(projectRoot, absolutePath));
 }
 function normalizeAbsolutePath(path12) {
-  return isAbsolute4(path12) ? path12 : join43(process.cwd(), path12);
+  return isAbsolute5(path12) ? path12 : join44(process.cwd(), path12);
 }
 function trimSlashes(value) {
   return value.replace(/^\/+|\/+$/g, "");
@@ -39047,7 +39448,7 @@ function sortExtensionsDescending(extensions) {
     (left, right) => right.length - left.length || left.localeCompare(right)
   );
 }
-var import_ajv5, import_fast_glob4, import_yaml8, BASE_EXTENSIONS, BASE_BASENAME_INCLUDES, HARD_LOCKFILE_EXCLUSIONS, AI_TOOL_DIRS, FALLBACK_ADAPTER_FILES, FRAMEWORK_DEFAULT_EXCLUDE_DIRECTORIES, DEFAULT_RAG_IGNORE_CONFIG, RAG_IGNORE_SCHEMA, ajv4, validateRagIgnoreConfig, RagFileFilter;
+var import_ajv5, import_fast_glob4, import_yaml9, BASE_EXTENSIONS, BASE_BASENAME_INCLUDES, HARD_LOCKFILE_EXCLUSIONS, AI_TOOL_DIRS, FALLBACK_ADAPTER_FILES, FRAMEWORK_DEFAULT_EXCLUDE_DIRECTORIES, DEFAULT_RAG_IGNORE_CONFIG, RAG_IGNORE_SCHEMA, ajv4, validateRagIgnoreConfig, RagFileFilter;
 var init_file_filter = __esm({
   "src/rag/file-filter.ts"() {
     "use strict";
@@ -39056,7 +39457,7 @@ var init_file_filter = __esm({
     init_path_utils();
     import_ajv5 = __toESM(require_ajv(), 1);
     import_fast_glob4 = __toESM(require_out4(), 1);
-    import_yaml8 = __toESM(require_dist(), 1);
+    import_yaml9 = __toESM(require_dist(), 1);
     init_paths();
     BASE_EXTENSIONS = /* @__PURE__ */ new Set([".md", ".mdx", ".yaml", ".yml", ".json"]);
     BASE_BASENAME_INCLUDES = /* @__PURE__ */ new Set([
@@ -39293,7 +39694,7 @@ var init_file_filter = __esm({
       }
       async probeFile(absolutePath) {
         const normalizedPath = normalizeAbsolutePath(absolutePath);
-        if (!existsSync20(normalizedPath)) {
+        if (!existsSync21(normalizedPath)) {
           return {
             path: normalizedPath,
             excluded: true,
@@ -39447,9 +39848,9 @@ __export(service_exports, {
   lexicalDocumentText: () => lexicalDocumentText
 });
 import { createHash as createHash13, randomUUID } from "crypto";
-import { existsSync as existsSync21, statSync as statSync4 } from "fs";
+import { existsSync as existsSync22, statSync as statSync4 } from "fs";
 import { mkdir as mkdir11, readdir as readdir5, rename as rename6, rm as rm4 } from "fs/promises";
-import { extname as extname2, join as join44, resolve as resolve6, sep as sep3 } from "path";
+import { extname as extname2, join as join45, resolve as resolve6, sep as sep3 } from "path";
 function toRetrievalResult(candidates, extra) {
   return {
     vector_scores: new Map(candidates.map((candidate) => [candidate.id, candidate.score])),
@@ -39509,7 +39910,7 @@ function fuseHybridRanking(dense, queryText) {
   const fused = reciprocalRankFusion([denseOrder, lexical]);
   return fused.map((entry) => byId.get(entry.id)).filter((hit) => hit !== void 0);
 }
-var VISION_MAX_CHUNK_CHARS, CRS_EMBED_BATCH_SIZE, HYBRID_FUSION_POOL_MULTIPLIER, RELIEF_SLICE_CAP, CRS_REVERT_RETENTION_MS, PARTIAL_VECTOR_INDEX, PARTIAL_VECTOR_META, RagService;
+var VISION_MAX_CHUNK_CHARS, CRS_EMBED_BATCH_SIZE, HYBRID_FUSION_POOL_MULTIPLIER, RELIEF_SLICE_CAP, REMOTE_API_KEY_NAMES, CRS_REVERT_RETENTION_MS, PARTIAL_VECTOR_INDEX, PARTIAL_VECTOR_META, RagService;
 var init_service = __esm({
   "src/rag/service.ts"() {
     "use strict";
@@ -39537,6 +39938,7 @@ var init_service = __esm({
     init_crs_paths();
     init_file_filter();
     init_providers();
+    init_removed_provider();
     init_secrets();
     init_types4();
     init_vector_index();
@@ -39544,6 +39946,7 @@ var init_service = __esm({
     CRS_EMBED_BATCH_SIZE = 32;
     HYBRID_FUSION_POOL_MULTIPLIER = 4;
     RELIEF_SLICE_CAP = 2;
+    REMOTE_API_KEY_NAMES = { openai: "OPENAI_API_KEY" };
     CRS_REVERT_RETENTION_MS = 24 * 60 * 60 * 1e3;
     PARTIAL_VECTOR_INDEX = PATHS.VECTOR_INDEX.replace(/\.json$/, ".partial.json");
     PARTIAL_VECTOR_META = PATHS.VECTOR_META.replace(/\.json$/, ".partial.json");
@@ -39626,6 +40029,7 @@ var init_service = __esm({
           ...partial,
           rag_enabled: true
         });
+        assertEmbeddingProviderAvailable(this.projectRoot, intelligence.embedding_provider);
         if (intelligence.embedding_provider === void 0) {
           throw new Error("Embedding provider is required when enabling RAG");
         }
@@ -39645,6 +40049,7 @@ var init_service = __esm({
         const intelligence = normalizeIntelligenceConfig(
           options?.intelligence ?? profile?.intelligence
         );
+        assertEmbeddingProviderAvailable(this.projectRoot, intelligence.embedding_provider);
         if (!intelligence.rag_enabled || !intelligence.embedding_provider) {
           throw new Error("RAG must be enabled and configured before rebuilding");
         }
@@ -39767,10 +40172,11 @@ var init_service = __esm({
         appendRagAudit(this.projectRoot, "INFO", "rag-cleared");
       }
       async refreshContext() {
-        const sourceFiles = await this.discoverSourceFiles();
-        const syncResult = await this.indexManager.sync(sourceFiles, this.chunker);
         const profile = readProjectProfile(this.projectRoot);
         const intelligence = normalizeIntelligenceConfig(profile?.intelligence);
+        this.refuseRemovedProvider(intelligence);
+        const sourceFiles = await this.discoverSourceFiles();
+        const syncResult = await this.indexManager.sync(sourceFiles, this.chunker);
         if (!intelligence.rag_enabled) {
           return syncResult;
         }
@@ -39801,6 +40207,7 @@ var init_service = __esm({
       async retrieveWithSyncPolicy(syncResult, input, topN, skipSync) {
         const profile = readProjectProfile(this.projectRoot);
         const intelligence = normalizeIntelligenceConfig(profile?.intelligence);
+        this.refuseRemovedProvider(intelligence);
         if (!intelligence.rag_enabled || !intelligence.embedding_provider) {
           return {
             vector_scores: /* @__PURE__ */ new Map(),
@@ -39927,6 +40334,7 @@ var init_service = __esm({
         const intelligence = normalizeIntelligenceConfig(
           readProjectProfile(this.projectRoot)?.intelligence
         );
+        this.refuseRemovedProvider(intelligence);
         if (!intelligence.rag_enabled || !intelligence.embedding_provider) {
           return [];
         }
@@ -39970,10 +40378,11 @@ var init_service = __esm({
         }
         const profile = readProjectProfile(this.projectRoot);
         const intelligence = normalizeIntelligenceConfig(profile?.intelligence);
+        this.refuseRemovedProvider(intelligence);
         if (!intelligence.rag_enabled || !intelligence.embedding_provider) {
           throw new Error("RAG must be enabled and configured before ingesting extracted text");
         }
-        const sourceMissing = !existsSync21(resolvedPath);
+        const sourceMissing = !existsSync22(resolvedPath);
         const chunkTexts = this.splitTextIntoChunks(input.text, VISION_MAX_CHUNK_CHARS);
         const chunks = chunkTexts.map((raw, index) => {
           const content = raw.trim();
@@ -40015,13 +40424,18 @@ var init_service = __esm({
         };
       }
       resolveApiKeyName(provider) {
-        return provider === "openai" ? "OPENAI_API_KEY" : "VOYAGE_API_KEY";
+        return REMOTE_API_KEY_NAMES[provider];
       }
       storeApiKey(provider, value) {
         return writeProjectSecret(this.projectRoot, this.resolveApiKeyName(provider), value);
       }
       hasApiKey(provider) {
         return Boolean(getProjectSecret(this.projectRoot, this.resolveApiKeyName(provider)));
+      }
+      refuseRemovedProvider(intelligence) {
+        if (intelligence.rag_enabled) {
+          assertEmbeddingProviderAvailable(this.projectRoot, intelligence.embedding_provider);
+        }
       }
       localModelPath() {
         return localModelsRoot();
@@ -40074,8 +40488,8 @@ var init_service = __esm({
         const live = new FileVectorIndex(layout.indexPath, layout.metaPath);
         const existing = await live.load(this.projectRoot);
         const items = existing?.items ?? [];
-        const relRebuildDir = join44(PATHS.CRS_DIR, `${layout.escaped}.rebuilding`);
-        const absRebuildDir = join44(this.projectRoot, relRebuildDir);
+        const relRebuildDir = join45(PATHS.CRS_DIR, `${layout.escaped}.rebuilding`);
+        const absRebuildDir = join45(this.projectRoot, relRebuildDir);
         await rm4(absRebuildDir, { recursive: true, force: true });
         await mkdir11(absRebuildDir, { recursive: true });
         const intelligence = normalizeIntelligenceConfig({
@@ -40086,15 +40500,15 @@ var init_service = __esm({
         const newProvider = await this.providerFactory(this.projectRoot, intelligence);
         const rebuilt = await this.embedCrsForReindex(newProvider, items, collectionId, onProgress);
         const rebuildIndex2 = new FileVectorIndex(
-          join44(relRebuildDir, "index.json"),
-          join44(relRebuildDir, "meta.json")
+          join45(relRebuildDir, "index.json"),
+          join45(relRebuildDir, "meta.json")
         );
         await rebuildIndex2.replaceAll(this.projectRoot, rebuilt, {
           provider: newProvider.name,
           model: newProvider.model
         });
-        if (existsSync21(layout.absDir)) {
-          const revertDir = join44(layout.crsRootAbs, `${layout.escaped}.revert.${Date.now()}`);
+        if (existsSync22(layout.absDir)) {
+          const revertDir = join45(layout.crsRootAbs, `${layout.escaped}.revert.${Date.now()}`);
           await rename6(layout.absDir, revertDir);
         }
         await rename6(absRebuildDir, layout.absDir);
@@ -40196,7 +40610,7 @@ var init_service = __esm({
             continue;
           }
           if (now - stampedAt > CRS_REVERT_RETENTION_MS) {
-            await rm4(join44(crsRootAbs, entry), { recursive: true, force: true });
+            await rm4(join45(crsRootAbs, entry), { recursive: true, force: true });
           }
         }
       }
@@ -40943,7 +41357,7 @@ async function readConsumedEventIndex(projectRoot) {
     );
     return {
       schema_version: 1,
-      /* v8 ignore next 10 -- defensive fallbacks for malformed persisted data; always valid schema in practice */
+      /* v8 ignore start -- defensive fallbacks for malformed persisted data; always valid schema in practice */
       event_ids: Array.isArray(parsed.event_ids) ? [
         ...new Set(
           parsed.event_ids.filter((value) => typeof value === "string")
@@ -41669,9 +42083,9 @@ init_esm_shims();
 init_chunk_index();
 init_path_utils();
 init_service();
-import { existsSync as existsSync22 } from "fs";
+import { existsSync as existsSync23 } from "fs";
 import { readdir as readdir6 } from "fs/promises";
-import { basename as basename3, join as join45, relative as relative5 } from "path";
+import { basename as basename3, join as join46, relative as relative6 } from "path";
 var PATH_REGEX = /\b(?:src|app|resources|database|routes|lib|tests|docs|packages)\/[A-Za-z0-9_./-]+\b/g;
 var KNOWN_EXTENSIONS = /\.(tsx?|jsx?|vue|svelte|astro|php|dart|py|rb|go|rs|java|kt|cs|md|json|ya?ml)$/i;
 var ModuleResolver = class {
@@ -41705,8 +42119,8 @@ var ModuleResolver = class {
     const resolved = [];
     for (const match of matches) {
       const normalized = stripTrailingChars(match.replace(/\\/g, "/"), ".,:;!?");
-      const absolute = join45(this.root, normalized);
-      if (existsSync22(absolute)) {
+      const absolute = join46(this.root, normalized);
+      if (existsSync23(absolute)) {
         resolved.push({
           path: trimKnownExtension(normalized),
           source: "explicit-path",
@@ -41722,7 +42136,7 @@ var ModuleResolver = class {
     return resolved;
   }
   async tryResolveByBasename(candidate) {
-    const parent = join45(this.root, candidate.split("/").slice(0, -1).join("/"));
+    const parent = join46(this.root, candidate.split("/").slice(0, -1).join("/"));
     const leaf = basename3(candidate);
     try {
       const entries = await readdir6(parent);
@@ -41731,7 +42145,7 @@ var ModuleResolver = class {
         return null;
       }
       return {
-        path: trimKnownExtension(join45(relative5(this.root, parent), match).replace(/\\/g, "/")),
+        path: trimKnownExtension(join46(relative6(this.root, parent), match).replace(/\\/g, "/")),
         source: "explicit-path",
         confidence: 0.95
       };
@@ -41757,7 +42171,7 @@ var ModuleResolver = class {
       const exported = new Set(entry.chunks.flatMap((chunk) => chunk.exported_symbols));
       if (symbolTokens.some((token) => exported.has(token))) {
         matches.push({
-          path: trimKnownExtension(relative5(this.root, entry.source_file).replace(/\\/g, "/")),
+          path: trimKnownExtension(relative6(this.root, entry.source_file).replace(/\\/g, "/")),
           source: "symbol-index",
           confidence: 0.9
         });
@@ -41776,7 +42190,7 @@ var ModuleResolver = class {
         taskDescription: requestText
       });
       return result.retrieved_chunks.slice(0, 5).map((chunk) => ({
-        path: trimKnownExtension(relative5(this.root, chunk.source_file).replace(/\\/g, "/")),
+        path: trimKnownExtension(relative6(this.root, chunk.source_file).replace(/\\/g, "/")),
         source: "rag",
         confidence: 0.7
       })).filter((entry) => entry.path !== "");
@@ -41863,10 +42277,10 @@ init_paths();
 init_framework_config();
 import { mkdir as mkdir12, readFile as readFile12, writeFile as writeFile11 } from "fs/promises";
 import { createHash as createHash14 } from "crypto";
-import { join as join46 } from "path";
+import { join as join47 } from "path";
 async function readCompiledRules(root) {
   try {
-    const raw = await readFile12(join46(root, PATHS.COMPILED_RULES), "utf8");
+    const raw = await readFile12(join47(root, PATHS.COMPILED_RULES), "utf8");
     return JSON.parse(raw);
   } catch {
     return null;
@@ -41902,7 +42316,7 @@ function matchesGlobish(value, pattern) {
 // src/pipeline/scope-resolver.ts
 init_esm_shims();
 import { readFile as readFile13 } from "fs/promises";
-import { join as join47, relative as relative6 } from "path";
+import { join as join48, relative as relative7 } from "path";
 var SCOPE_TIMEOUT_MS = 200;
 var CORE_MODULE_PATTERN = /\b(?:src|lib)\/(?:core|shared|types|utils|common)\b/;
 async function resolveScope(root, modulePaths) {
@@ -41934,7 +42348,7 @@ async function scanExternalImportRoots(root, modulePaths, ownRoots) {
   await Promise.all(
     modulePaths.slice(0, 8).map(async (modulePath) => {
       try {
-        const content = await readFile13(join47(root, modulePath), "utf8");
+        const content = await readFile13(join48(root, modulePath), "utf8");
         const matches = Array.from(
           content.matchAll(
             /(?:import|export).+?from\s+['"]([^'"]+)['"]|require\(['"]([^'"]+)['"]\)/g
@@ -43194,22 +43608,22 @@ function changeKindForWorkflow(workflow) {
 init_esm_shims();
 init_ledger();
 init_types3();
-import { appendFileSync as appendFileSync8, mkdirSync as mkdirSync21, readFileSync as readFileSync31, writeFileSync as writeFileSync17 } from "fs";
-import { join as join48 } from "path";
+import { appendFileSync as appendFileSync8, mkdirSync as mkdirSync21, readFileSync as readFileSync32, writeFileSync as writeFileSync17 } from "fs";
+import { join as join49 } from "path";
 var ROUTE_TURNS_FILE = ".route-turns.jsonl";
 var ROUTE_TURNS_CAP = 2e3;
 var VALID_WORKFLOWS = new Set(ROUTED_WORKFLOWS);
 function routeTurnsPath(projectRoot, sessionId) {
-  return join48(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId), ROUTE_TURNS_FILE);
+  return join49(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId), ROUTE_TURNS_FILE);
 }
 function appendRouteTurn(projectRoot, sessionId, turn, cap = ROUTE_TURNS_CAP) {
   const path12 = routeTurnsPath(projectRoot, sessionId);
-  mkdirSync21(join48(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId)), {
+  mkdirSync21(join49(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId)), {
     recursive: true
   });
   appendFileSync8(path12, `${JSON.stringify({ at: turn.at, workflow: turn.workflow })}
 `, "utf8");
-  const lines = readFileSync31(path12, "utf8").split("\n").filter((line) => line.trim().length > 0);
+  const lines = readFileSync32(path12, "utf8").split("\n").filter((line) => line.trim().length > 0);
   if (lines.length > cap) {
     writeFileSync17(path12, `${lines.slice(lines.length - cap).join("\n")}
 `, "utf8");
@@ -43219,23 +43633,23 @@ function appendRouteTurn(projectRoot, sessionId, turn, cap = ROUTE_TURNS_CAP) {
 // src/pipeline/session-route.ts
 init_esm_shims();
 init_paths();
-import { mkdirSync as mkdirSync22, readFileSync as readFileSync32, writeFileSync as writeFileSync18 } from "fs";
-import { dirname as dirname28, join as join49 } from "path";
+import { mkdirSync as mkdirSync22, readFileSync as readFileSync33, writeFileSync as writeFileSync18 } from "fs";
+import { dirname as dirname28, join as join50 } from "path";
 var SESSION_ROUTE_FILE = ".session-route.json";
 var SESSION_ROUTE_DIR = ".session-route.d";
 function sessionRouteDir(projectRoot) {
-  return join49(projectRoot, dirname28(PATHS.CONTEXT_SESSION_ARTIFACT));
+  return join50(projectRoot, dirname28(PATHS.CONTEXT_SESSION_ARTIFACT));
 }
 var VALID_WORKFLOWS2 = new Set(ROUTED_WORKFLOWS);
 function perSessionRoutePath(projectRoot, sessionId) {
   const safe = typeof sessionId === "string" ? sessionId.trim().replace(/[^A-Za-z0-9_-]/g, "_") : "";
-  return safe.length === 0 ? null : join49(sessionRouteDir(projectRoot), SESSION_ROUTE_DIR, `${safe}.json`);
+  return safe.length === 0 ? null : join50(sessionRouteDir(projectRoot), SESSION_ROUTE_DIR, `${safe}.json`);
 }
 function writeSessionRoute(projectRoot, route, sessionId) {
   try {
     const dir = sessionRouteDir(projectRoot);
     mkdirSync22(dir, { recursive: true });
-    writeFileSync18(join49(dir, SESSION_ROUTE_FILE), JSON.stringify(route), "utf8");
+    writeFileSync18(join50(dir, SESSION_ROUTE_FILE), JSON.stringify(route), "utf8");
     const own = perSessionRoutePath(projectRoot, sessionId);
     if (own) {
       mkdirSync22(dirname28(own), { recursive: true });
@@ -43249,12 +43663,12 @@ function writeSessionRoute(projectRoot, route, sessionId) {
 init_esm_shims();
 init_ledger();
 init_types3();
-import { mkdirSync as mkdirSync23, readFileSync as readFileSync33, writeFileSync as writeFileSync19 } from "fs";
-import { join as join50 } from "path";
+import { mkdirSync as mkdirSync23, readFileSync as readFileSync34, writeFileSync as writeFileSync19 } from "fs";
+import { join as join51 } from "path";
 var WORKFLOW_STATE_FILE = ".workflow-state.json";
 var EMPTY_STATE = { active: null, paused: [] };
 function workflowStatePath(projectRoot, sessionId) {
-  return join50(
+  return join51(
     projectRoot,
     sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId),
     WORKFLOW_STATE_FILE
@@ -43292,7 +43706,7 @@ function toEntry(value) {
 }
 function readWorkflowState(projectRoot, sessionId) {
   try {
-    const parsed = JSON.parse(readFileSync33(workflowStatePath(projectRoot, sessionId), "utf8"));
+    const parsed = JSON.parse(readFileSync34(workflowStatePath(projectRoot, sessionId), "utf8"));
     const active = toEntry(parsed.active);
     const paused = Array.isArray(parsed.paused) ? parsed.paused.map(toEntry).filter((entry) => entry !== null) : [];
     const state = { active, paused };
@@ -43306,7 +43720,7 @@ function readWorkflowState(projectRoot, sessionId) {
 }
 function writeWorkflowState(projectRoot, sessionId, state) {
   const path12 = workflowStatePath(projectRoot, sessionId);
-  mkdirSync23(join50(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId)), {
+  mkdirSync23(join51(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId)), {
     recursive: true
   });
   writeFileSync19(path12, JSON.stringify(state), "utf8");

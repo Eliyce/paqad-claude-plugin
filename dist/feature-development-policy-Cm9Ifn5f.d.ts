@@ -1,4 +1,4 @@
-import { P as ProjectProfile } from './project-profile-CFDaJeqs.js';
+import { P as ProjectProfile } from './project-profile-Cn9_C9LZ.js';
 
 declare const FEATURE_DEVELOPMENT_STAGE_NAMES: readonly ["ticket_intake", "planning", "specification", "development", "review", "checks", "documentation_sync", "delivery"];
 type FeatureDevelopmentStageName = (typeof FEATURE_DEVELOPMENT_STAGE_NAMES)[number];

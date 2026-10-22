@@ -1,6 +1,6 @@
-import { S as StageId } from '../stages-CYJ-xB1w.js';
-import '../feature-development-policy-C1GIHRa6.js';
-import '../project-profile-CFDaJeqs.js';
+import { S as StageId } from '../stages-ejIQknpU.js';
+import '../feature-development-policy-Cm9Ifn5f.js';
+import '../project-profile-Cn9_C9LZ.js';
 import '../introspection-CLBqo7wO.js';
 
 declare const STAGE_NARRATION: Record<StageId, string>;

@@ -43,11 +43,11 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// node_modules/.pnpm/tsup@9.0.0_postcss@8.5.8_typescript@6.0.3_yaml@2.9.1/node_modules/tsup/assets/esm_shims.js
+// node_modules/.pnpm/tsup@9.0.0_postcss@8.5.31_typescript@6.0.3_yaml@2.9.1/node_modules/tsup/assets/esm_shims.js
 import path from "path";
 import { fileURLToPath } from "url";
 var init_esm_shims = __esm({
-  "node_modules/.pnpm/tsup@9.0.0_postcss@8.5.8_typescript@6.0.3_yaml@2.9.1/node_modules/tsup/assets/esm_shims.js"() {
+  "node_modules/.pnpm/tsup@9.0.0_postcss@8.5.31_typescript@6.0.3_yaml@2.9.1/node_modules/tsup/assets/esm_shims.js"() {
     "use strict";
   }
 });
@@ -13968,8 +13968,6 @@ function getDefaultEmbeddingModel(provider) {
   switch (provider) {
     case "openai":
       return "text-embedding-3-small";
-    case "voyageai":
-      return "voyage-code-3";
     case "local":
     default:
       return DEFAULT_LOCAL_EMBEDDING_MODEL;
@@ -14053,7 +14051,7 @@ var RESEARCH_DEPTHS = ["cutting-edge", "standard", "conservative"];
 var ESCALATION_MODES = ["block", "require_approval", "warn"];
 
 // src/core/framework-config.ts
-var EMBEDDING_PROVIDERS = ["local", "openai", "voyageai"];
+var EMBEDDING_PROVIDERS = ["local", "openai"];
 var ASK_THRESHOLDS = ["strict", "balanced", "permissive"];
 var STAGE_RULE_MODES = ["off", "warn", "strict"];
 var CHECKS_FLAKY_MODES = ["pass", "warn", "fail"];
@@ -14325,7 +14323,7 @@ var FRAMEWORK_CONFIG_SPECS = [
     optional: true,
     group: "rag",
     section: "Intelligence / RAG",
-    comment: "local | openai | voyageai. Unset uses the local model."
+    comment: "local | openai. Unset uses the local model."
   },
   {
     key: "rag_embedding_model",

@@ -4,7 +4,7 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import { execFileSync, spawn } from "child_process";
 import { existsSync as existsSync2, mkdirSync, readFileSync as readFileSync3, realpathSync, writeFileSync } from "fs";
 import { createRequire } from "module";
-import { dirname as dirname3, join as join3 } from "path";
+import { dirname as dirname3, isAbsolute, join as join3, relative } from "path";
 
 // src/core/runtime-paths.ts
 import { readFileSync } from "fs";
@@ -88,18 +88,25 @@ async function loadOptionalPackage(name, env = process.env) {
   } catch {
   }
   for (const base of alternateBases(env)) {
+    let loaded;
     try {
-      return createRequire(base)(name);
+      loaded = createRequire(base)(name);
     } catch {
+      continue;
     }
+    kickOffEngineInstall(env);
+    return loaded;
   }
+  kickOffEngineInstall(env);
+  throw new Error(`optional package ${name} is not installed`);
+}
+function kickOffEngineInstall(env) {
   try {
     maybeStartOptionalEngineInstall(env);
   } catch {
   }
-  throw new Error(`optional package ${name} is not installed`);
 }
-var OPTIONAL_ENGINES = ["@huggingface/transformers", "openai", "voyageai"];
+var OPTIONAL_ENGINES = ["@huggingface/transformers", "openai"];
 var PRIMARY_ENGINE = "@huggingface/transformers";
 var INSTALL_RETRY_INTERVAL_MS = 24 * 60 * 60 * 1e3;
 function enginePaths(pluginData) {
@@ -133,17 +140,40 @@ function readEngineSpecs(env) {
     return [];
   }
 }
+function isWithin(dir, file) {
+  const rel = relative(dir, file);
+  return rel.length > 0 && !rel.startsWith("..") && !isAbsolute(rel);
+}
+function resolvesFromPluginData(resolved, pluginData) {
+  if (isWithin(pluginData, resolved)) {
+    return true;
+  }
+  try {
+    return isWithin(realpathSync(pluginData), resolved);
+  } catch {
+    return false;
+  }
+}
+function installedSpecsMatch(marker, declared) {
+  const installed = marker?.status === "ready" ? marker.specs : void 0;
+  return Array.isArray(installed) && [...installed].sort().join(" ") === [...declared].sort().join(" ");
+}
 function maybeStartOptionalEngineInstall(env = process.env, deps = {}, options = {}) {
   const pluginData = env.CLAUDE_PLUGIN_DATA;
   if (!pluginData) {
     return "no-plugin-data";
   }
   const resolve = deps.resolve ?? resolveOptionalPackage;
-  if (resolve(PRIMARY_ENGINE, env) !== null) {
+  const resolved = resolve(PRIMARY_ENGINE, env);
+  if (resolved !== null && !resolvesFromPluginData(resolved, pluginData)) {
     return "already-present";
   }
   const paths = enginePaths(pluginData);
   const marker = readInstallMarker(paths.marker);
+  const specs = (deps.readSpecs ?? readEngineSpecs)(env);
+  if (resolved !== null && (specs.length === 0 || installedSpecsMatch(marker, specs))) {
+    return "already-present";
+  }
   if (marker?.status === "installing" && existsSync2(paths.lock)) {
     return "in-progress";
   }
@@ -151,7 +181,6 @@ function maybeStartOptionalEngineInstall(env = process.env, deps = {}, options =
   if (marker && now() - Date.parse(marker.attempted_at) < INSTALL_RETRY_INTERVAL_MS) {
     return "throttled";
   }
-  const specs = (deps.readSpecs ?? readEngineSpecs)(env);
   if (specs.length === 0) {
     return "no-pinned-range";
   }
@@ -164,7 +193,7 @@ function maybeStartOptionalEngineInstall(env = process.env, deps = {}, options =
   writeFileSync(paths.lock, String(process.pid));
   writeFileSync(
     paths.marker,
-    JSON.stringify({ status: "installing", attempted_at: new Date(now()).toISOString() })
+    JSON.stringify({ status: "installing", attempted_at: new Date(now()).toISOString(), specs })
   );
   (deps.startInstall ?? spawnEngineInstall)(specs, pluginData, paths, options.projectRoot);
   return "started";
@@ -179,7 +208,7 @@ function spawnEngineInstall(specs, dir, paths, projectRoot) {
       execFileSync('npm', ['install', ...specs, '--no-audit', '--no-fund', '--omit=dev'], {
         cwd: process.env.PAQAD_ENGINE_DIR, stdio: ['ignore', fd, fd],
       });
-      writeFileSync(process.env.PAQAD_ENGINE_MARKER, JSON.stringify({ status: 'ready', attempted_at: new Date().toISOString() }));
+      writeFileSync(process.env.PAQAD_ENGINE_MARKER, JSON.stringify({ status: 'ready', attempted_at: new Date().toISOString(), specs }));
       if (process.env.PAQAD_ENGINE_REBUILD_ROOT && process.env.PAQAD_ENGINE_CLI) {
         try {
           execFileSync(process.execPath, [process.env.PAQAD_ENGINE_CLI, 'rag', 'rebuild', '--project-root', process.env.PAQAD_ENGINE_REBUILD_ROOT], {

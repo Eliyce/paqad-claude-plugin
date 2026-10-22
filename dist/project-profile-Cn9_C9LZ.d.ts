@@ -590,7 +590,7 @@ interface ModelRoutingConfig {
     reasoning_model: string;
     fast_model: string;
 }
-declare const EMBEDDING_PROVIDER_NAMES: readonly ["local", "openai", "voyageai"];
+declare const EMBEDDING_PROVIDER_NAMES: readonly ["local", "openai"];
 type EmbeddingProviderName = (typeof EMBEDDING_PROVIDER_NAMES)[number];
 interface BenchmarkGateConfig {
     hit_at_5_improvement_pct: number;
