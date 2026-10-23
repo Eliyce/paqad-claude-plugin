@@ -18,7 +18,7 @@ interface RoutingConfig {
 }
 declare function selectLane(complexity: Complexity, risk: Risk): Lane;
 
-declare const CLASSIFICATION_WORKFLOWS: readonly ["project-question", "ticket-refinement", "writing", "editing", "planning", "research", "feature-development", "bug-fix", "refactor", "migration", "content-update", "investigation", "cleanup", "architecture-change", "test-improvement", "documentation-update", "module-documentation", "root-cause-analysis", "discovery", "pentest", "pentest-retest", "codebase-health", "health-retest", "site-map", "site-map-retest", "schema-change", "query-optimization", "custom"];
+declare const CLASSIFICATION_WORKFLOWS: readonly ["project-question", "ticket-refinement", "writing", "editing", "planning", "research", "feature-development", "bug-fix", "refactor", "migration", "content-update", "investigation", "cleanup", "architecture-change", "test-improvement", "documentation-update", "module-documentation", "root-cause-analysis", "discovery", "pentest", "pentest-retest", "codebase-health", "health-retest", "site-map", "site-map-retest", "design-test", "design-retest", "rules-analyze", "rules-generate", "schema-change", "query-optimization", "custom"];
 type ClassificationWorkflow = (typeof CLASSIFICATION_WORKFLOWS)[number];
 declare const CLASSIFICATION_SCOPES: readonly ["single-file", "single-module", "multi-module", "system-wide"];
 type ClassificationScope = (typeof CLASSIFICATION_SCOPES)[number];

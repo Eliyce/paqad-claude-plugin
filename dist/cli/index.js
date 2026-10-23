@@ -3,7 +3,7 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-TWNRXT3G.js";
+} from "../chunk-BMIF36HK.js";
 import {
   DISABLED_SESSION_DOC_TYPE
 } from "../chunk-L7IE7IHW.js";
@@ -138,7 +138,7 @@ import {
   writeRuleContext,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-DMYOZYSL.js";
+} from "../chunk-N2GKQO6Y.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -179,7 +179,7 @@ import {
   writeChecksReportForFeature,
   writeFeatureTechDebtIndex,
   writeReviewDigest
-} from "../chunk-NMA7BTZZ.js";
+} from "../chunk-EVMV3TKL.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -190,19 +190,19 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-RNHINL6K.js";
+} from "../chunk-2Z2T2RXB.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow
-} from "../chunk-SDFPLJXM.js";
+} from "../chunk-2ZHTVPYL.js";
 import "../chunk-5ERW2PZB.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
 } from "../chunk-PWJ37K7H.js";
-import "../chunk-ZCZ5KQ6D.js";
+import "../chunk-F77HHINV.js";
 import "../chunk-F4TESBBJ.js";
 import {
   createEvidence,
@@ -210,11 +210,11 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-SHKQHGG2.js";
+} from "../chunk-V4Z5O3AN.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
-import "../chunk-3H2ZWHNF.js";
+import "../chunk-K37VZN5W.js";
 import {
   EmbeddingProviderError,
   PatternStore,
@@ -229,13 +229,13 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-A7OR2PF2.js";
+} from "../chunk-CF2USPG5.js";
 import "../chunk-Y7QRVDRT.js";
 import "../chunk-HS6PHXCB.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-YIE367YO.js";
+} from "../chunk-CGL6GESN.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -365,7 +365,7 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-MPSM3WJY.js";
+} from "../chunk-JHPIA4SG.js";
 import {
   releaseLock,
   tryAcquireLock
@@ -378,7 +378,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-A36IRRPM.js";
+} from "../chunk-BAZ34AEB.js";
 import {
   appendHooksLog
 } from "../chunk-CJ6GEKKF.js";
@@ -400,7 +400,7 @@ import {
   syncProjectProfile,
   validatePackAt,
   writeProjectProfile
-} from "../chunk-MY3XAUJK.js";
+} from "../chunk-B3ELKDGA.js";
 import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
@@ -409,11 +409,11 @@ import {
   loadRuleScriptMap,
   missingBinaries,
   scanWorkingTree
-} from "../chunk-VAKHLEAY.js";
+} from "../chunk-7YZETP45.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-EOKSVX6N.js";
+} from "../chunk-X5UZPGJY.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
@@ -425,27 +425,27 @@ import {
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-RJDWBDAO.js";
+} from "../chunk-5IHBZJ2V.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   normalizeArtifactPath
-} from "../chunk-OH7T772U.js";
+} from "../chunk-UTS2RBQY.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-WJOVAKE6.js";
+} from "../chunk-C3AOGNHG.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-NIAPKHOQ.js";
+} from "../chunk-A6ZAP26L.js";
 import {
   recordMarkedStage
-} from "../chunk-ZVMWVHMT.js";
+} from "../chunk-BXSUACCZ.js";
 import {
   clearPendingLane
 } from "../chunk-XBBQDY4Q.js";
@@ -469,7 +469,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-MUJL6BOS.js";
+} from "../chunk-6DRXSYZB.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -495,7 +495,7 @@ import {
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-MIXUQZID.js";
+} from "../chunk-73PEJCI3.js";
 import {
   describeInherited
 } from "../chunk-MLVRTWKF.js";
@@ -516,7 +516,7 @@ import {
   resolveFeatureDevelopmentCheckCommands,
   resolveFrameworkConfig,
   syncFrameworkConfig
-} from "../chunk-QMZL6OH5.js";
+} from "../chunk-4PJNUQHB.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   VISUAL_EVIDENCE_DOC_TYPE,

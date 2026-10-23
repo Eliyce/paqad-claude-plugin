@@ -2,15 +2,15 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   ChunkIndexManager,
   RagService
-} from "./chunk-A7OR2PF2.js";
+} from "./chunk-CF2USPG5.js";
 import {
   detectDecisionForks,
   getPrimaryStack,
   readCompiledRules
-} from "./chunk-A36IRRPM.js";
+} from "./chunk-BAZ34AEB.js";
 import {
   engineLog
-} from "./chunk-MY3XAUJK.js";
+} from "./chunk-B3ELKDGA.js";
 import {
   readGitChangedFiles
 } from "./chunk-PMSUN52C.js";
@@ -24,7 +24,7 @@ import {
   require_dist,
   resolveAnalyticsGate,
   resolveFrameworkConfig
-} from "./chunk-QMZL6OH5.js";
+} from "./chunk-4PJNUQHB.js";
 import {
   COMPLEXITY_LEVELS,
   selectLane
@@ -1582,7 +1582,35 @@ var WORKFLOW_PATTERNS = [
   {
     workflow: "pentest",
     priority: 240,
-    patterns: ["run a pentest", "penetration test", "security audit"]
+    patterns: [
+      "pentest",
+      "pen test",
+      "penetration test",
+      "security audit",
+      "security review",
+      "security test",
+      "security scan",
+      "vulnerability scan",
+      "for vulnerabilities"
+    ]
+  },
+  {
+    workflow: "design-retest",
+    priority: 239,
+    patterns: ["design retest", "retest the design"]
+  },
+  {
+    workflow: "design-test",
+    priority: 238,
+    patterns: [
+      "design test",
+      "design audit",
+      "design system audit",
+      "audit the ui",
+      "audit our ui",
+      "ui audit",
+      "against the design system"
+    ]
   },
   {
     workflow: "health-retest",
@@ -1615,7 +1643,38 @@ var WORKFLOW_PATTERNS = [
   {
     workflow: "site-map",
     priority: 232,
-    patterns: ["site map", "create sitemap", "update sitemap", "generate sitemap", "journey map"]
+    patterns: [
+      "site map",
+      "create sitemap",
+      "update sitemap",
+      "generate sitemap",
+      "journey map",
+      "map the app",
+      "map this app",
+      "map our app",
+      "map the surfaces",
+      "navigation and journeys"
+    ]
+  },
+  {
+    workflow: "rules-generate",
+    priority: 229,
+    patterns: ["rules generate", "generate rule scripts", "generate the rule scripts"]
+  },
+  {
+    workflow: "rules-analyze",
+    priority: 228,
+    patterns: [
+      "rules analyze",
+      "rules analyse",
+      "analyze the rules",
+      "analyse the rules",
+      "analyze our rules",
+      "analyse our rules",
+      "rules can become scripts",
+      "rules could become scripts",
+      "rules into scripts"
+    ]
   },
   { workflow: "root-cause-analysis", priority: 230, patterns: ["root cause", "rca"] },
   {
@@ -1628,10 +1687,29 @@ var WORKFLOW_PATTERNS = [
     priority: 200,
     patterns: ["documentation", "docs", "documenation"]
   },
+  {
+    workflow: "discovery",
+    priority: 190,
+    patterns: [
+      "rough idea",
+      "half baked idea",
+      "help me shape",
+      "shape this idea",
+      "shape the idea",
+      "shape an idea",
+      "shape my idea",
+      "not sure what it should look like"
+    ]
+  },
   { workflow: "research", priority: 180, patterns: ["research", "investigate"] }
 ];
 var CODE_CHANGE_PATTERNS = [
   { workflow: "cleanup", priority: 170, patterns: ["cleanup", "clean up"] },
+  {
+    workflow: "refactor",
+    priority: 150,
+    patterns: ["refactor", "refactors", "refactoring", "refactored"]
+  },
   {
     workflow: "bug-fix",
     priority: 160,
@@ -1828,6 +1906,9 @@ function resolveWorkflow(requestText, routedWorkflow) {
   if (codeChange) {
     return codeChange;
   }
+  if (namesSourcePath(requestText) && usesPathEditVerb(normalized)) {
+    return "feature-development";
+  }
   if (hasTrackerVerb(normalized) && !namesCode(requestText)) {
     return "project-question";
   }
@@ -1893,6 +1974,33 @@ var CODE_VERBS = /* @__PURE__ */ new Set([
   "migrating",
   "migrated"
 ]);
+var PATH_EDIT_VERBS = /* @__PURE__ */ new Set([
+  ...CODE_VERBS,
+  "make",
+  "makes",
+  "making",
+  "replace",
+  "replaces",
+  "replacing",
+  "move",
+  "moves",
+  "moving",
+  "extract",
+  "extracts",
+  "extracting",
+  "convert",
+  "converts",
+  "converting",
+  "delete",
+  "deletes",
+  "deleting",
+  "rewrite",
+  "rewrites",
+  "rewriting"
+]);
+function usesPathEditVerb(normalized) {
+  return tokensOf(normalized).some((token) => PATH_EDIT_VERBS.has(token));
+}
 var POLITE_LEAD_INS = ["can you", "could you", "would you", "please", "let s"];
 function isQuestionRoute(requestText) {
   const normalized = normalizeText(requestText);

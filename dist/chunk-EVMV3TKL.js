@@ -8,7 +8,7 @@ import {
   readChangeCost,
   readCostCache,
   roundUsd
-} from "./chunk-RNHINL6K.js";
+} from "./chunk-2Z2T2RXB.js";
 import {
   CHIEF_ROLE,
   addTokenUsage,
@@ -17,10 +17,10 @@ import {
   highTableDoneTimes,
   maxTokenUsage,
   readHighTable
-} from "./chunk-SDFPLJXM.js";
+} from "./chunk-2ZHTVPYL.js";
 import {
   STAGE_AGENT_HOSTS
-} from "./chunk-ZCZ5KQ6D.js";
+} from "./chunk-F77HHINV.js";
 import {
   PAQAD_STATUS_GLYPH,
   PAQAD_VERDICT
@@ -28,7 +28,7 @@ import {
 import {
   episodeStart,
   readRouteTurns
-} from "./chunk-3H2ZWHNF.js";
+} from "./chunk-K37VZN5W.js";
 import {
   BUNDLE_MANIFEST,
   aggregateSpecPipelineMetrics,
@@ -48,7 +48,7 @@ import {
   resolveFlooredMode,
   resolveRuleComplianceMode,
   sessionWroteInEpisode
-} from "./chunk-MPSM3WJY.js";
+} from "./chunk-JHPIA4SG.js";
 import {
   hudCostCachePath,
   hudReceiptPath,
@@ -62,18 +62,18 @@ import {
 import {
   StackPackLoader,
   readProjectProfile
-} from "./chunk-MY3XAUJK.js";
+} from "./chunk-B3ELKDGA.js";
 import {
   getRuntimeRoot
 } from "./chunk-VVRAO2BK.js";
 import {
   readReport
-} from "./chunk-VAKHLEAY.js";
+} from "./chunk-7YZETP45.js";
 import {
   readDuplication,
   readFeatureEvidence,
   readRuleRun
-} from "./chunk-EOKSVX6N.js";
+} from "./chunk-X5UZPGJY.js";
 import {
   isPaqadArtifactPath,
   isTestFile,
@@ -81,7 +81,7 @@ import {
 } from "./chunk-PMSUN52C.js";
 import {
   readWorkflowState
-} from "./chunk-NIAPKHOQ.js";
+} from "./chunk-A6ZAP26L.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -100,7 +100,7 @@ import {
   readFeatureStageUnit,
   stampFeatureDocument,
   writeFeatureIndexDocument
-} from "./chunk-MIXUQZID.js";
+} from "./chunk-73PEJCI3.js";
 import {
   branchCarriesOtherWork,
   describeInherited
@@ -119,7 +119,7 @@ import {
   resolveSpecPipelineSwitches,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "./chunk-QMZL6OH5.js";
+} from "./chunk-4PJNUQHB.js";
 import {
   ENVELOPE_HEADER_KEYS,
   LANES,

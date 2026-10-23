@@ -14,16 +14,16 @@ import {
   redactSecrets,
   writeProjectProfile,
   writeProjectSecret
-} from "./chunk-MY3XAUJK.js";
+} from "./chunk-B3ELKDGA.js";
 import {
   allocateChatOrdinal,
   currentChatOrdinal,
   mirrorRagRow
-} from "./chunk-EOKSVX6N.js";
+} from "./chunk-X5UZPGJY.js";
 import {
   appendRunCancelledEvent,
   readRawModuleMap
-} from "./chunk-MUJL6BOS.js";
+} from "./chunk-6DRXSYZB.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -37,7 +37,7 @@ import {
   require_dist,
   setConfigValue,
   syncFrameworkConfig
-} from "./chunk-QMZL6OH5.js";
+} from "./chunk-4PJNUQHB.js";
 import {
   require_ajv
 } from "./chunk-WGEG5J6L.js";
@@ -1576,7 +1576,7 @@ var HandoffParser = class {
 // src/session/resume-validator.ts
 var SessionResumeValidator = class {
   constructor(parser = new HandoffParser(), serviceFactory = async (projectRoot) => {
-    const { RagService: RagService2 } = await import("./service-QAWBVYQK.js");
+    const { RagService: RagService2 } = await import("./service-3BMKSUNW.js");
     return new RagService2(projectRoot);
   }) {
     this.parser = parser;

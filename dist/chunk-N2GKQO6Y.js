@@ -48,7 +48,7 @@ import {
   writeFeatureTechDebtIndex,
   writeVerificationEvidence,
   writesLedger
-} from "./chunk-NMA7BTZZ.js";
+} from "./chunk-EVMV3TKL.js";
 import {
   DSSE_PAYLOAD_TYPE,
   ZERO_DIGEST,
@@ -58,7 +58,7 @@ import {
   pae,
   projectFeatureReceipt,
   splitReceiptEvidenceRows
-} from "./chunk-RNHINL6K.js";
+} from "./chunk-2Z2T2RXB.js";
 import {
   buildFullHookChain,
   buildNativeCompletionHookFile,
@@ -70,7 +70,7 @@ import {
 import {
   require_lib,
   writeStageAgents
-} from "./chunk-ZCZ5KQ6D.js";
+} from "./chunk-F77HHINV.js";
 import {
   getOrLoad
 } from "./chunk-F4TESBBJ.js";
@@ -84,7 +84,7 @@ import {
   syncModuleHealth,
   syncModuleHealthFromVerification,
   writeModuleHealthProfile
-} from "./chunk-SHKQHGG2.js";
+} from "./chunk-V4Z5O3AN.js";
 import {
   PAQAD_STATUS_GLYPH,
   PAQAD_STATUS_LABEL,
@@ -103,7 +103,7 @@ import {
   atomicWriteFile,
   createEmbeddingProvider,
   createReranker
-} from "./chunk-A7OR2PF2.js";
+} from "./chunk-CF2USPG5.js";
 import {
   ENGINE_INSTALL_NETWORK_HINT,
   PLUGIN_ID,
@@ -123,7 +123,7 @@ import {
   compileRuleScripts,
   isRuleScriptMapStale,
   readDrift
-} from "./chunk-YIE367YO.js";
+} from "./chunk-CGL6GESN.js";
 import {
   BUNDLE_MANIFEST,
   COMPLIANCE_SCHEMA_VERSION,
@@ -196,7 +196,7 @@ import {
   writeQuestions,
   writeRequest,
   writeStagedText
-} from "./chunk-MPSM3WJY.js";
+} from "./chunk-JHPIA4SG.js";
 import {
   hudReceiptPath,
   hudVerdictPath,
@@ -222,7 +222,7 @@ import {
   readCompiledRules,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-A36IRRPM.js";
+} from "./chunk-BAZ34AEB.js";
 import {
   appendHooksLog
 } from "./chunk-CJ6GEKKF.js";
@@ -248,7 +248,7 @@ import {
   readTextIfExistsSync,
   resolvePackManagerRoots,
   setEngineLogger
-} from "./chunk-MY3XAUJK.js";
+} from "./chunk-B3ELKDGA.js";
 import {
   getPackageRoot,
   getRuntimeRoot,
@@ -261,7 +261,7 @@ import {
   readReport,
   ruleRunFindings,
   scanWorkingTree
-} from "./chunk-VAKHLEAY.js";
+} from "./chunk-7YZETP45.js";
 import {
   appendChangeMetrics,
   appendDuplicationRun,
@@ -270,7 +270,7 @@ import {
   readChangeMetrics,
   readDuplication,
   readRuleRun
-} from "./chunk-EOKSVX6N.js";
+} from "./chunk-X5UZPGJY.js";
 import {
   buildEvidenceRow,
   readEvidenceRowsAt
@@ -290,23 +290,23 @@ import {
 } from "./chunk-O77JBFWW.js";
 import {
   STAGE_NARRATION
-} from "./chunk-RJDWBDAO.js";
+} from "./chunk-5IHBZJ2V.js";
 import {
   extractAssistantText,
   routeIsAffirmativelyNonFeature,
   strayBundleFiles
-} from "./chunk-OH7T772U.js";
+} from "./chunk-UTS2RBQY.js";
 import {
   endStage,
   openStageEvidence
-} from "./chunk-ZVMWVHMT.js";
+} from "./chunk-BXSUACCZ.js";
 import {
   appendModuleMapEvent,
   appendRunCancelledEvent,
   emitContextTruncated,
   matchesAnyGlob,
   readRawModuleMap
-} from "./chunk-MUJL6BOS.js";
+} from "./chunk-6DRXSYZB.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -331,7 +331,7 @@ import {
   resolveFeatureRef,
   startedAfterLastEnd,
   writeFeatureIndexDocument
-} from "./chunk-MIXUQZID.js";
+} from "./chunk-73PEJCI3.js";
 import {
   DEFAULT_BENCHMARK_GATES,
   DEFAULT_FRAMEWORK_CONFIG,
@@ -363,7 +363,7 @@ import {
   writeConfigExample,
   writeConfigsReadme,
   writeFrameworkOverridesToConfig
-} from "./chunk-QMZL6OH5.js";
+} from "./chunk-4PJNUQHB.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   buildTextHeader,
@@ -5222,6 +5222,10 @@ var CLASSIFICATION_WORKFLOWS = [
   "health-retest",
   "site-map",
   "site-map-retest",
+  "design-test",
+  "design-retest",
+  "rules-analyze",
+  "rules-generate",
   "schema-change",
   "query-optimization",
   "custom"
@@ -15831,7 +15835,7 @@ var memoizedReport;
 function getEngineVersionReport() {
   if (memoizedReport === void 0) {
     memoizedReport = Object.freeze({
-      engineVersion: normalizeEngineVersion("1.105.0"),
+      engineVersion: normalizeEngineVersion("1.105.1"),
       minConsumerVersion: MIN_CONSUMER_VERSION,
       deprecatedAsOf: DEPRECATED_AS_OF
     });
@@ -33022,7 +33026,7 @@ function skipLines(gates, flagOn) {
 
 // src/verification/repository/run-repository-verification.ts
 function verifierVersion() {
-  return true ? "1.105.0" : "0.0.0-dev";
+  return true ? "1.105.1" : "0.0.0-dev";
 }
 function backstopGates() {
   return [
@@ -36215,7 +36219,7 @@ var WorkflowEngine = class {
 };
 
 // src/index.ts
-var VERSION = "1.105.0";
+var VERSION = "1.105.1";
 function getFrameworkName() {
   return "paqad-ai";
 }
