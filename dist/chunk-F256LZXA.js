@@ -40,121 +40,6 @@ init_esm_shims();
 import { readFileSync as readFileSync2 } from "fs";
 import { join as join3 } from "path";
 
-// src/feature-evidence/enumerate.ts
-init_esm_shims();
-import { readdirSync } from "fs";
-import { join } from "path";
-function listFeatureDirs(projectRoot) {
-  try {
-    return readdirSync(join(projectRoot, PATHS.FEATURE_EVIDENCE_DIR), { withFileTypes: true }).filter((entry) => entry.isDirectory() && isFeatureDirName(entry.name)).map((entry) => entry.name).sort();
-  } catch {
-    return [];
-  }
-}
-
-// src/feature-evidence/feature-record.ts
-init_esm_shims();
-import { mkdirSync, readFileSync, writeFileSync } from "fs";
-import { dirname, join as join2 } from "path";
-
-// src/core/fs/atomic-rename.ts
-init_esm_shims();
-import { renameSync, rmSync } from "fs";
-import { rename as renameAsync, rm as rmAsync } from "fs/promises";
-var RETRYABLE_CODES = /* @__PURE__ */ new Set(["EPERM", "EACCES", "EBUSY"]);
-var RENAME_MAX_ATTEMPTS = 5;
-function waitBeforeRetry(attempt) {
-  return 10 * 2 ** (attempt - 1);
-}
-function isRetryable(error, platform) {
-  if (platform !== "win32") return false;
-  const code = error?.code;
-  return typeof code === "string" && RETRYABLE_CODES.has(code);
-}
-function sleepAsync(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-function sleepSync(ms) {
-  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
-}
-async function renameWithRetry(from, to, deps = {}) {
-  const rename = deps.rename ?? renameAsync;
-  const remove = deps.remove ?? ((path) => rmAsync(path, { force: true }));
-  const sleep = deps.sleep ?? sleepAsync;
-  const platform = deps.platform ?? process.platform;
-  for (let attempt = 1; ; attempt += 1) {
-    try {
-      await rename(from, to);
-      return;
-    } catch (error) {
-      if (attempt >= RENAME_MAX_ATTEMPTS || !isRetryable(error, platform)) {
-        await remove(from).catch(() => void 0);
-        throw error;
-      }
-      await sleep(waitBeforeRetry(attempt));
-    }
-  }
-}
-function renameWithRetrySync(from, to, deps = {}) {
-  const rename = deps.rename ?? renameSync;
-  const remove = deps.remove ?? ((path) => rmSync(path, { force: true }));
-  const sleep = deps.sleep ?? sleepSync;
-  const platform = deps.platform ?? process.platform;
-  const attemptRename = (attempt) => {
-    try {
-      rename(from, to);
-    } catch (error) {
-      if (attempt >= RENAME_MAX_ATTEMPTS || !isRetryable(error, platform)) {
-        try {
-          remove(from);
-        } catch {
-        }
-        throw error;
-      }
-      sleep(waitBeforeRetry(attempt));
-      attemptRename(attempt + 1);
-    }
-  };
-  attemptRename(1);
-}
-
-// src/feature-evidence/lane-rank.ts
-init_esm_shims();
-
-// src/core/types/routing.ts
-init_esm_shims();
-var LANES = ["fast", "graduated", "full"];
-var PROCESS_DEPTHS = ["fast lane", "graduated lane", "full lane"];
-var COMPLEXITY_LEVELS = ["trivial", "low", "medium", "high", "very-high"];
-var RISK_LEVELS = ["low", "medium", "high"];
-function selectLane(complexity, risk) {
-  if (complexity === "trivial") {
-    return "fast";
-  }
-  if (complexity === "low" && risk === "low") {
-    return "fast";
-  }
-  if (complexity === "low" && risk !== "low") {
-    return "graduated";
-  }
-  if (complexity === "medium" && risk !== "high") {
-    return "graduated";
-  }
-  return "full";
-}
-
-// src/feature-evidence/lane-rank.ts
-function laneRank(lane2) {
-  return lane2 === null ? -1 : LANES.indexOf(lane2);
-}
-function higherLane(current, incoming) {
-  return laneRank(incoming) > laneRank(current) ? incoming : current;
-}
-
-// src/feature-evidence/mint.ts
-init_esm_shims();
-import { createHash as createHash2 } from "crypto";
-
 // src/feature-evidence/envelope.ts
 init_esm_shims();
 
@@ -216,6 +101,113 @@ function makeDeterministicGeneratedId(sectionPath, index) {
 }
 function normalizeCell(value) {
   return value.trim().replace(/\s+/g, " ");
+}
+
+// src/feature-evidence/mint.ts
+init_esm_shims();
+import { createHash as createHash2 } from "crypto";
+var UNTITLED_FEATURE_TITLE = "change";
+var HASH_EXCLUDED_KEYS = /* @__PURE__ */ new Set(["content_hash", "created_at", "updated_at", "recorded_at"]);
+function computeContentHash(record) {
+  const identity = {};
+  for (const key of Object.keys(record).sort()) {
+    if (!HASH_EXCLUDED_KEYS.has(key)) {
+      identity[key] = record[key];
+    }
+  }
+  return createHash2("sha256").update(JSON.stringify(identity)).digest("hex");
+}
+function mintFeatureDirName(input) {
+  const issue = resolveIssue(input);
+  const slug = deriveSlug(titleWithoutRef(input.title, issue));
+  const ulid2 = input.ulid ?? ulid(input.ulidSeed);
+  const dirName = formatFeatureDirName({ issue, slug, ulid: ulid2 });
+  return { dirName, issue, slug, ulid: ulid2 };
+}
+function resolveIssue(input) {
+  if (input.issue !== void 0) {
+    return normalizeIssue(input.issue);
+  }
+  const refs = detectTicketRefs(input.title, input.trackerKind ?? "generic");
+  return normalizeIssue(refs[0] ?? null);
+}
+function escapeRegExp(text) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+function titleWithoutRef(title, issue) {
+  if (issue === null) {
+    return title;
+  }
+  const ref = escapeRegExp(issue);
+  const tail = "(?![A-Za-z0-9])[:\\-\\s]*";
+  const pattern = /^\d+$/.test(issue) ? new RegExp(`(?:(?<![\\w/])#${ref}|^\\s*${ref})${tail}`, "gi") : new RegExp(`(?<![A-Za-z0-9])#?${ref}${tail}`, "gi");
+  const stripped = title.replace(pattern, " ").trim();
+  return /[a-z0-9]/i.test(stripped) ? stripped : title;
+}
+function normalizeIssue(issue) {
+  if (issue === null) {
+    return null;
+  }
+  const stripped = issue.replace(/^#/, "").trim();
+  return stripped.length > 0 ? stripped : null;
+}
+function buildFeatureRecord(input) {
+  const now = input.now ?? (() => /* @__PURE__ */ new Date());
+  const updatedAt = now().toISOString();
+  const openedAt = input.recorded_at;
+  return buildDocumentEnvelope({
+    docType: FEATURE_DOC_TYPE,
+    change: input.change,
+    sessionId: input.session_id,
+    schemaVersion: FEATURE_DOC_SCHEMA_VERSION,
+    now: openedAt === void 0 ? () => new Date(updatedAt) : () => new Date(openedAt),
+    body: {
+      issue: input.issue,
+      title: input.title,
+      slug: input.slug,
+      lane: input.lane ?? null,
+      status: input.status ?? "active",
+      spec_id: input.spec_id ?? null,
+      adapter: input.adapter,
+      branch: input.branch ?? null,
+      base_branch: input.base_branch ?? null,
+      updated_at: updatedAt,
+      ...input.kind !== void 0 ? { kind: input.kind } : {}
+    }
+  });
+}
+function buildReviewRecord(input) {
+  return buildDocumentEnvelope({
+    docType: REVIEW_DOC_TYPE,
+    change: input.change,
+    sessionId: input.session_id,
+    schemaVersion: FEATURE_DOC_SCHEMA_VERSION,
+    now: input.now,
+    body: {
+      summary: input.summary,
+      verdict: input.verdict,
+      findings: input.findings ?? [],
+      checked: input.checked ?? [],
+      rollback: input.rollback
+    }
+  });
+}
+function buildPlanRecord(input) {
+  return buildDocumentEnvelope({
+    docType: PLAN_DOC_TYPE,
+    change: input.change,
+    sessionId: input.session_id,
+    schemaVersion: FEATURE_DOC_SCHEMA_VERSION,
+    now: input.now,
+    body: {
+      summary: input.summary,
+      steps: input.steps ?? [],
+      modules_touched: input.modules_touched ?? [],
+      decisions: input.decisions ?? [],
+      risks: input.risks ?? [],
+      ...input.reuse === void 0 ? {} : { reuse: input.reuse }
+    }
+  });
 }
 
 // src/feature-evidence/envelope.ts
@@ -356,109 +348,115 @@ function withReceiptHeader(header, block) {
   return { ...header, ...block };
 }
 
-// src/feature-evidence/mint.ts
-var UNTITLED_FEATURE_TITLE = "change";
-var HASH_EXCLUDED_KEYS = /* @__PURE__ */ new Set(["content_hash", "created_at", "updated_at", "recorded_at"]);
-function computeContentHash(record) {
-  const identity = {};
-  for (const key of Object.keys(record).sort()) {
-    if (!HASH_EXCLUDED_KEYS.has(key)) {
-      identity[key] = record[key];
+// src/feature-evidence/enumerate.ts
+init_esm_shims();
+import { readdirSync } from "fs";
+import { join } from "path";
+function listFeatureDirs(projectRoot) {
+  try {
+    return readdirSync(join(projectRoot, PATHS.FEATURE_EVIDENCE_DIR), { withFileTypes: true }).filter((entry) => entry.isDirectory() && isFeatureDirName(entry.name)).map((entry) => entry.name).sort();
+  } catch {
+    return [];
+  }
+}
+
+// src/feature-evidence/feature-record.ts
+init_esm_shims();
+import { mkdirSync, readFileSync, writeFileSync } from "fs";
+import { dirname, join as join2 } from "path";
+
+// src/core/fs/atomic-rename.ts
+init_esm_shims();
+import { renameSync, rmSync } from "fs";
+import { rename as renameAsync, rm as rmAsync } from "fs/promises";
+var RETRYABLE_CODES = /* @__PURE__ */ new Set(["EPERM", "EACCES", "EBUSY"]);
+var RENAME_MAX_ATTEMPTS = 5;
+function waitBeforeRetry(attempt) {
+  return 10 * 2 ** (attempt - 1);
+}
+function isRetryable(error, platform) {
+  if (platform !== "win32") return false;
+  const code = error?.code;
+  return typeof code === "string" && RETRYABLE_CODES.has(code);
+}
+function sleepAsync(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+function sleepSync(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+async function renameWithRetry(from, to, deps = {}) {
+  const rename = deps.rename ?? renameAsync;
+  const remove = deps.remove ?? ((path) => rmAsync(path, { force: true }));
+  const sleep = deps.sleep ?? sleepAsync;
+  const platform = deps.platform ?? process.platform;
+  for (let attempt = 1; ; attempt += 1) {
+    try {
+      await rename(from, to);
+      return;
+    } catch (error) {
+      if (attempt >= RENAME_MAX_ATTEMPTS || !isRetryable(error, platform)) {
+        await remove(from).catch(() => void 0);
+        throw error;
+      }
+      await sleep(waitBeforeRetry(attempt));
     }
   }
-  return createHash2("sha256").update(JSON.stringify(identity)).digest("hex");
 }
-function mintFeatureDirName(input) {
-  const issue = resolveIssue(input);
-  const slug = deriveSlug(titleWithoutRef(input.title, issue));
-  const ulid2 = input.ulid ?? ulid(input.ulidSeed);
-  const dirName = formatFeatureDirName({ issue, slug, ulid: ulid2 });
-  return { dirName, issue, slug, ulid: ulid2 };
-}
-function resolveIssue(input) {
-  if (input.issue !== void 0) {
-    return normalizeIssue(input.issue);
-  }
-  const refs = detectTicketRefs(input.title, input.trackerKind ?? "generic");
-  return normalizeIssue(refs[0] ?? null);
-}
-function escapeRegExp(text) {
-  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-function titleWithoutRef(title, issue) {
-  if (issue === null) {
-    return title;
-  }
-  const ref = escapeRegExp(issue);
-  const tail = "(?![A-Za-z0-9])[:\\-\\s]*";
-  const pattern = /^\d+$/.test(issue) ? new RegExp(`(?:(?<![\\w/])#${ref}|^\\s*${ref})${tail}`, "gi") : new RegExp(`(?<![A-Za-z0-9])#?${ref}${tail}`, "gi");
-  const stripped = title.replace(pattern, " ").trim();
-  return /[a-z0-9]/i.test(stripped) ? stripped : title;
-}
-function normalizeIssue(issue) {
-  if (issue === null) {
-    return null;
-  }
-  const stripped = issue.replace(/^#/, "").trim();
-  return stripped.length > 0 ? stripped : null;
-}
-function buildFeatureRecord(input) {
-  const now = input.now ?? (() => /* @__PURE__ */ new Date());
-  const updatedAt = now().toISOString();
-  const openedAt = input.recorded_at;
-  return buildDocumentEnvelope({
-    docType: FEATURE_DOC_TYPE,
-    change: input.change,
-    sessionId: input.session_id,
-    schemaVersion: FEATURE_DOC_SCHEMA_VERSION,
-    now: openedAt === void 0 ? () => new Date(updatedAt) : () => new Date(openedAt),
-    body: {
-      issue: input.issue,
-      title: input.title,
-      slug: input.slug,
-      lane: input.lane ?? null,
-      status: input.status ?? "active",
-      spec_id: input.spec_id ?? null,
-      adapter: input.adapter,
-      branch: input.branch ?? null,
-      base_branch: input.base_branch ?? null,
-      updated_at: updatedAt,
-      ...input.kind !== void 0 ? { kind: input.kind } : {}
+function renameWithRetrySync(from, to, deps = {}) {
+  const rename = deps.rename ?? renameSync;
+  const remove = deps.remove ?? ((path) => rmSync(path, { force: true }));
+  const sleep = deps.sleep ?? sleepSync;
+  const platform = deps.platform ?? process.platform;
+  const attemptRename = (attempt) => {
+    try {
+      rename(from, to);
+    } catch (error) {
+      if (attempt >= RENAME_MAX_ATTEMPTS || !isRetryable(error, platform)) {
+        try {
+          remove(from);
+        } catch {
+        }
+        throw error;
+      }
+      sleep(waitBeforeRetry(attempt));
+      attemptRename(attempt + 1);
     }
-  });
+  };
+  attemptRename(1);
 }
-function buildReviewRecord(input) {
-  return buildDocumentEnvelope({
-    docType: REVIEW_DOC_TYPE,
-    change: input.change,
-    sessionId: input.session_id,
-    schemaVersion: FEATURE_DOC_SCHEMA_VERSION,
-    now: input.now,
-    body: {
-      summary: input.summary,
-      verdict: input.verdict,
-      findings: input.findings ?? [],
-      checked: input.checked ?? [],
-      rollback: input.rollback
-    }
-  });
+
+// src/feature-evidence/lane-rank.ts
+init_esm_shims();
+
+// src/core/types/routing.ts
+init_esm_shims();
+var LANES = ["fast", "graduated", "full"];
+var PROCESS_DEPTHS = ["fast lane", "graduated lane", "full lane"];
+var COMPLEXITY_LEVELS = ["trivial", "low", "medium", "high", "very-high"];
+var RISK_LEVELS = ["low", "medium", "high"];
+function selectLane(complexity, risk) {
+  if (complexity === "trivial") {
+    return "fast";
+  }
+  if (complexity === "low" && risk === "low") {
+    return "fast";
+  }
+  if (complexity === "low" && risk !== "low") {
+    return "graduated";
+  }
+  if (complexity === "medium" && risk !== "high") {
+    return "graduated";
+  }
+  return "full";
 }
-function buildPlanRecord(input) {
-  return buildDocumentEnvelope({
-    docType: PLAN_DOC_TYPE,
-    change: input.change,
-    sessionId: input.session_id,
-    schemaVersion: FEATURE_DOC_SCHEMA_VERSION,
-    now: input.now,
-    body: {
-      summary: input.summary,
-      steps: input.steps ?? [],
-      modules_touched: input.modules_touched ?? [],
-      decisions: input.decisions ?? [],
-      risks: input.risks ?? [],
-      ...input.reuse === void 0 ? {} : { reuse: input.reuse }
-    }
-  });
+
+// src/feature-evidence/lane-rank.ts
+function laneRank(lane2) {
+  return lane2 === null ? -1 : LANES.indexOf(lane2);
+}
+function higherLane(current, incoming) {
+  return laneRank(incoming) > laneRank(current) ? incoming : current;
 }
 
 // src/feature-evidence/schema.ts
@@ -1186,6 +1184,29 @@ function sessionClosedAnyFeature(projectRoot, sessionId) {
     )
   );
 }
+function sessionReattachableFeature(projectRoot, sessionId, branch) {
+  if (branch === null) {
+    return null;
+  }
+  let picked = null;
+  let pickedAt = "";
+  for (const dirName of listFeatureDirs(projectRoot)) {
+    const rows = stageRows(projectRoot, dirName);
+    if (!rows.some((row) => row.kind === "open" && row.session_id === sessionId)) continue;
+    if (!isBundleClosed(projectRoot, dirName)) continue;
+    if (featureBranch(projectRoot, dirName, rows) !== branch) continue;
+    if (readFeatureRecord(projectRoot, dirName)?.status === "abandoned") continue;
+    const lastAt = rows.reduce((newest, row) => {
+      const at = rowRecordedAt(row) ?? "";
+      return at > newest ? at : newest;
+    }, "");
+    if (picked === null || lastAt > pickedAt) {
+      picked = dirName;
+      pickedAt = lastAt;
+    }
+  }
+  return picked;
+}
 function reconcileSessionControl(projectRoot, sessionId, now) {
   const control = readSessionControl(projectRoot, sessionId, now);
   const activeClosed = control.active !== null && isBundleMaterialized(projectRoot, control.active) && isBundleClosed(projectRoot, control.active);
@@ -1271,6 +1292,7 @@ export {
   listAdoptableFeatures,
   listInFlightFeatures,
   sessionClosedAnyFeature,
+  sessionReattachableFeature,
   reconcileSessionControl,
   adoptableInFlightOnBranch
 };

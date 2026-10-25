@@ -1,5 +1,11 @@
 import { S as SessionLedgerRow } from '../ledger-DjtUKw_R.js';
 
+interface ChecksMarkerProbe {
+    now?: () => Date;
+    isAlive?: (pid: number) => boolean;
+    commandOf?: (pid: number) => string | null;
+}
+
 declare function stageAgentTaskCount(tasks: readonly unknown[]): number;
 declare function tasksCarryAgentType(tasks: readonly unknown[]): boolean;
 declare function hasOpenUnendedStage(rows: readonly SessionLedgerRow[]): boolean;
@@ -9,6 +15,7 @@ interface DeferCompletionInput {
     sessionId?: string | null;
     adapter: string;
     now?: () => Date;
+    probe?: ChecksMarkerProbe;
 }
 interface DeferCompletionResult {
     deferred: boolean;

@@ -2,10 +2,10 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   readPendingKind,
   readPendingLane
-} from "./chunk-XBBQDY4Q.js";
+} from "./chunk-2LBIOUAJ.js";
 import {
   readRawModuleMap
-} from "./chunk-6DRXSYZB.js";
+} from "./chunk-Z6A2RYOU.js";
 import {
   toPosixPath
 } from "./chunk-4K4CM3QN.js";
@@ -21,14 +21,22 @@ import {
   readFeatureStageUnit,
   recordChangeConstants,
   requiredPreCodeStages,
+  resumeFeatureByRef,
   startedAfterLastEnd
-} from "./chunk-73PEJCI3.js";
+} from "./chunk-7UCGEMJB.js";
 import {
-  readChangeConstants
-} from "./chunk-37ZC7KVF.js";
+  readChangeConstants,
+  sessionReattachableFeature
+} from "./chunk-F256LZXA.js";
+import {
+  readGitState
+} from "./chunk-O25SHWZA.js";
 import {
   resolveSessionId
 } from "./chunk-MG36YCW4.js";
+import {
+  readSessionControl
+} from "./chunk-KF7HHHJR.js";
 import {
   isAbsolute,
   relative
@@ -92,7 +100,7 @@ import { readFileSync } from "fs";
 import { join } from "path";
 function openStageEvidence(projectRoot, ctx) {
   const sessionId = resolveSessionId(projectRoot, ctx.sessionId);
-  const lane = ctx.lane !== void 0 ? ctx.lane : readPendingLane(projectRoot, sessionId);
+  const lane = ctx.lane !== void 0 ? ctx.lane : sessionLane(projectRoot, sessionId);
   const kind = readPendingKind(projectRoot, sessionId);
   const dirName = openFeatureChange(projectRoot, sessionId, {
     adapter: ctx.adapter,
@@ -104,6 +112,14 @@ function openStageEvidence(projectRoot, ctx) {
   });
   return { sessionId, dirName, changeKey: dirName };
 }
+function sessionLane(projectRoot, sessionId) {
+  return readPendingLane(projectRoot, sessionId) ?? readSessionControl(projectRoot, sessionId).lane;
+}
+function reattachSessionFeature(projectRoot, sessionId, ctx) {
+  const branch = readGitState(projectRoot).branch ?? null;
+  const own = sessionReattachableFeature(projectRoot, sessionId, branch);
+  return own ? resumeFeatureByRef(projectRoot, sessionId, own, ctx.now) : null;
+}
 function resolveDirName(projectRoot, sessionId, ctx) {
   if (ctx.dirName) {
     return ctx.dirName;
@@ -112,7 +128,7 @@ function resolveDirName(projectRoot, sessionId, ctx) {
   if (active) {
     return active;
   }
-  return openStageEvidence(projectRoot, ctx).dirName;
+  return reattachSessionFeature(projectRoot, sessionId, ctx) ?? openStageEvidence(projectRoot, ctx).dirName;
 }
 function startStage(projectRoot, stage, ctx) {
   if (!isKnownStage(stage)) {

@@ -15,8 +15,10 @@ import {
   AiAssistantAdapter,
   AiderAdapter,
   AntigravityAdapter,
+  ArchitectureComplianceGate,
   AttachmentPathError,
   BOUNDARY_SCHEMA_VERSION,
+  BehavioralCorrectnessGate,
   BudgetAllocator,
   CITATION_SOURCE_CLASSES,
   CLASSIFICATION_CERTAINTY,
@@ -33,7 +35,9 @@ import {
   CUSTOMER_FACING_IMPACTS,
   CacheMetricsTracker,
   CacheWarmer,
+  ChangeCompletenessGate,
   ClaudeCodeAdapter,
+  CodeTestsLintGate,
   CodexCliAdapter,
   ConditionalSectionProcessor,
   ContextBudgetEnforcer,
@@ -48,12 +52,16 @@ import {
   DATA_SENSITIVITY_LEVELS,
   DEFAULT_ANALYTICS_STRICTNESS,
   DEFAULT_BOUNDARY_REPORT_PATH,
+  DEFAULT_GATE_CODES,
   DEFAULT_PREDICTIVE_CACHE_OPTIONS,
   DEFAULT_REBUILD_CACHE_MAX_SIZE,
   DEFAULT_REDACTION_ALLOWLIST,
   DESIGN_TOKENS_PLACEHOLDER_NOTE,
+  DISCLOSURE_ESCALATION_REASONS,
+  DISCLOSURE_LEVELS,
   DOC_TYPES,
   DataRetrievalDecider,
+  DatabaseQualityGate,
   DesignTokenService,
   DesignTokensMissingError,
   DesignTokensPlaceholderError,
@@ -61,10 +69,13 @@ import {
   DifferentialRefresh,
   DocumentPipeline,
   DocumentProgressTracker,
+  DocumentationFreshnessGate,
   DocumentationWorkflow,
+  ESCALATION_REASONS,
   EcosystemParserRegistry,
   EngineEventBus,
   EvidenceRetriever,
+  ExtensionSurfaceGate,
   FINDING_SEVERITIES,
   FileRegistryMapper,
   FrameworkUpdater,
@@ -75,7 +86,9 @@ import {
   HOOK_EXIT_CODES,
   HOOK_TRIGGERS,
   HealthChecker,
+  ImplementationReviewGate,
   InferredTurnClassifierModel,
+  InstructionsDocsStructureGate,
   JunieAdapter,
   LEGACY_MCP_OUTPUT_PATHS,
   MANAGEABLE_ACTIVE_CAPABILITIES,
@@ -83,6 +96,7 @@ import {
   MIN_CONSUMER_VERSION,
   McpConfigManager,
   McpServerRegistry,
+  ModuleDocsStructureGate,
   OnboardingOrchestrator,
   PAQAD_SCHEMA_VERSION,
   PDF_PAGE_CAP,
@@ -110,13 +124,17 @@ import {
   REQUIREMENT_RISKS,
   RESOLUTION_LAYERS,
   RESOLUTION_SOURCES,
+  RETRIEVAL_ESCALATION_SIGNALS,
+  RETRIEVAL_PATHS,
   REVERSIBILITY_LEVELS,
   REVIEW_DIMENSIONS,
   REVIEW_MODES,
   REVIEW_TIERS,
+  ROUTING_MECHANISMS,
   RebuildCache,
   RebuildFailedError,
   RelevanceScorer,
+  RequirementCompletenessGate,
   Resolver,
   RootCauseAnalysisWorkflow,
   RunnerScriptGenerator,
@@ -130,16 +148,21 @@ import {
   SUPPORTED_CAPABILITIES,
   SUPPORTED_DOMAINS,
   SUPPORTED_STACKS,
+  SURFACE_DOC_PATH,
   SemanticLoader,
   SessionAttachmentIndexer,
+  SiteMapFreshnessGate,
   SkillCacheManager,
   SkillFrontmatterParser,
   SkillLoader,
   SkillTriggerEvaluator,
+  SpecReviewGate,
   StackIntrospector,
   StepExecutor,
+  StoryQualityGate,
   StreamTruncator,
   TARGET_CAPABILITIES,
+  TASK_COMPLEXITIES,
   TEST_ISSUE_CATEGORIES,
   TEST_OUTPUT_SCHEMA_VERSION,
   TEST_PARSE_STRATEGIES,
@@ -147,6 +170,7 @@ import {
   TEST_RUNNER_PARALLEL_MODES,
   TIER_DIMENSIONS,
   TIER_TOKEN_LIMITS,
+  TOKEN_ARTIFACT_CLASSES,
   TemplateEngine,
   TemplateRegistry,
   TransitionLogManager,
@@ -155,14 +179,17 @@ import {
   UNKNOWN_TEST_OUTPUT_TIMESTAMP,
   VERSION,
   VERSION_UNKNOWN,
+  VerificationGateRunner,
   WORKFLOW_SOURCES,
   WindsurfAdapter,
   WorkflowEngine,
   WorkflowRouterService,
   WorkflowTemplateLoader,
+  WorkflowTemplateValidator,
   ZIP_DECOMPRESSED_LIMIT_BYTES,
   __test,
   __testOutputInternals,
+  __tokenEfficiencyInternals,
   addActiveCapability,
   analyticsEventDocPath,
   analyticsFeatureDir,
@@ -173,6 +200,7 @@ import {
   appendCostEntry,
   appendMigrationRecord,
   appendPlanningAudit,
+  applyDisclosurePolicy,
   askThresholdForProject,
   assembleIntelligence,
   assertActiveCapability,
@@ -185,27 +213,36 @@ import {
   buildAnalyticsIndex,
   buildApiDocContext,
   buildBoundaryReport,
+  buildCompactArtifact,
+  buildControlLayerAudit,
   buildCoverageOverlay,
   buildCurrentPentestReport,
   buildDesignSystemContext,
   buildDetectionReport,
+  buildDocumentationDriftDeltaPayload,
+  buildDriftDeltaReasoningPayload,
   buildErrorCatalogContext,
   buildEventDoc,
   buildIntegrationDocContext,
   buildModuleScaffoldContext,
   buildPatternAdvisories,
+  buildReasoningInputPayload,
   buildRegistryContext,
   buildRegressionWatchList,
   buildRepositoryVerificationContext,
   buildRepositoryVerificationVerdict,
   buildRunnerScriptContext,
   buildSkillIndex,
+  buildTestDeltaReasoningPayload,
+  buildVerificationDeltaReasoningPayload,
+  buildVerificationGateDeltaPayload,
   checkAndMigrateSchema,
   checkSchemaCompatibility,
   checkSpecCompliance,
   classifyDefect,
   cleanupLegacyMcpFiles,
   clearEphemeralCollection,
+  collectScopeDriftPaths,
   collectionVectorPaths,
   compareConfigurations,
   compareConsumerCompatibility,
@@ -217,7 +254,10 @@ import {
   computeSpecReview,
   conflictCategory,
   createDefaultEcosystemParserRegistry,
+  createDriftDelta,
   createLogger,
+  createTestDelta,
+  createVerificationDelta,
   deregisterCollection,
   deriveOverallStatus,
   detectAnalyticsSignals,
@@ -241,12 +281,15 @@ import {
   evaluateAnalyticsCompleteness,
   evaluateAnalyticsCompletenessForProject,
   evaluateBenchmarkGates,
+  evaluateEscalation,
+  evaluateRetrievalGate,
   extractKeywords,
   extractModuleNamesFromRequest,
   extractRelevantTestPaths,
   extractSourceReportPath,
   extractUnhandledVariants,
   findBracePlaceholders,
+  findPathSegmentsInRun,
   findTouchedFilePaths,
   formatAgentContextWarnings,
   formatVerdictSummary,
@@ -331,6 +374,7 @@ import {
   runOrphanSweep,
   runProjectScript,
   runRepositoryVerification,
+  runRoutingDecision,
   runStatusForSteps,
   safeBaseName,
   saveBoundaryReport,
@@ -351,7 +395,12 @@ import {
   toLocalTimestamp,
   toReportId,
   toStackDetectionResource,
+  toVerificationSnapshots,
   toolReferencePath,
+  validateApiDoc,
+  validateErrorCatalogMarkdown,
+  validateSpecDocument,
+  validateUserFlow,
   verifyFullSuite,
   withSchemaMigrationLock,
   writeGeneratedFiles,
@@ -363,93 +412,56 @@ import {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts
-} from "./chunk-N2GKQO6Y.js";
+} from "./chunk-WVZ2OSBZ.js";
+import "./chunk-R3DLJ4BX.js";
 import {
   AC_ID_PATTERN,
   AcTestMappingGate,
-  ArchitectureComplianceGate,
   BACKSTOP_VERIFICATION_ORIGINS,
-  BehavioralCorrectnessGate,
-  ChangeCompletenessGate,
-  CodeTestsLintGate,
-  DEFAULT_GATE_CODES,
-  DISCLOSURE_ESCALATION_REASONS,
-  DISCLOSURE_LEVELS,
-  DatabaseQualityGate,
-  DocumentationFreshnessGate,
-  ESCALATION_REASONS,
   EVIDENCE_FAILURE_CATEGORIES,
   EVIDENCE_GATE_STATUSES,
   EVIDENCE_OVERALL_STATUSES,
-  ExtensionSurfaceGate,
+  FAILURE_PHRASES,
+  GATE_CATALOG,
   HUD_REFRESH_VERBS,
   HUD_SNAPSHOT_SCHEMA,
-  ImplementationReviewGate,
-  InstructionsDocsStructureGate,
-  ModuleDocsStructureGate,
-  RETRIEVAL_ESCALATION_SIGNALS,
-  RETRIEVAL_PATHS,
-  ROUTING_MECHANISMS,
-  RequirementCompletenessGate,
-  SURFACE_DOC_PATH,
-  SiteMapFreshnessGate,
-  SpecReviewGate,
-  StoryQualityGate,
-  TASK_COMPLEXITIES,
+  LATE_GATES,
+  RUNG_WORDS,
   TIMELINE_COMMITS,
   TIMELINE_ROWS,
-  TOKEN_ARTIFACT_CLASSES,
   TRACK_RECORD_BUNDLES,
   TURN_END_SOURCES,
   VERIFICATION_EVIDENCE_RELATIVE_PATH,
   VERIFICATION_EVIDENCE_SCHEMA_VERSION,
   VERIFICATION_EVIDENCE_STDERR_BUDGET_BYTES,
   VERIFICATION_GATES,
-  VerificationGateRunner,
-  WorkflowTemplateValidator,
-  __tokenEfficiencyInternals,
-  applyDisclosurePolicy,
-  buildCompactArtifact,
-  buildControlLayerAudit,
-  buildDocumentationDriftDeltaPayload,
-  buildDriftDeltaReasoningPayload,
   buildHudSnapshot,
-  buildReasoningInputPayload,
   buildRecordEvents,
   buildShip,
-  buildTestDeltaReasoningPayload,
   buildTimeline,
   buildTrackRecords,
-  buildVerificationDeltaReasoningPayload,
   buildVerificationEvidence,
-  buildVerificationGateDeltaPayload,
   collectObservedAcIds,
-  collectScopeDriftPaths,
   computeDeliveryPlan,
   computeHudFlags,
   computeHudHeadline,
-  createDriftDelta,
-  createTestDelta,
-  createVerificationDelta,
-  evaluateEscalation,
-  evaluateRetrievalGate,
+  expectedGateCodes,
   extractAcIdFromIssue,
-  findPathSegmentsInRun,
+  failurePhrase,
+  gateCatalogEntry,
+  gateExpectedOnLane,
+  gateOwner,
   isBackstopVerificationOrigin,
   isHudRefreshVerb,
+  recordGapText,
   refreshHudSnapshot,
-  runRoutingDecision,
-  toVerificationSnapshots,
-  validateApiDoc,
-  validateErrorCatalogMarkdown,
-  validateSpecDocument,
-  validateUserFlow,
+  workKindOf,
   writeHudSnapshot,
   writeHudSnapshotSafe,
   writeVerificationEvidence
-} from "./chunk-EVMV3TKL.js";
-import "./chunk-2Z2T2RXB.js";
-import "./chunk-2ZHTVPYL.js";
+} from "./chunk-6YYXOUUP.js";
+import "./chunk-YRRDPNHS.js";
+import "./chunk-WDT4SYL3.js";
 import "./chunk-5ERW2PZB.js";
 import {
   DEFAULT_HOOK_ADAPTER,
@@ -474,7 +486,7 @@ import {
   renderHookCommand,
   rendersFullHookChain
 } from "./chunk-PWJ37K7H.js";
-import "./chunk-F77HHINV.js";
+import "./chunk-4V5TKAGK.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
@@ -537,9 +549,9 @@ import {
   toProjectRelativeModule,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-V4Z5O3AN.js";
+} from "./chunk-KTPTJSBT.js";
 import "./chunk-5QVCE2TS.js";
-import "./chunk-K37VZN5W.js";
+import "./chunk-BAF4BFSC.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -576,10 +588,10 @@ import {
   localModelsRoot,
   suggestPatternsForProject,
   toCrsCollectionId
-} from "./chunk-CF2USPG5.js";
+} from "./chunk-KJDGUZPN.js";
 import "./chunk-Y7QRVDRT.js";
-import "./chunk-HS6PHXCB.js";
-import "./chunk-CGL6GESN.js";
+import "./chunk-OETMPHDN.js";
+import "./chunk-RH6XHK7O.js";
 import {
   COMPLIANCE_SCHEMA_VERSION,
   DECISION_AUDIT_EVENTS,
@@ -666,7 +678,7 @@ import {
   writeJsonPreservingTimestamp,
   writeOnboardingManifest,
   writeProjectProfile
-} from "./chunk-JHPIA4SG.js";
+} from "./chunk-G45PNQ2N.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
@@ -675,7 +687,7 @@ import {
   hudSnapshotPath,
   hudVerdictPath,
   writeFileAtomic
-} from "./chunk-R6UFMTHJ.js";
+} from "./chunk-M5JAFUJN.js";
 import {
   AGENT_ROLES,
   CONTEXT_LEVEL_BUDGETS,
@@ -699,7 +711,7 @@ import {
   readCompiledRules,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-BAZ34AEB.js";
+} from "./chunk-MLMSXXJW.js";
 import "./chunk-CJ6GEKKF.js";
 import {
   ACTIVE_CAPABILITIES,
@@ -741,28 +753,28 @@ import {
   setEngineLogger,
   validatePackAt,
   writeProjectSecret
-} from "./chunk-B3ELKDGA.js";
+} from "./chunk-BXFRPACZ.js";
 import {
   findPackageRoot,
   getPackageRoot,
   getRuntimeRoot,
   getRuntimeTemplatesRoot
 } from "./chunk-VVRAO2BK.js";
-import "./chunk-7YZETP45.js";
-import "./chunk-X5UZPGJY.js";
+import "./chunk-7V2MKESP.js";
+import "./chunk-3WBMHHZR.js";
 import "./chunk-KKFSSPUD.js";
 import "./chunk-PMSUN52C.js";
 import "./chunk-O77JBFWW.js";
-import "./chunk-5IHBZJ2V.js";
-import "./chunk-UTS2RBQY.js";
-import "./chunk-C3AOGNHG.js";
-import "./chunk-A6ZAP26L.js";
-import "./chunk-BXSUACCZ.js";
-import "./chunk-XBBQDY4Q.js";
-import "./chunk-6DRXSYZB.js";
+import "./chunk-LPFFTROL.js";
+import "./chunk-PMMQGP5O.js";
+import "./chunk-JH4AAOTQ.js";
+import "./chunk-FNOZ5GEC.js";
+import "./chunk-MBPRN7FO.js";
+import "./chunk-2LBIOUAJ.js";
+import "./chunk-Z6A2RYOU.js";
 import "./chunk-DNG6DDRS.js";
 import "./chunk-4K4CM3QN.js";
-import "./chunk-73PEJCI3.js";
+import "./chunk-7UCGEMJB.js";
 import "./chunk-MLVRTWKF.js";
 import {
   ANALYTICS_DECISION_PATH,
@@ -780,16 +792,16 @@ import {
   readAnalyticsDecision,
   resolveAnalyticsGate,
   resolveAndPersistAnalyticsGate
-} from "./chunk-4PJNUQHB.js";
+} from "./chunk-IUTPBUW2.js";
 import {
   COMPLEXITY_LEVELS,
   LANES,
   PROCESS_DEPTHS,
   RISK_LEVELS,
   selectLane
-} from "./chunk-37ZC7KVF.js";
+} from "./chunk-F256LZXA.js";
 import "./chunk-WGEG5J6L.js";
-import "./chunk-R3VYFIEA.js";
+import "./chunk-DIAYPPCX.js";
 import "./chunk-O25SHWZA.js";
 import "./chunk-3CUGDX3J.js";
 import "./chunk-SU7RODZI.js";
@@ -927,6 +939,7 @@ export {
   EngineEventBus,
   EvidenceRetriever,
   ExtensionSurfaceGate,
+  FAILURE_PHRASES,
   FINDING_SEVERITIES,
   FRAMEWORK_PACKAGE_MAP,
   FileRegistryMapper,
@@ -934,6 +947,7 @@ export {
   FrameworkError,
   FrameworkUpdater,
   FreshnessChecker,
+  GATE_CATALOG,
   GeminiCliAdapter,
   GithubCopilotAdapter,
   HEALTH_CHECK_STATUSES,
@@ -952,6 +966,7 @@ export {
   JunieAdapter,
   LANES,
   LANE_PHASES,
+  LATE_GATES,
   LEGACY_MCP_OUTPUT_PATHS,
   LocalEmbeddingProvider,
   LoggerSinkFailedError,
@@ -1028,6 +1043,7 @@ export {
   ROLE_TOKEN_BUDGETS,
   ROLLBACK_CLASSES,
   ROUTING_MECHANISMS,
+  RUNG_WORDS,
   RagFileFilter,
   RagIngestError,
   RagService,
@@ -1276,6 +1292,7 @@ export {
   evaluateBenchmarkGates,
   evaluateEscalation,
   evaluateRetrievalGate,
+  expectedGateCodes,
   extractAcIdFromIssue,
   extractCallSites,
   extractKeywords,
@@ -1284,6 +1301,7 @@ export {
   extractRelevantTestPaths,
   extractSourceReportPath,
   extractUnhandledVariants,
+  failurePhrase,
   findBracePlaceholders,
   findPackageRoot,
   findPathSegmentsInRun,
@@ -1293,6 +1311,9 @@ export {
   formatVerdictSummary,
   frameworkHomeAbsolute,
   frameworkSymlinkType,
+  gateCatalogEntry,
+  gateExpectedOnLane,
+  gateOwner,
   gatesThatPassed,
   generateBoundaryTests,
   generateDocumentationScaffold,
@@ -1430,6 +1451,7 @@ export {
   rebuildApiConversation,
   recordFindings,
   recordFromComplianceReport,
+  recordGapText,
   redactFields,
   redactPayload,
   redactSecrets,
@@ -1520,6 +1542,7 @@ export {
   validateUserFlow,
   verifyFullSuite,
   withSchemaMigrationLock,
+  workKindOf,
   writeCompiledRules,
   writeDetectionReport,
   writeFileAtomic,

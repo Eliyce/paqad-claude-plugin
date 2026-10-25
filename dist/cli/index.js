@@ -3,7 +3,7 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-BMIF36HK.js";
+} from "../chunk-C3ZD4Y3C.js";
 import {
   DISABLED_SESSION_DOC_TYPE
 } from "../chunk-L7IE7IHW.js";
@@ -29,6 +29,7 @@ import {
   TEST_OUTPUT_SCHEMA_VERSION,
   UNKNOWN_TEST_OUTPUT_TIMESTAMP,
   VERSION,
+  activeFeatureDirOrNull,
   addActiveCapability,
   affectsBehaviour,
   appendAuditLog,
@@ -40,14 +41,19 @@ import {
   buildBoundaryReport,
   buildCodeKnowledgeIndex,
   buildEdges,
+  buildEvidenceComment,
   buildExpertBriefs,
   buildPatternAdvisories,
+  buildStatusOf,
   builtinSecretScan,
   checkSchemaCompatibility,
   checkSpecCompliance,
   checkSpecShape,
+  checksSessionId,
   cleanupLegacyMcpFiles,
+  collectMapEvidence,
   collectQualityMeasures,
+  collectVerificationFindings,
   compareConfigurations,
   computeDependencyUsage,
   computeReachability,
@@ -55,7 +61,9 @@ import {
   createConfigCommand,
   createDeliveryShell,
   createRagProgressReporter,
+  createTestDelta,
   defaultManagedSettingsPaths,
+  deriveMapFreshness,
   deriveTestingForProfile,
   dist_default,
   dist_default2,
@@ -76,6 +84,7 @@ import {
   hashSourceFiles,
   installGitHooks,
   isNpmAvailable,
+  isStale,
   jvmParser,
   listAvailableActiveCapabilities,
   loadBoundaryReport,
@@ -83,10 +92,12 @@ import {
   loadModuleSlugResolver,
   loadObligationIndex,
   loadSpecReviewReport,
+  locate,
   lockfileHash,
   maybeMigrateToPlugin,
   migrateFeatureEvidence,
   migrationSessionId,
+  normalizeEvidence,
   parseCommandChain,
   parseGitleaksJson,
   parseJscpdJson,
@@ -97,14 +108,17 @@ import {
   pruneFeatureBundles,
   queryOsv,
   readChangeDiff,
+  readChecksReportForFeature,
   readPipelineConfig,
   readQualityBaseline,
   readSchemaMarkerSync,
   readSourceFiles,
+  readVerificationEvidence,
   recordMigrationSession,
   refreshRuleContext,
   removeActiveCapability,
   removeObsoleteContractDocs,
+  renderEvidenceMarkdown,
   renderExpertBrief,
   replaceMarkerBlock,
   resolveChecksFlakyMode,
@@ -125,61 +139,52 @@ import {
   saveSpecReviewReport,
   scanBoundaries,
   selectTestRunner,
+  sessionChecksTarget,
   slugify,
   source_default,
+  stampMapFreshness,
   symbolKey,
   tokenizeCommand,
   upsertStackDocCommandRow,
+  writeChecksReportForFeature,
   writeFeatureDecisionsIndex,
   writeFeatureReport,
   writeGeneratedFiles,
   writeGitignore,
   writeQualityBaseline,
+  writeReviewDigest,
   writeRuleContext,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-N2GKQO6Y.js";
+} from "../chunk-WVZ2OSBZ.js";
+import {
+  clearChecksRunningMarker,
+  writeChecksRunningMarker
+} from "../chunk-R3DLJ4BX.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
-  activeFeatureDirOrNull,
   addDebtItem,
   appendFixProofRow,
   appendRuleOverride,
   buildAndWriteChangeTraceabilityMap,
-  buildEvidenceComment,
   buildHudSnapshot,
-  buildStatusOf,
-  checksSessionId,
   closeDebtItem,
-  collectMapEvidence,
-  collectVerificationFindings,
   countedRedRow,
-  createTestDelta,
-  deriveMapFreshness,
   discoverModuleHealth,
   discoverSourceRoots,
   isHudRefreshVerb,
-  isStale,
   listDebtItems,
-  locate,
   newestFirst,
-  normalizeEvidence,
   promoteDebtItem,
-  readChecksReportForFeature,
   readDebtItems,
   readFeatureTechDebtIndex,
   readFixProofRows,
-  readVerificationEvidence,
   refreshHudSnapshot,
-  renderEvidenceMarkdown,
   scanImports,
-  stampMapFreshness,
   techDebtDir,
-  writeChecksReportForFeature,
-  writeFeatureTechDebtIndex,
-  writeReviewDigest
-} from "../chunk-EVMV3TKL.js";
+  writeFeatureTechDebtIndex
+} from "../chunk-6YYXOUUP.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -190,19 +195,19 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-2Z2T2RXB.js";
+} from "../chunk-YRRDPNHS.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow
-} from "../chunk-2ZHTVPYL.js";
+} from "../chunk-WDT4SYL3.js";
 import "../chunk-5ERW2PZB.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
 } from "../chunk-PWJ37K7H.js";
-import "../chunk-F77HHINV.js";
+import "../chunk-4V5TKAGK.js";
 import "../chunk-F4TESBBJ.js";
 import {
   createEvidence,
@@ -210,11 +215,11 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-V4Z5O3AN.js";
+} from "../chunk-KTPTJSBT.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
-import "../chunk-K37VZN5W.js";
+import "../chunk-BAF4BFSC.js";
 import {
   EmbeddingProviderError,
   PatternStore,
@@ -229,13 +234,13 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-CF2USPG5.js";
+} from "../chunk-KJDGUZPN.js";
 import "../chunk-Y7QRVDRT.js";
-import "../chunk-HS6PHXCB.js";
+import "../chunk-OETMPHDN.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-CGL6GESN.js";
+} from "../chunk-RH6XHK7O.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -365,11 +370,11 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-JHPIA4SG.js";
+} from "../chunk-G45PNQ2N.js";
 import {
   releaseLock,
   tryAcquireLock
-} from "../chunk-R6UFMTHJ.js";
+} from "../chunk-M5JAFUJN.js";
 import "../chunk-NRKCUFAE.js";
 import "../chunk-T4VPFXR3.js";
 import {
@@ -378,7 +383,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-BAZ34AEB.js";
+} from "../chunk-MLMSXXJW.js";
 import {
   appendHooksLog
 } from "../chunk-CJ6GEKKF.js";
@@ -400,7 +405,7 @@ import {
   syncProjectProfile,
   validatePackAt,
   writeProjectProfile
-} from "../chunk-B3ELKDGA.js";
+} from "../chunk-BXFRPACZ.js";
 import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
@@ -409,11 +414,11 @@ import {
   loadRuleScriptMap,
   missingBinaries,
   scanWorkingTree
-} from "../chunk-7YZETP45.js";
+} from "../chunk-7V2MKESP.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-X5UZPGJY.js";
+} from "../chunk-3WBMHHZR.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
@@ -425,30 +430,30 @@ import {
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-5IHBZJ2V.js";
+} from "../chunk-LPFFTROL.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   normalizeArtifactPath
-} from "../chunk-UTS2RBQY.js";
+} from "../chunk-PMMQGP5O.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-C3AOGNHG.js";
+} from "../chunk-JH4AAOTQ.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-A6ZAP26L.js";
+} from "../chunk-FNOZ5GEC.js";
 import {
   recordMarkedStage
-} from "../chunk-BXSUACCZ.js";
+} from "../chunk-MBPRN7FO.js";
 import {
   clearPendingLane
-} from "../chunk-XBBQDY4Q.js";
+} from "../chunk-2LBIOUAJ.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -469,7 +474,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-6DRXSYZB.js";
+} from "../chunk-Z6A2RYOU.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -495,7 +500,7 @@ import {
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-73PEJCI3.js";
+} from "../chunk-7UCGEMJB.js";
 import {
   describeInherited
 } from "../chunk-MLVRTWKF.js";
@@ -516,7 +521,7 @@ import {
   resolveFeatureDevelopmentCheckCommands,
   resolveFrameworkConfig,
   syncFrameworkConfig
-} from "../chunk-4PJNUQHB.js";
+} from "../chunk-IUTPBUW2.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   VISUAL_EVIDENCE_DOC_TYPE,
@@ -533,11 +538,11 @@ import {
   sha256Hex,
   stampBundleRow,
   validateVisualEvidenceRecord
-} from "../chunk-37ZC7KVF.js";
+} from "../chunk-F256LZXA.js";
 import "../chunk-WGEG5J6L.js";
 import {
   STAGE_EVIDENCE_DOC_TYPE
-} from "../chunk-R3VYFIEA.js";
+} from "../chunk-DIAYPPCX.js";
 import {
   readGitState
 } from "../chunk-O25SHWZA.js";
@@ -2307,58 +2312,21 @@ function createChecksCommand() {
     "Run the project format/test/build checks deterministically and record the result"
   );
   command.command("run").description("Run the mapped checks, persist the structured report, and block on failure").option("--project-root <path>", "Project root", process.cwd()).option("--silent", "Suppress the machine-readable summary line", false).action(async (options) => {
-    const changedFiles = (await loadChangeEvidence(options.projectRoot)).files;
-    const result = await runChecks({ projectRoot: options.projectRoot, changedFiles });
-    const dirName = activeFeatureDirOrNull(options.projectRoot);
-    writeChecksReportForFeature(options.projectRoot, dirName, {
-      schema_version: CHECKS_REPORT_SCHEMA_VERSION,
-      generated_at: (/* @__PURE__ */ new Date()).toISOString(),
-      passed: result.passed,
-      ran: result.ran,
-      results: result.results,
-      mode: result.mode,
-      commands: result.commands,
-      isolation_reruns: result.isolation_reruns,
-      flaky_under_parallel: result.flaky_under_parallel,
-      meaningful_green: result.meaningful_green,
-      critical_path: result.critical_path
-    });
-    await buildAndWriteChangeTraceabilityMap(
-      {
-        projectRoot: options.projectRoot,
-        dirName,
-        changedFiles,
-        testResults: result.results,
-        lane: recordedLaneOrFull(
-          options.projectRoot,
-          checksSessionId(options.projectRoot),
-          dirName
-        )
-      },
-      (message) => console.error(`\u26A0\uFE0F  ${message}`)
-    );
-    for (const warning of result.warnings) console.error(`\u26A0\uFE0F  ${warning}`);
-    if (result.testing_recorded) console.error(TESTING_RECORDED_NOTE);
-    if (!result.ran) {
-      console.log("**\u25B8 paqad** \xB7 no checks mapped: Inconclusive");
-      console.log("> \u26AA No format/test/build command is mapped in the project profile.");
-      if (!options.silent) console.log(JSON.stringify({ ran: false, passed: null }));
-      return;
+    const sessionId = checksSessionId(options.projectRoot);
+    const startedOn = activeFeatureDirOrNull(options.projectRoot);
+    try {
+      writeChecksRunningMarker(options.projectRoot, {
+        pid: process.pid,
+        session_id: sessionId,
+        change: startedOn,
+        started_at: (/* @__PURE__ */ new Date()).toISOString()
+      });
+    } catch {
     }
-    const flakyMode = resolveChecksFlakyMode(options.projectRoot);
-    for (const line of renderReceipt(result, flakyMode)) console.log(line);
-    if (!result.passed) process.exitCode = 1;
-    if (!options.silent) {
-      console.log(
-        JSON.stringify({
-          ran: true,
-          passed: result.passed,
-          test_mode: result.mode.test_mode,
-          processes: result.mode.processes,
-          recovered: result.recovered,
-          duration_ms: result.duration_ms
-        })
-      );
+    try {
+      await runAndRecordChecks(options, sessionId, startedOn);
+    } finally {
+      clearChecksRunningMarker(options.projectRoot, sessionId, process.pid);
     }
   });
   command.command("plan").description("Print the resolved checks plan (stages, test mode, processes) without running").option("--project-root <path>", "Project root", process.cwd()).option("--json", "Emit the plan as JSON", false).action((options) => {
@@ -2452,6 +2420,57 @@ function createChecksCommand() {
   });
   return command;
 }
+async function runAndRecordChecks(options, sessionId, startedOn) {
+  const changedFiles = (await loadChangeEvidence(options.projectRoot)).files;
+  const result = await runChecks({ projectRoot: options.projectRoot, changedFiles });
+  const dirName = sessionChecksTarget(options.projectRoot, sessionId, startedOn);
+  writeChecksReportForFeature(options.projectRoot, dirName, {
+    schema_version: CHECKS_REPORT_SCHEMA_VERSION,
+    generated_at: (/* @__PURE__ */ new Date()).toISOString(),
+    passed: result.passed,
+    ran: result.ran,
+    results: result.results,
+    mode: result.mode,
+    commands: result.commands,
+    isolation_reruns: result.isolation_reruns,
+    flaky_under_parallel: result.flaky_under_parallel,
+    meaningful_green: result.meaningful_green,
+    critical_path: result.critical_path
+  });
+  await buildAndWriteChangeTraceabilityMap(
+    {
+      projectRoot: options.projectRoot,
+      dirName,
+      changedFiles,
+      testResults: result.results,
+      lane: recordedLaneOrFull(options.projectRoot, sessionId, dirName)
+    },
+    (message) => console.error(`\u26A0\uFE0F  ${message}`)
+  );
+  for (const warning of result.warnings) console.error(`\u26A0\uFE0F  ${warning}`);
+  if (result.testing_recorded) console.error(TESTING_RECORDED_NOTE);
+  if (!result.ran) {
+    console.log("**\u25B8 paqad** \xB7 no checks mapped: Inconclusive");
+    console.log("> \u26AA No format/test/build command is mapped in the project profile.");
+    if (!options.silent) console.log(JSON.stringify({ ran: false, passed: null }));
+    return;
+  }
+  const flakyMode = resolveChecksFlakyMode(options.projectRoot);
+  for (const line of renderReceipt(result, flakyMode)) console.log(line);
+  if (!result.passed) process.exitCode = 1;
+  if (!options.silent) {
+    console.log(
+      JSON.stringify({
+        ran: true,
+        passed: result.passed,
+        test_mode: result.mode.test_mode,
+        processes: result.mode.processes,
+        recovered: result.recovered,
+        duration_ms: result.duration_ms
+      })
+    );
+  }
+}
 function describeTestMode(mode, processes, reason2) {
   if (mode === "parallel") return `parallel \xD7${processes}`;
   if (mode === "native") return "native";
@@ -2469,7 +2488,7 @@ function commandName(logical, command) {
 }
 function renderReceipt(result, flakyMode) {
   const lines = [];
-  const header = !result.passed ? `**\u25B8 paqad** \xB7 checks failed: Needs your attention (${fmtSecs(result.duration_ms)})` : testUnreadable(result) ? `**\u25B8 paqad** \xB7 checks ran, but no test results could be read: Inconclusive (${fmtSecs(result.duration_ms)})` : `**\u25B8 paqad** \xB7 checks green: Safe to merge (${fmtSecs(result.duration_ms)})`;
+  const header = !result.passed ? `**\u25B8 paqad** \xB7 checks failed: Needs your attention (${fmtSecs(result.duration_ms)})` : testUnreadable(result) ? `**\u25B8 paqad** \xB7 checks ran, but no test results could be read: Inconclusive (${fmtSecs(result.duration_ms)})` : `**\u25B8 paqad** \xB7 checks green (${fmtSecs(result.duration_ms)})`;
   lines.push(header);
   for (const command of result.commands) {
     if (command.logical_command === "test") {

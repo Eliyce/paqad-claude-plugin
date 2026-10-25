@@ -7,8 +7,9 @@ import {
   listAdoptableFeatures,
   listInFlightFeatures,
   reconcileSessionControl,
-  sessionClosedAnyFeature
-} from "../chunk-37ZC7KVF.js";
+  sessionClosedAnyFeature,
+  sessionReattachableFeature
+} from "../chunk-F256LZXA.js";
 import "../chunk-WGEG5J6L.js";
 import "../chunk-O25SHWZA.js";
 import "../chunk-3CUGDX3J.js";
@@ -25,5 +26,6 @@ export {
   listAdoptableFeatures,
   listInFlightFeatures,
   reconcileSessionControl,
-  sessionClosedAnyFeature
+  sessionClosedAnyFeature,
+  sessionReattachableFeature
 };

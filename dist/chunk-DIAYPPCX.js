@@ -11,6 +11,7 @@ var STAGE_AGENT_KIND = "stage-agent";
 var SPEC_STEP_KIND = "spec-step";
 var SPEC_CORRECTION_KIND = "spec-correction";
 var COMPLETION_DEFERRED_KIND = "completion-deferred";
+var RECORD_REPAIR_KIND = "record-repair";
 var SPEC_STEP_OUTCOMES = ["complete", "skipped", "redone"];
 var STAGE_FAMILY_KIND_LIST = [
   "open",
@@ -28,6 +29,7 @@ export {
   SPEC_STEP_KIND,
   SPEC_CORRECTION_KIND,
   COMPLETION_DEFERRED_KIND,
+  RECORD_REPAIR_KIND,
   SPEC_STEP_OUTCOMES,
   STAGE_FAMILY_KIND_LIST,
   STAGE_FAMILY_KINDS

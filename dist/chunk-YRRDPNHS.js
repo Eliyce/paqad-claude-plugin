@@ -8,18 +8,18 @@ import {
   readHighTable,
   readTranscriptUsage,
   roleFromSubagentTranscript
-} from "./chunk-2ZHTVPYL.js";
+} from "./chunk-WDT4SYL3.js";
 import {
   readRouteTurns,
   turnRouteAt
-} from "./chunk-K37VZN5W.js";
+} from "./chunk-BAF4BFSC.js";
 import {
   FileLockTimeoutError,
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
   withFileLockSync,
   writeFileAtomic
-} from "./chunk-R6UFMTHJ.js";
+} from "./chunk-M5JAFUJN.js";
 import {
   appendHooksLog
 } from "./chunk-CJ6GEKKF.js";
@@ -34,13 +34,13 @@ import {
   documentSessionId,
   readFeatureStageUnit,
   stampFeatureDocument
-} from "./chunk-73PEJCI3.js";
+} from "./chunk-7UCGEMJB.js";
 import {
   CHIEF_ARCHITECT_AGENT_NAME,
   isHighTableAgent,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "./chunk-4PJNUQHB.js";
+} from "./chunk-IUTPBUW2.js";
 import {
   buildEnvelopeHeader,
   computeContentHash,
@@ -49,7 +49,7 @@ import {
   sha256Hex,
   toAiBomProperties,
   withReceiptHeader
-} from "./chunk-37ZC7KVF.js";
+} from "./chunk-F256LZXA.js";
 import {
   featureChangeKey,
   featureFilePath

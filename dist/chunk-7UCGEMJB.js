@@ -8,7 +8,7 @@ import {
   STAGE_MODELS,
   STAGE_ORDER,
   stageForAgentName
-} from "./chunk-4PJNUQHB.js";
+} from "./chunk-IUTPBUW2.js";
 import {
   ENVELOPE_HEADER_PROPERTIES,
   UNTITLED_FEATURE_TITLE,
@@ -25,12 +25,13 @@ import {
   seedFeatureRecord,
   stampBundleRow,
   updateFeatureRecord
-} from "./chunk-37ZC7KVF.js";
+} from "./chunk-F256LZXA.js";
 import {
   require_ajv
 } from "./chunk-WGEG5J6L.js";
 import {
   COMPLETION_DEFERRED_KIND,
+  RECORD_REPAIR_KIND,
   SPEC_CORRECTION_KIND,
   SPEC_STEP_KIND,
   SPEC_STEP_OUTCOMES,
@@ -39,7 +40,7 @@ import {
   STAGE_EVIDENCE_SCHEMA_VERSION,
   STAGE_FAMILY_KINDS,
   STAGE_FAMILY_KIND_LIST
-} from "./chunk-R3VYFIEA.js";
+} from "./chunk-DIAYPPCX.js";
 import {
   readGitState
 } from "./chunk-O25SHWZA.js";
@@ -611,7 +612,8 @@ var STAGE_EVIDENCE_SCHEMA = {
         STAGE_AGENT_KIND,
         SPEC_STEP_KIND,
         SPEC_CORRECTION_KIND,
-        COMPLETION_DEFERRED_KIND
+        COMPLETION_DEFERRED_KIND,
+        RECORD_REPAIR_KIND
       ]
     },
     ...ROW_PROPERTIES,
@@ -645,6 +647,10 @@ var STAGE_EVIDENCE_SCHEMA = {
     {
       if: { properties: { kind: { const: COMPLETION_DEFERRED_KIND } }, required: ["kind"] },
       then: { required: ["reason", "tasks"] }
+    },
+    {
+      if: { properties: { kind: { const: RECORD_REPAIR_KIND } }, required: ["kind"] },
+      then: { required: ["reason"] }
     }
   ]
 };

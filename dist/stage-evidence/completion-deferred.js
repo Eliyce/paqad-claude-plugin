@@ -1,24 +1,30 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
+  CHECKS_RUNNING_CEILING_MS,
+  liveChecksRunningMarker
+} from "../chunk-R3DLJ4BX.js";
+import {
   stageIsOpen,
   stagesWithKind
-} from "../chunk-BXSUACCZ.js";
-import "../chunk-XBBQDY4Q.js";
-import "../chunk-6DRXSYZB.js";
+} from "../chunk-MBPRN7FO.js";
+import "../chunk-2LBIOUAJ.js";
+import "../chunk-Z6A2RYOU.js";
 import "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
 import {
   appendFeatureStageRow,
   currentFeature,
   readFeatureStageUnit
-} from "../chunk-73PEJCI3.js";
+} from "../chunk-7UCGEMJB.js";
 import "../chunk-MLVRTWKF.js";
-import "../chunk-4PJNUQHB.js";
-import "../chunk-37ZC7KVF.js";
+import "../chunk-IUTPBUW2.js";
+import {
+  rowRecordedAt
+} from "../chunk-F256LZXA.js";
 import "../chunk-WGEG5J6L.js";
 import {
   COMPLETION_DEFERRED_KIND
-} from "../chunk-R3VYFIEA.js";
+} from "../chunk-DIAYPPCX.js";
 import "../chunk-O25SHWZA.js";
 import "../chunk-3CUGDX3J.js";
 import "../chunk-SU7RODZI.js";
@@ -69,21 +75,30 @@ function hasOpenUnendedStage(rows) {
 }
 function deferCompletionForBackgroundStage(input) {
   const tasks = Array.isArray(input.backgroundTasks) ? input.backgroundTasks : [];
-  if (tasks.length === 0) {
+  const now = input.now ?? (() => /* @__PURE__ */ new Date());
+  const sessionId = resolveSessionId(input.projectRoot, input.sessionId ?? null);
+  const checksRunning = liveChecksRunningMarker(input.projectRoot, sessionId, { ...input.probe, now }) !== null;
+  if (tasks.length === 0 && !checksRunning) {
     return { deferred: false };
   }
-  const sessionId = resolveSessionId(input.projectRoot, input.sessionId ?? null);
   const dirName = currentFeature(input.projectRoot, sessionId);
+  const rows = dirName !== null ? readFeatureStageUnit(input.projectRoot, dirName) : [];
   let reason;
   let count;
   const stageAgents = stageAgentTaskCount(tasks);
-  if (stageAgents > 0) {
+  if (checksRunning) {
+    reason = "checks run still running";
+    count = tasks.length;
+  } else if (stageAgents > 0) {
     reason = "stage agent running in background";
     count = stageAgents;
-  } else if (!tasksCarryAgentType(tasks) && dirName !== null && hasOpenUnendedStage(readFeatureStageUnit(input.projectRoot, dirName))) {
+  } else if (!tasksCarryAgentType(tasks) && dirName !== null && hasOpenUnendedStage(rows)) {
     reason = "background task running while a stage is open";
     count = tasks.length;
   } else {
+    return { deferred: false };
+  }
+  if (deferralCeilingReached(rows, now)) {
     return { deferred: false };
   }
   if (dirName !== null) {
@@ -96,6 +111,20 @@ function deferCompletionForBackgroundStage(input) {
     );
   }
   return { deferred: true, reason, tasks: count };
+}
+function deferralCeilingReached(rows, now) {
+  let firstDeferredAt = Number.POSITIVE_INFINITY;
+  for (const row of rows) {
+    if (row.kind === "verify") {
+      firstDeferredAt = Number.POSITIVE_INFINITY;
+      continue;
+    }
+    if (row.kind !== COMPLETION_DEFERRED_KIND) continue;
+    const at = Date.parse(rowRecordedAt(row));
+    if (Number.isNaN(at)) continue;
+    firstDeferredAt = Math.min(firstDeferredAt, at);
+  }
+  return now().getTime() - firstDeferredAt >= CHECKS_RUNNING_CEILING_MS;
 }
 export {
   deferCompletionForBackgroundStage,

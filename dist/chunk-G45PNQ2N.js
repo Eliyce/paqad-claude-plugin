@@ -3,7 +3,7 @@ import {
   hudLastBlockPath,
   withFileLockSync,
   writeFileAtomic
-} from "./chunk-R6UFMTHJ.js";
+} from "./chunk-M5JAFUJN.js";
 import {
   expertBudget,
   isExpertRole
@@ -17,7 +17,7 @@ import {
   detectDecisionForks,
   getPrimaryStack,
   readCompiledRules
-} from "./chunk-BAZ34AEB.js";
+} from "./chunk-MLMSXXJW.js";
 import {
   appendHooksLog
 } from "./chunk-CJ6GEKKF.js";
@@ -28,7 +28,7 @@ import {
   readProjectProfile,
   tokenize,
   writeProjectProfile
-} from "./chunk-B3ELKDGA.js";
+} from "./chunk-BXFRPACZ.js";
 import {
   getRuntimeRoot
 } from "./chunk-VVRAO2BK.js";
@@ -39,10 +39,10 @@ import {
   isOnPath,
   readCapabilityDigest,
   readCapabilityVersions
-} from "./chunk-7YZETP45.js";
+} from "./chunk-7V2MKESP.js";
 import {
   readFeatureEvidence
-} from "./chunk-X5UZPGJY.js";
+} from "./chunk-3WBMHHZR.js";
 import {
   loadChangeEvidence
 } from "./chunk-PMSUN52C.js";
@@ -51,22 +51,22 @@ import {
 } from "./chunk-O77JBFWW.js";
 import {
   markerBatchNarration
-} from "./chunk-5IHBZJ2V.js";
+} from "./chunk-LPFFTROL.js";
 import {
   classifyBundlePath,
   normalizeArtifactPath,
   parseAndRecordMarkers
-} from "./chunk-UTS2RBQY.js";
+} from "./chunk-PMMQGP5O.js";
 import {
   isFeatureDevelopmentRoute,
   readWorkflowState
-} from "./chunk-A6ZAP26L.js";
+} from "./chunk-FNOZ5GEC.js";
 import {
   resolveEffectiveLane
-} from "./chunk-BXSUACCZ.js";
+} from "./chunk-MBPRN7FO.js";
 import {
   levenshtein
-} from "./chunk-6DRXSYZB.js";
+} from "./chunk-Z6A2RYOU.js";
 import {
   toPosixPath
 } from "./chunk-4K4CM3QN.js";
@@ -84,7 +84,7 @@ import {
   requiredPreCodeStages,
   resolveDeliveryFeatureByBranch,
   stampFeatureDocument
-} from "./chunk-73PEJCI3.js";
+} from "./chunk-7UCGEMJB.js";
 import {
   SchemaValidator,
   configSaysPaqadDisabled,
@@ -95,7 +95,7 @@ import {
   resolveFrameworkConfig,
   resolveNumericConfig,
   setConfigValue
-} from "./chunk-4PJNUQHB.js";
+} from "./chunk-IUTPBUW2.js";
 import {
   ENVELOPE_HEADER_KEYS,
   UNTITLED_FEATURE_TITLE,
@@ -120,7 +120,7 @@ import {
   updateFeatureRecord,
   validatePlanRecord,
   validateReviewRecord
-} from "./chunk-37ZC7KVF.js";
+} from "./chunk-F256LZXA.js";
 import {
   require_ajv
 } from "./chunk-WGEG5J6L.js";
@@ -128,7 +128,7 @@ import {
   SPEC_CORRECTION_KIND,
   SPEC_STEP_KIND,
   STAGE_AGENT_KIND
-} from "./chunk-R3VYFIEA.js";
+} from "./chunk-DIAYPPCX.js";
 import {
   appendSessionEvent,
   computeSessionRowHash,
