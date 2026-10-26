@@ -45,7 +45,7 @@ import {
   writeFeatureTechDebtIndex,
   writeVerificationEvidence,
   writesLedger
-} from "./chunk-IA7446JT.js";
+} from "./chunk-AXEAQJCV.js";
 import {
   DSSE_PAYLOAD_TYPE,
   ZERO_DIGEST,
@@ -56,7 +56,7 @@ import {
   pae,
   projectFeatureReceipt,
   splitReceiptEvidenceRows
-} from "./chunk-2KP3S7BG.js";
+} from "./chunk-4UE7GHBB.js";
 import {
   buildFullHookChain,
   buildNativeCompletionHookFile,
@@ -68,7 +68,7 @@ import {
 import {
   require_lib,
   writeStageAgents
-} from "./chunk-TM5BJD6K.js";
+} from "./chunk-H7IXBDSE.js";
 import {
   getOrLoad
 } from "./chunk-F4TESBBJ.js";
@@ -82,7 +82,7 @@ import {
   syncModuleHealth,
   syncModuleHealthFromVerification,
   writeModuleHealthProfile
-} from "./chunk-HMI3AMZD.js";
+} from "./chunk-X6NFRQUA.js";
 import {
   PAQAD_STATUS_GLYPH,
   PAQAD_STATUS_LABEL,
@@ -94,7 +94,7 @@ import {
 import {
   liveChecksRunningMarker,
   liveStageAgents
-} from "./chunk-EX47EYZL.js";
+} from "./chunk-RXSWKDMA.js";
 import {
   AstChunker,
   ChunkIndexManager,
@@ -105,7 +105,7 @@ import {
   atomicWriteFile,
   createEmbeddingProvider,
   createReranker
-} from "./chunk-GXQWQ5XL.js";
+} from "./chunk-PG526I4S.js";
 import {
   ENGINE_INSTALL_NETWORK_HINT,
   PLUGIN_ID,
@@ -120,12 +120,12 @@ import {
 import {
   digestFile,
   subtractUnchangedBaselineFiles
-} from "./chunk-22GSGT4W.js";
+} from "./chunk-K4XARJ7B.js";
 import {
   compileRuleScripts,
   isRuleScriptMapStale,
   readDrift
-} from "./chunk-FWY6OTDN.js";
+} from "./chunk-X2AMKHEZ.js";
 import {
   BUNDLE_MANIFEST,
   COMPLIANCE_SCHEMA_VERSION,
@@ -197,7 +197,7 @@ import {
   writeQuestions,
   writeRequest,
   writeStagedText
-} from "./chunk-XOUWGHGY.js";
+} from "./chunk-EVDE7CYA.js";
 import {
   hudReceiptPath,
   hudVerdictPath,
@@ -223,13 +223,13 @@ import {
   readCompiledRules,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-RCN3EICI.js";
+} from "./chunk-7NNWJQYS.js";
 import {
   DECISION_CATEGORY_DEFAULTS,
   DecisionStore,
   isStrictDecisionId,
   mintDecisionId
-} from "./chunk-USPETZLX.js";
+} from "./chunk-6FAV6AU3.js";
 import {
   appendHooksLog
 } from "./chunk-CJ6GEKKF.js";
@@ -242,7 +242,7 @@ import {
   getSharedSkillAuditBuffer,
   isCancelledError,
   resolvePackManagerRoots
-} from "./chunk-47MZEUO2.js";
+} from "./chunk-AWLCX2CJ.js";
 import {
   CAPABILITIES,
   DOMAINS,
@@ -257,7 +257,7 @@ import {
   readProjectProfile,
   readTextIfExistsSync,
   setEngineLogger
-} from "./chunk-2DKMWH6F.js";
+} from "./chunk-IYU44673.js";
 import {
   getPackageRoot,
   getRuntimeRoot,
@@ -270,7 +270,7 @@ import {
   readReport,
   ruleRunFindings,
   scanWorkingTree
-} from "./chunk-WN2UAOUE.js";
+} from "./chunk-OAWZ43LB.js";
 import {
   appendChangeMetrics,
   appendDuplicationRun,
@@ -279,7 +279,7 @@ import {
   readChangeMetrics,
   readDuplication,
   readRuleRun
-} from "./chunk-74W5FPE6.js";
+} from "./chunk-4MRBSZUT.js";
 import {
   buildEvidenceRow,
   readEvidenceRowsAt
@@ -291,32 +291,32 @@ import {
   isTestFile,
   loadChangeEvidence,
   readGitStatusFiles
-} from "./chunk-4WLN46JE.js";
+} from "./chunk-55W4RUFX.js";
 import {
   execa,
   onExit
 } from "./chunk-O77JBFWW.js";
 import {
   STAGE_NARRATION
-} from "./chunk-5QMVFF2K.js";
+} from "./chunk-JQBRSL43.js";
 import {
   extractAssistantText,
   routeIsAffirmativelyNonFeature,
   strayBundleFiles
-} from "./chunk-CV3KMWYY.js";
+} from "./chunk-AWYK4NRO.js";
 import {
   endStage,
   openStageEvidence,
   stageIsOpen,
   stagesWithKind
-} from "./chunk-PXKGR2DE.js";
+} from "./chunk-QFQY5BRR.js";
 import {
   appendModuleMapEvent,
   appendRunCancelledEvent,
   emitContextTruncated,
   matchesAnyGlob,
   readRawModuleMap
-} from "./chunk-NX2OWYHT.js";
+} from "./chunk-GZLQEKYB.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -346,7 +346,7 @@ import {
   resolveFeatureRef,
   startedAfterLastEnd,
   writeFeatureIndexDocument
-} from "./chunk-4JNYHPPQ.js";
+} from "./chunk-CAOZS5C2.js";
 import {
   DEFAULT_BENCHMARK_GATES,
   DEFAULT_FRAMEWORK_CONFIG,
@@ -378,7 +378,7 @@ import {
   writeConfigExample,
   writeConfigsReadme,
   writeFrameworkOverridesToConfig
-} from "./chunk-PW5UZ55M.js";
+} from "./chunk-XK6DWPZD.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   buildTextHeader,
@@ -16721,7 +16721,7 @@ var memoizedReport;
 function getEngineVersionReport() {
   if (memoizedReport === void 0) {
     memoizedReport = Object.freeze({
-      engineVersion: normalizeEngineVersion("1.105.3"),
+      engineVersion: normalizeEngineVersion("1.105.4"),
       minConsumerVersion: MIN_CONSUMER_VERSION,
       deprecatedAsOf: DEPRECATED_AS_OF
     });
@@ -36688,7 +36688,7 @@ function skipLines(gates, flagOn) {
 
 // src/verification/repository/run-repository-verification.ts
 function verifierVersion() {
-  return true ? "1.105.3" : "0.0.0-dev";
+  return true ? "1.105.4" : "0.0.0-dev";
 }
 function backstopGates() {
   return [
@@ -39892,7 +39892,7 @@ var WorkflowEngine = class {
 };
 
 // src/index.ts
-var VERSION = "1.105.3";
+var VERSION = "1.105.4";
 function getFrameworkName() {
   return "paqad-ai";
 }

@@ -6,7 +6,7 @@ import {
   readChangeCost,
   readCostCache,
   roundUsd
-} from "./chunk-2KP3S7BG.js";
+} from "./chunk-4UE7GHBB.js";
 import {
   CHIEF_ROLE,
   addTokenUsage,
@@ -15,21 +15,21 @@ import {
   highTableDoneTimes,
   maxTokenUsage,
   readHighTable
-} from "./chunk-YASIZ6TE.js";
+} from "./chunk-VVXMXL4D.js";
 import {
   STAGE_AGENT_HOSTS
-} from "./chunk-TM5BJD6K.js";
+} from "./chunk-H7IXBDSE.js";
 import {
   PAQAD_VERDICT
 } from "./chunk-5QVCE2TS.js";
 import {
   hasOpenUnendedStage,
   liveStageAgents
-} from "./chunk-EX47EYZL.js";
+} from "./chunk-RXSWKDMA.js";
 import {
   episodeStart,
   readRouteTurns
-} from "./chunk-JZBPN6DM.js";
+} from "./chunk-VCN7NJAO.js";
 import {
   BUNDLE_MANIFEST,
   aggregateSpecPipelineMetrics,
@@ -46,7 +46,7 @@ import {
   resolveFlooredMode,
   resolveRuleComplianceMode,
   sessionWroteInEpisode
-} from "./chunk-XOUWGHGY.js";
+} from "./chunk-EVDE7CYA.js";
 import {
   hudCostCachePath,
   hudReceiptPath,
@@ -57,16 +57,16 @@ import {
 import {
   readAnyDecisionPacket,
   readContractDecisions
-} from "./chunk-USPETZLX.js";
+} from "./chunk-6FAV6AU3.js";
 import {
   appendHooksLog
 } from "./chunk-CJ6GEKKF.js";
 import {
   StackPackLoader
-} from "./chunk-47MZEUO2.js";
+} from "./chunk-AWLCX2CJ.js";
 import {
   readProjectProfile
-} from "./chunk-2DKMWH6F.js";
+} from "./chunk-IYU44673.js";
 import {
   getRuntimeRoot
 } from "./chunk-VVRAO2BK.js";
@@ -74,13 +74,13 @@ import {
   readDuplication,
   readFeatureEvidence,
   readRuleRun
-} from "./chunk-74W5FPE6.js";
+} from "./chunk-4MRBSZUT.js";
 import {
   isTestFile
-} from "./chunk-4WLN46JE.js";
+} from "./chunk-55W4RUFX.js";
 import {
   readWorkflowState
-} from "./chunk-OQ2CTH2L.js";
+} from "./chunk-XLFP2EX7.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -104,7 +104,7 @@ import {
   readFeatureStageUnit,
   stampFeatureDocument,
   writeFeatureIndexDocument
-} from "./chunk-4JNYHPPQ.js";
+} from "./chunk-CAOZS5C2.js";
 import {
   STAGE_AGENT_STAGES,
   isSubagentCapableAdapter,
@@ -117,7 +117,7 @@ import {
   resolveSpecPipelineSwitches,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "./chunk-PW5UZ55M.js";
+} from "./chunk-XK6DWPZD.js";
 import {
   ENVELOPE_HEADER_KEYS,
   LANES,
@@ -3289,8 +3289,18 @@ function workFailure(input) {
     return index === -1 ? expected.length : index;
   };
   const [first, ...rest] = (input.gates ?? []).filter((gate) => gate.required && gate.verdict === "fail" && gate.owner !== "paqad-record").map((gate) => gate.name).sort((a, b) => rank(a) - rank(b));
-  if (!first) return "Needs your attention";
+  if (!first) return null;
   return rest.length > 0 ? `${failurePhrase(first)} and ${rest.length} more` : failurePhrase(first);
+}
+function inconclusiveHeadline(verdict, gap) {
+  const reason = (verdict.work_reasons ?? verdict.reasons ?? [])[0];
+  return headlineRow(
+    13,
+    "warn",
+    reason ? `Inconclusive: ${reason}` : "Inconclusive",
+    "Inconclusive",
+    gap
+  );
 }
 function gapLine(gaps) {
   const [first] = gaps;
@@ -3385,24 +3395,18 @@ function computeHudHeadline(input) {
   if (ship?.push?.state === "failed")
     return headlineRow(11, "bad", "The push failed", "Push failed");
   const running = input.stages.find((stage) => stage.state === "running");
-  const verdict = input.verdictEarlier && running ? null : input.verdict;
+  const held = running && (input.verdictEarlier || input.stageAgentLive);
+  const verdict = held ? null : input.verdict;
   const work = workKindOf(verdict);
-  if (work === "fail") {
-    return headlineRow(12, "bad", workFailure(input), "Needs your attention", gap);
+  if (verdict && work === "fail") {
+    const failure = workFailure(input);
+    if (!failure) return inconclusiveHeadline(verdict, gap);
+    return headlineRow(12, "bad", failure, "Needs your attention", gap);
   }
   if (work === "pass" && input.checks === "red") {
     return headlineRow(12, "bad", failurePhrase("code-tests-lint"), "Needs your attention", gap);
   }
-  if (verdict && work === "inconclusive") {
-    const reason = (verdict.work_reasons ?? verdict.reasons ?? [])[0];
-    return headlineRow(
-      13,
-      "warn",
-      reason ? `Inconclusive: ${reason}` : "Inconclusive",
-      "Inconclusive",
-      gap
-    );
-  }
+  if (verdict && work === "inconclusive") return inconclusiveHeadline(verdict, gap);
   if (ship?.pr_state === "open" && ship.ci?.state === "pending") {
     const delivery = input.stages.find((stage) => stage.stage === "delivery");
     return headlineRow(14, "working", `Watching CI on ${pr}`, "Working", {
@@ -3595,7 +3599,8 @@ function buildHudSnapshot(projectRoot, sessionHint, options = {}) {
       plan,
       recordGaps: stages.some((stage) => stage.state === "running") ? [] : gaps,
       unproven: unprovenLines(gates, verdict),
-      verdictEarlier: verdictFromEarlierTurn(verdict, workflow, options.turnRunning === true)
+      verdictEarlier: verdictFromEarlierTurn(verdict, workflow, options.turnRunning === true),
+      stageAgentLive: liveStageAgents(readFeatureStageUnit(projectRoot, dirName)).length > 0
     }),
     change: {
       dir: dirName,

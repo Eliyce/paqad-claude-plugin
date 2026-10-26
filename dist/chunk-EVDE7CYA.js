@@ -12,7 +12,7 @@ import {
   detectDecisionForks,
   getPrimaryStack,
   readCompiledRules
-} from "./chunk-RCN3EICI.js";
+} from "./chunk-7NNWJQYS.js";
 import {
   DECISION_CATEGORY_DEFAULTS,
   DecisionStore,
@@ -20,18 +20,18 @@ import {
   createPendingDecision,
   readContractDecisions,
   recordDecisionReuse
-} from "./chunk-USPETZLX.js";
+} from "./chunk-6FAV6AU3.js";
 import {
   appendHooksLog
 } from "./chunk-CJ6GEKKF.js";
 import {
   getPacksForFrameworks
-} from "./chunk-47MZEUO2.js";
+} from "./chunk-AWLCX2CJ.js";
 import {
   FrameworkError,
   readProjectProfile,
   writeProjectProfile
-} from "./chunk-2DKMWH6F.js";
+} from "./chunk-IYU44673.js";
 import {
   getRuntimeRoot
 } from "./chunk-VVRAO2BK.js";
@@ -46,34 +46,34 @@ import {
   isOnPath,
   readCapabilityDigest,
   readCapabilityVersions
-} from "./chunk-WN2UAOUE.js";
+} from "./chunk-OAWZ43LB.js";
 import {
   readFeatureEvidence
-} from "./chunk-74W5FPE6.js";
+} from "./chunk-4MRBSZUT.js";
 import {
   loadChangeEvidence
-} from "./chunk-4WLN46JE.js";
+} from "./chunk-55W4RUFX.js";
 import {
   execa
 } from "./chunk-O77JBFWW.js";
 import {
   markerBatchNarration
-} from "./chunk-5QMVFF2K.js";
+} from "./chunk-JQBRSL43.js";
 import {
   classifyBundlePath,
   normalizeArtifactPath,
   parseAndRecordMarkers
-} from "./chunk-CV3KMWYY.js";
+} from "./chunk-AWYK4NRO.js";
 import {
   isFeatureDevelopmentRoute,
   readWorkflowState
-} from "./chunk-OQ2CTH2L.js";
+} from "./chunk-XLFP2EX7.js";
 import {
   resolveEffectiveLane
-} from "./chunk-PXKGR2DE.js";
+} from "./chunk-QFQY5BRR.js";
 import {
   levenshtein
-} from "./chunk-NX2OWYHT.js";
+} from "./chunk-GZLQEKYB.js";
 import {
   toPosixPath
 } from "./chunk-4K4CM3QN.js";
@@ -94,7 +94,7 @@ import {
   requiredPreCodeStages,
   resolveDeliveryFeatureByBranch,
   stampFeatureDocument
-} from "./chunk-4JNYHPPQ.js";
+} from "./chunk-CAOZS5C2.js";
 import {
   SchemaValidator,
   configSaysPaqadDisabled,
@@ -105,7 +105,7 @@ import {
   resolveFrameworkConfig,
   resolveNumericConfig,
   setConfigValue
-} from "./chunk-PW5UZ55M.js";
+} from "./chunk-XK6DWPZD.js";
 import {
   ENVELOPE_HEADER_KEYS,
   UNTITLED_FEATURE_TITLE,

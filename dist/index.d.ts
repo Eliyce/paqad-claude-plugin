@@ -4488,6 +4488,7 @@ interface HudHeadlineInput {
     recordGaps?: readonly string[];
     unproven?: readonly string[];
     verdictEarlier?: boolean;
+    stageAgentLive?: boolean;
 }
 declare const RUNG_WORDS: Readonly<Record<HudRung, string>>;
 declare function computeHudFlags(input: {

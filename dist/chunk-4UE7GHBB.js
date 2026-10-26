@@ -8,11 +8,11 @@ import {
   readHighTable,
   readTranscriptUsage,
   roleFromSubagentTranscript
-} from "./chunk-YASIZ6TE.js";
+} from "./chunk-VVXMXL4D.js";
 import {
   readRouteTurns,
   turnRouteAt
-} from "./chunk-JZBPN6DM.js";
+} from "./chunk-VCN7NJAO.js";
 import {
   FileLockTimeoutError,
   HUD_COST_CACHE_SUFFIX,
@@ -34,13 +34,13 @@ import {
   documentSessionId,
   readFeatureStageUnit,
   stampFeatureDocument
-} from "./chunk-4JNYHPPQ.js";
+} from "./chunk-CAOZS5C2.js";
 import {
   CHIEF_ARCHITECT_AGENT_NAME,
   isHighTableAgent,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "./chunk-PW5UZ55M.js";
+} from "./chunk-XK6DWPZD.js";
 import {
   buildEnvelopeHeader,
   computeContentHash,

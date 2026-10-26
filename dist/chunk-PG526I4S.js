@@ -6,7 +6,7 @@ import {
   CancelledError,
   getPacksForFrameworks,
   isCancelledError
-} from "./chunk-47MZEUO2.js";
+} from "./chunk-AWLCX2CJ.js";
 import {
   Bm25Index,
   FrameworkError,
@@ -16,16 +16,16 @@ import {
   redactSecrets,
   writeProjectProfile,
   writeProjectSecret
-} from "./chunk-2DKMWH6F.js";
+} from "./chunk-IYU44673.js";
 import {
   allocateChatOrdinal,
   currentChatOrdinal,
   mirrorRagRow
-} from "./chunk-74W5FPE6.js";
+} from "./chunk-4MRBSZUT.js";
 import {
   appendRunCancelledEvent,
   readRawModuleMap
-} from "./chunk-NX2OWYHT.js";
+} from "./chunk-GZLQEKYB.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -39,7 +39,7 @@ import {
   require_dist,
   setConfigValue,
   syncFrameworkConfig
-} from "./chunk-PW5UZ55M.js";
+} from "./chunk-XK6DWPZD.js";
 import {
   readGitState
 } from "./chunk-AINYJ3Q2.js";
@@ -1578,7 +1578,7 @@ var HandoffParser = class {
 // src/session/resume-validator.ts
 var SessionResumeValidator = class {
   constructor(parser = new HandoffParser(), serviceFactory = async (projectRoot) => {
-    const { RagService: RagService2 } = await import("./service-MVGTC3G5.js");
+    const { RagService: RagService2 } = await import("./service-HRLVJMJ5.js");
     return new RagService2(projectRoot);
   }) {
     this.parser = parser;
