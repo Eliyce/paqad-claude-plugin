@@ -2,28 +2,35 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   PipelineRouter,
   RequestClassifier
-} from "../chunk-KTPTJSBT.js";
+} from "../chunk-HMI3AMZD.js";
 import {
   paqadFrameLead
 } from "../chunk-5QVCE2TS.js";
 import {
+  hasOpenUnendedStage,
+  liveStageAgents
+} from "../chunk-EX47EYZL.js";
+import {
   appendRouteTurn
-} from "../chunk-BAF4BFSC.js";
-import "../chunk-KJDGUZPN.js";
+} from "../chunk-JZBPN6DM.js";
+import "../chunk-GXQWQ5XL.js";
 import "../chunk-Y7QRVDRT.js";
-import "../chunk-MLMSXXJW.js";
+import "../chunk-RCN3EICI.js";
+import "../chunk-USPETZLX.js";
 import {
   appendHooksLog
 } from "../chunk-CJ6GEKKF.js";
-import "../chunk-BXFRPACZ.js";
+import "../chunk-47MZEUO2.js";
+import "../chunk-2DKMWH6F.js";
 import "../chunk-VVRAO2BK.js";
-import "../chunk-3WBMHHZR.js";
+import "../chunk-T4VPFXR3.js";
+import "../chunk-74W5FPE6.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-PMSUN52C.js";
+import "../chunk-4WLN46JE.js";
 import "../chunk-O77JBFWW.js";
 import {
   writeSessionRoute
-} from "../chunk-JH4AAOTQ.js";
+} from "../chunk-BLFNOKRD.js";
 import {
   changeKindForWorkflow,
   isFeatureDevelopmentRoute,
@@ -31,25 +38,28 @@ import {
   resolveRoutedWorkflow,
   routeWorkflow,
   writeWorkflowState
-} from "../chunk-FNOZ5GEC.js";
+} from "../chunk-OQ2CTH2L.js";
 import {
   writePendingKind,
   writePendingLane
-} from "../chunk-2LBIOUAJ.js";
-import "../chunk-Z6A2RYOU.js";
+} from "../chunk-PXKGR2DE.js";
+import "../chunk-NX2OWYHT.js";
 import "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
-import "../chunk-7UCGEMJB.js";
-import "../chunk-MLVRTWKF.js";
+import {
+  readFeatureStageUnit
+} from "../chunk-4JNYHPPQ.js";
+import "../chunk-W2K6YXWC.js";
 import {
   STAGE_ORDER
-} from "../chunk-IUTPBUW2.js";
+} from "../chunk-PW5UZ55M.js";
 import {
-  isBundleClosed
-} from "../chunk-F256LZXA.js";
+  isBundleClosed,
+  laneRank,
+  readChangeConstants
+} from "../chunk-5BQ2AB2Y.js";
+import "../chunk-AINYJ3Q2.js";
 import "../chunk-WGEG5J6L.js";
-import "../chunk-DIAYPPCX.js";
-import "../chunk-O25SHWZA.js";
 import "../chunk-3CUGDX3J.js";
 import "../chunk-SU7RODZI.js";
 import {
@@ -240,18 +250,18 @@ async function resolvePromptRoute(projectRoot, request, deps = {}) {
   const route = deps.route ?? ((classification2) => new PipelineRouter().route(classification2));
   const classification = await classify({ request });
   const routed = resolveRoutedWorkflow(classification.workflow);
-  if (!isFeatureDevelopmentRoute(routed)) {
-    return { routed, lane: null, reason: ROUTE_REASON[routed] };
-  }
-  const kind = changeKindForWorkflow(classification.workflow);
   if (isBareTicketPrompt(request)) {
     return {
-      routed,
-      kind,
+      routed: "feature-development",
+      ...isFeatureDevelopmentRoute(routed) ? { kind: changeKindForWorkflow(classification.workflow) } : {},
       lane: null,
       reason: "reading the ticket before I set the depth \u2014 no lane guessed from a bare link"
     };
   }
+  if (!isFeatureDevelopmentRoute(routed)) {
+    return { routed, lane: null, reason: ROUTE_REASON[routed] };
+  }
+  const kind = changeKindForWorkflow(classification.workflow);
   const { lane } = route(classification);
   return {
     routed,
@@ -289,6 +299,17 @@ function namesStageOfOpenChange(projectRoot, sessionId, prior, request) {
   }
   const open = readSessionControl(projectRoot, sessionId).active;
   return open !== null && !isBundleClosed(projectRoot, open);
+}
+var RUNNING_CHANGE_REASON = "the change open in this session is still running";
+var RECORDED_LANE_REASON = "the lane recorded on this change";
+function openChangeOf(projectRoot, sessionId) {
+  const open = readSessionControl(projectRoot, sessionId).active;
+  return open !== null && !isBundleClosed(projectRoot, open) ? open : null;
+}
+function changeIsRunning(projectRoot, dirName) {
+  if (dirName === null) return false;
+  const rows = readFeatureStageUnit(projectRoot, dirName);
+  return hasOpenUnendedStage(rows) || liveStageAgents(rows).length > 0;
 }
 async function runPromptRouteSeam(input, deps = {}) {
   if (isSystemNotificationPrompt(input.request)) {
@@ -334,6 +355,18 @@ async function runPromptRouteSeam(input, deps = {}) {
     kind = void 0;
     reason = OPEN_CHANGE_STAGE_REASON;
   }
+  const openChange = openChangeOf(input.projectRoot, sessionId);
+  if (slashName === null && STAGE_NAME_OVERRIDABLE_ROUTES.has(routed) && changeIsRunning(input.projectRoot, openChange)) {
+    routed = "feature-development";
+    lane = null;
+    kind = void 0;
+    reason = RUNNING_CHANGE_REASON;
+  }
+  const recordedLane = isFeatureDevelopmentRoute(routed) && openChange !== null ? readChangeConstants(input.projectRoot, openChange).lane : null;
+  if (recordedLane !== null && laneRank(recordedLane) >= laneRank(lane)) {
+    lane = recordedLane;
+    reason = RECORDED_LANE_REASON;
+  }
   const anchors = lane === null ? { reason } : { lane, reason };
   const transition = routeWorkflow(prior, routed, anchors);
   const turnStartedAt = (deps.now ?? (() => /* @__PURE__ */ new Date()))().toISOString();
@@ -349,7 +382,7 @@ async function runPromptRouteSeam(input, deps = {}) {
       `route-turns: append failed: ${error instanceof Error ? error.message : String(error)}`
     );
   }
-  if (isFeatureDevelopmentRoute(routed) && lane !== null) {
+  if (isFeatureDevelopmentRoute(routed) && lane !== null && recordedLane === null) {
     writePendingLane(input.projectRoot, sessionId, lane);
   }
   if (isFeatureDevelopmentRoute(routed) && kind !== void 0) {

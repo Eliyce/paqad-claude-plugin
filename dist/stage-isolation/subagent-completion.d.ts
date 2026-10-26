@@ -46,7 +46,13 @@ interface RecordStageAgentCompletionInput {
     adapter: string;
     now?: () => Date;
 }
+interface RecordStageAgentStartInput {
+    projectRoot: string;
+    payload: SubagentStopPayload;
+    now?: () => Date;
+}
+declare function recordStageAgentStart(input: RecordStageAgentStartInput): boolean;
 declare function recordStageAgentCompletion(input: RecordStageAgentCompletionInput): boolean;
 
-export { estimateTokens, recordHighTableUsage, recordStageAgentCompletion, resolveStageAgentTokens, resolveTokenCounts, stageFromAgentType };
-export type { RecordStageAgentCompletionInput, StageAgentTokens, SubagentStopPayload };
+export { estimateTokens, recordHighTableUsage, recordStageAgentCompletion, recordStageAgentStart, resolveStageAgentTokens, resolveTokenCounts, stageFromAgentType };
+export type { RecordStageAgentCompletionInput, RecordStageAgentStartInput, StageAgentTokens, SubagentStopPayload };
