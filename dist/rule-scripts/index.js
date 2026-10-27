@@ -23,13 +23,15 @@ import {
   sha256,
   snapshotRuleScriptMap,
   stripRuleMarker
-} from "../chunk-EIAKX6YK.js";
+} from "../chunk-4QA5BEUU.js";
 import {
   HEADER_MARKER,
   RULE_SCRIPT_MAP_SCHEMA_VERSION,
+  SCRIPT_ABORTED_ERROR,
   emptyRuleScriptMap,
   enforceRuleScripts,
   executeRuleScript,
+  executeRuleScriptAsync,
   extractHeaderFields,
   formatEnforcementSummary,
   isOnPath,
@@ -40,33 +42,35 @@ import {
   ruleRunFindings,
   ruleScriptMapPath,
   runRuleScripts,
+  runRuleScriptsAsync,
   scriptFilesHash,
   serializeRuleScriptMap,
   validateFindings,
   validateScriptHeader
-} from "../chunk-RZSUJA4B.js";
-import "../chunk-LERWRDMM.js";
+} from "../chunk-BDM7PHW7.js";
+import "../chunk-IN2AVDIO.js";
+import "../chunk-NCMGB3MM.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-HMQATZMT.js";
+import "../chunk-XWINZVZE.js";
 import "../chunk-O77JBFWW.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
-import "../chunk-VUYWNYTS.js";
+import "../chunk-7PWYO6YA.js";
 import "../chunk-W2K6YXWC.js";
-import "../chunk-CTIDCPJ5.js";
-import "../chunk-5BQ2AB2Y.js";
+import "../chunk-Y5WWSOMR.js";
+import "../chunk-KFLIUVMP.js";
 import "../chunk-AINYJ3Q2.js";
 import "../chunk-WGEG5J6L.js";
-import "../chunk-3CUGDX3J.js";
+import "../chunk-QINSFA6R.js";
 import "../chunk-SU7RODZI.js";
-import "../chunk-MG36YCW4.js";
-import "../chunk-KF7HHHJR.js";
-import "../chunk-EGDL57MD.js";
+import "../chunk-HV6ESCNW.js";
+import "../chunk-DDJC5PRW.js";
+import "../chunk-3STC3IVL.js";
 import {
   PATHS
-} from "../chunk-UCSN7SVD.js";
+} from "../chunk-LW3OCT4Y.js";
 import {
   __toESM,
   init_esm_shims
@@ -309,6 +313,7 @@ export {
   HEADER_MARKER,
   OVER_FLAG_THRESHOLDS,
   RULE_SCRIPT_MAP_SCHEMA_VERSION,
+  SCRIPT_ABORTED_ERROR,
   addRule,
   addRuleEntry,
   applyRuleScriptMap,
@@ -327,6 +332,7 @@ export {
   emptyRuleScriptMap,
   enforceRuleScripts,
   executeRuleScript,
+  executeRuleScriptAsync,
   extractHeaderFields,
   fixturesRoot,
   formatEnforcementSummary,
@@ -350,6 +356,7 @@ export {
   ruleTextHash,
   runFixtures,
   runRuleScripts,
+  runRuleScriptsAsync,
   scanAndEmbedIds,
   scriptFilesHash,
   serializeRuleScriptMap,

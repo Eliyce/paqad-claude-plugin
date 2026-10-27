@@ -18,6 +18,7 @@ interface WorkflowEntry {
 
 declare const SYSTEM_NOTIFICATION_ELEMENTS: readonly string[];
 declare const SYSTEM_NOTIFICATION_BANNER = "[system notification - not user input]";
+declare const STOP_HOOK_FEEDBACK_PREFIX = "stop hook feedback:";
 declare const SUBAGENT_HANDBACK_MARKERS: {
     readonly element: "agent-message";
     readonly label: "[subagent hand-back]";
@@ -58,5 +59,5 @@ interface PromptRouteSeamResult {
 }
 declare function runPromptRouteSeam(input: PromptRouteSeamInput, deps?: PromptRouteDeps): Promise<PromptRouteSeamResult>;
 
-export { BARE_TICKET_FILLER, SLASH_COMMAND_ROUTES, SUBAGENT_HANDBACK_MARKERS, SYSTEM_NOTIFICATION_BANNER, SYSTEM_NOTIFICATION_ELEMENTS, isBareTicketPrompt, isSystemNotificationPrompt, resolvePromptRoute, runPromptRouteSeam, slashCommandName };
+export { BARE_TICKET_FILLER, SLASH_COMMAND_ROUTES, STOP_HOOK_FEEDBACK_PREFIX, SUBAGENT_HANDBACK_MARKERS, SYSTEM_NOTIFICATION_BANNER, SYSTEM_NOTIFICATION_ELEMENTS, isBareTicketPrompt, isSystemNotificationPrompt, resolvePromptRoute, runPromptRouteSeam, slashCommandName };
 export type { PromptRouteDeps, PromptRouteResult, PromptRouteSeamInput, PromptRouteSeamResult };

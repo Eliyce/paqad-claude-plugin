@@ -140,6 +140,7 @@ interface ScriptHeader {
         node?: string;
         binaries?: string[];
     };
+    per_file?: boolean;
     last_validated_at?: string;
     false_positive_surface?: string;
 }
@@ -172,7 +173,13 @@ interface ExecuteResult {
     error?: string;
     warning?: string;
 }
+declare const SCRIPT_ABORTED_ERROR = "script stopped: the rule gate ran out of time";
 declare function executeRuleScript(scriptPath: string, payload: ExecutePayload, timeoutMs?: number): ExecuteResult;
+interface ExecuteAsyncOptions {
+    timeoutMs?: number;
+    signal?: AbortSignal;
+}
+declare function executeRuleScriptAsync(scriptPath: string, payload: ExecutePayload, options?: ExecuteAsyncOptions): Promise<ExecuteResult>;
 declare function isOnPath(bin: string): boolean;
 declare function missingBinaries(binaries: string[] | undefined): string[];
 
@@ -224,12 +231,17 @@ interface ScriptRunResult {
     skipped?: string;
     warning?: string;
 }
+interface RunFilter {
+    kinds?: RuleScriptKind[];
+    scopes?: RuleScriptScope[];
+}
 interface RunReport {
     generated_at: string;
     mode: RuleComplianceMode;
     rule_files_hash: string;
     script_files_hash: string;
     target_files_hash: string;
+    filter?: RunFilter;
     results: ScriptRunResult[];
     counts: {
         deterministic: number;
@@ -238,15 +250,27 @@ interface RunReport {
     };
     blocking: boolean;
     from_cache?: boolean;
+    aborted?: boolean;
 }
+type RuleScriptKind = 'deterministic' | 'heuristic';
+type RuleScriptScope = 'changed-files' | 'whole-tree';
 interface RunOptions {
     projectRoot: string;
     mode: RuleComplianceMode;
     changedFiles?: string[];
     wholeTreeGlobs?: string[];
+    kinds?: RuleScriptKind[];
+    scopes?: RuleScriptScope[];
+}
+interface RunAsyncOptions extends RunOptions {
+    concurrency?: number;
+    signal?: AbortSignal;
+    useFileCache?: boolean;
+    scriptTimeoutMs?: number;
 }
 declare function scriptFilesHash(projectRoot: string, map: RuleScriptMap): string;
 declare function runRuleScripts(opts: RunOptions): RunReport;
+declare function runRuleScriptsAsync(opts: RunAsyncOptions): Promise<RunReport>;
 declare function ruleRunFindings(report: RunReport): RuleRunFinding[] | undefined;
 declare function readReport(projectRoot: string): RunReport | null;
 
@@ -266,6 +290,7 @@ interface EnforcementResult {
     violations: RuleViolation[];
     armed: number;
     summary: string;
+    aborted?: boolean;
 }
 type EnforceScope = 'changed-files' | 'whole-tree';
 interface EnforceOptions {
@@ -273,6 +298,12 @@ interface EnforceOptions {
     mode: RuleComplianceMode;
     changedFiles?: string[];
     scope?: EnforceScope;
+    kinds?: RuleScriptKind[];
+    scopes?: RuleScriptScope[];
+    concurrency?: number;
+    signal?: AbortSignal;
+    useFileCache?: boolean;
+    editTargets?: string[];
 }
 declare function enforceRuleScripts(options: EnforceOptions): Promise<EnforcementResult>;
 declare function formatEnforcementSummary(result: {
@@ -319,5 +350,5 @@ declare function removeRuleBullet(projectRoot: string, ruleId: string): {
 
 declare function pruneOrphanScripts(projectRoot: string, map: RuleScriptMap): string[];
 
-export { HEADER_MARKER, OVER_FLAG_THRESHOLDS, RULE_SCRIPT_MAP_SCHEMA_VERSION, addRule, addRuleEntry, applyRuleScriptMap, archiveRule, assembleMap, atomicWriteRuleScriptMap, checkOverFlag, cleanRuleText, clearRuleScripts, collectRuleFiles, compileRuleScripts, computeRuleFilesHash, editRuleText, embedRuleIds, embedRuleMarker, emptyRuleScriptMap, enforceRuleScripts, executeRuleScript, extractHeaderFields, fixturesRoot, formatEnforcementSummary, isOnPath, isRuleId, isRuleScriptMapStale, loadRuleScriptMap, mintRuleId, missingBinaries, parseRuleFile, parseRuleMarker, parseScriptHeader, pruneOrphanScripts, readDrift, readReport, reconcileRuleScripts, recordConflictFindings, removeRuleBullet, ruleRunFindings, ruleScriptMapPath, ruleTextHash, runFixtures, runRuleScripts, scanAndEmbedIds, scriptFilesHash, serializeRuleScriptMap, setRuleText, setVerifiability, sha256, snapshotRuleScriptMap, stripRuleMarker, upsertScriptEntry, validateFindings, validateScriptHeader };
-export type { AddedRule, ApplyRuleScriptMapOptions, ApplyRuleScriptMapResult, CompileRuleScriptsResult, EmbedResult, EnforceOptions, EnforceScope, EnforcementResult, ExecutePayload, ExecuteResult, Finding, FindingsReport, FixtureFailure, FixtureResult, OverFlagResult, ParsedHeader, ParsedRule, RuleClassification, RuleComplianceMode, RuleConflict, RuleEntry, RuleInventoryItem, RuleScriptDriftFinding, RuleScriptDriftReport, RuleScriptFindingCode, RuleScriptMap, RuleScriptMapEvent, RuleViolation, RunOptions, RunReport, ScanResult, ScriptEntry, ScriptHeader, ScriptRunResult, ScriptScope, ValidationResult, Verifiability, VerifiabilityKind };
+export { HEADER_MARKER, OVER_FLAG_THRESHOLDS, RULE_SCRIPT_MAP_SCHEMA_VERSION, SCRIPT_ABORTED_ERROR, addRule, addRuleEntry, applyRuleScriptMap, archiveRule, assembleMap, atomicWriteRuleScriptMap, checkOverFlag, cleanRuleText, clearRuleScripts, collectRuleFiles, compileRuleScripts, computeRuleFilesHash, editRuleText, embedRuleIds, embedRuleMarker, emptyRuleScriptMap, enforceRuleScripts, executeRuleScript, executeRuleScriptAsync, extractHeaderFields, fixturesRoot, formatEnforcementSummary, isOnPath, isRuleId, isRuleScriptMapStale, loadRuleScriptMap, mintRuleId, missingBinaries, parseRuleFile, parseRuleMarker, parseScriptHeader, pruneOrphanScripts, readDrift, readReport, reconcileRuleScripts, recordConflictFindings, removeRuleBullet, ruleRunFindings, ruleScriptMapPath, ruleTextHash, runFixtures, runRuleScripts, runRuleScriptsAsync, scanAndEmbedIds, scriptFilesHash, serializeRuleScriptMap, setRuleText, setVerifiability, sha256, snapshotRuleScriptMap, stripRuleMarker, upsertScriptEntry, validateFindings, validateScriptHeader };
+export type { AddedRule, ApplyRuleScriptMapOptions, ApplyRuleScriptMapResult, CompileRuleScriptsResult, EmbedResult, EnforceOptions, EnforceScope, EnforcementResult, ExecuteAsyncOptions, ExecutePayload, ExecuteResult, Finding, FindingsReport, FixtureFailure, FixtureResult, OverFlagResult, ParsedHeader, ParsedRule, RuleClassification, RuleComplianceMode, RuleConflict, RuleEntry, RuleInventoryItem, RuleScriptDriftFinding, RuleScriptDriftReport, RuleScriptFindingCode, RuleScriptKind, RuleScriptMap, RuleScriptMapEvent, RuleScriptScope, RuleViolation, RunAsyncOptions, RunFilter, RunOptions, RunReport, ScanResult, ScriptEntry, ScriptHeader, ScriptRunResult, ScriptScope, ValidationResult, Verifiability, VerifiabilityKind };

@@ -3,10 +3,13 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-NNE656QJ.js";
+} from "../chunk-P2XE4IK2.js";
+import {
+  holdRefreshContextLock
+} from "../chunk-O6QPPPMO.js";
 import {
   DISABLED_SESSION_DOC_TYPE
-} from "../chunk-L7IE7IHW.js";
+} from "../chunk-5NR4GDHB.js";
 import {
   ADAPTER_TYPES,
   AdapterFactory,
@@ -50,6 +53,7 @@ import {
   checkSpecCompliance,
   checkSpecShape,
   checksSessionId,
+  claudeConfigDir,
   cleanupLegacyMcpFiles,
   collectMapEvidence,
   collectQualityMeasures,
@@ -115,7 +119,6 @@ import {
   readSourceFiles,
   readVerificationEvidence,
   recordMigrationSession,
-  refreshRuleContext,
   removeActiveCapability,
   removeObsoleteContractDocs,
   renderEvidenceMarkdown,
@@ -125,7 +128,6 @@ import {
   resolveEntryPoints,
   resolvePackageEcosystem,
   resolveReportFeatureRef,
-  resolveRuleApplicabilityForChange,
   rollbackPlugin,
   rollupModuleHealth,
   rosterEntryFor,
@@ -153,10 +155,9 @@ import {
   writeGitignore,
   writeQualityBaseline,
   writeReviewDigest,
-  writeRuleContext,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-O6OPFJT5.js";
+} from "../chunk-KBDPVYHW.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -180,7 +181,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-UD4QNIEG.js";
+} from "../chunk-YU4ZZWUK.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -188,22 +189,24 @@ import {
   projectAiBomFromFeatures,
   readAllFeatureReceiptEntries,
   readAllFeatureReceipts,
+  readCostCache,
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-V3AVUSU4.js";
+} from "../chunk-FBNBDFP6.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
-  recordWritingRow
-} from "../chunk-V6HBAI3D.js";
-import "../chunk-5ERW2PZB.js";
+  recordWritingRow,
+  scanTranscriptLines
+} from "../chunk-FKG7VJJD.js";
+import "../chunk-WULKDLB5.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
 } from "../chunk-PWJ37K7H.js";
-import "../chunk-ASLPXRPR.js";
+import "../chunk-L3SSXNLJ.js";
 import "../chunk-F4TESBBJ.js";
 import {
   createEvidence,
@@ -211,15 +214,7 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-KINEEXPE.js";
-import {
-  PAQAD_STATUS_GLYPH
-} from "../chunk-5QVCE2TS.js";
-import {
-  clearChecksRunningMarker,
-  writeChecksRunningMarker
-} from "../chunk-5OWLFHYJ.js";
-import "../chunk-STSS5WI6.js";
+} from "../chunk-PVZEAEMJ.js";
 import {
   EmbeddingProviderError,
   PatternStore,
@@ -227,20 +222,27 @@ import {
   RagService,
   appendRagAudit,
   assertEmbeddingProviderAvailable,
-  atomicWriteFile,
   buildModuleRoleResolver,
   cosineSimilarity,
+  enableEmbeddingProviderCache,
   findRemovedEmbeddingProvider,
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-I2YG7WNL.js";
+} from "../chunk-MQURLJEK.js";
+import {
+  PAQAD_STATUS_GLYPH
+} from "../chunk-5QVCE2TS.js";
+import {
+  clearChecksRunningMarker,
+  writeChecksRunningMarker
+} from "../chunk-XMAPAGLU.js";
+import "../chunk-T63SOQAB.js";
 import "../chunk-Y7QRVDRT.js";
-import "../chunk-RVTFEVCR.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-EIAKX6YK.js";
+} from "../chunk-4QA5BEUU.js";
 import {
   DEFAULT_OBLIGATION_INDEX_PATH,
   DELIVERY_EVIDENCE_DOC_TYPE,
@@ -274,6 +276,7 @@ import {
   evaluateSpecFreeze,
   extractObligationIndex,
   freezeSpec,
+  hashRuleSources,
   isFrameworkDisabledForRoot,
   laneRunsSpecPipeline,
   listRunDirs,
@@ -318,10 +321,12 @@ import {
   readStagedText,
   readTrace,
   readYaml,
+  refreshRuleContext,
   rememberInput,
   removeJourney,
   renderDefaultDeliveryPolicyYaml,
   resolvePlaywrightModulePath,
+  resolveRuleApplicabilityForChange,
   resolveVeRuntimeDir,
   reviewSpecification,
   seatStandingExperts,
@@ -354,23 +359,35 @@ import {
   writeLabel,
   writeQuestions,
   writeRequest,
+  writeRuleContext,
   writeRulesLoaded,
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-ZRV7U2RZ.js";
+} from "../chunk-CD3U6HN5.js";
+import "../chunk-BWAUL7O5.js";
+import "../chunk-NRKCUFAE.js";
 import {
   releaseLock,
   tryAcquireLock
-} from "../chunk-N3SETY4S.js";
-import "../chunk-NRKCUFAE.js";
+} from "../chunk-NUSNYHWM.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   compileRules,
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-NN7SEPJI.js";
+} from "../chunk-7KAJUZXO.js";
+import {
+  StackPackLoader,
+  atomicWriteFile,
+  createPack,
+  installPack,
+  listPacks,
+  removePack,
+  resolvePackManagerRoots,
+  validatePackAt
+} from "../chunk-5BX3DNVU.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -384,19 +401,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-NG4XO34O.js";
-import {
-  appendHooksLog
-} from "../chunk-CJ6GEKKF.js";
-import {
-  StackPackLoader,
-  createPack,
-  installPack,
-  listPacks,
-  removePack,
-  resolvePackManagerRoots,
-  validatePackAt
-} from "../chunk-I5IGTXAN.js";
+} from "../chunk-YQ37OFE7.js";
 import {
   ACTIVE_CAPABILITIES,
   FrameworkError,
@@ -408,54 +413,62 @@ import {
   readTextIfExistsSync,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-5V3LFHQQ.js";
+} from "../chunk-RRWY74DL.js";
+import {
+  appendHooksLog
+} from "../chunk-BW7VURA4.js";
 import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
-import "../chunk-T4VPFXR3.js";
+import "../chunk-BYYV5KPL.js";
+import "../chunk-ETLHFSGV.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
+  runPool,
   scanWorkingTree
-} from "../chunk-RZSUJA4B.js";
+} from "../chunk-BDM7PHW7.js";
+import {
+  hudCostCachePath
+} from "../chunk-IN2AVDIO.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-LERWRDMM.js";
+} from "../chunk-NCMGB3MM.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-HMQATZMT.js";
+} from "../chunk-XWINZVZE.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-XATPFUNO.js";
+} from "../chunk-SDM5B2BY.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   normalizeArtifactPath
-} from "../chunk-N5SWPFGH.js";
+} from "../chunk-2TBN4O6V.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-HPICFP2U.js";
+} from "../chunk-QROWG6LN.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-3DRN3NCI.js";
+} from "../chunk-2I7O2GLF.js";
 import {
   clearPendingLane,
   recordMarkedStage
-} from "../chunk-6W2UX3OC.js";
+} from "../chunk-OZLPYICR.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -476,7 +489,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-OQ77VKVU.js";
+} from "../chunk-BF7UUVBR.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -486,11 +499,13 @@ import {
   toProjectRelativePath
 } from "../chunk-4K4CM3QN.js";
 import {
+  ORCHESTRATOR_AGENT,
   STAGE_EVIDENCE_DOC_TYPE,
   currentFeature,
   foldFeature,
   readChangeStartPoint,
   readFeatureDelivery,
+  readFeatureStageUnit,
   reconcileDeliveryFromGit,
   recordChangeConstants,
   recordCommitForBranch,
@@ -498,20 +513,23 @@ import {
   recordShip,
   recordedLaneOrFull,
   refreshCommitSplit,
+  resolveAgentIdentity,
   resolveDeliveryFeatureByBranch,
   resolveFeatureRef,
   resumeFeatureByRef,
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-VUYWNYTS.js";
+} from "../chunk-7PWYO6YA.js";
 import {
   describeEarlierWork
 } from "../chunk-W2K6YXWC.js";
 import {
+  CHIEF_ARCHITECT_AGENT_NAME,
   DEFAULT_EXISTING_SURFACE_TOKENS,
   DEFAULT_LOCAL_EMBEDDING_MODEL,
   EMBEDDING_PROVIDERS,
+  EXPERT_AGENT_NAME,
   LOCAL_EMBEDDING_MODELS,
   STAGE_ORDER,
   SchemaValidator,
@@ -524,8 +542,10 @@ import {
   require_dist,
   resolveFeatureDevelopmentCheckCommands,
   resolveFrameworkConfig,
+  stageForAgentName,
+  stripPluginAgentNamespace,
   syncFrameworkConfig
-} from "../chunk-CTIDCPJ5.js";
+} from "../chunk-Y5WWSOMR.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   VISUAL_EVIDENCE_DOC_TYPE,
@@ -542,7 +562,7 @@ import {
   sha256Hex,
   stampBundleRow,
   validateVisualEvidenceRecord
-} from "../chunk-5BQ2AB2Y.js";
+} from "../chunk-KFLIUVMP.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -555,14 +575,14 @@ import {
   readUnitFile,
   sessionLedgerDir,
   stampSessionRow
-} from "../chunk-3CUGDX3J.js";
+} from "../chunk-QINSFA6R.js";
 import {
   detectTicketRefs
 } from "../chunk-SU7RODZI.js";
 import {
   readLedgerSessionId,
   resolveSessionId
-} from "../chunk-MG36YCW4.js";
+} from "../chunk-HV6ESCNW.js";
 import {
   ULID_BODY,
   chatRagPath,
@@ -572,14 +592,15 @@ import {
   featureFilePath,
   featureScreenshotsDir,
   isSlugSafe,
+  parseFeatureDirName,
   ulid
-} from "../chunk-KF7HHHJR.js";
+} from "../chunk-DDJC5PRW.js";
 import {
   join
-} from "../chunk-EGDL57MD.js";
+} from "../chunk-3STC3IVL.js";
 import {
   PATHS
-} from "../chunk-UCSN7SVD.js";
+} from "../chunk-LW3OCT4Y.js";
 import {
   __toESM,
   init_esm_shims
@@ -1321,19 +1342,6 @@ async function runStages(commands, shell, opts) {
     ...await runPool(stage2, Math.min(stage2.length, opts.availableParallelism), runOne)
   );
   for (const cmd of stage3) results.push(await runOne(cmd));
-  return results;
-}
-async function runPool(cmds, limit, runOne) {
-  const results = new Array(cmds.length);
-  let next = 0;
-  const worker = async () => {
-    while (next < cmds.length) {
-      const index = next++;
-      results[index] = await runOne(cmds[index]);
-    }
-  };
-  const workerCount = Math.max(1, Math.min(limit, cmds.length));
-  await Promise.all(Array.from({ length: workerCount }, () => worker()));
   return results;
 }
 
@@ -6211,7 +6219,7 @@ function parseArtisanScheduleList(stdout) {
 function pointersToEvidence(pointers, note) {
   return pointers.map((pointer) => ({ ...pointer, note }));
 }
-function extractLaravelArtisanRoutes(records, resolve17) {
+function extractLaravelArtisanRoutes(records, resolve18) {
   const surfaces = [];
   const unresolved = [];
   for (const record of records) {
@@ -6219,7 +6227,7 @@ function extractLaravelArtisanRoutes(records, resolve17) {
     const isApi = uri === "api" || uri.startsWith("api/");
     const primaryMethod = record.method.split(/[|,]/)[0].trim() || record.method;
     const route = `${primaryMethod} /${uri}`;
-    const pointers = resolve17(record);
+    const pointers = resolve18(record);
     if (pointers.length === 0) {
       unresolved.push(route);
       continue;
@@ -7157,8 +7165,8 @@ function resolvePointer(projectRoot, pointer) {
   if (pointer.line === void 0) {
     return { file: pointer.file, status: "resolved" };
   }
-  const lineCount = content.split("\n").length;
-  const inRange = pointer.line >= 1 && pointer.line <= lineCount;
+  const lineCount2 = content.split("\n").length;
+  const inRange = pointer.line >= 1 && pointer.line <= lineCount2;
   return { file: pointer.file, line: pointer.line, status: inRange ? "resolved" : "line-missing" };
 }
 function gatherSiteMapTransitions(projectRoot, surfaces) {
@@ -11064,7 +11072,7 @@ function countChecks(status) {
 }
 var CI_REFRESH_INTERVAL_MS = 6e4;
 function waitFor(ms) {
-  return new Promise((resolve17) => setTimeout(resolve17, ms));
+  return new Promise((resolve18) => setTimeout(resolve18, ms));
 }
 function pollBudget(timeoutMinutes, pollIntervalMs) {
   return Math.ceil(timeoutMinutes * 6e4 / Math.max(1, pollIntervalMs)) + 1;
@@ -17586,7 +17594,9 @@ async function gatherWorkingSetSlices(projectRoot, options = {}) {
   const service = options.service ?? new RagService(projectRoot);
   let result;
   try {
-    result = await service.retrieveForEval(retrievalInput, effectiveTopN);
+    result = await service.retrieveForEval(retrievalInput, effectiveTopN, {
+      skipSync: options.skipSync === true
+    });
   } catch {
     return { slices: [], bestScore: null };
   }
@@ -18156,6 +18166,117 @@ async function initializeRagIndex(projectRoot, options = {}) {
     buildOnly: options.buildOnly
   });
 }
+async function runRefreshContext(options) {
+  try {
+    await refreshCodeKnowledgeIndex(options.projectRoot);
+  } catch {
+  }
+  const route = readSessionRoute(options.projectRoot, options.session);
+  const { loadRules, retrieves } = compositionForRoute(route);
+  const intelligence = resolveFrameworkConfig(options.projectRoot).intelligence;
+  const existingSurfaceSection = loadRules ? await gatherExistingSurface(options.projectRoot, {
+    changedPaths: (await loadChangeEvidence(options.projectRoot)).files,
+    query: route?.query,
+    tokenBudget: intelligence.existing_surface_tokens
+  }) : "";
+  const ragEnabled = intelligence.rag_enabled;
+  if (!ragEnabled) {
+    const target2 = await refreshRuleContext(options.projectRoot, {
+      existingSurfaceSection,
+      loadRules
+    });
+    if (!options.quiet) {
+      process.stdout.write(
+        `${target2 ? `wrote ${target2}` : "nothing to compose"}; rule-only (rag off)
+`
+      );
+    }
+    return;
+  }
+  const removedProvider = resolveRemovedEmbeddingProvider(options.projectRoot);
+  if (removedProvider) {
+    appendRagAudit(options.projectRoot, "WARN", "rag-provider-removed", {
+      provider: removedProvider
+    });
+    const target2 = await refreshRuleContext(options.projectRoot, {
+      existingSurfaceSection,
+      retrievalSection: `## Retrieved context \u2014 none
+> Warning: ${REMOVED_EMBEDDING_PROVIDER_MESSAGE}
+`,
+      loadRules
+    });
+    process.stderr.write(`Warning: ${REMOVED_EMBEDDING_PROVIDER_MESSAGE}
+`);
+    if (!options.quiet) {
+      process.stdout.write(
+        `${target2 ? `wrote ${target2}` : "nothing to compose"}; rule-only (embedding provider removed)
+`
+      );
+    }
+    return;
+  }
+  const sync = await backgroundIndexSync(options.projectRoot);
+  const { slices, bestScore } = retrieves ? await gatherWorkingSetSlices(options.projectRoot, {
+    recordEvidence: { adapter: "engine" },
+    query: route?.query,
+    skipSync: true
+  }) : { slices: [], bestScore: null };
+  const usesContextPack = slices.length > MAX_RETRIEVAL_SLICES;
+  const packEntries = usesContextPack ? distillSlices(slices, {
+    readFile: (path2) => {
+      try {
+        return readFileSync38(isAbsolute6(path2) ? path2 : join68(options.projectRoot, path2), "utf8");
+      } catch {
+        return void 0;
+      }
+    }
+  }) : [];
+  const retrievalSection = usesContextPack ? composeContextPack(packEntries) : composeRetrievalSection(slices, { bestScore });
+  const memorySection = retrieves ? gatherCodebaseMemory(options.projectRoot) : "";
+  let driftSection = "";
+  if (retrieves) {
+    await refreshBaseDrift(options.projectRoot);
+    driftSection = composeBaseDriftSection(loadBaseDrift(options.projectRoot));
+  }
+  const target = await refreshRuleContext(options.projectRoot, {
+    existingSurfaceSection,
+    memorySection,
+    retrievalSection,
+    driftSection,
+    loadRules
+  });
+  if (retrieves) {
+    const sliceCount = usesContextPack ? 0 : slices.length;
+    const pointerCount = usesContextPack ? packEntries.length : 0;
+    const injectedSections = [];
+    if (loadRules) injectedSections.push("rules");
+    if (sliceCount > 0 || pointerCount > 0) injectedSections.push("retrieval");
+    if (memorySection) injectedSections.push("memory");
+    if (driftSection) injectedSections.push("drift");
+    recordRagEvidence(
+      options.projectRoot,
+      "used",
+      {
+        injected: sliceCount > 0 || pointerCount > 0 || Boolean(memorySection) || Boolean(driftSection),
+        injected_sections: injectedSections,
+        slice_count: sliceCount,
+        pointer_count: pointerCount,
+        score_top: bestScore,
+        bytes_injected: Buffer.byteLength(
+          `${retrievalSection}${memorySection}${driftSection}`,
+          "utf8"
+        )
+      },
+      { ragEnabled: true, adapter: "engine" }
+    );
+  }
+  if (!options.quiet) {
+    process.stdout.write(
+      `${target ? `wrote ${target}` : "nothing to compose"}; index sync: ${sync.synced ? "done" : sync.reason}; slices: ${slices.length}
+`
+    );
+  }
+}
 function createRagCommand() {
   const command = new Command("rag").description("Manage optional hybrid RAG context retrieval");
   command.command("init").description("Enable RAG for the current project and build the vector index").option("--project-root <path>", "Project root", process.cwd()).option("--provider <provider>", "Embedding provider: local, openai").option("--model <model>", "Override the default embedding model").option("--yes", "Accept rebuild prompts automatically").action(
@@ -18260,116 +18381,17 @@ function createRagCommand() {
   command.command("refresh-context").description(
     "Sync the index, retrieve slices, and recompose session context (background worker)"
   ).option("--project-root <path>", "Project root", process.cwd()).option("--quiet", "Suppress output (used by the background trigger)").option("--session <id>", "Host session the refresh was started for (reads its route)").action(async (options) => {
+    const hold = holdRefreshContextLock(options.projectRoot);
+    if (!hold) {
+      if (!options.quiet) {
+        process.stdout.write("another refresh-context is running; skipped\n");
+      }
+      return;
+    }
     try {
-      await refreshCodeKnowledgeIndex(options.projectRoot);
-    } catch {
-    }
-    const route = readSessionRoute(options.projectRoot, options.session);
-    const { loadRules, retrieves } = compositionForRoute(route);
-    const intelligence = resolveFrameworkConfig(options.projectRoot).intelligence;
-    const existingSurfaceSection = loadRules ? await gatherExistingSurface(options.projectRoot, {
-      changedPaths: (await loadChangeEvidence(options.projectRoot)).files,
-      query: route?.query,
-      tokenBudget: intelligence.existing_surface_tokens
-    }) : "";
-    const ragEnabled = intelligence.rag_enabled;
-    if (!ragEnabled) {
-      const target2 = await refreshRuleContext(options.projectRoot, {
-        existingSurfaceSection,
-        loadRules
-      });
-      if (!options.quiet) {
-        process.stdout.write(
-          `${target2 ? `wrote ${target2}` : "nothing to compose"}; rule-only (rag off)
-`
-        );
-      }
-      return;
-    }
-    const removedProvider = resolveRemovedEmbeddingProvider(options.projectRoot);
-    if (removedProvider) {
-      appendRagAudit(options.projectRoot, "WARN", "rag-provider-removed", {
-        provider: removedProvider
-      });
-      const target2 = await refreshRuleContext(options.projectRoot, {
-        existingSurfaceSection,
-        retrievalSection: `## Retrieved context \u2014 none
-> Warning: ${REMOVED_EMBEDDING_PROVIDER_MESSAGE}
-`,
-        loadRules
-      });
-      process.stderr.write(`Warning: ${REMOVED_EMBEDDING_PROVIDER_MESSAGE}
-`);
-      if (!options.quiet) {
-        process.stdout.write(
-          `${target2 ? `wrote ${target2}` : "nothing to compose"}; rule-only (embedding provider removed)
-`
-        );
-      }
-      return;
-    }
-    const sync = await backgroundIndexSync(options.projectRoot);
-    const { slices, bestScore } = retrieves ? await gatherWorkingSetSlices(options.projectRoot, {
-      recordEvidence: { adapter: "engine" },
-      query: route?.query
-    }) : { slices: [], bestScore: null };
-    const usesContextPack = slices.length > MAX_RETRIEVAL_SLICES;
-    const packEntries = usesContextPack ? distillSlices(slices, {
-      readFile: (path2) => {
-        try {
-          return readFileSync38(
-            isAbsolute6(path2) ? path2 : join68(options.projectRoot, path2),
-            "utf8"
-          );
-        } catch {
-          return void 0;
-        }
-      }
-    }) : [];
-    const retrievalSection = usesContextPack ? composeContextPack(packEntries) : composeRetrievalSection(slices, { bestScore });
-    const memorySection = retrieves ? gatherCodebaseMemory(options.projectRoot) : "";
-    let driftSection = "";
-    if (retrieves) {
-      await refreshBaseDrift(options.projectRoot);
-      driftSection = composeBaseDriftSection(loadBaseDrift(options.projectRoot));
-    }
-    const target = await refreshRuleContext(options.projectRoot, {
-      existingSurfaceSection,
-      memorySection,
-      retrievalSection,
-      driftSection,
-      loadRules
-    });
-    if (retrieves) {
-      const sliceCount = usesContextPack ? 0 : slices.length;
-      const pointerCount = usesContextPack ? packEntries.length : 0;
-      const injectedSections = [];
-      if (loadRules) injectedSections.push("rules");
-      if (sliceCount > 0 || pointerCount > 0) injectedSections.push("retrieval");
-      if (memorySection) injectedSections.push("memory");
-      if (driftSection) injectedSections.push("drift");
-      recordRagEvidence(
-        options.projectRoot,
-        "used",
-        {
-          injected: sliceCount > 0 || pointerCount > 0 || Boolean(memorySection) || Boolean(driftSection),
-          injected_sections: injectedSections,
-          slice_count: sliceCount,
-          pointer_count: pointerCount,
-          score_top: bestScore,
-          bytes_injected: Buffer.byteLength(
-            `${retrievalSection}${memorySection}${driftSection}`,
-            "utf8"
-          )
-        },
-        { ragEnabled: true, adapter: "engine" }
-      );
-    }
-    if (!options.quiet) {
-      process.stdout.write(
-        `${target ? `wrote ${target}` : "nothing to compose"}; index sync: ${sync.synced ? "done" : sync.reason}; slices: ${slices.length}
-`
-      );
+      await runRefreshContext(options);
+    } finally {
+      hold.release();
     }
   });
   command.command("eval").description("Run deterministic RAG evals against the project index and compare configurations").option("--project-root <path>", "Project root", process.cwd()).option(
@@ -20241,9 +20263,886 @@ function createPreflightCommand() {
   return command;
 }
 
+// src/cli/commands/report.ts
+init_esm_shims();
+
+// src/speed-report/report.ts
+init_esm_shims();
+
+// src/speed-report/classify.ts
+init_esm_shims();
+var MINUTE_MS = 6e4;
+var TOOL_INTERVAL_MAX_MS = 60 * MINUTE_MS;
+var THINKING_MAX_MS = 15 * MINUTE_MS;
+var AWAY_AFTER_MS = 30 * MINUTE_MS;
+var WINDOW_PAD_MS = 5 * MINUTE_MS;
+var BUCKET_MS = 1e4;
+var INJECTED_SCAN_CHARS = 400;
+var INJECTED_MARKERS = [
+  "<task-notification",
+  "Another Claude session sent",
+  "Stop hook feedback",
+  "<ci-monitor-event",
+  "<system-reminder",
+  "<side-sessions",
+  "Request interrupted"
+];
+var CATEGORY2 = {
+  edit: "edit (including the pre-edit gate)",
+  blockedTimeout: "blocked: gate timeout",
+  blockedEntry: "blocked: entry gate",
+  blockedOther: "blocked: other gate",
+  frameworkReread: "framework re-read",
+  checksRun: "paqad checks run",
+  paqadCli: "paqad CLI",
+  tests: "tests",
+  lint: "lint, type, format, build",
+  git: "git",
+  waiting: "waiting and polling",
+  other: "read, search, other",
+  thinking: "model thinking"
+};
+var OWNER_CATEGORY = {
+  away: "away",
+  reading: "reading and replying",
+  answering: "answering questions"
+};
+var AGENT_ORDER = [
+  "development",
+  "checks",
+  "review",
+  "documentation_sync",
+  "specification",
+  "expert",
+  "chief-architect",
+  "planning",
+  "Explore",
+  "other",
+  "main"
+];
+var CEREMONY_ROLES = /* @__PURE__ */ new Set([
+  "checks",
+  "review",
+  "documentation_sync",
+  "specification",
+  "expert",
+  "chief-architect",
+  "planning"
+]);
+var AGENT_TOOL = "Agent";
+var ASK_USER_TOOL = "AskUserQuestion";
+var READ_TOOL = "Read";
+var BASH_TOOL = "Bash";
+var EDIT_TOOLS = /* @__PURE__ */ new Set(["Edit", "Write", "NotebookEdit"]);
+var SIZE_TOOLS = /* @__PURE__ */ new Set(["Edit", "Write"]);
+var FRAMEWORK_READ_MARKERS = [
+  "AGENT-BOOTSTRAP",
+  "AGENT-ROUTER",
+  "CLAUDE.md",
+  "framework-path",
+  "session-context"
+];
+var FRAMEWORK_READ_DIRS = /(^|\/)docs\/instructions\/(stack|design-system|workflows)(\/|$)/;
+var PAQAD_CLI_VERBS = /* @__PURE__ */ new Set([
+  "stage",
+  "plan",
+  "spec",
+  "review",
+  "rules",
+  "decision",
+  "lane",
+  "route",
+  "debt",
+  "index",
+  "visual-evidence"
+]);
+var TEST_BINARIES = /* @__PURE__ */ new Set(["vitest", "pest", "phpunit"]);
+var LINT_BINARIES = /* @__PURE__ */ new Set([
+  "tsc",
+  "typecheck",
+  "eslint",
+  "prettier",
+  "tsup"
+]);
+var LINT_SCRIPTS = /* @__PURE__ */ new Set(["lint", "format", "build", "typecheck"]);
+var PACKAGE_RUNNERS = /* @__PURE__ */ new Set(["pnpm", "npm", "yarn"]);
+var EXEC_WRAPPERS = /* @__PURE__ */ new Set(["npx", "bunx"]);
+var RUNNER_SUBCOMMANDS = /* @__PURE__ */ new Set(["exec", "dlx", "run", "x"]);
+var CHAINED_PREFIX = /^(cd|export)\s/;
+var ASSIGNMENT_PREFIX = /^[A-Za-z_][A-Za-z0-9_]*=(?:"[^"]*"|'[^']*'|[^\s&;|"']*)\s+/;
+var WAITING_COMMAND = /^(sleep|until|while)\b/;
+function isInjectedText(text) {
+  return INJECTED_MARKERS.some((marker) => {
+    const at2 = text.indexOf(marker);
+    return at2 !== -1 && at2 < INJECTED_SCAN_CHARS;
+  });
+}
+function classifyUserRecord(hasToolResult, text) {
+  if (hasToolResult) return "tool-result";
+  return isInjectedText(text) ? "injected" : "human";
+}
+function ownerGapCategory(gapMs) {
+  return gapMs > AWAY_AFTER_MS ? OWNER_CATEGORY.away : OWNER_CATEGORY.reading;
+}
+function isThinkingGap(gapMs) {
+  return gapMs >= 0 && gapMs < THINKING_MAX_MS;
+}
+function keepsToolInterval(durationMs) {
+  return durationMs >= 0 && durationMs <= TOOL_INTERVAL_MAX_MS;
+}
+function isEditTool(name) {
+  return EDIT_TOOLS.has(name);
+}
+function countsTowardSize(name) {
+  return SIZE_TOOLS.has(name);
+}
+function refusalLabel(isError, resultText) {
+  if (!isError || !resultText.includes("hook error")) return null;
+  if (resultText.includes("timed out")) return CATEGORY2.blockedTimeout;
+  if (resultText.includes("agent-entry")) return CATEGORY2.blockedEntry;
+  return CATEGORY2.blockedOther;
+}
+function isFrameworkReread(filePath) {
+  const normalized = filePath.replace(/\\/g, "/");
+  return FRAMEWORK_READ_MARKERS.some((marker) => normalized.includes(marker)) || FRAMEWORK_READ_DIRS.test(normalized);
+}
+function firstAndAnd(text) {
+  let quote = null;
+  for (let i = 0; i < text.length; i += 1) {
+    const ch = text[i];
+    if (quote !== null) {
+      if (ch === quote) quote = null;
+      continue;
+    }
+    if (ch === '"' || ch === "'") quote = ch;
+    else if (ch === "\n" || ch === ";" || ch === "|" && text[i + 1] !== "|") return -1;
+    else if (ch === "&" && text[i + 1] === "&") return i;
+  }
+  return -1;
+}
+function stripOnePrefix(text) {
+  if (CHAINED_PREFIX.test(text)) {
+    const at2 = firstAndAnd(text);
+    return at2 === -1 ? text : text.slice(at2 + 2).trimStart();
+  }
+  const assignment = ASSIGNMENT_PREFIX.exec(text);
+  return assignment ? text.slice(assignment[0].length) : text;
+}
+function stripCommandPrefixes(command) {
+  let rest = command.trimStart();
+  for (; ; ) {
+    const next = stripOnePrefix(rest);
+    if (next === rest) return rest.trim();
+    rest = next;
+  }
+}
+function commandWords(stripped) {
+  const words2 = [];
+  let current = "";
+  let quote = null;
+  let started = false;
+  for (const ch of stripped) {
+    if (quote !== null) {
+      if (ch === quote) quote = null;
+      else current += ch;
+      continue;
+    }
+    if (ch === '"' || ch === "'") {
+      quote = ch;
+      started = true;
+      continue;
+    }
+    if (ch === "&" || ch === "|" || ch === ";" || ch === "\n") break;
+    if (/\s/.test(ch)) {
+      if (started) words2.push(current);
+      current = "";
+      started = false;
+      continue;
+    }
+    current += ch;
+    started = true;
+  }
+  if (started) words2.push(current);
+  return words2;
+}
+function baseName(word) {
+  const slash = Math.max(word.lastIndexOf("/"), word.lastIndexOf("\\"));
+  return slash === -1 ? word : word.slice(slash + 1);
+}
+function commandHead(words2) {
+  const rest = words2.length > 0 && EXEC_WRAPPERS.has(baseName(words2[0])) ? words2.slice(1) : words2;
+  if (rest.length === 0) return null;
+  const binary = baseName(rest[0]);
+  if (!PACKAGE_RUNNERS.has(binary)) return { binary, script: null, args: rest.slice(1) };
+  const index = rest[1] !== void 0 && RUNNER_SUBCOMMANDS.has(rest[1]) ? 2 : 1;
+  return { binary, script: rest[index] ?? null, args: rest.slice(index + 1) };
+}
+function headOf(command) {
+  return commandHead(commandWords(stripCommandPrefixes(command)));
+}
+function paqadCategory(args) {
+  if (args[0] === "checks" && args[1] === "run") return CATEGORY2.checksRun;
+  if (args[0] !== void 0 && PAQAD_CLI_VERBS.has(args[0])) return CATEGORY2.paqadCli;
+  return CATEGORY2.other;
+}
+function isTestHead(head) {
+  if (head.script === null) {
+    if (TEST_BINARIES.has(head.binary)) return true;
+    if (head.binary === "php") return head.args[0] === "artisan" && head.args[1] === "test";
+    return head.binary === "sail" && head.args[0] === "test";
+  }
+  if (head.script.startsWith("test")) return true;
+  if (head.binary === "pnpm" && head.script === "ci") return true;
+  return TEST_BINARIES.has(head.script);
+}
+function isLintHead(head) {
+  if (head.script === null) return LINT_BINARIES.has(head.binary);
+  return LINT_SCRIPTS.has(head.script.split(":")[0]) || LINT_BINARIES.has(head.script);
+}
+function isPaqadHead(head) {
+  return head.binary === "paqad-ai" || head.script === "paqad-ai";
+}
+function classifyBashCommand(command) {
+  const stripped = stripCommandPrefixes(command);
+  if (WAITING_COMMAND.test(stripped)) return CATEGORY2.waiting;
+  const head = commandHead(commandWords(stripped));
+  if (head === null) return CATEGORY2.other;
+  if (isPaqadHead(head)) return paqadCategory(head.args);
+  if (isTestHead(head)) return CATEGORY2.tests;
+  if (isLintHead(head)) return CATEGORY2.lint;
+  if (head.binary === "git" || head.binary === "gh") return CATEGORY2.git;
+  return CATEGORY2.other;
+}
+function namesTarget(arg) {
+  if (arg === "-t" || arg.startsWith("-t=") || arg.startsWith("--testNamePattern")) return true;
+  if (arg.startsWith("-")) return false;
+  return arg.includes("tests/") || arg.includes(".test.") || arg.includes("/");
+}
+function testRunKind(command) {
+  const category = classifyBashCommand(command);
+  if (category === CATEGORY2.checksRun) return "whole-suite";
+  if (category !== CATEGORY2.tests) return null;
+  const head = headOf(command);
+  if (head === null) return null;
+  if (head.binary === "pnpm" && head.script === "ci") return "whole-suite";
+  return head.args.some(namesTarget) ? "targeted" : "whole-suite";
+}
+function toolCategory(name, input) {
+  if (isEditTool(name)) return CATEGORY2.edit;
+  if (name === READ_TOOL && typeof input.file_path === "string") {
+    return isFrameworkReread(input.file_path) ? CATEGORY2.frameworkReread : CATEGORY2.other;
+  }
+  if (name === BASH_TOOL && typeof input.command === "string") {
+    return classifyBashCommand(input.command);
+  }
+  return CATEGORY2.other;
+}
+function roleForAgentType(agentType) {
+  const identity = resolveAgentIdentity({ agentType });
+  if (identity === ORCHESTRATOR_AGENT) return "main";
+  const name = stripPluginAgentNamespace(identity);
+  const stage = stageForAgentName(name);
+  if (stage !== null && AGENT_ORDER.includes(stage)) {
+    return stage;
+  }
+  if (name === EXPERT_AGENT_NAME) return "expert";
+  if (name === CHIEF_ARCHITECT_AGENT_NAME) return "chief-architect";
+  if (name === "Explore") return "Explore";
+  return "other";
+}
+function ownerColumn(role) {
+  if (role === "development") return "development";
+  if (CEREMONY_ROLES.has(role)) return "ceremony";
+  if (role === "main") return "orchestrator";
+  return "other";
+}
+function lineCount(text) {
+  if (text.length === 0) return 0;
+  const body = text.endsWith("\n") ? text.slice(0, -1) : text;
+  return body.split("\n").length;
+}
+function isOutsidePaqadDir(filePath) {
+  return !/(^|[\\/])\.paqad([\\/]|$)/.test(filePath);
+}
+
+// src/speed-report/transcripts.ts
+init_esm_shims();
+import { existsSync as existsSync44, readdirSync as readdirSync15, readFileSync as readFileSync42 } from "fs";
+import { homedir as homedir3 } from "os";
+import { join as join73, resolve as resolve14, sep as sep3 } from "path";
+var HOUSEKEEPING_SESSION = "paqad-housekeeping";
+var SAFE_ID = /^[A-Za-z0-9_-]+$/;
+function isSafeId(value) {
+  return SAFE_ID.test(value);
+}
+function resolveTranscriptsRoot(options = {}) {
+  if (options.transcriptsRoot) return resolve14(options.transcriptsRoot);
+  const configDir = claudeConfigDir(options.home ?? homedir3(), options.env ?? process.env);
+  return resolve14(configDir, "projects");
+}
+function projectTranscriptSlug(projectRoot) {
+  return resolve14(projectRoot).replace(/[\\/:._ ]/g, "-");
+}
+function readLedgerChange(projectRoot, dirName) {
+  const record = readFeatureRecord(projectRoot, dirName);
+  const parts = parseFeatureDirName(dirName);
+  const stamps = [];
+  const sessions = /* @__PURE__ */ new Set();
+  for (const row of readFeatureStageUnit(projectRoot, dirName)) {
+    const recordedAt = rowRecordedAt(row);
+    const at2 = recordedAt === null ? Number.NaN : Date.parse(recordedAt);
+    if (Number.isNaN(at2)) continue;
+    stamps.push(at2);
+    if (row.session_id !== HOUSEKEEPING_SESSION) sessions.add(row.session_id);
+  }
+  const window = stamps.length === 0 ? null : {
+    start: Math.min(...stamps) - WINDOW_PAD_MS,
+    end: Math.max(...stamps) + WINDOW_PAD_MS
+  };
+  return {
+    dirName,
+    change: record?.change ?? parts?.ulid ?? dirName,
+    title: record?.title ?? parts?.slug ?? dirName,
+    lane: record?.lane ?? "unknown",
+    window,
+    sessions: [...sessions].sort()
+  };
+}
+function readLedgerChanges(projectRoot, dirNames) {
+  const names = dirNames ?? listFeatureDirs(projectRoot);
+  return names.filter(isSafeId).map((dirName) => readLedgerChange(projectRoot, dirName));
+}
+function resolveChangeDir(projectRoot, ref) {
+  const needle = ref.trim().replace(/^#/, "");
+  if (!isSafeId(needle)) return null;
+  return resolveFeatureRef(projectRoot, "", needle);
+}
+function isInside(root, path2) {
+  const resolved = resolve14(path2);
+  return resolved.startsWith(root.endsWith(sep3) ? root : root + sep3);
+}
+function readAgentType(metaPath) {
+  try {
+    const parsed = JSON.parse(readFileSync42(metaPath, "utf8"));
+    return typeof parsed.agentType === "string" ? parsed.agentType : null;
+  } catch {
+    return null;
+  }
+}
+function recordedSources(projectRoot, sessionId, root) {
+  const cache2 = readCostCache(hudCostCachePath(projectRoot, sessionId), sessionId);
+  return Object.entries(cache2.sources).filter(([path2]) => isInside(root, path2) && existsSync44(path2)).map(([path2, source]) => ({
+    path: resolve14(path2),
+    agentType: source.kind === "main" ? null : source.agent_type
+  }));
+}
+function derivedSources(sessionDir, sessionId) {
+  const sources = [];
+  const main = join73(sessionDir, `${sessionId}.jsonl`);
+  if (existsSync44(main)) sources.push({ path: main, agentType: null });
+  const subagents = join73(sessionDir, sessionId, "subagents");
+  if (!existsSync44(subagents)) return sources;
+  for (const name of readdirSync15(subagents).sort()) {
+    if (!name.startsWith("agent-") || !name.endsWith(".jsonl")) continue;
+    const meta = join73(subagents, `${name.slice(0, -".jsonl".length)}.meta.json`);
+    sources.push({ path: join73(subagents, name), agentType: readAgentType(meta) });
+  }
+  return sources;
+}
+function sessionTranscripts(projectRoot, sessionId, transcriptsRoot) {
+  if (!isSafeId(sessionId)) return [];
+  const root = resolve14(transcriptsRoot);
+  const sessionDir = join73(root, projectTranscriptSlug(projectRoot));
+  const byPath = /* @__PURE__ */ new Map();
+  for (const source of recordedSources(projectRoot, sessionId, root)) {
+    byPath.set(source.path, source);
+  }
+  for (const source of derivedSources(sessionDir, sessionId)) {
+    if (!byPath.has(source.path)) byPath.set(source.path, source);
+  }
+  return [...byPath.values()];
+}
+function asRecord2(value) {
+  return typeof value === "object" && value !== null && !Array.isArray(value) ? value : null;
+}
+function blocksOf(content) {
+  return Array.isArray(content) ? content.filter((block) => asRecord2(block) !== null) : [];
+}
+function textOf(content) {
+  if (typeof content === "string") return content;
+  return blocksOf(content).map((block) => typeof block.text === "string" ? block.text : "").join("\n");
+}
+function writtenText(name, input) {
+  const value = name === "Write" ? input.content : input.new_string;
+  return typeof value === "string" ? value : "";
+}
+function pendingTool(start, name, input) {
+  const filePath = typeof input.file_path === "string" ? input.file_path : null;
+  const sized = countsTowardSize(name) && filePath !== null && isOutsidePaqadDir(filePath);
+  return {
+    start,
+    name,
+    category: toolCategory(name, input),
+    sizedPath: sized ? filePath : null,
+    lines: sized ? lineCount(writtenText(name, input)) : 0
+  };
+}
+var TimelineBuilder = class {
+  timeline;
+  pending = /* @__PURE__ */ new Map();
+  turnEnd = null;
+  anchor = null;
+  constructor(role) {
+    this.timeline = { role, busy: [], owner: [], edits: [], testRuns: [], badLines: 0 };
+  }
+  fold(event) {
+    const record = asRecord2(event);
+    if (!record || record.type !== "assistant" && record.type !== "user") return;
+    const at2 = typeof record.timestamp === "string" ? Date.parse(record.timestamp) : Number.NaN;
+    if (Number.isNaN(at2)) return;
+    const content = asRecord2(record.message)?.content;
+    if (record.type === "assistant") this.assistant(at2, content);
+    else this.user(at2, content);
+    this.turnEnd = record.type === "assistant" ? at2 : null;
+  }
+  assistant(at2, content) {
+    if (this.anchor !== null && isThinkingGap(at2 - this.anchor)) {
+      this.timeline.busy.push({ start: this.anchor, end: at2, category: CATEGORY2.thinking });
+    }
+    this.anchor = null;
+    for (const block of blocksOf(content)) {
+      if (block.type !== "tool_use" || typeof block.id !== "string") continue;
+      if (typeof block.name !== "string") continue;
+      const input = asRecord2(block.input) ?? {};
+      this.pending.set(block.id, pendingTool(at2, block.name, input));
+      const kind = block.name === "Bash" ? bashTestRun(input) : null;
+      if (kind !== null) this.timeline.testRuns.push({ at: at2, kind });
+    }
+  }
+  user(at2, content) {
+    const results = blocksOf(content).filter((block) => block.type === "tool_result");
+    const kind = classifyUserRecord(results.length > 0, textOf(content));
+    if (kind === "tool-result") {
+      for (const block of results) this.close(at2, block);
+    } else if (kind === "human" && this.turnEnd !== null && at2 > this.turnEnd) {
+      this.timeline.owner.push({
+        start: this.turnEnd,
+        end: at2,
+        category: ownerGapCategory(at2 - this.turnEnd)
+      });
+    }
+    this.anchor = at2;
+  }
+  close(at2, block) {
+    if (typeof block.tool_use_id !== "string") return;
+    const tool = this.pending.get(block.tool_use_id);
+    if (!tool) return;
+    this.pending.delete(block.tool_use_id);
+    if (tool.name === AGENT_TOOL || at2 < tool.start) return;
+    if (tool.name === ASK_USER_TOOL) {
+      this.timeline.owner.push({ start: tool.start, end: at2, category: OWNER_CATEGORY.answering });
+      return;
+    }
+    if (!keepsToolInterval(at2 - tool.start)) return;
+    if (!isEditTool(tool.name)) {
+      this.timeline.busy.push({ start: tool.start, end: at2, category: tool.category });
+      return;
+    }
+    const isError = block.is_error === true;
+    const refused = refusalLabel(isError, isError ? textOf(block.content) : "");
+    this.timeline.busy.push({ start: tool.start, end: at2, category: refused ?? tool.category });
+    this.timeline.edits.push({
+      start: tool.start,
+      end: at2,
+      refused,
+      filePath: isError ? null : tool.sizedPath,
+      lines: isError ? 0 : tool.lines
+    });
+  }
+};
+function bashTestRun(input) {
+  return typeof input.command === "string" ? testRunKind(input.command) : null;
+}
+function readTranscriptTimeline(source) {
+  const builder = new TimelineBuilder(roleForAgentType(source.agentType));
+  try {
+    const scan = scanTranscriptLines(source.path, (event) => builder.fold(event));
+    builder.timeline.badLines = scan.badLines;
+  } catch {
+    return null;
+  }
+  return builder.timeline;
+}
+
+// src/speed-report/report.ts
+var SPEED_REPORT_SCHEMA = "paqad.speed-report/1";
+var NO_TRANSCRIPT = "no transcript";
+var MEASURED = "measured";
+var TOP_CATEGORY_COUNT = 5;
+var REFUSAL_LABELS = [
+  CATEGORY2.blockedTimeout,
+  CATEGORY2.blockedEntry,
+  CATEGORY2.blockedOther
+];
+var SpeedReportInputError = class extends Error {
+};
+function clip(span, window) {
+  const start = Math.max(span.start, window.start);
+  const end = Math.min(span.end, window.end);
+  return end > start ? { start, end } : null;
+}
+function mergeSpans(spans) {
+  const sorted = [...spans].sort((a, b) => a.start - b.start || a.end - b.end);
+  const merged = [];
+  for (const span of sorted) {
+    const last = merged[merged.length - 1];
+    if (last && span.start <= last.end) last.end = Math.max(last.end, span.end);
+    else merged.push({ ...span });
+  }
+  return merged;
+}
+function totalLength(spans) {
+  return spans.reduce((sum2, span) => sum2 + (span.end - span.start), 0);
+}
+var SpanCursor = class {
+  constructor(spans) {
+    this.spans = spans;
+  }
+  spans;
+  index = 0;
+  overlap(start, end) {
+    while (this.index < this.spans.length && this.spans[this.index].end <= start) this.index += 1;
+    let sum2 = 0;
+    for (let i = this.index; i < this.spans.length && this.spans[i].start < end; i += 1) {
+      const span = this.spans[i];
+      sum2 += Math.max(0, Math.min(span.end, end) - Math.max(span.start, start));
+    }
+    return sum2;
+  }
+};
+function splitOwnership(busy, byRole, window) {
+  const owned = { development: 0, ceremony: 0, orchestrator: 0, other: 0 };
+  const union = new SpanCursor(mergeSpans(busy));
+  const roles = AGENT_ORDER.filter((role) => byRole.has(role)).map((role) => ({
+    role,
+    cursor: new SpanCursor(mergeSpans(byRole.get(role)))
+  }));
+  const first = Math.floor(window.start / BUCKET_MS) * BUCKET_MS;
+  for (let bucket2 = first; bucket2 < window.end; bucket2 += BUCKET_MS) {
+    const start = Math.max(bucket2, window.start);
+    const end = Math.min(bucket2 + BUCKET_MS, window.end);
+    const busyMs = union.overlap(start, end);
+    if (busyMs <= 0) continue;
+    const owner = roles.find((entry) => entry.cursor.overlap(start, end) > 0);
+    if (owner) owned[ownerColumn(owner.role)] += busyMs;
+  }
+  return owned;
+}
+function percentile(sorted, fraction) {
+  if (sorted.length === 0) return 0;
+  const rank2 = Math.max(1, Math.ceil(fraction * sorted.length));
+  return sorted[rank2 - 1];
+}
+function median(sorted) {
+  if (sorted.length === 0) return 0;
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 1 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+}
+function emptyRefusals() {
+  return Object.fromEntries(REFUSAL_LABELS.map((label) => [label, 0]));
+}
+function editGateStats(latencies, refusals) {
+  const sorted = [...latencies].sort((a, b) => a - b);
+  const refused = emptyRefusals();
+  for (const label of refusals) refused[label] += 1;
+  return {
+    edits: sorted.length,
+    median_ms: Math.round(median(sorted)),
+    p90_ms: Math.round(percentile(sorted, 0.9)),
+    refused
+  };
+}
+function inWindow(at2, window) {
+  return at2 >= window.start && at2 <= window.end;
+}
+function measureChange(ledger, window, timelines) {
+  const busy = [];
+  const byRole = /* @__PURE__ */ new Map();
+  const categories = /* @__PURE__ */ new Map();
+  const owner = [];
+  const ownerBy = {
+    [OWNER_CATEGORY.away]: 0,
+    [OWNER_CATEGORY.reading]: 0,
+    [OWNER_CATEGORY.answering]: 0
+  };
+  const files = /* @__PURE__ */ new Set();
+  const samples = { latencies: [], refusals: [] };
+  const testRuns = { whole_suite: 0, targeted: 0 };
+  let lines = 0;
+  let badLines = 0;
+  for (const timeline of timelines) {
+    badLines += timeline.badLines;
+    const roleSpans = byRole.get(timeline.role) ?? [];
+    for (const span of timeline.busy) {
+      const clipped = clip(span, window);
+      if (!clipped) continue;
+      busy.push(clipped);
+      roleSpans.push(clipped);
+      const length = clipped.end - clipped.start;
+      categories.set(span.category, (categories.get(span.category) ?? 0) + length);
+    }
+    if (roleSpans.length > 0) byRole.set(timeline.role, roleSpans);
+    for (const span of timeline.owner) {
+      const clipped = clip(span, window);
+      if (!clipped) continue;
+      owner.push(clipped);
+      ownerBy[span.category] += clipped.end - clipped.start;
+    }
+    for (const edit of timeline.edits) {
+      if (!inWindow(edit.start, window)) continue;
+      samples.latencies.push(edit.end - edit.start);
+      if (edit.refused !== null) samples.refusals.push(edit.refused);
+      if (edit.filePath !== null) {
+        files.add(edit.filePath);
+        lines += edit.lines;
+      }
+    }
+    for (const run of timeline.testRuns) {
+      if (!inWindow(run.at, window)) continue;
+      if (run.kind === "whole-suite") testRuns.whole_suite += 1;
+      else testRuns.targeted += 1;
+    }
+  }
+  const ownership = splitOwnership(busy, byRole, window);
+  const row = {
+    change: ledger.change,
+    title: ledger.title,
+    lane: ledger.lane,
+    status: MEASURED,
+    window_start_ms: window.start,
+    window_end_ms: window.end,
+    size: { files: files.size, lines },
+    busy_ms: totalLength(mergeSpans(busy)),
+    development_ms: ownership.development,
+    ceremony_ms: ownership.ceremony,
+    orchestrator_ms: ownership.orchestrator,
+    other_agents_ms: ownership.other,
+    owner_wait_ms: totalLength(mergeSpans(owner)),
+    owner_wait: ownerBy,
+    edit_gate: editGateStats(samples.latencies, samples.refusals),
+    test_runs: testRuns,
+    categories: Object.fromEntries(
+      [...categories.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    ),
+    bad_lines: badLines
+  };
+  return { row, samples };
+}
+function unmeasured(ledger) {
+  return { change: ledger.change, title: ledger.title, lane: ledger.lane, status: NO_TRANSCRIPT };
+}
+function parseSinceDate(value) {
+  const trimmed = value.trim();
+  let iso = trimmed;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) iso = `${trimmed}T00:00:00Z`;
+  else if (/^\d{4}-\d{2}-\d{2}T[\d:.]+$/.test(trimmed)) iso = `${trimmed}Z`;
+  const at2 = /^\d{4}-\d{2}-\d{2}/.test(iso) ? Date.parse(iso) : Number.NaN;
+  if (Number.isNaN(at2)) {
+    throw new SpeedReportInputError(`paqad: --since is not a readable date: ${value}`);
+  }
+  return at2;
+}
+function selectChanges(options) {
+  if (options.change === void 0) return readLedgerChanges(options.projectRoot);
+  const dirName = resolveChangeDir(options.projectRoot, options.change);
+  if (dirName === null) {
+    throw new SpeedReportInputError(`paqad: no change matches --change ${options.change}`);
+  }
+  return readLedgerChanges(options.projectRoot, [dirName]);
+}
+function laneTotals(lane, measurements) {
+  const rows = measurements.map((entry) => entry.row);
+  const latencies = measurements.flatMap((entry) => entry.samples.latencies);
+  const refusals = measurements.flatMap((entry) => entry.samples.refusals);
+  const sum2 = (pick) => rows.reduce((total, row) => total + pick(row), 0);
+  return {
+    lane,
+    changes: rows.length,
+    busy_ms: sum2((row) => row.busy_ms),
+    development_ms: sum2((row) => row.development_ms),
+    ceremony_ms: sum2((row) => row.ceremony_ms),
+    orchestrator_ms: sum2((row) => row.orchestrator_ms),
+    other_agents_ms: sum2((row) => row.other_agents_ms),
+    owner_wait_ms: sum2((row) => row.owner_wait_ms),
+    edit_gate: editGateStats(latencies, refusals),
+    test_runs: {
+      whole_suite: sum2((row) => row.test_runs.whole_suite),
+      targeted: sum2((row) => row.test_runs.targeted)
+    }
+  };
+}
+function topCategories(rows) {
+  const totals = /* @__PURE__ */ new Map();
+  for (const row of rows) {
+    for (const [category, ms] of Object.entries(row.categories)) {
+      totals.set(category, (totals.get(category) ?? 0) + ms);
+    }
+  }
+  return [...totals.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, TOP_CATEGORY_COUNT).map(([category, ms]) => ({ category, ms }));
+}
+function buildSpeedReport(options) {
+  const since = options.since === void 0 ? null : parseSinceDate(options.since);
+  const root = resolveTranscriptsRoot(options);
+  const cache2 = /* @__PURE__ */ new Map();
+  const rows = [];
+  const measurements = [];
+  for (const ledger of selectChanges(options)) {
+    if (since !== null && (ledger.window === null || ledger.window.start < since)) continue;
+    const timelines = [];
+    for (const session2 of ledger.sessions.filter(isSafeId)) {
+      for (const source of sessionTranscripts(options.projectRoot, session2, root)) {
+        if (!cache2.has(source.path)) cache2.set(source.path, readTranscriptTimeline(source));
+        const timeline = cache2.get(source.path);
+        if (timeline) timelines.push(timeline);
+      }
+    }
+    if (ledger.window === null || timelines.length === 0) {
+      rows.push(unmeasured(ledger));
+      continue;
+    }
+    const measurement = measureChange(ledger, ledger.window, timelines);
+    measurements.push(measurement);
+    rows.push(measurement.row);
+  }
+  const lanes = [...new Set(measurements.map((entry) => entry.row.lane))].sort();
+  return {
+    schema: SPEED_REPORT_SCHEMA,
+    changes: rows,
+    totals: lanes.map(
+      (lane) => laneTotals(
+        lane,
+        measurements.filter((entry) => entry.row.lane === lane)
+      )
+    ),
+    top_categories: topCategories(measurements.map((entry) => entry.row))
+  };
+}
+function formatSpan(ms) {
+  if (ms < 6e4) {
+    const seconds = ms / 1e3;
+    return `${seconds < 10 ? seconds.toFixed(1) : Math.round(seconds)}s`;
+  }
+  const minutes = ms / 6e4;
+  if (minutes < 180) return `${Math.round(minutes)}m`;
+  return `${(minutes / 60).toFixed(1)}h`;
+}
+function percent(part, whole) {
+  return whole > 0 ? `${Math.round(part / whole * 100)}%` : "0%";
+}
+function fit(text, width) {
+  const flat = text.replace(/\s+/g, " ").trim();
+  const cut = flat.length > width ? `${flat.slice(0, width - 1)}\u2026` : flat;
+  return cut.padEnd(width);
+}
+var TITLE_WIDTH = 32;
+var COLUMNS = [
+  ["change", TITLE_WIDTH],
+  ["lane", 10],
+  ["size", 14],
+  ["busy", 7],
+  ["dev", 7],
+  ["ceremony", 9],
+  ["orch", 7],
+  ["owner-wait", 11],
+  ["edit p50/p90", 14],
+  ["refused t/e/o", 14],
+  ["tests w/t", 9]
+];
+function tableLine(cells) {
+  return cells.map((cell2, index) => fit(cell2, COLUMNS[index][1])).join(" ").trimEnd();
+}
+function refusedCell(refused) {
+  return REFUSAL_LABELS.map((label) => refused[label]).join("/");
+}
+function rowLine(row) {
+  if (row.status === NO_TRANSCRIPT) return tableLine([row.title, row.lane, NO_TRANSCRIPT]);
+  return tableLine([
+    row.title,
+    row.lane,
+    `${row.size.files}f ${row.size.lines}l`,
+    formatSpan(row.busy_ms),
+    formatSpan(row.development_ms),
+    formatSpan(row.ceremony_ms),
+    formatSpan(row.orchestrator_ms),
+    formatSpan(row.owner_wait_ms),
+    `${formatSpan(row.edit_gate.median_ms)}/${formatSpan(row.edit_gate.p90_ms)}`,
+    refusedCell(row.edit_gate.refused),
+    `${row.test_runs.whole_suite}/${row.test_runs.targeted}`
+  ]);
+}
+function totalsLines(totals) {
+  const other = totals.other_agents_ms > 0 ? `, other agents ${percent(totals.other_agents_ms, totals.busy_ms)}` : "";
+  const refused = totals.edit_gate.refused;
+  return [
+    `Totals (${totals.lane}): ${totals.changes} change(s), busy ${formatSpan(totals.busy_ms)}, development ${percent(totals.development_ms, totals.busy_ms)}, ceremony ${percent(totals.ceremony_ms, totals.busy_ms)}, orchestrator ${percent(totals.orchestrator_ms, totals.busy_ms)}${other}, owner wait ${formatSpan(totals.owner_wait_ms)}`,
+    `Edit gate (${totals.lane}): median ${formatSpan(totals.edit_gate.median_ms)}, p90 ${formatSpan(totals.edit_gate.p90_ms)}, ${refused[CATEGORY2.blockedTimeout]} refused on timeout, ${refused[CATEGORY2.blockedEntry]} refused by the entry gate, ${refused[CATEGORY2.blockedOther]} refused by another gate`,
+    `Test runs (${totals.lane}): ${totals.test_runs.whole_suite} whole-suite, ${totals.test_runs.targeted} targeted`
+  ];
+}
+function renderSpeedReport(report2) {
+  const measured = report2.changes.filter((row) => row.status === MEASURED).length;
+  const missing = report2.changes.length - measured;
+  const lines = [
+    `paqad speed report  (${measured} change(s) with transcripts, ${missing} without)`,
+    "",
+    tableLine(COLUMNS.map(([name]) => name)),
+    ...report2.changes.map(rowLine)
+  ];
+  if (report2.totals.length > 0) lines.push("");
+  for (const totals of report2.totals) lines.push(...totalsLines(totals));
+  if (report2.top_categories.length > 0) {
+    lines.push(
+      `Top busy categories: ${report2.top_categories.map((entry) => `${entry.category} ${formatSpan(entry.ms)}`).join(", ")}`
+    );
+  }
+  return `${lines.join("\n")}
+`;
+}
+
+// src/cli/commands/report.ts
+function createReportCommand() {
+  const command = new Command("report").description(
+    "Read-only reports built from the change ledger and the session transcripts"
+  );
+  command.command("speed").description("Show where each change\u2019s time went: busy, stage owners, owner wait, edit gate").option("--project-root <path>", "Project root", process.cwd()).option("--change <id>", "Report one change (ULID, issue number or bundle name)").option("--since <date>", "Only changes whose window starts on or after this UTC date").option("--json", "Emit the machine-readable report", false).option(
+    "--transcripts-root <dir>",
+    "Claude Code transcripts folder (default: <CLAUDE_CONFIG_DIR or ~/.claude>/projects)"
+  ).action((options) => {
+    if (isFrameworkDisabledForRoot(options.projectRoot)) {
+      console.error("paqad is disabled (vanilla mode); no speed report is built.\n");
+      return;
+    }
+    try {
+      const report2 = buildSpeedReport({
+        projectRoot: options.projectRoot,
+        change: options.change,
+        since: options.since,
+        transcriptsRoot: options.transcriptsRoot
+      });
+      if (options.json) console.log(JSON.stringify(report2, null, 2));
+      else console.log(renderSpeedReport(report2).trimEnd());
+    } catch (error) {
+      if (!(error instanceof SpeedReportInputError)) throw error;
+      console.error(error.message);
+      process.exitCode = 1;
+    }
+  });
+  return command;
+}
+
 // src/cli/commands/review.ts
 init_esm_shims();
-import { readFileSync as readFileSync42, rmSync as rmSync5 } from "fs";
+import { readFileSync as readFileSync43, rmSync as rmSync5 } from "fs";
 var VERDICTS = ["safe-to-merge", "needs-attention", "inconclusive"];
 function createReviewCommand() {
   const command = new Command("review").description(
@@ -20276,7 +21175,7 @@ function createReviewCommand() {
   ).option("--keep-input", "Keep the transient input file instead of deleting it", false).action((inputFile, options) => {
     let template;
     try {
-      template = JSON.parse(readFileSync42(inputFile, "utf8"));
+      template = JSON.parse(readFileSync43(inputFile, "utf8"));
     } catch {
       console.error(`could not read/parse review template "${inputFile}" (expected JSON)`);
       process.exitCode = 1;
@@ -20326,23 +21225,23 @@ function createReviewCommand() {
 
 // src/cli/commands/debt.ts
 init_esm_shims();
-import { readFileSync as readFileSync43 } from "fs";
-import { resolve as resolve14 } from "path";
+import { readFileSync as readFileSync44 } from "fs";
+import { resolve as resolve15 } from "path";
 
 // src/tech-debt/index.ts
 init_esm_shims();
 
 // src/tech-debt/overview-block.ts
 init_esm_shims();
-import { existsSync as existsSync44, mkdirSync as mkdirSync16, writeFileSync as writeFileSync15 } from "fs";
-import { join as join73 } from "path";
+import { existsSync as existsSync45, mkdirSync as mkdirSync16, writeFileSync as writeFileSync15 } from "fs";
+import { join as join74 } from "path";
 var TECH_DEBT_BLOCK_BEGIN = "<!-- paqad:tech-debt:start -->";
 var TECH_DEBT_BLOCK_END = "<!-- paqad:tech-debt:end -->";
 var OVERVIEW_NAMES = ["overview.md", "index.md"];
 function techDebtOverviewPath(projectRoot) {
   const dir = techDebtDir(projectRoot);
-  const found = OVERVIEW_NAMES.map((name) => join73(dir, name)).find((path2) => existsSync44(path2));
-  return found ?? join73(dir, OVERVIEW_NAMES[0]);
+  const found = OVERVIEW_NAMES.map((name) => join74(dir, name)).find((path2) => existsSync45(path2));
+  return found ?? join74(dir, OVERVIEW_NAMES[0]);
 }
 function escapeInline(value) {
   return value.replace(/\s+/g, " ").trim().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -20446,7 +21345,7 @@ function createDebtCommand() {
   ).action((options) => {
     guarded(() => {
       const root = options.projectRoot;
-      const body = options.bodyFile === void 0 ? "" : readFileSync43(resolve14(root, options.bodyFile), "utf8");
+      const body = options.bodyFile === void 0 ? "" : readFileSync44(resolve15(root, options.bodyFile), "utf8");
       const context = resolveDebtContext(root, sessionHint(options));
       const result = raiseTechDebt(
         root,
@@ -20649,7 +21548,7 @@ function createDecisionCommand() {
 
 // src/cli/commands/rag-evidence.ts
 init_esm_shims();
-import { resolve as resolve15 } from "path";
+import { resolve as resolve16 } from "path";
 
 // src/rag-ledger/fold.ts
 init_esm_shims();
@@ -20768,7 +21667,7 @@ function createRagEvidenceCommand() {
       process.exitCode = 2;
       return;
     }
-    const fold = foldRagEvidenceSession(resolve15(options.projectRoot), options.session);
+    const fold = foldRagEvidenceSession(resolve16(options.projectRoot), options.session);
     process.stdout.write(
       fmt === "json" ? `${JSON.stringify(fold, null, 2)}
 ` : renderSummary(fold)
@@ -20781,7 +21680,7 @@ function createRagEvidenceCommand() {
       process.exitCode = 2;
       return;
     }
-    const projectRoot = resolve15(options.projectRoot);
+    const projectRoot = resolve16(options.projectRoot);
     const sessionId = resolveSessionId(projectRoot, options.session);
     let fields = {};
     if (options.json) {
@@ -20809,8 +21708,8 @@ function createRagEvidenceCommand() {
 
 // src/cli/commands/refresh.ts
 init_esm_shims();
-import { existsSync as existsSync45, readFileSync as readFileSync44, writeFileSync as writeFileSync16 } from "fs";
-import { join as join74 } from "path";
+import { existsSync as existsSync46, readFileSync as readFileSync45, writeFileSync as writeFileSync16 } from "fs";
+import { join as join75 } from "path";
 function createRefreshCommand() {
   return new Command("refresh").description("Refresh derived framework artifacts").option("--project-root <path>", "Project root", process.cwd()).option("--stack", "Refresh the cached stack snapshot").option("--context", "Refresh chunk and vector context indexes").option(
     "--providers",
@@ -20933,8 +21832,8 @@ async function refreshProviderEntries(projectRoot) {
   removeObsoleteContractDocs(projectRoot);
   for (const type of ADAPTER_TYPES) {
     const adapter = AdapterFactory.create(type);
-    const configPath = join74(projectRoot, adapter.getConfigPath());
-    if (!existsSync45(configPath)) {
+    const configPath = join75(projectRoot, adapter.getConfigPath());
+    if (!existsSync46(configPath)) {
       continue;
     }
     const files = await adapter.generateConfig({
@@ -20946,14 +21845,14 @@ async function refreshProviderEntries(projectRoot) {
   }
 }
 function writeRefreshDrift(projectRoot, refreshDrift) {
-  const path2 = join74(projectRoot, PATHS.STACK_DRIFT);
+  const path2 = join75(projectRoot, PATHS.STACK_DRIFT);
   const current = readExistingJson(path2);
   writeFileSync16(path2, `${JSON.stringify({ ...current ?? {}, ...refreshDrift }, null, 2)}
 `);
 }
 function readExistingJson(path2) {
   try {
-    return JSON.parse(readFileSync44(path2, "utf8"));
+    return JSON.parse(readFileSync45(path2, "utf8"));
   } catch {
     return null;
   }
@@ -20998,11 +21897,11 @@ init_esm_shims();
 
 // src/pipeline/route-override-log.ts
 init_esm_shims();
-import { appendFileSync as appendFileSync3, mkdirSync as mkdirSync17, readFileSync as readFileSync45 } from "fs";
-import { join as join75 } from "path";
+import { appendFileSync as appendFileSync3, mkdirSync as mkdirSync17, readFileSync as readFileSync46 } from "fs";
+import { join as join76 } from "path";
 var ROUTE_OVERRIDE_FILE = ".route-overrides.jsonl";
 function overrideLogPath(projectRoot, sessionId) {
-  return join75(
+  return join76(
     projectRoot,
     sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId),
     ROUTE_OVERRIDE_FILE
@@ -21016,7 +21915,7 @@ function appendRouteOverride(projectRoot, sessionId, input) {
     agent_label: input.agentLabel,
     ...input.reason === void 0 ? {} : { reason: input.reason }
   };
-  mkdirSync17(join75(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId)), {
+  mkdirSync17(join76(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId)), {
     recursive: true
   });
   appendFileSync3(overrideLogPath(projectRoot, sessionId), `${JSON.stringify(row)}
@@ -21113,7 +22012,7 @@ init_esm_shims();
 // src/rule-scripts/override.ts
 init_esm_shims();
 import { timingSafeEqual } from "crypto";
-import { readFileSync as readFileSync46 } from "fs";
+import { readFileSync as readFileSync47 } from "fs";
 var MANAGED_HOOK_MARKER = "paqad-ai hook --managed";
 function hookCommands(value) {
   const hooks = value && typeof value === "object" ? value.hooks : null;
@@ -21132,7 +22031,7 @@ function managedSettingsEnforcePaqad(paths) {
   return paths.some((path2) => {
     let parsed;
     try {
-      parsed = JSON.parse(readFileSync46(path2, "utf8"));
+      parsed = JSON.parse(readFileSync47(path2, "utf8"));
     } catch {
       return false;
     }
@@ -21240,6 +22139,7 @@ ${applicability.loadedRuleText}
     const record = writeRulesLoaded(options.projectRoot, sessionId, {
       applicable: applicability.applicable,
       ruleTextHash: applicability.ruleTextHash,
+      ruleSourceHashes: hashRuleSources(options.projectRoot, applicability.ruleSourcePaths),
       changedPaths: applicability.changedPaths
     });
     if (!record) {
@@ -21296,15 +22196,15 @@ ${applicability.loadedRuleText}
 
 // src/cli/commands/setup.ts
 init_esm_shims();
-import { readFileSync as readFileSync48 } from "fs";
+import { readFileSync as readFileSync49 } from "fs";
 
 // src/onboarding/onboard-installed-stack.ts
 init_esm_shims();
 
 // src/onboarding/readiness.ts
 init_esm_shims();
-import { existsSync as existsSync46, readdirSync as readdirSync15 } from "fs";
-import { join as join76 } from "path";
+import { existsSync as existsSync47, readdirSync as readdirSync16 } from "fs";
+import { join as join77 } from "path";
 function verifyReadinessToDevelop(projectRoot) {
   const blockers = [];
   const profile = readProjectProfile(projectRoot, { persistMigration: false });
@@ -21332,12 +22232,12 @@ function verifyReadinessToDevelop(projectRoot) {
   };
 }
 function hasModuleDocs(projectRoot) {
-  const modulesDir = join76(projectRoot, PATHS.MODULES_DIR);
-  if (!existsSync46(modulesDir)) {
+  const modulesDir = join77(projectRoot, PATHS.MODULES_DIR);
+  if (!existsSync47(modulesDir)) {
     return false;
   }
   try {
-    return readdirSync15(modulesDir).length > 0;
+    return readdirSync16(modulesDir).length > 0;
   } catch {
     return false;
   }
@@ -21398,8 +22298,8 @@ function resolveProviders(projectRoot, explicit) {
 
 // src/onboarding/setup-plan.ts
 init_esm_shims();
-import { existsSync as existsSync47, mkdirSync as mkdirSync18, readFileSync as readFileSync47, renameSync as renameSync8, writeFileSync as writeFileSync17 } from "fs";
-import { dirname as dirname18, join as join77 } from "path";
+import { existsSync as existsSync48, mkdirSync as mkdirSync18, readFileSync as readFileSync48, renameSync as renameSync8, writeFileSync as writeFileSync17 } from "fs";
+import { dirname as dirname18, join as join78 } from "path";
 var SETUP_STEP_STATES = [
   "pending",
   "in_progress",
@@ -21456,15 +22356,15 @@ function validateSetupPlan(plan) {
   return { ok: errors.length === 0, errors };
 }
 function setupPlanPath(projectRoot) {
-  return join77(projectRoot, ".paqad", "setup-plan.json");
+  return join78(projectRoot, ".paqad", "setup-plan.json");
 }
 function readSetupPlan(projectRoot) {
   const absPath = setupPlanPath(projectRoot);
-  if (!existsSync47(absPath)) {
+  if (!existsSync48(absPath)) {
     return null;
   }
   try {
-    return JSON.parse(readFileSync47(absPath, "utf8"));
+    return JSON.parse(readFileSync48(absPath, "utf8"));
   } catch {
     return null;
   }
@@ -21479,7 +22379,7 @@ function createSetupCommand() {
   plan.command("validate").description("Validate a setup-plan JSON file").argument("<file>", "Path to the setup-plan JSON file").action((file) => {
     let parsed;
     try {
-      parsed = JSON.parse(readFileSync48(file, "utf8"));
+      parsed = JSON.parse(readFileSync49(file, "utf8"));
     } catch (error) {
       console.error(`\u2716 could not read JSON from ${file}: ${errorMessage2(error)}`);
       process.exitCode = 1;
@@ -21569,7 +22469,7 @@ function errorMessage2(error) {
 
 // src/cli/commands/sitemap.ts
 init_esm_shims();
-import { existsSync as existsSync48, readFileSync as readFileSync49 } from "fs";
+import { existsSync as existsSync49, readFileSync as readFileSync50 } from "fs";
 
 // src/site-map/creation-flow.ts
 init_esm_shims();
@@ -21590,9 +22490,9 @@ var SITE_MAP_ANSWER_CATEGORIES = [
 
 // src/site-map/creation-answers.ts
 init_esm_shims();
-import { join as join78 } from "path";
+import { join as join79 } from "path";
 function canonicalAnswersPath(projectRoot) {
-  return join78(projectRoot, PATHS.SITE_MAP_CANONICAL_ANSWERS);
+  return join79(projectRoot, PATHS.SITE_MAP_CANONICAL_ANSWERS);
 }
 function readCreationAnswers(projectRoot) {
   const parsed = readYaml(canonicalAnswersPath(projectRoot));
@@ -22040,7 +22940,7 @@ function createSitemapCommand() {
     try {
       const root = options.projectRoot;
       const existing = readCanonicalSiteMap(root);
-      if (existing === null && existsSync48(canonicalAppMapPath(root))) {
+      if (existing === null && existsSync49(canonicalAppMapPath(root))) {
         console.error(
           "**\u25B8 paqad** \xB7 sitemap draft refused: docs/site-map/app-map.yaml exists but is not a readable, schema-valid map, and drafting over it would destroy authored content. Fix or remove the file, then re-run."
         );
@@ -22193,7 +23093,7 @@ function createSitemapCommand() {
   });
   command.command("answer").description("Record your answers to those questions and note who decided each").requiredOption("--input <path>", "JSON file of [{ question_id, answer, decided_by }]").option("--project-root <path>", "Project root", process.cwd()).action((options) => {
     try {
-      const raw = readFileSync49(options.input, "utf8");
+      const raw = readFileSync50(options.input, "utf8");
       const decisions = parseCreationDecisions(raw);
       const result = recordCreationAnswers(options.projectRoot, decisions);
       if (result.status === "no-map") {
@@ -22249,12 +23149,12 @@ function createSitemapCommand() {
 
 // src/cli/commands/spec.ts
 init_esm_shims();
-import { readFileSync as readFileSync52, rmSync as rmSync6 } from "fs";
+import { readFileSync as readFileSync53, rmSync as rmSync6 } from "fs";
 import { basename as basename3 } from "path";
 
 // src/cli/commands/spec-pipeline.ts
 init_esm_shims();
-import { readFileSync as readFileSync51 } from "fs";
+import { readFileSync as readFileSync52 } from "fs";
 
 // src/providers/index.ts
 init_esm_shims();
@@ -22372,7 +23272,7 @@ function autoAnswerQuestions(projectRoot, questions) {
 // src/spec-pipeline/experts/conflicts.ts
 init_esm_shims();
 import { createHash as createHash10 } from "crypto";
-var CATEGORY2 = "spec.expert_conflict";
+var CATEGORY3 = "spec.expert_conflict";
 function normalize2(text) {
   return text.trim().toLowerCase().replace(/\s+/g, " ");
 }
@@ -22410,7 +23310,7 @@ function mintExpertConflictDecisions(projectRoot, merged, synthesisConflicts, di
     const { options, recommendation } = buildOptions(conflict, chief?.recommendation);
     const context = buildContext(conflict, chief?.rationale, token);
     const { id } = createPendingDecision(projectRoot, {
-      category: CATEGORY2,
+      category: CATEGORY3,
       title: `Experts disagree on ${conflict.target}`,
       context,
       options,
@@ -22425,7 +23325,7 @@ function mintExpertConflictDecisions(projectRoot, merged, synthesisConflicts, di
 function collectResolvedForks(projectRoot) {
   const forks = /* @__PURE__ */ new Map();
   for (const { packet, status } of readContractDecisions(projectRoot)) {
-    if (status !== "resolved" || packet.category !== CATEGORY2) continue;
+    if (status !== "resolved" || packet.category !== CATEGORY3) continue;
     const resolved = packet;
     const match = /\[expert-conflict-fork:[0-9a-f]{16}\]/.exec(packet.context);
     if (!match || typeof resolved.chosen !== "string") continue;
@@ -22462,8 +23362,8 @@ function buildContext(conflict, rationale, token) {
 
 // src/spec-pipeline/experts/voice.ts
 init_esm_shims();
-import { existsSync as existsSync49 } from "fs";
-import { join as join79 } from "path";
+import { existsSync as existsSync50 } from "fs";
+import { join as join80 } from "path";
 var MAX_VOICE_TERMS = 40;
 var PACK_GUIDE_FILES = [
   "rules/foundation/guide.md",
@@ -22544,8 +23444,8 @@ function resolveGuidePointers(runtimeRoot, profile, packs) {
   const guidePointers = [];
   for (const pack of activePacks) {
     for (const guide of PACK_GUIDE_FILES) {
-      if (existsSync49(join79(pack.root, guide))) {
-        guidePointers.push(runtimeRelative(runtimeRoot, join79(pack.root, guide)));
+      if (existsSync50(join80(pack.root, guide))) {
+        guidePointers.push(runtimeRelative(runtimeRoot, join80(pack.root, guide)));
       }
     }
   }
@@ -22563,8 +23463,8 @@ function resolveDocPages(projectRoot) {
   const arch = "docs/instructions/architecture/overview.md";
   const stack = "docs/instructions/stack/overview.md";
   return {
-    ...existsSync49(join79(projectRoot, arch)) ? { architecturePage: arch } : {},
-    ...existsSync49(join79(projectRoot, stack)) ? { stackPage: stack } : {}
+    ...existsSync50(join80(projectRoot, arch)) ? { architecturePage: arch } : {},
+    ...existsSync50(join80(projectRoot, stack)) ? { stackPage: stack } : {}
   };
 }
 function resolveProjectVoiceForRun(projectRoot, dirName) {
@@ -22854,8 +23754,8 @@ function parseJson2(raw) {
 // src/spec-pipeline/grounding.ts
 init_esm_shims();
 var import_fast_glob5 = __toESM(require_out(), 1);
-import { existsSync as existsSync50, readFileSync as readFileSync50 } from "fs";
-import { join as join80 } from "path";
+import { existsSync as existsSync51, readFileSync as readFileSync51 } from "fs";
+import { join as join81 } from "path";
 var DEFAULT_MAX_FILES = 40;
 var DEFAULT_SPARSE_FLOOR = 3;
 var SCAFFOLD_HEADINGS = new Set(
@@ -23012,8 +23912,8 @@ function readGlossaryFile(projectRoot) {
   const rel = PATHS.GLOSSARY;
   let content;
   try {
-    if (!existsSync50(join80(projectRoot, rel))) return null;
-    content = readFileSync50(join80(projectRoot, rel), "utf8");
+    if (!existsSync51(join81(projectRoot, rel))) return null;
+    content = readFileSync51(join81(projectRoot, rel), "utf8");
   } catch {
     return null;
   }
@@ -23056,7 +23956,7 @@ function groundArea(projectRoot, options = {}) {
   for (const rel of files) {
     let content;
     try {
-      content = readFileSync50(join80(projectRoot, rel), "utf8");
+      content = readFileSync51(join81(projectRoot, rel), "utf8");
     } catch {
       continue;
     }
@@ -23530,7 +24430,7 @@ function hasPendingExpertConflict(projectRoot) {
 async function resolveRequestText(options) {
   if (options.requestFile) {
     try {
-      const text = readFileSync51(options.requestFile, "utf8");
+      const text = readFileSync52(options.requestFile, "utf8");
       rememberInput(options.projectRoot, options.dirName, options.requestFile);
       return text;
     } catch {
@@ -23690,7 +24590,7 @@ function createSpecPipelineCommand() {
     }
     let content;
     try {
-      content = readFileSync51(file, "utf8");
+      content = readFileSync52(file, "utf8");
     } catch {
       console.error(`could not read artifact "${file}"`);
       process.exitCode = 1;
@@ -23765,7 +24665,7 @@ function createSpecPipelineCommand() {
         }
         let traceRaw;
         try {
-          traceRaw = JSON.parse(readFileSync51(options.trace, "utf8"));
+          traceRaw = JSON.parse(readFileSync52(options.trace, "utf8"));
         } catch {
           console.error(`could not read or parse trace "${options.trace}"`);
           process.exitCode = 1;
@@ -23949,7 +24849,7 @@ function createExpertsCommand() {
   };
   const readHandedFile = (options, dirName, file, what) => {
     try {
-      const content = readFileSync51(file, "utf8");
+      const content = readFileSync52(file, "utf8");
       rememberInput(options.projectRoot, dirName, file);
       return content;
     } catch {
@@ -24243,7 +25143,7 @@ function createSpecCommand() {
       }
       let markdown;
       try {
-        markdown = readFileSync52(specFile, "utf8");
+        markdown = readFileSync53(specFile, "utf8");
       } catch {
         console.error(`could not read spec file "${specFile}"`);
         process.exitCode = 1;
@@ -24490,7 +25390,7 @@ function createStageCommand() {
 
 // src/cli/commands/status.ts
 init_esm_shims();
-import { resolve as resolve16 } from "path";
+import { resolve as resolve17 } from "path";
 function renderHudText(snapshot) {
   const lines = [`paqad \xB7 ${snapshot.headline.text}`];
   if (snapshot.change) {
@@ -24543,7 +25443,7 @@ function createStatusCommand() {
     "Exit non-zero when module-map drift, stale module-health, expired MD-XXXX decisions, or MM-DOC-MISSING findings are present",
     false
   ).action((options) => {
-    const projectRoot = resolve16(options.projectRoot);
+    const projectRoot = resolve17(options.projectRoot);
     const fmt = options.format.toLowerCase();
     if (fmt !== "markdown" && fmt !== "json") {
       process.stderr.write(
@@ -24594,13 +25494,13 @@ init_esm_shims();
 // src/visual-evidence/attach.ts
 init_esm_shims();
 import { createHash as createHash11 } from "crypto";
-import { mkdirSync as mkdirSync20, readFileSync as readFileSync54, writeFileSync as writeFileSync19 } from "fs";
-import { basename as basename5, extname as extname4, join as join82 } from "path";
+import { mkdirSync as mkdirSync20, readFileSync as readFileSync55, writeFileSync as writeFileSync19 } from "fs";
+import { basename as basename5, extname as extname4, join as join83 } from "path";
 
 // src/visual-evidence/manifest.ts
 init_esm_shims();
-import { cpSync, mkdirSync as mkdirSync19, readFileSync as readFileSync53, renameSync as renameSync9, writeFileSync as writeFileSync18 } from "fs";
-import { basename as basename4, join as join81 } from "path";
+import { cpSync, mkdirSync as mkdirSync19, readFileSync as readFileSync54, renameSync as renameSync9, writeFileSync as writeFileSync18 } from "fs";
+import { basename as basename4, join as join82 } from "path";
 function slugifyCaption(caption) {
   const slug = caption.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40).replace(/^-+|-+$/g, "");
   return slug.length > 0 ? slug : "step";
@@ -24655,8 +25555,8 @@ function writeVisualEvidenceManifest(projectRoot, dirName, input) {
       `internal: visual-evidence manifest failed its own schema: ${errors.join("; ")}`
     );
   }
-  const target = join81(projectRoot, featureFilePath(dirName, "visualEvidence"));
-  mkdirSync19(join81(projectRoot, featureDir(dirName)), { recursive: true });
+  const target = join82(projectRoot, featureFilePath(dirName, "visualEvidence"));
+  mkdirSync19(join82(projectRoot, featureDir(dirName)), { recursive: true });
   const tmp = `${target}.tmp-${process.pid}`;
   writeFileSync18(tmp, `${JSON.stringify(manifest, null, 2)}
 `, "utf8");
@@ -24670,7 +25570,7 @@ function normalizeStep(step) {
 }
 function readVisualEvidenceManifest(projectRoot, dirName) {
   try {
-    const raw = readFileSync53(join81(projectRoot, featureFilePath(dirName, "visualEvidence")), "utf8");
+    const raw = readFileSync54(join82(projectRoot, featureFilePath(dirName, "visualEvidence")), "utf8");
     const manifest = JSON.parse(raw);
     return Array.isArray(manifest.steps) ? { ...manifest, steps: manifest.steps.map(normalizeStep) } : manifest;
   } catch {
@@ -24690,9 +25590,9 @@ function mergeAttachedSteps(attached, input) {
   return { ...input, steps, result: mergedVisualEvidenceResult(steps) };
 }
 function copyAttachedStepDirs(projectRoot, dirName, attached, tmpAbs) {
-  const bundleAbs = join81(projectRoot, featureDir(dirName));
+  const bundleAbs = join82(projectRoot, featureDir(dirName));
   for (const step of attached) {
-    cpSync(join81(bundleAbs, step.dir), join81(tmpAbs, basename4(step.dir)), { recursive: true });
+    cpSync(join82(bundleAbs, step.dir), join82(tmpAbs, basename4(step.dir)), { recursive: true });
   }
 }
 
@@ -24721,7 +25621,7 @@ function checkAcceptanceCriterion(projectRoot, dirName, ac) {
 function readPng(file) {
   let bytes;
   try {
-    bytes = readFileSync54(file);
+    bytes = readFileSync55(file);
   } catch {
     throw new VisualEvidenceAttachError(`cannot read ${file}: the file does not exist.`);
   }
@@ -24746,16 +25646,16 @@ function attachVisualEvidence(input) {
   const used = new Set(steps.map((step) => stepDirSlug(step.dir)));
   let index = Math.max(0, ...steps.map((step) => step.index));
   let attachedCount = steps.filter(isAttachedStep).length;
-  const bundleAbs = join82(projectRoot, featureDir(dirName));
+  const bundleAbs = join83(projectRoot, featureDir(dirName));
   for (const { file, bytes } of images) {
     index += 1;
     attachedCount += 1;
     const caption = input.label ?? basename5(file, extname4(file));
     const dir = `screenshots/${pad2(index)}-${uniqueSlug(slugifyCaption(caption), used)}`;
-    const dirAbs = join82(bundleAbs, dir);
+    const dirAbs = join83(bundleAbs, dir);
     mkdirSync20(dirAbs, { recursive: true });
-    writeFileSync19(join82(dirAbs, "image.png"), bytes);
-    writeFileSync19(join82(dirAbs, "caption.txt"), `${caption}
+    writeFileSync19(join83(dirAbs, "image.png"), bytes);
+    writeFileSync19(join83(dirAbs, "caption.txt"), `${caption}
 `, "utf8");
     steps.push({
       index,
@@ -24901,8 +25801,8 @@ function resolveVisualEvidencePlan(projectRoot, changedFiles) {
 // src/visual-evidence/runner.ts
 init_esm_shims();
 import { createHash as createHash12 } from "crypto";
-import { existsSync as existsSync51, mkdirSync as mkdirSync21, renameSync as renameSync10, rmSync as rmSync7, writeFileSync as writeFileSync20 } from "fs";
-import { join as join83 } from "path";
+import { existsSync as existsSync52, mkdirSync as mkdirSync21, renameSync as renameSync10, rmSync as rmSync7, writeFileSync as writeFileSync20 } from "fs";
+import { join as join84 } from "path";
 import { pathToFileURL as pathToFileURL3 } from "url";
 
 // src/visual-evidence/boot.ts
@@ -24920,7 +25820,7 @@ async function isReachable(url, timeoutMs2) {
   }
 }
 async function sleep(ms) {
-  await new Promise((resolve17) => setTimeout(resolve17, ms));
+  await new Promise((resolve18) => setTimeout(resolve18, ms));
 }
 async function stopChild(child) {
   try {
@@ -24983,7 +25883,7 @@ async function bootApp(projectRoot, profile) {
 
 // src/visual-evidence/gif.ts
 init_esm_shims();
-import { readFileSync as readFileSync55 } from "fs";
+import { readFileSync as readFileSync56 } from "fs";
 
 // node_modules/.pnpm/gifenc@1.0.3/node_modules/gifenc/dist/gifenc.esm.js
 init_esm_shims();
@@ -25130,14 +26030,14 @@ var CAPTION_BAR = {
   color: "#333333"
 };
 function toDataUrl(imageAbsPath) {
-  const bytes = readFileSync55(imageAbsPath);
+  const bytes = readFileSync56(imageAbsPath);
   return `data:image/png;base64,${bytes.toString("base64")}`;
 }
 async function renderFrame(page2, input, frameWidth, frameHeight) {
   const raw = await page2.evaluate(
     (payloadUnknown) => {
       const payload = payloadUnknown;
-      return new Promise((resolve17, reject) => {
+      return new Promise((resolve18, reject) => {
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement("canvas");
@@ -25165,7 +26065,7 @@ async function renderFrame(page2, input, frameWidth, frameHeight) {
           const drawH = Math.round(img.naturalHeight * scale);
           ctx.drawImage(img, 0, barHeight, drawW, drawH);
           const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-          resolve17({ data: Array.from(pixels.data), width: canvas.width, height: canvas.height });
+          resolve18({ data: Array.from(pixels.data), width: canvas.width, height: canvas.height });
         };
         img.onerror = () => reject(new Error("image failed to load"));
         img.src = payload.dataUrl;
@@ -25183,9 +26083,9 @@ async function renderFrame(page2, input, frameWidth, frameHeight) {
 }
 async function naturalSize(page2, imageAbsPath) {
   return page2.evaluate(
-    (dataUrlUnknown) => new Promise((resolve17, reject) => {
+    (dataUrlUnknown) => new Promise((resolve18, reject) => {
       const img = new Image();
-      img.onload = () => resolve17({ w: img.naturalWidth, h: img.naturalHeight });
+      img.onload = () => resolve18({ w: img.naturalWidth, h: img.naturalHeight });
       img.onerror = () => reject(new Error("image failed to load"));
       img.src = dataUrlUnknown;
     }),
@@ -25324,7 +26224,7 @@ async function runVisualEvidence(input) {
     });
   }
   const tmpDir = `${featureScreenshotsDir(dirName)}.tmp-${process.pid}`;
-  const tmpAbs = join83(projectRoot, tmpDir);
+  const tmpAbs = join84(projectRoot, tmpDir);
   rmSync7(tmpAbs, { recursive: true, force: true });
   mkdirSync21(tmpAbs, { recursive: true });
   copyAttachedStepDirs(projectRoot, dirName, attached, tmpAbs);
@@ -25352,7 +26252,7 @@ async function runVisualEvidence(input) {
     if (gifFrames.length > 0) {
       const gifBytes = await assembleOverviewGif(page2, gifFrames);
       if (gifBytes) {
-        writeFileSync20(join83(tmpAbs, "overview.gif"), gifBytes);
+        writeFileSync20(join84(tmpAbs, "overview.gif"), gifBytes);
         gif = {
           file: "screenshots/overview.gif",
           frames: Math.min(gifFrames.length, 12),
@@ -25363,7 +26263,7 @@ async function runVisualEvidence(input) {
       }
     }
     await browser.close();
-    const liveAbs = join83(projectRoot, featureScreenshotsDir(dirName));
+    const liveAbs = join84(projectRoot, featureScreenshotsDir(dirName));
     rmSync7(liveAbs, { recursive: true, force: true });
     renameSync10(tmpAbs, liveAbs);
     const anyCaptured = steps.some((step) => step.status === "captured");
@@ -25465,12 +26365,12 @@ async function captureStep(page2, step, caption, baseUrl, env, position, ctx) {
   }
   const slug = uniqueSlug(slugifyCaption(caption), ctx.usedSlugs);
   const dir = `${pad2(position)}-${slug}`;
-  const dirAbs = join83(ctx.tmpAbs, dir);
+  const dirAbs = join84(ctx.tmpAbs, dir);
   mkdirSync21(dirAbs, { recursive: true });
   const png = await page2.screenshot({ fullPage: true });
-  const imageAbs = join83(dirAbs, "image.png");
+  const imageAbs = join84(dirAbs, "image.png");
   writeFileSync20(imageAbs, png);
-  writeFileSync20(join83(dirAbs, "caption.txt"), `${caption}
+  writeFileSync20(join84(dirAbs, "caption.txt"), `${caption}
 `, "utf8");
   return {
     step: {
@@ -25714,6 +26614,7 @@ function createProgram() {
   program.addCommand(createChecksCommand());
   program.addCommand(createDuplicationCommand());
   program.addCommand(createMetricsCommand());
+  program.addCommand(createReportCommand());
   program.addCommand(createIndexCommand());
   program.addCommand(createHealthCommand());
   program.addCommand(createSitemapCommand());
@@ -25951,6 +26852,7 @@ function shouldRunFromCommandLine(importMetaUrl, argvEntry) {
   return entrypoint !== void 0 && importMetaUrl === entrypoint;
 }
 if (shouldRunFromCommandLine(import.meta.url, process.argv[1])) {
+  enableEmbeddingProviderCache();
   await runCli();
 }
 function argvToEntrypoint(value) {

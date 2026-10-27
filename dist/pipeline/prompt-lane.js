@@ -2,35 +2,35 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   PipelineRouter,
   RequestClassifier
-} from "../chunk-KINEEXPE.js";
+} from "../chunk-PVZEAEMJ.js";
+import "../chunk-MQURLJEK.js";
 import {
   paqadFrameLead
 } from "../chunk-5QVCE2TS.js";
 import {
   hasOpenUnendedStage,
   liveStageAgents
-} from "../chunk-5OWLFHYJ.js";
+} from "../chunk-XMAPAGLU.js";
 import {
   appendRouteTurn
-} from "../chunk-STSS5WI6.js";
-import "../chunk-I2YG7WNL.js";
+} from "../chunk-T63SOQAB.js";
 import "../chunk-Y7QRVDRT.js";
-import "../chunk-NN7SEPJI.js";
-import "../chunk-NG4XO34O.js";
+import "../chunk-7KAJUZXO.js";
+import "../chunk-5BX3DNVU.js";
+import "../chunk-YQ37OFE7.js";
+import "../chunk-RRWY74DL.js";
 import {
   appendHooksLog
-} from "../chunk-CJ6GEKKF.js";
-import "../chunk-I5IGTXAN.js";
-import "../chunk-5V3LFHQQ.js";
+} from "../chunk-BW7VURA4.js";
 import "../chunk-VVRAO2BK.js";
-import "../chunk-T4VPFXR3.js";
-import "../chunk-LERWRDMM.js";
+import "../chunk-BYYV5KPL.js";
+import "../chunk-NCMGB3MM.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-HMQATZMT.js";
+import "../chunk-XWINZVZE.js";
 import "../chunk-O77JBFWW.js";
 import {
   writeSessionRoute
-} from "../chunk-HPICFP2U.js";
+} from "../chunk-QROWG6LN.js";
 import {
   changeKindForWorkflow,
   isFeatureDevelopmentRoute,
@@ -38,38 +38,38 @@ import {
   resolveRoutedWorkflow,
   routeWorkflow,
   writeWorkflowState
-} from "../chunk-3DRN3NCI.js";
+} from "../chunk-2I7O2GLF.js";
 import {
   writePendingKind,
   writePendingLane
-} from "../chunk-6W2UX3OC.js";
-import "../chunk-OQ77VKVU.js";
+} from "../chunk-OZLPYICR.js";
+import "../chunk-BF7UUVBR.js";
 import "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
 import {
   readFeatureStageUnit
-} from "../chunk-VUYWNYTS.js";
+} from "../chunk-7PWYO6YA.js";
 import "../chunk-W2K6YXWC.js";
 import {
   STAGE_ORDER
-} from "../chunk-CTIDCPJ5.js";
+} from "../chunk-Y5WWSOMR.js";
 import {
   isBundleClosed,
   laneRank,
   readChangeConstants
-} from "../chunk-5BQ2AB2Y.js";
+} from "../chunk-KFLIUVMP.js";
 import "../chunk-AINYJ3Q2.js";
 import "../chunk-WGEG5J6L.js";
-import "../chunk-3CUGDX3J.js";
+import "../chunk-QINSFA6R.js";
 import "../chunk-SU7RODZI.js";
 import {
   resolveSessionId
-} from "../chunk-MG36YCW4.js";
+} from "../chunk-HV6ESCNW.js";
 import {
   readSessionControl
-} from "../chunk-KF7HHHJR.js";
-import "../chunk-EGDL57MD.js";
-import "../chunk-UCSN7SVD.js";
+} from "../chunk-DDJC5PRW.js";
+import "../chunk-3STC3IVL.js";
+import "../chunk-LW3OCT4Y.js";
 import {
   init_esm_shims
 } from "../chunk-EMKBJVIL.js";
@@ -101,6 +101,7 @@ var SYSTEM_NOTIFICATION_ELEMENTS = [
   "background-task-notification"
 ];
 var SYSTEM_NOTIFICATION_BANNER = "[system notification - not user input]";
+var STOP_HOOK_FEEDBACK_PREFIX = "stop hook feedback:";
 var SUBAGENT_HANDBACK_MARKERS = {
   element: "agent-message",
   label: "[subagent hand-back]"
@@ -209,7 +210,7 @@ function isBareTicketPrompt(prompt) {
 }
 function isSystemNotificationPrompt(prompt) {
   const head = prompt.trimStart().toLowerCase();
-  if (head.startsWith(SYSTEM_NOTIFICATION_BANNER)) {
+  if (head.startsWith(SYSTEM_NOTIFICATION_BANNER) || head.startsWith(STOP_HOOK_FEEDBACK_PREFIX)) {
     return true;
   }
   if (startsWithNotificationElement(head)) {
@@ -403,6 +404,7 @@ async function runPromptRouteSeam(input, deps = {}) {
 export {
   BARE_TICKET_FILLER,
   SLASH_COMMAND_ROUTES,
+  STOP_HOOK_FEEDBACK_PREFIX,
   SUBAGENT_HANDBACK_MARKERS,
   SYSTEM_NOTIFICATION_BANNER,
   SYSTEM_NOTIFICATION_ELEMENTS,

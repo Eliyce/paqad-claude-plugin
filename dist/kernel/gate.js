@@ -6,55 +6,58 @@ import {
   isManagedEnv,
   visualEvidenceFlagOn,
   writeRuleStopRecord
-} from "../chunk-ZRV7U2RZ.js";
-import {
-  hudLastBlockPath
-} from "../chunk-N3SETY4S.js";
+} from "../chunk-CD3U6HN5.js";
+import "../chunk-BWAUL7O5.js";
 import "../chunk-NRKCUFAE.js";
-import "../chunk-NN7SEPJI.js";
-import "../chunk-NG4XO34O.js";
+import "../chunk-NUSNYHWM.js";
+import "../chunk-7KAJUZXO.js";
+import "../chunk-5BX3DNVU.js";
+import "../chunk-YQ37OFE7.js";
+import "../chunk-RRWY74DL.js";
 import {
   appendHooksLog
-} from "../chunk-CJ6GEKKF.js";
-import "../chunk-I5IGTXAN.js";
-import "../chunk-5V3LFHQQ.js";
+} from "../chunk-BW7VURA4.js";
 import "../chunk-VVRAO2BK.js";
-import "../chunk-T4VPFXR3.js";
+import "../chunk-BYYV5KPL.js";
+import "../chunk-ETLHFSGV.js";
 import {
   capabilitiesForSeam
-} from "../chunk-RZSUJA4B.js";
-import "../chunk-LERWRDMM.js";
+} from "../chunk-BDM7PHW7.js";
+import {
+  hudLastBlockPath
+} from "../chunk-IN2AVDIO.js";
+import "../chunk-NCMGB3MM.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-HMQATZMT.js";
+import "../chunk-XWINZVZE.js";
 import "../chunk-O77JBFWW.js";
-import "../chunk-XATPFUNO.js";
-import "../chunk-N5SWPFGH.js";
-import "../chunk-HPICFP2U.js";
-import "../chunk-3DRN3NCI.js";
-import "../chunk-6W2UX3OC.js";
-import "../chunk-OQ77VKVU.js";
+import "../chunk-SDM5B2BY.js";
+import "../chunk-2TBN4O6V.js";
+import "../chunk-QROWG6LN.js";
+import "../chunk-2I7O2GLF.js";
+import "../chunk-OZLPYICR.js";
+import "../chunk-BF7UUVBR.js";
 import "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
 import {
   currentFeature
-} from "../chunk-VUYWNYTS.js";
+} from "../chunk-7PWYO6YA.js";
 import "../chunk-W2K6YXWC.js";
-import "../chunk-CTIDCPJ5.js";
-import "../chunk-5BQ2AB2Y.js";
+import "../chunk-Y5WWSOMR.js";
+import "../chunk-KFLIUVMP.js";
 import "../chunk-AINYJ3Q2.js";
 import "../chunk-WGEG5J6L.js";
-import "../chunk-3CUGDX3J.js";
+import "../chunk-QINSFA6R.js";
 import "../chunk-SU7RODZI.js";
 import {
   resolveSessionId
-} from "../chunk-MG36YCW4.js";
+} from "../chunk-HV6ESCNW.js";
 import {
   featureFilePath
-} from "../chunk-KF7HHHJR.js";
-import "../chunk-EGDL57MD.js";
+} from "../chunk-DDJC5PRW.js";
+import "../chunk-3STC3IVL.js";
 import {
   PATHS
-} from "../chunk-UCSN7SVD.js";
+} from "../chunk-LW3OCT4Y.js";
 import {
   init_esm_shims
 } from "../chunk-EMKBJVIL.js";
@@ -143,24 +146,35 @@ function syncRuleStopRecord(projectRoot, env, payload, blocking, entryLoaded) {
   }
 }
 async function runCapabilityGate(input) {
-  const { projectRoot, seam, env = process.env, payload, entryLoaded } = input;
+  const { projectRoot, seam, env = process.env, payload, entryLoaded, startedAt, now } = input;
   const outcomes = [];
   const narrations = [];
+  const contexts = [];
   for (const descriptor of capabilitiesForSeam(seam)) {
     const capability = CAPABILITY_IMPLS.get(descriptor.id);
     if (!capability) {
       continue;
     }
-    const outcome = await capability.evaluate({ projectRoot, seam, env, payload });
+    const outcome = await capability.evaluate({
+      projectRoot,
+      seam,
+      env,
+      payload,
+      ...startedAt === void 0 ? {} : { startedAt },
+      ...now ? { now } : {}
+    });
     if (outcome.narration) {
       narrations.push(outcome.narration);
+    }
+    if (outcome.context) {
+      contexts.push(outcome.context);
     }
     if (outcome.ran && outcome.summary) {
       outcomes.push(outcome);
     }
   }
   const narration = narrations.join("\n");
-  const context = seam === "pre-mutation" ? reminderContext(projectRoot, env, payload) : "";
+  const context = seam === "pre-mutation" ? [...contexts, reminderContext(projectRoot, env, payload)].filter(Boolean).join("\n") : "";
   const blocking = outcomes.filter((outcome) => outcome.blocking);
   if (seam === "pre-mutation") {
     syncRuleStopRecord(projectRoot, env, payload, blocking, entryLoaded);

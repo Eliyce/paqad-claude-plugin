@@ -16,6 +16,8 @@ interface CapabilityGateInput {
     env?: NodeJS.ProcessEnv;
     payload?: CapabilityPayload;
     entryLoaded?: () => boolean;
+    startedAt?: number;
+    now?: () => number;
 }
 interface CapabilityGateResult {
     block: boolean;
