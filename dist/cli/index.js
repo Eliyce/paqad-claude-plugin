@@ -1,9 +1,15 @@
 #!/usr/bin/env node
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
+  buildStageBrief,
+  candidatesNeedingDecision,
+  extractCandidates,
+  resolveBriefSession
+} from "../chunk-7VOHXZBJ.js";
+import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-YBNE5CO6.js";
+} from "../chunk-OOFUFI2E.js";
 import {
   holdRefreshContextLock
 } from "../chunk-O6QPPPMO.js";
@@ -15,6 +21,7 @@ import {
   AdapterFactory,
   CODE_KNOWLEDGE_SCHEMA_VERSION,
   Command,
+  DEFAULT_GROUNDING_BUDGET_MS,
   DESIGN_TOKENS_PLACEHOLDER_NOTE,
   DesignTokenService,
   DesignTokensMissingError,
@@ -157,7 +164,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-36WCPJUO.js";
+} from "../chunk-4NWUVPD6.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -181,7 +188,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-NWLOVYNZ.js";
+} from "../chunk-KMXD7XEY.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -193,20 +200,20 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-W725ZROV.js";
+} from "../chunk-P5B33HZI.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-N2D6DTTC.js";
+} from "../chunk-4ZIBQHJ5.js";
 import "../chunk-WULKDLB5.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
 } from "../chunk-PWJ37K7H.js";
-import "../chunk-YBNA2OHW.js";
+import "../chunk-LJN6UHGD.js";
 import "../chunk-F4TESBBJ.js";
 import {
   createEvidence,
@@ -214,9 +221,10 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-PQI5LEGM.js";
+} from "../chunk-4HMHFOSG.js";
 import {
   EmbeddingProviderError,
+  FileVectorIndex,
   PatternStore,
   REMOVED_EMBEDDING_PROVIDER_MESSAGE,
   RagService,
@@ -229,20 +237,21 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-YSEEYGPY.js";
+} from "../chunk-J2YJQXUP.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
 import {
   clearChecksRunningMarker,
+  liveStageAgents,
   writeChecksRunningMarker
-} from "../chunk-IG2PHJLP.js";
-import "../chunk-ZKB7NKTP.js";
+} from "../chunk-OAZIA5U6.js";
+import "../chunk-NEBNXGEA.js";
 import "../chunk-Y7QRVDRT.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-TMOH3BTM.js";
+} from "../chunk-BNNL5DFD.js";
 import {
   DEFAULT_OBLIGATION_INDEX_PATH,
   DELIVERY_EVIDENCE_DOC_TYPE,
@@ -366,7 +375,7 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-I5MSRH46.js";
+} from "../chunk-QKITQ5YP.js";
 import "../chunk-BWAUL7O5.js";
 import "../chunk-NRKCUFAE.js";
 import {
@@ -379,7 +388,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-NALGT7FL.js";
+} from "../chunk-O2WKFMHD.js";
 import {
   StackPackLoader,
   atomicWriteFile,
@@ -389,7 +398,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "../chunk-YGG7QFD6.js";
+} from "../chunk-SLA7U7ST.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -403,19 +412,22 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-Z273AZOQ.js";
+} from "../chunk-AHUCGXCI.js";
 import {
   ACTIVE_CAPABILITIES,
   FrameworkError,
   STACKS,
   engineLog,
   getProfileDomain,
+  getProjectSecret,
   migrateProjectProfile,
   readProjectProfile,
-  readTextIfExistsSync,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-SROHFKN6.js";
+} from "../chunk-RHPTIMUW.js";
+import {
+  readTextIfExistsSync
+} from "../chunk-TLKXJ74I.js";
 import {
   appendHooksLog
 } from "../chunk-BW7VURA4.js";
@@ -423,66 +435,63 @@ import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
 import "../chunk-BYYV5KPL.js";
-import "../chunk-CJB6WRAX.js";
+import "../chunk-6WQX4XJ6.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-CERSUAYY.js";
+} from "../chunk-JN3L7KCE.js";
 import {
   hudCostCachePath
 } from "../chunk-IN2AVDIO.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-74XGAAQY.js";
+} from "../chunk-RUM5BXA3.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-WYQCLM7Z.js";
+} from "../chunk-GMXHN3L4.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-TERKNT5P.js";
+} from "../chunk-MROQZYOD.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   normalizeArtifactPath
-} from "../chunk-WV4TPGQD.js";
+} from "../chunk-FL6ONVOX.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-252T6RBJ.js";
+} from "../chunk-GP3BYUVG.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-MQWE4AJB.js";
+} from "../chunk-6VTX7ZYM.js";
 import {
   clearPendingLane,
   recordMarkedStage
-} from "../chunk-XAJVKVUJ.js";
+} from "../chunk-YXTFS35T.js";
 import {
   appendModuleMapEvent,
   canTransition,
   driftReportHasFindings,
   expireStaleDecisions,
   isExpired,
-  isValidSlug,
-  levenshtein,
   listDecisions,
   listDecisionsByState,
   matchesAnyGlob,
-  normaliseSlug,
   readDecision,
   readDriftReport,
   readModuleMapEvents,
@@ -491,7 +500,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-6Z2MPTAC.js";
+} from "../chunk-XISBEPDI.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -524,10 +533,10 @@ import {
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-Z2NVZQ2X.js";
+} from "../chunk-QR66SJS4.js";
 import {
   describeEarlierWork
-} from "../chunk-W2K6YXWC.js";
+} from "../chunk-QUDDQGFY.js";
 import {
   CHIEF_ARCHITECT_AGENT_NAME,
   DEFAULT_EXISTING_SURFACE_TOKENS,
@@ -535,6 +544,7 @@ import {
   EMBEDDING_PROVIDERS,
   EXPERT_AGENT_NAME,
   LOCAL_EMBEDDING_MODELS,
+  STAGE_AGENT_STAGES,
   STAGE_ORDER,
   SchemaValidator,
   delivery_policy_schema_default,
@@ -549,7 +559,7 @@ import {
   stageForAgentName,
   stripPluginAgentNamespace,
   syncFrameworkConfig
-} from "../chunk-WJ5G3OH5.js";
+} from "../chunk-H2GJD26E.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   VISUAL_EVIDENCE_DOC_TYPE,
@@ -584,6 +594,7 @@ import {
   detectTicketRefs
 } from "../chunk-SU7RODZI.js";
 import {
+  keepingLedgerSessionCache,
   readLedgerSessionId,
   resolveSessionId
 } from "../chunk-HV6ESCNW.js";
@@ -3590,8 +3601,9 @@ var SimilarityResolver = class {
 function clamp2(n, lo, hi) {
   return Math.max(lo, Math.min(hi, n));
 }
+var PAIR_SEPARATOR = String.fromCharCode(1);
 function pairKeyOf(a, b) {
-  return a < b ? `${a}${b}` : `${b}${a}`;
+  return a < b ? `${a}${PAIR_SEPARATOR}${b}` : `${b}${PAIR_SEPARATOR}${a}`;
 }
 function makeEdge(a, b, score) {
   const [s, t] = a < b ? [a, b] : [b, a];
@@ -18905,95 +18917,6 @@ function printReport(rows) {
 init_esm_shims();
 import { readFileSync as readFileSync39 } from "fs";
 
-// src/module-decisions/extractor.ts
-init_esm_shims();
-var PATTERNS = [
-  {
-    label: "ticket-header-module",
-    re: /(?:^|\n)\s*Module:\s*([A-Za-z0-9][A-Za-z0-9 _-]{0,40})\s*(?:\n|$)/g
-  },
-  {
-    label: "ticket-header-component",
-    re: /(?:^|\n)\s*Component:\s*([A-Za-z0-9][A-Za-z0-9 _-]{0,40})\s*(?:\n|$)/g
-  },
-  {
-    label: "ticket-header-area",
-    re: /(?:^|\n)\s*Area:\s*([A-Za-z0-9][A-Za-z0-9 _-]{0,40})\s*(?:\n|$)/g
-  },
-  {
-    label: "ticket-header-subsystem",
-    re: /(?:^|\n)\s*Subsystem:\s*([A-Za-z0-9][A-Za-z0-9 _-]{0,40})\s*(?:\n|$)/g
-  },
-  { label: "inline-module-slug", re: /\bmodule:\s*([a-z0-9][a-z0-9-]{0,40})\b/g },
-  {
-    label: "new-module-name",
-    re: /\bnew module\s+([A-Z][A-Za-z0-9_-]*(?:\s+[A-Z][A-Za-z0-9_-]*){0,4})\b/g
-  },
-  { label: "in-the-module", re: /\bin the\s+([A-Za-z0-9][A-Za-z0-9 _-]{0,30}?)\s+module\b/g }
-];
-function deriveDisplayName(slug, raw) {
-  const cleaned = raw.trim();
-  if (cleaned.length > 0 && cleaned.length <= 60) {
-    return cleaned;
-  }
-  return slug.split("-").map((p) => p.length === 0 ? p : p.charAt(0).toUpperCase() + p.slice(1)).join(" ");
-}
-function findNearCollision(slug, existing, bound) {
-  let bestSlug = null;
-  let bestDist = bound + 1;
-  for (const cand of existing) {
-    if (cand === slug) continue;
-    const d = levenshtein(slug, cand, bound);
-    if (d <= bound && d < bestDist) {
-      bestDist = d;
-      bestSlug = cand;
-    }
-  }
-  return bestSlug;
-}
-function classify(slug, existing, bound) {
-  if (existing.has(slug)) {
-    return { kind: "exact-match", collision_with: slug };
-  }
-  const near = findNearCollision(slug, Array.from(existing), bound);
-  if (near !== null) {
-    return { kind: "near-collision", collision_with: near };
-  }
-  return { kind: "unknown", collision_with: null };
-}
-function extractCandidates(opts) {
-  const { prompt, existingSlugs } = opts;
-  const bound = opts.nearCollisionDistance ?? 2;
-  const existing = new Set(existingSlugs);
-  const seenSlugs = /* @__PURE__ */ new Set();
-  const out = [];
-  for (const { label, re } of PATTERNS) {
-    re.lastIndex = 0;
-    let match;
-    while ((match = re.exec(prompt)) !== null) {
-      const raw = match[1];
-      if (raw === void 0) continue;
-      const slug = normaliseSlug(raw);
-      if (slug === null || !isValidSlug(slug)) continue;
-      if (seenSlugs.has(slug)) continue;
-      seenSlugs.add(slug);
-      const { kind, collision_with } = classify(slug, existing, bound);
-      out.push({
-        slug,
-        display_name: deriveDisplayName(slug, raw),
-        kind,
-        collision_with,
-        pattern: label,
-        excerpt: match[0].trim().slice(0, 200)
-      });
-    }
-  }
-  return out;
-}
-function candidatesNeedingDecision(candidates) {
-  return candidates.filter((c) => c.kind !== "exact-match");
-}
-
 // src/module-decisions/inferencer.ts
 init_esm_shims();
 var STOP_WORDS = /* @__PURE__ */ new Set([
@@ -23894,8 +23817,19 @@ function mergeQuestionBatch(enrichment, expertChief, questionBudget) {
 // src/spec-pipeline/grounding.ts
 init_esm_shims();
 var import_fast_glob5 = __toESM(require_out(), 1);
+import { createHash as createHash11 } from "crypto";
 import { existsSync as existsSync51, readFileSync as readFileSync51 } from "fs";
 import { join as join81 } from "path";
+var GROUNDING_FALLBACK_REASONS = {
+  ragDisabled: "rag-disabled",
+  missingKey: "missing-embedding-key",
+  coldIndex: "cold-index",
+  budget: "budget-exceeded",
+  noResults: "no-retrieval-results"
+};
+function requestDigest(request) {
+  return `sha256:${createHash11("sha256").update(request).digest("hex")}`;
+}
 var DEFAULT_MAX_FILES = 40;
 var DEFAULT_SPARSE_FLOOR = 3;
 var SCAFFOLD_HEADINGS = new Set(
@@ -24124,13 +24058,54 @@ function groundArea(projectRoot, options = {}) {
 function referenceKindFor(sourceFile) {
   return /(^|\/)rules?\//.test(sourceFile.replace(/\\/g, "/")) ? "rule" : "doc";
 }
+function lexicalFallback(projectRoot, options, reason2) {
+  return { ...groundArea(projectRoot, options), mode: "lexical-fallback", fallback_reason: reason2 };
+}
+async function indexIsWarm(projectRoot) {
+  if (!existsSync51(join81(projectRoot, PATHS.CHUNK_INDEX))) return false;
+  try {
+    const status = await new FileVectorIndex().status(projectRoot);
+    return status.present && !status.corrupt && (status.meta?.chunk_count ?? 0) > 0;
+  } catch {
+    return false;
+  }
+}
+async function projectIndexBlocker(projectRoot) {
+  const intelligence = normalizeIntelligenceConfig(readProjectProfile(projectRoot)?.intelligence);
+  if (intelligence.embedding_provider === "openai" && !getProjectSecret(projectRoot, "OPENAI_API_KEY")) {
+    return GROUNDING_FALLBACK_REASONS.missingKey;
+  }
+  return await indexIsWarm(projectRoot) ? null : GROUNDING_FALLBACK_REASONS.coldIndex;
+}
+var BUDGET_SPENT = /* @__PURE__ */ Symbol("budget-spent");
+async function withinBudget(work, budgetMs) {
+  let timer;
+  const spent = new Promise((resolve18) => {
+    timer = setTimeout(() => resolve18(BUDGET_SPENT), budgetMs);
+  });
+  work.catch(() => void 0);
+  try {
+    return await Promise.race([work, spent]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
 async function groundAreaAsync(projectRoot, options = {}) {
   const ragEnabled = options.ragEnabled ?? normalizeIntelligenceConfig(readProjectProfile(projectRoot)?.intelligence).rag_enabled;
-  if (ragEnabled) {
-    const rag = await groundViaRetrieval(projectRoot, options);
-    if (rag && rag.terms.length > 0) return rag;
+  if (!ragEnabled) {
+    return lexicalFallback(projectRoot, options, GROUNDING_FALLBACK_REASONS.ragDisabled);
   }
-  return groundArea(projectRoot, options);
+  const blocker = options.service ? null : await projectIndexBlocker(projectRoot);
+  if (blocker) return lexicalFallback(projectRoot, options, blocker);
+  const rag = await withinBudget(
+    groundViaRetrieval(projectRoot, options),
+    options.budgetMs ?? DEFAULT_GROUNDING_BUDGET_MS
+  );
+  if (rag === BUDGET_SPENT) {
+    return lexicalFallback(projectRoot, options, GROUNDING_FALLBACK_REASONS.budget);
+  }
+  if (rag && rag.terms.length > 0) return { ...rag, mode: "retrieval" };
+  return lexicalFallback(projectRoot, options, GROUNDING_FALLBACK_REASONS.noResults);
 }
 async function groundViaRetrieval(projectRoot, options) {
   const maxFiles = options.maxFiles ?? DEFAULT_MAX_FILES;
@@ -24142,6 +24117,7 @@ async function groundViaRetrieval(projectRoot, options) {
     ({ slices } = await gatherWorkingSetSlices(projectRoot, {
       scope: "docs",
       topN: maxFiles,
+      skipSync: true,
       ...query ? { query } : {},
       ...options.changedPaths ? { changedPaths: options.changedPaths } : {},
       ...options.service ? { service: options.service } : {}
@@ -24539,6 +24515,51 @@ function resolveDir(options) {
   }
   return { dirName, store: { sessionId } };
 }
+function sameModules(left, right) {
+  const a = [...left ?? []].sort();
+  const b = [...right].sort();
+  return a.length === b.length && a.every((value, index) => value === b[index]);
+}
+function cachedGrounding(projectRoot, dirName, digest, modules) {
+  const cached = readStagedJson(projectRoot, dirName, "grounding");
+  if (!cached || typeof cached !== "object" || !Array.isArray(cached.references)) return null;
+  if (cached.request_digest !== digest || !sameModules(cached.modules, modules)) return null;
+  return cached;
+}
+function isReusable(cached) {
+  return cached !== null && (cached.mode === "retrieval" || cached.mode === "lexical-fallback" && cached.fallback_retried === true);
+}
+async function groundRequest(projectRoot, dirName, request, modules) {
+  const digest = requestDigest(request);
+  const cached = cachedGrounding(projectRoot, dirName, digest, modules);
+  if (cached !== null && isReusable(cached)) return { grounding: cached, reused: true };
+  const fresh = await groundAreaAsync(projectRoot, {
+    ...modules.length > 0 ? { modules: [...modules] } : {},
+    query: request,
+    budgetMs: readPipelineConfig(projectRoot).grounding_budget_ms
+  });
+  const retried = cached?.mode === "lexical-fallback" && fresh.mode === "lexical-fallback";
+  return {
+    grounding: {
+      ...fresh,
+      request_digest: digest,
+      modules: [...modules],
+      ...retried ? { fallback_retried: true } : {}
+    },
+    reused: false
+  };
+}
+function exitIfRetrievalAbandoned(grounding) {
+  if (grounding.fallback_reason !== GROUNDING_FALLBACK_REASONS.budget) return;
+  process.stdout.write("", () => process.exit(Number(process.exitCode ?? 0)));
+}
+function groundingOutcome(grounding, reused) {
+  if (reused) return { grounding: "reused" };
+  return {
+    grounding: grounding.mode ?? "retrieval",
+    ...grounding.fallback_reason ? { grounding_reason: grounding.fallback_reason } : {}
+  };
+}
 function plainLanguageSources(projectRoot, dirName) {
   const grounding = readStagedJson(projectRoot, dirName, "grounding");
   return {
@@ -24624,27 +24645,37 @@ function createSpecPipelineCommand() {
       const request = await resolveRequestText({ ...options, dirName: resolved.dirName });
       if (request === null) return;
       const modules = options.modules ? options.modules.split(",").map((m) => m.trim()).filter((m) => m.length > 0) : void 0;
-      const grounding = await groundAreaAsync(options.projectRoot, modules ? { modules } : {});
-      writeStepArtifact(
+      const { grounding, reused } = await groundRequest(
         options.projectRoot,
         resolved.dirName,
-        "ground",
-        JSON.stringify(grounding, null, 2)
+        request,
+        modules ?? []
       );
+      if (!reused) {
+        writeStepArtifact(
+          options.projectRoot,
+          resolved.dirName,
+          "ground",
+          JSON.stringify(grounding, null, 2)
+        );
+      }
       recordStep(options.projectRoot, resolved.dirName, "ground", "complete", resolved.store);
       writeRequest(options.projectRoot, resolved.dirName, request, resolved.store);
       const label = labelPrompt(request, grounding);
       writeLabel(options.projectRoot, resolved.dirName, label, resolved.store);
       recordStep(options.projectRoot, resolved.dirName, "label", "complete", resolved.store);
       const config = readPipelineConfig(options.projectRoot);
+      if (reused) console.log("grounding reused");
       console.log(
         JSON.stringify({
           next_step: nextStep(options.projectRoot, resolved.dirName),
           label: label.label,
           sparse: grounding.sparse,
-          experts: expertsActive(config) ? "on" : "off"
+          experts: expertsActive(config) ? "on" : "off",
+          ...groundingOutcome(grounding, reused)
         })
       );
+      exitIfRetrievalAbandoned(grounding);
     }
   );
   command.command("status").description("Show the next step and the enforcement config in effect").option(...projectRootOpt).option(...sessionOpt).action((options) => {
@@ -24667,7 +24698,10 @@ function createSpecPipelineCommand() {
     const resolved = resolveDir(options);
     if (!resolved) return;
     const modules = options.modules ? options.modules.split(",").map((m) => m.trim()).filter((m) => m.length > 0) : void 0;
-    const grounding = await groundAreaAsync(options.projectRoot, modules ? { modules } : {});
+    const grounding = await groundAreaAsync(options.projectRoot, {
+      ...modules ? { modules } : {},
+      budgetMs: readPipelineConfig(options.projectRoot).grounding_budget_ms
+    });
     writeStepArtifact(
       options.projectRoot,
       resolved.dirName,
@@ -24681,9 +24715,11 @@ function createSpecPipelineCommand() {
         references: grounding.references.length,
         terms: grounding.terms.length,
         sparse: grounding.sparse,
-        path: grounding.path
+        path: grounding.path,
+        ...groundingOutcome(grounding, false)
       })
     );
+    exitIfRetrievalAbandoned(grounding);
   });
   command.command("label").description("S1 \u2014 rate clarity against the grounding (zero model tokens)").argument("<prompt>", "The request prompt to label").option(...projectRootOpt).option(...sessionOpt).action((prompt, options) => {
     const resolved = resolveDir(options);
@@ -25455,12 +25491,45 @@ function runStageSettings(options) {
     process.exitCode = 1;
   }
 }
+function openStageAgentId(root, sessionId, dirName) {
+  const open = liveStageAgents(readFeatureStageUnit(root, dirName)).filter(
+    (agent) => agent.agentId !== null && agent.sessionId === sessionId
+  );
+  return open.at(-1)?.agentId ?? null;
+}
+function runStageBrief(stage, options) {
+  if (!stage || !STAGE_AGENT_STAGES.includes(stage)) {
+    console.error(
+      `name the stage to brief: one of ${STAGE_AGENT_STAGES.join(", ")}${stage ? ` (got "${stage}")` : ""}`
+    );
+    process.exitCode = 1;
+    return;
+  }
+  const root = options.projectRoot;
+  let brief;
+  try {
+    brief = keepingLedgerSessionCache(root, () => {
+      const sessionId = resolveBriefSession(root, { session_id: options.session }, process.env);
+      const dirName = currentFeature(root, sessionId);
+      if (dirName === null) {
+        throw new Error(`no active change for session ${sessionId}`);
+      }
+      const agentId = options.agentId ?? process.env.SE_AGENT_ID ?? openStageAgentId(root, sessionId, dirName);
+      return buildStageBrief(stage, root, sessionId, { agentId, resumed: true });
+    });
+  } catch (error) {
+    console.error(`could not build the ${stage} stage brief: ${error.message}`);
+    process.exitCode = 1;
+    return;
+  }
+  console.log(brief);
+}
 function createStageCommand() {
   return new Command("stage").description(
     "Mark a feature-development stage boundary in the stage-evidence ledger (clears the pre-code block for planning/specification)"
   ).argument(
     "<phase>",
-    "'start' or 'end', or 'settings' to print and record this project's per-stage effort and model"
+    "'start' or 'end', 'settings' to print and record this project's per-stage effort and model, or 'brief' to print a stage's brief for a resumed stage agent"
   ).argument("[stage]", `one of: ${STAGE_ORDER.join(", ")}`).option("--project-root <path>", "Project root", process.cwd()).option(
     "--session <id>",
     "Session id to record under (defaults to SE_SESSION / CLAUDE_SESSION_ID, then the shared ledger-session cache)"
@@ -25474,13 +25543,20 @@ function createStageCommand() {
   ).option("--issue <ref>", "Ticket/issue ref for a titled feature (e.g. <number>, PQD-123)").option(
     "--agent <name>",
     "The agent recording this boundary, e.g. paqad-planning. A dispatched stage agent passes its own name so the row is attributable; omitted means the orchestrator marked it inline. Defaults to PAQAD_STAGE_AGENT when set."
+  ).option(
+    "--agent-id <id>",
+    "On a `brief`, the host agent id to print on the command lines (defaults to SE_AGENT_ID, then the session's open stage-agent row)"
   ).action((phase, stage, options) => {
     if (phase === "settings") {
       runStageSettings(options);
       return;
     }
+    if (phase === "brief") {
+      runStageBrief(stage, options);
+      return;
+    }
     if (phase !== "start" && phase !== "end") {
-      console.error(`unknown phase "${phase}" \u2014 use 'start', 'end' or 'settings'`);
+      console.error(`unknown phase "${phase}" \u2014 use 'start', 'end', 'settings' or 'brief'`);
       process.exitCode = 1;
       return;
     }
@@ -25524,7 +25600,8 @@ function createStageCommand() {
       artifactPaths,
       title: phase === "start" ? options.title : void 0,
       issue: options.issue,
-      agent: options.agent ?? process.env.PAQAD_STAGE_AGENT ?? void 0
+      agent: options.agent ?? process.env.PAQAD_STAGE_AGENT ?? void 0,
+      agentId: phase === "start" ? process.env.SE_AGENT_ID : void 0
     });
     if (!recorded) {
       console.error(
@@ -25644,7 +25721,7 @@ init_esm_shims();
 
 // src/visual-evidence/attach.ts
 init_esm_shims();
-import { createHash as createHash11 } from "crypto";
+import { createHash as createHash12 } from "crypto";
 import { mkdirSync as mkdirSync20, readFileSync as readFileSync55, writeFileSync as writeFileSync19 } from "fs";
 import { basename as basename5, extname as extname4, join as join83 } from "path";
 
@@ -25815,7 +25892,7 @@ function attachVisualEvidence(input) {
       caption,
       dir,
       recorded_at: now(),
-      image_sha256: createHash11("sha256").update(bytes).digest("hex"),
+      image_sha256: createHash12("sha256").update(bytes).digest("hex"),
       image_bytes: bytes.length,
       status: "captured",
       ...input.ac ? { ac: input.ac } : {}
@@ -25951,7 +26028,7 @@ function resolveVisualEvidencePlan(projectRoot, changedFiles) {
 
 // src/visual-evidence/runner.ts
 init_esm_shims();
-import { createHash as createHash12 } from "crypto";
+import { createHash as createHash13 } from "crypto";
 import { existsSync as existsSync52, mkdirSync as mkdirSync21, renameSync as renameSync10, rmSync as rmSync7, writeFileSync as writeFileSync20 } from "fs";
 import { join as join84 } from "path";
 import { pathToFileURL as pathToFileURL3 } from "url";
@@ -26322,7 +26399,7 @@ async function loadChromium() {
   return chromium;
 }
 function sha256(bytes) {
-  return createHash12("sha256").update(bytes).digest("hex");
+  return createHash13("sha256").update(bytes).digest("hex");
 }
 async function runVisualEvidence(input) {
   const { projectRoot, dirName, profile, trigger, changedFiles } = input;

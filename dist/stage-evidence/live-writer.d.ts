@@ -46,6 +46,7 @@ interface MarkedStageInput {
     sessionId?: string | null;
     sessionSource?: StageSessionSource;
     agent?: string;
+    agentId?: string;
     stage: string;
     phase: MarkedStagePhase;
     artifactPaths?: string[];

@@ -6,7 +6,7 @@ import {
   readChangeCost,
   readCostCache,
   roundUsd
-} from "./chunk-W725ZROV.js";
+} from "./chunk-P5B33HZI.js";
 import {
   CHIEF_ROLE,
   addTokenUsage,
@@ -15,21 +15,21 @@ import {
   highTableDoneTimes,
   maxTokenUsage,
   readHighTable
-} from "./chunk-N2D6DTTC.js";
+} from "./chunk-4ZIBQHJ5.js";
 import {
   STAGE_AGENT_HOSTS
-} from "./chunk-YBNA2OHW.js";
+} from "./chunk-LJN6UHGD.js";
 import {
   PAQAD_VERDICT
 } from "./chunk-5QVCE2TS.js";
 import {
   hasOpenUnendedStage,
   liveStageAgents
-} from "./chunk-IG2PHJLP.js";
+} from "./chunk-OAZIA5U6.js";
 import {
   episodeStart,
   readRouteTurns
-} from "./chunk-ZKB7NKTP.js";
+} from "./chunk-NEBNXGEA.js";
 import {
   BUNDLE_MANIFEST,
   aggregateSpecPipelineMetrics,
@@ -46,17 +46,17 @@ import {
   resolveFlooredMode,
   resolveRuleComplianceMode,
   sessionWroteInEpisode
-} from "./chunk-I5MSRH46.js";
+} from "./chunk-QKITQ5YP.js";
 import {
   StackPackLoader
-} from "./chunk-YGG7QFD6.js";
+} from "./chunk-SLA7U7ST.js";
 import {
   readAnyDecisionPacket,
   readContractDecisions
-} from "./chunk-Z273AZOQ.js";
+} from "./chunk-AHUCGXCI.js";
 import {
   readProjectProfile
-} from "./chunk-SROHFKN6.js";
+} from "./chunk-RHPTIMUW.js";
 import {
   appendHooksLog
 } from "./chunk-BW7VURA4.js";
@@ -74,13 +74,13 @@ import {
   readDuplication,
   readFeatureEvidence,
   readRuleRun
-} from "./chunk-74XGAAQY.js";
+} from "./chunk-RUM5BXA3.js";
 import {
   isTestFile
-} from "./chunk-WYQCLM7Z.js";
+} from "./chunk-GMXHN3L4.js";
 import {
   readWorkflowState
-} from "./chunk-MQWE4AJB.js";
+} from "./chunk-6VTX7ZYM.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -104,7 +104,7 @@ import {
   readFeatureStageUnit,
   stampFeatureDocument,
   writeFeatureIndexDocument
-} from "./chunk-Z2NVZQ2X.js";
+} from "./chunk-QR66SJS4.js";
 import {
   STAGE_AGENT_STAGES,
   isSubagentCapableAdapter,
@@ -117,7 +117,7 @@ import {
   resolveSpecPipelineSwitches,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "./chunk-WJ5G3OH5.js";
+} from "./chunk-H2GJD26E.js";
 import {
   ENVELOPE_HEADER_KEYS,
   LANES,
@@ -1708,8 +1708,12 @@ function describeError(error) {
 // src/stage-isolation/isolation-summary.ts
 init_esm_shims();
 var LEGACY_CONTEXT_EFFICIENCY_FILE = "context-efficiency.jsonl";
+function stagesOfRow(row) {
+  const listed = Array.isArray(row.stages) ? row.stages.map(String) : [];
+  return [String(row.stage), ...listed].filter((stage) => STAGE_AGENT_STAGES.includes(stage));
+}
 function isIsolatedStageRow(row) {
-  return STAGE_AGENT_STAGES.includes(String(row.stage));
+  return stagesOfRow(row).length > 0;
 }
 function readStageAgentRows(projectRoot, dirName) {
   return readFeatureStageUnit(projectRoot, dirName).filter(
@@ -1725,6 +1729,23 @@ function legacyRows(projectRoot, dirName) {
 function count(value) {
   return typeof value === "number" && Number.isFinite(value) && value > 0 ? Math.floor(value) : 0;
 }
+function agentKey(row) {
+  return typeof row.agent_id === "string" && row.agent_id.trim() !== "" ? row.agent_id.trim() : null;
+}
+function tokensNotRecarried(rows) {
+  const latestByAgent = /* @__PURE__ */ new Map();
+  let unkeyed = 0;
+  for (const row of rows) {
+    const tokens = count(row.tokens_not_recarried);
+    const key = agentKey(row);
+    if (key === null) {
+      unkeyed += tokens;
+    } else {
+      latestByAgent.set(key, Math.max(latestByAgent.get(key) ?? 0, tokens));
+    }
+  }
+  return [...latestByAgent.values()].reduce((sum, tokens) => sum + tokens, unkeyed);
+}
 function hasStageAgentEvidence(projectRoot, dirName) {
   return readStageAgentRows(projectRoot, dirName).length > 0 || legacyRows(projectRoot, dirName).length > 0;
 }
@@ -1735,8 +1756,8 @@ function summarizeStageIsolation(projectRoot, dirName) {
     return null;
   }
   return {
-    stages: new Set([...rows, ...legacy].map((row) => String(row.stage))).size,
-    tokensNotRecarried: rows.reduce((sum, row) => sum + count(row.tokens_not_recarried), 0) + legacy.reduce((sum, row) => sum + count(row.carried_history_avoided_estimate), 0),
+    stages: new Set([...rows, ...legacy].flatMap(stagesOfRow)).size,
+    tokensNotRecarried: tokensNotRecarried(rows) + legacy.reduce((sum, row) => sum + count(row.carried_history_avoided_estimate), 0),
     estimate: legacy.length > 0 || rows.some((row) => row.estimate !== false)
   };
 }

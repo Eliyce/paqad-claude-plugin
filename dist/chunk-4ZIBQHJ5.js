@@ -5,12 +5,12 @@ import {
 } from "./chunk-NRKCUFAE.js";
 import {
   currentFeature
-} from "./chunk-Z2NVZQ2X.js";
+} from "./chunk-QR66SJS4.js";
 import {
   CHIEF_ARCHITECT_AGENT_NAME,
   isHighTableAgent,
   stripPluginAgentNamespace
-} from "./chunk-WJ5G3OH5.js";
+} from "./chunk-H2GJD26E.js";
 import {
   stampBundleRow
 } from "./chunk-KFLIUVMP.js";

@@ -1,7 +1,7 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   readRawModuleMap
-} from "./chunk-6Z2MPTAC.js";
+} from "./chunk-XISBEPDI.js";
 import {
   toPosixPath
 } from "./chunk-4K4CM3QN.js";
@@ -20,7 +20,7 @@ import {
   requiredPreCodeStages,
   resumeFeatureByRef,
   startedAfterLastEnd
-} from "./chunk-Z2NVZQ2X.js";
+} from "./chunk-QR66SJS4.js";
 import {
   readChangeConstants,
   sessionReattachableFeature
@@ -195,7 +195,8 @@ function startStage(projectRoot, stage, ctx) {
     kind: "stage_start",
     stage,
     event_status: "started",
-    evidence_source: "live-mark"
+    evidence_source: "live-mark",
+    ...ctx.agentId ? { agent_id: ctx.agentId } : {}
   });
 }
 function endStage(projectRoot, stage, input, ctx) {
@@ -389,7 +390,10 @@ function recordMarkedStage(projectRoot, input) {
     }
     if (input.phase === "start") {
       closeOpenStagesForMarkedStart(projectRoot, input.stage, ctx);
-      startStage(projectRoot, input.stage, ctx);
+      startStage(projectRoot, input.stage, {
+        ...ctx,
+        ...input.agentId?.trim() ? { agentId: input.agentId.trim() } : {}
+      });
     } else {
       endStage(projectRoot, input.stage, { artifactPaths: input.artifactPaths ?? [] }, ctx);
     }

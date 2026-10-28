@@ -31,17 +31,18 @@ function emptyGroup() {
 function unknownSplit(reason) {
   return { state: "unknown", reason, base_commit: null, own: null, inherited: null };
 }
+var FIELD_SEPARATOR = String.fromCharCode(31);
 function isPullRequestRef(ref) {
   return /^#\d+$/.test(ref.trim());
 }
 function readBranchCommits(projectRoot, baseCommit) {
   const out = git(projectRoot, ["log", `${baseCommit}..HEAD`, "--format=%H%x1f%P%x1f%s"]) ?? "";
   return out.split("\n").filter(Boolean).map((line) => {
-    const [sha, parents = "", ...subject] = line.split("");
+    const [sha, parents = "", ...subject] = line.split(FIELD_SEPARATOR);
     return {
       sha,
       parents: parents.split(" ").filter(Boolean).length,
-      tickets: detectTicketRefs(subject.join(""), "generic").filter(
+      tickets: detectTicketRefs(subject.join(FIELD_SEPARATOR), "generic").filter(
         (ref) => !isPullRequestRef(ref)
       )
     };

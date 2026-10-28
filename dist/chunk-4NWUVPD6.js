@@ -45,7 +45,7 @@ import {
   writeFeatureTechDebtIndex,
   writeVerificationEvidence,
   writesLedger
-} from "./chunk-NWLOVYNZ.js";
+} from "./chunk-KMXD7XEY.js";
 import {
   DSSE_PAYLOAD_TYPE,
   ZERO_DIGEST,
@@ -56,7 +56,7 @@ import {
   pae,
   projectFeatureReceipt,
   splitReceiptEvidenceRows
-} from "./chunk-W725ZROV.js";
+} from "./chunk-P5B33HZI.js";
 import {
   buildFullHookChain,
   buildNativeCompletionHookFile,
@@ -68,7 +68,7 @@ import {
 import {
   require_lib,
   writeStageAgents
-} from "./chunk-YBNA2OHW.js";
+} from "./chunk-LJN6UHGD.js";
 import {
   getOrLoad
 } from "./chunk-F4TESBBJ.js";
@@ -80,7 +80,7 @@ import {
   syncModuleHealth,
   syncModuleHealthFromVerification,
   writeModuleHealthProfile
-} from "./chunk-PQI5LEGM.js";
+} from "./chunk-4HMHFOSG.js";
 import {
   AstChunker,
   ChunkIndexManager,
@@ -90,7 +90,7 @@ import {
   appendRagAudit,
   createEmbeddingProvider,
   createReranker
-} from "./chunk-YSEEYGPY.js";
+} from "./chunk-J2YJQXUP.js";
 import {
   PAQAD_STATUS_GLYPH,
   PAQAD_STATUS_LABEL,
@@ -102,7 +102,7 @@ import {
 import {
   liveChecksRunningMarker,
   liveStageAgents
-} from "./chunk-IG2PHJLP.js";
+} from "./chunk-OAZIA5U6.js";
 import {
   ENGINE_INSTALL_NETWORK_HINT,
   PLUGIN_ID,
@@ -118,7 +118,7 @@ import {
   compileRuleScripts,
   isRuleScriptMapStale,
   readDrift
-} from "./chunk-TMOH3BTM.js";
+} from "./chunk-BNNL5DFD.js";
 import {
   BUNDLE_MANIFEST,
   COMPLIANCE_SCHEMA_VERSION,
@@ -192,7 +192,7 @@ import {
   writeRequest,
   writeRuleContext,
   writeStagedText
-} from "./chunk-I5MSRH46.js";
+} from "./chunk-QKITQ5YP.js";
 import {
   DEFAULT_CONTEXT_BUDGET,
   DEFAULT_STANDING_EXPERTS,
@@ -211,7 +211,7 @@ import {
   readCompiledRules,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-NALGT7FL.js";
+} from "./chunk-O2WKFMHD.js";
 import {
   CancelledError,
   StackPackLoader,
@@ -221,13 +221,13 @@ import {
   getSharedSkillAuditBuffer,
   isCancelledError,
   resolvePackManagerRoots
-} from "./chunk-YGG7QFD6.js";
+} from "./chunk-SLA7U7ST.js";
 import {
   DECISION_CATEGORY_DEFAULTS,
   DecisionStore,
   isStrictDecisionId,
   mintDecisionId
-} from "./chunk-Z273AZOQ.js";
+} from "./chunk-AHUCGXCI.js";
 import {
   CAPABILITIES,
   DOMAINS,
@@ -238,11 +238,13 @@ import {
   engineLog,
   getProfileDomain,
   getSecretPermissionWarning,
-  isMissingFileError,
   readProjectProfile,
-  readTextIfExistsSync,
   setEngineLogger
-} from "./chunk-SROHFKN6.js";
+} from "./chunk-RHPTIMUW.js";
+import {
+  isMissingFileError,
+  readTextIfExistsSync
+} from "./chunk-TLKXJ74I.js";
 import {
   appendHooksLog
 } from "./chunk-BW7VURA4.js";
@@ -254,14 +256,14 @@ import {
 import {
   digestFile,
   subtractUnchangedBaselineFiles
-} from "./chunk-CJB6WRAX.js";
+} from "./chunk-6WQX4XJ6.js";
 import {
   DEFAULT_IGNORE_GLOBS,
   dropGitIgnored,
   readReport,
   ruleRunFindings,
   scanWorkingTree
-} from "./chunk-CERSUAYY.js";
+} from "./chunk-JN3L7KCE.js";
 import {
   hudReceiptPath,
   hudVerdictPath,
@@ -275,7 +277,7 @@ import {
   readChangeMetrics,
   readDuplication,
   readRuleRun
-} from "./chunk-74XGAAQY.js";
+} from "./chunk-RUM5BXA3.js";
 import {
   buildEvidenceRow,
   readEvidenceRowsAt
@@ -287,32 +289,32 @@ import {
   isTestFile,
   loadChangeEvidence,
   readGitStatusFiles
-} from "./chunk-WYQCLM7Z.js";
+} from "./chunk-GMXHN3L4.js";
 import {
   execa,
   onExit
 } from "./chunk-O77JBFWW.js";
 import {
   STAGE_NARRATION
-} from "./chunk-TERKNT5P.js";
+} from "./chunk-MROQZYOD.js";
 import {
   extractAssistantText,
   routeIsAffirmativelyNonFeature,
   strayBundleFiles
-} from "./chunk-WV4TPGQD.js";
+} from "./chunk-FL6ONVOX.js";
 import {
   endStage,
   openStageEvidence,
   stageIsOpen,
   stagesWithKind
-} from "./chunk-XAJVKVUJ.js";
+} from "./chunk-YXTFS35T.js";
 import {
   appendModuleMapEvent,
   appendRunCancelledEvent,
   emitContextTruncated,
   matchesAnyGlob,
   readRawModuleMap
-} from "./chunk-6Z2MPTAC.js";
+} from "./chunk-XISBEPDI.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -342,7 +344,7 @@ import {
   resolveFeatureRef,
   startedAfterLastEnd,
   writeFeatureIndexDocument
-} from "./chunk-Z2NVZQ2X.js";
+} from "./chunk-QR66SJS4.js";
 import {
   DEFAULT_BENCHMARK_GATES,
   DEFAULT_FRAMEWORK_CONFIG,
@@ -374,7 +376,7 @@ import {
   writeConfigExample,
   writeConfigsReadme,
   writeFrameworkOverridesToConfig
-} from "./chunk-WJ5G3OH5.js";
+} from "./chunk-H2GJD26E.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   buildTextHeader,
@@ -3407,6 +3409,7 @@ function summarizeSpecReview(review) {
 function assertComplianceSummaryInvariants(summary) {
   enforceSummaryInvariants(summary);
 }
+var FILE_SEPARATOR = String.fromCharCode(1);
 async function computeTestFilesHash(projectRoot, globs) {
   const matches = await (0, import_fast_glob.default)(globs, { cwd: projectRoot, absolute: true, onlyFiles: true });
   const sortedFiles = [...new Set(matches)].sort((a, b) => a.localeCompare(b));
@@ -3414,7 +3417,7 @@ async function computeTestFilesHash(projectRoot, globs) {
     return { sortedFiles, testFilesHash: sha256Hex("") };
   }
   const contents = await Promise.all(sortedFiles.map((f) => readFile8(f, "utf8")));
-  const hashInput = sortedFiles.map((f, i) => `${f}\0${contents[i]}`).join("");
+  const hashInput = sortedFiles.map((f, i) => `${f}\0${contents[i]}`).join(FILE_SEPARATOR);
   return { sortedFiles, testFilesHash: sha256Hex(hashInput) };
 }
 async function loadCachedReport(projectRoot, reportPath2) {
@@ -11429,6 +11432,7 @@ Time: 0.01s`
 init_esm_shims();
 var GATE_MODES = ["off", "warn", "strict"];
 var DEFAULT_TOKEN_CEILING = 4e4;
+var DEFAULT_GROUNDING_BUDGET_MS = 15e3;
 function asGateMode(raw, fallback) {
   if (raw === void 0) return fallback;
   const v = raw.trim().toLowerCase();
@@ -11463,6 +11467,13 @@ function readPipelineConfig(projectRoot, env2 = process.env) {
       env2,
       "spec_pipeline_token_ceiling",
       DEFAULT_TOKEN_CEILING,
+      (n) => n > 0
+    ),
+    grounding_budget_ms: resolveNumericConfig(
+      projectRoot,
+      env2,
+      "spec_grounding_budget_ms",
+      DEFAULT_GROUNDING_BUDGET_MS,
       (n) => n > 0
     ),
     experts_enabled: switches.experts_enabled,
@@ -16720,7 +16731,7 @@ var memoizedReport;
 function getEngineVersionReport() {
   if (memoizedReport === void 0) {
     memoizedReport = Object.freeze({
-      engineVersion: normalizeEngineVersion("1.108.0"),
+      engineVersion: normalizeEngineVersion("1.109.0"),
       minConsumerVersion: MIN_CONSUMER_VERSION,
       deprecatedAsOf: DEPRECATED_AS_OF
     });
@@ -36480,7 +36491,7 @@ function skipLines(gates, flagOn) {
 
 // src/verification/repository/run-repository-verification.ts
 function verifierVersion() {
-  return true ? "1.108.0" : "0.0.0-dev";
+  return true ? "1.109.0" : "0.0.0-dev";
 }
 function backstopGates() {
   return [
@@ -39684,7 +39695,7 @@ var WorkflowEngine = class {
 };
 
 // src/index.ts
-var VERSION = "1.108.0";
+var VERSION = "1.109.0";
 function getFrameworkName() {
   return "paqad-ai";
 }
@@ -39923,6 +39934,7 @@ export {
   __tokenEfficiencyInternals,
   parseTestOutput,
   __testOutputInternals,
+  DEFAULT_GROUNDING_BUDGET_MS,
   readPipelineConfig,
   expertsActive,
   Command,

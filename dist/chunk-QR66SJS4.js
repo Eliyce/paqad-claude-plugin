@@ -2,13 +2,13 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   changeOwnTickets,
   computeCommitSplit
-} from "./chunk-W2K6YXWC.js";
+} from "./chunk-QUDDQGFY.js";
 import {
   STAGE_EFFORT_LEVELS,
   STAGE_MODELS,
   STAGE_ORDER,
   stageForAgentName
-} from "./chunk-WJ5G3OH5.js";
+} from "./chunk-H2GJD26E.js";
 import {
   ENVELOPE_HEADER_PROPERTIES,
   UNTITLED_FEATURE_TITLE,
@@ -604,13 +604,14 @@ function git(projectRoot, args) {
     return void 0;
   }
 }
+var FIELD_SEPARATOR = String.fromCharCode(31);
 function commitsSinceBase(projectRoot, baseRef, headRef = "HEAD") {
   const range = baseRef ? `${baseRef}..${headRef}` : headRef;
   const out = git(projectRoot, ["log", range, "--format=%H%x1f%s"]);
   if (!out) return [];
   return out.split("\n").filter(Boolean).map((line) => {
-    const [sha, ...rest] = line.split("");
-    return { sha, subject: rest.join("") };
+    const [sha, ...rest] = line.split(FIELD_SEPARATOR);
+    return { sha, subject: rest.join(FIELD_SEPARATOR) };
   });
 }
 function reconcileDeliveryFromGit(projectRoot, dirName, capturedAt, options = {}) {
@@ -749,6 +750,7 @@ var STAGE_EVIDENCE_SCHEMA = {
     reason: { type: "string", minLength: 1 },
     tasks: { type: "integer", minimum: 0 },
     agent_id: { type: "string", minLength: 1 },
+    stages: { type: "array", items: { type: "string", minLength: 1 } },
     host_pid: { type: "integer", minimum: 1 },
     releases: { type: "array", items: { type: "string", minLength: 1 } },
     tokens_used: { type: "integer", minimum: 0 },

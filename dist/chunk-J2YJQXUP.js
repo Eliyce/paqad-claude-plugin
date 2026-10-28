@@ -7,26 +7,27 @@ import {
   atomicWriteFile,
   getPacksForFrameworks,
   isCancelledError
-} from "./chunk-YGG7QFD6.js";
+} from "./chunk-SLA7U7ST.js";
 import {
   Bm25Index,
   FrameworkError,
   engineLog,
   getProjectSecret,
+  pluginOptionOrEnv,
   readProjectProfile,
   redactSecrets,
   writeProjectProfile,
   writeProjectSecret
-} from "./chunk-SROHFKN6.js";
+} from "./chunk-RHPTIMUW.js";
 import {
   allocateChatOrdinal,
   currentChatOrdinal,
   mirrorRagRow
-} from "./chunk-74XGAAQY.js";
+} from "./chunk-RUM5BXA3.js";
 import {
   appendRunCancelledEvent,
   readRawModuleMap
-} from "./chunk-6Z2MPTAC.js";
+} from "./chunk-XISBEPDI.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -40,7 +41,7 @@ import {
   require_dist,
   setConfigValue,
   syncFrameworkConfig
-} from "./chunk-WJ5G3OH5.js";
+} from "./chunk-H2GJD26E.js";
 import {
   readGitState
 } from "./chunk-AINYJ3Q2.js";
@@ -602,7 +603,10 @@ function createReranker(config) {
     case "local":
       return new LocalReranker(config.model);
     case "cohere":
-      return new CohereReranker(config.model, config.api_key ?? "");
+      return new CohereReranker(
+        config.model,
+        pluginOptionOrEnv("COHERE_API_KEY") || config.api_key || ""
+      );
     default:
       return new PassthroughReranker();
   }
@@ -1619,7 +1623,7 @@ var HandoffParser = class {
 // src/session/resume-validator.ts
 var SessionResumeValidator = class {
   constructor(parser = new HandoffParser(), serviceFactory = async (projectRoot) => {
-    const { RagService: RagService2 } = await import("./service-AE2CYAPE.js");
+    const { RagService: RagService2 } = await import("./service-FTNGYY4Y.js");
     return new RagService2(projectRoot);
   }) {
     this.parser = parser;

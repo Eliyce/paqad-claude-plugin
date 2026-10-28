@@ -46,6 +46,7 @@ interface RecordStageAgentCompletionInput {
     adapter: string;
     now?: () => Date;
 }
+declare function stagesRunByAgent(projectRoot: string, dirName: string, stage: string, payload: SubagentStopPayload): string[];
 interface RecordStageAgentStartInput {
     projectRoot: string;
     payload: SubagentStopPayload;
@@ -54,5 +55,5 @@ interface RecordStageAgentStartInput {
 declare function recordStageAgentStart(input: RecordStageAgentStartInput): boolean;
 declare function recordStageAgentCompletion(input: RecordStageAgentCompletionInput): boolean;
 
-export { estimateTokens, recordHighTableUsage, recordStageAgentCompletion, recordStageAgentStart, resolveStageAgentTokens, resolveTokenCounts, stageFromAgentType };
+export { estimateTokens, recordHighTableUsage, recordStageAgentCompletion, recordStageAgentStart, resolveStageAgentTokens, resolveTokenCounts, stageFromAgentType, stagesRunByAgent };
 export type { RecordStageAgentCompletionInput, RecordStageAgentStartInput, StageAgentTokens, SubagentStopPayload };

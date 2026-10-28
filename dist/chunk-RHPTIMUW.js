@@ -1,10 +1,14 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
+  isMissingFileError,
+  readTextIfExistsSync
+} from "./chunk-TLKXJ74I.js";
+import {
   applyFrameworkConfigToProfile,
   require_dist,
   resolveFrameworkConfig,
   stripFrameworkConfigFromProfile
-} from "./chunk-WJ5G3OH5.js";
+} from "./chunk-H2GJD26E.js";
 import {
   renameWithRetrySync
 } from "./chunk-KFLIUVMP.js";
@@ -187,34 +191,16 @@ var STACK_CAPABILITIES_MAP = {
 // src/core/project-profile.ts
 init_esm_shims();
 var import_yaml = __toESM(require_dist(), 1);
-import { existsSync, mkdirSync, readFileSync as readFileSync2, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { isDeepStrictEqual } from "util";
-
-// src/core/fs/read-if-exists.ts
-init_esm_shims();
-import { readFileSync } from "fs";
-import { readFile } from "fs/promises";
-function isMissingFileError(error) {
-  return typeof error === "object" && error !== null && error.code === "ENOENT";
-}
-function readTextIfExistsSync(path) {
-  try {
-    return readFileSync(path, "utf8");
-  } catch (error) {
-    if (isMissingFileError(error)) return null;
-    throw error;
-  }
-}
-
-// src/core/project-profile.ts
 function readProjectProfile(projectRoot, options = {}) {
   const path = join(projectRoot, PATHS.PROJECT_PROFILE);
   if (!existsSync(path)) {
     return null;
   }
   try {
-    const parsed = import_yaml.default.parse(readFileSync2(path, "utf8"));
+    const parsed = import_yaml.default.parse(readFileSync(path, "utf8"));
     const migration = migrateProjectProfile(parsed);
     if (migration.migrated && options.persistMigration !== false) {
       writeProjectProfile(projectRoot, migration.profile, migration.audit_message);
@@ -248,7 +234,7 @@ function syncProjectProfile(projectRoot, profile, auditMessage) {
 }
 function readProfileText(path) {
   try {
-    return readFileSync2(path, "utf8");
+    return readFileSync(path, "utf8");
   } catch (error) {
     if (error.code === "ENOENT") return null;
     throw error;
@@ -383,6 +369,116 @@ function compareActiveCapabilities(left, right) {
   return ACTIVE_CAPABILITIES.indexOf(left) - ACTIVE_CAPABILITIES.indexOf(right);
 }
 
+// src/rag/secrets.ts
+init_esm_shims();
+import {
+  chmodSync,
+  closeSync,
+  existsSync as existsSync2,
+  ftruncateSync,
+  mkdirSync as mkdirSync2,
+  openSync,
+  readFileSync as readFileSync2,
+  statSync,
+  writeFileSync as writeFileSync2,
+  writeSync
+} from "fs";
+import { dirname as dirname2, join as join2 } from "path";
+function parseEnv(content) {
+  const result = {};
+  for (const rawLine of content.split("\n")) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const eq = line.indexOf("=");
+    if (eq === -1) continue;
+    const key = line.slice(0, eq).trim();
+    const value = line.slice(eq + 1).trim().replace(/^['"]|['"]$/g, "");
+    if (key) {
+      result[key] = value;
+    }
+  }
+  return result;
+}
+function serializeEnv(values) {
+  const lines = ["# Local project secrets for paqad-ai RAG"];
+  for (const key of Object.keys(values).sort()) {
+    lines.push(`${key}=${values[key]}`);
+  }
+  lines.push("");
+  return lines.join("\n");
+}
+function readProjectSecrets(projectRoot) {
+  const path = join2(projectRoot, PATHS.SECRETS_ENV);
+  if (!existsSync2(path)) {
+    return {};
+  }
+  try {
+    return parseEnv(readFileSync2(path, "utf8"));
+  } catch {
+    return {};
+  }
+}
+function pluginOptionOrEnv(key) {
+  return process.env[`CLAUDE_PLUGIN_OPTION_${key}`] || process.env[key] || void 0;
+}
+function getProjectSecret(projectRoot, key) {
+  return pluginOptionOrEnv(key) || readProjectSecrets(projectRoot)[key];
+}
+function writeProjectSecret(projectRoot, key, value) {
+  const path = join2(projectRoot, PATHS.SECRETS_ENV);
+  const current = readProjectSecrets(projectRoot);
+  current[key] = value;
+  mkdirSync2(dirname2(path), { recursive: true });
+  writeFileSync2(path, serializeEnv(current), "utf8");
+  try {
+    chmodSync(path, 384);
+  } catch {
+  }
+  return path;
+}
+function removeProjectSecrets(projectRoot) {
+  const path = join2(projectRoot, PATHS.SECRETS_ENV);
+  let fd;
+  try {
+    fd = openSync(path, "r+");
+  } catch (error) {
+    if (isMissingFileError(error)) return;
+    throw error;
+  }
+  try {
+    ftruncateSync(fd, 0);
+    writeSync(fd, "# Local project secrets for paqad-ai RAG\n", 0, "utf8");
+  } finally {
+    closeSync(fd);
+  }
+}
+function getSecretPermissionWarning(projectRoot) {
+  const path = join2(projectRoot, PATHS.SECRETS_ENV);
+  if (!existsSync2(path)) {
+    return null;
+  }
+  try {
+    const mode = statSync(path).mode & 511;
+    return mode & 63 ? `Secrets file is too permissive (${mode.toString(8)})` : null;
+  } catch {
+    return null;
+  }
+}
+function redactSecrets(input, projectRoot) {
+  const secrets = [
+    process.env.OPENAI_API_KEY,
+    process.env.CLAUDE_PLUGIN_OPTION_OPENAI_API_KEY,
+    process.env.CLAUDE_PLUGIN_OPTION_COHERE_API_KEY,
+    process.env.COHERE_API_KEY,
+    ...Object.values(readProjectSecrets(projectRoot))
+  ].filter((value) => Boolean(value));
+  let result = input;
+  for (const secret of secrets) {
+    result = result.split(secret).join("[REDACTED]");
+  }
+  return result;
+}
+
 // src/core/logger-registry.ts
 init_esm_shims();
 var MAX_PAYLOAD_BYTES = 8192;
@@ -454,110 +550,6 @@ function engineLog(level, message, payload) {
     markFaulted();
     writeDefault(level, message, safePayload);
   }
-}
-
-// src/rag/secrets.ts
-init_esm_shims();
-import {
-  chmodSync,
-  closeSync,
-  existsSync as existsSync2,
-  ftruncateSync,
-  mkdirSync as mkdirSync2,
-  openSync,
-  readFileSync as readFileSync3,
-  statSync,
-  writeFileSync as writeFileSync2,
-  writeSync
-} from "fs";
-import { dirname as dirname2, join as join2 } from "path";
-function parseEnv(content) {
-  const result = {};
-  for (const rawLine of content.split("\n")) {
-    const line = rawLine.trim();
-    if (!line || line.startsWith("#")) continue;
-    const eq = line.indexOf("=");
-    if (eq === -1) continue;
-    const key = line.slice(0, eq).trim();
-    const value = line.slice(eq + 1).trim().replace(/^['"]|['"]$/g, "");
-    if (key) {
-      result[key] = value;
-    }
-  }
-  return result;
-}
-function serializeEnv(values) {
-  const lines = ["# Local project secrets for paqad-ai RAG"];
-  for (const key of Object.keys(values).sort()) {
-    lines.push(`${key}=${values[key]}`);
-  }
-  lines.push("");
-  return lines.join("\n");
-}
-function readProjectSecrets(projectRoot) {
-  const path = join2(projectRoot, PATHS.SECRETS_ENV);
-  if (!existsSync2(path)) {
-    return {};
-  }
-  try {
-    return parseEnv(readFileSync3(path, "utf8"));
-  } catch {
-    return {};
-  }
-}
-function getProjectSecret(projectRoot, key) {
-  return process.env[key] ?? readProjectSecrets(projectRoot)[key];
-}
-function writeProjectSecret(projectRoot, key, value) {
-  const path = join2(projectRoot, PATHS.SECRETS_ENV);
-  const current = readProjectSecrets(projectRoot);
-  current[key] = value;
-  mkdirSync2(dirname2(path), { recursive: true });
-  writeFileSync2(path, serializeEnv(current), "utf8");
-  try {
-    chmodSync(path, 384);
-  } catch {
-  }
-  return path;
-}
-function removeProjectSecrets(projectRoot) {
-  const path = join2(projectRoot, PATHS.SECRETS_ENV);
-  let fd;
-  try {
-    fd = openSync(path, "r+");
-  } catch (error) {
-    if (isMissingFileError(error)) return;
-    throw error;
-  }
-  try {
-    ftruncateSync(fd, 0);
-    writeSync(fd, "# Local project secrets for paqad-ai RAG\n", 0, "utf8");
-  } finally {
-    closeSync(fd);
-  }
-}
-function getSecretPermissionWarning(projectRoot) {
-  const path = join2(projectRoot, PATHS.SECRETS_ENV);
-  if (!existsSync2(path)) {
-    return null;
-  }
-  try {
-    const mode = statSync(path).mode & 511;
-    return mode & 63 ? `Secrets file is too permissive (${mode.toString(8)})` : null;
-  } catch {
-    return null;
-  }
-}
-function redactSecrets(input, projectRoot) {
-  const secrets = [
-    process.env.OPENAI_API_KEY,
-    ...Object.values(readProjectSecrets(projectRoot))
-  ].filter((value) => Boolean(value));
-  let result = input;
-  for (const secret of secrets) {
-    result = result.split(secret).join("[REDACTED]");
-  }
-  return result;
 }
 
 // src/core/errors/redact.ts
@@ -675,23 +667,22 @@ export {
   ACTIVE_CAPABILITIES,
   DOMAIN_STACK_MAP,
   STACK_CAPABILITIES_MAP,
-  isMissingFileError,
-  readTextIfExistsSync,
   readProjectProfile,
   writeProjectProfile,
   syncProjectProfile,
   migrateProjectProfile,
   getProfileDomain,
-  setEngineLogger,
-  clearEngineLogger,
-  getConsumerLogger,
-  engineLog,
   readProjectSecrets,
+  pluginOptionOrEnv,
   getProjectSecret,
   writeProjectSecret,
   removeProjectSecrets,
   getSecretPermissionWarning,
   redactSecrets,
+  setEngineLogger,
+  clearEngineLogger,
+  getConsumerLogger,
+  engineLog,
   redactPayload,
   FrameworkError,
   tokenize,

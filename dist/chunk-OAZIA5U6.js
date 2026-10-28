@@ -1,11 +1,11 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   readContractDecisions
-} from "./chunk-Z273AZOQ.js";
+} from "./chunk-AHUCGXCI.js";
 import {
   stageIsOpen,
   stagesWithKind
-} from "./chunk-XAJVKVUJ.js";
+} from "./chunk-YXTFS35T.js";
 import {
   COMPLETION_DEFERRED_KIND,
   RECORD_REPAIR_KIND,
@@ -14,10 +14,10 @@ import {
   currentFeature,
   foldFeature,
   readFeatureStageUnit
-} from "./chunk-Z2NVZQ2X.js";
+} from "./chunk-QR66SJS4.js";
 import {
   stripPluginAgentNamespace
-} from "./chunk-WJ5G3OH5.js";
+} from "./chunk-H2GJD26E.js";
 import {
   isBundleClosed,
   rowRecordedAt
@@ -188,7 +188,9 @@ function releasesStartedAgent(later, stage, agentId, startedHash) {
     return agentId !== null && laterId !== null ? laterId === agentId : laterStage === stage;
   }
   if (later.kind === "stage_end") return laterStage === stage;
-  if (later.kind === "stage_start") return laterStage !== null && laterStage !== stage;
+  if (later.kind === "stage_start") {
+    return laterStage !== null && laterStage !== stage && (laterId === null || laterId !== agentId);
+  }
   if (later.kind !== RECORD_REPAIR_KIND || later.reason !== STAGE_AGENT_SESSION_RELEASE) {
     return false;
   }

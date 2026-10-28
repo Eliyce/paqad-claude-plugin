@@ -7,7 +7,7 @@ import {
 } from "./chunk-4K4CM3QN.js";
 import {
   require_dist
-} from "./chunk-WJ5G3OH5.js";
+} from "./chunk-H2GJD26E.js";
 import {
   PATHS
 } from "./chunk-LW3OCT4Y.js";
@@ -78,26 +78,6 @@ function readModuleMapEventsForSlug(projectRoot, slug) {
   return readModuleMapEvents(projectRoot).filter((e) => e.slug === slug);
 }
 
-// src/module-map/reconciler.ts
-init_esm_shims();
-var import_fast_glob = __toESM(require_out(), 1);
-var import_yaml2 = __toESM(require_dist(), 1);
-import { existsSync as existsSync3, mkdirSync as mkdirSync3, readFileSync as readFileSync3, readdirSync as readdirSync2, writeFileSync as writeFileSync2 } from "fs";
-import { dirname as dirname2, join as join3 } from "path";
-
-// src/module-decisions/store.ts
-init_esm_shims();
-var import_yaml = __toESM(require_dist(), 1);
-import {
-  existsSync as existsSync2,
-  mkdirSync as mkdirSync2,
-  readFileSync as readFileSync2,
-  readdirSync,
-  unlinkSync,
-  writeFileSync
-} from "fs";
-import { join as join2 } from "path";
-
 // src/module-decisions/schema.ts
 init_esm_shims();
 var SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -154,7 +134,25 @@ function isExpired(decision, now = /* @__PURE__ */ new Date()) {
   return now.getTime() >= Date.parse(decision.expires_at);
 }
 
+// src/module-map/reconciler.ts
+init_esm_shims();
+var import_fast_glob = __toESM(require_out(), 1);
+var import_yaml2 = __toESM(require_dist(), 1);
+import { existsSync as existsSync3, mkdirSync as mkdirSync3, readFileSync as readFileSync3, readdirSync as readdirSync2, writeFileSync as writeFileSync2 } from "fs";
+import { dirname as dirname2, join as join3 } from "path";
+
 // src/module-decisions/store.ts
+init_esm_shims();
+var import_yaml = __toESM(require_dist(), 1);
+import {
+  existsSync as existsSync2,
+  mkdirSync as mkdirSync2,
+  readFileSync as readFileSync2,
+  readdirSync,
+  unlinkSync,
+  writeFileSync
+} from "fs";
+import { join as join2 } from "path";
 function decisionsDir(projectRoot) {
   return join2(projectRoot, PATHS.PROSPECTIVE_DECISIONS_DIR);
 }
