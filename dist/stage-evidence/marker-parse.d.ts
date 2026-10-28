@@ -1,7 +1,7 @@
 import { MarkedStagePhase } from './live-writer.js';
 import '../ledger-DjtUKw_R.js';
-import '../stages-ejIQknpU.js';
-import '../feature-development-policy-Cm9Ifn5f.js';
+import '../stages-U24leQPn.js';
+import '../feature-development-policy-Bhae6X2p.js';
 import '../project-profile-Cn9_C9LZ.js';
 import '../introspection-CLBqo7wO.js';
 import '../types-BsILBLhT.js';

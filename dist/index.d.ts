@@ -6,7 +6,7 @@ import { L as Lane, A as AnalyticsGateStatus, C as ClassificationResult, a as Co
 export { m as API_IMPACTS, n as CLASSIFICATION_CERTAINTY, o as CLASSIFICATION_OUTPUT_TYPES, p as CLASSIFICATION_SCOPES, q as CLASSIFICATION_WORKFLOWS, r as COMPLEXITY_LEVELS, s as COMPLIANCE_SENSITIVITY_LEVELS, t as CONTEXT_BUDGET_HINTS, u as CUSTOMER_FACING_IMPACTS, v as ClassificationCertainty, w as ClassificationOutputType, x as DATABASE_IMPACTS, y as DATA_SENSITIVITY_LEVELS, z as LANES, P as PROCESS_DEPTHS, B as ProcessDepth, E as RESOLUTION_SOURCES, F as REVERSIBILITY_LEVELS, G as RISK_LEVELS, T as TARGET_CAPABILITIES, H as TargetCapability, I as UI_IMPACTS, J as WORKFLOW_SOURCES, K as selectLane } from './classification-DGWl-mzJ.js';
 export { HEURISTIC_TOKENIZER_VERSION, LoadedTokenizer, clearTokenizerCache, getOrLoad } from './context/tokenizer-cache.js';
 export { f as findPackageRoot, a as getPackageRoot, g as getRuntimeRoot, b as getRuntimeTemplatesRoot } from './runtime-paths-TW0qys7p.js';
-import { F as FeatureDevelopmentPolicy } from './feature-development-policy-Cm9Ifn5f.js';
+import { F as FeatureDevelopmentPolicy } from './feature-development-policy-Bhae6X2p.js';
 import { R as RuleRunFinding, D as DuplicationRowFinding } from './bundle-ledgers-3AJbkb_G.js';
 import { CommitSplit, CommitGroup } from './delivery/commit-split.js';
 import { a as CostWindow, b as CostScope, c as CostTokens, d as CostStageLine, e as CostExpertLine, f as CostLine } from './change-cost-wxi_e6ZH.js';
@@ -4130,6 +4130,11 @@ interface HudChiefRulings {
     conflicts: Array<{
         target: string;
         recommendation: string;
+        rationale: string;
+    }>;
+    merged: Array<{
+        target: string;
+        merged_claim: string;
         rationale: string;
     }>;
     renames: Array<{

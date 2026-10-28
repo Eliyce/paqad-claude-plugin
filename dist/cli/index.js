@@ -3,7 +3,7 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-P2XE4IK2.js";
+} from "../chunk-YBNE5CO6.js";
 import {
   holdRefreshContextLock
 } from "../chunk-O6QPPPMO.js";
@@ -157,7 +157,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-KBDPVYHW.js";
+} from "../chunk-36WCPJUO.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -181,7 +181,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-YU4ZZWUK.js";
+} from "../chunk-NWLOVYNZ.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -193,20 +193,20 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-FBNBDFP6.js";
+} from "../chunk-W725ZROV.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-FKG7VJJD.js";
+} from "../chunk-N2D6DTTC.js";
 import "../chunk-WULKDLB5.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
 } from "../chunk-PWJ37K7H.js";
-import "../chunk-L3SSXNLJ.js";
+import "../chunk-YBNA2OHW.js";
 import "../chunk-F4TESBBJ.js";
 import {
   createEvidence,
@@ -214,7 +214,7 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-PVZEAEMJ.js";
+} from "../chunk-PQI5LEGM.js";
 import {
   EmbeddingProviderError,
   PatternStore,
@@ -229,20 +229,20 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-MQURLJEK.js";
+} from "../chunk-YSEEYGPY.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-XMAPAGLU.js";
-import "../chunk-T63SOQAB.js";
+} from "../chunk-IG2PHJLP.js";
+import "../chunk-ZKB7NKTP.js";
 import "../chunk-Y7QRVDRT.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-4QA5BEUU.js";
+} from "../chunk-TMOH3BTM.js";
 import {
   DEFAULT_OBLIGATION_INDEX_PATH,
   DELIVERY_EVIDENCE_DOC_TYPE,
@@ -284,6 +284,7 @@ import {
   loadDeliveryPolicy,
   markRuleStopTokenUsed,
   mergeExpertNotes,
+  mergedKind,
   packRegistryFaultDetail,
   parseTraceArtifact,
   projectRelative,
@@ -333,6 +334,7 @@ import {
   setFrameworkEnabled,
   specIndexPath,
   specReportPath,
+  strongestSeverity,
   validateCodeKnowledgeIndex,
   validateCraftTrace,
   validateExpertNeed,
@@ -364,7 +366,7 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-CD3U6HN5.js";
+} from "../chunk-I5MSRH46.js";
 import "../chunk-BWAUL7O5.js";
 import "../chunk-NRKCUFAE.js";
 import {
@@ -377,7 +379,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-7KAJUZXO.js";
+} from "../chunk-NALGT7FL.js";
 import {
   StackPackLoader,
   atomicWriteFile,
@@ -387,7 +389,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "../chunk-5BX3DNVU.js";
+} from "../chunk-YGG7QFD6.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -401,7 +403,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-YQ37OFE7.js";
+} from "../chunk-Z273AZOQ.js";
 import {
   ACTIVE_CAPABILITIES,
   FrameworkError,
@@ -413,7 +415,7 @@ import {
   readTextIfExistsSync,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-RRWY74DL.js";
+} from "../chunk-SROHFKN6.js";
 import {
   appendHooksLog
 } from "../chunk-BW7VURA4.js";
@@ -421,54 +423,54 @@ import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
 import "../chunk-BYYV5KPL.js";
-import "../chunk-ETLHFSGV.js";
+import "../chunk-CJB6WRAX.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-BDM7PHW7.js";
+} from "../chunk-CERSUAYY.js";
 import {
   hudCostCachePath
 } from "../chunk-IN2AVDIO.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-NCMGB3MM.js";
+} from "../chunk-74XGAAQY.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-XWINZVZE.js";
+} from "../chunk-WYQCLM7Z.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-SDM5B2BY.js";
+} from "../chunk-TERKNT5P.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   normalizeArtifactPath
-} from "../chunk-2TBN4O6V.js";
+} from "../chunk-WV4TPGQD.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-QROWG6LN.js";
+} from "../chunk-252T6RBJ.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-2I7O2GLF.js";
+} from "../chunk-MQWE4AJB.js";
 import {
   clearPendingLane,
   recordMarkedStage
-} from "../chunk-OZLPYICR.js";
+} from "../chunk-XAJVKVUJ.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -489,7 +491,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-BF7UUVBR.js";
+} from "../chunk-6Z2MPTAC.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -501,6 +503,7 @@ import {
 import {
   ORCHESTRATOR_AGENT,
   STAGE_EVIDENCE_DOC_TYPE,
+  activeChangeKey,
   currentFeature,
   foldFeature,
   readChangeStartPoint,
@@ -513,6 +516,7 @@ import {
   recordShip,
   recordedLaneOrFull,
   refreshCommitSplit,
+  resolveActiveChange,
   resolveAgentIdentity,
   resolveDeliveryFeatureByBranch,
   resolveFeatureRef,
@@ -520,7 +524,7 @@ import {
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-7PWYO6YA.js";
+} from "../chunk-Z2NVZQ2X.js";
 import {
   describeEarlierWork
 } from "../chunk-W2K6YXWC.js";
@@ -545,7 +549,7 @@ import {
   stageForAgentName,
   stripPluginAgentNamespace,
   syncFrameworkConfig
-} from "../chunk-Y5WWSOMR.js";
+} from "../chunk-WJ5G3OH5.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   VISUAL_EVIDENCE_DOC_TYPE,
@@ -19100,7 +19104,7 @@ function scoreModule(promptTokens, mod) {
 }
 function inferAttribution(opts) {
   const maxChoices = opts.maxChoices ?? 3;
-  const scoreFloor = opts.scoreFloor ?? 0.2;
+  const scoreFloor = opts.scoreFloor ?? 0.5;
   const promptTokens = uniq(tokenize(opts.prompt));
   const promptSet = new Set(promptTokens);
   const ranked = [];
@@ -19970,8 +19974,61 @@ function raiseFixProofMethodDecision(projectRoot, dirName) {
   });
   return { id, raised: true };
 }
-function fixProofMethodLine(id) {
+function fixProofMethodLine(id, options = {}) {
+  if (options.deferred) {
+    return `**\u25B8 paqad** \xB7 This is a fix, so I need to know how to prove it. I raised ${id} and will ask it with the rest of this change's questions at the spec questions step. Nothing to answer yet.`;
+  }
   return `**\u25B8 paqad** \xB7 This is a fix, so I need to know how to prove it. Answer ${id} (\`paqad-ai decision resolve ${id} failing-test\` is my pick), then I'll continue.`;
+}
+
+// src/spec-pipeline/round.ts
+init_esm_shims();
+var ROUND_BATCH_SIZE = 4;
+function questionRoundAhead(projectRoot, dirName) {
+  if (readChangeConstants(projectRoot, dirName).lane === "fast") return false;
+  return readPipelineConfig(projectRoot).enabled;
+}
+function roundOpener(merged) {
+  if (merged.length === 0) return null;
+  const points = merged.length === 1 ? "point" : "points";
+  return [
+    `The experts agreed on ${merged.length} ${points} after merging overlaps`,
+    "",
+    "<details>",
+    "<summary>What they agreed on</summary>",
+    "",
+    ...merged.map((entry) => `- ${entry.target}: ${entry.merged_claim}`),
+    "",
+    "</details>"
+  ].join("\n");
+}
+function mergedClaims(projectRoot, dirName) {
+  const conflicts = readExperts(projectRoot, dirName)?.synthesis?.conflicts ?? [];
+  return conflicts.filter((conflict) => conflict.ruling === "compatible" && conflict.merged_claim).map((conflict) => ({ target: conflict.target, merged_claim: conflict.merged_claim }));
+}
+function pendingRoundPackets(projectRoot, dirName) {
+  const change = featureChangeKey(dirName);
+  return readContractDecisions(projectRoot).filter(({ packet, status }) => status === "pending" && packet.change === change).map(({ packet }) => ({
+    id: packet.id,
+    category: packet.category,
+    title: packet.title,
+    recommendation: packet.recommendation
+  })).sort((a, b) => a.id.localeCompare(b.id));
+}
+function buildQuestionRound(projectRoot, dirName) {
+  const merged = mergedClaims(projectRoot, dirName);
+  const packets = pendingRoundPackets(projectRoot, dirName);
+  const batches = [];
+  for (let index = 0; index < packets.length; index += ROUND_BATCH_SIZE) {
+    batches.push(packets.slice(index, index + ROUND_BATCH_SIZE).map((packet) => packet.id));
+  }
+  return {
+    change: featureChangeKey(dirName),
+    opener: roundOpener(merged),
+    merged,
+    packets,
+    batches
+  };
 }
 
 // src/cli/commands/plan.ts
@@ -19979,6 +20036,12 @@ function fastLaneFixProofMethod(root, sessionId) {
   const dirName = currentFeature(root, sessionId);
   if (!dirName || readChangeConstants(root, dirName).lane !== "fast") return null;
   return raiseFixProofMethodDecision(root, dirName);
+}
+function readinessLine(id, deferred) {
+  if (deferred) {
+    return `**\u25B8 paqad** \xB7 Visual evidence is on, but I can't capture screenshots here yet. I raised ${id} and will ask it with the rest of this change's questions at the spec questions step. Keep going.`;
+  }
+  return `**\u25B8 paqad** \xB7 Visual evidence is on, but I can't capture screenshots here yet. Answer ${id} (\`paqad-ai decision resolve ${id} setup|attach|waive\`), then I'll continue.`;
 }
 function createPlanCommand() {
   const command = new Command("plan").description(
@@ -20039,9 +20102,8 @@ function createPlanCommand() {
       console.warn(fixProofMethodLine(proofMethod.id));
     }
     if (result.readinessDecision) {
-      const id = result.readinessDecision;
       console.warn(
-        `**\u25B8 paqad** \xB7 Visual evidence is on, but I can't capture screenshots here yet. Answer ${id} (\`paqad-ai decision resolve ${id} setup|attach|waive\`), then I'll continue.`
+        readinessLine(result.readinessDecision, questionRoundAhead(root, result.dirName))
       );
     }
     if (!options.keepInput) {
@@ -21468,14 +21530,6 @@ function nearestCategory(input) {
   }
   return best;
 }
-function activeChange2(projectRoot, session2) {
-  const sessionId = resolveSessionId(
-    projectRoot,
-    session2 ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null
-  );
-  const dirName = currentFeature(projectRoot, sessionId);
-  return dirName ? { dirName, sessionId } : null;
-}
 function fail3(message) {
   console.error(message);
   process.exitCode = 1;
@@ -21498,10 +21552,7 @@ function createDecisionCommand() {
         context: options.context,
         options: options.option ?? [],
         recommendation: options.recommendation ?? null,
-        change: (() => {
-          const active = activeChange2(options.projectRoot, options.session);
-          return active ? featureChangeKey(active.dirName) : null;
-        })()
+        change: activeChangeKey(options.projectRoot, options.session)
       });
       console.log(JSON.stringify(result, null, 2));
     } catch (error) {
@@ -21511,13 +21562,13 @@ function createDecisionCommand() {
   command.command("resolve").description("Resolve a pending packet (moves it to resolved/); --other adds a write-in").argument("<id>", "the D-<ULID> id").argument("<chosen>", "the chosen option_key (ignored when --other is given)").argument("[rationale...]", "optional free-text rationale").option("--other <text>", "resolve to a minted write-in option with this label").option("--session <id>", "Session whose active change the decision belongs to").option("--project-root <path>", "Project root", process.cwd()).action((id, chosen, rationale, options) => {
     try {
       const chosenKey = options.other ? addWriteInOption(options.projectRoot, id, options.other) : chosen;
-      const active = activeChange2(options.projectRoot, options.session);
+      const active = resolveActiveChange(options.projectRoot, options.session);
       const { path: path2 } = resolvePendingDecision(
         options.projectRoot,
         id,
         chosenKey,
         rationale.join(" "),
-        { change: active ? featureChangeKey(active.dirName) : null }
+        { change: active ? active.key : null }
       );
       if (active) {
         writeFeatureDecisionsIndex(options.projectRoot, active.dirName, {
@@ -23272,41 +23323,332 @@ function autoAnswerQuestions(projectRoot, questions) {
 // src/spec-pipeline/experts/conflicts.ts
 init_esm_shims();
 import { createHash as createHash10 } from "crypto";
-var CATEGORY3 = "spec.expert_conflict";
+
+// src/spec-pipeline/experts/synthesis.ts
+init_esm_shims();
+var VERDICTS2 = ["ready", "needs-answers", "not-ready"];
+var RULINGS = ["pick", "compatible"];
+function fail4(error) {
+  return { ok: false, error };
+}
 function normalize2(text) {
   return text.trim().toLowerCase().replace(/\s+/g, " ");
 }
+function validateExpertSynthesis(raw, merged, sources) {
+  const parsed = typeof raw === "string" ? parseJson2(raw) : raw;
+  if (parsed === void 0) return fail4("expert-synthesis artifact is not valid JSON");
+  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+    return fail4("expert-synthesis artifact must be an object");
+  }
+  const obj = parsed;
+  if (typeof obj.verdict !== "string" || !VERDICTS2.includes(obj.verdict)) {
+    return fail4(`synthesis verdict must be one of ${VERDICTS2.join(" | ")}`);
+  }
+  if (!Array.isArray(obj.accepted) || !obj.accepted.every((id) => typeof id === "string")) {
+    return fail4("synthesis needs an accepted[] of finding ids");
+  }
+  if (!Array.isArray(obj.declined)) {
+    return fail4("synthesis needs a declined[] array");
+  }
+  const knownIds = new Set(merged.findings.map((finding) => finding.id ?? ""));
+  const seen = /* @__PURE__ */ new Set();
+  const accepted = [];
+  for (const id of obj.accepted) {
+    if (!knownIds.has(id)) {
+      return fail4("the chief architect may accept, decline or flag a gap; it may not add findings");
+    }
+    if (seen.has(id)) return fail4(`finding ${id} appears twice in accept/decline`);
+    seen.add(id);
+    accepted.push(id);
+  }
+  const declined = [];
+  for (const [index, entry] of obj.declined.entries()) {
+    if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
+      return fail4(`declined[${index}] must be an object with id and reason`);
+    }
+    const { id, reason: reason2 } = entry;
+    if (typeof id !== "string" || !knownIds.has(id)) {
+      return fail4("the chief architect may accept, decline or flag a gap; it may not add findings");
+    }
+    if (typeof reason2 !== "string" || reason2.trim().length === 0) {
+      return fail4(`declined[${index}] ("${id}") needs a non-empty reason`);
+    }
+    if (seen.has(id)) return fail4(`finding ${id} appears twice in accept/decline`);
+    seen.add(id);
+    declined.push({ id, reason: reason2.trim() });
+  }
+  for (const id of knownIds) {
+    if (!seen.has(id)) {
+      return fail4(`finding ${id} is neither accepted nor declined \u2014 every merged finding must be`);
+    }
+  }
+  const conflictResult = validateConflicts(obj.conflicts, merged);
+  if (!conflictResult.ok) return fail4(conflictResult.error);
+  const gapResult = validateGaps(obj.gaps, sources);
+  if (!gapResult.ok) return fail4(gapResult.error);
+  const questions = [];
+  if (obj.questions !== void 0) {
+    if (!Array.isArray(obj.questions)) return fail4("synthesis questions must be an array");
+    for (const [qi, question] of obj.questions.entries()) {
+      const validated = validateQuestion(question, `synthesis.questions[${qi}]`, sources);
+      if (!validated.ok) return fail4(validated.error);
+      questions.push(validated.question);
+    }
+  }
+  const tokens = typeof obj.tokens === "number" && obj.tokens >= 0 ? obj.tokens : 0;
+  const renameResult = validateRenames(obj.renames, knownIds);
+  if (!renameResult.ok) return fail4(renameResult.error);
+  return {
+    ok: true,
+    artifact: {
+      verdict: obj.verdict,
+      accepted,
+      declined,
+      conflicts: conflictResult.conflicts,
+      gaps: gapResult.gaps,
+      questions,
+      tokens,
+      ...renameResult.renames.length > 0 ? { renames: renameResult.renames } : {}
+    }
+  };
+}
+function validateRenames(raw, knownIds) {
+  const renames = [];
+  if (raw === void 0) return { ok: true, renames };
+  if (!Array.isArray(raw))
+    return { ok: false, error: "synthesis renames must be an array", renames };
+  for (const [index, entry] of raw.entries()) {
+    if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
+      return {
+        ok: false,
+        error: `renames[${index}] must be an object with id and target`,
+        renames
+      };
+    }
+    const { id, target } = entry;
+    if (typeof id !== "string" || !knownIds.has(id)) {
+      return {
+        ok: false,
+        error: `renames names "${String(id)}", which the merge does not know`,
+        renames
+      };
+    }
+    if (typeof target !== "string" || target.trim().length === 0) {
+      return { ok: false, error: `renames[${index}] ("${id}") needs a non-empty target`, renames };
+    }
+    renames.push({ id, target: target.trim() });
+  }
+  return { ok: true, renames };
+}
+function applyRenames(findings, renames = []) {
+  if (renames.length === 0) return [...findings];
+  const byId = new Map(renames.map((rename3) => [rename3.id, rename3.target]));
+  return findings.map((finding) => {
+    const target = finding.id !== void 0 ? byId.get(finding.id) : void 0;
+    if (target === void 0 || target === finding.target) return finding;
+    return { ...finding, target, renamed_from: finding.target };
+  });
+}
+function validateConflicts(raw, merged) {
+  const conflicts = [];
+  if (raw === void 0) {
+    return merged.conflicts.length === 0 ? { ok: true, conflicts } : { ok: false, error: "synthesis must resolve every merge conflict exactly once", conflicts };
+  }
+  if (!Array.isArray(raw)) {
+    return { ok: false, error: "synthesis conflicts must be an array", conflicts };
+  }
+  if (raw.length !== merged.conflicts.length) {
+    return {
+      ok: false,
+      error: `synthesis has ${raw.length} conflict rows but the merge found ${merged.conflicts.length}; resolve each exactly once`,
+      conflicts
+    };
+  }
+  const conflictByTarget = new Map(
+    merged.conflicts.map((conflict) => [normalize2(conflict.target), conflict])
+  );
+  const claimsByTarget = new Map(
+    merged.conflicts.map((conflict) => [
+      normalize2(conflict.target),
+      conflict.claims.map(normalize2)
+    ])
+  );
+  const seenTargets = /* @__PURE__ */ new Set();
+  for (const [index, entry] of raw.entries()) {
+    if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
+      return { ok: false, error: `conflicts[${index}] must be an object`, conflicts };
+    }
+    const { target, ruling, recommendation, merged_claim, rationale } = entry;
+    if (typeof target !== "string" || !claimsByTarget.has(normalize2(target))) {
+      return {
+        ok: false,
+        error: `conflicts[${index}] target "${String(target)}" is not a merge conflict`,
+        conflicts
+      };
+    }
+    const key = normalize2(target);
+    if (seenTargets.has(key)) {
+      return { ok: false, error: `conflicts names "${target}" twice`, conflicts };
+    }
+    seenTargets.add(key);
+    if (ruling !== void 0 && !RULINGS.includes(ruling)) {
+      return {
+        ok: false,
+        error: `conflicts[${index}] ruling must be one of ${RULINGS.join(" | ")}`,
+        conflicts
+      };
+    }
+    if (typeof rationale !== "string" || rationale.trim().length === 0) {
+      return { ok: false, error: `conflicts[${index}] needs a non-empty rationale`, conflicts };
+    }
+    if (ruling === "compatible") {
+      const conflict = conflictByTarget.get(key);
+      if (typeof merged_claim !== "string" || merged_claim.trim().length === 0) {
+        return {
+          ok: false,
+          error: `conflicts[${index}] is ruled compatible and needs a non-empty merged_claim`,
+          conflicts
+        };
+      }
+      if (hasMustSecurityFinding(conflict)) {
+        return {
+          ok: false,
+          error: `conflicts[${index}] includes a must-level security-auditor finding; rule it pick so the owner decides`,
+          conflicts
+        };
+      }
+      conflicts.push({
+        target,
+        ruling: "compatible",
+        merged_claim: merged_claim.trim(),
+        rationale: rationale.trim(),
+        claims: [...conflict.claims],
+        finding_ids: [...conflict.finding_ids]
+      });
+      continue;
+    }
+    if (typeof recommendation !== "string" || !claimsByTarget.get(key).includes(normalize2(recommendation))) {
+      return {
+        ok: false,
+        error: `conflicts[${index}] recommendation must be one of the conflicting claims verbatim`,
+        conflicts
+      };
+    }
+    conflicts.push({ target, ruling: "pick", recommendation, rationale: rationale.trim() });
+  }
+  return { ok: true, conflicts };
+}
+function hasMustSecurityFinding(conflict) {
+  return conflict.roles.some(
+    (role, index) => role === "security-auditor" && conflict.severities?.[index] === "must"
+  );
+}
+function isCompatibleRuling(conflict) {
+  return conflict.ruling === "compatible";
+}
+function applyCompatibleRulings(findings, conflicts, accepted) {
+  let next = [...findings];
+  const acceptedIds = [...accepted];
+  let mergedCount = 0;
+  for (const conflict of conflicts) {
+    if (!isCompatibleRuling(conflict)) continue;
+    const ids = (conflict.finding_ids ?? []).filter((id) => id.length > 0);
+    const sources = ids.map((id) => next.find((finding) => finding.id === id)).filter((finding) => finding !== void 0);
+    const first = sources[0];
+    if (!first) continue;
+    const severity = strongestSeverity(sources);
+    const kind = mergedKind(sources);
+    const mergedFinding = {
+      ...first,
+      claim: conflict.merged_claim,
+      merged_from: ids,
+      ...severity ? { severity } : {},
+      ...kind ? { kind } : {}
+    };
+    next = next.map((finding) => finding.id === first.id ? mergedFinding : finding);
+    if (!acceptedIds.includes(first.id)) acceptedIds.push(first.id);
+    mergedCount += 1;
+  }
+  return { findings: next, accepted: acceptedIds, merged: mergedCount };
+}
+function validateGaps(raw, sources) {
+  const gaps = [];
+  if (raw === void 0) return { ok: true, gaps };
+  if (!Array.isArray(raw)) return { ok: false, error: "synthesis gaps must be an array", gaps };
+  for (const [index, entry] of raw.entries()) {
+    if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
+      return { ok: false, error: `gaps[${index}] must be an object`, gaps };
+    }
+    const { area, why_it_matters, question } = entry;
+    if (typeof area !== "string" || area.trim().length === 0) {
+      return { ok: false, error: `gaps[${index}] needs a non-empty area`, gaps };
+    }
+    if (typeof why_it_matters !== "string" || why_it_matters.trim().length === 0) {
+      return { ok: false, error: `gaps[${index}] needs a non-empty why_it_matters`, gaps };
+    }
+    const gap = { area, why_it_matters };
+    if (question !== void 0) {
+      const validated = validateQuestion(question, `gaps[${index}].question`, sources);
+      if (!validated.ok) return { ok: false, error: validated.error, gaps };
+      gap.question = validated.question;
+    }
+    gaps.push(gap);
+  }
+  return { ok: true, gaps };
+}
+function parseJson2(raw) {
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return void 0;
+  }
+}
+
+// src/spec-pipeline/experts/conflicts.ts
+var CATEGORY3 = "spec.expert_conflict";
+function normalize3(text) {
+  return text.trim().toLowerCase().replace(/\s+/g, " ");
+}
 function forkKey(target, claims) {
-  const claimSet = [...new Set(claims.map(normalize2))].sort();
-  return `${normalize2(target)}::${claimSet.join("|")}`;
+  const claimSet = [...new Set(claims.map(normalize3))].sort();
+  return `${normalize3(target)}::${claimSet.join("|")}`;
 }
 function forkToken(target, claims) {
   const hash = createHash10("sha256").update(forkKey(target, claims)).digest("hex").slice(0, 16);
   return `[expert-conflict-fork:${hash}]`;
 }
 function optionKeyFor(claim, used) {
-  const base = normalize2(claim).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "claim";
+  const base = normalize3(claim).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "claim";
   let key = base;
   let suffix = 2;
   while (used.has(key)) key = `${base}-${suffix++}`;
   used.add(key);
   return key;
 }
+function hasPendingExpertConflict(projectRoot, dirName) {
+  const change = featureChangeKey(dirName);
+  return readContractDecisions(projectRoot).some(({ packet, status }) => {
+    if (status !== "pending" || packet.category !== CATEGORY3) return false;
+    return !packet.change || packet.change === change;
+  });
+}
 function mintExpertConflictDecisions(projectRoot, merged, synthesisConflicts, dirName = null) {
-  const resolvedForks = collectResolvedForks(projectRoot);
+  const knownForks = collectKnownForks(projectRoot);
   const recommendationByTarget = new Map(
-    synthesisConflicts.map((conflict) => [normalize2(conflict.target), conflict])
+    synthesisConflicts.map((conflict) => [normalize3(conflict.target), conflict])
   );
   const minted = [];
   const autoResolved = [];
   for (const conflict of merged.conflicts) {
+    const chief = recommendationByTarget.get(normalize3(conflict.target));
+    if (chief && isCompatibleRuling(chief)) continue;
     const token = forkToken(conflict.target, conflict.claims);
-    const prior = resolvedForks.get(token);
+    const prior = knownForks.get(token);
+    if (prior?.status === "pending") continue;
     if (prior) {
       autoResolved.push({ target: conflict.target, chosen: prior.chosen, source: prior.id });
       continue;
     }
-    const chief = recommendationByTarget.get(normalize2(conflict.target));
     const { options, recommendation } = buildOptions(conflict, chief?.recommendation);
     const context = buildContext(conflict, chief?.rationale, token);
     const { id } = createPendingDecision(projectRoot, {
@@ -23322,16 +23664,24 @@ function mintExpertConflictDecisions(projectRoot, merged, synthesisConflicts, di
   }
   return { minted, autoResolved };
 }
-function collectResolvedForks(projectRoot) {
+function collectKnownForks(projectRoot) {
   const forks = /* @__PURE__ */ new Map();
   for (const { packet, status } of readContractDecisions(projectRoot)) {
-    if (status !== "resolved" || packet.category !== CATEGORY3) continue;
-    const resolved = packet;
+    if (packet.category !== CATEGORY3) continue;
     const match = /\[expert-conflict-fork:[0-9a-f]{16}\]/.exec(packet.context);
-    if (!match || typeof resolved.chosen !== "string") continue;
+    if (!match) continue;
+    if (status === "pending") {
+      if (!forks.has(match[0])) forks.set(match[0], { status: "pending", id: packet.id });
+      continue;
+    }
+    if (status !== "resolved") continue;
+    const resolved = packet;
+    if (typeof resolved.chosen !== "string") continue;
     const chosenOption = packet.options.find((option) => option.option_key === resolved.chosen);
     if (!chosenOption) continue;
-    if (!forks.has(match[0])) forks.set(match[0], { id: packet.id, chosen: chosenOption.label });
+    if (forks.get(match[0])?.status !== "resolved") {
+      forks.set(match[0], { status: "resolved", id: packet.id, chosen: chosenOption.label });
+    }
   }
   return forks;
 }
@@ -23343,7 +23693,7 @@ function buildOptions(conflict, recommendedClaim) {
     const role = conflict.roles[index] ?? "unknown";
     const key = optionKeyFor(claim, used);
     options.push({ option_key: key, label: `${claim} \u2014 ${role}` });
-    if (recommendedClaim !== void 0 && normalize2(recommendedClaim) === normalize2(claim)) {
+    if (recommendedClaim !== void 0 && normalize3(recommendedClaim) === normalize3(claim)) {
       recommendation = key;
     }
   });
@@ -23496,7 +23846,7 @@ init_esm_shims();
 var MAX_EXPERT_QUESTIONS = 5;
 
 // src/spec-pipeline/experts/questions.ts
-function normalize3(question) {
+function normalize4(question) {
   return question.business_text.trim().toLowerCase().replace(/\s+/g, " ");
 }
 function collectExpertQuestions(need, notes, synthesis) {
@@ -23519,7 +23869,7 @@ function mergeQuestionBatch(enrichment, expertChief, questionBudget) {
   const seen = /* @__PURE__ */ new Set();
   const questions = [];
   for (const question of enrichment.slice(0, Math.max(0, questionBudget))) {
-    const key = normalize3(question);
+    const key = normalize4(question);
     if (!seen.has(key)) {
       seen.add(key);
       questions.push(question);
@@ -23528,7 +23878,7 @@ function mergeQuestionBatch(enrichment, expertChief, questionBudget) {
   const deferred = [];
   let taken = 0;
   for (const question of expertChief) {
-    const key = normalize3(question);
+    const key = normalize4(question);
     if (seen.has(key)) continue;
     if (taken >= MAX_EXPERT_QUESTIONS) {
       deferred.push(question);
@@ -23539,216 +23889,6 @@ function mergeQuestionBatch(enrichment, expertChief, questionBudget) {
     taken += 1;
   }
   return { questions, deferred_from_experts: deferred };
-}
-
-// src/spec-pipeline/experts/synthesis.ts
-init_esm_shims();
-var VERDICTS2 = ["ready", "needs-answers", "not-ready"];
-function fail4(error) {
-  return { ok: false, error };
-}
-function normalize4(text) {
-  return text.trim().toLowerCase().replace(/\s+/g, " ");
-}
-function validateExpertSynthesis(raw, merged, sources) {
-  const parsed = typeof raw === "string" ? parseJson2(raw) : raw;
-  if (parsed === void 0) return fail4("expert-synthesis artifact is not valid JSON");
-  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
-    return fail4("expert-synthesis artifact must be an object");
-  }
-  const obj = parsed;
-  if (typeof obj.verdict !== "string" || !VERDICTS2.includes(obj.verdict)) {
-    return fail4(`synthesis verdict must be one of ${VERDICTS2.join(" | ")}`);
-  }
-  if (!Array.isArray(obj.accepted) || !obj.accepted.every((id) => typeof id === "string")) {
-    return fail4("synthesis needs an accepted[] of finding ids");
-  }
-  if (!Array.isArray(obj.declined)) {
-    return fail4("synthesis needs a declined[] array");
-  }
-  const knownIds = new Set(merged.findings.map((finding) => finding.id ?? ""));
-  const seen = /* @__PURE__ */ new Set();
-  const accepted = [];
-  for (const id of obj.accepted) {
-    if (!knownIds.has(id)) {
-      return fail4("the chief architect may accept, decline or flag a gap; it may not add findings");
-    }
-    if (seen.has(id)) return fail4(`finding ${id} appears twice in accept/decline`);
-    seen.add(id);
-    accepted.push(id);
-  }
-  const declined = [];
-  for (const [index, entry] of obj.declined.entries()) {
-    if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
-      return fail4(`declined[${index}] must be an object with id and reason`);
-    }
-    const { id, reason: reason2 } = entry;
-    if (typeof id !== "string" || !knownIds.has(id)) {
-      return fail4("the chief architect may accept, decline or flag a gap; it may not add findings");
-    }
-    if (typeof reason2 !== "string" || reason2.trim().length === 0) {
-      return fail4(`declined[${index}] ("${id}") needs a non-empty reason`);
-    }
-    if (seen.has(id)) return fail4(`finding ${id} appears twice in accept/decline`);
-    seen.add(id);
-    declined.push({ id, reason: reason2.trim() });
-  }
-  for (const id of knownIds) {
-    if (!seen.has(id)) {
-      return fail4(`finding ${id} is neither accepted nor declined \u2014 every merged finding must be`);
-    }
-  }
-  const conflictResult = validateConflicts(obj.conflicts, merged);
-  if (!conflictResult.ok) return fail4(conflictResult.error);
-  const gapResult = validateGaps(obj.gaps, sources);
-  if (!gapResult.ok) return fail4(gapResult.error);
-  const questions = [];
-  if (obj.questions !== void 0) {
-    if (!Array.isArray(obj.questions)) return fail4("synthesis questions must be an array");
-    for (const [qi, question] of obj.questions.entries()) {
-      const validated = validateQuestion(question, `synthesis.questions[${qi}]`, sources);
-      if (!validated.ok) return fail4(validated.error);
-      questions.push(validated.question);
-    }
-  }
-  const tokens = typeof obj.tokens === "number" && obj.tokens >= 0 ? obj.tokens : 0;
-  const renameResult = validateRenames(obj.renames, knownIds);
-  if (!renameResult.ok) return fail4(renameResult.error);
-  return {
-    ok: true,
-    artifact: {
-      verdict: obj.verdict,
-      accepted,
-      declined,
-      conflicts: conflictResult.conflicts,
-      gaps: gapResult.gaps,
-      questions,
-      tokens,
-      ...renameResult.renames.length > 0 ? { renames: renameResult.renames } : {}
-    }
-  };
-}
-function validateRenames(raw, knownIds) {
-  const renames = [];
-  if (raw === void 0) return { ok: true, renames };
-  if (!Array.isArray(raw))
-    return { ok: false, error: "synthesis renames must be an array", renames };
-  for (const [index, entry] of raw.entries()) {
-    if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
-      return {
-        ok: false,
-        error: `renames[${index}] must be an object with id and target`,
-        renames
-      };
-    }
-    const { id, target } = entry;
-    if (typeof id !== "string" || !knownIds.has(id)) {
-      return {
-        ok: false,
-        error: `renames names "${String(id)}", which the merge does not know`,
-        renames
-      };
-    }
-    if (typeof target !== "string" || target.trim().length === 0) {
-      return { ok: false, error: `renames[${index}] ("${id}") needs a non-empty target`, renames };
-    }
-    renames.push({ id, target: target.trim() });
-  }
-  return { ok: true, renames };
-}
-function applyRenames(findings, renames = []) {
-  if (renames.length === 0) return [...findings];
-  const byId = new Map(renames.map((rename3) => [rename3.id, rename3.target]));
-  return findings.map((finding) => {
-    const target = finding.id !== void 0 ? byId.get(finding.id) : void 0;
-    if (target === void 0 || target === finding.target) return finding;
-    return { ...finding, target, renamed_from: finding.target };
-  });
-}
-function validateConflicts(raw, merged) {
-  const conflicts = [];
-  if (raw === void 0) {
-    return merged.conflicts.length === 0 ? { ok: true, conflicts } : { ok: false, error: "synthesis must resolve every merge conflict exactly once", conflicts };
-  }
-  if (!Array.isArray(raw)) {
-    return { ok: false, error: "synthesis conflicts must be an array", conflicts };
-  }
-  if (raw.length !== merged.conflicts.length) {
-    return {
-      ok: false,
-      error: `synthesis has ${raw.length} conflict rows but the merge found ${merged.conflicts.length}; resolve each exactly once`,
-      conflicts
-    };
-  }
-  const claimsByTarget = new Map(
-    merged.conflicts.map((conflict) => [
-      normalize4(conflict.target),
-      conflict.claims.map(normalize4)
-    ])
-  );
-  const seenTargets = /* @__PURE__ */ new Set();
-  for (const [index, entry] of raw.entries()) {
-    if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
-      return { ok: false, error: `conflicts[${index}] must be an object`, conflicts };
-    }
-    const { target, recommendation, rationale } = entry;
-    if (typeof target !== "string" || !claimsByTarget.has(normalize4(target))) {
-      return {
-        ok: false,
-        error: `conflicts[${index}] target "${String(target)}" is not a merge conflict`,
-        conflicts
-      };
-    }
-    const key = normalize4(target);
-    if (seenTargets.has(key)) {
-      return { ok: false, error: `conflicts names "${target}" twice`, conflicts };
-    }
-    seenTargets.add(key);
-    if (typeof recommendation !== "string" || !claimsByTarget.get(key).includes(normalize4(recommendation))) {
-      return {
-        ok: false,
-        error: `conflicts[${index}] recommendation must be one of the conflicting claims verbatim`,
-        conflicts
-      };
-    }
-    if (typeof rationale !== "string" || rationale.trim().length === 0) {
-      return { ok: false, error: `conflicts[${index}] needs a non-empty rationale`, conflicts };
-    }
-    conflicts.push({ target, recommendation, rationale: rationale.trim() });
-  }
-  return { ok: true, conflicts };
-}
-function validateGaps(raw, sources) {
-  const gaps = [];
-  if (raw === void 0) return { ok: true, gaps };
-  if (!Array.isArray(raw)) return { ok: false, error: "synthesis gaps must be an array", gaps };
-  for (const [index, entry] of raw.entries()) {
-    if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
-      return { ok: false, error: `gaps[${index}] must be an object`, gaps };
-    }
-    const { area, why_it_matters, question } = entry;
-    if (typeof area !== "string" || area.trim().length === 0) {
-      return { ok: false, error: `gaps[${index}] needs a non-empty area`, gaps };
-    }
-    if (typeof why_it_matters !== "string" || why_it_matters.trim().length === 0) {
-      return { ok: false, error: `gaps[${index}] needs a non-empty why_it_matters`, gaps };
-    }
-    const gap = { area, why_it_matters };
-    if (question !== void 0) {
-      const validated = validateQuestion(question, `gaps[${index}].question`, sources);
-      if (!validated.ok) return { ok: false, error: validated.error, gaps };
-      gap.question = validated.question;
-    }
-    gaps.push(gap);
-  }
-  return { ok: true, gaps };
-}
-function parseJson2(raw) {
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return void 0;
-  }
 }
 
 // src/spec-pipeline/grounding.ts
@@ -24422,11 +24562,6 @@ function resolveProjectVoice(projectRoot, dirName) {
 function reportedTokens(content) {
   return JSON.parse(content).tokens;
 }
-function hasPendingExpertConflict(projectRoot) {
-  return readContractDecisions(projectRoot).some(
-    ({ packet, status }) => status === "pending" && packet.category === "spec.expert_conflict"
-  );
-}
 async function resolveRequestText(options) {
   if (options.requestFile) {
     try {
@@ -24521,6 +24656,13 @@ function createSpecPipelineCommand() {
       JSON.stringify({ enabled: config.enabled, next_step: next, enforcement: config })
     );
   });
+  command.command("round").description(
+    "List this change's pending questions to ask the owner in one round, with the opening line"
+  ).option(...projectRootOpt).option(...sessionOpt).action((options) => {
+    const resolved = resolveDir(options);
+    if (!resolved) return;
+    console.log(JSON.stringify(buildQuestionRound(options.projectRoot, resolved.dirName)));
+  });
   command.command("ground").description("S0 \u2014 assemble grounding from the docs (zero model tokens)").option("--modules <list>", "Comma-separated module slugs to scope grounding to").option(...projectRootOpt).option(...sessionOpt).action(async (options) => {
     const resolved = resolveDir(options);
     if (!resolved) return;
@@ -24581,7 +24723,7 @@ function createSpecPipelineCommand() {
     }
     const pipelineStep = step;
     const gate = assertCanRunStep(options.projectRoot, resolved.dirName, pipelineStep, {
-      hasPendingExpertConflict: pipelineStep === "questions" && hasPendingExpertConflict(options.projectRoot)
+      hasPendingExpertConflict: pipelineStep === "questions" && hasPendingExpertConflict(options.projectRoot, resolved.dirName)
     });
     if (!gate.allowed) {
       console.error(gate.message);
@@ -25056,19 +25198,27 @@ function createExpertsCommand() {
       check.artifact.conflicts,
       resolved.dirName
     );
-    const synthesis = autoResolved.length > 0 ? { ...check.artifact, auto_resolved: autoResolved } : check.artifact;
+    const compatible = applyCompatibleRulings(
+      experts2?.findings ?? [],
+      check.artifact.conflicts,
+      check.artifact.accepted
+    );
+    const synthesis = {
+      ...check.artifact,
+      accepted: compatible.accepted,
+      ...autoResolved.length > 0 ? { auto_resolved: autoResolved } : {}
+    };
     let renamed = 0;
+    let findings = compatible.findings;
     if (synthesis.renames && synthesis.renames.length > 0 && experts2?.findings) {
-      const updated = applyRenames(experts2.findings, synthesis.renames);
+      const updated = applyRenames(findings, synthesis.renames);
       renamed = updated.filter(
-        (finding, index) => finding.target !== experts2.findings[index].target
+        (finding, index) => finding.target !== findings[index].target
       ).length;
-      writeExpertFindings(
-        options.projectRoot,
-        resolved.dirName,
-        updated,
-        resolved.store
-      );
+      findings = updated;
+    }
+    if (experts2?.findings && (renamed > 0 || compatible.merged > 0)) {
+      writeExpertFindings(options.projectRoot, resolved.dirName, findings, resolved.store);
     }
     writeExpertSynthesis(options.projectRoot, resolved.dirName, synthesis, resolved.store);
     recordHighTable(
@@ -25083,7 +25233,7 @@ function createExpertsCommand() {
     recordStep(options.projectRoot, resolved.dirName, "experts", "complete", resolved.store);
     const proofMethod = raiseFixProofMethodDecision(options.projectRoot, resolved.dirName);
     if (proofMethod?.raised) {
-      console.warn(fixProofMethodLine(proofMethod.id));
+      console.warn(fixProofMethodLine(proofMethod.id, { deferred: true }));
     }
     console.log(
       JSON.stringify({
@@ -25092,6 +25242,7 @@ function createExpertsCommand() {
         accepted: synthesis.accepted.length,
         declined: synthesis.declined.length,
         conflicts_pending: minted.length,
+        compatible: compatible.merged,
         auto_resolved: autoResolved.length,
         gaps: synthesis.gaps.length,
         renamed,

@@ -1,9 +1,12 @@
 import { S as SessionLedgerRow } from '../ledger-DjtUKw_R.js';
-import { S as StageId } from '../stages-ejIQknpU.js';
+import { S as StageId } from '../stages-U24leQPn.js';
 import { a as StageSessionSource, S as StageLane } from '../types-BsILBLhT.js';
-import '../feature-development-policy-Cm9Ifn5f.js';
+import '../feature-development-policy-Bhae6X2p.js';
 import '../project-profile-Cn9_C9LZ.js';
 import '../introspection-CLBqo7wO.js';
+
+declare function activeChangeKey(projectRoot: string, hint?: string | null): string | null;
+declare function peekActiveChangeKey(projectRoot: string, hint?: string | null): string | null;
 
 declare const ORCHESTRATOR_AGENT = "orchestrator";
 interface AgentIdentityInput {
@@ -53,5 +56,5 @@ interface MarkedStageInput {
 }
 declare function recordMarkedStage(projectRoot: string, input: MarkedStageInput): boolean;
 
-export { ORCHESTRATOR_AGENT, classifyStage, liveEditStage, liveStageToStart, preCodeStagesRecorded, recordLiveStageEdit, recordLiveStageEdits, recordMarkedStage, resolveAgentIdentity, stageIsOpen, stagesWithKind };
+export { ORCHESTRATOR_AGENT, activeChangeKey, classifyStage, liveEditStage, liveStageToStart, peekActiveChangeKey, preCodeStagesRecorded, recordLiveStageEdit, recordLiveStageEdits, recordMarkedStage, resolveAgentIdentity, stageIsOpen, stagesWithKind };
 export type { LiveWriteBatchInput, LiveWriteInput, MarkedStageInput, MarkedStagePhase };
