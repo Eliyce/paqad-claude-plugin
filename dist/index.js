@@ -412,7 +412,7 @@ import {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts
-} from "./chunk-Z4Z6YYRZ.js";
+} from "./chunk-FZFHTUQQ.js";
 import {
   AC_ID_PATTERN,
   AcTestMappingGate,
@@ -461,9 +461,9 @@ import {
   writeHudSnapshot,
   writeHudSnapshotSafe,
   writeVerificationEvidence
-} from "./chunk-CISBSPWP.js";
-import "./chunk-MLXEYD6T.js";
-import "./chunk-5BABRV7V.js";
+} from "./chunk-DMSEI6SJ.js";
+import "./chunk-UX5YW3MY.js";
+import "./chunk-FTPLA63V.js";
 import "./chunk-WULKDLB5.js";
 import {
   DEFAULT_HOOK_ADAPTER,
@@ -488,7 +488,7 @@ import {
   renderHookCommand,
   rendersFullHookChain
 } from "./chunk-PWJ37K7H.js";
-import "./chunk-OA3YQGXX.js";
+import "./chunk-PNNRPEIZ.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
@@ -547,7 +547,7 @@ import {
   toProjectRelativeModule,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-E5PC7RVE.js";
+} from "./chunk-ENK3ZC6D.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -587,12 +587,12 @@ import {
   resetEmbeddingProviderCache,
   suggestPatternsForProject,
   toCrsCollectionId
-} from "./chunk-VLOEX6A6.js";
+} from "./chunk-S5UIF67V.js";
 import "./chunk-5QVCE2TS.js";
-import "./chunk-TWVJTMUJ.js";
-import "./chunk-B4LV77TI.js";
+import "./chunk-2T5JS63X.js";
+import "./chunk-6EF4D46B.js";
 import "./chunk-Y7QRVDRT.js";
-import "./chunk-UP2BSK6C.js";
+import "./chunk-LY4YGJRS.js";
 import {
   COMPLIANCE_SCHEMA_VERSION,
   DEFAULT_OBLIGATION_INDEX_PATH,
@@ -629,8 +629,8 @@ import {
   writeJsonPreservingTimestamp,
   writeOnboardingManifest,
   writeProjectProfile
-} from "./chunk-3ISWPQSH.js";
-import "./chunk-UXU57VCB.js";
+} from "./chunk-O6QY4HBD.js";
+import "./chunk-HRU4K57D.js";
 import {
   AGENT_ROLES,
   CONTEXT_LEVEL_BUDGETS,
@@ -658,7 +658,7 @@ import {
   ruleTriggersMatch,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-VIWC2WEP.js";
+} from "./chunk-P6XLLUAF.js";
 import {
   CancelledError,
   DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
@@ -681,7 +681,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "./chunk-C6QX6BQY.js";
+} from "./chunk-EUTEWAKX.js";
 import {
   DECISION_AUDIT_EVENTS,
   DECISION_CARRY_OVER_SCOPES,
@@ -733,7 +733,7 @@ import {
   toDecisionRecord,
   toEngineError,
   validateDecisionPacket
-} from "./chunk-4GJVTR5P.js";
+} from "./chunk-3U26X2Y5.js";
 import {
   ACTIVE_CAPABILITIES,
   CAPABILITIES,
@@ -754,7 +754,7 @@ import {
   removeProjectSecrets,
   setEngineLogger,
   writeProjectSecret
-} from "./chunk-IDHHKJOF.js";
+} from "./chunk-XFZ4QHDS.js";
 import "./chunk-TLKXJ74I.js";
 import "./chunk-BW7VURA4.js";
 import {
@@ -764,8 +764,8 @@ import {
   getRuntimeTemplatesRoot
 } from "./chunk-VVRAO2BK.js";
 import "./chunk-BYYV5KPL.js";
-import "./chunk-A6RB2MYS.js";
-import "./chunk-NDQ2TJ54.js";
+import "./chunk-CIOOKNWW.js";
+import "./chunk-OYG7B4YO.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
@@ -775,20 +775,20 @@ import {
   hudVerdictPath,
   safeSessionId,
   writeFileAtomic
-} from "./chunk-RQMBP7NZ.js";
-import "./chunk-EJNH2EWV.js";
+} from "./chunk-EWFOGGTF.js";
+import "./chunk-5ZLX7JMI.js";
 import "./chunk-KKFSSPUD.js";
-import "./chunk-IIFF75TG.js";
+import "./chunk-24SC4VX7.js";
 import "./chunk-O77JBFWW.js";
-import "./chunk-G2KAR57H.js";
-import "./chunk-FLH3ZOTM.js";
-import "./chunk-KX4GSKWD.js";
-import "./chunk-KPSH47JZ.js";
-import "./chunk-UFA47PK6.js";
-import "./chunk-PZSF75FV.js";
+import "./chunk-OCLWCENT.js";
+import "./chunk-DBWPK4Y2.js";
+import "./chunk-B2K2F4IU.js";
+import "./chunk-7DBEJ2JY.js";
+import "./chunk-WR7BWCIR.js";
+import "./chunk-FQNQWPGJ.js";
 import "./chunk-DNG6DDRS.js";
 import "./chunk-4K4CM3QN.js";
-import "./chunk-WTYH7MZ3.js";
+import "./chunk-PKWXNMHK.js";
 import "./chunk-QUDDQGFY.js";
 import {
   COMPLEXITY_LEVELS,
@@ -796,7 +796,7 @@ import {
   PROCESS_DEPTHS,
   RISK_LEVELS,
   selectLane
-} from "./chunk-VV76C43H.js";
+} from "./chunk-V2GOPPZK.js";
 import "./chunk-AINYJ3Q2.js";
 import {
   ANALYTICS_DECISION_PATH,
@@ -814,7 +814,7 @@ import {
   readAnalyticsDecision,
   resolveAnalyticsGate,
   resolveAndPersistAnalyticsGate
-} from "./chunk-TVWMFQYX.js";
+} from "./chunk-USQSPB6R.js";
 import "./chunk-QINSFA6R.js";
 import "./chunk-SU7RODZI.js";
 import "./chunk-HV6ESCNW.js";
