@@ -5,11 +5,11 @@ import {
   candidatesNeedingDecision,
   extractCandidates,
   resolveBriefSession
-} from "../chunk-PTCTI36U.js";
+} from "../chunk-WAE5GS3X.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-NK3NNN6L.js";
+} from "../chunk-FOEUTTI5.js";
 import {
   holdRefreshContextLock
 } from "../chunk-O6QPPPMO.js";
@@ -165,7 +165,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-FZFHTUQQ.js";
+} from "../chunk-Q6SJXTMA.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -192,7 +192,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-DMSEI6SJ.js";
+} from "../chunk-KPV5BGR2.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -204,20 +204,20 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-UX5YW3MY.js";
+} from "../chunk-CZWTNNZI.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-FTPLA63V.js";
+} from "../chunk-ZSUDGLR4.js";
 import "../chunk-WULKDLB5.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
 } from "../chunk-PWJ37K7H.js";
-import "../chunk-PNNRPEIZ.js";
+import "../chunk-CKUSDRJG.js";
 import "../chunk-F4TESBBJ.js";
 import {
   createEvidence,
@@ -225,7 +225,7 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-ENK3ZC6D.js";
+} from "../chunk-MIUC5U4D.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -241,20 +241,20 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-S5UIF67V.js";
+} from "../chunk-XSGPSBRW.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-2T5JS63X.js";
-import "../chunk-6EF4D46B.js";
+} from "../chunk-SR2Y3COL.js";
+import "../chunk-XP6MZX35.js";
 import "../chunk-Y7QRVDRT.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-LY4YGJRS.js";
+} from "../chunk-ZH5XQJWV.js";
 import {
   DEFAULT_OBLIGATION_INDEX_PATH,
   DELIVERY_EVIDENCE_DOC_TYPE,
@@ -380,8 +380,8 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-O6QY4HBD.js";
-import "../chunk-HRU4K57D.js";
+} from "../chunk-IA75KPEQ.js";
+import "../chunk-HTGOYPGB.js";
 import "../chunk-NRKCUFAE.js";
 import {
   releaseLock,
@@ -393,7 +393,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-P6XLLUAF.js";
+} from "../chunk-VFQA2LTE.js";
 import {
   StackPackLoader,
   atomicWriteFile,
@@ -403,7 +403,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "../chunk-EUTEWAKX.js";
+} from "../chunk-PMICGOSV.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -417,7 +417,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-3U26X2Y5.js";
+} from "../chunk-DPSFF4QH.js";
 import {
   ACTIVE_CAPABILITIES,
   FrameworkError,
@@ -429,7 +429,7 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-XFZ4QHDS.js";
+} from "../chunk-FWLM7JCL.js";
 import {
   readTextIfExistsSync
 } from "../chunk-TLKXJ74I.js";
@@ -440,54 +440,54 @@ import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
 import "../chunk-BYYV5KPL.js";
-import "../chunk-CIOOKNWW.js";
+import "../chunk-QW46S372.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-OYG7B4YO.js";
+} from "../chunk-BL6EFJEL.js";
 import {
   hudCostCachePath
-} from "../chunk-EWFOGGTF.js";
+} from "../chunk-X5MFYU5N.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-5ZLX7JMI.js";
+} from "../chunk-OXQG5ZNU.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-24SC4VX7.js";
+} from "../chunk-6GJIJXFC.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-OCLWCENT.js";
+} from "../chunk-HT2QNIOJ.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   normalizeArtifactPath
-} from "../chunk-DBWPK4Y2.js";
+} from "../chunk-DYTFDCMO.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-B2K2F4IU.js";
+} from "../chunk-S5DGRR3I.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-7DBEJ2JY.js";
+} from "../chunk-6D2NK5XH.js";
 import {
   clearPendingLane,
   recordMarkedStage
-} from "../chunk-WR7BWCIR.js";
+} from "../chunk-F32JDZBI.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -505,7 +505,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-FQNQWPGJ.js";
+} from "../chunk-K6NCDVUE.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -535,7 +535,7 @@ import {
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-PKWXNMHK.js";
+} from "../chunk-53JA4TCG.js";
 import {
   describeEarlierWork
 } from "../chunk-QUDDQGFY.js";
@@ -559,7 +559,7 @@ import {
   sha256Hex,
   stampBundleRow,
   validateVisualEvidenceRecord
-} from "../chunk-V2GOPPZK.js";
+} from "../chunk-M762QQWF.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -585,7 +585,7 @@ import {
   stageForAgentName,
   stripPluginAgentNamespace,
   syncFrameworkConfig
-} from "../chunk-USQSPB6R.js";
+} from "../chunk-CVY6Z7Y7.js";
 import {
   appendStampedRowToUnit,
   foldByOrdinal,
