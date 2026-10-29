@@ -6896,6 +6896,7 @@ interface PipelineConfig {
     adoption: AdoptionMode;
     standing_experts: AgentRole[];
     standing_experts_dropped: string[];
+    experts_lanes: Lane[];
 }
 
 type ClarityLabel = 'vague' | 'okay' | 'clear';
@@ -6977,7 +6978,7 @@ interface SpecPipelineSection {
     outcome?: FinishOutcome;
     reason?: string;
     a5_live?: boolean;
-    enforcement?: Omit<PipelineConfig, 'enabled' | 'grounding_budget_ms'>;
+    enforcement?: Omit<PipelineConfig, 'enabled' | 'grounding_budget_ms' | 'experts_lanes'>;
     manual_reason?: string;
     skipped?: 'fast-lane';
     experts?: {

@@ -2,35 +2,35 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   PipelineRouter,
   RequestClassifier
-} from "../chunk-MIUC5U4D.js";
-import "../chunk-XSGPSBRW.js";
+} from "../chunk-PTPZHHJG.js";
+import "../chunk-CSFZMKLX.js";
 import {
   paqadFrameLead
 } from "../chunk-5QVCE2TS.js";
 import {
   hasOpenUnendedStage
-} from "../chunk-SR2Y3COL.js";
+} from "../chunk-DKE32SFK.js";
 import {
   appendRouteTurn
-} from "../chunk-XP6MZX35.js";
+} from "../chunk-FEFDOY2L.js";
 import "../chunk-Y7QRVDRT.js";
-import "../chunk-VFQA2LTE.js";
-import "../chunk-PMICGOSV.js";
-import "../chunk-DPSFF4QH.js";
-import "../chunk-FWLM7JCL.js";
+import "../chunk-WWF56VBL.js";
+import "../chunk-AERVUFLE.js";
+import "../chunk-6WG455KS.js";
+import "../chunk-6C4M3H2R.js";
 import "../chunk-TLKXJ74I.js";
 import {
   appendHooksLog
 } from "../chunk-BW7VURA4.js";
 import "../chunk-VVRAO2BK.js";
 import "../chunk-BYYV5KPL.js";
-import "../chunk-OXQG5ZNU.js";
+import "../chunk-A4TFR7XI.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-6GJIJXFC.js";
+import "../chunk-FWUTQ2BL.js";
 import "../chunk-O77JBFWW.js";
 import {
   writeSessionRoute
-} from "../chunk-S5DGRR3I.js";
+} from "../chunk-TY4F2MU6.js";
 import {
   changeKindForWorkflow,
   isFeatureDevelopmentRoute,
@@ -38,28 +38,29 @@ import {
   resolveRoutedWorkflow,
   routeWorkflow,
   writeWorkflowState
-} from "../chunk-6D2NK5XH.js";
+} from "../chunk-BESVAPGH.js";
 import {
+  writePendingImpact,
   writePendingKind,
   writePendingLane
-} from "../chunk-F32JDZBI.js";
-import "../chunk-K6NCDVUE.js";
+} from "../chunk-XSSY5EO5.js";
+import "../chunk-D2ZCEVQX.js";
 import "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
 import {
   readFeatureStageUnit
-} from "../chunk-53JA4TCG.js";
+} from "../chunk-YGMDODB6.js";
 import "../chunk-QUDDQGFY.js";
 import {
   isBundleClosed,
   laneRank,
   liveStageAgents,
   readChangeConstants
-} from "../chunk-M762QQWF.js";
+} from "../chunk-J5CSZPQ6.js";
 import "../chunk-AINYJ3Q2.js";
 import {
   STAGE_ORDER
-} from "../chunk-CVY6Z7Y7.js";
+} from "../chunk-QUAQHWSU.js";
 import "../chunk-QINSFA6R.js";
 import "../chunk-SU7RODZI.js";
 import {
@@ -268,6 +269,10 @@ async function resolvePromptRoute(projectRoot, request, deps = {}) {
     routed,
     kind,
     lane,
+    impact: {
+      database_impact: classification.database_impact,
+      api_impact: classification.api_impact
+    },
     reason: lane === null ? ROUTE_REASON["feature-development"] : LANE_REASON[lane]
   };
 }
@@ -327,6 +332,7 @@ async function runPromptRouteSeam(input, deps = {}) {
   let lane;
   let reason;
   let kind;
+  let impact;
   if (slashName !== null) {
     const slashRoute = SLASH_COMMAND_ROUTES[slashName];
     if (slashRoute === void 0) {
@@ -342,7 +348,7 @@ async function runPromptRouteSeam(input, deps = {}) {
     lane = null;
     reason = ROUTE_REASON[slashRoute];
   } else {
-    ({ routed, lane, reason, kind } = await resolvePromptRoute(
+    ({ routed, lane, reason, kind, impact } = await resolvePromptRoute(
       input.projectRoot,
       input.request,
       deps
@@ -385,6 +391,7 @@ async function runPromptRouteSeam(input, deps = {}) {
   }
   if (isFeatureDevelopmentRoute(routed) && lane !== null && recordedLane === null) {
     writePendingLane(input.projectRoot, sessionId, lane);
+    if (impact !== void 0) writePendingImpact(input.projectRoot, sessionId, impact);
   }
   if (isFeatureDevelopmentRoute(routed) && kind !== void 0) {
     writePendingKind(input.projectRoot, sessionId, kind);

@@ -1,4 +1,4 @@
-import { ClassificationResult, Lane } from '../index.js';
+import { DatabaseImpact, ApiImpact, ClassificationResult, Lane } from '../index.js';
 import { S as StageLane } from '../types-BsILBLhT.js';
 import '../introspection-CLBqo7wO.js';
 
@@ -6,6 +6,11 @@ type FeatureChangeKind = 'fix' | 'other';
 
 declare const ROUTED_WORKFLOWS: readonly ["feature-development", "project-question", "documentation-update", "module-documentation", "pentest", "design-test", "codebase-health", "site-map", "rules-analyze", "root-cause-analysis", "discovery", "no-workflow"];
 type RoutedWorkflow = (typeof ROUTED_WORKFLOWS)[number];
+
+interface PendingImpact {
+    database_impact: DatabaseImpact;
+    api_impact: ApiImpact;
+}
 
 interface WorkflowEntry {
     workflow: RoutedWorkflow;
@@ -42,6 +47,7 @@ interface PromptRouteResult {
     lane: Lane | null;
     reason: string;
     kind?: FeatureChangeKind;
+    impact?: PendingImpact;
 }
 declare function resolvePromptRoute(projectRoot: string, request: string, deps?: PromptRouteDeps): Promise<PromptRouteResult>;
 interface PromptRouteSeamInput {

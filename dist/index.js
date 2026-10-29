@@ -7,7 +7,6 @@ import {
   ANALYTICS_STRICTNESS_MODES,
   ANSWER_GROUNDING_STATES,
   ANSWER_MODES,
-  API_IMPACTS,
   ARTIFACT_OUTPUT_KEYS,
   ARTIFACT_TYPES,
   ATTACHMENT_RETRY_BUDGET_MS,
@@ -21,18 +20,11 @@ import {
   BehavioralCorrectnessGate,
   BudgetAllocator,
   CITATION_SOURCE_CLASSES,
-  CLASSIFICATION_CERTAINTY,
-  CLASSIFICATION_OUTPUT_TYPES,
   CLASSIFICATION_RULES,
-  CLASSIFICATION_SCOPES,
-  CLASSIFICATION_WORKFLOWS,
   COLLISION_MAP,
   COMPLIANCE_EVIDENCE_STRENGTHS,
   COMPLIANCE_RELATIONS,
-  COMPLIANCE_SENSITIVITY_LEVELS,
-  CONTEXT_BUDGET_HINTS,
   CONTEXT_LEVELS,
-  CUSTOMER_FACING_IMPACTS,
   CacheMetricsTracker,
   CacheWarmer,
   ChangeCompletenessGate,
@@ -48,8 +40,6 @@ import {
   ContinueAdapter,
   ContradictionDetector,
   CursorAdapter,
-  DATABASE_IMPACTS,
-  DATA_SENSITIVITY_LEVELS,
   DEFAULT_ANALYTICS_STRICTNESS,
   DEFAULT_BOUNDARY_REPORT_PATH,
   DEFAULT_GATE_CODES,
@@ -123,10 +113,8 @@ import {
   REQUIREMENT_PRIORITIES,
   REQUIREMENT_RISKS,
   RESOLUTION_LAYERS,
-  RESOLUTION_SOURCES,
   RETRIEVAL_ESCALATION_SIGNALS,
   RETRIEVAL_PATHS,
-  REVERSIBILITY_LEVELS,
   REVIEW_DIMENSIONS,
   REVIEW_MODES,
   REVIEW_TIERS,
@@ -161,7 +149,6 @@ import {
   StepExecutor,
   StoryQualityGate,
   StreamTruncator,
-  TARGET_CAPABILITIES,
   TASK_COMPLEXITIES,
   TEST_ISSUE_CATEGORIES,
   TEST_OUTPUT_SCHEMA_VERSION,
@@ -175,12 +162,10 @@ import {
   TemplateRegistry,
   TransitionLogManager,
   TurnSummarizer,
-  UI_IMPACTS,
   UNKNOWN_TEST_OUTPUT_TIMESTAMP,
   VERSION,
   VERSION_UNKNOWN,
   VerificationGateRunner,
-  WORKFLOW_SOURCES,
   WindsurfAdapter,
   WorkflowEngine,
   WorkflowRouterService,
@@ -412,7 +397,7 @@ import {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts
-} from "./chunk-Q6SJXTMA.js";
+} from "./chunk-AJEQRBVH.js";
 import {
   AC_ID_PATTERN,
   AcTestMappingGate,
@@ -461,9 +446,9 @@ import {
   writeHudSnapshot,
   writeHudSnapshotSafe,
   writeVerificationEvidence
-} from "./chunk-KPV5BGR2.js";
-import "./chunk-CZWTNNZI.js";
-import "./chunk-ZSUDGLR4.js";
+} from "./chunk-P3W4PZEW.js";
+import "./chunk-X26V3OWU.js";
+import "./chunk-UIXGQSDY.js";
 import "./chunk-WULKDLB5.js";
 import {
   DEFAULT_HOOK_ADAPTER,
@@ -488,7 +473,7 @@ import {
   renderHookCommand,
   rendersFullHookChain
 } from "./chunk-PWJ37K7H.js";
-import "./chunk-CKUSDRJG.js";
+import "./chunk-RYQ3S2NO.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
@@ -547,7 +532,7 @@ import {
   toProjectRelativeModule,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-MIUC5U4D.js";
+} from "./chunk-PTPZHHJG.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -587,12 +572,12 @@ import {
   resetEmbeddingProviderCache,
   suggestPatternsForProject,
   toCrsCollectionId
-} from "./chunk-XSGPSBRW.js";
+} from "./chunk-CSFZMKLX.js";
 import "./chunk-5QVCE2TS.js";
-import "./chunk-SR2Y3COL.js";
-import "./chunk-XP6MZX35.js";
+import "./chunk-DKE32SFK.js";
+import "./chunk-FEFDOY2L.js";
 import "./chunk-Y7QRVDRT.js";
-import "./chunk-ZH5XQJWV.js";
+import "./chunk-OMFGVII3.js";
 import {
   COMPLIANCE_SCHEMA_VERSION,
   DEFAULT_OBLIGATION_INDEX_PATH,
@@ -629,8 +614,8 @@ import {
   writeJsonPreservingTimestamp,
   writeOnboardingManifest,
   writeProjectProfile
-} from "./chunk-IA75KPEQ.js";
-import "./chunk-HTGOYPGB.js";
+} from "./chunk-MVJCZDYV.js";
+import "./chunk-XJRPY4JS.js";
 import {
   AGENT_ROLES,
   CONTEXT_LEVEL_BUDGETS,
@@ -658,7 +643,7 @@ import {
   ruleTriggersMatch,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-VFQA2LTE.js";
+} from "./chunk-WWF56VBL.js";
 import {
   CancelledError,
   DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
@@ -681,7 +666,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "./chunk-PMICGOSV.js";
+} from "./chunk-AERVUFLE.js";
 import {
   DECISION_AUDIT_EVENTS,
   DECISION_CARRY_OVER_SCOPES,
@@ -733,7 +718,7 @@ import {
   toDecisionRecord,
   toEngineError,
   validateDecisionPacket
-} from "./chunk-DPSFF4QH.js";
+} from "./chunk-6WG455KS.js";
 import {
   ACTIVE_CAPABILITIES,
   CAPABILITIES,
@@ -754,7 +739,7 @@ import {
   removeProjectSecrets,
   setEngineLogger,
   writeProjectSecret
-} from "./chunk-FWLM7JCL.js";
+} from "./chunk-6C4M3H2R.js";
 import "./chunk-TLKXJ74I.js";
 import "./chunk-BW7VURA4.js";
 import {
@@ -764,8 +749,8 @@ import {
   getRuntimeTemplatesRoot
 } from "./chunk-VVRAO2BK.js";
 import "./chunk-BYYV5KPL.js";
-import "./chunk-QW46S372.js";
-import "./chunk-BL6EFJEL.js";
+import "./chunk-TUQRHR24.js";
+import "./chunk-ISYYKMP3.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
@@ -775,36 +760,50 @@ import {
   hudVerdictPath,
   safeSessionId,
   writeFileAtomic
-} from "./chunk-X5MFYU5N.js";
-import "./chunk-OXQG5ZNU.js";
+} from "./chunk-D4CEREBZ.js";
+import "./chunk-A4TFR7XI.js";
 import "./chunk-KKFSSPUD.js";
-import "./chunk-6GJIJXFC.js";
+import "./chunk-FWUTQ2BL.js";
 import "./chunk-O77JBFWW.js";
-import "./chunk-HT2QNIOJ.js";
-import "./chunk-DYTFDCMO.js";
-import "./chunk-S5DGRR3I.js";
-import "./chunk-6D2NK5XH.js";
-import "./chunk-F32JDZBI.js";
-import "./chunk-K6NCDVUE.js";
+import "./chunk-JTDDPPRS.js";
+import "./chunk-GURIOBYT.js";
+import "./chunk-TY4F2MU6.js";
+import "./chunk-BESVAPGH.js";
+import {
+  API_IMPACTS,
+  CLASSIFICATION_CERTAINTY,
+  CLASSIFICATION_OUTPUT_TYPES,
+  CLASSIFICATION_SCOPES,
+  CLASSIFICATION_WORKFLOWS,
+  COMPLIANCE_SENSITIVITY_LEVELS,
+  CONTEXT_BUDGET_HINTS,
+  CUSTOMER_FACING_IMPACTS,
+  DATABASE_IMPACTS,
+  DATA_SENSITIVITY_LEVELS,
+  RESOLUTION_SOURCES,
+  REVERSIBILITY_LEVELS,
+  TARGET_CAPABILITIES,
+  UI_IMPACTS,
+  WORKFLOW_SOURCES
+} from "./chunk-XSSY5EO5.js";
+import "./chunk-D2ZCEVQX.js";
 import "./chunk-DNG6DDRS.js";
 import "./chunk-4K4CM3QN.js";
-import "./chunk-53JA4TCG.js";
+import "./chunk-YGMDODB6.js";
 import "./chunk-QUDDQGFY.js";
-import {
-  COMPLEXITY_LEVELS,
-  LANES,
-  PROCESS_DEPTHS,
-  RISK_LEVELS,
-  selectLane
-} from "./chunk-M762QQWF.js";
+import "./chunk-J5CSZPQ6.js";
 import "./chunk-AINYJ3Q2.js";
 import {
   ANALYTICS_DECISION_PATH,
   ANALYTICS_PROVIDERS,
+  COMPLEXITY_LEVELS,
   DECISION_ASK_THRESHOLDS,
   EMBEDDING_PROVIDER_NAMES,
   ESCALATION_MODES,
+  LANES,
+  PROCESS_DEPTHS,
   RESEARCH_DEPTHS,
+  RISK_LEVELS,
   SchemaValidator,
   TICKET_PROVIDER_KINDS,
   detectAnalyticsProvider,
@@ -813,8 +812,9 @@ import {
   inferNamingConvention,
   readAnalyticsDecision,
   resolveAnalyticsGate,
-  resolveAndPersistAnalyticsGate
-} from "./chunk-CVY6Z7Y7.js";
+  resolveAndPersistAnalyticsGate,
+  selectLane
+} from "./chunk-QUAQHWSU.js";
 import "./chunk-QINSFA6R.js";
 import "./chunk-SU7RODZI.js";
 import "./chunk-HV6ESCNW.js";

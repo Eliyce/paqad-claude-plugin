@@ -5,11 +5,11 @@ import {
   candidatesNeedingDecision,
   extractCandidates,
   resolveBriefSession
-} from "../chunk-WAE5GS3X.js";
+} from "../chunk-PXEIQWFO.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-FOEUTTI5.js";
+} from "../chunk-7JJXJSRA.js";
 import {
   holdRefreshContextLock
 } from "../chunk-O6QPPPMO.js";
@@ -165,7 +165,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-Q6SJXTMA.js";
+} from "../chunk-AJEQRBVH.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -192,7 +192,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-KPV5BGR2.js";
+} from "../chunk-P3W4PZEW.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -204,20 +204,20 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-CZWTNNZI.js";
+} from "../chunk-X26V3OWU.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-ZSUDGLR4.js";
+} from "../chunk-UIXGQSDY.js";
 import "../chunk-WULKDLB5.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
 } from "../chunk-PWJ37K7H.js";
-import "../chunk-CKUSDRJG.js";
+import "../chunk-RYQ3S2NO.js";
 import "../chunk-F4TESBBJ.js";
 import {
   createEvidence,
@@ -225,7 +225,7 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-MIUC5U4D.js";
+} from "../chunk-PTPZHHJG.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -241,20 +241,20 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-XSGPSBRW.js";
+} from "../chunk-CSFZMKLX.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-SR2Y3COL.js";
-import "../chunk-XP6MZX35.js";
+} from "../chunk-DKE32SFK.js";
+import "../chunk-FEFDOY2L.js";
 import "../chunk-Y7QRVDRT.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-ZH5XQJWV.js";
+} from "../chunk-OMFGVII3.js";
 import {
   DEFAULT_OBLIGATION_INDEX_PATH,
   DELIVERY_EVIDENCE_DOC_TYPE,
@@ -291,6 +291,7 @@ import {
   freezeSpec,
   hashRuleSources,
   isFrameworkDisabledForRoot,
+  laneMayRise,
   laneRunsSpecPipeline,
   listRunDirs,
   loadCaptureScripts,
@@ -300,10 +301,12 @@ import {
   mergedKind,
   packRegistryFaultDetail,
   parseTraceArtifact,
+  planFiles,
   projectRelative,
   provisionBrowser,
   queryCodeKnowledge,
   queryFrameworkApi,
+  raiseLaneIfGrown,
   readAllFeatureChangeMetrics,
   readAllFeatureEvidence,
   readAllFeatureRag,
@@ -344,7 +347,8 @@ import {
   resolveRuleApplicabilityForChange,
   resolveVeRuntimeDir,
   reviewSpecification,
-  seatStandingExperts,
+  seatExpertsForLane,
+  sensitivePaths,
   setFrameworkEnabled,
   specIndexPath,
   specReportPath,
@@ -380,8 +384,8 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-IA75KPEQ.js";
-import "../chunk-HTGOYPGB.js";
+} from "../chunk-MVJCZDYV.js";
+import "../chunk-XJRPY4JS.js";
 import "../chunk-NRKCUFAE.js";
 import {
   releaseLock,
@@ -393,7 +397,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-VFQA2LTE.js";
+} from "../chunk-WWF56VBL.js";
 import {
   StackPackLoader,
   atomicWriteFile,
@@ -403,7 +407,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "../chunk-PMICGOSV.js";
+} from "../chunk-AERVUFLE.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -417,7 +421,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-DPSFF4QH.js";
+} from "../chunk-6WG455KS.js";
 import {
   ACTIVE_CAPABILITIES,
   FrameworkError,
@@ -429,7 +433,7 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-FWLM7JCL.js";
+} from "../chunk-6C4M3H2R.js";
 import {
   readTextIfExistsSync
 } from "../chunk-TLKXJ74I.js";
@@ -440,54 +444,54 @@ import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
 import "../chunk-BYYV5KPL.js";
-import "../chunk-QW46S372.js";
+import "../chunk-TUQRHR24.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-BL6EFJEL.js";
+} from "../chunk-ISYYKMP3.js";
 import {
   hudCostCachePath
-} from "../chunk-X5MFYU5N.js";
+} from "../chunk-D4CEREBZ.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-OXQG5ZNU.js";
+} from "../chunk-A4TFR7XI.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-6GJIJXFC.js";
+} from "../chunk-FWUTQ2BL.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-HT2QNIOJ.js";
+} from "../chunk-JTDDPPRS.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   normalizeArtifactPath
-} from "../chunk-DYTFDCMO.js";
+} from "../chunk-GURIOBYT.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-S5DGRR3I.js";
+} from "../chunk-TY4F2MU6.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-6D2NK5XH.js";
+} from "../chunk-BESVAPGH.js";
 import {
   clearPendingLane,
   recordMarkedStage
-} from "../chunk-F32JDZBI.js";
+} from "../chunk-XSSY5EO5.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -505,7 +509,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-K6NCDVUE.js";
+} from "../chunk-D2ZCEVQX.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -535,7 +539,7 @@ import {
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-53JA4TCG.js";
+} from "../chunk-YGMDODB6.js";
 import {
   describeEarlierWork
 } from "../chunk-QUDDQGFY.js";
@@ -559,7 +563,7 @@ import {
   sha256Hex,
   stampBundleRow,
   validateVisualEvidenceRecord
-} from "../chunk-M762QQWF.js";
+} from "../chunk-J5CSZPQ6.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -585,7 +589,7 @@ import {
   stageForAgentName,
   stripPluginAgentNamespace,
   syncFrameworkConfig
-} from "../chunk-CVY6Z7Y7.js";
+} from "../chunk-QUAQHWSU.js";
 import {
   appendStampedRowToUnit,
   foldByOrdinal,
@@ -18776,7 +18780,7 @@ function createLaneCommand() {
       return;
     }
     const before = readChangeConstants(root, dirName).lane;
-    recordChangeConstants(root, dirName, { lane: requested });
+    recordChangeConstants(root, dirName, { lane: requested, laneSource: "manual" });
     const after = readChangeConstants(root, dirName).lane;
     const changed = after !== before;
     const refusedDowngrade = !changed && laneRank(requested) < laneRank(before);
@@ -20000,6 +20004,12 @@ function readinessLine(id, deferred) {
   }
   return `**\u25B8 paqad** \xB7 Visual evidence is on, but I can't capture screenshots here yet. Answer ${id} (\`paqad-ai decision resolve ${id} setup|attach|waive\`), then I'll continue.`;
 }
+function laneResizedLine(move) {
+  return `**\u25B8 paqad** \xB7 lane set to ${move.to} from ${move.from}: ${move.reason}`;
+}
+function laneRaisedLine(move) {
+  return `**\u25B8 paqad** \xB7 lane raised to ${move.to} from ${move.from}: ${move.reason}`;
+}
 function createPlanCommand() {
   const command = new Command("plan").description(
     "Work with the per-feature plan (compile the plan.json from a template)"
@@ -20032,7 +20042,10 @@ function createPlanCommand() {
     })).files;
     let result;
     try {
-      result = writeFeaturePlan(root, sessionId, template, { changedFiles });
+      result = writeFeaturePlan(root, sessionId, template, {
+        changedFiles,
+        gitReadable: readGitState(root).head_commit !== void 0
+      });
     } catch (error) {
       if (error instanceof ReuseDeclarationError) {
         for (const line of error.errors) {
@@ -20069,6 +20082,12 @@ function createPlanCommand() {
       } catch {
       }
     }
+    if (result.laneResized) {
+      console.log(laneResizedLine(result.laneResized));
+    }
+    if (result.laneRaised) {
+      console.log(laneRaisedLine(result.laneRaised));
+    }
     console.log(`**\u25B8 paqad** \xB7 compiled ${result.path}`);
     console.log(
       JSON.stringify({
@@ -20076,7 +20095,9 @@ function createPlanCommand() {
         path: result.path,
         ...result.armedDecisions?.length ? { armed_decisions: result.armedDecisions } : {},
         ...result.readinessDecision ? { readiness_decision: result.readinessDecision } : {},
-        ...proofMethod ? { fix_proof_method: proofMethod.id } : {}
+        ...proofMethod ? { fix_proof_method: proofMethod.id } : {},
+        ...result.laneResized ? { lane_resized: result.laneResized } : {},
+        ...result.laneRaised ? { lane_raised: result.laneRaised } : {}
       })
     );
   });
@@ -25149,7 +25170,17 @@ function createExpertsCommand() {
       return;
     }
     const config = readPipelineConfig(options.projectRoot);
-    const needs = seatStandingExperts(check.artifact.experts, config.standing_experts);
+    const lane = readChangeConstants(options.projectRoot, resolved.dirName).lane ?? "full";
+    const standingSits = config.experts_lanes.includes(lane);
+    const needs = seatExpertsForLane({
+      detectorNeeds: check.artifact.experts,
+      standing: config.standing_experts,
+      standingSits,
+      sensitivePath: standingSits ? null : sensitivePaths(
+        options.projectRoot,
+        planFiles(readFeaturePlan(options.projectRoot, resolved.dirName)?.steps)
+      )[0] ?? null
+    });
     const projectVoice = resolveProjectVoice(options.projectRoot, resolved.dirName);
     const { briefs } = buildExpertBriefs({
       needs,
@@ -25178,6 +25209,11 @@ function createExpertsCommand() {
     );
     if (roster.length === 0) {
       recordStep(options.projectRoot, resolved.dirName, "experts", "skipped", resolved.store);
+      if (!standingSits) {
+        console.log(
+          `**\u25B8 paqad** \xB7 skipped the High Table: no on-call expert is needed on the ${lane} lane`
+        );
+      }
     }
     const standingCount = needs.filter((need) => need.origin === "standing").length;
     console.log(
@@ -25499,11 +25535,11 @@ function createSpecCommand() {
         spec_file: relSpec,
         spec_markdown: markdown
       });
-      const planFiles = freezeFeature ? (readFeaturePlan(options.projectRoot, freezeFeature)?.steps ?? []).flatMap(
+      const planFiles2 = freezeFeature ? (readFeaturePlan(options.projectRoot, freezeFeature)?.steps ?? []).flatMap(
         (step) => step.files ?? []
       ) : [];
       const visualFiles = visualAcRequiredFiles(options.projectRoot, [
-        ...planFiles,
+        ...planFiles2,
         ...(await loadChangeEvidence(options.projectRoot)).files
       ]);
       const evaluation = evaluateSpecFreeze(
@@ -25591,6 +25627,17 @@ function runStageSettings(options) {
     process.exitCode = 1;
   }
 }
+async function raiseLaneOnStageStart(root, sessionId) {
+  const dirName = currentFeature(root, sessionId);
+  if (dirName === null || !laneMayRise(root, dirName)) return null;
+  const { files } = await loadChangeEvidence(root, { since: readChangeStartPoint(root, dirName) });
+  return raiseLaneIfGrown({
+    projectRoot: root,
+    dirName,
+    plannedFiles: planFiles(readFeaturePlan(root, dirName)?.steps),
+    changedFiles: files
+  });
+}
 function openStageAgentId(root, sessionId, dirName) {
   const open = liveStageAgents(readFeatureStageUnit(root, dirName)).filter(
     (agent) => agent.agentId !== null && agent.sessionId === sessionId
@@ -25646,7 +25693,7 @@ function createStageCommand() {
   ).option(
     "--agent-id <id>",
     "On a `brief`, the host agent id to print on the command lines (defaults to SE_AGENT_ID, then the session's open stage-agent row)"
-  ).action((phase, stage, options) => {
+  ).action(async (phase, stage, options) => {
     if (phase === "settings") {
       runStageSettings(options);
       return;
@@ -25692,6 +25739,7 @@ function createStageCommand() {
       }
       artifactPaths = check.accepted.length > 0 ? check.accepted : void 0;
     }
+    const raised = phase === "start" && !options.title && STAGE_ORDER.includes(stage) ? await raiseLaneOnStageStart(root, sessionId) : null;
     const recorded = recordMarkedStage(root, {
       sessionId,
       sessionSource,
@@ -25710,9 +25758,17 @@ function createStageCommand() {
       process.exitCode = 1;
       return;
     }
+    if (raised) console.log(laneRaisedLine(raised));
     const line = markerNarrationLine(stage, phase);
     if (line) console.log(line);
-    console.log(JSON.stringify({ recorded: true, stage, phase }));
+    console.log(
+      JSON.stringify({
+        recorded: true,
+        stage,
+        phase,
+        ...raised ? { lane_raised: raised } : {}
+      })
+    );
   });
 }
 
