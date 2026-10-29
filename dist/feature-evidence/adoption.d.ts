@@ -7,7 +7,12 @@ declare function listAdoptableFeatures(projectRoot: string, branch: string | nul
 declare function listInFlightFeatures(projectRoot: string): string[];
 declare function sessionClosedAnyFeature(projectRoot: string, sessionId: string): boolean;
 declare function sessionReattachableFeature(projectRoot: string, sessionId: string, branch: string | null): string | null;
+declare function anotherSessionRunningStage(projectRoot: string, sessionId: string, dirName: string, now?: () => Date): string | null;
 declare function reconcileSessionControl(projectRoot: string, sessionId: string, now?: () => Date): string | null;
 declare function adoptableInFlightOnBranch(projectRoot: string, sessionId: string, now?: () => Date): string[];
+declare function heldInFlightOnBranch(projectRoot: string, sessionId: string, now?: () => Date): Array<{
+    dirName: string;
+    stage: string;
+}>;
 
-export { adoptableInFlightOnBranch, featureBranch, isBundleClosed, isBundleMaterialized, listAdoptableFeatures, listInFlightFeatures, reconcileSessionControl, sessionClosedAnyFeature, sessionReattachableFeature };
+export { adoptableInFlightOnBranch, anotherSessionRunningStage, featureBranch, heldInFlightOnBranch, isBundleClosed, isBundleMaterialized, listAdoptableFeatures, listInFlightFeatures, reconcileSessionControl, sessionClosedAnyFeature, sessionReattachableFeature };
