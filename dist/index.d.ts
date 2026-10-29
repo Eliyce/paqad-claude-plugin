@@ -4185,6 +4185,7 @@ interface RuleStopRecord {
     diff: string;
     token: string;
     used: boolean;
+    allowed_once: boolean;
     session: string;
 }
 

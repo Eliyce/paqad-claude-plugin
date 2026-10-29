@@ -8,7 +8,7 @@ import {
   require_dist,
   resolveFrameworkConfig,
   stripFrameworkConfigFromProfile
-} from "./chunk-H2GJD26E.js";
+} from "./chunk-VD7SJHT4.js";
 import {
   renameWithRetrySync
 } from "./chunk-KFLIUVMP.js";

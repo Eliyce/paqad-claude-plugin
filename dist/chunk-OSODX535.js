@@ -1,12 +1,14 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   readRawModuleMap
-} from "./chunk-XISBEPDI.js";
+} from "./chunk-ARGC3ANJ.js";
 import {
   toPosixPath
 } from "./chunk-4K4CM3QN.js";
 import {
   PRE_CODE_STAGES,
+  RECORD_REPAIR_KIND,
+  STAGE_AGENT_KIND,
   STAGE_EVIDENCE_DOC_TYPE,
   agentForWriter,
   appendFeatureStageRow,
@@ -14,15 +16,20 @@ import {
   isEditStage,
   isKnownStage,
   isLaneStage,
+  isStageAgent,
   openFeatureChange,
   readFeatureStageUnit,
   recordChangeConstants,
   requiredPreCodeStages,
   resumeFeatureByRef,
   startedAfterLastEnd
-} from "./chunk-QR66SJS4.js";
+} from "./chunk-BIG27WNV.js";
+import {
+  stripPluginAgentNamespace
+} from "./chunk-VD7SJHT4.js";
 import {
   readChangeConstants,
+  rowRecordedAt,
   sessionReattachableFeature
 } from "./chunk-KFLIUVMP.js";
 import {
@@ -253,6 +260,71 @@ function append(projectRoot, sessionId, dirName, ctx, fields) {
   );
 }
 
+// src/stage-evidence/stage-agent-holds.ts
+init_esm_shims();
+function rowTime(row) {
+  return Date.parse(rowRecordedAt(row) ?? "");
+}
+function stringOrNull(value) {
+  return typeof value === "string" && value.trim() !== "" ? value.trim() : null;
+}
+var STAGE_AGENT_SESSION_RELEASE = "a new session began, so stage agents left from the last session no longer hold the turn-end judgement";
+function stageAgentIdentity(agent, agentId) {
+  const name = stringOrNull(agent);
+  return {
+    agent: name === null ? null : stripPluginAgentNamespace(name),
+    agentId: stringOrNull(agentId)
+  };
+}
+function identityOf(row) {
+  return stageAgentIdentity(row.agent, row.agent_id);
+}
+function startedByAnotherAgent(starter, holder) {
+  if (starter.agentId !== null && starter.agentId !== holder.agentId) return true;
+  return isStageAgent(starter.agent) && starter.agent !== holder.agent;
+}
+function releasesStartedAgent(later, stage, holder, startedHash) {
+  const laterStage = stringOrNull(later.stage);
+  const laterId = stringOrNull(later.agent_id);
+  const agentId = holder.agentId;
+  if (later.kind === STAGE_AGENT_KIND && later.event_status === "started") {
+    return laterStage === stage && (agentId === null || laterId !== agentId);
+  }
+  if (later.kind === STAGE_AGENT_KIND) {
+    return agentId !== null && laterId !== null ? laterId === agentId : laterStage === stage;
+  }
+  if (later.kind === "stage_end") return laterStage === stage;
+  if (later.kind === "stage_start") {
+    return laterStage !== null && laterStage !== stage && laterId === null && !startedByAnotherAgent(identityOf(later), holder);
+  }
+  if (later.kind !== RECORD_REPAIR_KIND || later.reason !== STAGE_AGENT_SESSION_RELEASE) {
+    return false;
+  }
+  return !Array.isArray(later.releases) || later.releases.includes(startedHash);
+}
+function liveStageAgents(rows) {
+  const live = [];
+  rows.forEach((row, index) => {
+    if (row.kind !== STAGE_AGENT_KIND || row.event_status !== "started") return;
+    const stage = stringOrNull(row.stage);
+    if (stage === null) return;
+    if (Number.isNaN(rowTime(row))) return;
+    const holder = identityOf(row);
+    const released = rows.slice(index + 1).some((later) => releasesStartedAgent(later, stage, holder, row.content_hash));
+    if (released) return;
+    live.push({
+      stage,
+      agent: holder.agent,
+      agentId: holder.agentId,
+      startedAt: rowRecordedAt(row),
+      sessionId: row.session_id,
+      hostPid: typeof row.host_pid === "number" ? row.host_pid : null,
+      rowHash: row.content_hash
+    });
+  });
+  return live;
+}
+
 // src/stage-evidence/live-writer.ts
 function toRelativePosix(projectRoot, targetPath) {
   const rel = isAbsolute(targetPath) ? relative(projectRoot, targetPath) : targetPath;
@@ -352,10 +424,14 @@ function closeOpenStagesForMarkedStart(projectRoot, targetStage, ctx) {
   const rows = readFeatureStageUnit(projectRoot, dirName);
   const started = stagesWithKind(rows, "stage_start");
   const ended = stagesWithKind(rows, "stage_end");
+  const starter = stageAgentIdentity(ctx.agent ?? agentForWriter(ctx.adapter), ctx.agentId);
+  const heldByAnother = new Set(
+    liveStageAgents(rows).filter((hold) => startedByAnotherAgent(starter, hold)).map((hold) => hold.stage)
+  );
   for (const row of rows) {
     if (row.kind !== "stage_start" || typeof row.stage !== "string") continue;
     const s = row.stage;
-    if (s !== targetStage && started.has(s) && !ended.has(s)) {
+    if (s !== targetStage && started.has(s) && !ended.has(s) && !heldByAnother.has(s)) {
       ended.add(s);
       try {
         endStage(
@@ -384,16 +460,14 @@ function recordMarkedStage(projectRoot, input) {
     agent: input.agent,
     now: input.now
   };
+  const agentId = input.agentId?.trim() ? input.agentId.trim() : void 0;
   try {
     if (input.phase === "start" && input.title !== void 0) {
       openStageEvidence(projectRoot, { ...ctx, title: input.title, issue: input.issue });
     }
     if (input.phase === "start") {
-      closeOpenStagesForMarkedStart(projectRoot, input.stage, ctx);
-      startStage(projectRoot, input.stage, {
-        ...ctx,
-        ...input.agentId?.trim() ? { agentId: input.agentId.trim() } : {}
-      });
+      closeOpenStagesForMarkedStart(projectRoot, input.stage, { ...ctx, agentId });
+      startStage(projectRoot, input.stage, { ...ctx, ...agentId ? { agentId } : {} });
     } else {
       endStage(projectRoot, input.stage, { artifactPaths: input.artifactPaths ?? [] }, ctx);
     }
@@ -410,6 +484,8 @@ export {
   writePendingKind,
   openStageEvidence,
   endStage,
+  STAGE_AGENT_SESSION_RELEASE,
+  liveStageAgents,
   classifyStage,
   stagesWithKind,
   preCodeStagesRecorded,

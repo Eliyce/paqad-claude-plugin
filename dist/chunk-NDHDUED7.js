@@ -1,23 +1,24 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   readContractDecisions
-} from "./chunk-AHUCGXCI.js";
+} from "./chunk-OKQD6HAY.js";
 import {
+  STAGE_AGENT_SESSION_RELEASE,
+  liveStageAgents,
   stageIsOpen,
   stagesWithKind
-} from "./chunk-YXTFS35T.js";
+} from "./chunk-OSODX535.js";
 import {
   COMPLETION_DEFERRED_KIND,
   RECORD_REPAIR_KIND,
-  STAGE_AGENT_KIND,
   appendFeatureStageRow,
   currentFeature,
   foldFeature,
   readFeatureStageUnit
-} from "./chunk-QR66SJS4.js";
+} from "./chunk-BIG27WNV.js";
 import {
   stripPluginAgentNamespace
-} from "./chunk-H2GJD26E.js";
+} from "./chunk-VD7SJHT4.js";
 import {
   isBundleClosed,
   rowRecordedAt
@@ -171,52 +172,6 @@ function stageAgentTaskCount(tasks) {
 function tasksCarryAgentType(tasks) {
   return runningTasks(tasks).some((task) => agentTypeOf(task) !== void 0);
 }
-function rowTime(row) {
-  return Date.parse(rowRecordedAt(row) ?? "");
-}
-function stringOrNull(value) {
-  return typeof value === "string" && value.trim() !== "" ? value.trim() : null;
-}
-var STAGE_AGENT_SESSION_RELEASE = "a new session began, so stage agents left from the last session no longer hold the turn-end judgement";
-function releasesStartedAgent(later, stage, agentId, startedHash) {
-  const laterStage = stringOrNull(later.stage);
-  const laterId = stringOrNull(later.agent_id);
-  if (later.kind === STAGE_AGENT_KIND && later.event_status === "started") {
-    return laterStage === stage && (agentId === null || laterId !== agentId);
-  }
-  if (later.kind === STAGE_AGENT_KIND) {
-    return agentId !== null && laterId !== null ? laterId === agentId : laterStage === stage;
-  }
-  if (later.kind === "stage_end") return laterStage === stage;
-  if (later.kind === "stage_start") {
-    return laterStage !== null && laterStage !== stage && (laterId === null || laterId !== agentId);
-  }
-  if (later.kind !== RECORD_REPAIR_KIND || later.reason !== STAGE_AGENT_SESSION_RELEASE) {
-    return false;
-  }
-  return !Array.isArray(later.releases) || later.releases.includes(startedHash);
-}
-function liveStageAgents(rows) {
-  const live = [];
-  rows.forEach((row, index) => {
-    if (row.kind !== STAGE_AGENT_KIND || row.event_status !== "started") return;
-    const stage = stringOrNull(row.stage);
-    if (stage === null) return;
-    const agentId = stringOrNull(row.agent_id);
-    if (Number.isNaN(rowTime(row))) return;
-    const released = rows.slice(index + 1).some((later) => releasesStartedAgent(later, stage, agentId, row.content_hash));
-    if (released) return;
-    live.push({
-      stage,
-      agentId,
-      startedAt: rowRecordedAt(row),
-      sessionId: row.session_id,
-      hostPid: typeof row.host_pid === "number" ? row.host_pid : null,
-      rowHash: row.content_hash
-    });
-  });
-  return live;
-}
 var NEW_HOST_SESSION_SOURCES = /* @__PURE__ */ new Set(["startup", "resume"]);
 function hostProcessAlive(pid) {
   try {
@@ -337,8 +292,6 @@ export {
   liveChecksRunningMarker,
   stageAgentTaskCount,
   tasksCarryAgentType,
-  STAGE_AGENT_SESSION_RELEASE,
-  liveStageAgents,
   hostProcessAlive,
   releaseStageAgentsAtSessionStart,
   hasOpenUnendedStage,

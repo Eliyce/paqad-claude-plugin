@@ -4,46 +4,47 @@ import {
   clearRuleStopRecord,
   frontendTriggerOrFault,
   isManagedEnv,
+  takeAllowedOnce,
   visualEvidenceFlagOn,
   writeRuleStopRecord
-} from "../chunk-QKITQ5YP.js";
+} from "../chunk-3RZY5YUM.js";
 import "../chunk-BWAUL7O5.js";
 import "../chunk-NRKCUFAE.js";
 import "../chunk-NUSNYHWM.js";
-import "../chunk-O2WKFMHD.js";
-import "../chunk-SLA7U7ST.js";
-import "../chunk-AHUCGXCI.js";
-import "../chunk-RHPTIMUW.js";
+import "../chunk-XE66RHVS.js";
+import "../chunk-OHAI622W.js";
+import "../chunk-OKQD6HAY.js";
+import "../chunk-U7W2Y6WH.js";
 import "../chunk-TLKXJ74I.js";
 import {
   appendHooksLog
 } from "../chunk-BW7VURA4.js";
 import "../chunk-VVRAO2BK.js";
 import "../chunk-BYYV5KPL.js";
-import "../chunk-6WQX4XJ6.js";
+import "../chunk-NCHLE4QU.js";
 import {
   capabilitiesForSeam
-} from "../chunk-JN3L7KCE.js";
+} from "../chunk-6NOCGBLI.js";
 import {
   hudLastBlockPath
 } from "../chunk-IN2AVDIO.js";
-import "../chunk-RUM5BXA3.js";
+import "../chunk-GUPY77J4.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-GMXHN3L4.js";
+import "../chunk-3CT677IB.js";
 import "../chunk-O77JBFWW.js";
-import "../chunk-MROQZYOD.js";
-import "../chunk-FL6ONVOX.js";
-import "../chunk-GP3BYUVG.js";
-import "../chunk-6VTX7ZYM.js";
-import "../chunk-YXTFS35T.js";
-import "../chunk-XISBEPDI.js";
+import "../chunk-R5UHS6MO.js";
+import "../chunk-YSBWQ3FB.js";
+import "../chunk-LXENFDLY.js";
+import "../chunk-Z4HJB3E6.js";
+import "../chunk-OSODX535.js";
+import "../chunk-ARGC3ANJ.js";
 import "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
 import {
   currentFeature
-} from "../chunk-QR66SJS4.js";
+} from "../chunk-BIG27WNV.js";
 import "../chunk-QUDDQGFY.js";
-import "../chunk-H2GJD26E.js";
+import "../chunk-VD7SJHT4.js";
 import "../chunk-KFLIUVMP.js";
 import "../chunk-AINYJ3Q2.js";
 import "../chunk-WGEG5J6L.js";
@@ -94,6 +95,7 @@ function visualEvidenceReminder(input) {
 }
 
 // src/kernel/gate.ts
+var ALLOW_ONCE_REASON = "You allowed this edit once in the paqad HUD, and paqad recorded the override. Approve to run it.";
 function reminderContext(projectRoot, env, payload) {
   try {
     return visualEvidenceReminder({
@@ -146,6 +148,31 @@ function syncRuleStopRecord(projectRoot, env, payload, blocking, entryLoaded) {
     );
   }
 }
+function allowedOnce(projectRoot, env, payload, blocking) {
+  try {
+    const sessionId = payload?.sessionId ?? env.CLAUDE_SESSION_ID;
+    if (!sessionId || isManagedEnv(env)) return false;
+    if (payload?.adapter !== void 0 && payload.adapter !== "claude-code") return false;
+    const violations = blocking.length === 1 ? blocking[0]?.violations ?? [] : [];
+    const violation = violations.length === 1 ? violations[0] : void 0;
+    if (!violation) return false;
+    const taken = takeAllowedOnce(projectRoot, sessionId, {
+      toolUseId: payload?.toolUseId,
+      rule: violation.rule_id,
+      file: violation.file
+    });
+    if (taken) {
+      appendHooksLog(
+        projectRoot,
+        `capability-gate allowed once: asked for ${violation.rule_id} on ${violation.file} (tool_use_id ${payload?.toolUseId})`
+      );
+    }
+    return taken;
+  } catch (error) {
+    appendHooksLog(projectRoot, `capability-gate allowed-once check failed: ${errorKind(error)}`);
+    return false;
+  }
+}
 async function runCapabilityGate(input) {
   const { projectRoot, seam, env = process.env, payload, entryLoaded, startedAt, now } = input;
   const outcomes = [];
@@ -177,6 +204,9 @@ async function runCapabilityGate(input) {
   const narration = narrations.join("\n");
   const context = seam === "pre-mutation" ? [...contexts, reminderContext(projectRoot, env, payload)].filter(Boolean).join("\n") : "";
   const blocking = outcomes.filter((outcome) => outcome.blocking);
+  if (seam === "pre-mutation" && allowedOnce(projectRoot, env, payload, blocking)) {
+    return { block: false, ask: ALLOW_ONCE_REASON, summary: "", narration, context };
+  }
   if (seam === "pre-mutation") {
     syncRuleStopRecord(projectRoot, env, payload, blocking, entryLoaded);
   }
@@ -196,5 +226,6 @@ async function runCapabilityGate(input) {
   };
 }
 export {
+  ALLOW_ONCE_REASON,
   runCapabilityGate
 };

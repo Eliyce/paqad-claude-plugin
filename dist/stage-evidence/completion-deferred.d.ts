@@ -6,10 +6,9 @@ interface ChecksMarkerProbe {
     commandOf?: (pid: number) => string | null;
 }
 
-declare function stageAgentTaskCount(tasks: readonly unknown[]): number;
-declare function tasksCarryAgentType(tasks: readonly unknown[]): boolean;
 interface LiveStageAgent {
     stage: string;
+    agent: string | null;
     agentId: string | null;
     startedAt: string;
     sessionId: string;
@@ -18,6 +17,10 @@ interface LiveStageAgent {
 }
 declare const STAGE_AGENT_SESSION_RELEASE = "a new session began, so stage agents left from the last session no longer hold the turn-end judgement";
 declare function liveStageAgents(rows: readonly SessionLedgerRow[]): LiveStageAgent[];
+
+declare function stageAgentTaskCount(tasks: readonly unknown[]): number;
+declare function tasksCarryAgentType(tasks: readonly unknown[]): boolean;
+
 declare function hostProcessAlive(pid: number): boolean;
 declare function releaseStageAgentsAtSessionStart(projectRoot: string, sessionId: string, source: unknown, now?: () => Date, isAlive?: (pid: number) => boolean): boolean;
 declare function hasOpenUnendedStage(rows: readonly SessionLedgerRow[]): boolean;

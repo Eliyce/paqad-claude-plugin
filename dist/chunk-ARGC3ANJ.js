@@ -7,7 +7,7 @@ import {
 } from "./chunk-4K4CM3QN.js";
 import {
   require_dist
-} from "./chunk-H2GJD26E.js";
+} from "./chunk-VD7SJHT4.js";
 import {
   PATHS
 } from "./chunk-LW3OCT4Y.js";

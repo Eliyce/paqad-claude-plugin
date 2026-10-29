@@ -45,7 +45,7 @@ import {
   writeFeatureTechDebtIndex,
   writeVerificationEvidence,
   writesLedger
-} from "./chunk-KMXD7XEY.js";
+} from "./chunk-6APYNG46.js";
 import {
   DSSE_PAYLOAD_TYPE,
   ZERO_DIGEST,
@@ -56,7 +56,7 @@ import {
   pae,
   projectFeatureReceipt,
   splitReceiptEvidenceRows
-} from "./chunk-P5B33HZI.js";
+} from "./chunk-S7Q3UGRL.js";
 import {
   buildFullHookChain,
   buildNativeCompletionHookFile,
@@ -68,7 +68,7 @@ import {
 import {
   require_lib,
   writeStageAgents
-} from "./chunk-LJN6UHGD.js";
+} from "./chunk-NIX54EWD.js";
 import {
   getOrLoad
 } from "./chunk-F4TESBBJ.js";
@@ -80,7 +80,7 @@ import {
   syncModuleHealth,
   syncModuleHealthFromVerification,
   writeModuleHealthProfile
-} from "./chunk-4HMHFOSG.js";
+} from "./chunk-7AZOHO77.js";
 import {
   AstChunker,
   ChunkIndexManager,
@@ -90,7 +90,7 @@ import {
   appendRagAudit,
   createEmbeddingProvider,
   createReranker
-} from "./chunk-J2YJQXUP.js";
+} from "./chunk-BQ7L335R.js";
 import {
   PAQAD_STATUS_GLYPH,
   PAQAD_STATUS_LABEL,
@@ -100,9 +100,8 @@ import {
   paqadGlyphLegend
 } from "./chunk-5QVCE2TS.js";
 import {
-  liveChecksRunningMarker,
-  liveStageAgents
-} from "./chunk-OAZIA5U6.js";
+  liveChecksRunningMarker
+} from "./chunk-NDHDUED7.js";
 import {
   ENGINE_INSTALL_NETWORK_HINT,
   PLUGIN_ID,
@@ -118,7 +117,7 @@ import {
   compileRuleScripts,
   isRuleScriptMapStale,
   readDrift
-} from "./chunk-BNNL5DFD.js";
+} from "./chunk-HRFSHML3.js";
 import {
   BUNDLE_MANIFEST,
   COMPLIANCE_SCHEMA_VERSION,
@@ -192,7 +191,7 @@ import {
   writeRequest,
   writeRuleContext,
   writeStagedText
-} from "./chunk-QKITQ5YP.js";
+} from "./chunk-3RZY5YUM.js";
 import {
   DEFAULT_CONTEXT_BUDGET,
   DEFAULT_STANDING_EXPERTS,
@@ -211,7 +210,7 @@ import {
   readCompiledRules,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-O2WKFMHD.js";
+} from "./chunk-XE66RHVS.js";
 import {
   CancelledError,
   StackPackLoader,
@@ -221,13 +220,13 @@ import {
   getSharedSkillAuditBuffer,
   isCancelledError,
   resolvePackManagerRoots
-} from "./chunk-SLA7U7ST.js";
+} from "./chunk-OHAI622W.js";
 import {
   DECISION_CATEGORY_DEFAULTS,
   DecisionStore,
   isStrictDecisionId,
   mintDecisionId
-} from "./chunk-AHUCGXCI.js";
+} from "./chunk-OKQD6HAY.js";
 import {
   CAPABILITIES,
   DOMAINS,
@@ -240,7 +239,7 @@ import {
   getSecretPermissionWarning,
   readProjectProfile,
   setEngineLogger
-} from "./chunk-RHPTIMUW.js";
+} from "./chunk-U7W2Y6WH.js";
 import {
   isMissingFileError,
   readTextIfExistsSync
@@ -256,14 +255,14 @@ import {
 import {
   digestFile,
   subtractUnchangedBaselineFiles
-} from "./chunk-6WQX4XJ6.js";
+} from "./chunk-NCHLE4QU.js";
 import {
   DEFAULT_IGNORE_GLOBS,
   dropGitIgnored,
   readReport,
   ruleRunFindings,
   scanWorkingTree
-} from "./chunk-JN3L7KCE.js";
+} from "./chunk-6NOCGBLI.js";
 import {
   hudReceiptPath,
   hudVerdictPath,
@@ -277,7 +276,7 @@ import {
   readChangeMetrics,
   readDuplication,
   readRuleRun
-} from "./chunk-RUM5BXA3.js";
+} from "./chunk-GUPY77J4.js";
 import {
   buildEvidenceRow,
   readEvidenceRowsAt
@@ -289,32 +288,33 @@ import {
   isTestFile,
   loadChangeEvidence,
   readGitStatusFiles
-} from "./chunk-GMXHN3L4.js";
+} from "./chunk-3CT677IB.js";
 import {
   execa,
   onExit
 } from "./chunk-O77JBFWW.js";
 import {
   STAGE_NARRATION
-} from "./chunk-MROQZYOD.js";
+} from "./chunk-R5UHS6MO.js";
 import {
   extractAssistantText,
   routeIsAffirmativelyNonFeature,
   strayBundleFiles
-} from "./chunk-FL6ONVOX.js";
+} from "./chunk-YSBWQ3FB.js";
 import {
   endStage,
+  liveStageAgents,
   openStageEvidence,
   stageIsOpen,
   stagesWithKind
-} from "./chunk-YXTFS35T.js";
+} from "./chunk-OSODX535.js";
 import {
   appendModuleMapEvent,
   appendRunCancelledEvent,
   emitContextTruncated,
   matchesAnyGlob,
   readRawModuleMap
-} from "./chunk-XISBEPDI.js";
+} from "./chunk-ARGC3ANJ.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -344,7 +344,7 @@ import {
   resolveFeatureRef,
   startedAfterLastEnd,
   writeFeatureIndexDocument
-} from "./chunk-QR66SJS4.js";
+} from "./chunk-BIG27WNV.js";
 import {
   DEFAULT_BENCHMARK_GATES,
   DEFAULT_FRAMEWORK_CONFIG,
@@ -376,7 +376,7 @@ import {
   writeConfigExample,
   writeConfigsReadme,
   writeFrameworkOverridesToConfig
-} from "./chunk-H2GJD26E.js";
+} from "./chunk-VD7SJHT4.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   buildTextHeader,
@@ -16731,7 +16731,7 @@ var memoizedReport;
 function getEngineVersionReport() {
   if (memoizedReport === void 0) {
     memoizedReport = Object.freeze({
-      engineVersion: normalizeEngineVersion("1.109.0"),
+      engineVersion: normalizeEngineVersion("1.110.0"),
       minConsumerVersion: MIN_CONSUMER_VERSION,
       deprecatedAsOf: DEPRECATED_AS_OF
     });
@@ -36491,7 +36491,7 @@ function skipLines(gates, flagOn) {
 
 // src/verification/repository/run-repository-verification.ts
 function verifierVersion() {
-  return true ? "1.109.0" : "0.0.0-dev";
+  return true ? "1.110.0" : "0.0.0-dev";
 }
 function backstopGates() {
   return [
@@ -39695,7 +39695,7 @@ var WorkflowEngine = class {
 };
 
 // src/index.ts
-var VERSION = "1.109.0";
+var VERSION = "1.110.0";
 function getFrameworkName() {
   return "paqad-ai";
 }

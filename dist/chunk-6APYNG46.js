@@ -6,7 +6,7 @@ import {
   readChangeCost,
   readCostCache,
   roundUsd
-} from "./chunk-P5B33HZI.js";
+} from "./chunk-S7Q3UGRL.js";
 import {
   CHIEF_ROLE,
   addTokenUsage,
@@ -15,21 +15,20 @@ import {
   highTableDoneTimes,
   maxTokenUsage,
   readHighTable
-} from "./chunk-4ZIBQHJ5.js";
+} from "./chunk-CWSM3KTV.js";
 import {
   STAGE_AGENT_HOSTS
-} from "./chunk-LJN6UHGD.js";
+} from "./chunk-NIX54EWD.js";
 import {
   PAQAD_VERDICT
 } from "./chunk-5QVCE2TS.js";
 import {
-  hasOpenUnendedStage,
-  liveStageAgents
-} from "./chunk-OAZIA5U6.js";
+  hasOpenUnendedStage
+} from "./chunk-NDHDUED7.js";
 import {
   episodeStart,
   readRouteTurns
-} from "./chunk-NEBNXGEA.js";
+} from "./chunk-OUKCADZP.js";
 import {
   BUNDLE_MANIFEST,
   aggregateSpecPipelineMetrics,
@@ -46,17 +45,17 @@ import {
   resolveFlooredMode,
   resolveRuleComplianceMode,
   sessionWroteInEpisode
-} from "./chunk-QKITQ5YP.js";
+} from "./chunk-3RZY5YUM.js";
 import {
   StackPackLoader
-} from "./chunk-SLA7U7ST.js";
+} from "./chunk-OHAI622W.js";
 import {
   readAnyDecisionPacket,
   readContractDecisions
-} from "./chunk-AHUCGXCI.js";
+} from "./chunk-OKQD6HAY.js";
 import {
   readProjectProfile
-} from "./chunk-RHPTIMUW.js";
+} from "./chunk-U7W2Y6WH.js";
 import {
   appendHooksLog
 } from "./chunk-BW7VURA4.js";
@@ -74,13 +73,16 @@ import {
   readDuplication,
   readFeatureEvidence,
   readRuleRun
-} from "./chunk-RUM5BXA3.js";
+} from "./chunk-GUPY77J4.js";
 import {
   isTestFile
-} from "./chunk-GMXHN3L4.js";
+} from "./chunk-3CT677IB.js";
 import {
   readWorkflowState
-} from "./chunk-6VTX7ZYM.js";
+} from "./chunk-Z4HJB3E6.js";
+import {
+  liveStageAgents
+} from "./chunk-OSODX535.js";
 import {
   require_out
 } from "./chunk-DNG6DDRS.js";
@@ -104,7 +106,7 @@ import {
   readFeatureStageUnit,
   stampFeatureDocument,
   writeFeatureIndexDocument
-} from "./chunk-QR66SJS4.js";
+} from "./chunk-BIG27WNV.js";
 import {
   STAGE_AGENT_STAGES,
   isSubagentCapableAdapter,
@@ -117,7 +119,7 @@ import {
   resolveSpecPipelineSwitches,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "./chunk-H2GJD26E.js";
+} from "./chunk-VD7SJHT4.js";
 import {
   ENVELOPE_HEADER_KEYS,
   LANES,
@@ -339,6 +341,41 @@ function readRuleOverrides(projectRoot, dirName) {
       }
     ];
   });
+}
+var EDIT_OUTCOMES = ["landed", "refused", "still-blocked"];
+function isEditOutcome(value) {
+  return EDIT_OUTCOMES.some((outcome) => outcome === value);
+}
+function overrideAwaitsOutcome(projectRoot, dirName, call) {
+  const rows = readUnitFile(projectRoot, featureFilePath(dirName, "ruleOverrides")).map(
+    (raw) => raw
+  );
+  const sameCall = (row) => row.tool_use_id === call.toolUseId;
+  return rows.some(
+    (row) => row.kind === "rule-override" && sameCall(row) && row.rule === call.rule && row.file === call.file
+  ) && !rows.some((row) => row.kind === "rule-override-outcome" && sameCall(row));
+}
+function appendRuleOverrideOutcome(projectRoot, dirName, input) {
+  const at = (input.now ?? (() => /* @__PURE__ */ new Date()))().toISOString();
+  const row = {
+    kind: "rule-override-outcome",
+    rule: input.rule,
+    file: input.file,
+    tool_use_id: input.toolUseId,
+    outcome: input.outcome,
+    at,
+    session: input.sessionId
+  };
+  const stamped = stampBundleRow({
+    docType: RULE_OVERRIDE_DOC_TYPE,
+    change: featureChangeKey(dirName),
+    sessionId: input.sessionId,
+    schemaVersion: FEATURE_DOC_SCHEMA_VERSION,
+    row: { ...row },
+    now: () => new Date(at)
+  });
+  appendStampedRowToUnit(projectRoot, featureFilePath(dirName, "ruleOverrides"), stamped);
+  return row;
 }
 
 // src/feature-evidence/tech-debt-index.ts
@@ -3814,6 +3851,9 @@ export {
   readFeatureChecks,
   appendRuleOverride,
   readRuleOverrides,
+  isEditOutcome,
+  overrideAwaitsOutcome,
+  appendRuleOverrideOutcome,
   DEBT_STATUSES,
   techDebtDir,
   readDebtItems,

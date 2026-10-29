@@ -4,7 +4,7 @@ import {
   engineLog,
   readProjectProfile,
   tokenize
-} from "./chunk-RHPTIMUW.js";
+} from "./chunk-U7W2Y6WH.js";
 import {
   readProjectEvents,
   recordProjectEvent

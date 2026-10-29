@@ -5,11 +5,11 @@ import {
   candidatesNeedingDecision,
   extractCandidates,
   resolveBriefSession
-} from "../chunk-7VOHXZBJ.js";
+} from "../chunk-VA5JZU63.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-OOFUFI2E.js";
+} from "../chunk-TOT4LVZ5.js";
 import {
   holdRefreshContextLock
 } from "../chunk-O6QPPPMO.js";
@@ -164,22 +164,25 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-4NWUVPD6.js";
+} from "../chunk-ZFK5TOJ6.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
   addDebtItem,
   appendFixProofRow,
   appendRuleOverride,
+  appendRuleOverrideOutcome,
   buildAndWriteChangeTraceabilityMap,
   buildHudSnapshot,
   closeDebtItem,
   countedRedRow,
   discoverModuleHealth,
   discoverSourceRoots,
+  isEditOutcome,
   isHudRefreshVerb,
   listDebtItems,
   newestFirst,
+  overrideAwaitsOutcome,
   promoteDebtItem,
   readDebtItems,
   readFeatureTechDebtIndex,
@@ -188,7 +191,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-KMXD7XEY.js";
+} from "../chunk-6APYNG46.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -200,20 +203,20 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-P5B33HZI.js";
+} from "../chunk-S7Q3UGRL.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-4ZIBQHJ5.js";
+} from "../chunk-CWSM3KTV.js";
 import "../chunk-WULKDLB5.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
 } from "../chunk-PWJ37K7H.js";
-import "../chunk-LJN6UHGD.js";
+import "../chunk-NIX54EWD.js";
 import "../chunk-F4TESBBJ.js";
 import {
   createEvidence,
@@ -221,7 +224,7 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-4HMHFOSG.js";
+} from "../chunk-7AZOHO77.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -237,21 +240,20 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-J2YJQXUP.js";
+} from "../chunk-BQ7L335R.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
 import {
   clearChecksRunningMarker,
-  liveStageAgents,
   writeChecksRunningMarker
-} from "../chunk-OAZIA5U6.js";
-import "../chunk-NEBNXGEA.js";
+} from "../chunk-NDHDUED7.js";
+import "../chunk-OUKCADZP.js";
 import "../chunk-Y7QRVDRT.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-BNNL5DFD.js";
+} from "../chunk-HRFSHML3.js";
 import {
   DEFAULT_OBLIGATION_INDEX_PATH,
   DELIVERY_EVIDENCE_DOC_TYPE,
@@ -291,7 +293,7 @@ import {
   listRunDirs,
   loadCaptureScripts,
   loadDeliveryPolicy,
-  markRuleStopTokenUsed,
+  markRuleStopAllowedOnce,
   mergeExpertNotes,
   mergedKind,
   packRegistryFaultDetail,
@@ -375,7 +377,7 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-QKITQ5YP.js";
+} from "../chunk-3RZY5YUM.js";
 import "../chunk-BWAUL7O5.js";
 import "../chunk-NRKCUFAE.js";
 import {
@@ -388,7 +390,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-O2WKFMHD.js";
+} from "../chunk-XE66RHVS.js";
 import {
   StackPackLoader,
   atomicWriteFile,
@@ -398,7 +400,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "../chunk-SLA7U7ST.js";
+} from "../chunk-OHAI622W.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -412,7 +414,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-AHUCGXCI.js";
+} from "../chunk-OKQD6HAY.js";
 import {
   ACTIVE_CAPABILITIES,
   FrameworkError,
@@ -424,7 +426,7 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-RHPTIMUW.js";
+} from "../chunk-U7W2Y6WH.js";
 import {
   readTextIfExistsSync
 } from "../chunk-TLKXJ74I.js";
@@ -435,54 +437,55 @@ import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
 import "../chunk-BYYV5KPL.js";
-import "../chunk-6WQX4XJ6.js";
+import "../chunk-NCHLE4QU.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-JN3L7KCE.js";
+} from "../chunk-6NOCGBLI.js";
 import {
   hudCostCachePath
 } from "../chunk-IN2AVDIO.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-RUM5BXA3.js";
+} from "../chunk-GUPY77J4.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-GMXHN3L4.js";
+} from "../chunk-3CT677IB.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-MROQZYOD.js";
+} from "../chunk-R5UHS6MO.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   normalizeArtifactPath
-} from "../chunk-FL6ONVOX.js";
+} from "../chunk-YSBWQ3FB.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-GP3BYUVG.js";
+} from "../chunk-LXENFDLY.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-6VTX7ZYM.js";
+} from "../chunk-Z4HJB3E6.js";
 import {
   clearPendingLane,
+  liveStageAgents,
   recordMarkedStage
-} from "../chunk-YXTFS35T.js";
+} from "../chunk-OSODX535.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -500,7 +503,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-XISBEPDI.js";
+} from "../chunk-ARGC3ANJ.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -533,7 +536,7 @@ import {
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-QR66SJS4.js";
+} from "../chunk-BIG27WNV.js";
 import {
   describeEarlierWork
 } from "../chunk-QUDDQGFY.js";
@@ -559,7 +562,7 @@ import {
   stageForAgentName,
   stripPluginAgentNamespace,
   syncFrameworkConfig
-} from "../chunk-H2GJD26E.js";
+} from "../chunk-VD7SJHT4.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   VISUAL_EVIDENCE_DOC_TYPE,
@@ -22054,12 +22057,41 @@ function applyRuleOverride(request) {
   if (!dirName) {
     return { ok: false, reason: "no active change to record the override in" };
   }
-  markRuleStopTokenUsed(projectRoot, record);
+  markRuleStopAllowedOnce(projectRoot, record);
   const row = appendRuleOverride(projectRoot, dirName, {
     rule: record.rule,
     file,
     toolUseId: record.tool_use_id,
     reason: request.reason?.trim() || void 0,
+    sessionId: hint,
+    now: request.now
+  });
+  return { ok: true, row, dirName };
+}
+function recordEditOutcome(request) {
+  const { projectRoot, outcome } = request;
+  const hint = request.sessionHint?.trim() ?? "";
+  if (hint === "") return { ok: false, reason: "no session id, so there is no override to follow" };
+  if (!isEditOutcome(outcome)) {
+    return { ok: false, reason: `${outcome} is not landed, refused or still-blocked` };
+  }
+  const toolUseId = request.toolUseId?.trim() ?? "";
+  if (toolUseId === "") return { ok: false, reason: "an outcome needs the tool call it follows" };
+  const file = toProjectRelativePath(projectRoot, request.file);
+  if (file === null) return { ok: false, reason: `${request.file} is outside this project` };
+  const dirName = currentFeature(projectRoot, resolveSessionId(projectRoot, hint));
+  if (!dirName) return { ok: false, reason: "no active change to record the outcome in" };
+  if (!overrideAwaitsOutcome(projectRoot, dirName, { rule: request.rule, file, toolUseId })) {
+    return {
+      ok: false,
+      reason: "no override for this tool call is waiting for its outcome"
+    };
+  }
+  const row = appendRuleOverrideOutcome(projectRoot, dirName, {
+    rule: request.rule,
+    file,
+    toolUseId,
+    outcome,
     sessionId: hint,
     now: request.now
   });
@@ -22144,14 +22176,40 @@ ${applicability.loadedRuleText}
     }
   });
   command.command("override").description(
-    "Record a person allowing one edit past a rule-script stop, using the one-time token from that stop (refused for a stop enforced by managed settings)"
-  ).requiredOption("--rule <id>", "Rule id from the stop").requiredOption("--file <path>", "File named by the stop").requiredOption("--token <token>", "One-time token from the stop").option("--tool-use-id <id>", "Tool call the stop was for").option("--reason <text>", "Why the person allowed it").option("--project-root <path>", "Project root", process.cwd()).option("--session <id>", "Session id (defaults to SE_SESSION / CLAUDE_SESSION_ID)").action((options) => {
+    "Record a person allowing one edit past a rule-script stop, using the one-time token from that stop (refused for a stop enforced by managed settings). With --outcome, record once what happened to that allowed-once edit"
+  ).requiredOption("--rule <id>", "Rule id from the stop").requiredOption("--file <path>", "File named by the stop").option("--token <token>", "One-time token from the stop (required unless --outcome)").option("--tool-use-id <id>", "Tool call the stop was for").option("--reason <text>", "Why the person allowed it").option(
+    "--outcome <landed|refused|still-blocked>",
+    "Record what happened to the allowed-once edit, once, after its override line"
+  ).option("--project-root <path>", "Project root", process.cwd()).option("--session <id>", "Session id (defaults to SE_SESSION / CLAUDE_SESSION_ID)").action((options) => {
+    const sessionHint2 = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? readLedgerSessionId(options.projectRoot);
+    if (options.outcome !== void 0) {
+      const recorded = recordEditOutcome({
+        projectRoot: options.projectRoot,
+        sessionHint: sessionHint2,
+        rule: options.rule,
+        file: options.file,
+        toolUseId: options.toolUseId,
+        outcome: options.outcome
+      });
+      if (!recorded.ok) {
+        console.error(`**\u25B8 paqad** \xB7 outcome not recorded: ${recorded.reason}.`);
+        process.exitCode = 1;
+        return;
+      }
+      console.log(
+        `**\u25B8 paqad** \xB7 recorded that the allowed-once edit of ${recorded.row.file} ${OUTCOME_WORDS[recorded.row.outcome]}.`
+      );
+      console.log(
+        JSON.stringify({ outcome_recorded: true, ...recorded.row, bundle: recorded.dirName })
+      );
+      return;
+    }
     const outcome = applyRuleOverride({
       projectRoot: options.projectRoot,
-      sessionHint: options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? readLedgerSessionId(options.projectRoot),
+      sessionHint: sessionHint2,
       rule: options.rule,
       file: options.file,
-      token: options.token,
+      token: options.token ?? "",
       toolUseId: options.toolUseId,
       reason: options.reason
     });
@@ -22167,6 +22225,11 @@ ${applicability.loadedRuleText}
   });
   return command;
 }
+var OUTCOME_WORDS = {
+  landed: "landed",
+  refused: "was refused",
+  "still-blocked": "stayed blocked"
+};
 
 // src/cli/commands/setup.ts
 init_esm_shims();

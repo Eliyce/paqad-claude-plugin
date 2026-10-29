@@ -19,13 +19,15 @@ interface CapabilityGateInput {
     startedAt?: number;
     now?: () => number;
 }
+declare const ALLOW_ONCE_REASON = "You allowed this edit once in the paqad HUD, and paqad recorded the override. Approve to run it.";
 interface CapabilityGateResult {
     block: boolean;
+    ask?: string;
     summary: string;
     narration: string;
     context: string;
 }
 declare function runCapabilityGate(input: CapabilityGateInput): Promise<CapabilityGateResult>;
 
-export { runCapabilityGate };
+export { ALLOW_ONCE_REASON, runCapabilityGate };
 export type { CapabilityGateInput, CapabilityGateResult };

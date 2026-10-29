@@ -19,11 +19,11 @@ import {
   readCompiledRules,
   ruleTriggersMatch,
   writeCompiledRules
-} from "./chunk-O2WKFMHD.js";
+} from "./chunk-XE66RHVS.js";
 import {
   atomicWriteFile,
   getPacksForFrameworks
-} from "./chunk-SLA7U7ST.js";
+} from "./chunk-OHAI622W.js";
 import {
   DECISION_CATEGORY_DEFAULTS,
   DecisionStore,
@@ -31,12 +31,12 @@ import {
   createPendingDecision,
   readContractDecisions,
   recordDecisionReuse
-} from "./chunk-AHUCGXCI.js";
+} from "./chunk-OKQD6HAY.js";
 import {
   FrameworkError,
   readProjectProfile,
   writeProjectProfile
-} from "./chunk-RHPTIMUW.js";
+} from "./chunk-U7W2Y6WH.js";
 import {
   appendHooksLog
 } from "./chunk-BW7VURA4.js";
@@ -49,7 +49,7 @@ import {
 } from "./chunk-BYYV5KPL.js";
 import {
   subtractUnchangedBaselineFiles
-} from "./chunk-6WQX4XJ6.js";
+} from "./chunk-NCHLE4QU.js";
 import {
   computeRuleScriptsDigest,
   enforceRuleScripts,
@@ -58,7 +58,7 @@ import {
   loadRuleScriptMap,
   readCapabilityDigest,
   readCapabilityVersions
-} from "./chunk-JN3L7KCE.js";
+} from "./chunk-6NOCGBLI.js";
 import {
   hudLastBlockPath,
   safeSessionId,
@@ -66,33 +66,34 @@ import {
 } from "./chunk-IN2AVDIO.js";
 import {
   readFeatureEvidence
-} from "./chunk-RUM5BXA3.js";
+} from "./chunk-GUPY77J4.js";
 import {
   loadChangeEvidence
-} from "./chunk-GMXHN3L4.js";
+} from "./chunk-3CT677IB.js";
 import {
   execa
 } from "./chunk-O77JBFWW.js";
 import {
   markerBatchNarration
-} from "./chunk-MROQZYOD.js";
+} from "./chunk-R5UHS6MO.js";
 import {
   classifyBundlePath,
   normalizeArtifactPath,
   parseAndRecordMarkers
-} from "./chunk-FL6ONVOX.js";
+} from "./chunk-YSBWQ3FB.js";
 import {
   isFeatureDevelopmentRoute,
   readWorkflowState
-} from "./chunk-6VTX7ZYM.js";
+} from "./chunk-Z4HJB3E6.js";
 import {
   resolveEffectiveLane
-} from "./chunk-YXTFS35T.js";
+} from "./chunk-OSODX535.js";
 import {
   levenshtein
-} from "./chunk-XISBEPDI.js";
+} from "./chunk-ARGC3ANJ.js";
 import {
-  toPosixPath
+  toPosixPath,
+  toProjectRelativePath
 } from "./chunk-4K4CM3QN.js";
 import {
   PRE_CODE_STAGES,
@@ -113,7 +114,7 @@ import {
   requiredPreCodeStages,
   resolveDeliveryFeatureByBranch,
   stampFeatureDocument
-} from "./chunk-QR66SJS4.js";
+} from "./chunk-BIG27WNV.js";
 import {
   SchemaValidator,
   configSaysPaqadDisabled,
@@ -125,7 +126,7 @@ import {
   resolveNumericConfig,
   resolveRuleGateConfig,
   setConfigValue
-} from "./chunk-H2GJD26E.js";
+} from "./chunk-VD7SJHT4.js";
 import {
   ENVELOPE_HEADER_KEYS,
   UNTITLED_FEATURE_TITLE,
@@ -8246,6 +8247,7 @@ function writeRuleStopRecord(input) {
     diff: shortDiff(input.toolInput),
     token: input.token ?? randomBytes(16).toString("hex"),
     used: false,
+    allowed_once: false,
     session: input.sessionId
   };
   writeFileAtomic(
@@ -8277,6 +8279,7 @@ function parseRuleStopRecord(value) {
     diff: typeof raw.diff === "string" ? raw.diff : "",
     token,
     used: raw.used === true,
+    allowed_once: raw.allowed_once === true,
     session
   };
 }
@@ -8290,12 +8293,27 @@ function readRuleStopRecord(projectRoot, sessionId) {
   const record = parseRuleStopRecord(parsed);
   return record && record.session === sessionId ? record : null;
 }
-function markRuleStopTokenUsed(projectRoot, record) {
+function writeRecord(projectRoot, record) {
   writeFileAtomic(
     hudLastBlockPath(projectRoot, record.session),
-    `${JSON.stringify({ ...record, used: true }, null, 2)}
+    `${JSON.stringify(record, null, 2)}
 `
   );
+}
+function markRuleStopAllowedOnce(projectRoot, record) {
+  writeRecord(projectRoot, { ...record, used: true, allowed_once: true });
+}
+function takeAllowedOnce(projectRoot, sessionId, call) {
+  const record = readRuleStopRecord(projectRoot, sessionId);
+  if (!record?.allowed_once || !call.toolUseId || record.tool_use_id !== call.toolUseId) {
+    return false;
+  }
+  if (record.rule !== call.rule) return false;
+  const recordFile = toProjectRelativePath(projectRoot, record.file);
+  const callFile = toProjectRelativePath(projectRoot, call.file);
+  if (recordFile === null || callFile === null || recordFile !== callFile) return false;
+  writeRecord(projectRoot, { ...record, allowed_once: false });
+  return true;
 }
 function clearRuleStopRecord(projectRoot, sessionId) {
   rmSync4(hudLastBlockPath(projectRoot, sessionId), { force: true });
@@ -8484,6 +8502,7 @@ export {
   CAPABILITY_IMPLS,
   writeRuleStopRecord,
   readRuleStopRecord,
-  markRuleStopTokenUsed,
+  markRuleStopAllowedOnce,
+  takeAllowedOnce,
   clearRuleStopRecord
 };
