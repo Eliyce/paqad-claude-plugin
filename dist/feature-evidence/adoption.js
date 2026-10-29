@@ -1,7 +1,9 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   adoptableInFlightOnBranch,
+  anotherSessionRunningStage,
   featureBranch,
+  heldInFlightOnBranch,
   isBundleClosed,
   isBundleMaterialized,
   listAdoptableFeatures,
@@ -9,9 +11,9 @@ import {
   reconcileSessionControl,
   sessionClosedAnyFeature,
   sessionReattachableFeature
-} from "../chunk-KFLIUVMP.js";
+} from "../chunk-PQR2FVDS.js";
 import "../chunk-AINYJ3Q2.js";
-import "../chunk-WGEG5J6L.js";
+import "../chunk-AP7OEXCZ.js";
 import "../chunk-QINSFA6R.js";
 import "../chunk-SU7RODZI.js";
 import "../chunk-DDJC5PRW.js";
@@ -20,7 +22,9 @@ import "../chunk-LW3OCT4Y.js";
 import "../chunk-EMKBJVIL.js";
 export {
   adoptableInFlightOnBranch,
+  anotherSessionRunningStage,
   featureBranch,
+  heldInFlightOnBranch,
   isBundleClosed,
   isBundleMaterialized,
   listAdoptableFeatures,
