@@ -5,11 +5,11 @@ import {
   candidatesNeedingDecision,
   extractCandidates,
   resolveBriefSession
-} from "../chunk-7VGDFJQX.js";
+} from "../chunk-Q4VJ37FG.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-ANJMWYLC.js";
+} from "../chunk-DTKLOCC7.js";
 import {
   holdRefreshContextLock
 } from "../chunk-O6QPPPMO.js";
@@ -30,6 +30,7 @@ import {
   DifferentialRefresh,
   FrameworkUpdater,
   HealthChecker,
+  InvalidArgumentError,
   McpConfigManager,
   OnboardingOrchestrator,
   PatternCli,
@@ -164,7 +165,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-X4ZP3HPU.js";
+} from "../chunk-Z4Z6YYRZ.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -191,7 +192,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-YFJAUION.js";
+} from "../chunk-CISBSPWP.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -203,20 +204,20 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-3OG4CT6Y.js";
+} from "../chunk-MLXEYD6T.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-BKSHYJOO.js";
+} from "../chunk-5BABRV7V.js";
 import "../chunk-WULKDLB5.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
 } from "../chunk-PWJ37K7H.js";
-import "../chunk-FJINBF3Z.js";
+import "../chunk-OA3YQGXX.js";
 import "../chunk-F4TESBBJ.js";
 import {
   createEvidence,
@@ -224,7 +225,7 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-BMA4KMN3.js";
+} from "../chunk-E5PC7RVE.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -240,20 +241,20 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-BBBHQVW4.js";
+} from "../chunk-VLOEX6A6.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-UCQ2E473.js";
-import "../chunk-QMCI5IOT.js";
+} from "../chunk-TWVJTMUJ.js";
+import "../chunk-B4LV77TI.js";
 import "../chunk-Y7QRVDRT.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-WIC4NC7U.js";
+} from "../chunk-UP2BSK6C.js";
 import {
   DEFAULT_OBLIGATION_INDEX_PATH,
   DELIVERY_EVIDENCE_DOC_TYPE,
@@ -285,6 +286,7 @@ import {
   editedDevelopmentThisTurn,
   evaluateFrontendTrigger,
   evaluateSpecFreeze,
+  execaCommandRunner,
   extractObligationIndex,
   freezeSpec,
   hashRuleSources,
@@ -333,6 +335,7 @@ import {
   readStagedText,
   readTrace,
   readYaml,
+  refreshDelivery,
   refreshRuleContext,
   rememberInput,
   removeJourney,
@@ -377,8 +380,8 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-WLF3IYUC.js";
-import "../chunk-YBSE47AG.js";
+} from "../chunk-3ISWPQSH.js";
+import "../chunk-UXU57VCB.js";
 import "../chunk-NRKCUFAE.js";
 import {
   releaseLock,
@@ -390,7 +393,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-OZOPXRPF.js";
+} from "../chunk-VIWC2WEP.js";
 import {
   StackPackLoader,
   atomicWriteFile,
@@ -400,7 +403,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "../chunk-O66TWENN.js";
+} from "../chunk-C6QX6BQY.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -414,7 +417,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-OGJMSCOM.js";
+} from "../chunk-4GJVTR5P.js";
 import {
   ACTIVE_CAPABILITIES,
   FrameworkError,
@@ -426,7 +429,7 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-PAVOL4NF.js";
+} from "../chunk-IDHHKJOF.js";
 import {
   readTextIfExistsSync
 } from "../chunk-TLKXJ74I.js";
@@ -437,54 +440,54 @@ import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
 import "../chunk-BYYV5KPL.js";
-import "../chunk-MU3AGYZN.js";
+import "../chunk-A6RB2MYS.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-G4544QJT.js";
+} from "../chunk-NDQ2TJ54.js";
 import {
   hudCostCachePath
-} from "../chunk-6S3UKBSU.js";
+} from "../chunk-RQMBP7NZ.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-FRTQCP6F.js";
+} from "../chunk-EJNH2EWV.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-57Q332AY.js";
+} from "../chunk-IIFF75TG.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-CYVYBCZ7.js";
+} from "../chunk-G2KAR57H.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   normalizeArtifactPath
-} from "../chunk-BZS2KZKJ.js";
+} from "../chunk-FLH3ZOTM.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-FXTZA7OA.js";
+} from "../chunk-KX4GSKWD.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-5WL7YAER.js";
+} from "../chunk-KPSH47JZ.js";
 import {
   clearPendingLane,
   recordMarkedStage
-} from "../chunk-RAT3XPJL.js";
+} from "../chunk-UFA47PK6.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -502,7 +505,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-CMJNNYY5.js";
+} from "../chunk-PZSF75FV.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -532,7 +535,7 @@ import {
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-WRWFKZHV.js";
+} from "../chunk-WTYH7MZ3.js";
 import {
   describeEarlierWork
 } from "../chunk-QUDDQGFY.js";
@@ -556,7 +559,7 @@ import {
   sha256Hex,
   stampBundleRow,
   validateVisualEvidenceRecord
-} from "../chunk-PQR2FVDS.js";
+} from "../chunk-VV76C43H.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -582,7 +585,7 @@ import {
   stageForAgentName,
   stripPluginAgentNamespace,
   syncFrameworkConfig
-} from "../chunk-AP7OEXCZ.js";
+} from "../chunk-TVWMFQYX.js";
 import {
   appendStampedRowToUnit,
   foldByOrdinal,
@@ -11599,7 +11602,6 @@ function shipFromStatus(status, sha) {
       reason: null,
       source: "ci-gate",
       jobs: status.checks.map((check) => ({
-        name: check.name,
         status: check.state === "green" || check.state === "red" ? "COMPLETED" : "IN_PROGRESS",
         conclusion: check.state === "green" ? "SUCCESS" : check.state === "red" ? "FAILURE" : null,
         started_at: null,
@@ -11821,7 +11823,14 @@ function regenerateReportSafe(projectRoot, dirName) {
   } catch {
   }
 }
-function createDeliveryLinkCommand() {
+function secondsOption(value) {
+  const seconds = Number(value);
+  if (!Number.isInteger(seconds) || seconds < 0) {
+    throw new InvalidArgumentError("expected a whole number of seconds");
+  }
+  return seconds;
+}
+function createDeliveryLinkCommand(deps = {}) {
   const command = new Command("delivery-link").description(
     "Link git commits/merges to the active feature bundle (post-commit / post-merge hooks)"
   );
@@ -11895,6 +11904,23 @@ function createDeliveryLinkCommand() {
     console.log(
       JSON.stringify({ recorded: true, feature: dir, commit_decision: record.commit_decision })
     );
+  });
+  withCommon(
+    command.command("refresh").description(
+      "Read the push, PR and CI of the branch change from git and gh (read-only toward the repo)"
+    ).option(
+      "--min-age-seconds <n>",
+      "Skip gh when the stored reading is younger than this",
+      secondsOption
+    )
+  ).action(async (options) => {
+    const outcome = await refreshDelivery({
+      projectRoot: options.projectRoot,
+      run: deps.run ?? execaCommandRunner,
+      now: deps.now,
+      minAgeSeconds: options.minAgeSeconds ?? null
+    });
+    console.log(JSON.stringify(outcome));
   });
   command.command("install").description("Install (chain) the post-commit / post-merge git hooks for this clone").option("--project-root <path>", "Project root", process.cwd()).option("--session <id>", "Ignored (accepted for a uniform hook-caller interface)").action((options) => {
     const result = installGitHooks(options.projectRoot);
@@ -22131,7 +22157,13 @@ function createRulesCommand() {
       options.projectRoot,
       options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null
     );
-    const applicability = await resolveRuleApplicabilityForChange(options.projectRoot, sessionId);
+    const applicability = await resolveRuleApplicabilityForChange(
+      options.projectRoot,
+      sessionId,
+      {
+        dirName: currentFeature(options.projectRoot, sessionId)
+      }
+    );
     if (!applicability.hasStore) {
       console.log(
         "**\u25B8 paqad** \xB7 no compiled rules for this project \u2014 nothing to load. Run `paqad-ai rules compile` if you expected rules here."
