@@ -382,7 +382,7 @@ import {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts
-} from "./chunk-HATCJLAH.js";
+} from "./chunk-TZUCVNTM.js";
 import {
   AC_ID_PATTERN,
   AcTestMappingGate,
@@ -431,10 +431,10 @@ import {
   writeHudSnapshot,
   writeHudSnapshotSafe,
   writeVerificationEvidence
-} from "./chunk-VXMEOCA2.js";
-import "./chunk-Q2K5LIVX.js";
-import "./chunk-4XMSUNWE.js";
-import "./chunk-XFSJMSUE.js";
+} from "./chunk-J4NS75NK.js";
+import "./chunk-DOSXFOFX.js";
+import "./chunk-OUDLTNMG.js";
+import "./chunk-RSYZV4T3.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
@@ -493,7 +493,7 @@ import {
   toProjectRelativeModule,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-KNW2KHGU.js";
+} from "./chunk-AENF3P74.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -533,12 +533,12 @@ import {
   resetEmbeddingProviderCache,
   suggestPatternsForProject,
   toCrsCollectionId
-} from "./chunk-M7IBLXJK.js";
+} from "./chunk-GALBB4RH.js";
 import "./chunk-5QVCE2TS.js";
-import "./chunk-7WFTPG3S.js";
-import "./chunk-T3NAI7B4.js";
+import "./chunk-6TUSZ45W.js";
+import "./chunk-S62JX3QR.js";
 import "./chunk-Y7QRVDRT.js";
-import "./chunk-46RZCNDW.js";
+import "./chunk-TUT44FC2.js";
 import {
   ADAPTER_TYPES,
   AdapterFactory,
@@ -591,8 +591,8 @@ import {
   writeJsonPreservingTimestamp,
   writeOnboardingManifest,
   writeProjectProfile
-} from "./chunk-IMHABCTC.js";
-import "./chunk-YY3WMB4N.js";
+} from "./chunk-CF6KO5I3.js";
+import "./chunk-FIMIDLQY.js";
 import {
   AGENT_ROLES,
   CONTEXT_LEVEL_BUDGETS,
@@ -645,7 +645,7 @@ import {
   ruleTriggersMatch,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-CY65FRZG.js";
+} from "./chunk-EYMSSKPI.js";
 import {
   CancelledError,
   DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
@@ -668,7 +668,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "./chunk-YAP7RT34.js";
+} from "./chunk-JC7Q2OQL.js";
 import {
   DECISION_AUDIT_EVENTS,
   DECISION_CARRY_OVER_SCOPES,
@@ -720,7 +720,7 @@ import {
   toDecisionRecord,
   toEngineError,
   validateDecisionPacket
-} from "./chunk-AO3S3ZOW.js";
+} from "./chunk-N7JLX2WL.js";
 import {
   ACTIVE_CAPABILITIES,
   CAPABILITIES,
@@ -741,7 +741,7 @@ import {
   removeProjectSecrets,
   setEngineLogger,
   writeProjectSecret
-} from "./chunk-RWPWLV4I.js";
+} from "./chunk-RC525O5G.js";
 import "./chunk-TLKXJ74I.js";
 import "./chunk-YIVK3KXH.js";
 import {
@@ -751,8 +751,8 @@ import {
   getRuntimeTemplatesRoot
 } from "./chunk-VVRAO2BK.js";
 import "./chunk-G47OMU4L.js";
-import "./chunk-NYJTN3AP.js";
-import "./chunk-O2HL32AP.js";
+import "./chunk-2TTTE6JT.js";
+import "./chunk-ZUXJXY2O.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
@@ -762,15 +762,15 @@ import {
   hudVerdictPath,
   safeSessionId,
   writeFileAtomic
-} from "./chunk-BNBF6IAM.js";
-import "./chunk-J43KRHV7.js";
+} from "./chunk-6WKEIQBZ.js";
+import "./chunk-EIA44HJO.js";
 import "./chunk-KKFSSPUD.js";
-import "./chunk-SAVQKAPD.js";
+import "./chunk-PYRLQCX7.js";
 import "./chunk-O77JBFWW.js";
-import "./chunk-MFMI6AX4.js";
-import "./chunk-FMM3KI4P.js";
-import "./chunk-A6OBH6D6.js";
-import "./chunk-4OO2G73V.js";
+import "./chunk-J3OXRL2P.js";
+import "./chunk-7Q3DFJRF.js";
+import "./chunk-CI34D3AY.js";
+import "./chunk-QUEXB3M5.js";
 import {
   API_IMPACTS,
   CLASSIFICATION_CERTAINTY,
@@ -787,13 +787,13 @@ import {
   TARGET_CAPABILITIES,
   UI_IMPACTS,
   WORKFLOW_SOURCES
-} from "./chunk-U6PMGXUA.js";
-import "./chunk-4QTKNLFO.js";
+} from "./chunk-U33VSSTT.js";
+import "./chunk-6BIG3H4C.js";
 import "./chunk-DNG6DDRS.js";
 import "./chunk-4K4CM3QN.js";
-import "./chunk-NGQ7J6QB.js";
+import "./chunk-4QPERO6Y.js";
 import "./chunk-QUDDQGFY.js";
-import "./chunk-XD2HZBBD.js";
+import "./chunk-6SJANGOW.js";
 import "./chunk-AINYJ3Q2.js";
 import {
   ANALYTICS_DECISION_PATH,
@@ -816,7 +816,7 @@ import {
   resolveAnalyticsGate,
   resolveAndPersistAnalyticsGate,
   selectLane
-} from "./chunk-FY3IONGX.js";
+} from "./chunk-65JR5UEE.js";
 import "./chunk-KAL2KZVN.js";
 import "./chunk-SU7RODZI.js";
 import "./chunk-DNOGJOTT.js";
