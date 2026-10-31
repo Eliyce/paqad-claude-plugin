@@ -1,6 +1,6 @@
 {
   "name": "paqad-ai",
-  "version": "1.112.0",
+  "version": "1.112.1",
   "description": "Spec-driven development framework — AI agents that think before they type",
   "type": "module",
   "license": "MIT",
@@ -113,7 +113,7 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm run build && changeset publish",
-    "prepublishOnly": "pnpm run ci"
+    "prepublishOnly": "node scripts/release-sync.mjs prepublish"
   },
   "dependencies": {
     "@huggingface/transformers": "^4.3.1",
