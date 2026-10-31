@@ -1,7 +1,6 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   ACTIVE_CAPABILITY_ORDER,
-  ADAPTER_TYPES,
   AIDetector,
   ANALYTICS_CONFLICTS,
   ANALYTICS_STRICTNESS_MODES,
@@ -10,10 +9,6 @@ import {
   ARTIFACT_OUTPUT_KEYS,
   ARTIFACT_TYPES,
   ATTACHMENT_RETRY_BUDGET_MS,
-  AdapterFactory,
-  AiAssistantAdapter,
-  AiderAdapter,
-  AntigravityAdapter,
   ArchitectureComplianceGate,
   AttachmentPathError,
   BOUNDARY_SCHEMA_VERSION,
@@ -28,18 +23,14 @@ import {
   CacheMetricsTracker,
   CacheWarmer,
   ChangeCompletenessGate,
-  ClaudeCodeAdapter,
   CodeTestsLintGate,
-  CodexCliAdapter,
   ConditionalSectionProcessor,
   ContextBudgetEnforcer,
   ContextBudgetOptimizer,
   ContextDeduplicator,
   ContextEvictor,
   ContextHitTracker,
-  ContinueAdapter,
   ContradictionDetector,
-  CursorAdapter,
   DEFAULT_ANALYTICS_STRICTNESS,
   DEFAULT_BOUNDARY_REPORT_PATH,
   DEFAULT_GATE_CODES,
@@ -70,8 +61,6 @@ import {
   FileRegistryMapper,
   FrameworkUpdater,
   FreshnessChecker,
-  GeminiCliAdapter,
-  GithubCopilotAdapter,
   HEALTH_CHECK_STATUSES,
   HOOK_EXIT_CODES,
   HOOK_TRIGGERS,
@@ -79,7 +68,6 @@ import {
   ImplementationReviewGate,
   InferredTurnClassifierModel,
   InstructionsDocsStructureGate,
-  JunieAdapter,
   LEGACY_MCP_OUTPUT_PATHS,
   MANAGEABLE_ACTIVE_CAPABILITIES,
   MCP_SERVERS,
@@ -158,7 +146,6 @@ import {
   TIER_DIMENSIONS,
   TIER_TOKEN_LIMITS,
   TOKEN_ARTIFACT_CLASSES,
-  TemplateEngine,
   TemplateRegistry,
   TransitionLogManager,
   TurnSummarizer,
@@ -166,7 +153,6 @@ import {
   VERSION,
   VERSION_UNKNOWN,
   VerificationGateRunner,
-  WindsurfAdapter,
   WorkflowEngine,
   WorkflowRouterService,
   WorkflowTemplateLoader,
@@ -307,8 +293,6 @@ import {
   isEnoentError,
   isIndexAttachmentFailure,
   isManageableActiveCapability,
-  isRunningUnderPlugin,
-  isUnderPluginPath,
   listAvailableActiveCapabilities,
   listCollections,
   loadBoundaryReport,
@@ -373,6 +357,7 @@ import {
   serializeModuleMap,
   skillPath,
   slugify,
+  splitSkillFrontmatter,
   summarizeCommandAvailability,
   syncAnalyticsDocs,
   toEphemeralCollectionId,
@@ -397,7 +382,7 @@ import {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts
-} from "./chunk-DUYISXXH.js";
+} from "./chunk-HATCJLAH.js";
 import {
   AC_ID_PATTERN,
   AcTestMappingGate,
@@ -446,34 +431,10 @@ import {
   writeHudSnapshot,
   writeHudSnapshotSafe,
   writeVerificationEvidence
-} from "./chunk-Q2HTDRY4.js";
-import "./chunk-46CETPMQ.js";
-import "./chunk-4RWS4K6H.js";
-import "./chunk-WULKDLB5.js";
-import {
-  DEFAULT_HOOK_ADAPTER,
-  HOOK_COVERAGE_MATRIX,
-  NATIVE_HOOK_EVENTS,
-  PAQAD_HOOK_EVENT_ORDER,
-  PAQAD_LIVE_HOOKS,
-  PAQAD_MUTATING_TOOL_MATCHER,
-  PAQAD_RUNTIME_PREFIX,
-  PAQAD_STAGE_AGENT_MATCHER,
-  PAQAD_STAGE_HELPER_MATCHER,
-  PLUGIN_RUNTIME_ROOT,
-  PLUGIN_SESSION_START_HOOK,
-  buildHostHookChain,
-  buildPluginHookChain,
-  capabilityGateCommand,
-  completionRecordCommand,
-  frameworkHomeAbsolute,
-  hasPreMutationBlock,
-  hookCommand,
-  isLiveHookCapable,
-  renderHookCommand,
-  rendersFullHookChain
-} from "./chunk-PWJ37K7H.js";
-import "./chunk-JLVVAS4S.js";
+} from "./chunk-VXMEOCA2.js";
+import "./chunk-Q2K5LIVX.js";
+import "./chunk-4XMSUNWE.js";
+import "./chunk-XFSJMSUE.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
@@ -532,7 +493,7 @@ import {
   toProjectRelativeModule,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-HTX323JR.js";
+} from "./chunk-KNW2KHGU.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -572,22 +533,36 @@ import {
   resetEmbeddingProviderCache,
   suggestPatternsForProject,
   toCrsCollectionId
-} from "./chunk-LT2Y4ATA.js";
+} from "./chunk-M7IBLXJK.js";
 import "./chunk-5QVCE2TS.js";
-import "./chunk-XTB75DBP.js";
-import "./chunk-ZXH2H7DH.js";
+import "./chunk-7WFTPG3S.js";
+import "./chunk-T3NAI7B4.js";
 import "./chunk-Y7QRVDRT.js";
-import "./chunk-QO2V2M3R.js";
+import "./chunk-46RZCNDW.js";
 import {
+  ADAPTER_TYPES,
+  AdapterFactory,
+  AiAssistantAdapter,
+  AiderAdapter,
+  AntigravityAdapter,
   COMPLIANCE_SCHEMA_VERSION,
+  ClaudeCodeAdapter,
+  CodexCliAdapter,
+  ContinueAdapter,
+  CursorAdapter,
   DEFAULT_OBLIGATION_INDEX_PATH,
+  GeminiCliAdapter,
+  GithubCopilotAdapter,
+  JunieAdapter,
   ResolutionError,
   SCHEMA_VERSION_UPDATE_HINT,
   SPEC_REVIEW_SCHEMA_VERSION,
   SchemaVersionError,
   SkillRegistrationError,
   StackSnapshotCache,
+  TemplateEngine,
   ValidationError,
+  WindsurfAdapter,
   assembleDecisionEvidence,
   attachSpecDefectsToObligations,
   buildDecisionPacket,
@@ -598,6 +573,8 @@ import {
   decisionQuestionForCategory,
   defaultSimilarityFor,
   extractObligationIndex,
+  isRunningUnderPlugin,
+  isUnderPluginPath,
   readExistingOnboardingManifest,
   readStackSnapshotSync,
   resolveFrameworkInstallPath,
@@ -614,8 +591,8 @@ import {
   writeJsonPreservingTimestamp,
   writeOnboardingManifest,
   writeProjectProfile
-} from "./chunk-AAQN25DL.js";
-import "./chunk-NZDNPUSS.js";
+} from "./chunk-IMHABCTC.js";
+import "./chunk-YY3WMB4N.js";
 import {
   AGENT_ROLES,
   CONTEXT_LEVEL_BUDGETS,
@@ -623,8 +600,33 @@ import {
   ROLE_TOKEN_BUDGETS,
   resolveContextBudgetForModel,
   resolveContextBudgetForModelTier
-} from "./chunk-NRKCUFAE.js";
+} from "./chunk-56Q65PVY.js";
 import "./chunk-NUSNYHWM.js";
+import "./chunk-4AC2MZIT.js";
+import {
+  DEFAULT_HOOK_ADAPTER,
+  HOOK_COVERAGE_MATRIX,
+  NATIVE_HOOK_EVENTS,
+  PAQAD_HOOK_EVENT_ORDER,
+  PAQAD_LIVE_HOOKS,
+  PAQAD_MUTATING_TOOL_MATCHER,
+  PAQAD_RUNTIME_PREFIX,
+  PAQAD_SKILL_READ_MATCHER,
+  PAQAD_STAGE_AGENT_MATCHER,
+  PAQAD_STAGE_HELPER_MATCHER,
+  PLUGIN_RUNTIME_ROOT,
+  PLUGIN_SESSION_START_HOOK,
+  buildHostHookChain,
+  buildPluginHookChain,
+  capabilityGateCommand,
+  completionRecordCommand,
+  frameworkHomeAbsolute,
+  hasPreMutationBlock,
+  hookCommand,
+  isLiveHookCapable,
+  renderHookCommand,
+  rendersFullHookChain
+} from "./chunk-7PRYMWFW.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   buildDetectedStackProfile,
@@ -643,7 +645,7 @@ import {
   ruleTriggersMatch,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-YNKACCNJ.js";
+} from "./chunk-CY65FRZG.js";
 import {
   CancelledError,
   DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
@@ -666,7 +668,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "./chunk-I5UTO44B.js";
+} from "./chunk-YAP7RT34.js";
 import {
   DECISION_AUDIT_EVENTS,
   DECISION_CARRY_OVER_SCOPES,
@@ -718,7 +720,7 @@ import {
   toDecisionRecord,
   toEngineError,
   validateDecisionPacket
-} from "./chunk-SR37B2WC.js";
+} from "./chunk-AO3S3ZOW.js";
 import {
   ACTIVE_CAPABILITIES,
   CAPABILITIES,
@@ -739,7 +741,7 @@ import {
   removeProjectSecrets,
   setEngineLogger,
   writeProjectSecret
-} from "./chunk-GUW6M2GG.js";
+} from "./chunk-RWPWLV4I.js";
 import "./chunk-TLKXJ74I.js";
 import "./chunk-YIVK3KXH.js";
 import {
@@ -749,8 +751,8 @@ import {
   getRuntimeTemplatesRoot
 } from "./chunk-VVRAO2BK.js";
 import "./chunk-G47OMU4L.js";
-import "./chunk-PGLAEUMY.js";
-import "./chunk-L7SK3SYZ.js";
+import "./chunk-NYJTN3AP.js";
+import "./chunk-O2HL32AP.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
@@ -760,15 +762,15 @@ import {
   hudVerdictPath,
   safeSessionId,
   writeFileAtomic
-} from "./chunk-KDMOMYGN.js";
-import "./chunk-DGOUJO7S.js";
+} from "./chunk-BNBF6IAM.js";
+import "./chunk-J43KRHV7.js";
 import "./chunk-KKFSSPUD.js";
-import "./chunk-UUWVX4K7.js";
+import "./chunk-SAVQKAPD.js";
 import "./chunk-O77JBFWW.js";
-import "./chunk-ANF4B3OJ.js";
-import "./chunk-6FWP4HUD.js";
-import "./chunk-GP4A3XZD.js";
-import "./chunk-JWPGRZ4M.js";
+import "./chunk-MFMI6AX4.js";
+import "./chunk-FMM3KI4P.js";
+import "./chunk-A6OBH6D6.js";
+import "./chunk-4OO2G73V.js";
 import {
   API_IMPACTS,
   CLASSIFICATION_CERTAINTY,
@@ -785,13 +787,13 @@ import {
   TARGET_CAPABILITIES,
   UI_IMPACTS,
   WORKFLOW_SOURCES
-} from "./chunk-DARSHQ7M.js";
-import "./chunk-TR3NKS4P.js";
+} from "./chunk-U6PMGXUA.js";
+import "./chunk-4QTKNLFO.js";
 import "./chunk-DNG6DDRS.js";
 import "./chunk-4K4CM3QN.js";
-import "./chunk-KYIBVLVQ.js";
+import "./chunk-NGQ7J6QB.js";
 import "./chunk-QUDDQGFY.js";
-import "./chunk-YQEI2YMU.js";
+import "./chunk-XD2HZBBD.js";
 import "./chunk-AINYJ3Q2.js";
 import {
   ANALYTICS_DECISION_PATH,
@@ -814,7 +816,7 @@ import {
   resolveAnalyticsGate,
   resolveAndPersistAnalyticsGate,
   selectLane
-} from "./chunk-4EM3UUW7.js";
+} from "./chunk-FY3IONGX.js";
 import "./chunk-KAL2KZVN.js";
 import "./chunk-SU7RODZI.js";
 import "./chunk-DNOGJOTT.js";
@@ -1001,6 +1003,7 @@ export {
   PAQAD_MUTATING_TOOL_MATCHER,
   PAQAD_RUNTIME_PREFIX,
   PAQAD_SCHEMA_VERSION,
+  PAQAD_SKILL_READ_MATCHER,
   PAQAD_STAGE_AGENT_MATCHER,
   PAQAD_STAGE_HELPER_MATCHER,
   PATHS,
@@ -1535,6 +1538,7 @@ export {
   specIndexPath,
   specReportPath,
   specReviewPath,
+  splitSkillFrontmatter,
   suggestPatternsForProject,
   summarizeCommandAvailability,
   summarizeStack,
