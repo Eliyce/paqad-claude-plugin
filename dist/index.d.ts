@@ -783,6 +783,7 @@ declare abstract class BaseAdapter implements AdapterInterface {
     generateConfig(context: AdapterContext): Promise<GeneratedFile[]>;
     protected executedHookConfigFiles(): string[];
     protected hostConfigGitignore(): GeneratedFile | null;
+    protected renderHostGitignore(names: readonly string[]): GeneratedFile;
     generateSkills(skills: ResolvedArtifact$1[]): Promise<GeneratedFile[]>;
     generateAgents(agents: ResolvedArtifact$1[]): Promise<GeneratedFile[]>;
     installHooks(hooks: ResolvedArtifact$1[]): Promise<GeneratedFile[]>;
@@ -830,6 +831,13 @@ declare class AntigravityAdapter extends BaseAdapter {
     protected memoryOutputPath(): string;
 }
 
+interface TeamSetupReport {
+    enabled: boolean;
+    written: string[];
+    removed: string[];
+    kept: string[];
+}
+
 declare class ClaudeCodeAdapter extends BaseAdapter {
     readonly type: "claude-code";
     protected configTemplateName(): string;
@@ -840,8 +848,14 @@ declare class ClaudeCodeAdapter extends BaseAdapter {
     protected mcpOutputPath(): string;
     protected cacheOutputPath(): string;
     protected memoryOutputPath(): string;
-    protected executedHookConfigFiles(): string[];
+    private claudeGitignore;
     generateConfig(context: AdapterContext): Promise<GeneratedFile[]>;
+    hostSettingsFiles(projectRoot: string, env?: NodeJS.ProcessEnv): GeneratedFile[];
+    joinSettingsFiles(projectRoot: string, env?: NodeJS.ProcessEnv): GeneratedFile[];
+    syncTeamSetup(projectRoot: string, env?: NodeJS.ProcessEnv): {
+        report: TeamSetupReport;
+        notes: string[];
+    };
 }
 declare function isUnderPluginPath(path: string | undefined): boolean;
 interface PluginRunSignals {
@@ -6096,6 +6110,7 @@ interface UpdateReport {
     new_mcp_servers: string[];
     new_scripts: string[];
     config_keys_pruned: string[];
+    team_setup_notes?: string[];
 }
 interface FrameworkUpdaterOptions {
     generateCandidates?: (projectRoot: string) => Promise<UpdateCandidate[]>;

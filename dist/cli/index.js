@@ -5,12 +5,12 @@ import {
   candidatesNeedingDecision,
   extractCandidates,
   resolveBriefSession
-} from "../chunk-EZTTMT3H.js";
+} from "../chunk-LJUF3QTV.js";
 import {
   estimateTokens,
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-PMNCLOWK.js";
+} from "../chunk-WVD6QIUM.js";
 import {
   holdRefreshContextLock
 } from "../chunk-W3FOYELX.js";
@@ -122,7 +122,6 @@ import {
   parseNpmAuditJson,
   parseOsvScannerJson,
   parseTestOutput,
-  pluginSettingsKeys,
   pruneFeatureBundles,
   queryOsv,
   readChangeDiff,
@@ -172,7 +171,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-TZUCVNTM.js";
+} from "../chunk-EUP5EYJ6.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -199,7 +198,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-J4NS75NK.js";
+} from "../chunk-ANGVJEGO.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -211,25 +210,22 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-DOSXFOFX.js";
+} from "../chunk-RELV7GQ5.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-OUDLTNMG.js";
-import {
-  STAGE_AGENT_HOSTS
-} from "../chunk-RSYZV4T3.js";
-import "../chunk-F4TESBBJ.js";
+} from "../chunk-GRLY2OLY.js";
+import "../chunk-TBA3IRWT.js";
 import {
   createEvidence,
   persistEvidence,
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-AENF3P74.js";
+} from "../chunk-BTBH3OQX.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -245,24 +241,25 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-GALBB4RH.js";
+} from "../chunk-6JI5AADX.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-6TUSZ45W.js";
-import "../chunk-S62JX3QR.js";
-import "../chunk-Y7QRVDRT.js";
+} from "../chunk-22EXPYND.js";
+import "../chunk-RTEAJJKI.js";
+import "../chunk-LL5YJP76.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-TUT44FC2.js";
+} from "../chunk-YODPQTZZ.js";
 import {
   ADAPTER_TYPES,
   AdapterFactory,
   BaseAdapter,
+  ClaudeCodeAdapter,
   DEFAULT_OBLIGATION_INDEX_PATH,
   DELIVERY_EVIDENCE_DOC_TYPE,
   DELIVERY_POLICY_FILE,
@@ -303,6 +300,7 @@ import {
   freezeSpec,
   hashRuleSources,
   isFrameworkDisabledForRoot,
+  isGitIgnored,
   isPaqadRepository,
   laneMayRise,
   listRunDirs,
@@ -315,6 +313,7 @@ import {
   parseTraceArtifact,
   pathTriggeredSeats,
   planFiles,
+  pluginSettingsKeys,
   projectRelative,
   provisionBrowser,
   queryCodeKnowledge,
@@ -372,6 +371,7 @@ import {
   specIndexPath,
   specReportPath,
   strongestSeverity,
+  teamSetupMissing,
   validateCodeKnowledgeIndex,
   validateCraftTrace,
   validateExpertNeed,
@@ -404,16 +404,18 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-CF6KO5I3.js";
+} from "../chunk-ZPOOIMA6.js";
 import {
   withFileLockSync
-} from "../chunk-FIMIDLQY.js";
+} from "../chunk-CVSKOIA4.js";
 import "../chunk-56Q65PVY.js";
 import {
   releaseLock,
   tryAcquireLock
 } from "../chunk-NUSNYHWM.js";
-import "../chunk-4AC2MZIT.js";
+import {
+  STAGE_AGENT_HOSTS
+} from "../chunk-AZXTURFO.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
@@ -424,7 +426,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-EYMSSKPI.js";
+} from "../chunk-4MYLVZA5.js";
 import {
   CONTAINER_PROCESS_CAP,
   CONTAINER_WRAPPERS,
@@ -449,7 +451,7 @@ import {
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-JC7Q2OQL.js";
+} from "../chunk-ANMTU75A.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -463,7 +465,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-N7JLX2WL.js";
+} from "../chunk-GTG73ZHP.js";
 import {
   ACTIVE_CAPABILITIES,
   FrameworkError,
@@ -476,66 +478,67 @@ import {
   redactSecrets,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-RC525O5G.js";
+} from "../chunk-LN2L7XJS.js";
 import {
   readTextIfExistsSync
 } from "../chunk-TLKXJ74I.js";
 import {
   appendHooksLog
 } from "../chunk-YIVK3KXH.js";
+import "../chunk-RACAQXHI.js";
 import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
 import "../chunk-G47OMU4L.js";
-import "../chunk-2TTTE6JT.js";
+import "../chunk-IA535WRW.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-ZUXJXY2O.js";
+} from "../chunk-KGPQCT67.js";
 import {
   hudCostCachePath
-} from "../chunk-6WKEIQBZ.js";
+} from "../chunk-BHZLZJGV.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-EIA44HJO.js";
+} from "../chunk-BYZSBV74.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-PYRLQCX7.js";
+} from "../chunk-33F7JMPM.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-J3OXRL2P.js";
+} from "../chunk-4BAABLX5.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-7Q3DFJRF.js";
+} from "../chunk-WZRLULDX.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-CI34D3AY.js";
+} from "../chunk-HBNZZH3U.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-QUEXB3M5.js";
+} from "../chunk-VOPZAUZQ.js";
 import {
   clearPendingLane,
   recordMarkedStage
-} from "../chunk-U33VSSTT.js";
+} from "../chunk-U73QSDGG.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -553,7 +556,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-6BIG3H4C.js";
+} from "../chunk-HLCLPZF6.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -584,7 +587,7 @@ import {
   setCommitDecision,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-4QPERO6Y.js";
+} from "../chunk-5G4EBOD3.js";
 import {
   describeEarlierWork
 } from "../chunk-QUDDQGFY.js";
@@ -609,7 +612,7 @@ import {
   sha256Hex,
   stampBundleRow,
   validateVisualEvidenceRecord
-} from "../chunk-6SJANGOW.js";
+} from "../chunk-7UNAU52X.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -633,11 +636,12 @@ import {
   require_dist,
   resolveFeatureDevelopmentCheckCommands,
   resolveFrameworkConfig,
+  resolveTeamBootstrapEnabled,
   stageForAgentName,
   stripPluginAgentNamespace,
   syncFrameworkConfig,
   versionAtLeast
-} from "../chunk-65JR5UEE.js";
+} from "../chunk-IL26FRJW.js";
 import {
   appendStampedRowToUnit,
   foldByOrdinal,
@@ -11661,6 +11665,385 @@ async function runCiGate(host, branch, ci, options = {}) {
 
 // src/delivery/runner.ts
 init_esm_shims();
+
+// src/providers/github-host-provider.ts
+init_esm_shims();
+
+// src/providers/github-rest-fallback.ts
+init_esm_shims();
+var GRAPHQL_REFUSED_MESSAGE = "GitHub GraphQL is not available from Claude Code sessions";
+var SEGMENT = /^[A-Za-z0-9._-]+$/;
+var CHECK_RUNS_PAGE_SIZE = 100;
+var CHECK_RUNS_MAX_PAGES = 50;
+var PASSING_CONCLUSIONS = /* @__PURE__ */ new Set(["success", "neutral", "skipped"]);
+function isCloudSession(env) {
+  return env.CLAUDE_CODE_REMOTE?.trim().toLowerCase() === "true";
+}
+function restTrigger(result2, env) {
+  if (result2.exitCode === 0) return null;
+  const lines = result2.stderr.split(/\r?\n/).map((line) => line.trim());
+  if (lines.some(
+    (line) => line.replace(/^(?:GraphQL|error):\s*/i, "").startsWith(GRAPHQL_REFUSED_MESSAGE)
+  )) {
+    return "graphql-refused";
+  }
+  if (isCloudSession(env) && /\bHTTP 403\b/.test(result2.stderr)) return "cloud-403";
+  return null;
+}
+function parseOwnerRepo(remoteUrl) {
+  const url = remoteUrl.trim();
+  if (url === "") return null;
+  let path2;
+  const scp = /^[^@/\s]+@[^:/\s]+:(.+)$/.exec(url);
+  if (scp) {
+    path2 = scp[1];
+  } else {
+    try {
+      path2 = new URL(url).pathname;
+    } catch {
+      return null;
+    }
+  }
+  const segments = path2.split("/").filter((part) => part !== "");
+  if (segments.length < 2) return null;
+  const owner = segments[segments.length - 2];
+  const repo = segments[segments.length - 1].replace(/\.git$/, "");
+  return SEGMENT.test(owner) && SEGMENT.test(repo) ? { owner, repo } : null;
+}
+async function readOwnerRepo(shell) {
+  const result2 = await shell.run("git", ["remote", "get-url", "origin"]);
+  return result2.exitCode === 0 ? parseOwnerRepo(result2.stdout) : null;
+}
+function parseJson(text) {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return void 0;
+  }
+}
+function asRecord(value) {
+  return typeof value === "object" && value !== null && !Array.isArray(value) ? value : null;
+}
+function prFrom(value) {
+  const record = asRecord(value);
+  const url = record?.html_url;
+  const number = record?.number;
+  return typeof url === "string" && typeof number === "number" ? { url, number } : null;
+}
+function repoPath({ owner, repo }) {
+  return `repos/${owner}/${repo}`;
+}
+async function findOpenPr(shell, target, branch) {
+  const head = encodeURIComponent(`${target.owner}:${branch}`);
+  const result2 = await shell.run("gh", [
+    "api",
+    `${repoPath(target)}/pulls?head=${head}&state=open`
+  ]);
+  if (result2.exitCode !== 0) return null;
+  const rows = parseJson(result2.stdout);
+  const first = Array.isArray(rows) ? rows[0] : void 0;
+  const pr = prFrom(first);
+  if (!pr) return null;
+  const sha = asRecord(asRecord(first)?.head)?.sha;
+  return typeof sha === "string" ? { ...pr, headSha: sha } : pr;
+}
+async function resolvePr(shell, target, prOrBranch) {
+  if (!/^\d+$/.test(prOrBranch)) return findOpenPr(shell, target, prOrBranch);
+  const result2 = await shell.run("gh", ["api", `${repoPath(target)}/pulls/${prOrBranch}`]);
+  if (result2.exitCode !== 0) return null;
+  const parsed = parseJson(result2.stdout);
+  const pr = prFrom(parsed);
+  const sha = asRecord(asRecord(parsed)?.head)?.sha;
+  return pr && typeof sha === "string" ? { ...pr, headSha: sha } : pr;
+}
+async function restOpenPr(shell, input) {
+  const target = await readOwnerRepo(shell);
+  if (!target) return null;
+  const args = [
+    "api",
+    `${repoPath(target)}/pulls`,
+    "-f",
+    `title=${input.title}`,
+    "-f",
+    `body=${input.body}`,
+    "-f",
+    `base=${input.base}`,
+    "-f",
+    `head=${input.head}`
+  ];
+  if (input.draft) args.push("-F", "draft=true");
+  const created = await shell.run("gh", args);
+  let pr = created.exitCode === 0 ? prFrom(parseJson(created.stdout)) : null;
+  if (!pr && /A pull request already exists/i.test(`${created.stdout}
+${created.stderr}`)) {
+    pr = await findOpenPr(shell, target, input.head);
+  }
+  if (!pr) return null;
+  if (input.reviewers.length > 0) {
+    await shell.run("gh", [
+      "api",
+      `${repoPath(target)}/pulls/${pr.number}/requested_reviewers`,
+      ...input.reviewers.flatMap((reviewer) => ["-f", `reviewers[]=${reviewer}`])
+    ]);
+  }
+  if (input.labels.length > 0) {
+    await shell.run("gh", [
+      "api",
+      `${repoPath(target)}/issues/${pr.number}/labels`,
+      ...input.labels.flatMap((label) => ["-f", `labels[]=${label}`])
+    ]);
+  }
+  return { ok: true, output: pr.url, pr: { number: pr.number, url: pr.url } };
+}
+async function restComment(shell, prOrBranch, body) {
+  const target = await readOwnerRepo(shell);
+  if (!target) return null;
+  const pr = await resolvePr(shell, target, prOrBranch);
+  if (!pr) return null;
+  const result2 = await shell.run("gh", [
+    "api",
+    `${repoPath(target)}/issues/${pr.number}/comments`,
+    "-f",
+    `body=${body}`
+  ]);
+  return result2.exitCode === 0 ? { ok: true, output: pr.url } : null;
+}
+function checkRunState(run) {
+  if (run.status !== "completed") return "pending";
+  return PASSING_CONCLUSIONS.has(String(run.conclusion)) ? "green" : "red";
+}
+function statusState(state) {
+  if (state === "success") return "green";
+  if (state === "pending") return "pending";
+  return "red";
+}
+async function readCheckRuns(shell, target, sha) {
+  const runs = [];
+  for (let page2 = 1; page2 <= CHECK_RUNS_MAX_PAGES; page2 += 1) {
+    const result2 = await shell.run("gh", [
+      "api",
+      `${repoPath(target)}/commits/${sha}/check-runs?per_page=${CHECK_RUNS_PAGE_SIZE}&page=${page2}`
+    ]);
+    if (result2.exitCode !== 0) return null;
+    const rows = asRecord(parseJson(result2.stdout))?.check_runs;
+    if (!Array.isArray(rows)) return null;
+    for (const row of rows) {
+      const run = asRecord(row) ?? {};
+      runs.push({ name: String(run.name ?? "unknown"), state: checkRunState(run) });
+    }
+    if (rows.length < CHECK_RUNS_PAGE_SIZE) break;
+  }
+  return runs;
+}
+var COMBINED_FAILURE = /* @__PURE__ */ new Set(["failure", "error"]);
+async function readCommitStatuses(shell, target, sha) {
+  const rows = [];
+  let combined;
+  for (let page2 = 1; page2 <= CHECK_RUNS_MAX_PAGES; page2 += 1) {
+    const result2 = await shell.run("gh", [
+      "api",
+      `${repoPath(target)}/commits/${sha}/status?per_page=${CHECK_RUNS_PAGE_SIZE}&page=${page2}`
+    ]);
+    if (result2.exitCode !== 0) break;
+    const body = asRecord(parseJson(result2.stdout));
+    if (page2 === 1) combined = body?.state;
+    const statuses = body?.statuses;
+    if (!Array.isArray(statuses)) break;
+    for (const row of statuses) {
+      const status = asRecord(row) ?? {};
+      rows.push({ name: String(status.context ?? "unknown"), state: statusState(status.state) });
+    }
+    if (statuses.length < CHECK_RUNS_PAGE_SIZE) break;
+  }
+  const combinedFailed = typeof combined === "string" && COMBINED_FAILURE.has(combined);
+  if (combinedFailed && !rows.some((row) => row.state === "red")) {
+    rows.push({ name: "combined commit status", state: "red" });
+  }
+  return rows;
+}
+async function restChecks(shell, prOrBranch) {
+  const target = await readOwnerRepo(shell);
+  if (!target) return null;
+  const pr = await resolvePr(shell, target, prOrBranch);
+  if (!pr?.headSha) return null;
+  const runs = await readCheckRuns(shell, target, pr.headSha);
+  if (runs === null) return null;
+  return { checks: [...runs, ...await readCommitStatuses(shell, target, pr.headSha)] };
+}
+
+// src/providers/github-host-provider.ts
+var PR_CREATE_REMEDIATION = "gh pr create failed. Ensure `gh auth status` is OK and the branch was pushed cleanly, then re-run delivery.";
+var graphqlRefusedInProcess = false;
+var GithubHostProvider = class {
+  constructor(shell, options = {}) {
+    this.shell = shell;
+    this.options = options;
+    this.env = options.env ?? process.env;
+  }
+  shell;
+  options;
+  kind = "github";
+  env;
+  fallbackTrigger(call, result2) {
+    const trigger = restTrigger(result2, this.env);
+    if (trigger !== null) {
+      graphqlRefusedInProcess = true;
+      if (this.options.projectRoot) {
+        appendHooksLog(
+          this.options.projectRoot,
+          `delivery: ${call} retried through REST (${trigger})`
+        );
+      }
+    }
+    return trigger;
+  }
+  async ensureBranch(name, base) {
+    const result2 = await this.shell.run("git", ["checkout", "-b", name, base]);
+    return {
+      ok: result2.exitCode === 0,
+      output: result2.stderr || result2.stdout,
+      remediation: result2.exitCode === 0 ? void 0 : `Failed to create branch ${name} from ${base}. Resolve the conflicting state and re-run delivery.`
+    };
+  }
+  async commit(message) {
+    const result2 = await this.shell.run("git", ["commit", "-m", message]);
+    return {
+      ok: result2.exitCode === 0,
+      output: result2.stderr || result2.stdout,
+      remediation: result2.exitCode === 0 ? void 0 : "git commit failed. Stage changes (git add) and re-run delivery; do not skip pre-commit hooks."
+    };
+  }
+  async push(branch) {
+    const result2 = await this.shell.run("git", ["push", "--set-upstream", "origin", branch]);
+    return {
+      ok: result2.exitCode === 0,
+      output: result2.stderr || result2.stdout,
+      remediation: result2.exitCode === 0 ? void 0 : "git push failed. Check remote auth and branch protection before retrying."
+    };
+  }
+  async openPR(input) {
+    const args = [
+      "pr",
+      "create",
+      "--base",
+      input.base,
+      "--head",
+      input.head,
+      "--title",
+      input.title,
+      "--body",
+      input.body
+    ];
+    if (input.draft) {
+      args.push("--draft");
+    }
+    for (const reviewer of input.reviewers) {
+      args.push("--reviewer", reviewer);
+    }
+    for (const label of input.labels) {
+      args.push("--label", label);
+    }
+    const result2 = await this.shell.run("gh", args);
+    if (result2.exitCode !== 0) {
+      const viaRest = this.fallbackTrigger("gh pr create", result2) ? await restOpenPr(this.shell, input) : null;
+      if (viaRest) return viaRest;
+      return {
+        ok: false,
+        output: result2.stderr || result2.stdout,
+        remediation: PR_CREATE_REMEDIATION
+      };
+    }
+    return {
+      ok: true,
+      output: result2.stdout,
+      pr: parsePrUrl(result2.stdout)
+    };
+  }
+  async comment(prOrBranch, body) {
+    const result2 = await this.shell.run("gh", ["pr", "comment", prOrBranch, "--body", body]);
+    if (result2.exitCode !== 0 && this.fallbackTrigger("gh pr comment", result2)) {
+      const viaRest = await restComment(this.shell, prOrBranch, body);
+      if (viaRest) return viaRest;
+    }
+    return {
+      ok: result2.exitCode === 0,
+      output: result2.stderr || result2.stdout,
+      remediation: result2.exitCode === 0 ? void 0 : "gh pr comment failed. Ensure `gh auth status` is OK and the PR exists for this branch, then re-run delivery."
+    };
+  }
+  async getChecksStatus(prOrBranch) {
+    if (graphqlRefusedInProcess || isCloudSession(this.env)) {
+      return this.checksViaRest(prOrBranch);
+    }
+    const result2 = await this.shell.run("gh", ["pr", "checks", prOrBranch, "--json", "name,state"]);
+    if (this.fallbackTrigger("gh pr checks", result2)) {
+      return this.checksViaRest(prOrBranch);
+    }
+    const checks = parseChecks(result2.stdout);
+    if (checks === null) {
+      return { state: "unknown", checks: [] };
+    }
+    return { state: aggregate(checks.map((c) => c.state)), checks };
+  }
+  async checksViaRest(prOrBranch) {
+    const viaRest = await restChecks(this.shell, prOrBranch);
+    if (!viaRest) return { state: "unknown", checks: [] };
+    return { state: aggregate(viaRest.checks.map((c) => c.state)), checks: viaRest.checks };
+  }
+};
+function parsePrUrl(stdout) {
+  const url = stdout.trim().split(/\s+/).find((token) => /^https?:\/\//.test(token)) ?? stdout.trim();
+  const match = /\/pull\/(\d+)/.exec(url);
+  return { number: match ? Number(match[1]) : null, url };
+}
+function normalizeCheckState(raw) {
+  const s = raw.toUpperCase();
+  if (["SUCCESS", "NEUTRAL", "SKIPPED"].includes(s)) {
+    return "green";
+  }
+  if (["FAILURE", "FAIL", "ERROR", "CANCELLED", "TIMED_OUT", "ACTION_REQUIRED"].includes(s)) {
+    return "red";
+  }
+  if (["PENDING", "QUEUED", "IN_PROGRESS", "EXPECTED", "REQUESTED", "WAITING"].includes(s)) {
+    return "pending";
+  }
+  return "unknown";
+}
+function parseChecks(stdout) {
+  const trimmed = stdout.trim();
+  if (!trimmed) {
+    return null;
+  }
+  try {
+    const rows = JSON.parse(trimmed);
+    if (!Array.isArray(rows)) {
+      return null;
+    }
+    return rows.map((r) => ({
+      name: r.name ?? "unknown",
+      state: normalizeCheckState(r.state ?? "")
+    }));
+  } catch {
+    return null;
+  }
+}
+function aggregate(states) {
+  if (states.length === 0) {
+    return "unknown";
+  }
+  if (states.includes("red")) {
+    return "red";
+  }
+  if (states.includes("pending")) {
+    return "pending";
+  }
+  if (states.every((s) => s === "green")) {
+    return "green";
+  }
+  return "unknown";
+}
+
+// src/delivery/runner.ts
 async function runDelivery(shell, inputs, openPr) {
   const steps = [];
   const branchResult = await shell.run("git", ["checkout", "-b", inputs.rendered.branch]);
@@ -11701,54 +12084,24 @@ async function runDelivery(shell, inputs, openPr) {
   if (pushResult.exitCode !== 0) {
     return { steps, ok: false };
   }
-  if (openPr) {
-    const opened = await openPr({
-      title: inputs.rendered.pr_title,
-      body: inputs.rendered.pr_body,
-      base: inputs.base,
-      head: inputs.rendered.branch,
-      draft: inputs.open_pr === "draft",
-      reviewers: inputs.reviewers,
-      labels: inputs.labels
-    });
-    steps.push({
-      step: "pr",
-      ok: opened.ok,
-      output: opened.output,
-      remediation: opened.ok ? void 0 : opened.remediation,
-      pr: opened.pr
-    });
-    return { steps, ok: opened.ok };
-  }
-  const prArgs = [
-    "pr",
-    "create",
-    "--base",
-    inputs.base,
-    "--head",
-    inputs.rendered.branch,
-    "--title",
-    inputs.rendered.pr_title,
-    "--body",
-    inputs.rendered.pr_body
-  ];
-  if (inputs.open_pr === "draft") {
-    prArgs.push("--draft");
-  }
-  for (const reviewer of inputs.reviewers) {
-    prArgs.push("--reviewer", reviewer);
-  }
-  for (const label of inputs.labels) {
-    prArgs.push("--label", label);
-  }
-  const prResult = await shell.run("gh", prArgs);
+  const open = openPr ?? ((input) => new GithubHostProvider(shell).openPR(input));
+  const opened = await open({
+    title: inputs.rendered.pr_title,
+    body: inputs.rendered.pr_body,
+    base: inputs.base,
+    head: inputs.rendered.branch,
+    draft: inputs.open_pr === "draft",
+    reviewers: inputs.reviewers,
+    labels: inputs.labels
+  });
   steps.push({
     step: "pr",
-    ok: prResult.exitCode === 0,
-    output: prResult.stderr || prResult.stdout,
-    remediation: prResult.exitCode === 0 ? void 0 : "gh pr create failed. Ensure `gh auth status` is OK and the branch was pushed cleanly, then re-run delivery."
+    ok: opened.ok,
+    output: opened.output,
+    remediation: opened.ok ? void 0 : opened.remediation,
+    pr: opened.pr
   });
-  return { steps, ok: prResult.exitCode === 0 };
+  return { steps, ok: opened.ok };
 }
 
 // src/delivery/templates.ts
@@ -11803,143 +12156,6 @@ function renderDelivery(process2, inputs, prBodyTemplate) {
     pr_title: renderTemplate(process2.pr.title_template, vars),
     pr_body: withTechDebt(prBodyTemplate, renderTemplate(prBodyTemplate, vars), vars.tech_debt)
   };
-}
-
-// src/providers/github-host-provider.ts
-init_esm_shims();
-var GithubHostProvider = class {
-  constructor(shell) {
-    this.shell = shell;
-  }
-  shell;
-  kind = "github";
-  async ensureBranch(name, base) {
-    const result2 = await this.shell.run("git", ["checkout", "-b", name, base]);
-    return {
-      ok: result2.exitCode === 0,
-      output: result2.stderr || result2.stdout,
-      remediation: result2.exitCode === 0 ? void 0 : `Failed to create branch ${name} from ${base}. Resolve the conflicting state and re-run delivery.`
-    };
-  }
-  async commit(message) {
-    const result2 = await this.shell.run("git", ["commit", "-m", message]);
-    return {
-      ok: result2.exitCode === 0,
-      output: result2.stderr || result2.stdout,
-      remediation: result2.exitCode === 0 ? void 0 : "git commit failed. Stage changes (git add) and re-run delivery; do not skip pre-commit hooks."
-    };
-  }
-  async push(branch) {
-    const result2 = await this.shell.run("git", ["push", "--set-upstream", "origin", branch]);
-    return {
-      ok: result2.exitCode === 0,
-      output: result2.stderr || result2.stdout,
-      remediation: result2.exitCode === 0 ? void 0 : "git push failed. Check remote auth and branch protection before retrying."
-    };
-  }
-  async openPR(input) {
-    const args = [
-      "pr",
-      "create",
-      "--base",
-      input.base,
-      "--head",
-      input.head,
-      "--title",
-      input.title,
-      "--body",
-      input.body
-    ];
-    if (input.draft) {
-      args.push("--draft");
-    }
-    for (const reviewer of input.reviewers) {
-      args.push("--reviewer", reviewer);
-    }
-    for (const label of input.labels) {
-      args.push("--label", label);
-    }
-    const result2 = await this.shell.run("gh", args);
-    if (result2.exitCode !== 0) {
-      return {
-        ok: false,
-        output: result2.stderr || result2.stdout,
-        remediation: "gh pr create failed. Ensure `gh auth status` is OK and the branch was pushed cleanly, then re-run delivery."
-      };
-    }
-    return {
-      ok: true,
-      output: result2.stdout,
-      pr: parsePrUrl(result2.stdout)
-    };
-  }
-  async comment(prOrBranch, body) {
-    const result2 = await this.shell.run("gh", ["pr", "comment", prOrBranch, "--body", body]);
-    return {
-      ok: result2.exitCode === 0,
-      output: result2.stderr || result2.stdout,
-      remediation: result2.exitCode === 0 ? void 0 : "gh pr comment failed. Ensure `gh auth status` is OK and the PR exists for this branch, then re-run delivery."
-    };
-  }
-  async getChecksStatus(prOrBranch) {
-    const result2 = await this.shell.run("gh", ["pr", "checks", prOrBranch, "--json", "name,state"]);
-    const checks = parseChecks(result2.stdout);
-    if (checks === null) {
-      return { state: "unknown", checks: [] };
-    }
-    return { state: aggregate(checks.map((c) => c.state)), checks };
-  }
-};
-function parsePrUrl(stdout) {
-  const url = stdout.trim().split(/\s+/).find((token) => /^https?:\/\//.test(token)) ?? stdout.trim();
-  const match = /\/pull\/(\d+)/.exec(url);
-  return { number: match ? Number(match[1]) : null, url };
-}
-function normalizeCheckState(raw) {
-  const s = raw.toUpperCase();
-  if (["SUCCESS", "NEUTRAL", "SKIPPED"].includes(s)) {
-    return "green";
-  }
-  if (["FAILURE", "FAIL", "ERROR", "CANCELLED", "TIMED_OUT", "ACTION_REQUIRED"].includes(s)) {
-    return "red";
-  }
-  if (["PENDING", "QUEUED", "IN_PROGRESS", "EXPECTED", "REQUESTED", "WAITING"].includes(s)) {
-    return "pending";
-  }
-  return "unknown";
-}
-function parseChecks(stdout) {
-  const trimmed = stdout.trim();
-  if (!trimmed) {
-    return null;
-  }
-  try {
-    const rows = JSON.parse(trimmed);
-    if (!Array.isArray(rows)) {
-      return null;
-    }
-    return rows.map((r) => ({
-      name: r.name ?? "unknown",
-      state: normalizeCheckState(r.state ?? "")
-    }));
-  } catch {
-    return null;
-  }
-}
-function aggregate(states) {
-  if (states.length === 0) {
-    return "unknown";
-  }
-  if (states.includes("red")) {
-    return "red";
-  }
-  if (states.includes("pending")) {
-    return "pending";
-  }
-  if (states.every((s) => s === "green")) {
-    return "green";
-  }
-  return "unknown";
 }
 
 // src/tech-debt/context.ts
@@ -12210,7 +12426,7 @@ function createDeliveryCommand() {
   return new Command("deliver").description("Run the delivery chain: PR (after asking) \u2192 wait for CI \u2192 evidence on green").option("--project-root <path>", "Project root", process.cwd()).option("--dry-run", "Render branch/commit/PR text without pushing", false).option("--base <branch>", "Base branch for the PR", "main").option("--draft", "Open the PR as a draft", false).option("--title <title>", "Change title (branch slug + PR title)", "").option("--summary <summary>", "One-line summary for the commit/PR body", "").option("--ticket <ref>", "Linked ticket ref (e.g. #<number> or PQD-<number>)").option("--ticket-type <type>", "Ticket type (Story/Bug/Task) \u2192 conventional commit type").option("--scope <scope>", "Conventional-commit scope (usually the module)").option("--open-pr <mode>", "Recommended open_pr choice for the pause (yes|draft|no)", "yes").option("--reviewer <handle>", "PR reviewer (repeatable)", collect2, []).option("--label <label>", "PR label (repeatable)", collect2, []).option("--session <id>", "Session id (defaults to SE_SESSION / CLAUDE_SESSION_ID)").action(async (options) => {
     const projectRoot = resolve8(options.projectRoot);
     const shell = createDeliveryShell(projectRoot);
-    const host = new GithubHostProvider(shell);
+    const host = new GithubHostProvider(shell, { projectRoot });
     const dirName = activeChange(projectRoot, options.session);
     const result2 = await runDeliver({
       projectRoot,
@@ -22556,7 +22772,7 @@ var GithubIssuesTicketProvider = class {
       "--json",
       GITHUB_ISSUE_JSON_FIELDS.join(",")
     ]);
-    return normalizeGithubIssue(parseJson(stdout), ref);
+    return normalizeGithubIssue(parseJson2(stdout), ref);
   }
   listTransitions() {
     return Promise.resolve([]);
@@ -22574,23 +22790,23 @@ var GithubIssuesTicketProvider = class {
 function normalizeIssueNumber(ref) {
   return ref.trim().replace(/^#/, "").replace(/^gh-/i, "");
 }
-function parseJson(stdout) {
+function parseJson2(stdout) {
   try {
     return JSON.parse(stdout);
   } catch {
     return {};
   }
 }
-function asRecord(value) {
+function asRecord2(value) {
   return value && typeof value === "object" ? value : {};
 }
 function asString2(value, fallback = "") {
   return typeof value === "string" ? value : fallback;
 }
 function normalizeGithubIssue(raw, ref) {
-  const issue = asRecord(raw);
+  const issue = asRecord2(raw);
   const number = typeof issue.number === "number" ? issue.number : normalizeIssueNumber(ref);
-  const labels2 = Array.isArray(issue.labels) ? issue.labels.map((label) => asString2(asRecord(label).name)).filter((name) => name !== "") : [];
+  const labels2 = Array.isArray(issue.labels) ? issue.labels.map((label) => asString2(asRecord2(label).name)).filter((name) => name !== "") : [];
   return {
     id: `#${number}`,
     type: labels2.find((name) => /^(type|kind):/i.test(name))?.replace(/^[^:]+:/, "").trim() || "Issue",
@@ -22694,7 +22910,6 @@ function createIntakeCommand() {
 
 // src/cli/commands/join.ts
 init_esm_shims();
-import { execFileSync as execFileSync5 } from "child_process";
 import { existsSync as existsSync53, mkdirSync as mkdirSync18 } from "fs";
 import { join as join92 } from "path";
 
@@ -24332,7 +24547,13 @@ var JOIN_NOT_ONBOARDED_MESSAGE = "This project has not been onboarded yet. Ask t
 var JOIN_RAG_OFF_MESSAGE = "RAG is off for this project, nothing to build.";
 var JOIN_RAG_PRESENT_MESSAGE = "RAG index is already present and valid, nothing to build.";
 var JOIN_RAG_BUILDING_MESSAGE = "Building your local RAG index (this stays on your machine and is not committed)...";
+var JOIN_TEAM_SETUP_MISSING_MESSAGE = "This repo does not carry the paqad team setup yet, so teammates and cloud sessions do not get paqad on their own. Ask the project lead to run `paqad-ai update` and commit the result.";
 var JOIN_READY_MESSAGE = "Ready. Your machine is set up for this project. No tracked files changed.";
+var CLAUDE_HOST_SETTINGS = /* @__PURE__ */ new Set([
+  ".claude/.gitignore",
+  ".claude/settings.json",
+  ".claude/settings.local.json"
+]);
 var FRAMEWORK_VERSION_EPOCH_SEED = "1970-01-01T00:00:00Z";
 function createJoinCommand() {
   return new Command("join").description("Set up an already-onboarded project on your machine (no re-onboarding)").option("--project-root <path>", "Project root", process.cwd()).option("--interactive", "Opt in to prompts").option("--no-rag", "Skip the RAG step").option("--yes", "Accept the RAG build without confirming").option(
@@ -24360,6 +24581,10 @@ async function joinProject(options) {
   await recreateLocalArtifacts(projectRoot, profile, providers);
   await regenerateMachineArtifacts(projectRoot);
   writeWorktreeInclude(projectRoot);
+  if (providers.includes("claude-code") && resolveTeamBootstrapEnabled(projectRoot) && teamSetupMissing(projectRoot)) {
+    process.stdout.write(`${JOIN_TEAM_SETUP_MISSING_MESSAGE}
+`);
+  }
   if (options.rag !== false) {
     const shouldContinue = await joinRag(projectRoot, options);
     if (!shouldContinue) {
@@ -24382,13 +24607,19 @@ async function recreateLocalArtifacts(projectRoot, profile, providers) {
   let recommendMcp = false;
   for (const provider of providers) {
     const adapter = AdapterFactory.create(provider);
-    candidates.push(
-      ...await adapter.generateConfig({
-        frameworkPath: PATHS.FRAMEWORK_PATH,
-        rulesPath: PATHS.RULES_DIR,
-        projectRoot
-      })
-    );
+    const generated = await adapter.generateConfig({
+      frameworkPath: PATHS.FRAMEWORK_PATH,
+      rulesPath: PATHS.RULES_DIR,
+      projectRoot
+    });
+    if (adapter instanceof ClaudeCodeAdapter) {
+      candidates.push(
+        ...generated.filter((file) => !CLAUDE_HOST_SETTINGS.has(toPosixPath(file.path))),
+        ...adapter.joinSettingsFiles(projectRoot)
+      );
+    } else {
+      candidates.push(...generated);
+    }
     if (adapter.capabilities.hooks) {
       candidates.push(...await adapter.installHooks(resolved.hooks));
     }
@@ -24513,31 +24744,6 @@ async function joinRag(projectRoot, options) {
     buildOnly: true
   });
   return true;
-}
-function isGitTracked(projectRoot, path2) {
-  try {
-    execFileSync5("git", ["ls-files", "--error-unmatch", "--", path2], {
-      cwd: projectRoot,
-      stdio: "ignore"
-    });
-    return true;
-  } catch {
-    return false;
-  }
-}
-function isGitIgnored(projectRoot, path2) {
-  if (isGitTracked(projectRoot, path2)) {
-    return false;
-  }
-  try {
-    execFileSync5("git", ["check-ignore", "--quiet", "--no-index", "--", path2], {
-      cwd: projectRoot,
-      stdio: "ignore"
-    });
-    return true;
-  } catch {
-    return false;
-  }
 }
 
 // src/cli/commands/lane.ts
@@ -26497,11 +26703,11 @@ function sessionTranscripts(projectRoot, sessionId, transcriptsRoot) {
   }
   return [...byPath.values()];
 }
-function asRecord2(value) {
+function asRecord3(value) {
   return typeof value === "object" && value !== null && !Array.isArray(value) ? value : null;
 }
 function blocksOf(content) {
-  return Array.isArray(content) ? content.filter((block) => asRecord2(block) !== null) : [];
+  return Array.isArray(content) ? content.filter((block) => asRecord3(block) !== null) : [];
 }
 function textOf(content) {
   if (typeof content === "string") return content;
@@ -26531,11 +26737,11 @@ var TimelineBuilder = class {
     this.timeline = { role, busy: [], owner: [], edits: [], testRuns: [], badLines: 0 };
   }
   fold(event) {
-    const record = asRecord2(event);
+    const record = asRecord3(event);
     if (!record || record.type !== "assistant" && record.type !== "user") return;
     const at2 = typeof record.timestamp === "string" ? Date.parse(record.timestamp) : Number.NaN;
     if (Number.isNaN(at2)) return;
-    const content = asRecord2(record.message)?.content;
+    const content = asRecord3(record.message)?.content;
     if (record.type === "assistant") this.assistant(at2, content);
     else this.user(at2, content);
     this.turnEnd = record.type === "assistant" ? at2 : null;
@@ -26548,7 +26754,7 @@ var TimelineBuilder = class {
     for (const block of blocksOf(content)) {
       if (block.type !== "tool_use" || typeof block.id !== "string") continue;
       if (typeof block.name !== "string") continue;
-      const input = asRecord2(block.input) ?? {};
+      const input = asRecord3(block.input) ?? {};
       const tool = pendingTool(at2, block.name, input);
       const kind = block.name === "Bash" ? bashTestRun(input) : null;
       if (kind !== null) {
@@ -27674,6 +27880,9 @@ async function refreshProviderEntries(projectRoot) {
       projectRoot
     });
     writeGeneratedFiles(projectRoot, files);
+    if (adapter instanceof ClaudeCodeAdapter) {
+      adapter.syncTeamSetup(projectRoot);
+    }
   }
 }
 function writeRefreshDrift(projectRoot, refreshDrift) {
@@ -29182,7 +29391,7 @@ function normalize2(text) {
   return text.trim().toLowerCase().replace(/\s+/g, " ");
 }
 function validateExpertSynthesis(raw, merged, sources) {
-  const parsed = typeof raw === "string" ? parseJson2(raw) : raw;
+  const parsed = typeof raw === "string" ? parseJson3(raw) : raw;
   if (parsed === void 0) return fail4("expert-synthesis artifact is not valid JSON");
   if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
     return fail4("expert-synthesis artifact must be an object");
@@ -29443,7 +29652,7 @@ function validateGaps(raw, sources) {
   }
   return { ok: true, gaps };
 }
-function parseJson2(raw) {
+function parseJson3(raw) {
   try {
     return JSON.parse(raw);
   } catch {
@@ -30241,7 +30450,7 @@ function readStepArtifact(projectRoot, dirName, step) {
   const section2 = step === "label" ? readLabel(projectRoot, dirName) : step === "questions" ? readQuestions(projectRoot, dirName) : readExpertSynthesis(projectRoot, dirName);
   return section2 === null ? null : JSON.stringify(section2);
 }
-function parseJson3(raw) {
+function parseJson4(raw) {
   try {
     return JSON.parse(raw);
   } catch {
@@ -30259,7 +30468,7 @@ function validateStepArtifact(step, raw) {
     const shape = checkSpecShape(raw);
     return shape.ok ? { ok: true } : { ok: false, error: shape.problems.join("; ") };
   }
-  const data = parseJson3(raw);
+  const data = parseJson4(raw);
   if (data === void 0 || typeof data !== "object" || data === null) {
     return { ok: false, error: `${PIPELINE_ARTIFACT_FILES[step]} is not valid JSON` };
   }
@@ -32793,6 +33002,7 @@ function createUpdateCommand() {
       const report2 = await new FrameworkUpdater().run(options.projectRoot);
       if (!options.silent) {
         console.log(JSON.stringify(report2, null, 2));
+        for (const note of report2.team_setup_notes ?? []) console.log(note);
       }
       appendAuditLog(options.projectRoot, report2.previous_version, report2.target_version);
       if (options.silent) {
