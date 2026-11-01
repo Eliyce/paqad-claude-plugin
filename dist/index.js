@@ -24,7 +24,6 @@ import {
   CacheWarmer,
   ChangeCompletenessGate,
   CodeTestsLintGate,
-  ConditionalSectionProcessor,
   ContextBudgetEnforcer,
   ContextBudgetOptimizer,
   ContextDeduplicator,
@@ -129,7 +128,6 @@ import {
   SessionAttachmentIndexer,
   SiteMapFreshnessGate,
   SkillCacheManager,
-  SkillFrontmatterParser,
   SkillLoader,
   SkillTriggerEvaluator,
   SpecReviewGate,
@@ -357,11 +355,9 @@ import {
   serializeModuleMap,
   skillPath,
   slugify,
-  splitSkillFrontmatter,
   summarizeCommandAvailability,
   syncAnalyticsDocs,
   toEphemeralCollectionId,
-  toLoadedSkill,
   toLocalTimestamp,
   toReportId,
   toStackDetectionResource,
@@ -382,7 +378,8 @@ import {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts
-} from "./chunk-EUP5EYJ6.js";
+} from "./chunk-BLWL2XGZ.js";
+import "./chunk-RTZAA6F3.js";
 import {
   AC_ID_PATTERN,
   AcTestMappingGate,
@@ -431,9 +428,9 @@ import {
   writeHudSnapshot,
   writeHudSnapshotSafe,
   writeVerificationEvidence
-} from "./chunk-ANGVJEGO.js";
-import "./chunk-RELV7GQ5.js";
-import "./chunk-GRLY2OLY.js";
+} from "./chunk-5D6U67YB.js";
+import "./chunk-KFWLYSRK.js";
+import "./chunk-PRM6JFEF.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
@@ -492,7 +489,7 @@ import {
   toProjectRelativeModule,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-BTBH3OQX.js";
+} from "./chunk-7KJOEUAN.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -532,12 +529,12 @@ import {
   resetEmbeddingProviderCache,
   suggestPatternsForProject,
   toCrsCollectionId
-} from "./chunk-6JI5AADX.js";
+} from "./chunk-BAHRFEPB.js";
 import "./chunk-5QVCE2TS.js";
-import "./chunk-22EXPYND.js";
-import "./chunk-RTEAJJKI.js";
+import "./chunk-RKOHQU3Y.js";
+import "./chunk-TPPOG2UC.js";
 import "./chunk-LL5YJP76.js";
-import "./chunk-YODPQTZZ.js";
+import "./chunk-6MV5C6FV.js";
 import {
   ADAPTER_TYPES,
   AdapterFactory,
@@ -553,14 +550,9 @@ import {
   GeminiCliAdapter,
   GithubCopilotAdapter,
   JunieAdapter,
-  ResolutionError,
-  SCHEMA_VERSION_UPDATE_HINT,
   SPEC_REVIEW_SCHEMA_VERSION,
-  SchemaVersionError,
-  SkillRegistrationError,
   StackSnapshotCache,
   TemplateEngine,
-  ValidationError,
   WindsurfAdapter,
   assembleDecisionEvidence,
   attachSpecDefectsToObligations,
@@ -590,8 +582,8 @@ import {
   writeJsonPreservingTimestamp,
   writeOnboardingManifest,
   writeProjectProfile
-} from "./chunk-ZPOOIMA6.js";
-import "./chunk-CVSKOIA4.js";
+} from "./chunk-NQVDA2TC.js";
+import "./chunk-7WXTNWYO.js";
 import {
   AGENT_ROLES,
   CONTEXT_LEVEL_BUDGETS,
@@ -599,13 +591,15 @@ import {
   ROLE_TOKEN_BUDGETS,
   resolveContextBudgetForModel,
   resolveContextBudgetForModelTier
-} from "./chunk-56Q65PVY.js";
+} from "./chunk-V7J7RWKE.js";
 import "./chunk-NUSNYHWM.js";
-import "./chunk-AZXTURFO.js";
+import "./chunk-PGDTQWFI.js";
 import {
   DEFAULT_HOOK_ADAPTER,
   HOOK_COVERAGE_MATRIX,
   NATIVE_HOOK_EVENTS,
+  PAQAD_AGENT_TOOL_MATCHER,
+  PAQAD_ANY_SUBAGENT_MATCHER,
   PAQAD_HOOK_EVENT_ORDER,
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER,
@@ -625,7 +619,7 @@ import {
   isLiveHookCapable,
   renderHookCommand,
   rendersFullHookChain
-} from "./chunk-7PRYMWFW.js";
+} from "./chunk-2J2FEP3H.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   buildDetectedStackProfile,
@@ -644,9 +638,8 @@ import {
   ruleTriggersMatch,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-4MYLVZA5.js";
+} from "./chunk-SZLUFVUS.js";
 import {
-  CancelledError,
   DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
   MCP_SERVER_TYPES,
   SkillAuditBuffer,
@@ -660,14 +653,13 @@ import {
   getPacksForFrameworks,
   getSharedSkillAuditBuffer,
   installPack,
-  isCancelledError,
   listPacks,
   loadProjectPackRegistry,
   readSkillAuditEvents,
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "./chunk-ANMTU75A.js";
+} from "./chunk-DAEST6F5.js";
 import {
   DECISION_AUDIT_EVENTS,
   DECISION_CARRY_OVER_SCOPES,
@@ -677,19 +669,8 @@ import {
   DECISION_PAUSE_EVENT_TYPES,
   DECISION_STATUSES,
   DecisionCapExceededError,
-  DecisionPacketCorruptError,
   DecisionStore,
-  DuplicateSkillIdentifierError,
-  ENGINE_ERROR_CODES,
-  LoggerSinkFailedError,
   MAX_PENDING_DECISIONS,
-  ManifestProductionTimeoutError,
-  MissingPolicyContextError,
-  UnknownEngineError,
-  UnsupportedFileTypeError,
-  VectorIndexStorageError,
-  VersionIncompatibleError,
-  WorkflowAlreadyRunningError,
   addWriteInOption,
   appendDecisionAuditEvent,
   assertContractDecisionId,
@@ -702,14 +683,11 @@ import {
   decisionPausedEvent,
   decisionResolvedEvent,
   ensureDecisionAuditLog,
-  getTaxonomyEntry,
   isContractDecisionId,
   isDecisionPacket,
-  isEngineErrorCode,
   isStrictDecisionId,
   lintDecisionCopy,
   listContractDecisions,
-  listErrorTaxonomy,
   mintDecisionId,
   normalizeDecisionQuestion,
   readContractDecisions,
@@ -717,42 +695,21 @@ import {
   resolvePendingDecision,
   scoreDecisionOptionOverlap,
   toDecisionRecord,
-  toEngineError,
   validateDecisionPacket
-} from "./chunk-GTG73ZHP.js";
+} from "./chunk-VK277Q5Q.js";
 import {
   ACTIVE_CAPABILITIES,
   CAPABILITIES,
   DOMAINS,
   DOMAIN_STACK_MAP,
-  FrameworkError,
   STACKS,
-  STACK_CAPABILITIES_MAP,
-  clearEngineLogger,
-  engineLog,
-  getConsumerLogger,
-  getProjectSecret,
-  getSecretPermissionWarning,
-  pluginOptionOrEnv,
-  readProjectSecrets,
-  redactPayload,
-  redactSecrets,
-  removeProjectSecrets,
-  setEngineLogger,
-  writeProjectSecret
-} from "./chunk-LN2L7XJS.js";
-import "./chunk-TLKXJ74I.js";
+  STACK_CAPABILITIES_MAP
+} from "./chunk-NLYM6H6C.js";
 import "./chunk-YIVK3KXH.js";
 import "./chunk-RACAQXHI.js";
-import {
-  findPackageRoot,
-  getPackageRoot,
-  getRuntimeRoot,
-  getRuntimeTemplatesRoot
-} from "./chunk-VVRAO2BK.js";
 import "./chunk-G47OMU4L.js";
-import "./chunk-IA535WRW.js";
-import "./chunk-KGPQCT67.js";
+import "./chunk-SPHES4YK.js";
+import "./chunk-EG24M72Q.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
@@ -762,61 +719,105 @@ import {
   hudVerdictPath,
   safeSessionId,
   writeFileAtomic
-} from "./chunk-BHZLZJGV.js";
-import "./chunk-BYZSBV74.js";
+} from "./chunk-GQXF7QAJ.js";
+import "./chunk-NL2X4MTG.js";
 import "./chunk-KKFSSPUD.js";
-import "./chunk-33F7JMPM.js";
+import "./chunk-G3V2CMLA.js";
 import "./chunk-O77JBFWW.js";
-import "./chunk-4BAABLX5.js";
-import "./chunk-WZRLULDX.js";
-import "./chunk-HBNZZH3U.js";
-import "./chunk-VOPZAUZQ.js";
+import "./chunk-ODZ7EZVF.js";
+import "./chunk-SXLKDRXO.js";
+import "./chunk-WDVONYGB.js";
+import "./chunk-YBBTJL57.js";
+import "./chunk-MU4HRQ56.js";
+import "./chunk-APNTHKCP.js";
+import "./chunk-DNG6DDRS.js";
+import "./chunk-4K4CM3QN.js";
+import "./chunk-4DN7MQDL.js";
+import "./chunk-QUDDQGFY.js";
+import "./chunk-NO3RXBBA.js";
+import "./chunk-AINYJ3Q2.js";
 import {
+  ANALYTICS_DECISION_PATH,
+  ANALYTICS_PROVIDERS,
   API_IMPACTS,
   CLASSIFICATION_CERTAINTY,
   CLASSIFICATION_OUTPUT_TYPES,
   CLASSIFICATION_SCOPES,
   CLASSIFICATION_WORKFLOWS,
+  COMPLEXITY_LEVELS,
   COMPLIANCE_SENSITIVITY_LEVELS,
   CONTEXT_BUDGET_HINTS,
   CUSTOMER_FACING_IMPACTS,
+  CancelledError,
+  ConditionalSectionProcessor,
   DATABASE_IMPACTS,
   DATA_SENSITIVITY_LEVELS,
-  RESOLUTION_SOURCES,
-  REVERSIBILITY_LEVELS,
-  TARGET_CAPABILITIES,
-  UI_IMPACTS,
-  WORKFLOW_SOURCES
-} from "./chunk-U73QSDGG.js";
-import "./chunk-HLCLPZF6.js";
-import "./chunk-DNG6DDRS.js";
-import "./chunk-4K4CM3QN.js";
-import "./chunk-5G4EBOD3.js";
-import "./chunk-QUDDQGFY.js";
-import "./chunk-7UNAU52X.js";
-import "./chunk-AINYJ3Q2.js";
-import {
-  ANALYTICS_DECISION_PATH,
-  ANALYTICS_PROVIDERS,
-  COMPLEXITY_LEVELS,
   DECISION_ASK_THRESHOLDS,
+  DecisionPacketCorruptError,
+  DuplicateSkillIdentifierError,
   EMBEDDING_PROVIDER_NAMES,
+  ENGINE_ERROR_CODES,
   ESCALATION_MODES,
+  FrameworkError,
   LANES,
+  LoggerSinkFailedError,
+  ManifestProductionTimeoutError,
+  MissingPolicyContextError,
   PROCESS_DEPTHS,
   RESEARCH_DEPTHS,
+  RESOLUTION_SOURCES,
+  REVERSIBILITY_LEVELS,
   RISK_LEVELS,
+  ResolutionError,
+  SCHEMA_VERSION_UPDATE_HINT,
   SchemaValidator,
+  SchemaVersionError,
+  SkillFrontmatterParser,
+  SkillRegistrationError,
+  TARGET_CAPABILITIES,
   TICKET_PROVIDER_KINDS,
+  UI_IMPACTS,
+  UnknownEngineError,
+  UnsupportedFileTypeError,
+  ValidationError,
+  VectorIndexStorageError,
+  VersionIncompatibleError,
+  WORKFLOW_SOURCES,
+  WorkflowAlreadyRunningError,
+  clearEngineLogger,
   detectAnalyticsProvider,
+  engineLog,
   extractCallSites,
   findProvider,
+  getConsumerLogger,
+  getProjectSecret,
+  getSecretPermissionWarning,
+  getTaxonomyEntry,
   inferNamingConvention,
+  isCancelledError,
+  isEngineErrorCode,
+  listErrorTaxonomy,
+  pluginOptionOrEnv,
   readAnalyticsDecision,
+  readProjectSecrets,
+  redactPayload,
+  redactSecrets,
+  removeProjectSecrets,
   resolveAnalyticsGate,
   resolveAndPersistAnalyticsGate,
-  selectLane
-} from "./chunk-IL26FRJW.js";
+  selectLane,
+  setEngineLogger,
+  splitSkillFrontmatter,
+  toEngineError,
+  toLoadedSkill,
+  writeProjectSecret
+} from "./chunk-B26SDNKJ.js";
+import {
+  findPackageRoot,
+  getPackageRoot,
+  getRuntimeRoot,
+  getRuntimeTemplatesRoot
+} from "./chunk-VVRAO2BK.js";
 import "./chunk-KAL2KZVN.js";
 import "./chunk-SU7RODZI.js";
 import "./chunk-DNOGJOTT.js";
@@ -998,6 +999,8 @@ export {
   NATIVE_HOOK_EVENTS,
   OnboardingOrchestrator,
   OpenAiEmbeddingProvider,
+  PAQAD_AGENT_TOOL_MATCHER,
+  PAQAD_ANY_SUBAGENT_MATCHER,
   PAQAD_HOOK_EVENT_ORDER,
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER,

@@ -1,3 +1,5 @@
+declare function estimateTokens(text: string | null | undefined): number;
+
 interface HighTableStopPayload {
     agent_id?: unknown;
     agent_type?: unknown;
@@ -12,7 +14,6 @@ interface RecordHighTableUsageInput {
 type HighTableUsageOutcome = 'recorded' | 'not-high-table' | 'no-transcript' | 'no-usage' | 'no-role' | 'no-feature';
 declare function recordHighTableUsage(input: RecordHighTableUsageInput): HighTableUsageOutcome;
 
-declare function estimateTokens(text: string | null | undefined): number;
 declare function stageFromAgentType(agentType: string | null | undefined): string | null;
 interface SubagentStopPayload {
     agent_id?: unknown;
