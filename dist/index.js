@@ -378,7 +378,7 @@ import {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts
-} from "./chunk-BLWL2XGZ.js";
+} from "./chunk-WL6RH656.js";
 import "./chunk-RTZAA6F3.js";
 import {
   AC_ID_PATTERN,
@@ -428,14 +428,14 @@ import {
   writeHudSnapshot,
   writeHudSnapshotSafe,
   writeVerificationEvidence
-} from "./chunk-5D6U67YB.js";
-import "./chunk-KFWLYSRK.js";
-import "./chunk-PRM6JFEF.js";
+} from "./chunk-BFSYMYBZ.js";
+import "./chunk-G2BROLE2.js";
+import "./chunk-JHJEDBZF.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
   getOrLoad
-} from "./chunk-TBA3IRWT.js";
+} from "./chunk-HKBRTM43.js";
 import {
   CRITERION_STATUSES,
   DEFECT_PATTERN_SCHEMA_VERSION,
@@ -489,7 +489,7 @@ import {
   toProjectRelativeModule,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-7KJOEUAN.js";
+} from "./chunk-N7C4TR7F.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -529,12 +529,12 @@ import {
   resetEmbeddingProviderCache,
   suggestPatternsForProject,
   toCrsCollectionId
-} from "./chunk-BAHRFEPB.js";
+} from "./chunk-W4UZB2E2.js";
 import "./chunk-5QVCE2TS.js";
-import "./chunk-RKOHQU3Y.js";
-import "./chunk-TPPOG2UC.js";
-import "./chunk-LL5YJP76.js";
-import "./chunk-6MV5C6FV.js";
+import "./chunk-NSYAD3PH.js";
+import "./chunk-PQT6BTHC.js";
+import "./chunk-5R5FFRAR.js";
+import "./chunk-6XNSDTX7.js";
 import {
   ADAPTER_TYPES,
   AdapterFactory,
@@ -582,24 +582,16 @@ import {
   writeJsonPreservingTimestamp,
   writeOnboardingManifest,
   writeProjectProfile
-} from "./chunk-NQVDA2TC.js";
-import "./chunk-7WXTNWYO.js";
-import {
-  AGENT_ROLES,
-  CONTEXT_LEVEL_BUDGETS,
-  DEFAULT_CONTEXT_BUDGET,
-  ROLE_TOKEN_BUDGETS,
-  resolveContextBudgetForModel,
-  resolveContextBudgetForModelTier
-} from "./chunk-V7J7RWKE.js";
-import "./chunk-NUSNYHWM.js";
-import "./chunk-PGDTQWFI.js";
+} from "./chunk-QBVGDODU.js";
+import "./chunk-2THVGJVJ.js";
+import "./chunk-UIJL7YUK.js";
 import {
   DEFAULT_HOOK_ADAPTER,
   HOOK_COVERAGE_MATRIX,
   NATIVE_HOOK_EVENTS,
   PAQAD_AGENT_TOOL_MATCHER,
   PAQAD_ANY_SUBAGENT_MATCHER,
+  PAQAD_BASH_TOOL_MATCHER,
   PAQAD_HOOK_EVENT_ORDER,
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER,
@@ -619,7 +611,18 @@ import {
   isLiveHookCapable,
   renderHookCommand,
   rendersFullHookChain
-} from "./chunk-2J2FEP3H.js";
+} from "./chunk-Q6XU7C36.js";
+import {
+  AGENT_ROLES,
+  CONTEXT_LEVEL_BUDGETS,
+  DEFAULT_CONTEXT_BUDGET,
+  ROLE_TOKEN_BUDGETS,
+  resolveContextBudgetForModel,
+  resolveContextBudgetForModelTier
+} from "./chunk-V7J7RWKE.js";
+import "./chunk-WWSZ5MNC.js";
+import "./chunk-BNGVSOCG.js";
+import "./chunk-NUSNYHWM.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   buildDetectedStackProfile,
@@ -638,7 +641,8 @@ import {
   ruleTriggersMatch,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-SZLUFVUS.js";
+} from "./chunk-X5HFWQ7J.js";
+import "./chunk-YIVK3KXH.js";
 import {
   DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
   MCP_SERVER_TYPES,
@@ -646,6 +650,7 @@ import {
   StackPackLoader,
   appendSkillAuditEvent,
   assertSafeCloneSource,
+  clearShownSkillMetadataDeprecations,
   createPack,
   emitSkillAuditEvent,
   getPackManifestMap,
@@ -656,10 +661,11 @@ import {
   listPacks,
   loadProjectPackRegistry,
   readSkillAuditEvents,
+  recordSkillMetadataDeprecation,
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "./chunk-DAEST6F5.js";
+} from "./chunk-D44SPZHH.js";
 import {
   DECISION_AUDIT_EVENTS,
   DECISION_CARRY_OVER_SCOPES,
@@ -696,7 +702,7 @@ import {
   scoreDecisionOptionOverlap,
   toDecisionRecord,
   validateDecisionPacket
-} from "./chunk-VK277Q5Q.js";
+} from "./chunk-GRYYVRZY.js";
 import {
   ACTIVE_CAPABILITIES,
   CAPABILITIES,
@@ -704,12 +710,11 @@ import {
   DOMAIN_STACK_MAP,
   STACKS,
   STACK_CAPABILITIES_MAP
-} from "./chunk-NLYM6H6C.js";
-import "./chunk-YIVK3KXH.js";
-import "./chunk-RACAQXHI.js";
+} from "./chunk-WQ7ILFDI.js";
+import "./chunk-MEGNS474.js";
 import "./chunk-G47OMU4L.js";
-import "./chunk-SPHES4YK.js";
-import "./chunk-EG24M72Q.js";
+import "./chunk-O5C7XOLM.js";
+import "./chunk-2M6LHPBY.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
@@ -719,22 +724,22 @@ import {
   hudVerdictPath,
   safeSessionId,
   writeFileAtomic
-} from "./chunk-GQXF7QAJ.js";
-import "./chunk-NL2X4MTG.js";
+} from "./chunk-TUORQPXT.js";
+import "./chunk-OUHPMQA7.js";
 import "./chunk-KKFSSPUD.js";
-import "./chunk-G3V2CMLA.js";
+import "./chunk-DUVEXEEC.js";
 import "./chunk-O77JBFWW.js";
-import "./chunk-ODZ7EZVF.js";
-import "./chunk-SXLKDRXO.js";
-import "./chunk-WDVONYGB.js";
-import "./chunk-YBBTJL57.js";
-import "./chunk-MU4HRQ56.js";
-import "./chunk-APNTHKCP.js";
+import "./chunk-ZNGFF77U.js";
+import "./chunk-AXZMEAL2.js";
+import "./chunk-AD4CGOCI.js";
+import "./chunk-5OX4IJDE.js";
+import "./chunk-JYT4TCTR.js";
+import "./chunk-JAHA4PGX.js";
 import "./chunk-DNG6DDRS.js";
 import "./chunk-4K4CM3QN.js";
-import "./chunk-4DN7MQDL.js";
+import "./chunk-QEO5R7UW.js";
 import "./chunk-QUDDQGFY.js";
-import "./chunk-NO3RXBBA.js";
+import "./chunk-FNO5LUR2.js";
 import "./chunk-AINYJ3Q2.js";
 import {
   ANALYTICS_DECISION_PATH,
@@ -770,6 +775,12 @@ import {
   RISK_LEVELS,
   ResolutionError,
   SCHEMA_VERSION_UPDATE_HINT,
+  SKILL_CUSTOM_KEYS,
+  SKILL_METADATA_FALLBACK_REMOVED_IN,
+  SKILL_METADATA_STRING_KEYS,
+  SKILL_META_FILE,
+  SKILL_META_FILE_KEYS,
+  SKILL_META_KEY,
   SchemaValidator,
   SchemaVersionError,
   SkillFrontmatterParser,
@@ -785,6 +796,7 @@ import {
   WORKFLOW_SOURCES,
   WorkflowAlreadyRunningError,
   clearEngineLogger,
+  clearSkillMetadataDeprecations,
   detectAnalyticsProvider,
   engineLog,
   extractCallSites,
@@ -805,13 +817,17 @@ import {
   removeProjectSecrets,
   resolveAnalyticsGate,
   resolveAndPersistAnalyticsGate,
+  resolveSkillMetadata,
   selectLane,
   setEngineLogger,
+  skillDeclaresRequestRouting,
+  skillMetadataDeprecationLine,
+  skillMetadataDeprecations,
   splitSkillFrontmatter,
   toEngineError,
   toLoadedSkill,
   writeProjectSecret
-} from "./chunk-B26SDNKJ.js";
+} from "./chunk-YT764EQH.js";
 import {
   findPackageRoot,
   getPackageRoot,
@@ -1001,6 +1017,7 @@ export {
   OpenAiEmbeddingProvider,
   PAQAD_AGENT_TOOL_MATCHER,
   PAQAD_ANY_SUBAGENT_MATCHER,
+  PAQAD_BASH_TOOL_MATCHER,
   PAQAD_HOOK_EVENT_ORDER,
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER,
@@ -1077,6 +1094,12 @@ export {
   RuntimeSkillRegistry,
   SCHEMA_VERSION_UPDATE_HINT,
   SINGLE_TEST_SELECTORS,
+  SKILL_CUSTOM_KEYS,
+  SKILL_METADATA_FALLBACK_REMOVED_IN,
+  SKILL_METADATA_STRING_KEYS,
+  SKILL_META_FILE,
+  SKILL_META_FILE_KEYS,
+  SKILL_META_KEY,
   SKILL_MODEL_TIERS,
   SKILL_OUTPUT_FORMATS,
   SPEC_REVIEW_SCHEMA_VERSION,
@@ -1229,6 +1252,8 @@ export {
   cleanupLegacyMcpFiles,
   clearEngineLogger,
   clearEphemeralCollection,
+  clearShownSkillMetadataDeprecations,
+  clearSkillMetadataDeprecations,
   clearTokenizerCache,
   collectObservedAcIds,
   collectScopeDriftPaths,
@@ -1475,6 +1500,7 @@ export {
   recordFindings,
   recordFromComplianceReport,
   recordGapText,
+  recordSkillMetadataDeprecation,
   redactFields,
   redactPayload,
   redactSecrets,
@@ -1507,6 +1533,7 @@ export {
   resolvePendingDecision,
   resolveScope,
   resolveSelections,
+  resolveSkillMetadata,
   retrieveFromAttachments,
   reviewSpecification,
   ruleTriggersMatch,
@@ -1535,6 +1562,9 @@ export {
   serializeModuleMap,
   setEngineLogger,
   shouldSkipLlm,
+  skillDeclaresRequestRouting,
+  skillMetadataDeprecationLine,
+  skillMetadataDeprecations,
   skillPath,
   slugify,
   slugifySpec,

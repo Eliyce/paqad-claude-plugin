@@ -8,6 +8,7 @@ interface CapabilityPayload {
     adapter?: string;
     toolUseId?: string;
     toolInput?: unknown;
+    agentType?: string;
 }
 
 interface CapabilityGateInput {

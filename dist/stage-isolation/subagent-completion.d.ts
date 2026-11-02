@@ -48,6 +48,13 @@ interface RecordStageAgentCompletionInput {
     now?: () => Date;
 }
 declare function stagesRunByAgent(projectRoot: string, dirName: string, stage: string, payload: SubagentStopPayload): string[];
+interface StageAgentJudgement {
+    report_status?: string;
+    report_stated?: boolean;
+    advance?: boolean;
+    must_not?: string[];
+}
+declare function judgeStageAgentReturn(stage: string, payload: SubagentStopPayload): StageAgentJudgement;
 interface RecordStageAgentStartInput {
     projectRoot: string;
     payload: SubagentStopPayload;
@@ -56,5 +63,5 @@ interface RecordStageAgentStartInput {
 declare function recordStageAgentStart(input: RecordStageAgentStartInput): boolean;
 declare function recordStageAgentCompletion(input: RecordStageAgentCompletionInput): boolean;
 
-export { estimateTokens, recordHighTableUsage, recordStageAgentCompletion, recordStageAgentStart, resolveStageAgentTokens, resolveTokenCounts, stageFromAgentType, stagesRunByAgent };
-export type { RecordStageAgentCompletionInput, RecordStageAgentStartInput, StageAgentTokens, SubagentStopPayload };
+export { estimateTokens, judgeStageAgentReturn, recordHighTableUsage, recordStageAgentCompletion, recordStageAgentStart, resolveStageAgentTokens, resolveTokenCounts, stageFromAgentType, stagesRunByAgent };
+export type { RecordStageAgentCompletionInput, RecordStageAgentStartInput, StageAgentJudgement, StageAgentTokens, SubagentStopPayload };
