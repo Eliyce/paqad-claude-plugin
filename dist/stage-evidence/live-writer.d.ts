@@ -1,8 +1,8 @@
 import { S as SessionLedgerRow } from '../ledger-DjtUKw_R.js';
-import { S as StageId } from '../stages-WJcL9SKj.js';
+import { S as StageId } from '../stages-BFRI5jFM.js';
 import { a as StageSessionSource, S as StageLane } from '../types-BsILBLhT.js';
-import '../feature-development-policy-sW-WEt-0.js';
-import '../project-profile-CKu9nBCi.js';
+import '../feature-development-policy-CkjUxmY9.js';
+import '../project-profile-xNmtdeKq.js';
 import '../introspection-CLBqo7wO.js';
 
 declare function activeChangeKey(projectRoot: string, hint?: string | null): string | null;
