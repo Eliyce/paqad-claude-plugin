@@ -8,11 +8,16 @@ import {
   candidatesNeedingDecision,
   extractCandidates,
   resolveBriefSession
-} from "../chunk-DLUZMERU.js";
+} from "../chunk-EUGYPWGR.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-XZYVT4CG.js";
+} from "../chunk-HKHP7ESH.js";
+import {
+  allChangedFiles,
+  readLastUpdateRecord,
+  writeLastUpdateRecord
+} from "../chunk-DLJE5DLJ.js";
 import {
   DISABLED_SESSION_DOC_TYPE
 } from "../chunk-4ERGPOHN.js";
@@ -243,10 +248,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-22EOX57Z.js";
-import {
-  estimateTokens
-} from "../chunk-RTZAA6F3.js";
+} from "../chunk-BJFNNK3T.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -273,7 +275,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-QUJVDNDN.js";
+} from "../chunk-DZ5I3364.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -285,17 +287,20 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-BDQKEUCN.js";
+} from "../chunk-4EXLO6PI.js";
+import {
+  estimateTokens
+} from "../chunk-RTZAA6F3.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-CCYTQ6FD.js";
+} from "../chunk-GAHHPQNP.js";
 import {
   legacyAfterWindowLines
-} from "../chunk-SVCOIYHF.js";
+} from "../chunk-ESVQ46LD.js";
 import "../chunk-EPA3STQM.js";
 import {
   createEvidence,
@@ -303,7 +308,11 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-7Z2VLDVL.js";
+} from "../chunk-BMKOESXR.js";
+import {
+  PAQAD_STATUS_GLYPH
+} from "../chunk-5QVCE2TS.js";
+import "../chunk-MTXNRRBY.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -319,20 +328,16 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-Z2XIMLVY.js";
-import {
-  PAQAD_STATUS_GLYPH
-} from "../chunk-5QVCE2TS.js";
-import "../chunk-GQAAMIQX.js";
+} from "../chunk-XKLHDHNR.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-YPQZ3FFS.js";
+} from "../chunk-TKU4SZW7.js";
 import "../chunk-BMTGNG6E.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-7BFF5RTI.js";
+} from "../chunk-OK4MT4JF.js";
 import {
   ADAPTER_TYPES,
   AGENT_RECORD_WRITER,
@@ -505,17 +510,18 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-7O4ZUTCH.js";
+} from "../chunk-PXI7AEKN.js";
 import {
   withFileLockSync
-} from "../chunk-UXU5ILDA.js";
+} from "../chunk-XQDE5JXQ.js";
 import {
   releaseLock,
   tryAcquireLock
 } from "../chunk-NUSNYHWM.js";
 import {
   renderStageAgentFiles
-} from "../chunk-3XHCLMM3.js";
+} from "../chunk-KBGFJFIF.js";
+import "../chunk-3JXYSPSL.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
@@ -523,15 +529,15 @@ import {
 import {
   EXPERT_OWNS
 } from "../chunk-V7J7RWKE.js";
-import "../chunk-6CI63FRU.js";
-import "../chunk-3I6ZUXZV.js";
+import "../chunk-JWOXKPDX.js";
+import "../chunk-F4BHZPDP.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   compileRules,
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-VUXVH6N3.js";
+} from "../chunk-BCIPEIKO.js";
 import {
   appendHooksLog
 } from "../chunk-QGZVTKXX.js";
@@ -559,7 +565,7 @@ import {
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-2BPGEF64.js";
+} from "../chunk-VUMDDEL4.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -572,7 +578,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-7VKLIU2N.js";
+} from "../chunk-SNN6KXRP.js";
 import {
   ACTIVE_CAPABILITIES,
   STACKS,
@@ -581,59 +587,58 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-VVE7LBIU.js";
+} from "../chunk-XNHCR7OO.js";
 import "../chunk-VNMVILDR.js";
 import "../chunk-VN54O2NU.js";
-import "../chunk-JP4OIWT3.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-FLOMQRZM.js";
+} from "../chunk-WTTTZRYI.js";
 import {
   hudCostCachePath
-} from "../chunk-KRGCHPZQ.js";
+} from "../chunk-4I6TDR46.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-HBAOBXTY.js";
+} from "../chunk-M74LFG4C.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-YMQC4DRQ.js";
+} from "../chunk-LKPYSEC6.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-QDIE5DKR.js";
+} from "../chunk-EDFAR5LK.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-6O5GSXT3.js";
+} from "../chunk-USYDAFY5.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-LMEWJGXZ.js";
+} from "../chunk-YUGCA6HT.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-R2WBPW4C.js";
+} from "../chunk-IFX5KIPP.js";
 import {
   clearPendingLane,
   recordMarkedStage,
   titleActiveFeature
-} from "../chunk-FCSLTXOG.js";
+} from "../chunk-7KLNVHQY.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -651,7 +656,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-OHXXHIOA.js";
+} from "../chunk-GMRVPE3M.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -684,7 +689,7 @@ import {
   settleTicketAction,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-N2RMFRE7.js";
+} from "../chunk-HCJGHBUI.js";
 import {
   describeEarlierWork
 } from "../chunk-QUDDQGFY.js";
@@ -701,15 +706,13 @@ import {
   liveStageAgents,
   readChangeConstants,
   readFeatureRecord,
-  renameWithRetry,
-  renameWithRetrySync,
   renderHeaderScript,
   resolveAgentIdentity,
   rowRecordedAt,
   sha256Hex,
   stampBundleRow,
   validateVisualEvidenceRecord
-} from "../chunk-ZXX62HRQ.js";
+} from "../chunk-XONWVYZ4.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -742,7 +745,7 @@ import {
   splitSkillFrontmatter,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "../chunk-NO4MUCKE.js";
+} from "../chunk-HEKDFU5G.js";
 import {
   DEFAULT_BASE_BRANCH,
   DEFAULT_EXISTING_SURFACE_TOKENS,
@@ -772,7 +775,11 @@ import {
   stampLastApplied,
   syncFrameworkConfig,
   versionAtLeast
-} from "../chunk-7TNGHAC5.js";
+} from "../chunk-WZX47S4I.js";
+import {
+  renameWithRetry,
+  renameWithRetrySync
+} from "../chunk-ER3R2ZPY.js";
 import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
@@ -38531,15 +38538,78 @@ function report2(json2, status, message) {
 
 // src/cli/commands/update.ts
 init_esm_shims();
+function countOf(count3, noun) {
+  return `${count3} ${noun}${count3 === 1 ? "" : "s"}`;
+}
+var MANUAL_DETAILS_COMMAND = "paqad-ai update --json";
+var LAST_DETAILS_COMMAND = "paqad-ai update --last --json";
+function versionLine(report3) {
+  const { previous_version: previous, target_version: target } = report3;
+  if (previous === target) return `paqad is already on ${target}.`;
+  return previous === null ? `Updated paqad to ${target}.` : `Updated paqad from ${previous} to ${target}.`;
+}
+function formatUpdateSummary(report3, detailsCommand = MANUAL_DETAILS_COMMAND) {
+  const lines3 = [versionLine(report3)];
+  const changed = allChangedFiles(report3);
+  if (changed.length === 0) {
+    lines3.push("No files needed changing.");
+  } else {
+    lines3.push(`Changed ${countOf(changed.length, "file")}:`);
+    lines3.push(...changed.map((path2) => `  ${path2}`));
+  }
+  if (report3.skipped.length > 0) {
+    const pronoun = report3.skipped.length === 1 ? "it" : "them";
+    lines3.push(
+      `Kept ${countOf(report3.skipped.length, "file")} paqad would write differently. Run ${detailsCommand} to see ${pronoun}.`
+    );
+  }
+  if (report3.config_keys_pruned.length > 0) {
+    lines3.push(
+      `Removed ${countOf(report3.config_keys_pruned.length, "setting")} paqad no longer has: ${report3.config_keys_pruned.join(", ")}.`
+    );
+  }
+  return lines3;
+}
+function formatUpdateReportLines(report3, detailsCommand = MANUAL_DETAILS_COMMAND) {
+  return [
+    ...formatUpdateSummary(report3, detailsCommand),
+    ...report3.team_setup_notes ?? [],
+    ...report3.git_workflow_notes ?? []
+  ];
+}
+function recordAsSummary(record2) {
+  return { ...record2, regenerated: record2.changed_files };
+}
+function printLastUpdate(projectRoot, json2) {
+  const record2 = readLastUpdateRecord(projectRoot);
+  if (json2) {
+    console.log(JSON.stringify(record2 ?? { last_update: null }, null, 2));
+    return;
+  }
+  if (record2 === null) {
+    console.log("No background update to report.");
+    return;
+  }
+  for (const line of formatUpdateReportLines(recordAsSummary(record2), LAST_DETAILS_COMMAND)) {
+    console.log(line);
+  }
+}
 function createUpdateCommand() {
-  return new Command("update").description("Update framework-managed artifacts").option("--project-root <path>", "Project root", process.cwd()).option("--silent", "Suppress output; write results to audit log only").action(async (options) => {
+  return new Command("update").description("Update framework-managed artifacts").option("--project-root <path>", "Project root", process.cwd()).option("--silent", "Suppress output; write results to audit log only").option("--json", "Print the full report as JSON instead of the summary").option("--last", "Show what the last background update did, without updating").action(async (options) => {
+    if (options.last) {
+      printLastUpdate(options.projectRoot, options.json === true);
+      return;
+    }
     try {
       const report3 = await new FrameworkUpdater().run(options.projectRoot);
       if (!options.silent) {
-        console.log(JSON.stringify(report3, null, 2));
-        for (const note of report3.team_setup_notes ?? []) console.log(note);
-        for (const note of report3.git_workflow_notes ?? []) console.log(note);
+        if (options.json) {
+          console.log(JSON.stringify(report3, null, 2));
+        } else {
+          for (const line of formatUpdateReportLines(report3)) console.log(line);
+        }
       }
+      if (options.silent) writeLastUpdateRecord(options.projectRoot, report3);
       appendAuditLog(options.projectRoot, report3.previous_version, report3.target_version);
       if (options.silent) {
         try {
