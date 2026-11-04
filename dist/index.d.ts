@@ -2546,8 +2546,6 @@ declare const PATHS: {
     readonly PROJECT_CONFIG_EXAMPLE: ".paqad/.config.example";
     readonly PROJECT_CONFIGS_DIR: ".paqad/configs";
     readonly PROJECT_CONFIGS_README: ".paqad/configs/README.md";
-    readonly PROJECT_CONFIG_SCHEMAS_DIR: ".paqad/configs/schemas";
-    readonly FEATURE_DEVELOPMENT_VIEW_HASH: ".paqad/state/feature-development-view.sha256";
     readonly DETECTION_REPORT: ".paqad/detection-report.json";
     readonly ONBOARDING_MANIFEST: ".paqad/onboarding-manifest.json";
     readonly RAG_IGNORE_CONFIG: ".paqad/rag.ignore.yaml";

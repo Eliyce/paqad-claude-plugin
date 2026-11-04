@@ -2,20 +2,20 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   holdRefreshContextLock
-} from "../chunk-SALD2FS5.js";
+} from "../chunk-D6PUN3ZS.js";
 import {
   buildStageBrief,
   candidatesNeedingDecision,
   extractCandidates,
   resolveBriefSession
-} from "../chunk-U7FHSDA5.js";
+} from "../chunk-DLUZMERU.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-LI6OXZEW.js";
+} from "../chunk-XZYVT4CG.js";
 import {
   DISABLED_SESSION_DOC_TYPE
-} from "../chunk-QIPH4CRW.js";
+} from "../chunk-4ERGPOHN.js";
 import {
   AGENT_MEMORY_MAX_BYTES,
   AGENT_PERMISSION_ALLOW,
@@ -191,6 +191,7 @@ import {
   regularFiles,
   remoteDefaultBranch,
   removeActiveCapability,
+  removeGeneratedFiles,
   removeKey,
   removeObsoleteContractDocs,
   renderEvidenceMarkdown,
@@ -242,7 +243,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-XIZTB26S.js";
+} from "../chunk-22EOX57Z.js";
 import {
   estimateTokens
 } from "../chunk-RTZAA6F3.js";
@@ -272,7 +273,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-AD74EUXP.js";
+} from "../chunk-QUJVDNDN.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -284,17 +285,17 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-27JNVYD4.js";
+} from "../chunk-BDQKEUCN.js";
 import {
   CHIEF_ROLE,
   recordDoneRow,
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-3DHKXX4N.js";
+} from "../chunk-CCYTQ6FD.js";
 import {
   legacyAfterWindowLines
-} from "../chunk-VFQ37JTA.js";
+} from "../chunk-SVCOIYHF.js";
 import "../chunk-EPA3STQM.js";
 import {
   createEvidence,
@@ -302,7 +303,7 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-LZDCKFH5.js";
+} from "../chunk-7Z2VLDVL.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -318,20 +319,20 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-S34ANDX2.js";
+} from "../chunk-Z2XIMLVY.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
-import "../chunk-SSCNAPCP.js";
+import "../chunk-GQAAMIQX.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-EDKFFIPC.js";
+} from "../chunk-YPQZ3FFS.js";
 import "../chunk-BMTGNG6E.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-UY4U6R7J.js";
+} from "../chunk-7BFF5RTI.js";
 import {
   ADAPTER_TYPES,
   AGENT_RECORD_WRITER,
@@ -504,17 +505,17 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-U5XVQDYP.js";
+} from "../chunk-7O4ZUTCH.js";
 import {
   withFileLockSync
-} from "../chunk-SWW4JCZG.js";
+} from "../chunk-UXU5ILDA.js";
 import {
   releaseLock,
   tryAcquireLock
 } from "../chunk-NUSNYHWM.js";
 import {
   renderStageAgentFiles
-} from "../chunk-KF7QO4LP.js";
+} from "../chunk-3XHCLMM3.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
@@ -522,18 +523,18 @@ import {
 import {
   EXPERT_OWNS
 } from "../chunk-V7J7RWKE.js";
-import "../chunk-4FDATEOJ.js";
-import "../chunk-TGMUIKEJ.js";
+import "../chunk-6CI63FRU.js";
+import "../chunk-3I6ZUXZV.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   compileRules,
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-RXD7E2WV.js";
+} from "../chunk-VUXVH6N3.js";
 import {
   appendHooksLog
-} from "../chunk-SJBIQGQO.js";
+} from "../chunk-QGZVTKXX.js";
 import {
   CONTAINER_PROCESS_CAP,
   CONTAINER_WRAPPERS,
@@ -558,7 +559,7 @@ import {
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-UGDM6CLN.js";
+} from "../chunk-2BPGEF64.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -571,7 +572,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-BVDUMYNO.js";
+} from "../chunk-7VKLIU2N.js";
 import {
   ACTIVE_CAPABILITIES,
   STACKS,
@@ -580,59 +581,59 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-F6GQOBEY.js";
+} from "../chunk-VVE7LBIU.js";
 import "../chunk-VNMVILDR.js";
-import "../chunk-EU42UMN7.js";
-import "../chunk-3V6JPJPM.js";
+import "../chunk-VN54O2NU.js";
+import "../chunk-JP4OIWT3.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-5FIREGW7.js";
+} from "../chunk-FLOMQRZM.js";
 import {
   hudCostCachePath
-} from "../chunk-G2EG3JEI.js";
+} from "../chunk-KRGCHPZQ.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-DREMIRYI.js";
+} from "../chunk-HBAOBXTY.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-PTSZ4C42.js";
+} from "../chunk-YMQC4DRQ.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-VM36IGS4.js";
+} from "../chunk-QDIE5DKR.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-TMLZ5F5U.js";
+} from "../chunk-6O5GSXT3.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-PQS3Z5X2.js";
+} from "../chunk-LMEWJGXZ.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-Z2K6TKRD.js";
+} from "../chunk-R2WBPW4C.js";
 import {
   clearPendingLane,
   recordMarkedStage,
   titleActiveFeature
-} from "../chunk-PDTKFKTB.js";
+} from "../chunk-FCSLTXOG.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -650,7 +651,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-K7ZQC3EA.js";
+} from "../chunk-OHXXHIOA.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -683,7 +684,7 @@ import {
   settleTicketAction,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-5GTJ2U4V.js";
+} from "../chunk-N2RMFRE7.js";
 import {
   describeEarlierWork
 } from "../chunk-QUDDQGFY.js";
@@ -708,7 +709,7 @@ import {
   sha256Hex,
   stampBundleRow,
   validateVisualEvidenceRecord
-} from "../chunk-P2MFZKPE.js";
+} from "../chunk-ZXX62HRQ.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -741,7 +742,7 @@ import {
   splitSkillFrontmatter,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "../chunk-Y6DIETW6.js";
+} from "../chunk-NO4MUCKE.js";
 import {
   DEFAULT_BASE_BRANCH,
   DEFAULT_EXISTING_SURFACE_TOKENS,
@@ -770,9 +771,8 @@ import {
   resolveTeamBootstrapEnabled,
   stampLastApplied,
   syncFrameworkConfig,
-  versionAtLeast,
-  writeTeamConfigSchemas
-} from "../chunk-OMCZ7AVM.js";
+  versionAtLeast
+} from "../chunk-7TNGHAC5.js";
 import {
   getRuntimeRoot
 } from "../chunk-VVRAO2BK.js";
@@ -784,12 +784,12 @@ import {
   readUnitFile,
   sessionLedgerDir,
   stampSessionRow
-} from "../chunk-QOO2P2S6.js";
+} from "../chunk-NAANJBUQ.js";
 import {
   keepingLedgerSessionCache,
   readLedgerSessionId,
   resolveSessionId
-} from "../chunk-HOF5QUON.js";
+} from "../chunk-N74EZSUC.js";
 import {
   ULID_BODY,
   chatRagPath,
@@ -801,13 +801,13 @@ import {
   isSlugSafe,
   parseFeatureDirName,
   ulid
-} from "../chunk-H6J6OEIZ.js";
+} from "../chunk-NDVN5PRV.js";
 import {
   join
 } from "../chunk-3STC3IVL.js";
 import {
   PATHS
-} from "../chunk-7FTFWIWP.js";
+} from "../chunk-I7RXYXFH.js";
 import {
   __toESM,
   init_esm_shims
@@ -10531,7 +10531,7 @@ function collectStackDrift(projectRoot, now = Date.now()) {
 // src/dashboard/collectors/workflows.ts
 init_esm_shims();
 var HELPER21 = {
-  what: "docs/instructions/workflows/** holds the YAML workflow definitions the workflow engine runs (feature-development, pentest, RCA, \u2026).",
+  what: "docs/instructions/workflows/** holds a team's own workflow YAML files, if any, which the workflow engine runs.",
   goodLooksLike: "At least one workflow per active capability, regenerated when packs change, recently edited."
 };
 var EXPECTED_MIN2 = 1;
@@ -29847,7 +29847,6 @@ async function joinProject(options) {
   await recreateLocalArtifacts(projectRoot, profile, providers);
   await regenerateMachineArtifacts(projectRoot);
   writeWorktreeInclude(projectRoot);
-  writeTeamConfigSchemas(projectRoot);
   if (providers.includes("claude-code") && resolveTeamBootstrapEnabled(projectRoot) && teamSetupMissing(projectRoot)) {
     process.stdout.write(`${JOIN_TEAM_SETUP_MISSING_MESSAGE}
 `);
@@ -29906,6 +29905,8 @@ async function recreateLocalArtifacts(projectRoot, profile, providers) {
     candidates.filter((candidate) => isGitIgnored(projectRoot, candidate.path))
   );
   cleanupLegacyMcpFiles(projectRoot, { canDelete: (path2) => isGitIgnored(projectRoot, path2) });
+  for (const line of removeGeneratedFiles(projectRoot)) process.stdout.write(`${line}
+`);
   if (isGitIgnored(projectRoot, PATHS.COMPILED_RULES)) {
     const compiled = await compileRules(projectRoot);
     await writeCompiledRules(projectRoot, compiled);
@@ -37228,7 +37229,11 @@ function runStageBrief(stage, options) {
         throw new Error(`no active change for session ${sessionId}`);
       }
       const agentId = options.agentId ?? process.env.SE_AGENT_ID ?? openStageAgentId(root, sessionId, dirName);
-      return buildStageBrief(stage, root, sessionId, { agentId, resumed: true });
+      return buildStageBrief(stage, root, sessionId, {
+        agentId,
+        resumed: true,
+        full: options.full === true
+      });
     });
   } catch (error) {
     console.error(`could not build the ${stage} stage brief: ${error.message}`);
@@ -37259,7 +37264,7 @@ function createStageCommand() {
   ).option(
     "--agent-id <id>",
     "On a `brief`, the host agent id to print on the command lines (defaults to SE_AGENT_ID, then the session's open stage-agent row)"
-  ).action(async (phase, stage, options) => {
+  ).option("--full", "On a `brief`, print every read entry and instruction, with no length cut").action(async (phase, stage, options) => {
     if (phase === "settings") {
       runStageSettings(options);
       return;

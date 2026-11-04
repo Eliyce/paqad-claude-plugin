@@ -79,6 +79,7 @@ interface ApplyRuleScriptMapOptions {
     map: RuleScriptMap;
     via: string;
     event: Omit<RuleScriptMapEvent, 'ts' | 'via'>;
+    keepDigest?: boolean;
 }
 interface ApplyRuleScriptMapResult {
     snapshot_path: string;
@@ -112,6 +113,8 @@ interface RuleClassification {
 declare function assembleMap(inventory: RuleInventoryItem[], classifications: Map<string, RuleClassification>, rule_files_hash: string, priorMap: RuleScriptMap | null, now?: Date): RuleScriptMap;
 
 declare function isRuleScriptMapStale(projectRoot: string): boolean;
+declare function isRuleScriptMapCurrent(projectRoot: string): boolean;
+declare function dropRuleScriptMapSources(projectRoot: string, sources: readonly string[], mapWasCurrent: boolean): void;
 interface CompileRuleScriptsResult {
     map: RuleScriptMap;
     ruleCount: number;
@@ -350,5 +353,5 @@ declare function removeRuleBullet(projectRoot: string, ruleId: string): {
 
 declare function pruneOrphanScripts(projectRoot: string, map: RuleScriptMap): string[];
 
-export { HEADER_MARKER, OVER_FLAG_THRESHOLDS, RULE_SCRIPT_MAP_SCHEMA_VERSION, SCRIPT_ABORTED_ERROR, addRule, addRuleEntry, applyRuleScriptMap, archiveRule, assembleMap, atomicWriteRuleScriptMap, checkOverFlag, cleanRuleText, clearRuleScripts, collectRuleFiles, compileRuleScripts, computeRuleFilesHash, editRuleText, embedRuleIds, embedRuleMarker, emptyRuleScriptMap, enforceRuleScripts, executeRuleScript, executeRuleScriptAsync, extractHeaderFields, fixturesRoot, formatEnforcementSummary, isOnPath, isRuleId, isRuleScriptMapStale, loadRuleScriptMap, mintRuleId, missingBinaries, parseRuleFile, parseRuleMarker, parseScriptHeader, pruneOrphanScripts, readDrift, readReport, reconcileRuleScripts, recordConflictFindings, removeRuleBullet, ruleRunFindings, ruleScriptMapPath, ruleTextHash, runFixtures, runRuleScripts, runRuleScriptsAsync, scanAndEmbedIds, scriptFilesHash, serializeRuleScriptMap, setRuleText, setVerifiability, sha256, snapshotRuleScriptMap, stripRuleMarker, upsertScriptEntry, validateFindings, validateScriptHeader };
+export { HEADER_MARKER, OVER_FLAG_THRESHOLDS, RULE_SCRIPT_MAP_SCHEMA_VERSION, SCRIPT_ABORTED_ERROR, addRule, addRuleEntry, applyRuleScriptMap, archiveRule, assembleMap, atomicWriteRuleScriptMap, checkOverFlag, cleanRuleText, clearRuleScripts, collectRuleFiles, compileRuleScripts, computeRuleFilesHash, dropRuleScriptMapSources, editRuleText, embedRuleIds, embedRuleMarker, emptyRuleScriptMap, enforceRuleScripts, executeRuleScript, executeRuleScriptAsync, extractHeaderFields, fixturesRoot, formatEnforcementSummary, isOnPath, isRuleId, isRuleScriptMapCurrent, isRuleScriptMapStale, loadRuleScriptMap, mintRuleId, missingBinaries, parseRuleFile, parseRuleMarker, parseScriptHeader, pruneOrphanScripts, readDrift, readReport, reconcileRuleScripts, recordConflictFindings, removeRuleBullet, ruleRunFindings, ruleScriptMapPath, ruleTextHash, runFixtures, runRuleScripts, runRuleScriptsAsync, scanAndEmbedIds, scriptFilesHash, serializeRuleScriptMap, setRuleText, setVerifiability, sha256, snapshotRuleScriptMap, stripRuleMarker, upsertScriptEntry, validateFindings, validateScriptHeader };
 export type { AddedRule, ApplyRuleScriptMapOptions, ApplyRuleScriptMapResult, CompileRuleScriptsResult, EmbedResult, EnforceOptions, EnforceScope, EnforcementResult, ExecuteAsyncOptions, ExecutePayload, ExecuteResult, Finding, FindingsReport, FixtureFailure, FixtureResult, OverFlagResult, ParsedHeader, ParsedRule, RuleClassification, RuleComplianceMode, RuleConflict, RuleEntry, RuleInventoryItem, RuleScriptDriftFinding, RuleScriptDriftReport, RuleScriptFindingCode, RuleScriptKind, RuleScriptMap, RuleScriptMapEvent, RuleScriptScope, RuleViolation, RunAsyncOptions, RunFilter, RunOptions, RunReport, ScanResult, ScriptEntry, ScriptHeader, ScriptRunResult, ScriptScope, ValidationResult, Verifiability, VerifiabilityKind };

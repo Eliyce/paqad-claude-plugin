@@ -6,10 +6,12 @@ import {
   collectRuleFiles,
   compileRuleScripts,
   computeRuleFilesHash,
+  dropRuleScriptMapSources,
   embedRuleIds,
   embedRuleMarker,
   fixturesRoot,
   isRuleId,
+  isRuleScriptMapCurrent,
   isRuleScriptMapStale,
   mintRuleId,
   parseRuleFile,
@@ -23,7 +25,7 @@ import {
   sha256,
   snapshotRuleScriptMap,
   stripRuleMarker
-} from "../chunk-UY4U6R7J.js";
+} from "../chunk-7BFF5RTI.js";
 import {
   HEADER_MARKER,
   RULE_SCRIPT_MAP_SCHEMA_VERSION,
@@ -47,31 +49,31 @@ import {
   serializeRuleScriptMap,
   validateFindings,
   validateScriptHeader
-} from "../chunk-5FIREGW7.js";
-import "../chunk-G2EG3JEI.js";
-import "../chunk-DREMIRYI.js";
+} from "../chunk-FLOMQRZM.js";
+import "../chunk-KRGCHPZQ.js";
+import "../chunk-HBAOBXTY.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-PTSZ4C42.js";
+import "../chunk-YMQC4DRQ.js";
 import "../chunk-O77JBFWW.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
-import "../chunk-5GTJ2U4V.js";
+import "../chunk-N2RMFRE7.js";
 import "../chunk-QUDDQGFY.js";
-import "../chunk-P2MFZKPE.js";
+import "../chunk-ZXX62HRQ.js";
 import "../chunk-AINYJ3Q2.js";
 import "../chunk-SU7RODZI.js";
-import "../chunk-Y6DIETW6.js";
-import "../chunk-OMCZ7AVM.js";
+import "../chunk-NO4MUCKE.js";
+import "../chunk-7TNGHAC5.js";
 import "../chunk-VVRAO2BK.js";
-import "../chunk-QOO2P2S6.js";
-import "../chunk-HOF5QUON.js";
-import "../chunk-H6J6OEIZ.js";
+import "../chunk-NAANJBUQ.js";
+import "../chunk-N74EZSUC.js";
+import "../chunk-NDVN5PRV.js";
 import "../chunk-3STC3IVL.js";
 import {
   PATHS
-} from "../chunk-7FTFWIWP.js";
+} from "../chunk-I7RXYXFH.js";
 import {
   __toESM,
   init_esm_shims
@@ -327,6 +329,7 @@ export {
   collectRuleFiles,
   compileRuleScripts,
   computeRuleFilesHash,
+  dropRuleScriptMapSources,
   editRuleText,
   embedRuleIds,
   embedRuleMarker,
@@ -339,6 +342,7 @@ export {
   formatEnforcementSummary,
   isOnPath,
   isRuleId,
+  isRuleScriptMapCurrent,
   isRuleScriptMapStale,
   loadRuleScriptMap,
   mintRuleId,
