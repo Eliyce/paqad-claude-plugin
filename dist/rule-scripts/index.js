@@ -1,8 +1,11 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
+  addRuleEntry,
   applyRuleScriptMap,
+  archiveRule,
   assembleMap,
   atomicWriteRuleScriptMap,
+  clearRuleScripts,
   collectRuleFiles,
   compileRuleScripts,
   computeRuleFilesHash,
@@ -17,8 +20,11 @@ import {
   recordConflictFindings,
   runFixtures,
   scanAndEmbedIds,
-  snapshotRuleScriptMap
-} from "../chunk-OK4MT4JF.js";
+  setRuleText,
+  setVerifiability,
+  snapshotRuleScriptMap,
+  upsertScriptEntry
+} from "../chunk-CNVGNLVF.js";
 import {
   HEADER_MARKER,
   RULE_SCRIPT_MAP_SCHEMA_VERSION,
@@ -42,22 +48,22 @@ import {
   serializeRuleScriptMap,
   validateFindings,
   validateScriptHeader
-} from "../chunk-WTTTZRYI.js";
+} from "../chunk-YSH63TMU.js";
 import "../chunk-4I6TDR46.js";
-import "../chunk-M74LFG4C.js";
+import "../chunk-HU3KTD2K.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-LKPYSEC6.js";
+import "../chunk-WK7E7TA5.js";
 import "../chunk-O77JBFWW.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
-import "../chunk-HCJGHBUI.js";
+import "../chunk-43DYNNYO.js";
 import "../chunk-QUDDQGFY.js";
-import "../chunk-XONWVYZ4.js";
+import "../chunk-G6D3JYXC.js";
 import "../chunk-AINYJ3Q2.js";
 import "../chunk-SU7RODZI.js";
-import "../chunk-HEKDFU5G.js";
+import "../chunk-3DGAT6MO.js";
 import {
   embedRuleMarker,
   isRuleId,
@@ -66,7 +72,7 @@ import {
   ruleTextHash,
   sha256,
   stripRuleMarker
-} from "../chunk-WZX47S4I.js";
+} from "../chunk-GI5XTME2.js";
 import "../chunk-ER3R2ZPY.js";
 import "../chunk-VVRAO2BK.js";
 import "../chunk-NAANJBUQ.js";
@@ -107,87 +113,6 @@ function checkOverFlag(scriptPath, kind, projectRoot, files, threshold = OVER_FL
     threshold,
     exceeded: rate > threshold
   };
-}
-
-// src/rule-scripts/mutate.ts
-init_esm_shims();
-function cloneMap(map) {
-  return JSON.parse(JSON.stringify(map));
-}
-function findRule(map, ruleId) {
-  return map.rules.find((r) => r.id === ruleId);
-}
-function upsertScriptEntry(map, ruleId, entry) {
-  const next = cloneMap(map);
-  const rule = findRule(next, ruleId);
-  if (!rule) {
-    throw new Error(`upsertScriptEntry: rule ${ruleId} not found in map`);
-  }
-  const idx = rule.scripts.findIndex((s) => s.path === entry.path);
-  if (idx >= 0) {
-    rule.scripts[idx] = entry;
-  } else {
-    rule.scripts.push(entry);
-  }
-  rule.scripts.sort((a, b) => a.path.localeCompare(b.path));
-  return next;
-}
-function addRuleEntry(map, entry) {
-  const next = cloneMap(map);
-  if (next.rules.some((r) => r.id === entry.id)) {
-    throw new Error(`addRuleEntry: rule ${entry.id} already in map`);
-  }
-  next.rules.push({
-    id: entry.id,
-    source: entry.source,
-    text: entry.text,
-    text_hash: entry.text_hash,
-    verifiability: { kind: "heuristic" },
-    enforced_by: [],
-    scripts: []
-  });
-  return next;
-}
-function setRuleText(map, ruleId, text, textHash) {
-  const next = cloneMap(map);
-  const rule = findRule(next, ruleId);
-  if (!rule) {
-    throw new Error(`setRuleText: rule ${ruleId} not found in map`);
-  }
-  rule.text = text;
-  rule.text_hash = textHash;
-  rule.scripts = [];
-  return next;
-}
-function clearRuleScripts(map, ruleId) {
-  const next = cloneMap(map);
-  const rule = findRule(next, ruleId);
-  if (rule) {
-    rule.scripts = [];
-  }
-  return next;
-}
-function setVerifiability(map, ruleId, verifiability) {
-  const next = cloneMap(map);
-  const rule = findRule(next, ruleId);
-  if (!rule) {
-    throw new Error(`setVerifiability: rule ${ruleId} not found in map`);
-  }
-  rule.verifiability = verifiability;
-  if (verifiability.kind === "unverifiable") {
-    rule.scripts = [];
-  }
-  return next;
-}
-function archiveRule(map, ruleId) {
-  const next = cloneMap(map);
-  const idx = next.rules.findIndex((r) => r.id === ruleId);
-  if (idx < 0) {
-    return next;
-  }
-  const [removed] = next.rules.splice(idx, 1);
-  next.archived = [...next.archived ?? [], removed];
-  return next;
 }
 
 // src/rule-scripts/editor.ts

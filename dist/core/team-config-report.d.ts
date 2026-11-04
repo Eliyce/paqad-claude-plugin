@@ -1,4 +1,4 @@
-declare const TEAM_CONFIG_FILES: readonly ["paqad.yaml", "models.yaml", "retrieval.yaml", "decisions.yaml", "authoring.yaml", "feature-development/workflow.yaml", "feature-development/specification.yaml", "feature-development/rules.yaml", "feature-development/reuse.yaml", "feature-development/safety.yaml", "feature-development/checks.yaml", "feature-development/evidence.yaml", "feature-development/analytics.yaml"];
+declare const TEAM_CONFIG_FILES: readonly ["paqad.yaml", "models.yaml", "retrieval.yaml", "decisions.yaml", "authoring.yaml", "feature-development/workflow.yaml", "feature-development/specification.yaml", "feature-development/rules.yaml", "feature-development/reuse.yaml", "feature-development/checks.yaml", "feature-development/evidence.yaml", "feature-development/analytics.yaml"];
 type OwnTeamConfigFile = (typeof TEAM_CONFIG_FILES)[number];
 
 declare function missingTeamFileLine(file: string): string;

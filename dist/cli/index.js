@@ -8,11 +8,11 @@ import {
   candidatesNeedingDecision,
   extractCandidates,
   resolveBriefSession
-} from "../chunk-EUGYPWGR.js";
+} from "../chunk-KKFM5NFZ.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-HKHP7ESH.js";
+} from "../chunk-RNRTNP5G.js";
 import {
   allChangedFiles,
   readLastUpdateRecord,
@@ -173,6 +173,7 @@ import {
   parseNpmAuditJson,
   parseOsvScannerJson,
   parseTestOutput,
+  pendingMoveRefusal,
   pruneFeatureBundles,
   queryOsv,
   raiseAgentPermissionDecision,
@@ -197,7 +198,6 @@ import {
   remoteDefaultBranch,
   removeActiveCapability,
   removeGeneratedFiles,
-  removeKey,
   removeObsoleteContractDocs,
   renderEvidenceMarkdown,
   renderExpertBrief,
@@ -221,7 +221,6 @@ import {
   scanBoundaries,
   selectTestRunner,
   sessionChecksTarget,
-  setValue,
   setWaiting,
   shadowingLine,
   skillLintExitCode,
@@ -248,7 +247,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-BJFNNK3T.js";
+} from "../chunk-7LPMVLID.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -275,7 +274,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-DZ5I3364.js";
+} from "../chunk-ABPTWQNO.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -287,7 +286,7 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-4EXLO6PI.js";
+} from "../chunk-HBDIMOQM.js";
 import {
   estimateTokens
 } from "../chunk-RTZAA6F3.js";
@@ -297,10 +296,10 @@ import {
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-GAHHPQNP.js";
+} from "../chunk-LV7EC4F6.js";
 import {
   legacyAfterWindowLines
-} from "../chunk-ESVQ46LD.js";
+} from "../chunk-KL5WBX45.js";
 import "../chunk-EPA3STQM.js";
 import {
   createEvidence,
@@ -308,11 +307,11 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-BMKOESXR.js";
+} from "../chunk-3SI2PASV.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
-import "../chunk-MTXNRRBY.js";
+import "../chunk-VSJ2OACP.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -328,16 +327,16 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-XKLHDHNR.js";
+} from "../chunk-7PXPZDPZ.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-TKU4SZW7.js";
+} from "../chunk-MOBMRTZK.js";
 import "../chunk-BMTGNG6E.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-OK4MT4JF.js";
+} from "../chunk-CNVGNLVF.js";
 import {
   ADAPTER_TYPES,
   AGENT_RECORD_WRITER,
@@ -377,6 +376,7 @@ import {
   clearStaged,
   commitFindings,
   commitStep,
+  compileFailureReason,
   currentBranch,
   decideFinish,
   deriveCaption,
@@ -510,7 +510,7 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-PXI7AEKN.js";
+} from "../chunk-G2BY5AEB.js";
 import {
   withFileLockSync
 } from "../chunk-XQDE5JXQ.js";
@@ -520,8 +520,8 @@ import {
 } from "../chunk-NUSNYHWM.js";
 import {
   renderStageAgentFiles
-} from "../chunk-KBGFJFIF.js";
-import "../chunk-3JXYSPSL.js";
+} from "../chunk-3EVWJQMP.js";
+import "../chunk-HEGBWIRF.js";
 import {
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER
@@ -529,15 +529,15 @@ import {
 import {
   EXPERT_OWNS
 } from "../chunk-V7J7RWKE.js";
-import "../chunk-JWOXKPDX.js";
-import "../chunk-F4BHZPDP.js";
+import "../chunk-DL27Y6QW.js";
+import "../chunk-X3HAQA2T.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   compileRules,
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-BCIPEIKO.js";
+} from "../chunk-WCPMCFC2.js";
 import {
   appendHooksLog
 } from "../chunk-QGZVTKXX.js";
@@ -565,7 +565,7 @@ import {
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-VUMDDEL4.js";
+} from "../chunk-S2IGJTS7.js";
 import {
   DECISION_CATEGORIES,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -578,7 +578,7 @@ import {
   readContractDecisions,
   readDecisionEvidence,
   resolvePendingDecision
-} from "../chunk-SNN6KXRP.js";
+} from "../chunk-YCEDJEPE.js";
 import {
   ACTIVE_CAPABILITIES,
   STACKS,
@@ -587,7 +587,7 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-XNHCR7OO.js";
+} from "../chunk-JADAUDIS.js";
 import "../chunk-VNMVILDR.js";
 import "../chunk-VN54O2NU.js";
 import {
@@ -596,49 +596,49 @@ import {
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-WTTTZRYI.js";
+} from "../chunk-YSH63TMU.js";
 import {
   hudCostCachePath
 } from "../chunk-4I6TDR46.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-M74LFG4C.js";
+} from "../chunk-HU3KTD2K.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-LKPYSEC6.js";
+} from "../chunk-WK7E7TA5.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-EDFAR5LK.js";
+} from "../chunk-6SF5JYCM.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-USYDAFY5.js";
+} from "../chunk-YEGICCQQ.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-YUGCA6HT.js";
+} from "../chunk-PAHTBBCD.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-IFX5KIPP.js";
+} from "../chunk-FZLZ7446.js";
 import {
   clearPendingLane,
   recordMarkedStage,
   titleActiveFeature
-} from "../chunk-7KLNVHQY.js";
+} from "../chunk-GEQP54V7.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -656,7 +656,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-GMRVPE3M.js";
+} from "../chunk-J3GZEYF2.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -689,7 +689,7 @@ import {
   settleTicketAction,
   stampFeatureDocument,
   stampMergeCommit
-} from "../chunk-HCJGHBUI.js";
+} from "../chunk-43DYNNYO.js";
 import {
   describeEarlierWork
 } from "../chunk-QUDDQGFY.js";
@@ -712,7 +712,7 @@ import {
   sha256Hex,
   stampBundleRow,
   validateVisualEvidenceRecord
-} from "../chunk-XONWVYZ4.js";
+} from "../chunk-G6D3JYXC.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -745,7 +745,7 @@ import {
   splitSkillFrontmatter,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "../chunk-HEKDFU5G.js";
+} from "../chunk-3DGAT6MO.js";
 import {
   DEFAULT_BASE_BRANCH,
   DEFAULT_EXISTING_SURFACE_TOKENS,
@@ -761,21 +761,25 @@ import {
   getDefaultEmbeddingModel,
   gitWorkflowDir,
   gitWorkflowFilePath,
+  isNewerTeamFile,
   loadGitWorkflow,
+  newerTeamFileLine,
   normalizeIntelligenceConfig,
   project_profile_schema_default,
   readGitWorkflowContents,
   readTextIfExistsSync,
+  removeKey,
   renderDefaultGitWorkflowFile,
   require_dist,
   resolveFrameworkConfig,
   resolveGitWorkflow,
   resolveStageAgentSettings,
   resolveTeamBootstrapEnabled,
+  setValue,
   stampLastApplied,
   syncFrameworkConfig,
   versionAtLeast
-} from "../chunk-WZX47S4I.js";
+} from "../chunk-GI5XTME2.js";
 import {
   renameWithRetry,
   renameWithRetrySync
@@ -5501,6 +5505,17 @@ function issueKey(issue) {
 function putGitWorkflowFile(projectRoot, name, input) {
   if (!isGitWorkflowFile(name)) throw new UnknownGitWorkflowFileError(name);
   const current = readGitWorkflowContents(projectRoot);
+  if (isNewerTeamFile(current[name] ?? "")) {
+    const message = newerTeamFileLine(gitWorkflowRelativePath(name));
+    throw new GitWorkflowValidationError(message, [{ file: name, path: "", message }]);
+  }
+  const refusal = pendingMoveRefusal(projectRoot);
+  if (refusal.length > 0) {
+    throw new GitWorkflowValidationError(
+      refusal.join(" "),
+      refusal.map((message) => ({ file: name, path: "", message }))
+    );
+  }
   const before = new Set(resolveGitWorkflow(current).errors.map(issueKey));
   const after = resolveGitWorkflow({ ...current, [name]: input.content });
   const blocking = after.errors.filter(
@@ -13010,8 +13025,10 @@ function parseEdits(raw) {
       throw new GitWorkflowInputError(`${where}.path must be a non-empty list of keys.`);
     }
     if (!("value" in edit)) throw new GitWorkflowInputError(`${where}.value is missing.`);
-    if (edit.path[0] === "paqad_version") {
-      throw new GitWorkflowInputError(`${where}: paqad_version is set by paqad, not by a change.`);
+    if (edit.path[0] === "schema_version" || edit.path[0] === "paqad_version") {
+      throw new GitWorkflowInputError(
+        `${where}: ${edit.path[0]} is set by paqad, not by a change.`
+      );
     }
     if (edit.value === null && !isTeamNamedEntry(edit.file, edit.path)) {
       throw new GitWorkflowInputError(
@@ -13080,10 +13097,42 @@ function applyChange(projectRoot, edits) {
   const before = currentContents(projectRoot);
   const after = applyEdits(before, edits);
   const outcome = { diff: diffContents(before, after, present), ...validate(after) };
+  const refusal = pendingMoveRefusal(projectRoot);
+  if (refusal.length > 0) {
+    return {
+      ...outcome,
+      valid: false,
+      errors: [
+        ...outcome.errors,
+        ...refusal.map((message) => ({
+          file: edits[0]?.file ?? "commits.yaml",
+          path: "",
+          message
+        }))
+      ],
+      written: []
+    };
+  }
   if (!outcome.valid) return { ...outcome, written: [] };
   const written = GIT_WORKFLOW_FILES.filter(
     (file) => present[file] === void 0 || before[file] !== after[file]
   );
+  const newer = written.filter((file) => isNewerTeamFile(present[file] ?? ""));
+  if (newer.length > 0) {
+    return {
+      ...outcome,
+      valid: false,
+      errors: [
+        ...outcome.errors,
+        ...newer.map((file) => ({
+          file,
+          path: "",
+          message: newerTeamFileLine(`${PATHS.GIT_WORKFLOW_DIR}/${file}`)
+        }))
+      ],
+      written: []
+    };
+  }
   writeContents(projectRoot, after, written);
   return { ...outcome, written };
 }
@@ -13945,12 +13994,24 @@ async function runSetup(input) {
       written: []
     };
     if (input.dryRun || !checked.valid) return json(result2, checked.valid ? 0 : 1);
+    const refusal = pendingMoveRefusal(input.projectRoot);
+    if (refusal.length > 0) return json({ ...result2, error: refusal.join(" ") }, 1);
     const exists = GIT_WORKFLOW_FILES.some((file) => present[file] !== void 0);
     if (exists && !input.overwrite) {
       return json(
         {
           ...result2,
           error: "The git workflow files already exist. Re-run with --overwrite to replace them."
+        },
+        1
+      );
+    }
+    const newer = GIT_WORKFLOW_FILES.filter((file) => isNewerTeamFile(present[file] ?? ""));
+    if (newer.length > 0) {
+      return json(
+        {
+          ...result2,
+          error: newer.map((file) => newerTeamFileLine(`${PATHS.GIT_WORKFLOW_DIR}/${file}`)).join(" ")
         },
         1
       );
@@ -14197,6 +14258,8 @@ function createDeliveryLinkCommand(deps = {}) {
   });
   command.command("install").description("Install (chain) the post-commit / post-merge git hooks for this clone").option("--project-root <path>", "Project root", process.cwd()).option("--session <id>", "Ignored (accepted for a uniform hook-caller interface)").action((options) => {
     const result2 = installGitHooks(options.projectRoot);
+    for (const problem of result2.problems ?? []) process.stderr.write(`${problem}
+`);
     if (result2.notAGitRepo) {
       console.log(JSON.stringify({ installed: [], reason: "not a git repository" }));
       return;
@@ -29522,7 +29585,8 @@ async function runRefreshContext(options) {
   if (!ragEnabled) {
     const target2 = await refreshRuleContext(options.projectRoot, {
       existingSurfaceSection,
-      loadRules
+      loadRules,
+      onCompileFailure: options.onCompileFailure
     });
     if (!options.quiet) {
       process.stdout.write(
@@ -29542,7 +29606,8 @@ async function runRefreshContext(options) {
       retrievalSection: `## Retrieved context \u2014 none
 > Warning: ${REMOVED_EMBEDDING_PROVIDER_MESSAGE}
 `,
-      loadRules
+      loadRules,
+      onCompileFailure: options.onCompileFailure
     });
     process.stderr.write(`Warning: ${REMOVED_EMBEDDING_PROVIDER_MESSAGE}
 `);
@@ -29582,7 +29647,8 @@ async function runRefreshContext(options) {
     memorySection,
     retrievalSection,
     driftSection,
-    loadRules
+    loadRules,
+    onCompileFailure: options.onCompileFailure
   });
   if (retrieves) {
     const sliceCount = usesContextPack ? 0 : slices.length;
@@ -29728,7 +29794,16 @@ function createRagCommand() {
       return;
     }
     try {
-      await runRefreshContext(options);
+      await runRefreshContext({
+        ...options,
+        onCompileFailure: (error) => {
+          process.stderr.write(
+            `Couldn't refresh ${PATHS.COMPILED_RULES}: ${compileFailureReason(error)}.
+`
+          );
+          process.exitCode = 1;
+        }
+      });
     } finally {
       hold.release();
     }
@@ -29934,9 +30009,11 @@ async function recreateLocalArtifacts(projectRoot, profile, providers) {
     }
   }
   const hookResult = installGitHooks(projectRoot);
+  for (const problem of hookResult.problems ?? []) process.stderr.write(`${problem}
+`);
   if (hookResult.trackedHooksDir && hookResult.snippet) {
     process.stdout.write(
-      `Your git hooks directory is tracked, so paqad did not modify it. Add this yourself:
+      `${hookResult.huskyRuns ? "Husky runs your git hooks, so paqad did not modify them" : "Your git hooks directory is tracked, so paqad did not modify it"}. Add this yourself:
 ${hookResult.snippet}
 `
     );

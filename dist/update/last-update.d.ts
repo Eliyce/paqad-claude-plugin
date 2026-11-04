@@ -1,5 +1,5 @@
 import { UpdateReport } from '../index.js';
-import '../project-profile-xNmtdeKq.js';
+import '../project-profile-C3xrjM5s.js';
 import '../introspection-CLBqo7wO.js';
 
 interface LastUpdateRecord {
