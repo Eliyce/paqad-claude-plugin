@@ -1,55 +1,36 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   ACTIVE_CAPABILITY_ORDER,
-  ADAPTER_TYPES,
   AIDetector,
   ANALYTICS_CONFLICTS,
   ANALYTICS_STRICTNESS_MODES,
   ANSWER_GROUNDING_STATES,
   ANSWER_MODES,
-  API_IMPACTS,
   ARTIFACT_OUTPUT_KEYS,
   ARTIFACT_TYPES,
   ATTACHMENT_RETRY_BUDGET_MS,
-  AdapterFactory,
-  AiAssistantAdapter,
-  AiderAdapter,
-  AntigravityAdapter,
   ArchitectureComplianceGate,
   AttachmentPathError,
   BOUNDARY_SCHEMA_VERSION,
   BehavioralCorrectnessGate,
   BudgetAllocator,
   CITATION_SOURCE_CLASSES,
-  CLASSIFICATION_CERTAINTY,
-  CLASSIFICATION_OUTPUT_TYPES,
   CLASSIFICATION_RULES,
-  CLASSIFICATION_SCOPES,
-  CLASSIFICATION_WORKFLOWS,
   COLLISION_MAP,
   COMPLIANCE_EVIDENCE_STRENGTHS,
   COMPLIANCE_RELATIONS,
-  COMPLIANCE_SENSITIVITY_LEVELS,
-  CONTEXT_BUDGET_HINTS,
   CONTEXT_LEVELS,
-  CUSTOMER_FACING_IMPACTS,
   CacheMetricsTracker,
   CacheWarmer,
   ChangeCompletenessGate,
-  ClaudeCodeAdapter,
   CodeTestsLintGate,
-  CodexCliAdapter,
-  ConditionalSectionProcessor,
   ContextBudgetEnforcer,
   ContextBudgetOptimizer,
   ContextDeduplicator,
   ContextEvictor,
   ContextHitTracker,
-  ContinueAdapter,
   ContradictionDetector,
-  CursorAdapter,
-  DATABASE_IMPACTS,
-  DATA_SENSITIVITY_LEVELS,
+  DECISION_ASK_THRESHOLDS,
   DEFAULT_ANALYTICS_STRICTNESS,
   DEFAULT_BOUNDARY_REPORT_PATH,
   DEFAULT_GATE_CODES,
@@ -71,6 +52,8 @@ import {
   DocumentProgressTracker,
   DocumentationFreshnessGate,
   DocumentationWorkflow,
+  EMBEDDING_PROVIDER_NAMES,
+  ESCALATION_MODES,
   ESCALATION_REASONS,
   EcosystemParserRegistry,
   EngineEventBus,
@@ -80,8 +63,6 @@ import {
   FileRegistryMapper,
   FrameworkUpdater,
   FreshnessChecker,
-  GeminiCliAdapter,
-  GithubCopilotAdapter,
   HEALTH_CHECK_STATUSES,
   HOOK_EXIT_CODES,
   HOOK_TRIGGERS,
@@ -89,7 +70,6 @@ import {
   ImplementationReviewGate,
   InferredTurnClassifierModel,
   InstructionsDocsStructureGate,
-  JunieAdapter,
   LEGACY_MCP_OUTPUT_PATHS,
   MANAGEABLE_ACTIVE_CAPABILITIES,
   MCP_SERVERS,
@@ -123,10 +103,8 @@ import {
   REQUIREMENT_PRIORITIES,
   REQUIREMENT_RISKS,
   RESOLUTION_LAYERS,
-  RESOLUTION_SOURCES,
   RETRIEVAL_ESCALATION_SIGNALS,
   RETRIEVAL_PATHS,
-  REVERSIBILITY_LEVELS,
   REVIEW_DIMENSIONS,
   REVIEW_MODES,
   REVIEW_TIERS,
@@ -153,7 +131,6 @@ import {
   SessionAttachmentIndexer,
   SiteMapFreshnessGate,
   SkillCacheManager,
-  SkillFrontmatterParser,
   SkillLoader,
   SkillTriggerEvaluator,
   SpecReviewGate,
@@ -161,27 +138,23 @@ import {
   StepExecutor,
   StoryQualityGate,
   StreamTruncator,
-  TARGET_CAPABILITIES,
   TASK_COMPLEXITIES,
   TEST_ISSUE_CATEGORIES,
   TEST_OUTPUT_SCHEMA_VERSION,
   TEST_PARSE_STRATEGIES,
   TEST_RUNNER_OUTPUT_SOURCES,
   TEST_RUNNER_PARALLEL_MODES,
+  TICKET_PROVIDER_KINDS,
   TIER_DIMENSIONS,
   TIER_TOKEN_LIMITS,
   TOKEN_ARTIFACT_CLASSES,
-  TemplateEngine,
   TemplateRegistry,
   TransitionLogManager,
   TurnSummarizer,
-  UI_IMPACTS,
   UNKNOWN_TEST_OUTPUT_TIMESTAMP,
   VERSION,
   VERSION_UNKNOWN,
   VerificationGateRunner,
-  WORKFLOW_SOURCES,
-  WindsurfAdapter,
   WorkflowEngine,
   WorkflowRouterService,
   WorkflowTemplateLoader,
@@ -296,7 +269,6 @@ import {
   frameworkSymlinkType,
   generateBoundaryTests,
   generateDocumentationScaffold,
-  generateFeatureDevelopmentPolicy,
   generateInitialRegistries,
   generateModuleMapYaml,
   generateModuleScaffold,
@@ -322,8 +294,6 @@ import {
   isEnoentError,
   isIndexAttachmentFailure,
   isManageableActiveCapability,
-  isRunningUnderPlugin,
-  isUnderPluginPath,
   listAvailableActiveCapabilities,
   listCollections,
   loadBoundaryReport,
@@ -391,7 +361,6 @@ import {
   summarizeCommandAvailability,
   syncAnalyticsDocs,
   toEphemeralCollectionId,
-  toLoadedSkill,
   toLocalTimestamp,
   toReportId,
   toStackDetectionResource,
@@ -403,6 +372,7 @@ import {
   validateUserFlow,
   verifyFullSuite,
   withSchemaMigrationLock,
+  withoutRemovedRetiredFiles,
   writeGeneratedFiles,
   writeHudReceipt,
   writeJson,
@@ -412,7 +382,7 @@ import {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts
-} from "./chunk-Z4Z6YYRZ.js";
+} from "./chunk-ZZ4TGNV2.js";
 import {
   AC_ID_PATTERN,
   AcTestMappingGate,
@@ -461,39 +431,18 @@ import {
   writeHudSnapshot,
   writeHudSnapshotSafe,
   writeVerificationEvidence
-} from "./chunk-CISBSPWP.js";
-import "./chunk-MLXEYD6T.js";
-import "./chunk-5BABRV7V.js";
-import "./chunk-WULKDLB5.js";
-import {
-  DEFAULT_HOOK_ADAPTER,
-  HOOK_COVERAGE_MATRIX,
-  NATIVE_HOOK_EVENTS,
-  PAQAD_HOOK_EVENT_ORDER,
-  PAQAD_LIVE_HOOKS,
-  PAQAD_MUTATING_TOOL_MATCHER,
-  PAQAD_RUNTIME_PREFIX,
-  PAQAD_STAGE_AGENT_MATCHER,
-  PAQAD_STAGE_HELPER_MATCHER,
-  PLUGIN_RUNTIME_ROOT,
-  PLUGIN_SESSION_START_HOOK,
-  buildHostHookChain,
-  buildPluginHookChain,
-  capabilityGateCommand,
-  completionRecordCommand,
-  frameworkHomeAbsolute,
-  hasPreMutationBlock,
-  hookCommand,
-  isLiveHookCapable,
-  renderHookCommand,
-  rendersFullHookChain
-} from "./chunk-PWJ37K7H.js";
-import "./chunk-OA3YQGXX.js";
+} from "./chunk-3GCVQCDV.js";
+import "./chunk-7MXUKCCK.js";
+import "./chunk-RTZAA6F3.js";
+import "./chunk-PUC3TP4X.js";
+import "./chunk-LXTYM36H.js";
+import "./chunk-EACZPVNH.js";
+import "./chunk-MVH3FQPQ.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
   getOrLoad
-} from "./chunk-F4TESBBJ.js";
+} from "./chunk-7XNJZUXF.js";
 import {
   CRITERION_STATUSES,
   DEFECT_PATTERN_SCHEMA_VERSION,
@@ -547,7 +496,9 @@ import {
   toProjectRelativeModule,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-E5PC7RVE.js";
+} from "./chunk-DADPWE32.js";
+import "./chunk-XGZHPWUQ.js";
+import "./chunk-W5BD2LBP.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -587,22 +538,15 @@ import {
   resetEmbeddingProviderCache,
   suggestPatternsForProject,
   toCrsCollectionId
-} from "./chunk-VLOEX6A6.js";
+} from "./chunk-AOJPCAL2.js";
 import "./chunk-5QVCE2TS.js";
-import "./chunk-TWVJTMUJ.js";
-import "./chunk-B4LV77TI.js";
-import "./chunk-Y7QRVDRT.js";
-import "./chunk-UP2BSK6C.js";
+import "./chunk-RT3UCM3E.js";
+import "./chunk-YB44OT7L.js";
 import {
   COMPLIANCE_SCHEMA_VERSION,
   DEFAULT_OBLIGATION_INDEX_PATH,
-  ResolutionError,
-  SCHEMA_VERSION_UPDATE_HINT,
   SPEC_REVIEW_SCHEMA_VERSION,
-  SchemaVersionError,
-  SkillRegistrationError,
   StackSnapshotCache,
-  ValidationError,
   assembleDecisionEvidence,
   attachSpecDefectsToObligations,
   buildDecisionPacket,
@@ -613,24 +557,69 @@ import {
   decisionQuestionForCategory,
   defaultSimilarityFor,
   extractObligationIndex,
-  readExistingOnboardingManifest,
   readStackSnapshotSync,
-  resolveFrameworkInstallPath,
   reviewSpecification,
-  sanitizeStackSnapshotRepository,
   selectViableDecisionOptions,
   slugifySpec,
   specIndexPath,
   specReportPath,
-  specReviewPath,
+  specReviewPath
+} from "./chunk-YYLDOZL7.js";
+import "./chunk-QVX43S7X.js";
+import "./chunk-4HHF2EZV.js";
+import {
+  AdapterFactory,
+  AiAssistantAdapter,
+  AiderAdapter,
+  AntigravityAdapter,
+  ClaudeCodeAdapter,
+  CodexCliAdapter,
+  ContinueAdapter,
+  CursorAdapter,
+  DEFAULT_HOOK_ADAPTER,
+  GeminiCliAdapter,
+  GithubCopilotAdapter,
+  HOOK_COVERAGE_MATRIX,
+  JunieAdapter,
+  NATIVE_HOOK_EVENTS,
+  PAQAD_AGENT_TOOL_MATCHER,
+  PAQAD_ANY_SUBAGENT_MATCHER,
+  PAQAD_BASH_TOOL_MATCHER,
+  PAQAD_HANDBACK_TOOL_MATCHER,
+  PAQAD_HOOK_EVENT_ORDER,
+  PAQAD_LIVE_HOOKS,
+  PAQAD_MUTATING_TOOL_MATCHER,
+  PAQAD_RUNTIME_PREFIX,
+  PAQAD_SKILL_READ_MATCHER,
+  PAQAD_STAGE_AGENT_MATCHER,
+  PAQAD_STAGE_HELPER_MATCHER,
+  PLUGIN_RUNTIME_ROOT,
+  PLUGIN_SESSION_START_HOOK,
+  TemplateEngine,
+  WindsurfAdapter,
+  buildHostHookChain,
+  buildPluginHookChain,
+  capabilityGateCommand,
+  completionRecordCommand,
+  frameworkHomeAbsolute,
+  hasPreMutationBlock,
+  hookCommand,
+  isLiveHookCapable,
+  isRunningUnderPlugin,
+  isUnderPluginPath,
+  readExistingOnboardingManifest,
+  readFrameworkVersion,
+  renderHookCommand,
+  rendersFullHookChain,
+  resolveFrameworkInstallPath,
+  sanitizeStackSnapshotRepository,
   writeDetectionReport,
   writeFrameworkMetadata,
   writeFrameworkVersionPreservingTimestamp,
   writeJsonPreservingTimestamp,
   writeOnboardingManifest,
   writeProjectProfile
-} from "./chunk-3ISWPQSH.js";
-import "./chunk-UXU57VCB.js";
+} from "./chunk-4LG4FZGS.js";
 import {
   AGENT_ROLES,
   CONTEXT_LEVEL_BUDGETS,
@@ -638,8 +627,11 @@ import {
   ROLE_TOKEN_BUDGETS,
   resolveContextBudgetForModel,
   resolveContextBudgetForModelTier
-} from "./chunk-NRKCUFAE.js";
-import "./chunk-NUSNYHWM.js";
+} from "./chunk-V7J7RWKE.js";
+import "./chunk-G2MSPGDY.js";
+import {
+  ADAPTER_TYPES
+} from "./chunk-UHS5UVPO.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   buildDetectedStackProfile,
@@ -658,52 +650,13 @@ import {
   ruleTriggersMatch,
   summarizeStack,
   writeCompiledRules
-} from "./chunk-VIWC2WEP.js";
-import {
-  CancelledError,
-  DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
-  MCP_SERVER_TYPES,
-  SkillAuditBuffer,
-  StackPackLoader,
-  appendSkillAuditEvent,
-  assertSafeCloneSource,
-  createPack,
-  emitSkillAuditEvent,
-  getPackManifestMap,
-  getPackTestRunners,
-  getPacksForFrameworks,
-  getSharedSkillAuditBuffer,
-  installPack,
-  isCancelledError,
-  listPacks,
-  loadProjectPackRegistry,
-  readSkillAuditEvents,
-  removePack,
-  resolvePackManagerRoots,
-  validatePackAt
-} from "./chunk-C6QX6BQY.js";
+} from "./chunk-TRGXD2KI.js";
 import {
   DECISION_AUDIT_EVENTS,
-  DECISION_CARRY_OVER_SCOPES,
-  DECISION_CATEGORIES,
-  DECISION_CATEGORY_DEFAULTS,
-  DECISION_INTENTS,
   DECISION_PAUSE_EVENT_TYPES,
-  DECISION_STATUSES,
   DecisionCapExceededError,
-  DecisionPacketCorruptError,
   DecisionStore,
-  DuplicateSkillIdentifierError,
-  ENGINE_ERROR_CODES,
-  LoggerSinkFailedError,
   MAX_PENDING_DECISIONS,
-  ManifestProductionTimeoutError,
-  MissingPolicyContextError,
-  UnknownEngineError,
-  UnsupportedFileTypeError,
-  VectorIndexStorageError,
-  VersionIncompatibleError,
-  WorkflowAlreadyRunningError,
   addWriteInOption,
   appendDecisionAuditEvent,
   assertContractDecisionId,
@@ -716,56 +669,63 @@ import {
   decisionPausedEvent,
   decisionResolvedEvent,
   ensureDecisionAuditLog,
-  getTaxonomyEntry,
   isContractDecisionId,
-  isDecisionPacket,
-  isEngineErrorCode,
-  isStrictDecisionId,
   lintDecisionCopy,
   listContractDecisions,
-  listErrorTaxonomy,
   mintDecisionId,
   normalizeDecisionQuestion,
   readContractDecisions,
   readDecisionAuditEvents,
   resolvePendingDecision,
-  scoreDecisionOptionOverlap,
-  toDecisionRecord,
-  toEngineError,
-  validateDecisionPacket
-} from "./chunk-4GJVTR5P.js";
+  scoreDecisionOptionOverlap
+} from "./chunk-MJTYVWVB.js";
+import "./chunk-QGZVTKXX.js";
+import {
+  DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
+  MCP_SERVER_TYPES,
+  SkillAuditBuffer,
+  StackPackLoader,
+  appendSkillAuditEvent,
+  assertSafeCloneSource,
+  clearShownSkillMetadataDeprecations,
+  createPack,
+  emitSkillAuditEvent,
+  getPackManifestMap,
+  getPackTestRunners,
+  getPacksForFrameworks,
+  getSharedSkillAuditBuffer,
+  installPack,
+  listPacks,
+  loadProjectPackRegistry,
+  readSkillAuditEvents,
+  recordSkillMetadataDeprecation,
+  removePack,
+  resolvePackManagerRoots,
+  validatePackAt
+} from "./chunk-6O4LRD7Z.js";
+import "./chunk-I5MEZHWF.js";
 import {
   ACTIVE_CAPABILITIES,
   CAPABILITIES,
   DOMAINS,
   DOMAIN_STACK_MAP,
-  FrameworkError,
   STACKS,
-  STACK_CAPABILITIES_MAP,
-  clearEngineLogger,
-  engineLog,
-  getConsumerLogger,
-  getProjectSecret,
-  getSecretPermissionWarning,
-  pluginOptionOrEnv,
-  readProjectSecrets,
-  redactPayload,
-  redactSecrets,
-  removeProjectSecrets,
-  setEngineLogger,
-  writeProjectSecret
-} from "./chunk-IDHHKJOF.js";
-import "./chunk-TLKXJ74I.js";
-import "./chunk-BW7VURA4.js";
+  STACK_CAPABILITIES_MAP
+} from "./chunk-53PFOOIY.js";
 import {
-  findPackageRoot,
-  getPackageRoot,
-  getRuntimeRoot,
-  getRuntimeTemplatesRoot
-} from "./chunk-VVRAO2BK.js";
-import "./chunk-BYYV5KPL.js";
-import "./chunk-A6RB2MYS.js";
-import "./chunk-NDQ2TJ54.js";
+  DECISION_CARRY_OVER_SCOPES,
+  DECISION_CATEGORIES,
+  DECISION_CATEGORY_DEFAULTS,
+  DECISION_INTENTS,
+  DECISION_STATUSES,
+  isDecisionPacket,
+  isStrictDecisionId,
+  toDecisionRecord,
+  validateDecisionPacket
+} from "./chunk-4ITMKDK4.js";
+import "./chunk-VNMVILDR.js";
+import "./chunk-ZRYHLGCX.js";
+import "./chunk-6QCIBEYW.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
@@ -775,58 +735,128 @@ import {
   hudVerdictPath,
   safeSessionId,
   writeFileAtomic
-} from "./chunk-RQMBP7NZ.js";
-import "./chunk-EJNH2EWV.js";
+} from "./chunk-4I6TDR46.js";
+import "./chunk-6OTIRLWS.js";
 import "./chunk-KKFSSPUD.js";
-import "./chunk-IIFF75TG.js";
+import "./chunk-IZTRTKJG.js";
 import "./chunk-O77JBFWW.js";
-import "./chunk-G2KAR57H.js";
-import "./chunk-FLH3ZOTM.js";
-import "./chunk-KX4GSKWD.js";
-import "./chunk-KPSH47JZ.js";
-import "./chunk-UFA47PK6.js";
-import "./chunk-PZSF75FV.js";
+import "./chunk-YKXPB2BO.js";
+import "./chunk-K4WPGY2N.js";
+import "./chunk-4TUTFMPB.js";
+import "./chunk-OSV7OPM5.js";
+import "./chunk-COPQIHYE.js";
+import "./chunk-CAUO6IBF.js";
 import "./chunk-DNG6DDRS.js";
 import "./chunk-4K4CM3QN.js";
-import "./chunk-WTYH7MZ3.js";
+import "./chunk-CQ3PROW4.js";
+import "./chunk-NUSNYHWM.js";
 import "./chunk-QUDDQGFY.js";
+import "./chunk-6SSOF43R.js";
+import "./chunk-6NWB7L6Y.js";
+import "./chunk-AINYJ3Q2.js";
+import "./chunk-SU7RODZI.js";
+import {
+  ANALYTICS_DECISION_PATH,
+  ANALYTICS_PROVIDERS,
+  API_IMPACTS,
+  CLASSIFICATION_CERTAINTY,
+  CLASSIFICATION_OUTPUT_TYPES,
+  CLASSIFICATION_SCOPES,
+  CLASSIFICATION_WORKFLOWS,
+  COMPLIANCE_SENSITIVITY_LEVELS,
+  CONTEXT_BUDGET_HINTS,
+  CUSTOMER_FACING_IMPACTS,
+  CancelledError,
+  ConditionalSectionProcessor,
+  DATABASE_IMPACTS,
+  DATA_SENSITIVITY_LEVELS,
+  DecisionPacketCorruptError,
+  DuplicateSkillIdentifierError,
+  ENGINE_ERROR_CODES,
+  FrameworkError,
+  LoggerSinkFailedError,
+  ManifestProductionTimeoutError,
+  MissingPolicyContextError,
+  RESOLUTION_SOURCES,
+  REVERSIBILITY_LEVELS,
+  ResolutionError,
+  SCHEMA_VERSION_UPDATE_HINT,
+  SKILL_CUSTOM_KEYS,
+  SKILL_METADATA_FALLBACK_REMOVED_IN,
+  SKILL_METADATA_STRING_KEYS,
+  SKILL_META_FILE,
+  SKILL_META_FILE_KEYS,
+  SKILL_META_KEY,
+  SchemaVersionError,
+  SkillFrontmatterParser,
+  SkillRegistrationError,
+  TARGET_CAPABILITIES,
+  UI_IMPACTS,
+  UnknownEngineError,
+  UnsupportedFileTypeError,
+  ValidationError,
+  VectorIndexStorageError,
+  VersionIncompatibleError,
+  WORKFLOW_SOURCES,
+  WorkflowAlreadyRunningError,
+  clearEngineLogger,
+  clearSkillMetadataDeprecations,
+  detectAnalyticsProvider,
+  engineLog,
+  extractCallSites,
+  findProvider,
+  getConsumerLogger,
+  getProjectSecret,
+  getSecretPermissionWarning,
+  getTaxonomyEntry,
+  inferNamingConvention,
+  isCancelledError,
+  isEngineErrorCode,
+  listErrorTaxonomy,
+  pluginOptionOrEnv,
+  readAnalyticsDecision,
+  readProjectSecrets,
+  redactPayload,
+  redactSecrets,
+  removeProjectSecrets,
+  resolveAnalyticsGate,
+  resolveAndPersistAnalyticsGate,
+  resolveSkillMetadata,
+  setEngineLogger,
+  skillDeclaresRequestRouting,
+  skillMetadataDeprecationLine,
+  skillMetadataDeprecations,
+  splitSkillFrontmatter,
+  toEngineError,
+  toLoadedSkill,
+  writeProjectSecret
+} from "./chunk-VAT2V4KU.js";
 import {
   COMPLEXITY_LEVELS,
   LANES,
   PROCESS_DEPTHS,
   RISK_LEVELS,
-  selectLane
-} from "./chunk-VV76C43H.js";
-import "./chunk-AINYJ3Q2.js";
-import {
-  ANALYTICS_DECISION_PATH,
-  ANALYTICS_PROVIDERS,
-  DECISION_ASK_THRESHOLDS,
-  EMBEDDING_PROVIDER_NAMES,
-  ESCALATION_MODES,
-  RESEARCH_DEPTHS,
   SchemaValidator,
-  TICKET_PROVIDER_KINDS,
-  detectAnalyticsProvider,
-  extractCallSites,
-  findProvider,
-  inferNamingConvention,
-  readAnalyticsDecision,
-  resolveAnalyticsGate,
-  resolveAndPersistAnalyticsGate
-} from "./chunk-TVWMFQYX.js";
-import "./chunk-QINSFA6R.js";
-import "./chunk-SU7RODZI.js";
-import "./chunk-HV6ESCNW.js";
+  selectLane
+} from "./chunk-BEMI2GYT.js";
+import "./chunk-ER3R2ZPY.js";
+import {
+  findPackageRoot,
+  getPackageRoot,
+  getRuntimeRoot,
+  getRuntimeTemplatesRoot
+} from "./chunk-VVRAO2BK.js";
+import "./chunk-6JQRLS2K.js";
+import "./chunk-AVCNQZLJ.js";
+import "./chunk-F5SGKBUG.js";
 import {
   deriveSlug,
   isSlugSafe
-} from "./chunk-DDJC5PRW.js";
-import "./chunk-3STC3IVL.js";
+} from "./chunk-TQS7EXFH.js";
 import {
   PATHS,
   REGISTRIES
-} from "./chunk-LW3OCT4Y.js";
+} from "./chunk-I7RXYXFH.js";
 import "./chunk-EMKBJVIL.js";
 export {
   ACTIVE_CAPABILITIES,
@@ -996,11 +1026,16 @@ export {
   NATIVE_HOOK_EVENTS,
   OnboardingOrchestrator,
   OpenAiEmbeddingProvider,
+  PAQAD_AGENT_TOOL_MATCHER,
+  PAQAD_ANY_SUBAGENT_MATCHER,
+  PAQAD_BASH_TOOL_MATCHER,
+  PAQAD_HANDBACK_TOOL_MATCHER,
   PAQAD_HOOK_EVENT_ORDER,
   PAQAD_LIVE_HOOKS,
   PAQAD_MUTATING_TOOL_MATCHER,
   PAQAD_RUNTIME_PREFIX,
   PAQAD_SCHEMA_VERSION,
+  PAQAD_SKILL_READ_MATCHER,
   PAQAD_STAGE_AGENT_MATCHER,
   PAQAD_STAGE_HELPER_MATCHER,
   PATHS,
@@ -1042,7 +1077,6 @@ export {
   REQUIREMENT_PRIORITIES,
   REQUIREMENT_RISKS,
   REQUIREMENT_TYPES,
-  RESEARCH_DEPTHS,
   RESOLUTION_LAYERS,
   RESOLUTION_SOURCES,
   RETRIEVAL_ESCALATION_SIGNALS,
@@ -1071,6 +1105,12 @@ export {
   RuntimeSkillRegistry,
   SCHEMA_VERSION_UPDATE_HINT,
   SINGLE_TEST_SELECTORS,
+  SKILL_CUSTOM_KEYS,
+  SKILL_METADATA_FALLBACK_REMOVED_IN,
+  SKILL_METADATA_STRING_KEYS,
+  SKILL_META_FILE,
+  SKILL_META_FILE_KEYS,
+  SKILL_META_KEY,
   SKILL_MODEL_TIERS,
   SKILL_OUTPUT_FORMATS,
   SPEC_REVIEW_SCHEMA_VERSION,
@@ -1223,6 +1263,8 @@ export {
   cleanupLegacyMcpFiles,
   clearEngineLogger,
   clearEphemeralCollection,
+  clearShownSkillMetadataDeprecations,
+  clearSkillMetadataDeprecations,
   clearTokenizerCache,
   collectObservedAcIds,
   collectScopeDriftPaths,
@@ -1333,7 +1375,6 @@ export {
   gatesThatPassed,
   generateBoundaryTests,
   generateDocumentationScaffold,
-  generateFeatureDevelopmentPolicy,
   generateInitialRegistries,
   generateModuleMapYaml,
   generateModuleScaffold,
@@ -1458,6 +1499,7 @@ export {
   readCostLog,
   readDecisionAuditEvents,
   readExistingOnboardingManifest,
+  readFrameworkVersion,
   readJsonIfExists,
   readModuleHealth,
   readProjectSecrets,
@@ -1469,6 +1511,7 @@ export {
   recordFindings,
   recordFromComplianceReport,
   recordGapText,
+  recordSkillMetadataDeprecation,
   redactFields,
   redactPayload,
   redactSecrets,
@@ -1501,6 +1544,7 @@ export {
   resolvePendingDecision,
   resolveScope,
   resolveSelections,
+  resolveSkillMetadata,
   retrieveFromAttachments,
   reviewSpecification,
   ruleTriggersMatch,
@@ -1529,12 +1573,16 @@ export {
   serializeModuleMap,
   setEngineLogger,
   shouldSkipLlm,
+  skillDeclaresRequestRouting,
+  skillMetadataDeprecationLine,
+  skillMetadataDeprecations,
   skillPath,
   slugify,
   slugifySpec,
   specIndexPath,
   specReportPath,
   specReviewPath,
+  splitSkillFrontmatter,
   suggestPatternsForProject,
   summarizeCommandAvailability,
   summarizeStack,
@@ -1561,6 +1609,7 @@ export {
   validateUserFlow,
   verifyFullSuite,
   withSchemaMigrationLock,
+  withoutRemovedRetiredFiles,
   workIsDone,
   workKindOf,
   writeCompiledRules,

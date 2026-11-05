@@ -7,10 +7,12 @@ import { clearAgentEntryMarkers, sentinelPath } from './lib/agent-entry-sentinel
 import {
   appendHooksLog,
   hookStandsDown,
+  isProjectOnboarded,
   parseHookPayload,
   resolveProjectRoot,
 } from './lib/paqad-disabled.mjs';
 import { sessionIdFromStdin } from './lib/context-seam-emit.mjs';
+import { mergeSessionStartOutput } from './lib/session-start-output.mjs';
 
 function sourceFromStdin(input) {
   const parsed = parseHookPayload(input);
@@ -65,7 +67,55 @@ async function main(input) {
     }
   } catch {}
 
+  const output = mergeSessionStartOutput(
+    mergeSessionStartOutput(
+      await missingStageAgentsOutput(projectRoot),
+      await teamConfigNotice(projectRoot),
+    ),
+    await lastUpdateNotice(projectRoot, sourceFromStdin(input)),
+  );
+  if (output) process.stdout.write(output);
+
   return 0;
+}
+
+async function missingStageAgentsOutput(projectRoot) {
+  if (!process.env.CLAUDE_PROJECT_DIR || !isProjectOnboarded(projectRoot)) return null;
+  try {
+    const url = new URL('../../dist/stage-isolation/agent-availability.js', import.meta.url);
+    const { stageDispatchStopHookOutput } = await import(url.href);
+    return stageDispatchStopHookOutput(projectRoot);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    appendHooksLog(projectRoot, `session-start: stage agent check skipped: ${message}`);
+    return null;
+  }
+}
+
+async function teamConfigNotice(projectRoot) {
+  if (!isProjectOnboarded(projectRoot)) return null;
+  try {
+    const url = new URL('../../dist/core/team-config-report.js', import.meta.url);
+    const { teamConfigSessionStartText } = await import(url.href);
+    return teamConfigSessionStartText(projectRoot);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    appendHooksLog(projectRoot, `session-start: team settings check skipped: ${message}`);
+    return null;
+  }
+}
+
+async function lastUpdateNotice(projectRoot, source) {
+  if (!isProjectOnboarded(projectRoot)) return null;
+  try {
+    const url = new URL('../../dist/update/last-update.js', import.meta.url);
+    const { takeLastUpdateSessionLine } = await import(url.href);
+    return takeLastUpdateSessionLine(projectRoot, source);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    appendHooksLog(projectRoot, `session-start: last update notice skipped: ${message}`);
+    return null;
+  }
 }
 
 let input = '';

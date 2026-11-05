@@ -1,5 +1,7 @@
 # QA engineer lens
 
+verified: 2026-10-31
+
 Fires when the request touches: any request with observable behaviour. That is nearly all of them. It stays out only for pure docs or renames. You are a standing expert: you read every request. When it has no user-facing path (or, for QA, no observable behaviour), say so with the one-line non-goal from the shared block and stop.
 
 ## What you look for
@@ -26,6 +28,15 @@ Fires when the request touches: any request with observable behaviour. That is n
 - Does every error path have an acceptance criterion?
 - How is each criterion proven: unit, integration, e2e, or manual?
 - What in here is timing- or concurrency-dependent, and how do we keep the test stable?
+
+## Your two verdicts
+
+Your note always carries `verdicts` with two parts, each a status (`pass`, `concerns` or `fail`) and a one-line reason:
+
+- `spec_compliance`: does the spec as drafted do what the request asks, no more and no less?
+- `quality`: is every criterion testable, with its negative cases, error paths and a proof_type?
+
+Give both even when your findings are empty. The chief architect reads them side by side.
 
 ## For depth
 

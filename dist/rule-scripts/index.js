@@ -1,29 +1,30 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
+  addRuleEntry,
   applyRuleScriptMap,
+  archiveRule,
   assembleMap,
   atomicWriteRuleScriptMap,
+  clearRuleScripts,
   collectRuleFiles,
   compileRuleScripts,
   computeRuleFilesHash,
+  dropRuleScriptMapSources,
   embedRuleIds,
-  embedRuleMarker,
   fixturesRoot,
-  isRuleId,
+  isRuleScriptMapCurrent,
   isRuleScriptMapStale,
-  mintRuleId,
   parseRuleFile,
-  parseRuleMarker,
   readDrift,
   reconcileRuleScripts,
   recordConflictFindings,
-  ruleTextHash,
   runFixtures,
   scanAndEmbedIds,
-  sha256,
+  setRuleText,
+  setVerifiability,
   snapshotRuleScriptMap,
-  stripRuleMarker
-} from "../chunk-UP2BSK6C.js";
+  upsertScriptEntry
+} from "../chunk-YB44OT7L.js";
 import {
   HEADER_MARKER,
   RULE_SCRIPT_MAP_SCHEMA_VERSION,
@@ -38,6 +39,7 @@ import {
   loadRuleScriptMap,
   missingBinaries,
   parseScriptHeader,
+  projectRelativeTargets,
   readReport,
   ruleRunFindings,
   ruleScriptMapPath,
@@ -47,29 +49,42 @@ import {
   serializeRuleScriptMap,
   validateFindings,
   validateScriptHeader
-} from "../chunk-NDQ2TJ54.js";
-import "../chunk-RQMBP7NZ.js";
-import "../chunk-EJNH2EWV.js";
+} from "../chunk-6QCIBEYW.js";
+import "../chunk-4I6TDR46.js";
+import "../chunk-6OTIRLWS.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-IIFF75TG.js";
+import "../chunk-IZTRTKJG.js";
 import "../chunk-O77JBFWW.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
-import "../chunk-WTYH7MZ3.js";
+import "../chunk-CQ3PROW4.js";
+import "../chunk-NUSNYHWM.js";
 import "../chunk-QUDDQGFY.js";
-import "../chunk-VV76C43H.js";
+import "../chunk-6SSOF43R.js";
+import "../chunk-6NWB7L6Y.js";
 import "../chunk-AINYJ3Q2.js";
-import "../chunk-TVWMFQYX.js";
-import "../chunk-QINSFA6R.js";
 import "../chunk-SU7RODZI.js";
-import "../chunk-HV6ESCNW.js";
-import "../chunk-DDJC5PRW.js";
-import "../chunk-3STC3IVL.js";
+import "../chunk-VAT2V4KU.js";
+import {
+  embedRuleMarker,
+  isRuleId,
+  mintRuleId,
+  parseRuleMarker,
+  ruleTextHash,
+  sha256,
+  stripRuleMarker
+} from "../chunk-BEMI2GYT.js";
+import "../chunk-ER3R2ZPY.js";
+import "../chunk-VVRAO2BK.js";
+import "../chunk-6JQRLS2K.js";
+import "../chunk-AVCNQZLJ.js";
+import "../chunk-F5SGKBUG.js";
+import "../chunk-TQS7EXFH.js";
 import {
   PATHS
-} from "../chunk-LW3OCT4Y.js";
+} from "../chunk-I7RXYXFH.js";
 import {
   __toESM,
   init_esm_shims
@@ -101,87 +116,6 @@ function checkOverFlag(scriptPath, kind, projectRoot, files, threshold = OVER_FL
     threshold,
     exceeded: rate > threshold
   };
-}
-
-// src/rule-scripts/mutate.ts
-init_esm_shims();
-function cloneMap(map) {
-  return JSON.parse(JSON.stringify(map));
-}
-function findRule(map, ruleId) {
-  return map.rules.find((r) => r.id === ruleId);
-}
-function upsertScriptEntry(map, ruleId, entry) {
-  const next = cloneMap(map);
-  const rule = findRule(next, ruleId);
-  if (!rule) {
-    throw new Error(`upsertScriptEntry: rule ${ruleId} not found in map`);
-  }
-  const idx = rule.scripts.findIndex((s) => s.path === entry.path);
-  if (idx >= 0) {
-    rule.scripts[idx] = entry;
-  } else {
-    rule.scripts.push(entry);
-  }
-  rule.scripts.sort((a, b) => a.path.localeCompare(b.path));
-  return next;
-}
-function addRuleEntry(map, entry) {
-  const next = cloneMap(map);
-  if (next.rules.some((r) => r.id === entry.id)) {
-    throw new Error(`addRuleEntry: rule ${entry.id} already in map`);
-  }
-  next.rules.push({
-    id: entry.id,
-    source: entry.source,
-    text: entry.text,
-    text_hash: entry.text_hash,
-    verifiability: { kind: "heuristic" },
-    enforced_by: [],
-    scripts: []
-  });
-  return next;
-}
-function setRuleText(map, ruleId, text, textHash) {
-  const next = cloneMap(map);
-  const rule = findRule(next, ruleId);
-  if (!rule) {
-    throw new Error(`setRuleText: rule ${ruleId} not found in map`);
-  }
-  rule.text = text;
-  rule.text_hash = textHash;
-  rule.scripts = [];
-  return next;
-}
-function clearRuleScripts(map, ruleId) {
-  const next = cloneMap(map);
-  const rule = findRule(next, ruleId);
-  if (rule) {
-    rule.scripts = [];
-  }
-  return next;
-}
-function setVerifiability(map, ruleId, verifiability) {
-  const next = cloneMap(map);
-  const rule = findRule(next, ruleId);
-  if (!rule) {
-    throw new Error(`setVerifiability: rule ${ruleId} not found in map`);
-  }
-  rule.verifiability = verifiability;
-  if (verifiability.kind === "unverifiable") {
-    rule.scripts = [];
-  }
-  return next;
-}
-function archiveRule(map, ruleId) {
-  const next = cloneMap(map);
-  const idx = next.rules.findIndex((r) => r.id === ruleId);
-  if (idx < 0) {
-    return next;
-  }
-  const [removed] = next.rules.splice(idx, 1);
-  next.archived = [...next.archived ?? [], removed];
-  return next;
 }
 
 // src/rule-scripts/editor.ts
@@ -325,6 +259,7 @@ export {
   collectRuleFiles,
   compileRuleScripts,
   computeRuleFilesHash,
+  dropRuleScriptMapSources,
   editRuleText,
   embedRuleIds,
   embedRuleMarker,
@@ -337,6 +272,7 @@ export {
   formatEnforcementSummary,
   isOnPath,
   isRuleId,
+  isRuleScriptMapCurrent,
   isRuleScriptMapStale,
   loadRuleScriptMap,
   mintRuleId,
@@ -344,6 +280,7 @@ export {
   parseRuleFile,
   parseRuleMarker,
   parseScriptHeader,
+  projectRelativeTargets,
   pruneOrphanScripts,
   readDrift,
   readReport,

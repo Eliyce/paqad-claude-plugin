@@ -1,23 +1,11 @@
 ---
 name: retest-verification
-description: Re-evaluate prior pentest findings against fresh local evidence.
-model_tier: reasoning
-triggers:
-  - workflow:
-      - pentest-retest
-cacheable: false
-cache_key_inputs:
-  - docs/pentest/**/*.json
-output_format: markdown
-input_schema:
-  source_report_path:
-    type: path
-    required: true
-    description: Source pentest sidecar to retest.
-  fresh_evidence_paths:
-    type: path[]
-    required: false
-    description: New evidence collected during the retest run.
+description: Classifies each finding of an earlier pentest report as fixed, still-open or needs-manual-verification from fresh local evidence. Use when the pentest skill runs its Retest mode, or when asked which findings or PT ids in a pentest report are fixed or still open. Only for pentest reports.
+metadata:
+  model_tier: reasoning
+  cacheable: 'false'
+  output_format: markdown
+  paqad-meta: skill.meta.yaml
 ---
 
 ## What It Does
@@ -26,7 +14,7 @@ Replays prior pentest findings against fresh project evidence so retest reports 
 
 ## Use This When
 
-Use this only for the `pentest-retest` workflow when a prior pentest report has already identified findings to verify.
+Only when the `pentest` skill runs its Retest mode for the `pentest-retest` workflow and a prior pentest report has already identified findings to verify. The `pentest` skill is the entry point and calls this skill as a helper.
 
 ## Inputs
 
@@ -36,10 +24,10 @@ Use this only for the `pentest-retest` workflow when a prior pentest report has 
 
 ## Procedure
 
-1. Run `scripts/load-source-findings.sh <sidecar.json>` — validates the schema and emits one JSON row per finding to iterate over.
+1. Run `scripts/load-source-findings.sh <sidecar.json>`: validates the schema and emits one JSON row per finding to iterate over.
 2. For each id, gather fresh code/docs/advisory/runtime evidence and pick a status from `assets/status-vocabulary.txt` (`fixed | still-open | needs-manual-verification`).
 3. New gaps (not in the source report) belong in a separate report; never silently merge them here.
-4. Format per `assets/output.template.md`; validate with `scripts/lint-output.sh <retest.md> <sidecar.json>` — fails if any id is invented.
+4. Format per `assets/output.template.md`; validate with `scripts/lint-output.sh <retest.md> <sidecar.json>`: fails if any id is invented.
 
 ## Output Contract
 

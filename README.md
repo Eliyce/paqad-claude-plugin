@@ -22,6 +22,8 @@
 
 Works with Claude Code, Cursor, GitHub Copilot, Gemini, Codex, Windsurf, Junie, Continue, Antigravity, Aider, and JetBrains AI Assistant.
 
+Built by [Eliyce](https://eliyce.com)
+
 </div>
 
 ---
@@ -86,18 +88,51 @@ A few things worth knowing:
 - Onboarding from the plugin writes no paqad hooks into the project's `.claude/settings.json`, because the plugin brings its own. The plugin keeps a copy of itself in its data folder (`~/.claude/plugins/data/paqad-eliyce/runtime`) and points `~/.paqad-ai/current` there, so the framework link keeps working when Claude Code cleans up an old plugin version.
 - The optional RAG engine installs on first use, in the background, only if you turn RAG on. If you turn RAG on during `/paqad:onboard`, RAG stays on, onboarding says "search index is installing in the background; text search until it is ready", and the index is built once the engine is in. Until then search falls back to plain text, and `paqad-ai doctor` shows `not ready: installing`. If the index cannot be built for another reason, onboarding turns RAG off and tells you why. To remove the engine later, delete `~/.paqad/` (the shared model and engine cache).
 - To open the dashboard, run `paqad-ai dashboard` from a terminal in the project. The plugin puts `paqad-ai` on your shell path inside a Claude Code session.
-- The plugin shows where the change stands in a band above the prompt. To hide it, set `hud_view=false` in `.paqad/.config` (just you) or in `.paqad/configs/.config.app` (the team), or set `PAQAD_HUD_VIEW=false`. Its pane has tabs for the High Table, Cost, Trust, Ships and Record, and `/paqad receipt` draws the receipt as a card. For a short chime when the verdict lands, set `hud_chime=true` (or `PAQAD_HUD_CHIME=true`); it is off by default and never speaks.
-- **Already on the npm setup?** paqad can move you to the plugin automatically in the background, with nothing to do on your side. The npm package stays installed as a fallback, so paqad is never off at any point. It is off by default today; `plugin_migration=on` or `claude_install_mode=plugin` turns it on, `paqad-ai plugin rollback` moves a machine back to the npm setup and removes the plugin, and `claude_install_mode=settings` in your team config keeps a project on npm.
+- The plugin shows where the change stands in a band above the prompt. To hide it, set `hud_view=false` in `.paqad/.config` (just you) or `band: false` under `hud:` in `.paqad/configs/paqad.yaml` (the team), or set `PAQAD_HUD_VIEW=false`. Its pane has tabs for the High Table, Cost, Trust, Ships and Record, and `/paqad receipt` draws the receipt as a card. For a short chime when the verdict lands, set `hud_chime=true` (or `PAQAD_HUD_CHIME=true`); it is off by default and never speaks.
+- **Already on the npm setup?** paqad can move you to the plugin automatically in the background, with nothing to do on your side. The npm package stays installed as a fallback, so paqad is never off at any point. It is off by default today; `plugin_migration=on` or `claude_install_mode=plugin` turns it on, `paqad-ai plugin rollback` moves a machine back to the npm setup and removes the plugin, and `claude_install_mode=settings` in your team config keeps a project on npm and keeps the plugin out of its shared `.claude/settings.json`.
   - paqad checks your organization's managed policy first. If it blocks the plugin or paqad's hooks, paqad stays on npm and writes nothing.
   - If the Desktop app already synced the plugin from claude.ai, the move is simply marked done. If the plugin is already installed some other way, paqad turns it on in your own Claude settings and then waits for it to run, like any other install.
   - When `claude` is on your path, paqad runs `claude plugin marketplace add Eliyce/paqad-claude-plugin` and `claude plugin install paqad@eliyce --scope user`, then checks that Claude Code recorded the plugin. With no `claude` on your path, it runs the same two commands with the `claude` that ships inside the Claude Desktop app (`~/Library/Application Support/Claude/claude-code/<version>/` on macOS, `%APPDATA%\Claude\claude-code\<version>\` on Windows). If neither is there, or the install fails, paqad stays on npm, records why, and tries again a day later. It never edits a project file.
   - paqad then watches your next Claude Code sessions. Once the plugin runs, the move is done. A session only counts once Claude Code has installed the plugin, because the Desktop app can take a few starts to do that. Until then paqad waits, and if the plugin is still not installed 7 days later it undoes the move and tries again later. After the install, three sessions with no sign of the plugin also undo the move, and paqad tries again a day later, up to five attempts.
   - If you turn the plugin off in your Claude settings, paqad records that you declined it and never turns it back on.
-  - `paqad-ai plugin rollback` removes the plugin with `claude` on your path, or with the Desktop app's `claude`. If neither can run, it turns the plugin off and tells you the one command to remove it.
+  - `paqad-ai plugin rollback` removes the plugin with `claude` on your path, or with the Desktop app's `claude`. If neither can run, it turns the plugin off and tells you the one command to remove it. In a repo that turns the plugin on for everyone, it turns it off for you only, in the git-ignored `.claude/settings.local.json`.
   - `paqad-ai doctor` shows where the move stands, including when it is still waiting for Claude Code to install the plugin, and `~/.paqad-ai/logs/plugin-migration.log` has the details. If a settings file still wires the npm hooks, doctor names it: your own `~/.claude/settings.json` (or the one in `CLAUDE_CONFIG_DIR` when that is set), the project's `.claude/settings.json`, or both. That project keeps running the npm hooks while the plugin stays quiet.
 - **Organizations (Team or Enterprise):** add the `paqad` plugin in Organization settings > Plugins & skills and set it to Installed by default or Required. Members then do nothing and nothing on their machine is edited by paqad.
   - The Claude Desktop app picks up a plugin added on claude.ai, but a `claude` session in a terminal does not load plugins uploaded to claude.ai. Terminal users install it themselves with the two `/plugin` commands above, or IT deploys it as a managed plugin.
   - The plugin and its `eliyce` marketplace live together in the public repo `Eliyce/paqad-claude-plugin`. You never edit that repo: every npm release builds the plugin here, writes its marketplace file, and pushes it there with a `v<version>` tag, but only after npm publish succeeds. When nothing in the plugin changed, it pushes no new commit. The release job needs the repository secret `PAQAD_PLUGIN_PUSH_TOKEN`, a token that can push to `Eliyce/paqad-claude-plugin`. Without it, or when the push fails, the release job fails, so a missing plugin release never goes unnoticed. To see what would be pushed, run `pnpm build && node scripts/assemble-plugin.mjs <folder>`.
+
+## Teammates and cloud sessions
+
+Once the lead has onboarded a project and committed the setup, a teammate who clones the repo, or a Claude Code cloud session, gets the same stages and checks as the lead with no command to run.
+
+**What the lead commits.** `paqad-ai onboard` and `paqad-ai update` list the files to commit together:
+
+- `.claude/settings.json`, now shared with the team. It holds only portable content: the `eliyce` marketplace, `paqad@eliyce` turned on, and hook lines that run `node "$CLAUDE_PROJECT_DIR/.paqad/hook.mjs" <script>.mjs`. Anything personal that was there before, such as your own permissions or a hook path under your home folder, moves to the git-ignored `.claude/settings.local.json`, and update says so in one line.
+- `.claude/.gitignore`, which now ignores `settings.local.json` and `settings.hooks.json` instead of `settings.json`.
+- `.paqad/hook.mjs`, a small launcher.
+- `.claude/agents/paqad-*.md`, the eight stage agents.
+
+**What a teammate sees.** They clone and open the repo, trust the folder, and Claude Code offers the paqad plugin. Either way, the launcher picks one route at the start of each session and keeps it for that session:
+
+- If the paqad plugin is installed and turned on for this project, the launcher steps aside and the plugin runs.
+- If the npm package is installed, the launcher hands every hook to it.
+- Otherwise, the first session prints `Setting up paqad for this repo (one time).`, downloads the plugin from `Eliyce/paqad-claude-plugin` into `~/.paqad-ai/team-plugin`, and runs the hooks from there. It refreshes that copy at most every 6 hours. If setup fails (offline, no git, Node older than 22), Claude tells the teammate once that paqad's checks are off for the session, and the next session tries again.
+
+Which route should a teammate use? Accepting the plugin offer is best. The launcher route runs every stage and check, but it leaves out what `paqad-ai join` adds on your own machine: the code index, the detection report and the quality baseline. Run `/paqad:join` or `paqad-ai join` if you want those. `join` writes no tracked file. Until the repo carries the launcher (`.paqad/hook.mjs`), it keeps plain npm hook lines in a git-ignored `.claude/settings.json` and tells you to ask the lead to run `paqad-ai update`. `paqad-ai refresh` writes the team setup too, so the launcher is there whenever its settings lines are.
+
+**Cloud sessions.** A Claude Code cloud session starts from a fresh machine every time, so the setup line, `Setting up paqad for this cloud session.`, and its short wait repeat on every cloud session. RAG is always off in cloud (`PAQAD_RAG_ENABLED=false`) and search uses plain text. When GitHub refuses `gh` from the cloud session, paqad opens the pull request, comments and reads checks through the GitHub REST API instead. The receipt notes when evidence starts in the cloud session because earlier steps were recorded on another machine.
+
+**Turning it off.** Set `enabled: false` under `team_bootstrap:` in `.paqad/configs/paqad.yaml` (or `PAQAD_TEAM_BOOTSTRAP_ENABLED=false`) and run `paqad-ai update`. That removes the launcher, its settings lines, the plugin keys and the agent files paqad wrote, and keeps your own hooks in `.claude/settings.local.json`. A teammate who has the plugin or npm installed keeps every hook.
+
+**A bad plugin release.** Revert the release in `Eliyce/paqad-claude-plugin`; teammates pick the revert up within 6 hours. Meanwhile set `PAQAD_DISABLED=1` on an affected machine, or set `team_bootstrap_enabled=false` for the team. Keep branch protection on the plugin repo so only the release job pushes to it.
+
+**A half-committed setup.** If only part of the setup reached the branch:
+
+- The settings lines are committed but `.paqad/hook.mjs` is not: edits are blocked with a hook error, rather than let through unchecked. Prompts and reads still work.
+- `.paqad/hook.mjs` is committed but the settings lines are not: nothing runs and paqad is simply off.
+- The launcher names a hook script your paqad no longer has: edits are blocked with one sentence. On the npm route it tells you to update your own `paqad-ai`; on the downloaded copy it asks the lead to run `paqad-ai update`.
+
+To recover, the lead runs `paqad-ai update`, commits every file it lists, and pushes.
 
 ## What paqad runs, writes and sends
 
@@ -116,14 +151,14 @@ When a gate hits an unexpected error, it blocks the edit instead of letting it t
 
 **What it sends.** Nothing from your project leaves your machine unless you turn on one of the services in the last three rows of this table:
 
-| Destination                 | When                                                                                                                                                                     | What is sent                                                                                   |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| `registry.npmjs.org`        | In the background, the first time paqad needs its optional search engine (when you turn on RAG, or a feature that uses it runs), retried at most once a day if it failed | A normal npm install of `@huggingface/transformers` and `openai` into the plugin's data folder |
-| `huggingface.co`            | The first time local search or local reranking runs                                                                                                                      | Requests for the model files. Nothing from your project                                        |
-| `raw.githubusercontent.com` | When indexing a Laravel project                                                                                                                                          | A request for Laravel's public upgrade guide. Nothing from your project                        |
-| `api.osv.dev`               | When you run a codebase health check or a pentest workflow                                                                                                               | Package names and versions from your lockfiles                                                 |
-| `api.openai.com`            | Only if you set `rag_embedding_provider=openai`                                                                                                                          | The doc and code passages being indexed, with your OpenAI key                                  |
-| `api.cohere.com`            | Only if you turn on reranking with the `cohere` backend                                                                                                                  | Your search query and the candidate passages, with your Cohere key                             |
+| Destination                 | When                                                                                                                                                                     | What is sent                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `registry.npmjs.org`        | In the background, the first time paqad needs its optional search engine (when you turn on RAG, or a feature that uses it runs), retried at most once a day if it failed | A normal npm install of `@huggingface/transformers` and `openai` into the plugin's data folder. The packages downloaded may run their own setup code on your machine during the install. Only these two are fixed: the packages they bring with them are chosen at install time and can still change. It installs exact versions (`@huggingface/transformers` and `openai`, at the versions this release was built with) into Claude Code's plugin data folder, with `npm install --save-exact`. |
+| `huggingface.co`            | The first time local search or local reranking runs                                                                                                                      | Requests for the model files. Nothing from your project                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `raw.githubusercontent.com` | When indexing a Laravel project                                                                                                                                          | A request for Laravel's public upgrade guide. Nothing from your project                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `api.osv.dev`               | When you run a codebase health check or a pentest workflow                                                                                                               | Package names and versions from your lockfiles                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `api.openai.com`            | Only if you set `rag_embedding_provider=openai`                                                                                                                          | The doc and code passages being indexed, with your OpenAI key                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `api.cohere.com`            | Only if you turn on reranking with the `cohere` backend                                                                                                                  | Your search query and the candidate passages, with your Cohere key                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 **API keys.** The OpenAI and Cohere keys in the last two rows are optional. In Claude Code, set them as the plugin's options; they go to your system's secure credential store and reach paqad's hooks as environment variables. paqad uses the first key it finds, in this order: the key saved in the plugin options, then the environment variable (`OPENAI_API_KEY` or `COHERE_API_KEY`), then the project file (`.paqad/secrets.env` for OpenAI, created with mode 600 and ignored by git, and your paqad config for Cohere). A plugin option left empty counts as not set. With the npm package there are no plugin options, so paqad reads the environment and the project file exactly as before. Plugin options reach paqad's hooks, not the commands Claude runs in its shell, so a command such as `paqad-ai spec pipeline start` run there reads the environment or the project file. paqad sends a key only to the service it belongs to.
 
@@ -136,9 +171,10 @@ The HUD is a Claude Code mod that ships inside the plugin. It only draws and ask
 - **Reads:** this project's `.paqad/` files (the session status, the evidence snapshot, pending decisions and the last rule stop), the environment variables `PAQAD_DISABLED`, `PAQAD_ENABLE`, `PAQAD_HUD_VIEW`, `PAQAD_HUD_CHIME` and `CLAUDE_CODE_REMOTE`, the session's tool calls, so it can show which stage is running, and the session's agent list (`$.agent.list()`) with the rows and tool calls of its subagents, so it can show which subagent runs, a one-line summary of what it is doing and how many finished. None of that is stored or sent anywhere.
 - **Writes:** two files in `.paqad/session/hud/`: `<session>.live`, a heartbeat (written when you send a prompt and once a minute) that tells paqad the HUD is open, and a mark in `<session>.last-block.json` when you answer a rule stop. No other files, nothing outside `.paqad/`, and never a build, settings, start-up or instructions file. In Claude Code's own mod store it keeps three view preferences: whether the band is minimised, whether you hid it for a project, and which changes already opened the ledger pane.
 - **Runs:** two programs, both paqad's own command from this plugin, and each run times out after 15 seconds.
-  - When a rule stops an edit, only after you choose **Allow once, recorded**: `paqad-ai rules override --rule <id> --file <path> --token <one-time token> --tool-use-id <id> --session <id> --project-root <path>`, plus `--reason=<your words>` if you typed a reason. It adds one line to the change's `rule-overrides.jsonl` evidence file and contacts no network host. After the edit runs again, it runs the same command once more with `--outcome landed` or `--outcome still-blocked` and the same rule, file, tool call, session and project, which adds a second line saying whether the edit went through.
+  - When a rule stops an edit, only after you choose **Allow once, recorded**: `<plugin>/runtime/claude-plugin/bin/paqad-ai rules override --rule <id> --file <path> --token <one-time token> --tool-use-id <id> --session <id> --project-root <path>`, plus `--reason=<your words>` if you typed a reason. It adds one line to the change's `rule-overrides.jsonl` evidence file and contacts no network host. After the edit runs again, it runs the same command once more with `--outcome landed` or `--outcome still-blocked` and the same rule, file, tool call, session and project, which adds a second line saying whether the edit went through.
   - `paqad-ai delivery-link refresh --session <id> --project-root <path> --min-age-seconds <n>`, only while an open pull request's CI is pending, so the delivery rail can mark Push and CI after the turn ends. It checks every 30 seconds, for at most 60 minutes, one run at a time, and again after a `git push` from this session or when the pull request gets a newer head. It stops when CI passes or fails, the pull request is closed or merged, `gh` fails twice in a row (signed out or offline), the HUD closes, or paqad is off. It runs `git` and your own `gh` login, which contacts GitHub to read the pull request and its checks; it never pushes, comments or re-runs CI, and writes only the push, pull request and CI reading in the change's `delivery.json`. It is always on, with no setting.
 - **Sends:** nothing of its own. The only network contact is the `gh` read above, made by your `gh` with your login. The chime (off unless you set `hud_chime=true`) is a short sound built into the plugin as bytes, not fetched from anywhere.
+- **Hooks on your prompt:** the HUD hooks each prompt you send only to restart its clock and redraw. It never reads, stores or sends the prompt's text.
 - **Commands:** `/paqad`, or `/paqad-hud` when another plugin already owns `/paqad`. It answers from this session's record (`/paqad help` lists the subcommands) and only changes the HUD's own view: `show` and `hide` bring the band back or hide it. It edits nothing in your project.
 - **Its hooks on your edits:**
   - When one of paqad's rules stops an Edit, Write or NotebookEdit, the HUD asks you what should happen. If you allow it once, paqad records the override and runs the same edit again. paqad's own gate then asks Claude Code to show you its permission dialog for that one edit, and you approve it there. The HUD never approves an edit and never changes a permission answer. A deny from your settings rules, from another tool's hook or from a stop your organization enforces still blocks the edit. If anything fails, the edit stays blocked.
@@ -333,13 +369,13 @@ A built-in router reads each request, judges its complexity and risk, and sends 
 - **graduated** lane for everyday features
 - **full** lane for risky or wide-reaching changes, with a frozen spec and story breakdown first
 
-Along the way it coordinates **22 built-in specialist roles**, each with one job and no conflicting incentives:
+Along the way it coordinates **24 built-in specialist roles**, each with one job and no conflicting incentives:
 
-| Group            | Roles                                                                                                                                                                                                          |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Workflow (9)** | context-curator, product-owner, market-researcher, implementer, reviewer, verifier, test-planner, gap-detector, requirement-analyst                                                                            |
-| **Coding (12)**  | solution-architect, application-architect, db-expert, ux-ui-analyst, devops-engineer, doc-maintainer, performance-analyst, data-modeler, integration-architect, qa-engineer, user-flow-writer, chief-architect |
-| **Security (1)** | security-auditor                                                                                                                                                                                               |
+| Group             | Roles                                                                                                                                                                                                          |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Workflow (11)** | context-curator, product-owner, market-researcher, implementer, reviewer, verifier, test-planner, gap-detector, requirement-analyst, skill-orchestrator, agent-orchestrator                                    |
+| **Coding (12)**   | solution-architect, application-architect, db-expert, ux-ui-analyst, devops-engineer, doc-maintainer, performance-analyst, data-modeler, integration-architect, qa-engineer, user-flow-writer, chief-architect |
+| **Security (1)**  | security-auditor                                                                                                                                                                                               |
 
 Plus six personas the roles reuse: router, story-designer, final-reviewer, adversarial-reviewer, app-cartographer, journey-designer.
 
@@ -519,6 +555,7 @@ Each stack is a plain `pack.yaml` that drives detection, docs, MCP recommendatio
 | `paqad-ai compliance`                    | Pull obligations from a spec and check which ones the tests actually prove                        |
 | `paqad-ai refresh`                       | Re-detect the stack and regenerate the derived docs                                               |
 | `paqad-ai update`                        | Regenerate framework-managed files after a version change                                         |
+| `paqad-ai update --last`                 | Show what the last background update did, without updating                                        |
 | `paqad-ai capabilities`                  | Turn `content`, `coding`, and `security` on or off                                                |
 | `paqad-ai packs`                         | List, install, validate, and scaffold stack packs                                                 |
 | `paqad-ai rag`                           | Build, inspect, clear, and benchmark the optional search index                                    |
@@ -533,6 +570,8 @@ Each stack is a plain `pack.yaml` that drives detection, docs, MCP recommendatio
 | `paqad-ai delivery-link refresh`         | Read the push, pull request and CI of the branch change from git and gh (read-only toward GitHub) |
 | `paqad-ai managed-settings`              | Print or write the managed settings file that puts paqad on every machine in your organization    |
 | `paqad-ai hook`                          | Run one of paqad's edit gates; the managed settings file calls it                                 |
+| `paqad-ai skill`                         | Prove a new or edited skill through its gated pipeline before it is added                         |
+| `paqad-ai agent`                         | Prove a new or edited agent through nine gates with pass^k evals before it is added               |
 
 ```bash
 # a few common runs
@@ -542,6 +581,40 @@ paqad-ai compliance check                        # which promises are actually t
 paqad-ai rag init --provider local               # free, on-device search
 paqad-ai doctor                                  # exits 1 on failure, 0 on pass
 ```
+
+## Configuration
+
+paqad runs on its own defaults. You only write down what your team changes.
+
+**Team settings** live in readable YAML files under `.paqad/configs/`, committed with the repo:
+
+| File                         | What it holds                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------ |
+| `paqad.yaml`                 | paqad on or off, updates, the Claude Code install, the HUD and the Site Map                |
+| `models.yaml`                | which models paqad uses                                                                    |
+| `retrieval.yaml`             | the search index: on or off, embeddings, match limits                                      |
+| `decisions.yaml`             | when paqad asks you and when it decides on its own                                         |
+| `authoring.yaml`             | how paqad writes and tests skills and helper agents, and its eval runs                     |
+| `git-workflow/`              | branches, commits, PRs and tickets (owned by the git-workflow skill)                       |
+| `feature-development/*.yaml` | the feature-development workflow: stages, specs, rules, reuse, checks, evidence, analytics |
+
+A new file lists every setting it owns at that point, commented out at its default, with a line saying what it does. To change one, remove the `#` in front of it (and in front of its group line, such as `hud:`) and set the value, for example `enabled: false` in `paqad.yaml`. A setting left commented out keeps paqad's default, so it picks up a better default in a later version. `paqad-ai update` leaves these 17 files alone unless a migration, a retired value, a removed setting or a stale workflow entry needs a change, and it says what it changed. A new setting doesn't appear in them: find it in `.paqad/.config.example` or with `paqad-ai config show`. An explicit write such as `paqad-ai config set` still re-renders the file it touches. If you set a value but leave the `#` on its group line, paqad still reads the value and names the line to fix. `.paqad/configs/README.md` lists every setting with its default and allowed values, and `paqad-ai config show` prints what is in effect and where each value comes from (`--changed` hides the defaults).
+
+**After updating.** The first update swaps `paqad_version` for `schema_version: 1` once. One person updates and commits the swap, then teammates update. Everyone needs this version or newer, and the plugin must be updated too. To go back, revert the swap commit and install the older paqad. A project already on 1.119.0 keeps the duplicate comment and the changed-outside warning, and after asking the team the way out is `paqad-ai git-workflow check --accept`. Doctor warns when your `paqad-ai` is older than this repo was last updated with on your machine; it can't see other machines. If your hooks folder is tracked, update prints the lines to add. That also applies to husky: add them to `.husky/commit-msg` and `.husky/pre-push`, because paqad never writes to `.husky/_`. Someone with only the plugin who commits from a plain terminal skips that check.
+
+**Personal settings** still go in the git-ignored `.paqad/.config`, one `name=value` per line, and an env var still wins for a single run (`hud_view=false` or `PAQAD_HUD_VIEW=false`). `.paqad/.config.example` lists every name, with a comment saying which team file and path it maps to.
+
+**The feature-development workflow.** paqad reads its own stages plus your `.paqad/configs/feature-development/` files directly, so change those files. It no longer generates `docs/instructions/workflows/feature-development.yaml`: `paqad-ai update` removes an old generated copy and moves a hand-written one into those files.
+
+**Moving from the old files.** Projects set up before this release kept team settings in `.paqad/configs/.config.app`, `.config.rag`, `.config.models` and `.config.policy`. `paqad-ai update` and `paqad-ai onboard` move them to the YAML files once, and `paqad-ai config migrate` (with `--dry-run` to preview) does the same on demand. It prints every setting it moved. Review the changes and commit them together. For a while paqad still reads a setting left in an old file and tells you to run `paqad-ai config migrate`; after that window it stops reading them and `paqad-ai doctor` fails until you do.
+
+**Teammates and CI need this release or later.** After the move, `.config.app` is a stub with two lines for an older paqad, which can't read the YAML files: `paqad_enable=false`, so it turns itself off instead of quietly running on defaults, and `minimum_version`, so auto-update fetches this release. This release recognises the stub by its first line and ignores it, so it stays on. Until a teammate updates, paqad is simply off for them. Pin CI to this release or later before you commit the move.
+
+**Rolling back.** The move only goes forward. An older paqad can't read the YAML files, so going back to it means restoring the old `.config.*` files from git history by hand. If a release causes trouble, update to the next fix instead, or set `PAQAD_DISABLED=1` on the affected machine while you wait.
+
+`paqad-ai doctor` checks all of this in its `team-config` check: a missing file, a value or file paqad can't read, a setting it doesn't know, old settings that still need moving, and a hand-edited workflow view.
+
+---
 
 ## What paqad-ai creates
 
@@ -561,7 +634,8 @@ your-project/
 │
 └── .paqad/               framework metadata, machine-managed
     ├── project-profile.yaml   project facts: stack, commands, capabilities
-    ├── .config.example        every framework knob, commented; copy lines into .config (git-ignored) to override
+    ├── configs/          team settings in YAML (paqad.yaml, models.yaml, feature-development/, git-workflow/, ...)
+    ├── .config.example        every setting by its flat name; copy lines into .config (git-ignored) to override just for you
     ├── stack-snapshot.json, stack-drift.json, onboarding-manifest.json
     ├── compliance/        spec obligations
     ├── decisions/         human decision records

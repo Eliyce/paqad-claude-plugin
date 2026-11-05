@@ -2,55 +2,75 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   STAGE_BRIEF_ENTRY_LINE,
   STAGE_BRIEF_MAX_CHARS,
-  STAGE_BRIEF_MORE_LINE,
   STAGE_BRIEF_NO_CHANGE_LINE,
   attributedModuleReads,
   buildStageBrief,
+  recordRecipeInjected,
   resolveBriefSession,
   safeAgentId,
   seedStageAgent,
+  seedStageAgentDetailed,
   stageBriefHookOutput,
+  stageBriefMoreLine,
+  stageCommandLines,
   stageHelperStage
-} from "../chunk-Q4VJ37FG.js";
+} from "../chunk-AJJDRWUQ.js";
 import {
   SAFE_SESSION_ID,
   isSafeSessionId
-} from "../chunk-DTKLOCC7.js";
-import "../chunk-5BABRV7V.js";
-import "../chunk-PWJ37K7H.js";
-import "../chunk-NRKCUFAE.js";
-import "../chunk-TLKXJ74I.js";
-import "../chunk-FLH3ZOTM.js";
-import "../chunk-KX4GSKWD.js";
-import "../chunk-KPSH47JZ.js";
-import "../chunk-UFA47PK6.js";
-import "../chunk-PZSF75FV.js";
+} from "../chunk-JF6TE4UN.js";
+import "../chunk-T2DYH2S2.js";
+import "../chunk-RTZAA6F3.js";
+import "../chunk-PUC3TP4X.js";
+import "../chunk-LXTYM36H.js";
+import "../chunk-EACZPVNH.js";
+import "../chunk-5QVCE2TS.js";
+import "../chunk-4LG4FZGS.js";
+import "../chunk-V7J7RWKE.js";
+import "../chunk-G2MSPGDY.js";
+import "../chunk-UHS5UVPO.js";
+import "../chunk-53PFOOIY.js";
+import "../chunk-4ITMKDK4.js";
+import "../chunk-VNMVILDR.js";
+import "../chunk-K4WPGY2N.js";
+import "../chunk-4TUTFMPB.js";
+import "../chunk-OSV7OPM5.js";
+import "../chunk-COPQIHYE.js";
+import "../chunk-CAUO6IBF.js";
 import "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
-import "../chunk-WTYH7MZ3.js";
+import "../chunk-CQ3PROW4.js";
+import "../chunk-NUSNYHWM.js";
 import "../chunk-QUDDQGFY.js";
-import "../chunk-VV76C43H.js";
+import "../chunk-6SSOF43R.js";
+import "../chunk-6NWB7L6Y.js";
 import "../chunk-AINYJ3Q2.js";
-import "../chunk-TVWMFQYX.js";
-import "../chunk-QINSFA6R.js";
 import "../chunk-SU7RODZI.js";
-import "../chunk-HV6ESCNW.js";
-import "../chunk-DDJC5PRW.js";
-import "../chunk-3STC3IVL.js";
-import "../chunk-LW3OCT4Y.js";
+import "../chunk-VAT2V4KU.js";
+import "../chunk-BEMI2GYT.js";
+import "../chunk-ER3R2ZPY.js";
+import "../chunk-VVRAO2BK.js";
+import "../chunk-6JQRLS2K.js";
+import "../chunk-AVCNQZLJ.js";
+import "../chunk-F5SGKBUG.js";
+import "../chunk-TQS7EXFH.js";
+import "../chunk-I7RXYXFH.js";
 import "../chunk-EMKBJVIL.js";
 export {
   SAFE_SESSION_ID,
   STAGE_BRIEF_ENTRY_LINE,
   STAGE_BRIEF_MAX_CHARS,
-  STAGE_BRIEF_MORE_LINE,
   STAGE_BRIEF_NO_CHANGE_LINE,
   attributedModuleReads,
   buildStageBrief,
   isSafeSessionId,
+  recordRecipeInjected,
   resolveBriefSession,
   safeAgentId,
   seedStageAgent,
+  seedStageAgentDetailed,
   stageBriefHookOutput,
+  stageBriefMoreLine,
+  stageCommandLines,
   stageHelperStage
 };
