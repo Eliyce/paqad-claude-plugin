@@ -20,6 +20,7 @@ interface SubagentStopPayload {
     agent_type?: unknown;
     session_id?: unknown;
     agent_transcript_path?: unknown;
+    last_assistant_message?: unknown;
     usage?: {
         input_tokens?: unknown;
         output_tokens?: unknown;
@@ -46,15 +47,29 @@ interface RecordStageAgentCompletionInput {
     transcriptText: string;
     adapter: string;
     now?: () => Date;
+    log?: (line: string) => void;
 }
 declare function stagesRunByAgent(projectRoot: string, dirName: string, stage: string, payload: SubagentStopPayload): string[];
 interface StageAgentJudgement {
     report_status?: string;
     report_stated?: boolean;
     advance?: boolean;
+    decision?: string | null;
+    report_source?: string;
+    report_hash?: string;
+    stated_status?: string;
+    reason?: string;
+    gate_checked?: boolean;
+    api_turns?: number;
     must_not?: string[];
 }
-declare function judgeStageAgentReturn(stage: string, payload: SubagentStopPayload): StageAgentJudgement;
+interface JudgeStageAgentReturnInput {
+    projectRoot: string;
+    dirName: string;
+    adapter: string;
+    fallbackTranscript?: string;
+}
+declare function judgeStageAgentReturn(stage: string, payload: SubagentStopPayload, context: JudgeStageAgentReturnInput): StageAgentJudgement;
 interface RecordStageAgentStartInput {
     projectRoot: string;
     payload: SubagentStopPayload;
@@ -64,4 +79,4 @@ declare function recordStageAgentStart(input: RecordStageAgentStartInput): boole
 declare function recordStageAgentCompletion(input: RecordStageAgentCompletionInput): boolean;
 
 export { estimateTokens, judgeStageAgentReturn, recordHighTableUsage, recordStageAgentCompletion, recordStageAgentStart, resolveStageAgentTokens, resolveTokenCounts, stageFromAgentType, stagesRunByAgent };
-export type { RecordStageAgentCompletionInput, RecordStageAgentStartInput, StageAgentJudgement, StageAgentTokens, SubagentStopPayload };
+export type { JudgeStageAgentReturnInput, RecordStageAgentCompletionInput, RecordStageAgentStartInput, StageAgentJudgement, StageAgentTokens, SubagentStopPayload };

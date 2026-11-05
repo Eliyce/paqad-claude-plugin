@@ -24,7 +24,7 @@ import {
   setVerifiability,
   snapshotRuleScriptMap,
   upsertScriptEntry
-} from "../chunk-CNVGNLVF.js";
+} from "../chunk-YB44OT7L.js";
 import {
   HEADER_MARKER,
   RULE_SCRIPT_MAP_SCHEMA_VERSION,
@@ -39,6 +39,7 @@ import {
   loadRuleScriptMap,
   missingBinaries,
   parseScriptHeader,
+  projectRelativeTargets,
   readReport,
   ruleRunFindings,
   ruleScriptMapPath,
@@ -48,22 +49,24 @@ import {
   serializeRuleScriptMap,
   validateFindings,
   validateScriptHeader
-} from "../chunk-YSH63TMU.js";
+} from "../chunk-6QCIBEYW.js";
 import "../chunk-4I6TDR46.js";
-import "../chunk-HU3KTD2K.js";
+import "../chunk-6OTIRLWS.js";
 import "../chunk-KKFSSPUD.js";
-import "../chunk-WK7E7TA5.js";
+import "../chunk-IZTRTKJG.js";
 import "../chunk-O77JBFWW.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
-import "../chunk-43DYNNYO.js";
+import "../chunk-CQ3PROW4.js";
+import "../chunk-NUSNYHWM.js";
 import "../chunk-QUDDQGFY.js";
-import "../chunk-G6D3JYXC.js";
+import "../chunk-6SSOF43R.js";
+import "../chunk-6NWB7L6Y.js";
 import "../chunk-AINYJ3Q2.js";
 import "../chunk-SU7RODZI.js";
-import "../chunk-3DGAT6MO.js";
+import "../chunk-VAT2V4KU.js";
 import {
   embedRuleMarker,
   isRuleId,
@@ -72,13 +75,13 @@ import {
   ruleTextHash,
   sha256,
   stripRuleMarker
-} from "../chunk-GI5XTME2.js";
+} from "../chunk-BEMI2GYT.js";
 import "../chunk-ER3R2ZPY.js";
 import "../chunk-VVRAO2BK.js";
-import "../chunk-NAANJBUQ.js";
-import "../chunk-N74EZSUC.js";
-import "../chunk-NDVN5PRV.js";
-import "../chunk-3STC3IVL.js";
+import "../chunk-6JQRLS2K.js";
+import "../chunk-AVCNQZLJ.js";
+import "../chunk-F5SGKBUG.js";
+import "../chunk-TQS7EXFH.js";
 import {
   PATHS
 } from "../chunk-I7RXYXFH.js";
@@ -277,6 +280,7 @@ export {
   parseRuleFile,
   parseRuleMarker,
   parseScriptHeader,
+  projectRelativeTargets,
   pruneOrphanScripts,
   readDrift,
   readReport,

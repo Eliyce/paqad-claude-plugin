@@ -7,12 +7,20 @@ import {
   buildStageBrief,
   candidatesNeedingDecision,
   extractCandidates,
-  resolveBriefSession
-} from "../chunk-KKFM5NFZ.js";
+  recordRecipeInjected,
+  resolveBriefSession,
+  stageCommandLines
+} from "../chunk-AJJDRWUQ.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-RNRTNP5G.js";
+} from "../chunk-JF6TE4UN.js";
+import {
+  buildStageReport,
+  stageReportOptions,
+  stageStartRefusal,
+  unknownAgentReport
+} from "../chunk-T2DYH2S2.js";
 import {
   allChangedFiles,
   readLastUpdateRecord,
@@ -20,7 +28,7 @@ import {
 } from "../chunk-DLJE5DLJ.js";
 import {
   DISABLED_SESSION_DOC_TYPE
-} from "../chunk-4ERGPOHN.js";
+} from "../chunk-PEWMOZYV.js";
 import {
   AGENT_MEMORY_MAX_BYTES,
   AGENT_PERMISSION_ALLOW,
@@ -87,10 +95,12 @@ import {
   checkSchemaCompatibility,
   checkSpecCompliance,
   checkSpecShape,
+  checkStageChain,
   checksSessionId,
   claudeConfigDir,
   cleanupLegacyMcpFiles,
   clearWaiting,
+  collectMachineFindings,
   collectMapEvidence,
   collectQualityMeasures,
   collectVerificationFindings,
@@ -134,15 +144,8 @@ import {
   generateBoundaryTests,
   generateProjectRules,
   generateVitestSkeletons,
-  hashAgentFile,
-  hashAgentText,
-  hashFiles,
-  hashFolder,
-  hashFolderWithoutDescription,
   hashSourceFiles,
-  hashText,
   installGitHooks,
-  isMissingPathError,
   isNpmAvailable,
   isPaqadRuntimeSkill,
   isStale,
@@ -152,7 +155,6 @@ import {
   lintExitCode,
   lintSkillFolder,
   listAvailableActiveCapabilities,
-  listFolderFiles,
   loadBoundaryReport,
   loadModuleMap,
   loadModuleSlugResolver,
@@ -165,7 +167,6 @@ import {
   migrateFeatureEvidence,
   migrationSessionId,
   normalizeEvidence,
-  openIfPresent,
   option,
   overlapScore,
   parseGitleaksJson,
@@ -174,13 +175,13 @@ import {
   parseOsvScannerJson,
   parseTestOutput,
   pendingMoveRefusal,
+  permissionPacketNamesFile,
   pruneFeatureBundles,
   queryOsv,
   raiseAgentPermissionDecision,
   raiseAuthoringDecision,
   raiseOverrideDecision,
   readAuthoringDecision,
-  readBytesIfPresent,
   readChangeDiff,
   readChecksReportForFeature,
   readMode,
@@ -188,13 +189,10 @@ import {
   readPermissionDecisionIds,
   readPipelineConfig,
   readQualityBaseline,
-  readRegularFile,
   readSchemaMarkerSync,
   readSourceFiles,
-  readTextIfPresent,
   readVerificationEvidence,
   recordMigrationSession,
-  regularFiles,
   remoteDefaultBranch,
   removeActiveCapability,
   removeGeneratedFiles,
@@ -234,20 +232,17 @@ import {
   symbolKey,
   upsertStackDocCommandRow,
   validateAgentName,
-  withDescription,
   withinLimit,
-  withoutDescription,
   writeChecksReportForFeature,
   writeFeatureDecisionsIndex,
   writeFeatureReport,
-  writeFileAtomic,
   writeGeneratedFiles,
   writeGitignore,
   writeQualityBaseline,
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-7LPMVLID.js";
+} from "../chunk-ACGMIZLJ.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -274,7 +269,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-ABPTWQNO.js";
+} from "../chunk-3GCVQCDV.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -286,7 +281,7 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-HBDIMOQM.js";
+} from "../chunk-7MXUKCCK.js";
 import {
   estimateTokens
 } from "../chunk-RTZAA6F3.js";
@@ -296,10 +291,14 @@ import {
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-LV7EC4F6.js";
+} from "../chunk-PUC3TP4X.js";
+import "../chunk-LXTYM36H.js";
+import {
+  stageLedgerEra
+} from "../chunk-EACZPVNH.js";
 import {
   legacyAfterWindowLines
-} from "../chunk-KL5WBX45.js";
+} from "../chunk-MVH3FQPQ.js";
 import "../chunk-EPA3STQM.js";
 import {
   createEvidence,
@@ -307,11 +306,12 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-3SI2PASV.js";
+} from "../chunk-7EHNPQMF.js";
 import {
-  PAQAD_STATUS_GLYPH
-} from "../chunk-5QVCE2TS.js";
-import "../chunk-VSJ2OACP.js";
+  clearChecksRunningMarker,
+  writeChecksRunningMarker
+} from "../chunk-XGZHPWUQ.js";
+import "../chunk-W5BD2LBP.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -327,22 +327,17 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-7PXPZDPZ.js";
+} from "../chunk-GMXO6JTL.js";
 import {
-  clearChecksRunningMarker,
-  writeChecksRunningMarker
-} from "../chunk-MOBMRTZK.js";
+  PAQAD_STATUS_GLYPH
+} from "../chunk-5QVCE2TS.js";
 import "../chunk-BMTGNG6E.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-CNVGNLVF.js";
+} from "../chunk-YB44OT7L.js";
 import {
-  ADAPTER_TYPES,
   AGENT_RECORD_WRITER,
-  AdapterFactory,
-  BaseAdapter,
-  ClaudeCodeAdapter,
   DEFAULT_OBLIGATION_INDEX_PATH,
   DELIVERY_EVIDENCE_DOC_TYPE,
   GIT_WORKFLOW_PATH,
@@ -350,14 +345,11 @@ import {
   MISSING_LABEL_HINT,
   NoActiveFeatureError,
   PACK_REGISTRY_FAULT_REMEDIATION,
-  PAQAD_REPO_AGENT_ROOTS,
   PackRegistryEmptyError,
   ReuseDeclarationError,
-  SKILL_FILE,
   SiteMapSchemaError,
   StackSnapshotCache,
   agentOrchestratorEnabled,
-  agentRoots,
   aggregateSpecPipelineMetrics,
   appendSpecStepRow,
   assembleExpertRun,
@@ -369,7 +361,6 @@ import {
   buildRunMetrics,
   canonicalAppMapPath,
   carryForwardIds,
-  classifyAgentPath,
   clearClarificationSection,
   clearExpertSynthesis,
   clearFrozenRun,
@@ -380,24 +371,17 @@ import {
   currentBranch,
   decideFinish,
   deriveCaption,
-  deriveRecordedProviders,
   dynamicRecord,
   editedDevelopmentThisTurn,
   editedFiles,
-  enabledAdapters,
   evaluateFrontendTrigger,
   evaluateSpecFreeze,
   execaCommandRunner,
   extractObligationIndex,
-  findAgentPaths,
-  findSkillPaths,
   freezeSpec,
   hashRuleSources,
-  isAgentTemplatePath,
   isConfiguredBase,
   isFrameworkDisabledForRoot,
-  isGitIgnored,
-  isPaqadRepository,
   laneMayRise,
   linkTicket,
   listRunDirs,
@@ -414,7 +398,6 @@ import {
   placeholdersIn,
   planBranch,
   planFiles,
-  pluginSettingsKeys,
   projectRelative,
   provisionBrowser,
   queryCodeKnowledge,
@@ -430,7 +413,6 @@ import {
   readAuthoringConfig,
   readCanonicalSiteMap,
   readCodeKnowledgeIndex,
-  readExistingOnboardingManifest,
   readExpertNeed,
   readExpertNotes,
   readExpertSynthesis,
@@ -446,7 +428,6 @@ import {
   readQuestions,
   readRequest,
   readRuleStopRecord,
-  readSkillPathContext,
   readStackSnapshotSync,
   readStagedExpertQuestions,
   readStagedJson,
@@ -467,14 +448,11 @@ import {
   seatExpertsForLane,
   sensitivePaths,
   setFrameworkEnabled,
-  skillFolderOf,
   skillOrchestratorEnabled,
-  skillRoots,
   specIndexPath,
   specReportPath,
   strongestSeverity,
   styleVerdict,
-  teamSetupMissing,
   ticketInBranch,
   uniqueInOrder,
   validateCodeKnowledgeIndex,
@@ -490,7 +468,6 @@ import {
   writeAgentRecord,
   writeCanonicalSiteMap,
   writeCodeKnowledgeIndex,
-  writeDetectionReport,
   writeExpertFindings,
   writeExpertNotes,
   writeExpertRoster,
@@ -499,7 +476,6 @@ import {
   writeFeatureReview,
   writeFeatureSpecification,
   writeFrameworkApiIndex,
-  writeFrameworkVersionPreservingTimestamp,
   writeJourney,
   writeLabel,
   writeQuestions,
@@ -510,34 +486,83 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-G2BY5AEB.js";
+} from "../chunk-YYLDOZL7.js";
+import "../chunk-QVX43S7X.js";
+import "../chunk-4HHF2EZV.js";
 import {
-  withFileLockSync
-} from "../chunk-XQDE5JXQ.js";
-import {
-  releaseLock,
-  tryAcquireLock
-} from "../chunk-NUSNYHWM.js";
-import {
-  renderStageAgentFiles
-} from "../chunk-3EVWJQMP.js";
-import "../chunk-HEGBWIRF.js";
-import {
+  AdapterFactory,
+  BaseAdapter,
+  ClaudeCodeAdapter,
   PAQAD_LIVE_HOOKS,
-  PAQAD_MUTATING_TOOL_MATCHER
-} from "../chunk-Q6XU7C36.js";
+  PAQAD_MUTATING_TOOL_MATCHER,
+  PAQAD_REPO_AGENT_ROOTS,
+  PROJECT_AGENTS_DIR,
+  RECIPE_HEADING,
+  SKILL_FILE,
+  agentRoots,
+  carriesManagedMarker,
+  classifyAgentPath,
+  deriveRecordedProviders,
+  enabledAdapters,
+  findAgentPaths,
+  findSkillPaths,
+  hashAgentFile,
+  hashAgentText,
+  hashFiles,
+  hashFolder,
+  hashFolderWithoutDescription,
+  hashText,
+  isAgentTemplatePath,
+  isGitIgnored,
+  isMissingPathError,
+  isPaqadRepository,
+  listFolderFiles,
+  openIfPresent,
+  pluginSettingsKeys,
+  readBytesIfPresent,
+  readExistingOnboardingManifest,
+  readRegularFile,
+  readSkillPathContext,
+  readTextIfPresent,
+  recipeRepairAdvice,
+  regularFiles,
+  renderStageAgentFiles,
+  resolveRecipe,
+  skillFolderOf,
+  skillRoots,
+  teamSetupMissing,
+  withDescription,
+  withoutDescription,
+  writeDetectionReport,
+  writeFileAtomic,
+  writeFrameworkVersionPreservingTimestamp
+} from "../chunk-4LG4FZGS.js";
 import {
   EXPERT_OWNS
 } from "../chunk-V7J7RWKE.js";
-import "../chunk-DL27Y6QW.js";
-import "../chunk-X3HAQA2T.js";
+import "../chunk-G2MSPGDY.js";
+import {
+  ADAPTER_TYPES
+} from "../chunk-UHS5UVPO.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   compileRules,
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-WCPMCFC2.js";
+} from "../chunk-TRGXD2KI.js";
+import {
+  DECISION_EVIDENCE_DOC_TYPE,
+  DecisionStore,
+  addWriteInOption,
+  computeDecisionFingerprint,
+  createPendingDecision,
+  findDecisionPrecedents,
+  listContractDecisions,
+  readContractDecisions,
+  readDecisionEvidence,
+  resolvePendingDecision
+} from "../chunk-MJTYVWVB.js";
 import {
   appendHooksLog
 } from "../chunk-QGZVTKXX.js";
@@ -565,20 +590,8 @@ import {
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-S2IGJTS7.js";
-import {
-  DECISION_CATEGORIES,
-  DECISION_EVIDENCE_DOC_TYPE,
-  DecisionStore,
-  addWriteInOption,
-  computeDecisionFingerprint,
-  createPendingDecision,
-  findDecisionPrecedents,
-  listContractDecisions,
-  readContractDecisions,
-  readDecisionEvidence,
-  resolvePendingDecision
-} from "../chunk-YCEDJEPE.js";
+} from "../chunk-6O4LRD7Z.js";
+import "../chunk-I5MEZHWF.js";
 import {
   ACTIVE_CAPABILITIES,
   STACKS,
@@ -587,58 +600,61 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-JADAUDIS.js";
+} from "../chunk-53PFOOIY.js";
+import {
+  DECISION_CATEGORIES
+} from "../chunk-4ITMKDK4.js";
 import "../chunk-VNMVILDR.js";
-import "../chunk-VN54O2NU.js";
+import "../chunk-ZRYHLGCX.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-YSH63TMU.js";
+} from "../chunk-6QCIBEYW.js";
 import {
   hudCostCachePath
 } from "../chunk-4I6TDR46.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-HU3KTD2K.js";
+} from "../chunk-6OTIRLWS.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-WK7E7TA5.js";
+} from "../chunk-IZTRTKJG.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-6SF5JYCM.js";
+} from "../chunk-YKXPB2BO.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-YEGICCQQ.js";
+} from "../chunk-K4WPGY2N.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-PAHTBBCD.js";
+} from "../chunk-4TUTFMPB.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-FZLZ7446.js";
+} from "../chunk-OSV7OPM5.js";
 import {
   clearPendingLane,
   recordMarkedStage,
   titleActiveFeature
-} from "../chunk-GEQP54V7.js";
+} from "../chunk-COPQIHYE.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -656,7 +672,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-J3GZEYF2.js";
+} from "../chunk-CAUO6IBF.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -667,6 +683,8 @@ import {
 import {
   TICKET_ACTION_IDS,
   activeChangeKey,
+  addedLinesSince,
+  appendFeatureStageRow,
   currentFeature,
   foldFeature,
   gitPathList,
@@ -688,31 +706,40 @@ import {
   setCommitDecision,
   settleTicketAction,
   stampFeatureDocument,
-  stampMergeCommit
-} from "../chunk-43DYNNYO.js";
+  stampMergeCommit,
+  withFileLockSync
+} from "../chunk-CQ3PROW4.js";
+import {
+  releaseLock,
+  tryAcquireLock
+} from "../chunk-NUSNYHWM.js";
 import {
   describeEarlierWork
 } from "../chunk-QUDDQGFY.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   ORCHESTRATOR_AGENT,
+  RECORD_REPAIR_KIND,
+  SKILL_USED_KIND,
   STAGE_EVIDENCE_DOC_TYPE,
   VISUAL_EVIDENCE_DOC_TYPE,
   VISUAL_EVIDENCE_SCHEMA_VERSION,
-  buildDocumentEnvelope,
-  buildTextHeader,
   laneRank,
   listFeatureDirs,
   liveStageAgents,
   readChangeConstants,
   readFeatureRecord,
-  renderHeaderScript,
   resolveAgentIdentity,
+  validateVisualEvidenceRecord
+} from "../chunk-6SSOF43R.js";
+import {
+  buildDocumentEnvelope,
+  buildTextHeader,
+  renderHeaderScript,
   rowRecordedAt,
   sha256Hex,
-  stampBundleRow,
-  validateVisualEvidenceRecord
-} from "../chunk-G6D3JYXC.js";
+  stampBundleRow
+} from "../chunk-6NWB7L6Y.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -733,6 +760,7 @@ import {
   STAGE_AGENT_STAGES,
   STAGE_ORDER,
   SchemaVersionError,
+  agentNameForStage,
   descriptionLength,
   descriptionWithinLimit,
   engineLog,
@@ -745,7 +773,7 @@ import {
   splitSkillFrontmatter,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "../chunk-3DGAT6MO.js";
+} from "../chunk-VAT2V4KU.js";
 import {
   DEFAULT_BASE_BRANCH,
   DEFAULT_EXISTING_SURFACE_TOKENS,
@@ -779,7 +807,7 @@ import {
   stampLastApplied,
   syncFrameworkConfig,
   versionAtLeast
-} from "../chunk-GI5XTME2.js";
+} from "../chunk-BEMI2GYT.js";
 import {
   renameWithRetry,
   renameWithRetrySync
@@ -795,12 +823,13 @@ import {
   readUnitFile,
   sessionLedgerDir,
   stampSessionRow
-} from "../chunk-NAANJBUQ.js";
+} from "../chunk-6JQRLS2K.js";
 import {
   keepingLedgerSessionCache,
   readLedgerSessionId,
   resolveSessionId
-} from "../chunk-N74EZSUC.js";
+} from "../chunk-AVCNQZLJ.js";
+import "../chunk-F5SGKBUG.js";
 import {
   ULID_BODY,
   chatRagPath,
@@ -810,12 +839,10 @@ import {
   featureFilePath,
   featureScreenshotsDir,
   isSlugSafe,
+  join,
   parseFeatureDirName,
   ulid
-} from "../chunk-NDVN5PRV.js";
-import {
-  join
-} from "../chunk-3STC3IVL.js";
+} from "../chunk-TQS7EXFH.js";
 import {
   PATHS
 } from "../chunk-I7RXYXFH.js";
@@ -2270,6 +2297,12 @@ function isFormattableFile(root, path2) {
 }
 
 // src/checks/run-checks.ts
+var STAGE_IDENTITY_ENV = ["SE_AGENT_ID", "SE_SESSION"];
+function projectCommandEnv(env = process.env) {
+  const projectEnv = { ...env };
+  for (const name of STAGE_IDENTITY_ENV) delete projectEnv[name];
+  return projectEnv;
+}
 var EMPTY_ISOLATION = {
   performed: false,
   skipped_reason: null,
@@ -2280,7 +2313,7 @@ async function runChecks(options) {
   const projectRoot = options.projectRoot;
   const nowIso = options.now ?? (() => (/* @__PURE__ */ new Date()).toISOString());
   const nowMs = options.nowMs ?? (() => Date.now());
-  const shell = options.shell ?? createDeliveryShell(projectRoot);
+  const shell = options.shell ?? createDeliveryShell(projectRoot, { env: projectCommandEnv() });
   const changedFiles = [...options.changedFiles ?? []];
   const osFacts = options.osFacts ?? {
     availableParallelism: osAvailableParallelism(),
@@ -3352,11 +3385,11 @@ function createComplianceCommand() {
         const uncoveredCriticalCount = report3.obligations.filter(
           (obligation) => obligation.state === "uncovered" && criticalCategories.has(obligation.category)
         ).length;
-        const failed = report3.summary.compliance_ratio < minRatio || uncoveredCriticalCount > maxUncoveredCritical;
+        const failed2 = report3.summary.compliance_ratio < minRatio || uncoveredCriticalCount > maxUncoveredCritical;
         console.log(
           JSON.stringify(
             {
-              gate_result: failed ? "fail" : "pass",
+              gate_result: failed2 ? "fail" : "pass",
               compliance_ratio: report3.summary.compliance_ratio,
               uncovered_count: report3.summary.uncovered,
               uncovered_critical_count: uncoveredCriticalCount,
@@ -3370,7 +3403,7 @@ function createComplianceCommand() {
             2
           )
         );
-        process.exitCode = failed ? 1 : 0;
+        process.exitCode = failed2 ? 1 : 0;
         return;
       }
       console.log(JSON.stringify(report3, null, 2));
@@ -4990,7 +5023,7 @@ function summarizeProgress(progress) {
   const units = Object.values(progress.units);
   let done = 0;
   let writing = 0;
-  let failed = 0;
+  let failed2 = 0;
   let remaining = 0;
   let next = null;
   for (const unit of units) {
@@ -5002,7 +5035,7 @@ function summarizeProgress(progress) {
         writing += 1;
         break;
       case "failed":
-        failed += 1;
+        failed2 += 1;
         break;
       case "not_started":
         remaining += 1;
@@ -5012,7 +5045,7 @@ function summarizeProgress(progress) {
         break;
     }
   }
-  return { total: units.length, done, writing, failed, remaining, next };
+  return { total: units.length, done, writing, failed: failed2, remaining, next };
 }
 var KIND_LABEL = {
   group: "Group",
@@ -16471,6 +16504,7 @@ function lintAllAgents(projectRoot, options = {}) {
     if (path2.endsWith(".toml")) continue;
     const text2 = readTextIfPresent(join56(projectRoot, path2));
     if (text2 === null) continue;
+    if (path2.startsWith(`${PROJECT_AGENTS_DIR}/`) && carriesManagedMarker(text2)) continue;
     const split = splitSkillFrontmatter(text2);
     const kind = classifyAgentPath(path2, split.ok);
     const group = auditGroupOf(dirname14(path2));
@@ -17412,20 +17446,20 @@ function runDraft(workspace, input) {
   });
   const skillText = workspace.read(`${target}/${SKILL_FILE}`) ?? "";
   const { blocks, traceText, reasons } = checkTrace(workspace, skillText, input.traceText);
-  const failed = reasons.length > 0;
+  const failed2 = reasons.length > 0;
   const artifact = workspace.write(
     "trace.md",
     renderGateMarkdown(
       {
-        gate: failed ? "failed" : "passed",
+        gate: failed2 ? "failed" : "passed",
         stage: "S3",
-        ...failed ? { reason: reasons.join("; ") } : {},
+        ...failed2 ? { reason: reasons.join("; ") } : {},
         blocks: blocks.length
       },
       traceText
     )
   );
-  if (failed) {
+  if (failed2) {
     return stageResult(
       false,
       [
@@ -19488,9 +19522,9 @@ function readScriptTestResults(input) {
         return { check, status: "skipped", test: testName, reason: "the test is skipped" };
       }
       if (input.run.exitCode === 0) return { check, status: "passed", test: testName };
-      const failed = input.run.failedTests;
-      const attributed = failed !== null && failed.length > 0;
-      if (!attributed || failed.some((name) => name.includes(testName))) {
+      const failed2 = input.run.failedTests;
+      const attributed = failed2 !== null && failed2.length > 0;
+      if (!attributed || failed2.some((name) => name.includes(testName))) {
         return { check, status: "failed", test: testName, reason: "the test run failed" };
       }
       return { check, status: "passed", test: testName };
@@ -19837,13 +19871,13 @@ function scoreTriggerIterations(input) {
     }
     let trainCorrect = 0;
     let validationCorrect = 0;
-    const failed = [];
+    const failed2 = [];
     for (const query of input.queries) {
       const fires = iteration.results.filter(
         (result2) => result2.id === query.id && result2.fired && result2.run <= runs
       ).length;
       const correct = queryCorrect(query, fires, input.minRuns, runs);
-      if (!correct) failed.push(query.id);
+      if (!correct) failed2.push(query.id);
       if (correct && query.set === "train") trainCorrect += 1;
       if (correct && query.set === "validation") validationCorrect += 1;
     }
@@ -19859,7 +19893,7 @@ function scoreTriggerIterations(input) {
         validationCorrect,
         input.queries.filter((query) => query.set === "validation").length
       ),
-      failed_queries: failed,
+      failed_queries: failed2,
       chosen: false
     };
   });
@@ -21610,21 +21644,21 @@ function runAgentDraft(workspace, input) {
     ...reasons,
     ...draftProblems(split.body, bodyTokens, config.agent_prompt_max_tokens, hooks.problems)
   ];
-  const failed = problems.length > 0;
+  const failed2 = problems.length > 0;
   const trace = workspace.write(
     "trace.md",
     renderGateMarkdown(
       {
-        gate: failed ? "failed" : "passed",
+        gate: failed2 ? "failed" : "passed",
         stage: "S3",
-        ...failed ? { reason: problems.join("; ") } : {},
+        ...failed2 ? { reason: problems.join("; ") } : {},
         blocks: blocks.length,
         body_tokens: bodyTokens
       },
       traceText
     )
   );
-  if (failed) {
+  if (failed2) {
     return stageResult(
       false,
       [
@@ -21704,14 +21738,14 @@ function runTemplateDraft(workspace, input, rel, text2, intake) {
       problems.push(`${agent.name}: ${problem}`);
     }
   }
-  const failed = problems.length > 0;
+  const failed2 = problems.length > 0;
   const trace = workspace.write(
     "trace.md",
     renderGateMarkdown(
       {
-        gate: failed ? "failed" : "passed",
+        gate: failed2 ? "failed" : "passed",
         stage: "S3",
-        ...failed ? { reason: problems.join("; ") } : {},
+        ...failed2 ? { reason: problems.join("; ") } : {},
         blocks,
         body_tokens: bodyTokens
       },
@@ -21719,7 +21753,7 @@ function runTemplateDraft(workspace, input, rel, text2, intake) {
     )
   );
   const names = rendered.map((agent) => agent.name).join(", ");
-  if (failed) {
+  if (failed2) {
     return stageResult(
       false,
       [
@@ -22047,6 +22081,18 @@ function onlyPowerFindings(lint) {
   const blocking = lint.findings.filter((finding) => finding.severity === "block");
   return lint.powers.length > 0 && blocking.length > 0 && blocking.every((finding) => POWER_RULES.includes(finding.rule));
 }
+function discardSupersededPermission(projectRoot, supersededId, newId) {
+  try {
+    new DecisionStore(projectRoot).discard({
+      decisionId: supersededId,
+      reason: `superseded by ${newId}`
+    });
+    return [];
+  } catch (error) {
+    const why = error instanceof Error ? error.message : String(error);
+    return [`Decision ${supersededId} stays open because it could not be closed: ${why}`];
+  }
+}
 function permissionGate(workspace, lint, change) {
   if (!onlyPowerFindings(lint)) return null;
   const powers = lint.powers.join(", ");
@@ -22054,7 +22100,8 @@ function permissionGate(workspace, lint, change) {
   const ids = readPermissionIds(workspace);
   const latest = ids.at(-1);
   const record2 = latest === void 0 ? null : readAuthoringDecision(workspace.projectRoot, latest);
-  if (record2 !== null && record2.status !== "resolved") {
+  const waitingOnThisFile = record2 !== null && record2.status !== "resolved" && permissionPacketNamesFile(workspace.projectRoot, record2.id, lint.file_hash);
+  if (record2 !== null && waitingOnThisFile) {
     setWaiting(workspace, { stage: "S4", decision: record2.id, resume });
     return {
       ok: false,
@@ -22065,7 +22112,7 @@ function permissionGate(workspace, lint, change) {
       ]
     };
   }
-  if (record2 !== null && record2.chosen !== AGENT_PERMISSION_ALLOW) {
+  if (record2 !== null && record2.status === "resolved" && record2.chosen !== AGENT_PERMISSION_ALLOW) {
     throw new AuthoringRefusal(
       `S4 can't pass: the owner chose to remove ${powers} (decision ${record2.id}). Take them out of the agent, rerun paqad-ai agent draft, then ${resume}.`
     );
@@ -22078,12 +22125,14 @@ function permissionGate(workspace, lint, change) {
   });
   workspace.writeJson(PERMISSIONS_FILE, [...ids, id]);
   setWaiting(workspace, { stage: "S4", decision: id, resume });
+  const notClosed = record2?.status === "pending" ? discardSupersededPermission(workspace.projectRoot, record2.id, id) : [];
   return {
     ok: false,
     decision: id,
     artifacts: [workspace.relPath(PERMISSIONS_FILE)],
     lines: [
-      `${workspace.name} asks for ${powers}, so S4 is waiting on decision ${id} (authoring.agent_permission). Once it is answered, run ${resume}.`
+      `${workspace.name} asks for ${powers}, so S4 is waiting on decision ${id} (authoring.agent_permission). Once it is answered, run ${resume}.`,
+      ...notClosed
     ]
   };
 }
@@ -23263,7 +23312,7 @@ function parseDelegationResults(text2) {
 }
 function freshVerdict(fresh, minRuns) {
   const hostRun = fresh.filter((entry) => entry.source === "host");
-  const failed = hostRun.filter(
+  const failed2 = hostRun.filter(
     (entry) => !queryCorrect(
       { id: entry.request, query: entry.request, should_trigger: entry.should_delegate },
       entry.runs.filter(Boolean).length,
@@ -23274,7 +23323,7 @@ function freshVerdict(fresh, minRuns) {
   return {
     host_run: hostRun.length,
     ignored_non_host: fresh.length - hostRun.length,
-    failed: failed.map((entry) => entry.request)
+    failed: failed2.map((entry) => entry.request)
   };
 }
 function runDelegationRecord(workspace, resultsText, options = {}) {
@@ -30638,7 +30687,7 @@ function createModuleHealthCommand() {
   );
   command.command("record").description("Record normalized module health evidence").option("--project-root <path>", "Project root", process.cwd()).option("--provider <provider>", "Provider adapter identifier").option("--session-id <id>", "Provider session identifier").option("--source <source>", "Evidence source", "provider-hook").option("--file <path...>", "Affected file path").option("--module <module...>", "Affected module name").option("--verification-status <status>", "Verification status").option("--coverage <pct>", "Coverage percentage").option("--failed-tests <count>", "Failed test count").option("--silent", "Suppress normal output", false).action(
     async (options) => {
-      const failed = parseOptionalInteger(options.failedTests);
+      const failed2 = parseOptionalInteger(options.failedTests);
       const coverage = parseOptionalNumber(options.coverage);
       const event = createEvidence({
         source: options.source,
@@ -30647,10 +30696,10 @@ function createModuleHealthCommand() {
         affectedFiles: options.file ?? [],
         affectedModules: options.module ?? [],
         signals: {
-          tests: coverage !== void 0 || failed !== void 0 ? {
-            status: failed && failed > 0 ? "fail" : options.verificationStatus,
+          tests: coverage !== void 0 || failed2 !== void 0 ? {
+            status: failed2 && failed2 > 0 ? "fail" : options.verificationStatus,
             ...coverage !== void 0 ? { coverage_pct: coverage } : {},
-            ...failed !== void 0 ? { failed } : {}
+            ...failed2 !== void 0 ? { failed: failed2 } : {}
           } : void 0,
           verification: options.verificationStatus ? {
             status: options.verificationStatus,
@@ -31213,6 +31262,129 @@ function createPacksCommand() {
 init_esm_shims();
 import { readFileSync as readFileSync56, rmSync as rmSync7 } from "fs";
 
+// src/stage-isolation/recipe-check.ts
+init_esm_shims();
+import { spawnSync as spawnSync3 } from "child_process";
+var SCRIPT_TIMEOUT_MS = 6e4;
+function runRecipeScript(stage, args, input, root) {
+  let recipe;
+  try {
+    recipe = resolveRecipe(stage, root);
+  } catch (error) {
+    return {
+      status: "broken",
+      errors: [error.message],
+      hash: null,
+      recipe: null,
+      script: null,
+      root: null
+    };
+  }
+  const base = { recipe: recipe.name, script: recipe.scriptName, root: recipe.root };
+  if (recipe.scriptPath === null) return { status: "pass", errors: [], hash: null, ...base };
+  const run = spawnSync3(process.execPath, [recipe.scriptPath, ...args], {
+    encoding: "utf8",
+    timeout: SCRIPT_TIMEOUT_MS,
+    maxBuffer: 16 * 1024 * 1024,
+    ...input === void 0 ? {} : { input }
+  });
+  const broken = (why) => ({
+    status: "broken",
+    errors: [`the ${recipe.name} script ${recipe.scriptName} ${why}; ${recipeRepairAdvice()}`],
+    hash: null,
+    ...base
+  });
+  let parsed;
+  try {
+    parsed = JSON.parse(run.stdout.trim().split("\n").at(-1));
+  } catch {
+    return broken("did not run cleanly");
+  }
+  if (typeof parsed.ok !== "boolean" || typeof parsed.hash !== "string") {
+    return broken("printed no result");
+  }
+  return {
+    status: parsed.ok ? "pass" : "fail",
+    errors: Array.isArray(parsed.errors) ? parsed.errors.map(String) : [],
+    hash: parsed.hash,
+    ...base,
+    ...Array.isArray(parsed.stale) ? { stale: parsed.stale.map(String) } : {},
+    ...typeof parsed.unchecked === "string" ? { unchecked: parsed.unchecked } : {},
+    ...typeof parsed.scope === "string" ? { scope: parsed.scope } : {}
+  };
+}
+var NOTHING = () => {
+};
+function recipeNotes(run) {
+  if (run.unchecked !== void 0) {
+    return [`**\u25B8 paqad** \xB7 the ${run.recipe} check could not check this: ${run.unchecked}`];
+  }
+  return run.scope === "all-tests" ? [
+    `**\u25B8 paqad** \xB7 the ${run.recipe} check could not read this change's diff, so it counted every test in the project`
+  ] : [];
+}
+function runningAgentId(rows, stage) {
+  const started = rows.filter((row2) => row2.kind === "stage_start" && row2.stage === stage).at(-1);
+  return typeof started?.agent_id === "string" ? started.agent_id : void 0;
+}
+function checkRecipe(input) {
+  const { projectRoot, sessionId, stage } = input;
+  const dirName = currentFeature(projectRoot, sessionId);
+  if (dirName === null) return { verdict: "skip", run: null, lines: [], record: NOTHING };
+  const rows = readFeatureStageUnit(projectRoot, dirName);
+  const lane = readChangeConstants(projectRoot, dirName, rows).lane;
+  if (lane === "fast" || lane === "graduated") {
+    return { verdict: "skip", run: null, lines: [], record: NOTHING };
+  }
+  const run = runRecipeScript(stage, input.args, input.input, input.root);
+  if (run.status === "broken") {
+    return {
+      verdict: "warn",
+      run,
+      lines: run.errors.map((line) => `**\u25B8 paqad** \xB7 ${line}`),
+      record: NOTHING
+    };
+  }
+  if (run.status === "fail") {
+    const lines3 = run.errors.map((line) => `- ${line}`);
+    const started = rows.filter((row2) => row2.kind === "stage_start" && row2.stage === stage).at(-1);
+    const heldToRecipe = stageLedgerEra(rows, stage) === "v3" && Boolean(started?.agent_id);
+    return heldToRecipe ? {
+      verdict: "refuse",
+      run,
+      lines: [`**\u25B8 paqad** \xB7 the ${run.recipe} check found problems:`, ...lines3],
+      record: NOTHING
+    } : {
+      verdict: "warn",
+      run,
+      lines: [`**\u25B8 paqad** \xB7 the ${run.recipe} check found problems (noted only):`, ...lines3],
+      record: NOTHING
+    };
+  }
+  const agentId = process.env.SE_AGENT_ID?.trim() || runningAgentId(rows, stage);
+  return {
+    verdict: "pass",
+    run,
+    lines: recipeNotes(run),
+    record: () => {
+      if (run.hash === null) return;
+      appendFeatureStageRow(projectRoot, sessionId, dirName, {
+        kind: SKILL_USED_KIND,
+        stage,
+        ...agentId ? { agent: agentNameForStage(stage), agent_id: agentId } : {},
+        recipe: run.recipe,
+        source: "script",
+        script: run.script,
+        output_hash: run.hash,
+        recipe_root: run.root,
+        ...run.unchecked === void 0 ? {} : { unchecked: run.unchecked },
+        ...run.scope === void 0 ? {} : { scope: run.scope },
+        ...input.staleOk && input.staleOk.length > 0 ? { stale_ok: [...input.staleOk] } : {}
+      });
+    }
+  };
+}
+
 // src/fix-protocol/fix-proof-method-decision.ts
 init_esm_shims();
 var CATEGORY = "fix.proof_method";
@@ -31382,6 +31554,17 @@ function createPlanCommand() {
       root,
       options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null
     );
+    const recipeCheck = checkRecipe({
+      projectRoot: root,
+      sessionId,
+      stage: "planning",
+      args: [inputFile]
+    });
+    for (const line of recipeCheck.lines) console.error(line);
+    if (recipeCheck.verdict === "refuse") {
+      process.exitCode = 1;
+      return;
+    }
     const activeDir = currentFeature(root, sessionId);
     const changedFiles = (await loadChangeEvidence(root, {
       since: activeDir ? readChangeStartPoint(root, activeDir) : null
@@ -31405,6 +31588,7 @@ function createPlanCommand() {
       process.exitCode = 1;
       return;
     }
+    recipeCheck.record();
     for (const warning of result2.warnings ?? []) {
       console.warn(`**\u25B8 paqad** \xB7 ${warning}`);
     }
@@ -32546,6 +32730,21 @@ function createReportCommand() {
 init_esm_shims();
 import { readFileSync as readFileSync59, rmSync as rmSync8 } from "fs";
 var VERDICTS = ["safe-to-merge", "needs-attention", "inconclusive"];
+function judgmentOnlyRefusal(root, sessionId, template) {
+  const findings = Array.isArray(template.findings) ? template.findings : [];
+  if (findings.length === 0) return null;
+  const dirName = currentFeature(root, sessionId);
+  if (dirName === null) return null;
+  if (stageLedgerEra(readFeatureStageUnit(root, dirName), "review") !== "v3") return null;
+  const rows = collectMachineFindings(root).filter((row2) => row2.tier === "deterministic");
+  if (rows.length === 0) return null;
+  const cited = findings.some(
+    (finding) => rows.some(
+      (row2) => row2.file !== null && (finding.file === row2.file || finding.description?.includes(row2.file)) || finding.description?.includes(row2.source)
+    )
+  );
+  return cited ? null : "**\u25B8 paqad** \xB7 every finding is judgment, but the digest has machine rows. Confirm or contest them: cite a row by its file or source.";
+}
 function createReviewCommand() {
   const command = new Command("review").description(
     "Work with the per-feature review (build the evidence digest, record the review.json)"
@@ -32603,6 +32802,23 @@ function createReviewCommand() {
       root,
       options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null
     );
+    const recipeCheck = checkRecipe({
+      projectRoot: root,
+      sessionId,
+      stage: "review",
+      args: [inputFile]
+    });
+    for (const line of recipeCheck.lines) console.error(line);
+    if (recipeCheck.verdict === "refuse") {
+      process.exitCode = 1;
+      return;
+    }
+    const judgment = judgmentOnlyRefusal(root, sessionId, template);
+    if (judgment !== null) {
+      console.error(judgment);
+      process.exitCode = 1;
+      return;
+    }
     let result2;
     try {
       result2 = writeFeatureReview(root, sessionId, template);
@@ -32619,6 +32835,7 @@ function createReviewCommand() {
       } catch {
       }
     }
+    recipeCheck.record();
     console.log(`**\u25B8 paqad** \xB7 recorded ${result2.path}`);
     console.log(JSON.stringify({ recorded: true, path: result2.path }));
   });
@@ -37126,6 +37343,17 @@ function createSpecCommand() {
         options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null
       );
       const freezeFeature = currentFeature(options.projectRoot, freezeSession);
+      const recipeCheck = checkRecipe({
+        projectRoot: options.projectRoot,
+        sessionId: freezeSession,
+        stage: "specification",
+        args: [specFile]
+      });
+      for (const line of recipeCheck.lines) console.error(line);
+      if (recipeCheck.verdict === "refuse") {
+        process.exitCode = 1;
+        return;
+      }
       const pipelineConfig = readPipelineConfig(options.projectRoot);
       const freezeLaneRunsPipeline = laneRunsSpecPipeline(
         freezeFeature ? readChangeConstants(options.projectRoot, freezeFeature).lane : null
@@ -37237,6 +37465,7 @@ function createSpecCommand() {
       if (bundleDir !== null) {
         clearFrozenRun(options.projectRoot, bundleDir, options.keepInput ? [relSpec] : []);
       }
+      recipeCheck.record();
       console.log(`**\u25B8 paqad** \xB7 spec ${specId} frozen and signed off \u2014 sign-off recorded`);
       console.log(
         JSON.stringify({
@@ -37254,6 +37483,257 @@ function createSpecCommand() {
 
 // src/cli/commands/stage.ts
 init_esm_shims();
+import { existsSync as existsSync71 } from "fs";
+import { join as join115 } from "path";
+
+// src/feature-evidence/chain-repair.ts
+init_esm_shims();
+import { readFileSync as readFileSync70 } from "fs";
+import { join as join113 } from "path";
+var DEVELOPER_ACTOR = "developer";
+function repairActor(hasTerminal = process.stdin.isTTY) {
+  return hasTerminal ? DEVELOPER_ACTOR : ORCHESTRATOR_AGENT;
+}
+function stageAgentRepairRefusal(agentId) {
+  return agentId?.trim() ? "a stage agent cannot repair the ledger. Name the break in your report; the orchestrator or the developer runs this command" : null;
+}
+function repairChainBreak(projectRoot, sessionId, dirName, rowNumber, reason2, actor = ORCHESTRATOR_AGENT) {
+  const raw = readFileSync70(join113(projectRoot, featureFilePath(dirName, "stageEvidence")), "utf8");
+  const { breaks } = checkStageChain(raw);
+  if (!breaks.includes(rowNumber)) {
+    return {
+      ok: false,
+      message: breaks.length === 0 ? `the ledger has no chain break, so row ${rowNumber} needs no repair` : `row ${rowNumber} is not a chain break; the breaks are at rows ${breaks.join(", ")}`
+    };
+  }
+  const row2 = JSON.parse(raw.split("\n")[rowNumber - 1]);
+  const running = liveStageAgents(readFeatureStageUnit(projectRoot, dirName)).flatMap(
+    (live) => live.agent === null ? [] : [live.agent]
+  );
+  appendFeatureStageRow(projectRoot, sessionId, dirName, {
+    kind: RECORD_REPAIR_KIND,
+    agent: actor,
+    ...running.length > 0 ? { stage_agents_running: running } : {},
+    reason: reason2,
+    repairs_row: rowNumber,
+    repairs_hash: row2.content_hash
+  });
+  return { ok: true, message: `recorded a repair for row ${rowNumber}: ${reason2}` };
+}
+
+// src/stage-isolation/stage-begin.ts
+init_esm_shims();
+import { spawnSync as spawnSync4 } from "child_process";
+import { existsSync as existsSync70, readFileSync as readFileSync71 } from "fs";
+import { join as join114 } from "path";
+var STAGE_CONTENT_MAX_CHARS = 27e3;
+var STAGE_CONTENT_TRUNCATED_LINE = `truncated at ${STAGE_CONTENT_MAX_CHARS.toLocaleString("en-US")} characters; read the file for the rest`;
+var CONTENT_PILLARS = {
+  planning: [],
+  specification: ["plan"],
+  development: ["plan", "specification"],
+  review: ["specification"],
+  checks: ["review"],
+  documentation_sync: ["review"]
+};
+var MIN_CUT_STEP = 1024;
+function cliCommandRunner(projectRoot) {
+  const entry = process.argv[1] ?? "";
+  return (args) => {
+    const run = spawnSync4(process.execPath, [entry, ...args], {
+      cwd: projectRoot,
+      env: process.env,
+      encoding: "utf8",
+      maxBuffer: 64 * 1024 * 1024
+    });
+    return { ok: run.status === 0, stdout: run.stdout ?? "", stderr: run.stderr ?? "" };
+  };
+}
+function readIfPresent(path2) {
+  try {
+    return readFileSync71(path2, "utf8");
+  } catch {
+    return null;
+  }
+}
+function lastJsonLine(text2) {
+  const line = text2.trim().split("\n").at(-1);
+  try {
+    return JSON.parse(line);
+  } catch {
+    return null;
+  }
+}
+function hasOpenStart(rows, stage) {
+  let open = false;
+  for (const row2 of rows) {
+    if (row2.stage !== stage) continue;
+    if (row2.kind === "stage_start") open = true;
+    if (row2.kind === "stage_end") open = false;
+  }
+  return open;
+}
+function renderSlot(slot) {
+  return slot.kept >= slot.full.length ? slot.full : `${slot.full.slice(0, slot.kept)}
+${STAGE_CONTENT_TRUNCATED_LINE}`;
+}
+function contentFrom(slots) {
+  const pillars = {};
+  let request = "";
+  let digest;
+  for (const slot of slots) {
+    if (slot.name === "request") request = renderSlot(slot);
+    else if (slot.name === "review_digest") digest = renderSlot(slot);
+    else pillars[slot.name] = renderSlot(slot);
+  }
+  return { request, pillars, ...digest === void 0 ? {} : { review_digest: digest } };
+}
+function fitToCeiling(slots, sizeOf, ceiling) {
+  let content = contentFrom(slots);
+  while (sizeOf(content) > ceiling) {
+    const ordered = [...slots].sort((a, b) => b.kept - a.kept);
+    const longest = ordered[0];
+    if (longest === void 0 || longest.kept === 0) break;
+    const gap = longest.kept - (ordered[1]?.kept ?? 0);
+    const excess = sizeOf(content) - ceiling;
+    longest.kept = Math.max(0, longest.kept - Math.max(Math.min(excess, gap), MIN_CUT_STEP));
+    content = contentFrom(slots);
+  }
+  return content;
+}
+function contentSlots(projectRoot, dirName, stage, digestPath) {
+  const slots = [];
+  const add = (name, full) => slots.push({ name, full, kept: full.length });
+  const title = readFeatureRecord(projectRoot, dirName)?.title ?? "";
+  const body = readIfPresent(join114(projectRoot, featureFilePath(dirName, "request"))) ?? "";
+  add("request", [title, body].filter((part) => part !== "").join("\n\n"));
+  const pillarPaths = [];
+  for (const pillar of CONTENT_PILLARS[stage] ?? []) {
+    const path2 = featureFilePath(dirName, pillar);
+    const text2 = readIfPresent(join114(projectRoot, path2));
+    if (text2 === null) continue;
+    pillarPaths.push(path2);
+    add(pillar, text2);
+  }
+  if (digestPath !== null) {
+    const digest = readIfPresent(join114(projectRoot, digestPath)) ?? readIfPresent(digestPath);
+    if (digest !== null) add("review_digest", digest);
+  }
+  return { slots, pillarPaths };
+}
+function stageContentMarkdown(projectRoot, dirName, stage, ceiling) {
+  const { slots } = contentSlots(projectRoot, dirName, stage, null);
+  const render = (content) => [
+    "## Request",
+    "",
+    content.request,
+    ...Object.entries(content.pillars).flatMap(([name, text2]) => [
+      "",
+      `## Previous pillar: ${name}`,
+      "",
+      text2
+    ])
+  ].join("\n");
+  return render(fitToCeiling(slots, (content) => render(content).length, ceiling));
+}
+function emptyOutput(input) {
+  return {
+    stage: input.stage,
+    started: false,
+    rules_loaded: false,
+    pillars: [],
+    paths: {},
+    instructions: [],
+    commands: [],
+    content: { request: "", pillars: {} },
+    truncated: []
+  };
+}
+function failed(input, step, error) {
+  return { exitCode: 1, output: { ...emptyOutput(input), failed_step: step, error } };
+}
+function sessionArgs(input) {
+  return ["--project-root", input.projectRoot, "--session", input.sessionId];
+}
+function runStageBegin(input) {
+  const { projectRoot, sessionId, stage } = input;
+  const run = input.run ?? cliCommandRunner(projectRoot);
+  const before = currentFeature(projectRoot, sessionId);
+  const beforeRows = before === null ? [] : readFeatureStageUnit(projectRoot, before);
+  if (before !== null) {
+    const lane = readChangeConstants(projectRoot, before, beforeRows).lane;
+    const refusal = stageStartRefusal(
+      beforeRows,
+      stage,
+      lane,
+      stageReportOptions(projectRoot, before)
+    );
+    if (refusal) return failed(input, "stage start", refusal.message);
+  }
+  const started = !hasOpenStart(beforeRows, stage);
+  if (started) {
+    const agent = input.agent ? ["--agent", input.agent] : [];
+    const start = run(["stage", "start", stage, ...agent, ...sessionArgs(input)]);
+    if (!start.ok) return failed(input, "stage start", start.stderr.trim());
+  }
+  const dirName = currentFeature(projectRoot, sessionId);
+  if (dirName === null) {
+    return failed(input, "stage start", "no active change for this session");
+  }
+  const rulesPath = featureFilePath(dirName, "rulesLoaded");
+  let rulesLoaded = false;
+  if (stage === "development") {
+    const rules = run(["rules", "load", "--silent", ...sessionArgs(input)]);
+    if (!rules.ok) return failed(input, "rules load", rules.stderr.trim());
+    rulesLoaded = existsSync70(join114(projectRoot, rulesPath));
+  }
+  let digestPath = null;
+  if (stage === "review") {
+    const digest = run(["review", "digest", ...sessionArgs(input)]);
+    if (!digest.ok) return failed(input, "review digest", digest.stderr.trim());
+    const path2 = lastJsonLine(digest.stdout)?.path;
+    digestPath = typeof path2 === "string" ? path2 : null;
+  }
+  let checksPlan;
+  if (stage === "checks") {
+    const plan = run(["checks", "plan", "--json", "--project-root", projectRoot]);
+    if (!plan.ok) return failed(input, "checks plan", plan.stderr.trim());
+    checksPlan = lastJsonLine(plan.stdout) ?? plan.stdout.trim();
+  }
+  const policy = loadFeatureDevelopmentPolicy(projectRoot).policy;
+  const { slots, pillarPaths } = contentSlots(projectRoot, dirName, stage, digestPath);
+  const base = {
+    stage,
+    started,
+    rules_loaded: rulesLoaded,
+    pillars: pillarPaths,
+    paths: {
+      bundle: featureFilePath(dirName, "stageEvidence").replace(/\/[^/]+$/u, ""),
+      request: featureFilePath(dirName, "request"),
+      ...digestPath === null ? {} : { review_digest: digestPath },
+      ...rulesLoaded ? { rules_loaded: rulesPath } : {}
+    },
+    instructions: policy.stages[stage].instructions,
+    commands: stageCommandLines(stage, sessionId, input.agentId ?? null),
+    ...checksPlan === void 0 ? {} : { checks_plan: checksPlan }
+  };
+  const sizeOf = (content2) => JSON.stringify({
+    ...base,
+    content: content2,
+    truncated: slots.map((slot) => slot.name)
+  }).length;
+  const content = fitToCeiling(slots, sizeOf, STAGE_CONTENT_MAX_CHARS);
+  return {
+    exitCode: 0,
+    output: {
+      ...base,
+      content,
+      truncated: slots.filter((slot) => slot.kept < slot.full.length).map((slot) => slot.name)
+    }
+  };
+}
+
+// src/cli/commands/stage.ts
 function collectArtifact(value, previous = []) {
   return [...previous, value];
 }
@@ -37295,6 +37775,35 @@ function openStageAgentId(root, sessionId, dirName) {
   );
   return open.at(-1)?.agentId ?? null;
 }
+function briefRecipeSection(root, sessionId, stage, agentId) {
+  let recipe;
+  try {
+    recipe = resolveRecipe(stage);
+  } catch (error) {
+    return `**\u25B8 paqad** \xB7 ${error.message}`;
+  }
+  const text2 = `${RECIPE_HEADING}
+
+${recipe.body}`;
+  if (typeof process.env.SE_AGENT_ID === "string" && agentId !== null) {
+    const dirName = currentFeature(root, sessionId);
+    const codex = dirName !== null && readFeatureRecord(root, dirName)?.adapter === "codex-cli";
+    if (!codex) {
+      recordRecipeInjected(
+        root,
+        stage,
+        { session_id: sessionId, agent_id: agentId },
+        {
+          recipe: recipe.name,
+          recipe_hash: sha256Hex(text2),
+          recipe_root: recipe.root,
+          truncated: false
+        }
+      );
+    }
+  }
+  return text2;
+}
 function runStageBrief(stage, options) {
   if (!stage || !STAGE_AGENT_STAGES.includes(stage)) {
     console.error(
@@ -37313,11 +37822,19 @@ function runStageBrief(stage, options) {
         throw new Error(`no active change for session ${sessionId}`);
       }
       const agentId = options.agentId ?? process.env.SE_AGENT_ID ?? openStageAgentId(root, sessionId, dirName);
-      return buildStageBrief(stage, root, sessionId, {
+      const text2 = buildStageBrief(stage, root, sessionId, {
         agentId,
         resumed: true,
         full: options.full === true
       });
+      const recipe = briefRecipeSection(root, sessionId, stage, agentId);
+      const head = `${text2}
+
+${recipe}`;
+      const room = STAGE_CONTENT_MAX_CHARS - head.length - 2;
+      return `${head}
+
+${stageContentMarkdown(root, dirName, stage, room)}`;
     });
   } catch (error) {
     console.error(`could not build the ${stage} stage brief: ${error.message}`);
@@ -37326,13 +37843,144 @@ function runStageBrief(stage, options) {
   }
   console.log(brief);
 }
+function startRefusalMessage(root, sessionId, stage) {
+  try {
+    const dirName = currentFeature(root, sessionId);
+    if (dirName === null) return null;
+    const rows = readFeatureStageUnit(root, dirName);
+    const lane = readChangeConstants(root, dirName, rows).lane;
+    return stageStartRefusal(rows, stage, lane, stageReportOptions(root, dirName))?.message ?? null;
+  } catch {
+    return null;
+  }
+}
+async function stageEndRecipeCheck(root, sessionId, stage, options) {
+  try {
+    const dirName = currentFeature(root, sessionId);
+    if (dirName === null) return null;
+    if (stage === "development") {
+      const spec = join115(root, featureFilePath(dirName, "specification"));
+      if (!existsSync71(spec)) return null;
+      const start = readChangeStartPoint(root, dirName);
+      const added = start === null ? null : addedLinesSince(root, start);
+      return checkRecipe({
+        projectRoot: root,
+        sessionId,
+        stage,
+        args: added === null ? [spec, root] : [spec, root, "--added-stdin"],
+        ...added === null ? {} : { input: JSON.stringify(added) }
+      });
+    }
+    if (stage === "documentation_sync") {
+      const staleOk = options.staleOk ?? [];
+      const { files } = await loadChangeEvidence(root, {
+        since: readChangeStartPoint(root, dirName)
+      });
+      return checkRecipe({
+        projectRoot: root,
+        sessionId,
+        stage,
+        args: [root, ...staleOk.flatMap((path2) => ["--ok", path2])],
+        input: files.join("\n"),
+        staleOk
+      });
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+function runStageBeginPhase(stage, options) {
+  const root = options.projectRoot;
+  const name = stage ?? "";
+  const agent = options.agent ?? process.env.PAQAD_STAGE_AGENT ?? void 0;
+  const hint = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null;
+  const sessionId = resolveSessionId(root, hint);
+  const { exitCode, output } = STAGE_AGENT_STAGES.includes(name) ? runStageBegin({
+    projectRoot: root,
+    sessionId,
+    stage: name,
+    agent,
+    agentId: process.env.SE_AGENT_ID ?? null
+  }) : {
+    exitCode: 1,
+    output: {
+      stage: name,
+      failed_step: "stage start",
+      error: `name the stage to begin: one of ${STAGE_AGENT_STAGES.join(", ")}`
+    }
+  };
+  process.exitCode = exitCode;
+  process.stdout.write(`${JSON.stringify(output)}
+`);
+}
+function runStageRepair(rowArg, options) {
+  const root = options.projectRoot;
+  const refusal = stageAgentRepairRefusal(process.env.SE_AGENT_ID);
+  if (refusal !== null) {
+    console.error(`**\u25B8 paqad** \xB7 ${refusal}`);
+    process.exitCode = 1;
+    return;
+  }
+  const rowNumber = Number(rowArg);
+  const reason2 = options.reason?.trim();
+  if (!Number.isInteger(rowNumber) || rowNumber < 1 || !reason2) {
+    console.error('usage: paqad-ai stage repair <row> --reason "<what happened>"');
+    process.exitCode = 2;
+    return;
+  }
+  const hint = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null;
+  const sessionId = resolveSessionId(root, hint);
+  const dirName = currentFeature(root, sessionId);
+  if (dirName === null) {
+    console.error("**\u25B8 paqad** \xB7 no change is active, so there is no ledger to repair");
+    process.exitCode = 1;
+    return;
+  }
+  const result2 = repairChainBreak(root, sessionId, dirName, rowNumber, reason2, repairActor());
+  console[result2.ok ? "log" : "error"](`**\u25B8 paqad** \xB7 ${result2.message}`);
+  if (!result2.ok) process.exitCode = 1;
+}
+function runStageReport(agentId, options) {
+  if (!agentId) {
+    console.log(JSON.stringify(unknownAgentReport("", "name the agent id to report on")));
+    process.exitCode = 1;
+    return;
+  }
+  const root = options.projectRoot;
+  try {
+    const report3 = keepingLedgerSessionCache(root, () => {
+      const sessionId = resolveBriefSession(root, { session_id: options.session }, process.env);
+      const dirName = currentFeature(root, sessionId);
+      if (dirName === null) return null;
+      return buildStageReport(
+        readFeatureStageUnit(root, dirName),
+        agentId,
+        stageReportOptions(root, dirName)
+      );
+    });
+    if (report3 === null) process.exitCode = 1;
+    console.log(
+      JSON.stringify(report3 ?? unknownAgentReport(agentId, `no stage row names agent ${agentId}`))
+    );
+  } catch (error) {
+    console.log(
+      JSON.stringify(
+        unknownAgentReport(agentId, `could not read the ledger: ${error.message}`)
+      )
+    );
+  }
+}
 function createStageCommand() {
   return new Command("stage").description(
     "Mark a feature-development stage boundary in the stage-evidence ledger (clears the pre-code block for planning/specification)"
   ).argument(
     "<phase>",
-    "'start' or 'end', 'settings' to print and record this project's per-stage effort and model, or 'brief' to print a stage's brief for a resumed stage agent"
-  ).argument("[stage]", `one of: ${STAGE_ORDER.join(", ")}`).option("--project-root <path>", "Project root", process.cwd()).option(
+    "'start' or 'end', 'begin' to start a stage and print what it needs as one JSON object, 'settings' to print and record this project's per-stage effort and model, 'brief' to print a stage's brief for a resumed stage agent, 'report' to print what a stage agent reported, as JSON, from its agent id, or 'repair' to record why a ledger row broke the chain"
+  ).argument(
+    "[stage]",
+    `one of: ${STAGE_ORDER.join(", ")}; for 'report', the agent id; for 'repair', the row number`
+  ).option("--project-root <path>", "Project root", process.cwd()).option(
     "--session <id>",
     "Session id to record under (defaults to SE_SESSION / CLAUDE_SESSION_ID, then the shared ledger-session cache)"
   ).option(
@@ -37348,7 +37996,11 @@ function createStageCommand() {
   ).option(
     "--agent-id <id>",
     "On a `brief`, the host agent id to print on the command lines (defaults to SE_AGENT_ID, then the session's open stage-agent row)"
-  ).option("--full", "On a `brief`, print every read entry and instruction, with no length cut").action(async (phase, stage, options) => {
+  ).option("--full", "On a `brief`, print every read entry and instruction, with no length cut").option(
+    "--stale-ok <path>",
+    "On `end documentation_sync`, a doc that needs no change although the diff touches its module (repeatable)",
+    collectArtifact
+  ).option("--reason <text>", "On a `repair`, what happened to the row").action(async (phase, stage, options) => {
     if (phase === "settings") {
       runStageSettings(options);
       return;
@@ -37357,8 +38009,22 @@ function createStageCommand() {
       runStageBrief(stage, options);
       return;
     }
+    if (phase === "begin") {
+      runStageBeginPhase(stage, options);
+      return;
+    }
+    if (phase === "report") {
+      runStageReport(stage, options);
+      return;
+    }
+    if (phase === "repair") {
+      runStageRepair(stage, options);
+      return;
+    }
     if (phase !== "start" && phase !== "end") {
-      console.error(`unknown phase "${phase}" \u2014 use 'start', 'end', 'settings' or 'brief'`);
+      console.error(
+        `unknown phase "${phase}" \u2014 use 'start', 'end', 'begin', 'settings', 'brief', 'report' or 'repair'`
+      );
       process.exitCode = 1;
       return;
     }
@@ -37394,7 +38060,21 @@ function createStageCommand() {
       }
       artifactPaths = check.accepted.length > 0 ? check.accepted : void 0;
     }
+    if (phase === "start" && !options.title) {
+      const refusal = startRefusalMessage(root, sessionId, stage);
+      if (refusal !== null) {
+        console.error(`**\u25B8 paqad** \xB7 ${refusal}`);
+        process.exitCode = 1;
+        return;
+      }
+    }
     const raised = phase === "start" && !options.title && STAGE_ORDER.includes(stage) ? await raiseLaneOnStageStart(root, sessionId) : NO_RAISES;
+    const recipeCheck = phase === "end" ? await stageEndRecipeCheck(root, sessionId, stage, options) : null;
+    for (const line2 of recipeCheck?.lines ?? []) console.error(line2);
+    if (recipeCheck?.verdict === "refuse") {
+      process.exitCode = 1;
+      return;
+    }
     const recorded = recordMarkedStage(root, {
       sessionId,
       sessionSource,
@@ -37403,7 +38083,7 @@ function createStageCommand() {
       artifactPaths,
       title: phase === "start" ? options.title : void 0,
       issue: options.issue,
-      agent: options.agent ?? process.env.PAQAD_STAGE_AGENT ?? void 0,
+      agent: options.agent ?? (process.env.PAQAD_STAGE_AGENT?.trim() || void 0),
       agentId: phase === "start" ? process.env.SE_AGENT_ID : void 0
     });
     if (!recorded) {
@@ -37413,6 +38093,7 @@ function createStageCommand() {
       process.exitCode = 1;
       return;
     }
+    recipeCheck?.record();
     if (raised.authoring) console.log(laneRaisedLine(raised.authoring));
     if (raised.grown) console.log(laneRaisedLine(raised.grown));
     const line = markerNarrationLine(stage, phase);
@@ -37535,13 +38216,13 @@ init_esm_shims();
 // src/visual-evidence/attach.ts
 init_esm_shims();
 import { createHash as createHash14 } from "crypto";
-import { mkdirSync as mkdirSync30, readFileSync as readFileSync71, writeFileSync as writeFileSync26 } from "fs";
-import { basename as basename9, extname as extname4, join as join114 } from "path";
+import { mkdirSync as mkdirSync30, readFileSync as readFileSync73, writeFileSync as writeFileSync26 } from "fs";
+import { basename as basename9, extname as extname4, join as join117 } from "path";
 
 // src/visual-evidence/manifest.ts
 init_esm_shims();
-import { cpSync as cpSync2, mkdirSync as mkdirSync29, readFileSync as readFileSync70, renameSync as renameSync10, writeFileSync as writeFileSync25 } from "fs";
-import { basename as basename8, join as join113 } from "path";
+import { cpSync as cpSync2, mkdirSync as mkdirSync29, readFileSync as readFileSync72, renameSync as renameSync10, writeFileSync as writeFileSync25 } from "fs";
+import { basename as basename8, join as join116 } from "path";
 function slugifyCaption(caption) {
   const slug = caption.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40).replace(/^-+|-+$/g, "");
   return slug.length > 0 ? slug : "step";
@@ -37596,8 +38277,8 @@ function writeVisualEvidenceManifest(projectRoot, dirName, input) {
       `internal: visual-evidence manifest failed its own schema: ${errors.join("; ")}`
     );
   }
-  const target = join113(projectRoot, featureFilePath(dirName, "visualEvidence"));
-  mkdirSync29(join113(projectRoot, featureDir(dirName)), { recursive: true });
+  const target = join116(projectRoot, featureFilePath(dirName, "visualEvidence"));
+  mkdirSync29(join116(projectRoot, featureDir(dirName)), { recursive: true });
   const tmp = `${target}.tmp-${process.pid}`;
   writeFileSync25(tmp, `${JSON.stringify(manifest, null, 2)}
 `, "utf8");
@@ -37611,7 +38292,7 @@ function normalizeStep(step) {
 }
 function readVisualEvidenceManifest(projectRoot, dirName) {
   try {
-    const raw = readFileSync70(join113(projectRoot, featureFilePath(dirName, "visualEvidence")), "utf8");
+    const raw = readFileSync72(join116(projectRoot, featureFilePath(dirName, "visualEvidence")), "utf8");
     const manifest = JSON.parse(raw);
     return Array.isArray(manifest.steps) ? { ...manifest, steps: manifest.steps.map(normalizeStep) } : manifest;
   } catch {
@@ -37631,9 +38312,9 @@ function mergeAttachedSteps(attached, input) {
   return { ...input, steps, result: mergedVisualEvidenceResult(steps) };
 }
 function copyAttachedStepDirs(projectRoot, dirName, attached, tmpAbs) {
-  const bundleAbs = join113(projectRoot, featureDir(dirName));
+  const bundleAbs = join116(projectRoot, featureDir(dirName));
   for (const step of attached) {
-    cpSync2(join113(bundleAbs, step.dir), join113(tmpAbs, basename8(step.dir)), { recursive: true });
+    cpSync2(join116(bundleAbs, step.dir), join116(tmpAbs, basename8(step.dir)), { recursive: true });
   }
 }
 
@@ -37662,7 +38343,7 @@ function checkAcceptanceCriterion(projectRoot, dirName, ac) {
 function readPng(file) {
   let bytes;
   try {
-    bytes = readFileSync71(file);
+    bytes = readFileSync73(file);
   } catch {
     throw new VisualEvidenceAttachError(`cannot read ${file}: the file does not exist.`);
   }
@@ -37687,16 +38368,16 @@ function attachVisualEvidence(input) {
   const used = new Set(steps.map((step) => stepDirSlug(step.dir)));
   let index = Math.max(0, ...steps.map((step) => step.index));
   let attachedCount = steps.filter(isAttachedStep).length;
-  const bundleAbs = join114(projectRoot, featureDir(dirName));
+  const bundleAbs = join117(projectRoot, featureDir(dirName));
   for (const { file, bytes } of images) {
     index += 1;
     attachedCount += 1;
     const caption = input.label ?? basename9(file, extname4(file));
     const dir = `screenshots/${pad2(index)}-${uniqueSlug(slugifyCaption(caption), used)}`;
-    const dirAbs = join114(bundleAbs, dir);
+    const dirAbs = join117(bundleAbs, dir);
     mkdirSync30(dirAbs, { recursive: true });
-    writeFileSync26(join114(dirAbs, "image.png"), bytes);
-    writeFileSync26(join114(dirAbs, "caption.txt"), `${caption}
+    writeFileSync26(join117(dirAbs, "image.png"), bytes);
+    writeFileSync26(join117(dirAbs, "caption.txt"), `${caption}
 `, "utf8");
     steps.push({
       index,
@@ -37842,8 +38523,8 @@ function resolveVisualEvidencePlan(projectRoot, changedFiles) {
 // src/visual-evidence/runner.ts
 init_esm_shims();
 import { createHash as createHash15 } from "crypto";
-import { existsSync as existsSync70, mkdirSync as mkdirSync31, renameSync as renameSync11, rmSync as rmSync10, writeFileSync as writeFileSync27 } from "fs";
-import { join as join115 } from "path";
+import { existsSync as existsSync72, mkdirSync as mkdirSync31, renameSync as renameSync11, rmSync as rmSync10, writeFileSync as writeFileSync27 } from "fs";
+import { join as join118 } from "path";
 import { pathToFileURL as pathToFileURL3 } from "url";
 
 // src/visual-evidence/boot.ts
@@ -37924,7 +38605,7 @@ async function bootApp(projectRoot, profile) {
 
 // src/visual-evidence/gif.ts
 init_esm_shims();
-import { readFileSync as readFileSync72 } from "fs";
+import { readFileSync as readFileSync74 } from "fs";
 
 // node_modules/.pnpm/gifenc@1.0.3/node_modules/gifenc/dist/gifenc.esm.js
 init_esm_shims();
@@ -38071,7 +38752,7 @@ var CAPTION_BAR = {
   color: "#333333"
 };
 function toDataUrl(imageAbsPath) {
-  const bytes = readFileSync72(imageAbsPath);
+  const bytes = readFileSync74(imageAbsPath);
   return `data:image/png;base64,${bytes.toString("base64")}`;
 }
 async function renderFrame(page2, input, frameWidth, frameHeight) {
@@ -38265,7 +38946,7 @@ async function runVisualEvidence(input) {
     });
   }
   const tmpDir = `${featureScreenshotsDir(dirName)}.tmp-${process.pid}`;
-  const tmpAbs = join115(projectRoot, tmpDir);
+  const tmpAbs = join118(projectRoot, tmpDir);
   rmSync10(tmpAbs, { recursive: true, force: true });
   mkdirSync31(tmpAbs, { recursive: true });
   copyAttachedStepDirs(projectRoot, dirName, attached, tmpAbs);
@@ -38293,7 +38974,7 @@ async function runVisualEvidence(input) {
     if (gifFrames.length > 0) {
       const gifBytes = await assembleOverviewGif(page2, gifFrames);
       if (gifBytes) {
-        writeFileSync27(join115(tmpAbs, "overview.gif"), gifBytes);
+        writeFileSync27(join118(tmpAbs, "overview.gif"), gifBytes);
         gif = {
           file: "screenshots/overview.gif",
           frames: Math.min(gifFrames.length, 12),
@@ -38304,7 +38985,7 @@ async function runVisualEvidence(input) {
       }
     }
     await browser.close();
-    const liveAbs = join115(projectRoot, featureScreenshotsDir(dirName));
+    const liveAbs = join118(projectRoot, featureScreenshotsDir(dirName));
     rmSync10(liveAbs, { recursive: true, force: true });
     renameSync11(tmpAbs, liveAbs);
     const anyCaptured = steps.some((step) => step.status === "captured");
@@ -38406,12 +39087,12 @@ async function captureStep(page2, step, caption, baseUrl, env, position, ctx) {
   }
   const slug = uniqueSlug(slugifyCaption(caption), ctx.usedSlugs);
   const dir = `${pad2(position)}-${slug}`;
-  const dirAbs = join115(ctx.tmpAbs, dir);
+  const dirAbs = join118(ctx.tmpAbs, dir);
   mkdirSync31(dirAbs, { recursive: true });
   const png = await page2.screenshot({ fullPage: true });
-  const imageAbs = join115(dirAbs, "image.png");
+  const imageAbs = join118(dirAbs, "image.png");
   writeFileSync27(imageAbs, png);
-  writeFileSync27(join115(dirAbs, "caption.txt"), `${caption}
+  writeFileSync27(join118(dirAbs, "caption.txt"), `${caption}
 `, "utf8");
   return {
     step: {

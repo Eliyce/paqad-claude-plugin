@@ -1,8 +1,7 @@
 import { DatabaseImpact, ApiImpact, ClassificationResult, Lane } from '../index.js';
-import { S as StageLane } from '../types-BsILBLhT.js';
+import { F as FeatureChangeKind } from '../types-Byd5d27z.js';
+import { S as StageLane } from '../types-DQzxB-wr.js';
 import '../introspection-CLBqo7wO.js';
-
-type FeatureChangeKind = 'fix' | 'other';
 
 declare const ROUTED_WORKFLOWS: readonly ["feature-development", "project-question", "documentation-update", "module-documentation", "pentest", "design-test", "codebase-health", "site-map", "rules-analyze", "root-cause-analysis", "discovery", "no-workflow"];
 type RoutedWorkflow = (typeof ROUTED_WORKFLOWS)[number];

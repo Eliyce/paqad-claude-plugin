@@ -5,42 +5,55 @@ import {
   STAGE_BRIEF_NO_CHANGE_LINE,
   attributedModuleReads,
   buildStageBrief,
+  recordRecipeInjected,
   resolveBriefSession,
   safeAgentId,
   seedStageAgent,
+  seedStageAgentDetailed,
   stageBriefHookOutput,
   stageBriefMoreLine,
+  stageCommandLines,
   stageHelperStage
-} from "../chunk-KKFM5NFZ.js";
+} from "../chunk-AJJDRWUQ.js";
 import {
   SAFE_SESSION_ID,
   isSafeSessionId
-} from "../chunk-RNRTNP5G.js";
+} from "../chunk-JF6TE4UN.js";
+import "../chunk-T2DYH2S2.js";
 import "../chunk-RTZAA6F3.js";
-import "../chunk-LV7EC4F6.js";
-import "../chunk-Q6XU7C36.js";
+import "../chunk-PUC3TP4X.js";
+import "../chunk-LXTYM36H.js";
+import "../chunk-EACZPVNH.js";
+import "../chunk-5QVCE2TS.js";
+import "../chunk-4LG4FZGS.js";
 import "../chunk-V7J7RWKE.js";
-import "../chunk-X3HAQA2T.js";
-import "../chunk-YEGICCQQ.js";
-import "../chunk-PAHTBBCD.js";
-import "../chunk-FZLZ7446.js";
-import "../chunk-GEQP54V7.js";
-import "../chunk-J3GZEYF2.js";
+import "../chunk-G2MSPGDY.js";
+import "../chunk-UHS5UVPO.js";
+import "../chunk-53PFOOIY.js";
+import "../chunk-4ITMKDK4.js";
+import "../chunk-VNMVILDR.js";
+import "../chunk-K4WPGY2N.js";
+import "../chunk-4TUTFMPB.js";
+import "../chunk-OSV7OPM5.js";
+import "../chunk-COPQIHYE.js";
+import "../chunk-CAUO6IBF.js";
 import "../chunk-DNG6DDRS.js";
 import "../chunk-4K4CM3QN.js";
-import "../chunk-43DYNNYO.js";
+import "../chunk-CQ3PROW4.js";
+import "../chunk-NUSNYHWM.js";
 import "../chunk-QUDDQGFY.js";
-import "../chunk-G6D3JYXC.js";
+import "../chunk-6SSOF43R.js";
+import "../chunk-6NWB7L6Y.js";
 import "../chunk-AINYJ3Q2.js";
 import "../chunk-SU7RODZI.js";
-import "../chunk-3DGAT6MO.js";
-import "../chunk-GI5XTME2.js";
+import "../chunk-VAT2V4KU.js";
+import "../chunk-BEMI2GYT.js";
 import "../chunk-ER3R2ZPY.js";
 import "../chunk-VVRAO2BK.js";
-import "../chunk-NAANJBUQ.js";
-import "../chunk-N74EZSUC.js";
-import "../chunk-NDVN5PRV.js";
-import "../chunk-3STC3IVL.js";
+import "../chunk-6JQRLS2K.js";
+import "../chunk-AVCNQZLJ.js";
+import "../chunk-F5SGKBUG.js";
+import "../chunk-TQS7EXFH.js";
 import "../chunk-I7RXYXFH.js";
 import "../chunk-EMKBJVIL.js";
 export {
@@ -51,10 +64,13 @@ export {
   attributedModuleReads,
   buildStageBrief,
   isSafeSessionId,
+  recordRecipeInjected,
   resolveBriefSession,
   safeAgentId,
   seedStageAgent,
+  seedStageAgentDetailed,
   stageBriefHookOutput,
   stageBriefMoreLine,
+  stageCommandLines,
   stageHelperStage
 };
