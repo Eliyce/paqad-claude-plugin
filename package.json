@@ -1,180 +1,22 @@
 {
   "name": "paqad-ai",
-  "version": "1.121.0",
+  "version": "1.121.1",
   "description": "Spec-driven development framework — AI agents that think before they type",
   "type": "module",
   "license": "MIT",
-  "author": "Haider Lasani <haider@eliyce.com>",
-  "homepage": "https://github.com/Eliyce/paqad-ai#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Eliyce/paqad-ai.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Eliyce/paqad-ai/issues"
-  },
-  "keywords": [
-    "ai",
-    "ai-agents",
-    "ai-coding",
-    "claude-code",
-    "cursor",
-    "codex",
-    "gemini-cli",
-    "junie",
-    "antigravity",
-    "github-copilot",
-    "mcp",
-    "rag",
-    "code-generation",
-    "cli",
-    "agent-framework",
-    "spec-driven-development",
-    "developer-tools"
-  ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/HLasani"
-  },
-  "bin": {
-    "paqad-ai": "./dist/cli/index.js"
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.js"
     },
     "./cli": {
-      "import": "./dist/cli/index.js",
-      "types": "./dist/cli/index.d.ts"
+      "import": "./dist/cli/index.js"
     },
     "./rule-scripts": {
-      "import": "./dist/rule-scripts/index.js",
-      "types": "./dist/rule-scripts/index.d.ts"
+      "import": "./dist/rule-scripts/index.js"
     }
   },
-  "files": [
-    "dist",
-    "runtime",
-    "!runtime/claude-plugin/mod/**/*.test.ts",
-    "!runtime/claude-plugin/mod/test",
-    "!runtime/claude-plugin/skills/ask",
-    "!runtime/claude-plugin/skills/check-tickets",
-    "!runtime/claude-plugin/skills/decide-together",
-    "!runtime/claude-plugin/skills/discover",
-    "!runtime/claude-plugin/skills/get-connected",
-    "!runtime/claude-plugin/skills/ground-in-project",
-    "!runtime/claude-plugin/skills/plan-sprint",
-    "!runtime/claude-plugin/skills/post-tickets",
-    "!runtime/claude-plugin/skills/refine-ticket",
-    "!runtime/claude-plugin/skills/shape-idea",
-    "!runtime/claude-plugin/skills/size-work",
-    "!runtime/claude-plugin/skills/start",
-    "!runtime/claude-plugin/skills/understand-idea",
-    "!runtime/claude-plugin/skills/write-tickets",
-    ".claude-plugin/plugin.json",
-    "README.md",
-    "LICENSE",
-    "SECURITY.md",
-    "assets/icon.png",
-    "CHANGELOG.md"
-  ],
-  "publishConfig": {
-    "access": "public",
-    "provenance": true
-  },
-  "engines": {
-    "node": ">=22.0.0"
-  },
-  "scripts": {
-    "postinstall": "node runtime/scripts/postinstall.mjs",
-    "build": "tsup && node scripts/build-plugin-manifest.mjs && pnpm run graph-ui:build",
-    "build:server": "tsup && node scripts/build-plugin-manifest.mjs",
-    "build:discovery": "node scripts/build-discovery.mjs",
-    "dev": "tsup --watch",
-    "graph-ui:install": "cd graph-ui && pnpm install",
-    "graph-ui:dev": "cd graph-ui && pnpm dev",
-    "graph-ui:build": "cd graph-ui && pnpm build",
-    "graph-ui:test": "cd graph-ui && pnpm test --coverage",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "typecheck": "tsc --noEmit && tsc -p tsconfig.mod.json",
-    "check:surface-orphans": "node scripts/check-surface-orphans.mjs",
-    "check:surface-drift": "node scripts/check-surface-drift.mjs",
-    "plugin:validate": "node scripts/validate-plugin.mjs",
-    "plugin:test": "node scripts/test-plugin.mjs",
-    "ci": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:coverage && pnpm run graph-ui:test && pnpm run build && pnpm run plugin:validate && pnpm run plugin:test",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "pnpm run build && changeset publish",
-    "prepublishOnly": "node scripts/release-sync.mjs prepublish"
-  },
-  "dependencies": {
-    "@huggingface/transformers": "^4.3.1",
-    "@inquirer/prompts": "^8.7.4",
-    "ajv": "^8.20.0",
-    "chalk": "^6.0.1",
-    "commander": "^15.0.0",
-    "execa": "^10.1.1",
-    "fast-glob": "^3.3.3",
-    "gifenc": "1.0.3",
-    "handlebars": "^4.7.10",
-    "minimatch": "^10.2.6",
-    "openai": "^7.43.0",
-    "ora": "^9.4.1",
-    "pathe": "^2.0.3",
-    "yaml": "^2.9.1"
-  },
-  "peerDependencies": {
-    "typescript": ">=5.0.0"
-  },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
-  },
-  "devDependencies": {
-    "@changesets/changelog-git": "^0.2.1",
-    "@changesets/changelog-github": "^1.0.1",
-    "@changesets/cli": "^3.0.3",
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^26.6.5",
-    "@vitest/coverage-v8": "^5.0.5",
-    "eslint": "^10.12.0",
-    "globals": "^17.13.0",
-    "markdownlint-cli2": "^0.24.0",
-    "prettier": "^3.9.10",
-    "tsup": "^9.0.0",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.0",
-    "vitest": "^5.0.5"
-  },
-  "packageManager": "pnpm@10.17.1",
-  "pnpm": {
-    "overrides": {
-      "vite": ">=7.3.7 <8",
-      "postcss": ">=8.5.23 <9",
-      "nanoid@3": ">=3.3.12 <4",
-      "source-map-js": ">=1.2.2 <2",
-      "picomatch@4": ">=4.0.4 <5",
-      "launch-editor": ">=2.14.2 <3",
-      "shell-quote": ">=1.12.0 <2",
-      "katex": ">=0.18.2 <1"
-    },
-    "auditConfig": {
-      "ignoreGhsas": [
-        "GHSA-vfj7-8cjw-p6xm"
-      ]
-    },
-    "onlyBuiltDependencies": [
-      "onnxruntime-node",
-      "sharp"
-    ]
+  "paqadEngines": {
+    "@huggingface/transformers": "4.3.1",
+    "openai": "7.43.0"
   }
 }
