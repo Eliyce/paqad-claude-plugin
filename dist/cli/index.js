@@ -2,7 +2,7 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   holdRefreshContextLock
-} from "../chunk-LFJ5WHFZ.js";
+} from "../chunk-4YSL3H3L.js";
 import {
   buildStageBrief,
   candidatesNeedingDecision,
@@ -10,17 +10,17 @@ import {
   recordRecipeInjected,
   resolveBriefSession,
   stageCommandLines
-} from "../chunk-SWGCFQZC.js";
+} from "../chunk-EA7WCIUD.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-VTZBAEUH.js";
+} from "../chunk-CD7BHO4M.js";
 import {
   buildStageReport,
   stageReportOptions,
   stageStartRefusal,
   unknownAgentReport
-} from "../chunk-WXEIEUB5.js";
+} from "../chunk-TPOAR2KD.js";
 import {
   allChangedFiles,
   readLastUpdateRecord,
@@ -28,7 +28,7 @@ import {
 } from "../chunk-DLJE5DLJ.js";
 import {
   DISABLED_SESSION_DOC_TYPE
-} from "../chunk-J2SNHEWR.js";
+} from "../chunk-WMU3WBVU.js";
 import {
   AGENT_MEMORY_MAX_BYTES,
   AGENT_PERMISSION_ALLOW,
@@ -243,7 +243,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-WJTACNDJ.js";
+} from "../chunk-KF7BA3CX.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -270,7 +270,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-AE4DV75F.js";
+} from "../chunk-TO3PMAI3.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -282,7 +282,7 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-BRB6VCKF.js";
+} from "../chunk-XFCKUADR.js";
 import {
   estimateTokens
 } from "../chunk-RTZAA6F3.js";
@@ -292,14 +292,14 @@ import {
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-O5TCGCQK.js";
+} from "../chunk-WU3WSQ7A.js";
 import "../chunk-LXTYM36H.js";
 import {
   stageLedgerEra
 } from "../chunk-EACZPVNH.js";
 import {
   legacyAfterWindowLines
-} from "../chunk-6IAIQ5DT.js";
+} from "../chunk-BPNYMPZQ.js";
 import "../chunk-7XNJZUXF.js";
 import {
   createEvidence,
@@ -307,12 +307,12 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-XEDXTOD7.js";
+} from "../chunk-3MRHCXHI.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-L7BMBDZ6.js";
-import "../chunk-5MJGS2Q4.js";
+} from "../chunk-SLUI4S7L.js";
+import "../chunk-WV27ECFE.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -328,7 +328,7 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-RIHAMGVH.js";
+} from "../chunk-G2VOL3KM.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
@@ -336,7 +336,7 @@ import "../chunk-RT3UCM3E.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-PXTPPPZ3.js";
+} from "../chunk-LWXH3UEI.js";
 import {
   AGENT_RECORD_WRITER,
   DEFAULT_OBLIGATION_INDEX_PATH,
@@ -491,9 +491,9 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-EHPZCUNV.js";
-import "../chunk-JRAVPV6A.js";
-import "../chunk-MQDERSHW.js";
+} from "../chunk-2G623LFS.js";
+import "../chunk-4OT53QGU.js";
+import "../chunk-AEEA3F7L.js";
 import {
   SKIP_NEEDS_REASON_LINE,
   SKIP_NOT_ALLOWED_LINE,
@@ -516,7 +516,7 @@ import {
   stillWaitingLine,
   writeHld,
   writeHldMarkdown
-} from "../chunk-PR566AUZ.js";
+} from "../chunk-EXRE2AXL.js";
 import {
   AdapterFactory,
   BaseAdapter,
@@ -564,11 +564,11 @@ import {
   writeDetectionReport,
   writeFileAtomic,
   writeFrameworkVersionPreservingTimestamp
-} from "../chunk-AKHMN7B7.js";
+} from "../chunk-M4DUT7HB.js";
 import {
   EXPERT_OWNS
 } from "../chunk-V7J7RWKE.js";
-import "../chunk-X7QSRLMR.js";
+import "../chunk-7HJMOV3K.js";
 import {
   ADAPTER_TYPES
 } from "../chunk-UHS5UVPO.js";
@@ -578,22 +578,35 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-5OH2HKGY.js";
+} from "../chunk-PT3HE6LB.js";
 import {
   DECISION_EVIDENCE_DOC_TYPE,
   DecisionStore,
   addWriteInOption,
+  answerPendingDecision,
+  assertAlwaysAllowed,
+  assertEarlierCheckDone,
+  assertNotStageAgent,
+  buildQuestionBlock,
+  checkDecision,
   computeDecisionFingerprint,
   createPendingDecision,
   findDecisionPrecedents,
+  formatCreateOutput,
   listContractDecisions,
+  listStandingAnswers,
+  printDecisionOutput,
   readContractDecisions,
   readDecisionEvidence,
-  resolvePendingDecision
-} from "../chunk-2HCOGF5I.js";
+  readEarlierAnswers,
+  recordDecisionReuse,
+  recordSuggestionOutcome,
+  removeStandingAnswer,
+  suggestEarlierAnswer
+} from "../chunk-RAKX3W53.js";
 import {
   appendHooksLog
-} from "../chunk-GRDVDM4O.js";
+} from "../chunk-5CVEVYVX.js";
 import {
   CONTAINER_PROCESS_CAP,
   CONTAINER_WRAPPERS,
@@ -618,7 +631,7 @@ import {
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-JUSQJNRJ.js";
+} from "../chunk-GF77OCEC.js";
 import "../chunk-I5MEZHWF.js";
 import {
   ACTIVE_CAPABILITIES,
@@ -628,61 +641,61 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-X5TS5GIW.js";
+} from "../chunk-NNHYC2LD.js";
 import {
   DECISION_CATEGORIES
-} from "../chunk-5ON46VLR.js";
+} from "../chunk-STZ6VIJT.js";
 import "../chunk-VNMVILDR.js";
-import "../chunk-5KUWW2SW.js";
+import "../chunk-XINDDYVT.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-357XQNUV.js";
+} from "../chunk-OWLUDWXN.js";
 import {
   hudCostCachePath
-} from "../chunk-MTLVILTP.js";
+} from "../chunk-ZFTFBUXP.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-QFH2IJLG.js";
+} from "../chunk-5XOVHREN.js";
 import "../chunk-KKFSSPUD.js";
 import {
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-G2ERKXHR.js";
+} from "../chunk-2ZEIER6Z.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-PRBDX5SP.js";
+} from "../chunk-3OQQG72A.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-G5T76TTH.js";
+} from "../chunk-XLLCW335.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-BEMR36AK.js";
+} from "../chunk-FWE6HBND.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-Q47PFU2T.js";
+} from "../chunk-DWHMJEL3.js";
 import {
   clearPendingLane,
   recordMarkedStage,
   titleActiveFeature
-} from "../chunk-LNKEP4HT.js";
+} from "../chunk-PQSMDLX7.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -700,7 +713,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-5G2QI7AL.js";
+} from "../chunk-RPMQLQ3N.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -736,7 +749,7 @@ import {
   stampFeatureDocument,
   stampMergeCommit,
   withFileLockSync
-} from "../chunk-UBLNP2J3.js";
+} from "../chunk-N7XF5HIR.js";
 import {
   releaseLock,
   tryAcquireLock
@@ -759,7 +772,7 @@ import {
   readFeatureRecord,
   resolveAgentIdentity,
   validateVisualEvidenceRecord
-} from "../chunk-LFAJTL2F.js";
+} from "../chunk-QD7RCE74.js";
 import {
   buildDocumentEnvelope,
   buildTextHeader,
@@ -767,7 +780,7 @@ import {
   rowRecordedAt,
   sha256Hex,
   stampBundleRow
-} from "../chunk-XPYTBQJV.js";
+} from "../chunk-4MQZPCLY.js";
 import {
   AGENT_HOST_TARGETS,
   CHIEF_ARCHITECT_AGENT_NAME,
@@ -795,7 +808,7 @@ import {
   splitSkillFrontmatter,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "../chunk-G4TAWNZH.js";
+} from "../chunk-BBV37BA3.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -831,7 +844,7 @@ import {
   stampLastApplied,
   syncFrameworkConfig,
   versionAtLeast
-} from "../chunk-M4YTSA5U.js";
+} from "../chunk-LLLBX77H.js";
 import {
   DEFAULT_BASE_BRANCH,
   DEFAULT_TRACKER_PATTERNS,
@@ -854,13 +867,13 @@ import {
   readUnitFile,
   sessionLedgerDir,
   stampSessionRow
-} from "../chunk-7JNCYM2L.js";
+} from "../chunk-4VFZMH6Y.js";
 import {
   keepingLedgerSessionCache,
   readLedgerSessionId,
   resolveSessionId
-} from "../chunk-64NG3SPK.js";
-import "../chunk-3E2AXQ3O.js";
+} from "../chunk-XAF7XXEZ.js";
+import "../chunk-PEDNW63C.js";
 import {
   ULID_BODY,
   chatRagPath,
@@ -873,10 +886,10 @@ import {
   join,
   parseFeatureDirName,
   ulid
-} from "../chunk-QJ4EG2V2.js";
+} from "../chunk-47TQR4LW.js";
 import {
   PATHS
-} from "../chunk-42HWSPMN.js";
+} from "../chunk-G3YYQOXJ.js";
 import {
   __toESM,
   init_esm_shims
@@ -5226,6 +5239,13 @@ function resolvePauseDecision(projectRoot, input) {
       ...input.note ? { note: input.note } : {}
     },
     respondedByProvider: DASHBOARD_ACTOR
+  });
+  recordSuggestionOutcome(projectRoot, {
+    forDecision: input.decisionId,
+    category: packet.category,
+    chosen: input.chosenOptionKey,
+    change: packet.change,
+    suggestion: packet.suggestion
   });
   appendDashboardAudit(projectRoot, "dashboard-decision-resolved", {
     decision_id: input.decisionId,
@@ -12822,7 +12842,7 @@ function resolveOpenPrDecision(projectRoot, defaultChoice, dirName) {
   try {
     const ships = shipsWith(projectRoot, dirName);
     const withEvidence2 = ships.evidence ? { evidence: ships.evidence } : {};
-    createPendingDecision(projectRoot, {
+    const created = createPendingDecision(projectRoot, {
       category: "delivery.open_pr",
       title: "Open a pull request for this change?",
       context: "Delivery is ready. Opening a PR pushes the branch to the remote \u2014 an outward-facing, hard-to-reverse action \u2014 so paqad is asking before it does." + ships.context,
@@ -12834,6 +12854,8 @@ function resolveOpenPrDecision(projectRoot, defaultChoice, dirName) {
       recommendation: normalizeChoice(defaultChoice) ? defaultChoice : "yes",
       change: dirName ? featureChangeKey(dirName) : null
     });
+    const choice = created.reused ? normalizeChoice(created.reused.chosen) : null;
+    if (choice) return { status: "resolved", choice };
   } catch {
   }
   return { status: "paused", message: pauseMessage() };
@@ -32225,7 +32247,7 @@ function raiseFixProofMethodDecision(projectRoot, dirName) {
     ({ packet }) => packet.category === CATEGORY && packet.change === change
   );
   if (existing) return { id: existing.packet.id, raised: false };
-  const { id } = createPendingDecision(projectRoot, {
+  const { id, reused } = createPendingDecision(projectRoot, {
     category: CATEGORY,
     title: QUESTION,
     context: "This change is a fix that changes behaviour, so paqad wants proof the problem is gone. A test that fails before the fix and passes after it is the strongest proof; pick another method only when no test can reach the problem.",
@@ -32234,7 +32256,7 @@ function raiseFixProofMethodDecision(projectRoot, dirName) {
     origin: "fix-proof",
     change
   });
-  return { id, raised: true };
+  return { id, raised: reused === void 0 };
 }
 function fixProofMethodLine(id, options = {}) {
   if (options.deferred) {
@@ -32268,13 +32290,23 @@ function mergedClaims(projectRoot, dirName) {
   const conflicts = readExperts(projectRoot, dirName)?.synthesis?.conflicts ?? [];
   return conflicts.filter((conflict) => conflict.ruling === "compatible" && conflict.merged_claim).map((conflict) => ({ target: conflict.target, merged_claim: conflict.merged_claim }));
 }
+function earlierCheckFields(packet) {
+  if (packet.earlier_check?.status === "required") {
+    return {
+      earlier_check_required: true,
+      next: `Before asking, run paqad-ai decision check ${packet.id}, read up to 5 with --read where it lists titles, then run paqad-ai decision suggest ${packet.id}.`
+    };
+  }
+  return packet.suggestion ? { question: buildQuestionBlock(packet.id, packet) } : {};
+}
 function pendingRoundPackets(projectRoot, dirName) {
   const change = featureChangeKey(dirName);
   return readContractDecisions(projectRoot).filter(({ packet, status }) => status === "pending" && packet.change === change).map(({ packet }) => ({
     id: packet.id,
     category: packet.category,
     title: packet.title,
-    recommendation: packet.recommendation
+    recommendation: packet.recommendation,
+    ...earlierCheckFields(packet)
   })).sort((a, b) => a.id.localeCompare(b.id));
 }
 function buildQuestionRound(projectRoot, dirName) {
@@ -33874,11 +33906,14 @@ function fail3(message) {
   console.error(message);
   process.exitCode = 1;
 }
+function failWith(error) {
+  fail3(error instanceof Error ? error.message : String(error));
+}
 function createDecisionCommand() {
   const command = new Command("decision").description(
     "Create, resolve, or list Decision Pause packets (the install-resolved verb the Decision Pause Contract names \u2014 works in any onboarded project)"
   );
-  command.command("create").description("Open a decision packet (mints a D-<ULID> id; validates the category)").requiredOption("--category <category>", "one of the Decision Pause categories").requiredOption("--title <title>", "short title").requiredOption("--context <context>", "why this decision is needed").option("--option <key=label>", "an option (repeatable, at least 2)", collectOption).option("--recommendation <key>", "option_key you recommend").option("--session <id>", "Session whose active change the packet belongs to").option("--project-root <path>", "Project root", process.cwd()).action((options) => {
+  command.command("create").description("Open a decision packet (mints a D-<ULID> id; validates the category)").requiredOption("--category <category>", "one of the Decision Pause categories").requiredOption("--title <title>", "short title").requiredOption("--context <context>", "why this decision is needed").option("--option <key=label>", "an option (repeatable, at least 2)", collectOption).option("--recommendation <key>", "option_key you recommend").option("--ask-anyway", "Open the question even when a standing answer matches").option("--session <id>", "Session whose active change the packet belongs to").option("--project-root <path>", "Project root", process.cwd()).action((options) => {
     if (!DECISION_CATEGORIES.includes(options.category)) {
       fail3(
         `Unknown category "${options.category}". Did you mean "${nearestCategory(options.category)}"? Valid categories: ${DECISION_CATEGORIES.join(", ")}.`
@@ -33892,32 +33927,89 @@ function createDecisionCommand() {
         context: options.context,
         options: options.option ?? [],
         recommendation: options.recommendation ?? null,
-        change: activeChangeKey(options.projectRoot, options.session)
+        change: activeChangeKey(options.projectRoot, options.session),
+        askAnyway: options.askAnyway === true,
+        agentWorded: true
       });
-      console.log(JSON.stringify(result2, null, 2));
+      if (result2.reused) {
+        const active = resolveActiveChange(options.projectRoot, options.session);
+        if (active) {
+          writeFeatureDecisionsIndex(options.projectRoot, active.dirName, {
+            sessionId: active.sessionId
+          });
+        }
+      }
+      console.log(printDecisionOutput(formatCreateOutput(options.projectRoot, result2)));
     } catch (error) {
-      fail3(error instanceof Error ? error.message : String(error));
+      failWith(error);
     }
   });
-  command.command("resolve").description("Resolve a pending packet (moves it to resolved/); --other adds a write-in").argument("<id>", "the D-<ULID> id").argument("<chosen>", "the chosen option_key (ignored when --other is given)").argument("[rationale...]", "optional free-text rationale").option("--other <text>", "resolve to a minted write-in option with this label").option("--session <id>", "Session whose active change the decision belongs to").option("--project-root <path>", "Project root", process.cwd()).action((id, chosen, rationale, options) => {
+  command.command("resolve").description("Resolve a pending packet (moves it to resolved/); --other adds a write-in").argument("<id>", "the D-<ULID> id").argument("<chosen>", "the chosen option_key (ignored when --other is given)").argument("[rationale...]", "optional free-text rationale").option("--other <text>", "resolve to a minted write-in option with this label").option("--always", "also keep this answer as a standing answer for this question").option("--session <id>", "Session whose active change the decision belongs to").option("--project-root <path>", "Project root", process.cwd()).action((id, chosen, rationale, options) => {
     try {
+      if (options.always) assertAlwaysAllowed(options.projectRoot, id, options.other);
+      assertEarlierCheckDone(options.projectRoot, id);
       const chosenKey = options.other ? addWriteInOption(options.projectRoot, id, options.other) : chosen;
       const active = resolveActiveChange(options.projectRoot, options.session);
-      const { path: path2 } = resolvePendingDecision(
+      const { path: path2, rule } = answerPendingDecision(
         options.projectRoot,
         id,
         chosenKey,
         rationale.join(" "),
-        { change: active ? active.key : null }
+        { change: active ? active.key : null, always: options.always === true }
       );
       if (active) {
         writeFeatureDecisionsIndex(options.projectRoot, active.dirName, {
           sessionId: active.sessionId
         });
       }
-      console.log(JSON.stringify({ path: path2, chosen: chosenKey }, null, 2));
+      console.log(
+        JSON.stringify(
+          { path: path2, chosen: chosenKey, ...rule ? { standing_answer: rule.id } : {} },
+          null,
+          2
+        )
+      );
     } catch (error) {
-      fail3(error instanceof Error ? error.message : String(error));
+      failWith(error);
+    }
+  });
+  command.command("check").description("Print the earlier answers to check first, or the question block once checked").argument("<id>", "the D-<ULID> id").option("--read <D-id...>", "print up to 5 offered answers in full, and nothing else").option("--project-root <path>", "Project root", process.cwd()).action((id, options) => {
+    try {
+      console.log(
+        printDecisionOutput(
+          options.read ? readEarlierAnswers(options.projectRoot, id, options.read) : checkDecision(options.projectRoot, id)
+        )
+      );
+    } catch (error) {
+      failWith(error);
+    }
+  });
+  command.command("suggest").description("Record which earlier answer fits this question, or that none does").argument("<id>", "the D-<ULID> id").option("--earlier <id>", "the earlier decision whose answer fits").option("--option <key>", "this question's option_key for that answer").option("--none", "no earlier answer fits").option("--reason <text>", "why it fits, or why none does").option("--project-root <path>", "Project root", process.cwd()).action(
+    (id, options) => {
+      try {
+        console.log(
+          JSON.stringify(suggestEarlierAnswer(options.projectRoot, id, options), null, 2)
+        );
+      } catch (error) {
+        failWith(error);
+      }
+    }
+  );
+  const standing = command.command("standing").description("List or remove the standing answers that skip a question");
+  standing.command("list").description("Print the standing answers").option("--project-root <path>", "Project root", process.cwd()).action((options) => {
+    try {
+      console.log(JSON.stringify(listStandingAnswers(options.projectRoot), null, 2));
+    } catch (error) {
+      failWith(error);
+    }
+  });
+  standing.command("remove").description("Remove one standing answer, so its question is asked again").argument("<id>", "the rule id").option("--project-root <path>", "Project root", process.cwd()).action((id, options) => {
+    try {
+      assertNotStageAgent("remove a standing answer");
+      const rule = removeStandingAnswer(options.projectRoot, id);
+      console.log(JSON.stringify({ removed: rule.id }, null, 2));
+    } catch (error) {
+      failWith(error);
     }
   });
   command.command("list").description("List pending and resolved decision packets").option("--project-root <path>", "Project root", process.cwd()).option("--json", "emit machine-readable JSON").action((options) => {
@@ -35711,6 +35803,12 @@ function answerFromPrecedent(projectRoot, question) {
   if (top.chosen === null) {
     return null;
   }
+  recordDecisionReuse(projectRoot, {
+    decisionId: top.decision_id,
+    matchKind: "similar",
+    category: top.category,
+    note: `score ${top.score.toFixed(2)}`
+  });
   return { question: question.business_text, answer: top.chosen, source: top.decision_id };
 }
 function autoAnswerQuestions(projectRoot, questions) {
@@ -36261,11 +36359,19 @@ function mintExpertConflictDecisions(projectRoot, merged, synthesisConflicts, di
     if (prior?.status === "pending") continue;
     if (prior) {
       autoResolved.push({ target: conflict.target, chosen: prior.chosen, source: prior.id });
+      recordDecisionReuse(projectRoot, {
+        decisionId: prior.id,
+        matchKind: "exact",
+        category: CATEGORY3,
+        chosenOptionKey: prior.key,
+        note: "expert-conflict-fork",
+        change: dirName ? featureChangeKey(dirName) : null
+      });
       continue;
     }
     const { options, recommendation } = buildOptions(conflict, chief?.recommendation);
     const context2 = buildContext(conflict, chief?.rationale, token);
-    const { id } = createPendingDecision(projectRoot, {
+    const { id, reused } = createPendingDecision(projectRoot, {
       category: CATEGORY3,
       title: `Experts disagree on ${conflict.target}`,
       context: context2,
@@ -36274,6 +36380,10 @@ function mintExpertConflictDecisions(projectRoot, merged, synthesisConflicts, di
       origin: "expert-conflict",
       ...dirName ? { change: featureChangeKey(dirName) } : {}
     });
+    if (reused) {
+      autoResolved.push({ target: conflict.target, chosen: reused.label, source: id });
+      continue;
+    }
     minted.push({ id, target: conflict.target });
   }
   return { minted, autoResolved };
@@ -36294,7 +36404,12 @@ function collectKnownForks(projectRoot) {
     const chosenOption = packet.options.find((option2) => option2.option_key === resolved.chosen);
     if (!chosenOption) continue;
     if (forks.get(match[0])?.status !== "resolved") {
-      forks.set(match[0], { status: "resolved", id: packet.id, chosen: chosenOption.label });
+      forks.set(match[0], {
+        status: "resolved",
+        id: packet.id,
+        chosen: chosenOption.label,
+        key: chosenOption.option_key
+      });
     }
   }
   return forks;
