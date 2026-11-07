@@ -10,17 +10,17 @@ import {
   recordRecipeInjected,
   resolveBriefSession,
   stageCommandLines
-} from "../chunk-EA7WCIUD.js";
+} from "../chunk-3BMW7JXM.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-CD7BHO4M.js";
+} from "../chunk-ENDFYUP2.js";
 import {
   buildStageReport,
   stageReportOptions,
   stageStartRefusal,
   unknownAgentReport
-} from "../chunk-TPOAR2KD.js";
+} from "../chunk-IXSB7SNW.js";
 import {
   allChangedFiles,
   readLastUpdateRecord,
@@ -28,7 +28,7 @@ import {
 } from "../chunk-DLJE5DLJ.js";
 import {
   DISABLED_SESSION_DOC_TYPE
-} from "../chunk-WMU3WBVU.js";
+} from "../chunk-LCCMZN5L.js";
 import {
   AGENT_MEMORY_MAX_BYTES,
   AGENT_PERMISSION_ALLOW,
@@ -218,6 +218,7 @@ import {
   saveObligationIndex,
   saveSpecReviewReport,
   scanBoundaries,
+  scopeFindingsToChange,
   selectTestRunner,
   sessionChecksTarget,
   setWaiting,
@@ -243,7 +244,7 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-KF7BA3CX.js";
+} from "../chunk-NQJNLT6G.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
@@ -270,7 +271,7 @@ import {
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-TO3PMAI3.js";
+} from "../chunk-RJDB5G6D.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -282,7 +283,7 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-XFCKUADR.js";
+} from "../chunk-7SUMAYVH.js";
 import {
   estimateTokens
 } from "../chunk-RTZAA6F3.js";
@@ -292,14 +293,14 @@ import {
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-WU3WSQ7A.js";
+} from "../chunk-PDWCEM3K.js";
 import "../chunk-LXTYM36H.js";
 import {
   stageLedgerEra
 } from "../chunk-EACZPVNH.js";
 import {
   legacyAfterWindowLines
-} from "../chunk-BPNYMPZQ.js";
+} from "../chunk-725Q5LUZ.js";
 import "../chunk-7XNJZUXF.js";
 import {
   createEvidence,
@@ -307,12 +308,12 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-3MRHCXHI.js";
+} from "../chunk-QCVNHCAN.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-SLUI4S7L.js";
-import "../chunk-WV27ECFE.js";
+} from "../chunk-SO4X6JB2.js";
+import "../chunk-AH6ZOV4E.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -328,7 +329,7 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-G2VOL3KM.js";
+} from "../chunk-JGU73UU2.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-5QVCE2TS.js";
@@ -336,7 +337,7 @@ import "../chunk-RT3UCM3E.js";
 import {
   compileRuleScripts,
   readDrift
-} from "../chunk-LWXH3UEI.js";
+} from "../chunk-N4HN5TC3.js";
 import {
   AGENT_RECORD_WRITER,
   DEFAULT_OBLIGATION_INDEX_PATH,
@@ -491,9 +492,9 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-2G623LFS.js";
-import "../chunk-4OT53QGU.js";
-import "../chunk-AEEA3F7L.js";
+} from "../chunk-7PWL2VQA.js";
+import "../chunk-C6QZVHVO.js";
+import "../chunk-SXA4TYZS.js";
 import {
   SKIP_NEEDS_REASON_LINE,
   SKIP_NOT_ALLOWED_LINE,
@@ -516,7 +517,7 @@ import {
   stillWaitingLine,
   writeHld,
   writeHldMarkdown
-} from "../chunk-EXRE2AXL.js";
+} from "../chunk-OA5HSPEM.js";
 import {
   AdapterFactory,
   BaseAdapter,
@@ -564,11 +565,11 @@ import {
   writeDetectionReport,
   writeFileAtomic,
   writeFrameworkVersionPreservingTimestamp
-} from "../chunk-M4DUT7HB.js";
+} from "../chunk-IH4CKPZJ.js";
 import {
   EXPERT_OWNS
 } from "../chunk-V7J7RWKE.js";
-import "../chunk-7HJMOV3K.js";
+import "../chunk-WBQ35KFG.js";
 import {
   ADAPTER_TYPES
 } from "../chunk-UHS5UVPO.js";
@@ -578,7 +579,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   writeCompiledRules
-} from "../chunk-PT3HE6LB.js";
+} from "../chunk-2GGB7T3F.js";
 import {
   DECISION_EVIDENCE_DOC_TYPE,
   DecisionStore,
@@ -603,7 +604,7 @@ import {
   recordSuggestionOutcome,
   removeStandingAnswer,
   suggestEarlierAnswer
-} from "../chunk-RAKX3W53.js";
+} from "../chunk-OVSHBP22.js";
 import {
   appendHooksLog
 } from "../chunk-5CVEVYVX.js";
@@ -631,7 +632,7 @@ import {
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-GF77OCEC.js";
+} from "../chunk-MPGRD5RY.js";
 import "../chunk-I5MEZHWF.js";
 import {
   ACTIVE_CAPABILITIES,
@@ -641,7 +642,7 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-NNHYC2LD.js";
+} from "../chunk-IBSMPAUD.js";
 import {
   DECISION_CATEGORIES
 } from "../chunk-STZ6VIJT.js";
@@ -653,49 +654,50 @@ import {
   missingBinaries,
   runPool,
   scanWorkingTree
-} from "../chunk-OWLUDWXN.js";
+} from "../chunk-HTS6PLZV.js";
 import {
   hudCostCachePath
 } from "../chunk-ZFTFBUXP.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-5XOVHREN.js";
+} from "../chunk-ZH27BKL2.js";
 import "../chunk-KKFSSPUD.js";
 import {
+  activeChangeFiles,
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-2ZEIER6Z.js";
+} from "../chunk-YWBEXPFT.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-O77JBFWW.js";
 import {
   markerNarrationLine
-} from "../chunk-3OQQG72A.js";
+} from "../chunk-PLNTDFAV.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-XLLCW335.js";
+} from "../chunk-IFFRLMAR.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-FWE6HBND.js";
+} from "../chunk-LWDNLPIR.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-DWHMJEL3.js";
+} from "../chunk-TSK2BFEB.js";
 import {
   clearPendingLane,
   recordMarkedStage,
   titleActiveFeature
-} from "../chunk-PQSMDLX7.js";
+} from "../chunk-TNZKXUXS.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -713,7 +715,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-RPMQLQ3N.js";
+} from "../chunk-IJXPCB5G.js";
 import {
   require_out
 } from "../chunk-DNG6DDRS.js";
@@ -749,7 +751,7 @@ import {
   stampFeatureDocument,
   stampMergeCommit,
   withFileLockSync
-} from "../chunk-N7XF5HIR.js";
+} from "../chunk-HFLY3JB2.js";
 import {
   releaseLock,
   tryAcquireLock
@@ -772,7 +774,7 @@ import {
   readFeatureRecord,
   resolveAgentIdentity,
   validateVisualEvidenceRecord
-} from "../chunk-QD7RCE74.js";
+} from "../chunk-MMUZLNZF.js";
 import {
   buildDocumentEnvelope,
   buildTextHeader,
@@ -808,7 +810,7 @@ import {
   splitSkillFrontmatter,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "../chunk-BBV37BA3.js";
+} from "../chunk-JO63DVE7.js";
 import {
   readGitState
 } from "../chunk-AINYJ3Q2.js";
@@ -844,7 +846,7 @@ import {
   stampLastApplied,
   syncFrameworkConfig,
   versionAtLeast
-} from "../chunk-LLLBX77H.js";
+} from "../chunk-52MLSHP2.js";
 import {
   DEFAULT_BASE_BRANCH,
   DEFAULT_TRACKER_PATTERNS,
@@ -869,10 +871,11 @@ import {
   stampSessionRow
 } from "../chunk-4VFZMH6Y.js";
 import {
+  explicitSessionHint,
   keepingLedgerSessionCache,
   readLedgerSessionId,
   resolveSessionId
-} from "../chunk-XAF7XXEZ.js";
+} from "../chunk-FCULNH3A.js";
 import "../chunk-PEDNW63C.js";
 import {
   ULID_BODY,
@@ -30950,6 +30953,98 @@ async function joinRag(projectRoot, options) {
 
 // src/cli/commands/lane.ts
 init_esm_shims();
+
+// src/pipeline/route-switch.ts
+init_esm_shims();
+
+// src/pipeline/route-override-log.ts
+init_esm_shims();
+import { appendFileSync as appendFileSync6, mkdirSync as mkdirSync23, readFileSync as readFileSync56 } from "fs";
+import { join as join100 } from "path";
+var ROUTE_OVERRIDE_FILE = ".route-overrides.jsonl";
+function overrideLogPath(projectRoot, sessionId) {
+  return join100(
+    projectRoot,
+    sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId),
+    ROUTE_OVERRIDE_FILE
+  );
+}
+function appendRouteOverride(projectRoot, sessionId, input) {
+  const row2 = {
+    source: input.source ?? "agent-override",
+    ts: (input.now ?? (() => /* @__PURE__ */ new Date()))().toISOString(),
+    hook_label: input.hookLabel,
+    agent_label: input.agentLabel,
+    ...input.reason === void 0 ? {} : { reason: input.reason }
+  };
+  mkdirSync23(join100(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId)), {
+    recursive: true
+  });
+  appendFileSync6(overrideLogPath(projectRoot, sessionId), `${JSON.stringify(row2)}
+`, "utf8");
+  return row2;
+}
+
+// src/pipeline/route-switch.ts
+var FEATURE_ROUTE = "feature-development";
+var ROUTE_SWITCHED_LINE = "**\u25B8 paqad** \xB7 route set to feature-development: a change was opened in this session.";
+function correctedState(state, target) {
+  const pausedIndex = state.paused.map((entry) => entry.workflow).lastIndexOf(target);
+  if (pausedIndex === -1) {
+    return { ...state, active: { workflow: target } };
+  }
+  return {
+    ...state,
+    active: state.paused[pausedIndex],
+    paused: state.paused.filter((_, index) => index !== pausedIndex)
+  };
+}
+function writeRouteCorrection(root, sessionId, target, audit = {}) {
+  const state = readWorkflowState(root, sessionId);
+  const priorRoute = readSessionRoute(root, sessionId);
+  const hookLabel = state.active?.workflow ?? priorRoute?.workflow ?? null;
+  writeWorkflowState(root, sessionId, correctedState(state, target));
+  writeSessionRoute(
+    root,
+    {
+      workflow: target,
+      query: priorRoute?.query ?? "",
+      ...priorRoute?.adapter === void 0 ? {} : { adapter: priorRoute.adapter }
+    },
+    sessionId
+  );
+  if (!isFeatureDevelopmentRoute(target)) {
+    clearPendingLane(root, sessionId);
+  }
+  appendRouteOverride(root, sessionId, {
+    hookLabel,
+    agentLabel: target,
+    ...audit.source === void 0 ? {} : { source: audit.source },
+    ...audit.reason === void 0 ? {} : { reason: audit.reason }
+  });
+  return hookLabel;
+}
+function switchRouteToFeatureDevelopment(root, sessionId, source2) {
+  if (readWorkflowState(root, sessionId).active?.workflow === FEATURE_ROUTE) {
+    return false;
+  }
+  writeRouteCorrection(root, sessionId, FEATURE_ROUTE, { source: source2 });
+  return true;
+}
+function announceRouteSwitch(root, sessionId, source2) {
+  try {
+    if (switchRouteToFeatureDevelopment(root, sessionId, source2)) {
+      console.log(ROUTE_SWITCHED_LINE);
+    }
+  } catch (error) {
+    appendHooksLog(
+      root,
+      `route-switch: ${source2} failed: ${error instanceof Error ? error.message : String(error)}`
+    );
+  }
+}
+
+// src/cli/commands/lane.ts
 var SETTABLE_LANES = ["fast", "graduated", "full"];
 function createLaneCommand() {
   const command = new Command("lane").description(
@@ -30957,7 +31052,7 @@ function createLaneCommand() {
   );
   command.command("set").description("Set (raise) the lane the end-of-change isolation check reads for this change").argument("<lane>", `one of: ${SETTABLE_LANES.join(", ")}`).option("--project-root <path>", "Project root", process.cwd()).option(
     "--session <id>",
-    "Session id (defaults to SE_SESSION / CLAUDE_SESSION_ID, then the shared ledger-session cache)"
+    "Session id (defaults to SE_SESSION / CLAUDE_SESSION_ID / CLAUDE_CODE_SESSION_ID, then the shared ledger-session cache)"
   ).action((lane, options) => {
     if (!SETTABLE_LANES.includes(lane)) {
       console.error(`unknown lane "${lane}" \u2014 one of: ${SETTABLE_LANES.join(", ")}`);
@@ -30966,7 +31061,7 @@ function createLaneCommand() {
     }
     const requested = lane;
     const root = options.projectRoot;
-    const sessionHint2 = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null;
+    const sessionHint2 = explicitSessionHint(options.session);
     const sessionId = resolveSessionId(root, sessionHint2);
     const dirName = currentFeature(root, sessionId);
     if (!dirName) {
@@ -30988,6 +31083,9 @@ function createLaneCommand() {
     } else {
       console.log(`**\u25B8 paqad** \xB7 lane already ${after} \u2014 nothing to change.`);
     }
+    if (sessionHint2?.trim()) {
+      announceRouteSwitch(root, sessionId, "lane-set");
+    }
     console.log(
       JSON.stringify({
         set: true,
@@ -30998,10 +31096,12 @@ function createLaneCommand() {
       })
     );
   });
-  command.command("show").description("Show the lane recorded for the active change").option("--project-root <path>", "Project root", process.cwd()).option("--session <id>", "Session id (defaults to SE_SESSION / CLAUDE_SESSION_ID)").action((options) => {
+  command.command("show").description("Show the lane recorded for the active change").option("--project-root <path>", "Project root", process.cwd()).option(
+    "--session <id>",
+    "Session id (defaults to SE_SESSION / CLAUDE_SESSION_ID / CLAUDE_CODE_SESSION_ID)"
+  ).action((options) => {
     const root = options.projectRoot;
-    const sessionHint2 = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null;
-    const sessionId = resolveSessionId(root, sessionHint2);
+    const sessionId = resolveSessionId(root, explicitSessionHint(options.session));
     const dirName = currentFeature(root, sessionId);
     if (!dirName) {
       console.error("no active feature \u2014 run `paqad-ai stage start planning` first");
@@ -31016,8 +31116,8 @@ function createLaneCommand() {
 
 // src/cli/commands/managed-settings.ts
 init_esm_shims();
-import { mkdirSync as mkdirSync23, writeFileSync as writeFileSync21 } from "fs";
-import { join as join100 } from "path";
+import { mkdirSync as mkdirSync24, writeFileSync as writeFileSync21 } from "fs";
+import { join as join101 } from "path";
 var MANAGED_SETTINGS_FILE = "paqad.json";
 var MANAGED_SETTINGS_REFUSAL = "managed-settings is part of paqad for teams; set enterprise.enabled=true";
 var MANAGED_HOOK_TIMEOUT_SEC = 30;
@@ -31056,9 +31156,9 @@ function createManagedSettingsCommand() {
       process.stdout.write(body);
       return;
     }
-    const target = join100(options.write, MANAGED_SETTINGS_FILE);
+    const target = join101(options.write, MANAGED_SETTINGS_FILE);
     try {
-      mkdirSync23(options.write, { recursive: true });
+      mkdirSync24(options.write, { recursive: true });
       writeFileSync21(target, body);
     } catch (error) {
       console.error(
@@ -31148,7 +31248,7 @@ function printReport(rows) {
 
 // src/cli/commands/module-decisions.ts
 init_esm_shims();
-import { readFileSync as readFileSync56 } from "fs";
+import { readFileSync as readFileSync57 } from "fs";
 
 // src/module-decisions/inferencer.ts
 init_esm_shims();
@@ -31303,7 +31403,7 @@ function inferAttribution(opts) {
 // src/cli/commands/module-decisions.ts
 function readPromptArg(opts) {
   if (typeof opts.promptFile === "string" && opts.promptFile.length > 0) {
-    return readFileSync56(opts.promptFile, "utf8");
+    return readFileSync57(opts.promptFile, "utf8");
   }
   if (typeof opts.prompt === "string") return opts.prompt;
   throw new Error("Must provide --prompt <text> or --prompt-file <path>");
@@ -31583,8 +31683,8 @@ init_esm_shims();
 
 // src/onboarding/create-project.ts
 init_esm_shims();
-import { existsSync as existsSync61, mkdirSync as mkdirSync24, readdirSync as readdirSync23 } from "fs";
-import { join as join101 } from "path";
+import { existsSync as existsSync61, mkdirSync as mkdirSync25, readdirSync as readdirSync23 } from "fs";
+import { join as join102 } from "path";
 var UNDECIDED_STACK = "undecided";
 var EMPTY_STACK_PROFILE = {
   frameworks: [],
@@ -31620,19 +31720,19 @@ function isUndecidedCommands(commands) {
 }
 async function createProjectWorkspace(options) {
   const parentDir = options.parentDir ?? process.cwd();
-  const projectRoot = join101(parentDir, options.name);
+  const projectRoot = join102(parentDir, options.name);
   const providers = options.providers && options.providers.length > 0 ? options.providers : ["claude-code"];
   const preExisted = existsSync61(projectRoot);
   const existingEntries = preExisted ? readdirSync23(projectRoot) : [];
   const isNonEmpty = existingEntries.length > 0;
-  const hasPaqad = preExisted && existsSync61(join101(projectRoot, ".paqad"));
+  const hasPaqad = preExisted && existsSync61(join102(projectRoot, ".paqad"));
   if (isNonEmpty && !hasPaqad && !options.force) {
     throw new FrameworkError(
       `Refusing to create a workspace in a non-empty directory: ${projectRoot}. Preserve your work \u2014 pass --force to overwrite it, or choose an empty directory.`,
       { code: "PROJECT_DIR_NOT_EMPTY", details: { projectRoot: toPosixPath(projectRoot) } }
     );
   }
-  mkdirSync24(projectRoot, { recursive: true });
+  mkdirSync25(projectRoot, { recursive: true });
   let gitInitialized = false;
   let recovery;
   if (!await isInsideGitWorkTree(projectRoot)) {
@@ -32065,7 +32165,7 @@ function createPacksCommand() {
 
 // src/cli/commands/plan.ts
 init_esm_shims();
-import { readFileSync as readFileSync57, rmSync as rmSync8 } from "fs";
+import { readFileSync as readFileSync58, rmSync as rmSync8 } from "fs";
 
 // src/stage-isolation/recipe-check.ts
 init_esm_shims();
@@ -32353,7 +32453,7 @@ function createPlanCommand() {
   ).option("--keep-input", "Keep the transient input file instead of deleting it", false).action(async (inputFile, options) => {
     let template;
     try {
-      template = JSON.parse(readFileSync57(inputFile, "utf8"));
+      template = JSON.parse(readFileSync58(inputFile, "utf8"));
     } catch {
       console.error(`could not read/parse plan template "${inputFile}" (expected JSON)`);
       process.exitCode = 1;
@@ -32464,12 +32564,12 @@ init_esm_shims();
 
 // src/site-map/preflight-requirements.ts
 init_esm_shims();
-import { existsSync as existsSync62, readFileSync as readFileSync58 } from "fs";
-import { join as join102 } from "path";
+import { existsSync as existsSync62, readFileSync as readFileSync59 } from "fs";
+import { join as join103 } from "path";
 var VERSION_CHECK_TIMEOUT_MS = 1e4;
 function composerRequiresLaravel(projectRoot) {
   try {
-    const composer = JSON.parse(readFileSync58(join102(projectRoot, "composer.json"), "utf8"));
+    const composer = JSON.parse(readFileSync59(join103(projectRoot, "composer.json"), "utf8"));
     return composer.require?.["laravel/framework"] !== void 0;
   } catch {
     return false;
@@ -32477,7 +32577,7 @@ function composerRequiresLaravel(projectRoot) {
 }
 function nodeCliDiscoverable(projectRoot) {
   try {
-    const pkg = JSON.parse(readFileSync58(join102(projectRoot, "package.json"), "utf8"));
+    const pkg = JSON.parse(readFileSync59(join103(projectRoot, "package.json"), "utf8"));
     const deps = { ...pkg.dependencies, ...pkg.devDependencies };
     if (deps["commander"] !== void 0 || deps["yargs"] !== void 0 || deps["oclif"] !== void 0) {
       return true;
@@ -32506,7 +32606,7 @@ async function artisanRunnerPresent(projectRoot) {
   if ("blocked" in invocation) return false;
   switch (artisanRunner(invocation.argv)) {
     case "sail":
-      return existsSync62(join102(projectRoot, invocation.argv[0]));
+      return existsSync62(join103(projectRoot, invocation.argv[0]));
     case "docker":
       return versionOk("docker", projectRoot);
     default:
@@ -32557,7 +32657,7 @@ var siteMapPreflightRequirements = [
     why: "The real router resolves modular routes, middleware, and controllers that a static file scan cannot see.",
     applies: composerRequiresLaravel,
     probe: async (projectRoot) => {
-      const artisanPresent = existsSync62(join102(projectRoot, "artisan"));
+      const artisanPresent = existsSync62(join103(projectRoot, "artisan"));
       const runnerPresent = await artisanRunnerPresent(projectRoot);
       return artisanPresent && runnerPresent ? "needs-decision" : "unavailable";
     },
@@ -32960,9 +33060,9 @@ function isOutsidePaqadDir(filePath) {
 
 // src/speed-report/transcripts.ts
 init_esm_shims();
-import { existsSync as existsSync63, readdirSync as readdirSync24, readFileSync as readFileSync59 } from "fs";
+import { existsSync as existsSync63, readdirSync as readdirSync24, readFileSync as readFileSync60 } from "fs";
 import { homedir as homedir3 } from "os";
-import { join as join103, resolve as resolve24, sep as sep6 } from "path";
+import { join as join104, resolve as resolve24, sep as sep6 } from "path";
 var HOUSEKEEPING_SESSION = "paqad-housekeeping";
 var SAFE_ID = /^[A-Za-z0-9_-]+$/;
 function isSafeId(value) {
@@ -33016,7 +33116,7 @@ function isInside(root, path2) {
 }
 function readAgentType(metaPath) {
   try {
-    const parsed = JSON.parse(readFileSync59(metaPath, "utf8"));
+    const parsed = JSON.parse(readFileSync60(metaPath, "utf8"));
     return typeof parsed.agentType === "string" ? parsed.agentType : null;
   } catch {
     return null;
@@ -33031,21 +33131,21 @@ function recordedSources(projectRoot, sessionId, root) {
 }
 function derivedSources(sessionDir, sessionId) {
   const sources = [];
-  const main = join103(sessionDir, `${sessionId}.jsonl`);
+  const main = join104(sessionDir, `${sessionId}.jsonl`);
   if (existsSync63(main)) sources.push({ path: main, agentType: null });
-  const subagents = join103(sessionDir, sessionId, "subagents");
+  const subagents = join104(sessionDir, sessionId, "subagents");
   if (!existsSync63(subagents)) return sources;
   for (const name of readdirSync24(subagents).sort()) {
     if (!name.startsWith("agent-") || !name.endsWith(".jsonl")) continue;
-    const meta = join103(subagents, `${name.slice(0, -".jsonl".length)}.meta.json`);
-    sources.push({ path: join103(subagents, name), agentType: readAgentType(meta) });
+    const meta = join104(subagents, `${name.slice(0, -".jsonl".length)}.meta.json`);
+    sources.push({ path: join104(subagents, name), agentType: readAgentType(meta) });
   }
   return sources;
 }
 function sessionTranscripts(projectRoot, sessionId, transcriptsRoot) {
   if (!isSafeId(sessionId)) return [];
   const root = resolve24(transcriptsRoot);
-  const sessionDir = join103(root, projectTranscriptSlug(projectRoot));
+  const sessionDir = join104(root, projectTranscriptSlug(projectRoot));
   const byPath = /* @__PURE__ */ new Map();
   for (const source2 of recordedSources(projectRoot, sessionId, root)) {
     byPath.set(source2.path, source2);
@@ -33543,7 +33643,7 @@ function createReportCommand() {
 
 // src/cli/commands/review.ts
 init_esm_shims();
-import { readFileSync as readFileSync60, rmSync as rmSync9 } from "fs";
+import { readFileSync as readFileSync61, rmSync as rmSync9 } from "fs";
 var VERDICTS = ["safe-to-merge", "needs-attention", "inconclusive"];
 function judgmentOnlyRefusal(root, sessionId, template) {
   const findings = Array.isArray(template.findings) ? template.findings : [];
@@ -33551,7 +33651,11 @@ function judgmentOnlyRefusal(root, sessionId, template) {
   const dirName = currentFeature(root, sessionId);
   if (dirName === null) return null;
   if (stageLedgerEra(readFeatureStageUnit(root, dirName), "review") !== "v3") return null;
-  const rows = collectMachineFindings(root).filter((row2) => row2.tier === "deterministic");
+  const rows = scopeFindingsToChange(
+    collectMachineFindings(root),
+    activeChangeFiles(root, sessionId),
+    root
+  ).filter((row2) => row2.tier === "deterministic");
   if (rows.length === 0) return null;
   const cited = findings.some(
     (finding) => rows.some(
@@ -33591,7 +33695,7 @@ function createReviewCommand() {
   ).option("--keep-input", "Keep the transient input file instead of deleting it", false).action((inputFile, options) => {
     let template;
     try {
-      template = JSON.parse(readFileSync60(inputFile, "utf8"));
+      template = JSON.parse(readFileSync61(inputFile, "utf8"));
     } catch {
       console.error(`could not read/parse review template "${inputFile}" (expected JSON)`);
       process.exitCode = 1;
@@ -33659,7 +33763,7 @@ function createReviewCommand() {
 
 // src/cli/commands/debt.ts
 init_esm_shims();
-import { readFileSync as readFileSync61 } from "fs";
+import { readFileSync as readFileSync62 } from "fs";
 import { resolve as resolve25 } from "path";
 
 // src/tech-debt/index.ts
@@ -33667,15 +33771,15 @@ init_esm_shims();
 
 // src/tech-debt/overview-block.ts
 init_esm_shims();
-import { existsSync as existsSync64, mkdirSync as mkdirSync25, writeFileSync as writeFileSync22 } from "fs";
-import { join as join104 } from "path";
+import { existsSync as existsSync64, mkdirSync as mkdirSync26, writeFileSync as writeFileSync22 } from "fs";
+import { join as join105 } from "path";
 var TECH_DEBT_BLOCK_BEGIN = "<!-- paqad:tech-debt:start -->";
 var TECH_DEBT_BLOCK_END = "<!-- paqad:tech-debt:end -->";
 var OVERVIEW_NAMES = ["overview.md", "index.md"];
 function techDebtOverviewPath(projectRoot) {
   const dir = techDebtDir(projectRoot);
-  const found2 = OVERVIEW_NAMES.map((name) => join104(dir, name)).find((path2) => existsSync64(path2));
-  return found2 ?? join104(dir, OVERVIEW_NAMES[0]);
+  const found2 = OVERVIEW_NAMES.map((name) => join105(dir, name)).find((path2) => existsSync64(path2));
+  return found2 ?? join105(dir, OVERVIEW_NAMES[0]);
 }
 function escapeInline(value) {
   return value.replace(/\s+/g, " ").trim().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -33707,7 +33811,7 @@ function reconcileTechDebtOverview(projectRoot, items) {
   if (next === existing) {
     return { path: path2, written: false };
   }
-  mkdirSync25(techDebtDir(projectRoot), { recursive: true });
+  mkdirSync26(techDebtDir(projectRoot), { recursive: true });
   writeFileSync22(path2, next);
   return { path: path2, written: true };
 }
@@ -33779,7 +33883,7 @@ function createDebtCommand() {
   ).action((options) => {
     guarded(() => {
       const root = options.projectRoot;
-      const body = options.bodyFile === void 0 ? "" : readFileSync61(resolve25(root, options.bodyFile), "utf8");
+      const body = options.bodyFile === void 0 ? "" : readFileSync62(resolve25(root, options.bodyFile), "utf8");
       const context2 = resolveDebtContext(root, sessionHint(options));
       const result2 = raiseTechDebt(
         root,
@@ -34191,8 +34295,8 @@ function createRagEvidenceCommand() {
 
 // src/cli/commands/refresh.ts
 init_esm_shims();
-import { existsSync as existsSync65, readFileSync as readFileSync62, writeFileSync as writeFileSync23 } from "fs";
-import { join as join105 } from "path";
+import { existsSync as existsSync65, readFileSync as readFileSync63, writeFileSync as writeFileSync23 } from "fs";
+import { join as join106 } from "path";
 function createRefreshCommand() {
   return new Command("refresh").description("Refresh derived framework artifacts").option("--project-root <path>", "Project root", process.cwd()).option("--stack", "Refresh the cached stack snapshot").option("--context", "Refresh chunk and vector context indexes").option(
     "--providers",
@@ -34315,7 +34419,7 @@ async function refreshProviderEntries(projectRoot) {
   removeObsoleteContractDocs(projectRoot);
   for (const type of ADAPTER_TYPES) {
     const adapter = AdapterFactory.create(type);
-    const configPath = join105(projectRoot, adapter.getConfigPath());
+    const configPath = join106(projectRoot, adapter.getConfigPath());
     if (!existsSync65(configPath)) {
       continue;
     }
@@ -34331,14 +34435,14 @@ async function refreshProviderEntries(projectRoot) {
   }
 }
 function writeRefreshDrift(projectRoot, refreshDrift) {
-  const path2 = join105(projectRoot, PATHS.STACK_DRIFT);
+  const path2 = join106(projectRoot, PATHS.STACK_DRIFT);
   const current = readExistingJson(path2);
   writeFileSync23(path2, `${JSON.stringify({ ...current ?? {}, ...refreshDrift }, null, 2)}
 `);
 }
 function readExistingJson(path2) {
   try {
-    return JSON.parse(readFileSync62(path2, "utf8"));
+    return JSON.parse(readFileSync63(path2, "utf8"));
   } catch {
     return null;
   }
@@ -34380,41 +34484,11 @@ function createResumeCommand() {
 
 // src/cli/commands/route.ts
 init_esm_shims();
-
-// src/pipeline/route-override-log.ts
-init_esm_shims();
-import { appendFileSync as appendFileSync6, mkdirSync as mkdirSync26, readFileSync as readFileSync63 } from "fs";
-import { join as join106 } from "path";
-var ROUTE_OVERRIDE_FILE = ".route-overrides.jsonl";
-function overrideLogPath(projectRoot, sessionId) {
-  return join106(
-    projectRoot,
-    sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId),
-    ROUTE_OVERRIDE_FILE
-  );
-}
-function appendRouteOverride(projectRoot, sessionId, input) {
-  const row2 = {
-    source: "agent-override",
-    ts: (input.now ?? (() => /* @__PURE__ */ new Date()))().toISOString(),
-    hook_label: input.hookLabel,
-    agent_label: input.agentLabel,
-    ...input.reason === void 0 ? {} : { reason: input.reason }
-  };
-  mkdirSync26(join106(projectRoot, sessionLedgerDir(STAGE_EVIDENCE_DOC_TYPE, sessionId)), {
-    recursive: true
-  });
-  appendFileSync6(overrideLogPath(projectRoot, sessionId), `${JSON.stringify(row2)}
-`, "utf8");
-  return row2;
-}
-
-// src/cli/commands/route.ts
 function isRoutedWorkflow(value) {
   return ROUTED_WORKFLOWS.includes(value);
 }
 var UNRESOLVED_SESSION_REASON = "session could not be resolved (no --session, SE_SESSION or CLAUDE_SESSION_ID), so the edited-this-turn check was skipped";
-function explicitSessionHint(option2) {
+function explicitSessionHint2(option2) {
   for (const candidate of [option2, process.env.SE_SESSION, process.env.CLAUDE_SESSION_ID]) {
     const cleaned = candidate?.trim();
     if (cleaned) {
@@ -34422,17 +34496,6 @@ function explicitSessionHint(option2) {
     }
   }
   return null;
-}
-function correctedState(state, target) {
-  const pausedIndex = state.paused.map((entry) => entry.workflow).lastIndexOf(target);
-  if (pausedIndex === -1) {
-    return { ...state, active: { workflow: target } };
-  }
-  return {
-    ...state,
-    active: state.paused[pausedIndex],
-    paused: state.paused.filter((_, index) => index !== pausedIndex)
-  };
 }
 function createRouteCommand() {
   const command = new Command("route").description(
@@ -34451,11 +34514,10 @@ function createRouteCommand() {
     }
     const target = workflow;
     const root = options.projectRoot;
-    const hint = explicitSessionHint(options.session);
+    const hint = explicitSessionHint2(options.session);
     const sessionId = resolveSessionId(root, hint);
     const state = readWorkflowState(root, sessionId);
     const current = state.active?.workflow ?? null;
-    const hookLabel = current ?? readSessionRoute(root, sessionId)?.workflow ?? null;
     if (hint !== null && current === "feature-development" && !isFeatureDevelopmentRoute(target) && editedDevelopmentThisTurn(root, sessionId)) {
       console.error(
         `cannot leave feature-development: source files were edited this turn. Finish or revert the change first.`
@@ -34463,27 +34525,11 @@ function createRouteCommand() {
       process.exitCode = 1;
       return;
     }
-    writeWorkflowState(root, sessionId, correctedState(state, target));
-    const priorRoute = readSessionRoute(root, sessionId);
-    writeSessionRoute(
-      root,
-      {
-        workflow: target,
-        query: priorRoute?.query ?? "",
-        ...priorRoute?.adapter === void 0 ? {} : { adapter: priorRoute.adapter }
-      },
-      sessionId
-    );
-    if (!isFeatureDevelopmentRoute(target)) {
-      clearPendingLane(root, sessionId);
-    }
     const reasons = [
       options.reason,
       hint === null ? UNRESOLVED_SESSION_REASON : void 0
     ].filter((part) => part !== void 0);
-    appendRouteOverride(root, sessionId, {
-      hookLabel,
-      agentLabel: target,
+    const hookLabel = writeRouteCorrection(root, sessionId, target, {
       ...reasons.length === 0 ? {} : { reason: reasons.join("; ") }
     });
     console.log(`**\u25B8 paqad** \xB7 route set to ${target}`);
@@ -38639,7 +38685,7 @@ function collectArtifact(value, previous = []) {
 }
 function runStageSettings(options) {
   const root = options.projectRoot;
-  const sessionHint2 = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null;
+  const sessionHint2 = explicitSessionHint(options.session);
   const sessionId = sessionHint2?.trim() ? sessionHint2.trim() : resolveSessionId(root, null);
   try {
     const settings = writeStageSettings(root, sessionId);
@@ -38649,6 +38695,7 @@ function runStageSettings(options) {
     process.exitCode = 1;
   }
 }
+var STAGES_THAT_KEEP_THE_ROUTE = /* @__PURE__ */ new Set(["delivery", "ticket_intake"]);
 var NO_RAISES = { authoring: null, grown: null };
 function authoringRaiseMayApply(root, dirName) {
   const record2 = readFeatureRecord(root, dirName);
@@ -38794,7 +38841,7 @@ function runStageBeginPhase(stage, options) {
   const root = options.projectRoot;
   const name = stage ?? "";
   const agent = options.agent ?? process.env.PAQAD_STAGE_AGENT ?? void 0;
-  const hint = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null;
+  const hint = explicitSessionHint(options.session);
   const sessionId = resolveSessionId(root, hint);
   const { exitCode, output } = STAGE_AGENT_STAGES.includes(name) ? runStageBegin({
     projectRoot: root,
@@ -38829,7 +38876,7 @@ function runStageRepair(rowArg, options) {
     process.exitCode = 2;
     return;
   }
-  const hint = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null;
+  const hint = explicitSessionHint(options.session);
   const sessionId = resolveSessionId(root, hint);
   const dirName = currentFeature(root, sessionId);
   if (dirName === null) {
@@ -38882,7 +38929,7 @@ function createStageCommand() {
     `one of: ${STAGE_ORDER.join(", ")}; for 'report', the agent id; for 'repair', the row number`
   ).option("--project-root <path>", "Project root", process.cwd()).option(
     "--session <id>",
-    "Session id to record under (defaults to SE_SESSION / CLAUDE_SESSION_ID, then the shared ledger-session cache)"
+    "Session id to record under (defaults to SE_SESSION / CLAUDE_SESSION_ID / CLAUDE_CODE_SESSION_ID, then the shared ledger-session cache)"
   ).option(
     "--artifact <path>",
     "Artifact the stage produced (repeatable); its real on-disk bytes are hashed so a thinking stage (planning/specification/review) proves work, not just a claim",
@@ -38934,7 +38981,7 @@ function createStageCommand() {
       return;
     }
     const root = options.projectRoot;
-    const sessionHint2 = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null;
+    const sessionHint2 = explicitSessionHint(options.session);
     const sessionId = resolveSessionId(root, sessionHint2);
     const sessionSource = sessionHint2?.trim() ? "env" : "cache";
     let artifactPaths;
@@ -38998,6 +39045,9 @@ function createStageCommand() {
     if (raised.grown) console.log(laneRaisedLine(raised.grown));
     const line = markerNarrationLine(stage, phase);
     if (line) console.log(line);
+    if (phase === "start" && sessionSource === "env" && !STAGES_THAT_KEEP_THE_ROUTE.has(stage)) {
+      announceRouteSwitch(root, sessionId, "stage-start");
+    }
     console.log(
       JSON.stringify({
         recorded: true,
