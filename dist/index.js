@@ -371,7 +371,6 @@ import {
   withSchemaMigrationLock,
   withoutRemovedRetiredFiles,
   writeGeneratedFiles,
-  writeHudReceipt,
   writeJson,
   writeModuleMap,
   writePlanVsActual,
@@ -379,7 +378,7 @@ import {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts
-} from "./chunk-DI7R4JZI.js";
+} from "./chunk-7CY4PVE3.js";
 import {
   AC_ID_PATTERN,
   AcTestMappingGate,
@@ -391,7 +390,9 @@ import {
   GATE_CATALOG,
   HUD_REFRESH_VERBS,
   HUD_SNAPSHOT_SCHEMA,
+  HUD_VERDICT_WORDS,
   LATE_GATES,
+  NO_VERDICT_RECORD,
   RUNG_WORDS,
   TIMELINE_COMMITS,
   TIMELINE_ROWS,
@@ -410,6 +411,7 @@ import {
   buildTimeline,
   buildTrackRecords,
   buildVerificationEvidence,
+  closedChangeOf,
   collectObservedAcIds,
   computeDeliveryPlan,
   computeHudFlags,
@@ -417,31 +419,38 @@ import {
   expectedGateCodes,
   extractAcIdFromIssue,
   failurePhrase,
+  gapStages,
   gateCatalogEntry,
   gateExpectedOnLane,
   gateOwner,
+  hudSessionId,
   isBackstopVerificationOrigin,
   isHudRefreshVerb,
+  readHudVerdict,
+  readVerdictAgreement,
   recordGapText,
   refreshHudSnapshot,
+  verdictSessionId,
   workIsDone,
   workKindOf,
+  writeHudReceipt,
   writeHudSnapshot,
   writeHudSnapshotSafe,
+  writeVerdictAgreement,
   writeVerificationEvidence
-} from "./chunk-MZGDOCS5.js";
-import "./chunk-IMNEJPPP.js";
+} from "./chunk-574MZHM3.js";
+import "./chunk-VIT7JVFJ.js";
 import {
   EcosystemParserRegistry,
   StackIntrospector,
   createDefaultEcosystemParserRegistry,
   expandManifestNames
-} from "./chunk-X2QKEVFS.js";
+} from "./chunk-ZTQR5SJ6.js";
 import "./chunk-F657QMM6.js";
-import "./chunk-7TAM3YAV.js";
+import "./chunk-W6N2KRE3.js";
 import "./chunk-XVGJKRBZ.js";
 import "./chunk-WKGFBXSZ.js";
-import "./chunk-NACL3ZNA.js";
+import "./chunk-7KZ3YLTO.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
@@ -500,7 +509,7 @@ import {
   toProjectRelativeModule,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-ARATL3ZT.js";
+} from "./chunk-CAYIN5IJ.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -540,12 +549,12 @@ import {
   resetEmbeddingProviderCache,
   suggestPatternsForProject,
   toCrsCollectionId
-} from "./chunk-G5WRYB5M.js";
-import "./chunk-VZGLHBOS.js";
-import "./chunk-4PTY4IFQ.js";
+} from "./chunk-3UBZY2HB.js";
+import "./chunk-DO7P7HPK.js";
+import "./chunk-NCT3BYCG.js";
 import "./chunk-VZJTQQG2.js";
 import "./chunk-WVSL2Y6U.js";
-import "./chunk-I3TUK55C.js";
+import "./chunk-DVOBTBK3.js";
 import {
   COMPLIANCE_SCHEMA_VERSION,
   DEFAULT_OBLIGATION_INDEX_PATH,
@@ -566,8 +575,8 @@ import {
   specIndexPath,
   specReportPath,
   specReviewPath
-} from "./chunk-ZG4VBTLK.js";
-import "./chunk-26V5IFWS.js";
+} from "./chunk-CMSPEILX.js";
+import "./chunk-A7M5RCNU.js";
 import {
   AdapterFactory,
   AiAssistantAdapter,
@@ -610,13 +619,13 @@ import {
   isUnderPluginPath,
   renderHookCommand,
   rendersFullHookChain
-} from "./chunk-KCFUHY6O.js";
-import "./chunk-2QEVUENG.js";
-import "./chunk-Z6IZVJ2I.js";
+} from "./chunk-5N3F3B55.js";
+import "./chunk-KY7R42YW.js";
+import "./chunk-KZPSEYIJ.js";
 import {
   StackSnapshotCache,
   readStackSnapshotSync
-} from "./chunk-J34OFI3L.js";
+} from "./chunk-YGCEBO7H.js";
 import {
   readExistingOnboardingManifest,
   readFrameworkVersion,
@@ -628,7 +637,7 @@ import {
   writeJsonPreservingTimestamp,
   writeOnboardingManifest,
   writeProjectProfile
-} from "./chunk-VNKALBSJ.js";
+} from "./chunk-WNOJLLGD.js";
 import {
   AGENT_ROLES,
   CONTEXT_LEVEL_BUDGETS,
@@ -637,7 +646,7 @@ import {
   resolveContextBudgetForModel,
   resolveContextBudgetForModelTier
 } from "./chunk-IKAOR4NY.js";
-import "./chunk-V5UNOZYW.js";
+import "./chunk-EWMDFOOY.js";
 import {
   ADAPTER_TYPES
 } from "./chunk-BKNKG26S.js";
@@ -653,7 +662,7 @@ import {
   readCompiledRules,
   ruleTriggersMatch,
   writeCompiledRules
-} from "./chunk-WUVRP3L2.js";
+} from "./chunk-MVHIVYC6.js";
 import {
   DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
   MCP_SERVER_TYPES,
@@ -676,7 +685,7 @@ import {
   removePack,
   resolvePackManagerRoots,
   validatePackAt
-} from "./chunk-ZVY5WXPQ.js";
+} from "./chunk-AID7P3VD.js";
 import {
   ALWAYS_LABEL,
   DECISION_AUDIT_EVENTS,
@@ -741,7 +750,7 @@ import {
   scoreDecisionOptionOverlap,
   suggestEarlierAnswer,
   titleCheckFor
-} from "./chunk-Y327T4RZ.js";
+} from "./chunk-KTNG62BW.js";
 import "./chunk-CECHOUNN.js";
 import "./chunk-4S3XFJAH.js";
 import {
@@ -751,7 +760,7 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   summarizeStack
-} from "./chunk-AFKHJWC5.js";
+} from "./chunk-EUVPBQK3.js";
 import {
   ACTIVE_CAPABILITIES,
   CAPABILITIES,
@@ -759,7 +768,7 @@ import {
   DOMAIN_STACK_MAP,
   STACKS,
   STACK_CAPABILITIES_MAP
-} from "./chunk-7KSGJY4K.js";
+} from "./chunk-CKSOJDZB.js";
 import {
   DECISION_CARRY_OVER_SCOPES,
   DECISION_CATEGORIES,
@@ -774,34 +783,35 @@ import {
 } from "./chunk-6XDDIYNJ.js";
 import "./chunk-6IMHPEFY.js";
 import "./chunk-I2G54BH7.js";
-import "./chunk-SR5BAWWI.js";
+import "./chunk-TKCOI7QR.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
   hudLastBlockPath,
   hudReceiptPath,
   hudSnapshotPath,
+  hudVerdictAgreementPath,
   hudVerdictPath,
   safeSessionId,
   writeFileAtomic
-} from "./chunk-GHQXK4A5.js";
+} from "./chunk-3UV6TK6X.js";
 import "./chunk-LBNBI3D6.js";
-import "./chunk-P37B3XIH.js";
+import "./chunk-I5Q3I5FL.js";
 import "./chunk-UUBQQJVE.js";
-import "./chunk-Q3GX7F2M.js";
+import "./chunk-KRWURCQB.js";
 import "./chunk-MDXUST3Z.js";
-import "./chunk-PT5P5YLG.js";
-import "./chunk-QX4S3CZU.js";
-import "./chunk-H66G7B2J.js";
-import "./chunk-MWNGCRTW.js";
-import "./chunk-2AM5OSQL.js";
-import "./chunk-YA2OBGYO.js";
+import "./chunk-HSFGG4EK.js";
+import "./chunk-QHYB7D5A.js";
+import "./chunk-66P7SIY7.js";
+import "./chunk-FZWS3VHT.js";
+import "./chunk-LW464W7H.js";
+import "./chunk-ODHC5LYM.js";
 import "./chunk-P4RPU2KB.js";
 import "./chunk-LYNDVGNE.js";
-import "./chunk-DBYGVM5Q.js";
+import "./chunk-EUNKBU4N.js";
 import "./chunk-TINPSX3N.js";
 import "./chunk-BTDDEK7C.js";
-import "./chunk-YDQKDCXK.js";
+import "./chunk-GFNSXLBN.js";
 import "./chunk-RJMJYPHL.js";
 import {
   ANALYTICS_DECISION_PATH,
@@ -843,7 +853,7 @@ import {
   skillMetadataDeprecations,
   splitSkillFrontmatter,
   toLoadedSkill
-} from "./chunk-YUYQHVVS.js";
+} from "./chunk-6CNQ7DRB.js";
 import {
   CancelledError,
   DecisionPacketCorruptError,
@@ -880,7 +890,7 @@ import {
   setEngineLogger,
   toEngineError,
   writeProjectSecret
-} from "./chunk-OAGMHQY5.js";
+} from "./chunk-235KYAJR.js";
 import "./chunk-BOEVU2BD.js";
 import "./chunk-NJE7NS7E.js";
 import {
@@ -890,7 +900,7 @@ import {
   RISK_LEVELS,
   SchemaValidator,
   selectLane
-} from "./chunk-7PD3OGSQ.js";
+} from "./chunk-DT3SVU2K.js";
 import "./chunk-YA6SCYMC.js";
 import "./chunk-Z3NGWHFX.js";
 import {
@@ -1062,6 +1072,7 @@ export {
   HUD_COST_CACHE_SUFFIX,
   HUD_REFRESH_VERBS,
   HUD_SNAPSHOT_SCHEMA,
+  HUD_VERDICT_WORDS,
   HealthChecker,
   ImplementationReviewGate,
   InferredTurnClassifierModel,
@@ -1088,6 +1099,7 @@ export {
   ModuleResolver,
   NATIVE_HOOK_EVENTS,
   NO_STANDING_ANSWER_CATEGORIES,
+  NO_VERDICT_RECORD,
   OnboardingOrchestrator,
   OpenAiEmbeddingProvider,
   PAQAD_AGENT_TOOL_MATCHER,
@@ -1341,6 +1353,7 @@ export {
   clearShownSkillMetadataDeprecations,
   clearSkillMetadataDeprecations,
   clearTokenizerCache,
+  closedChangeOf,
   collectObservedAcIds,
   collectScopeDriftPaths,
   collectionVectorPaths,
@@ -1453,6 +1466,7 @@ export {
   formatVerdictSummary,
   frameworkHomeAbsolute,
   frameworkSymlinkType,
+  gapStages,
   gateCatalogEntry,
   gateExpectedOnLane,
   gateOwner,
@@ -1495,7 +1509,9 @@ export {
   hudCostCachePath,
   hudLastBlockPath,
   hudReceiptPath,
+  hudSessionId,
   hudSnapshotPath,
+  hudVerdictAgreementPath,
   hudVerdictPath,
   indexAttachment,
   inferNamingConvention,
@@ -1590,6 +1606,7 @@ export {
   readEarlierMethod,
   readExistingOnboardingManifest,
   readFrameworkVersion,
+  readHudVerdict,
   readJsonIfExists,
   readModuleHealth,
   readProjectSecrets,
@@ -1597,6 +1614,7 @@ export {
   readSchemaMarkerSync,
   readSkillAuditEvents,
   readStackSnapshotSync,
+  readVerdictAgreement,
   rebuildApiConversation,
   recordFindings,
   recordFromComplianceReport,
@@ -1700,6 +1718,7 @@ export {
   validatePackAt,
   validateSpecDocument,
   validateUserFlow,
+  verdictSessionId,
   verifyFullSuite,
   withSchemaMigrationLock,
   withoutRemovedRetiredFiles,
@@ -1727,5 +1746,6 @@ export {
   writeSchemaMarkerSync,
   writeSkillIndex,
   writeSkillIndexFromArtifacts,
+  writeVerdictAgreement,
   writeVerificationEvidence
 };

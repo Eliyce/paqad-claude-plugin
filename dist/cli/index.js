@@ -7,20 +7,20 @@ import {
   recordRecipeInjected,
   resolveBriefSession,
   stageCommandLines
-} from "../chunk-IFFZAK5F.js";
+} from "../chunk-C7VPBWRW.js";
 import {
   holdRefreshContextLock
 } from "../chunk-S7ZHH635.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-EJ6XQ2IC.js";
+} from "../chunk-2LH5A4X3.js";
 import {
   buildStageReport,
   stageReportOptions,
   stageStartRefusal,
   unknownAgentReport
-} from "../chunk-3KC47EBT.js";
+} from "../chunk-BBEM4OER.js";
 import {
   allChangedFiles,
   readLastUpdateRecord,
@@ -246,10 +246,11 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-DI7R4JZI.js";
+} from "../chunk-7CY4PVE3.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
+  NO_VERDICT_RECORD,
   addDebtItem,
   appendFixProofRow,
   appendRuleOverride,
@@ -260,6 +261,7 @@ import {
   countedRedRow,
   discoverModuleHealth,
   discoverSourceRoots,
+  hudSessionId,
   isEditOutcome,
   isHudRefreshVerb,
   listDebtItems,
@@ -269,11 +271,12 @@ import {
   readDebtItems,
   readFeatureTechDebtIndex,
   readFixProofRows,
+  readHudVerdict,
   refreshHudSnapshot,
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex
-} from "../chunk-MZGDOCS5.js";
+} from "../chunk-574MZHM3.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -285,7 +288,7 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-IMNEJPPP.js";
+} from "../chunk-VIT7JVFJ.js";
 import {
   PROJECT_RULES_DIR,
   RULES_ROOT,
@@ -308,7 +311,7 @@ import {
   runFilePath,
   updateRun,
   writeStackInventory
-} from "../chunk-X2QKEVFS.js";
+} from "../chunk-ZTQR5SJ6.js";
 import {
   estimateTokens
 } from "../chunk-F657QMM6.js";
@@ -318,14 +321,14 @@ import {
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-7TAM3YAV.js";
+} from "../chunk-W6N2KRE3.js";
 import "../chunk-XVGJKRBZ.js";
 import {
   stageLedgerEra
 } from "../chunk-WKGFBXSZ.js";
 import {
   legacyAfterWindowLines
-} from "../chunk-NACL3ZNA.js";
+} from "../chunk-7KZ3YLTO.js";
 import "../chunk-D3DNV4VX.js";
 import {
   createEvidence,
@@ -333,7 +336,7 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-ARATL3ZT.js";
+} from "../chunk-CAYIN5IJ.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -349,12 +352,12 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-G5WRYB5M.js";
+} from "../chunk-3UBZY2HB.js";
 import {
   clearChecksRunningMarker,
   writeChecksRunningMarker
-} from "../chunk-VZGLHBOS.js";
-import "../chunk-4PTY4IFQ.js";
+} from "../chunk-DO7P7HPK.js";
+import "../chunk-NCT3BYCG.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-VZJTQQG2.js";
@@ -364,7 +367,7 @@ import {
   cleanRuleText,
   editRuleText,
   removeRuleBullet
-} from "../chunk-IAHA6F27.js";
+} from "../chunk-MAXUZJ7Z.js";
 import {
   addRuleEntry,
   applyRuleScriptMap,
@@ -374,7 +377,7 @@ import {
   computeRuleFilesHash,
   readDrift,
   setRuleText
-} from "../chunk-I3TUK55C.js";
+} from "../chunk-DVOBTBK3.js";
 import {
   AGENT_RECORD_WRITER,
   DEFAULT_OBLIGATION_INDEX_PATH,
@@ -527,8 +530,8 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-ZG4VBTLK.js";
-import "../chunk-26V5IFWS.js";
+} from "../chunk-CMSPEILX.js";
+import "../chunk-A7M5RCNU.js";
 import {
   AdapterFactory,
   BaseAdapter,
@@ -573,8 +576,8 @@ import {
   withDescription,
   withoutDescription,
   writeFileAtomic
-} from "../chunk-KCFUHY6O.js";
-import "../chunk-2QEVUENG.js";
+} from "../chunk-5N3F3B55.js";
+import "../chunk-KY7R42YW.js";
 import {
   SKIP_NEEDS_REASON_LINE,
   SKIP_NOT_ALLOWED_LINE,
@@ -597,27 +600,27 @@ import {
   stillWaitingLine,
   writeHld,
   writeHldMarkdown
-} from "../chunk-Z6IZVJ2I.js";
+} from "../chunk-KZPSEYIJ.js";
 import {
   StackSnapshotCache,
   readStackSnapshotSync
-} from "../chunk-J34OFI3L.js";
+} from "../chunk-YGCEBO7H.js";
 import {
   readExistingOnboardingManifest,
   writeDetectionReport,
   writeFrameworkVersionPreservingTimestamp
-} from "../chunk-VNKALBSJ.js";
+} from "../chunk-WNOJLLGD.js";
 import {
   EXPERT_OWNS
 } from "../chunk-IKAOR4NY.js";
-import "../chunk-V5UNOZYW.js";
+import "../chunk-EWMDFOOY.js";
 import {
   ADAPTER_TYPES
 } from "../chunk-BKNKG26S.js";
 import {
   compileRules,
   writeCompiledRules
-} from "../chunk-WUVRP3L2.js";
+} from "../chunk-MVHIVYC6.js";
 import {
   CONTAINER_PROCESS_CAP,
   CONTAINER_WRAPPERS,
@@ -642,7 +645,7 @@ import {
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-ZVY5WXPQ.js";
+} from "../chunk-AID7P3VD.js";
 import {
   DECISION_EVIDENCE_DOC_TYPE,
   DecisionStore,
@@ -668,7 +671,7 @@ import {
   recordSuggestionOutcome,
   removeStandingAnswer,
   suggestEarlierAnswer
-} from "../chunk-Y327T4RZ.js";
+} from "../chunk-KTNG62BW.js";
 import "../chunk-CECHOUNN.js";
 import {
   appendHooksLog
@@ -677,7 +680,7 @@ import {
   FRAMEWORK_PACKAGE_MAP,
   getLegacyCapabilities,
   getPrimaryStack
-} from "../chunk-AFKHJWC5.js";
+} from "../chunk-EUVPBQK3.js";
 import {
   ACTIVE_CAPABILITIES,
   STACKS,
@@ -686,7 +689,7 @@ import {
   readProjectProfile,
   syncProjectProfile,
   writeProjectProfile
-} from "../chunk-7KSGJY4K.js";
+} from "../chunk-CKSOJDZB.js";
 import {
   DECISION_CATEGORIES,
   DECISION_CATEGORY_DEFAULTS
@@ -698,53 +701,53 @@ import {
   loadRuleScriptMap,
   missingBinaries,
   runPool
-} from "../chunk-SR5BAWWI.js";
+} from "../chunk-TKCOI7QR.js";
 import {
   hudCostCachePath
-} from "../chunk-GHQXK4A5.js";
+} from "../chunk-3UV6TK6X.js";
 import {
   scanWorkingTree
 } from "../chunk-LBNBI3D6.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-P37B3XIH.js";
+} from "../chunk-I5Q3I5FL.js";
 import "../chunk-UUBQQJVE.js";
 import {
   activeChangeFiles,
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-Q3GX7F2M.js";
+} from "../chunk-KRWURCQB.js";
 import {
   execa,
   parseCommandString
 } from "../chunk-MDXUST3Z.js";
 import {
   markerNarrationLine
-} from "../chunk-PT5P5YLG.js";
+} from "../chunk-HSFGG4EK.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-QX4S3CZU.js";
+} from "../chunk-QHYB7D5A.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-H66G7B2J.js";
+} from "../chunk-66P7SIY7.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-MWNGCRTW.js";
+} from "../chunk-FZWS3VHT.js";
 import {
   clearPendingLane,
   recordMarkedStage,
   titleActiveFeature
-} from "../chunk-2AM5OSQL.js";
+} from "../chunk-LW464W7H.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -762,7 +765,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-YA2OBGYO.js";
+} from "../chunk-ODHC5LYM.js";
 import {
   require_out
 } from "../chunk-P4RPU2KB.js";
@@ -798,7 +801,7 @@ import {
   stampFeatureDocument,
   stampMergeCommit,
   withFileLockSync
-} from "../chunk-DBYGVM5Q.js";
+} from "../chunk-EUNKBU4N.js";
 import {
   releaseLock,
   tryAcquireLock
@@ -821,7 +824,7 @@ import {
   readFeatureRecord,
   resolveAgentIdentity,
   validateVisualEvidenceRecord
-} from "../chunk-YDQKDCXK.js";
+} from "../chunk-GFNSXLBN.js";
 import {
   buildDocumentEnvelope,
   buildTextHeader,
@@ -851,7 +854,7 @@ import {
   splitSkillFrontmatter,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "../chunk-YUYQHVVS.js";
+} from "../chunk-6CNQ7DRB.js";
 import {
   DecisionPacketCorruptError,
   FrameworkError,
@@ -859,7 +862,7 @@ import {
   SchemaVersionError,
   engineLog,
   getProjectSecret
-} from "../chunk-OAGMHQY5.js";
+} from "../chunk-235KYAJR.js";
 import {
   readGitState
 } from "../chunk-BOEVU2BD.js";
@@ -899,7 +902,7 @@ import {
   stripRuleMarker,
   syncFrameworkConfig,
   versionAtLeast
-} from "../chunk-7PD3OGSQ.js";
+} from "../chunk-DT3SVU2K.js";
 import {
   DEFAULT_BASE_BRANCH,
   DEFAULT_TRACKER_PATTERNS,
@@ -12394,8 +12397,8 @@ function aggregate(states) {
 
 // src/tech-debt/context.ts
 init_esm_shims();
-function resolveDebtContext(projectRoot, sessionHint2) {
-  const session2 = resolveSessionId(projectRoot, sessionHint2);
+function resolveDebtContext(projectRoot, sessionHint3) {
+  const session2 = resolveSessionId(projectRoot, sessionHint3);
   const dirName = currentFeature(projectRoot, session2);
   if (dirName === null) {
     return { session: session2, dirName, foundIn: { change: null, issue: null, stage: null } };
@@ -12413,8 +12416,8 @@ function resolveDebtContext(projectRoot, sessionHint2) {
     }
   };
 }
-function raisedTechDebt(projectRoot, sessionHint2) {
-  const dirName = currentFeature(projectRoot, resolveSessionId(projectRoot, sessionHint2));
+function raisedTechDebt(projectRoot, sessionHint3) {
+  const dirName = currentFeature(projectRoot, resolveSessionId(projectRoot, sessionHint3));
   return dirName === null ? [] : readFeatureTechDebtIndex(projectRoot, dirName) ?? [];
 }
 
@@ -31067,8 +31070,8 @@ function createLaneCommand() {
     }
     const requested = lane;
     const root = options.projectRoot;
-    const sessionHint2 = explicitSessionHint(options.session);
-    const sessionId = resolveSessionId(root, sessionHint2);
+    const sessionHint3 = explicitSessionHint(options.session);
+    const sessionId = resolveSessionId(root, sessionHint3);
     const dirName = currentFeature(root, sessionId);
     if (!dirName) {
       console.error("no active feature \u2014 run `paqad-ai stage start planning` first");
@@ -31089,7 +31092,7 @@ function createLaneCommand() {
     } else {
       console.log(`**\u25B8 paqad** \xB7 lane already ${after} \u2014 nothing to change.`);
     }
-    if (sessionHint2?.trim()) {
+    if (sessionHint3?.trim()) {
       announceRouteSwitch(root, sessionId, "lane-set");
     }
     console.log(
@@ -36132,11 +36135,11 @@ ${applicability.loadedRuleText}
     "--outcome <landed|refused|still-blocked>",
     "Record what happened to the allowed-once edit, once, after its override line"
   ).option("--project-root <path>", "Project root", process.cwd()).option("--session <id>", "Session id (defaults to SE_SESSION / CLAUDE_SESSION_ID)").action((options) => {
-    const sessionHint2 = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? readLedgerSessionId(options.projectRoot);
+    const sessionHint3 = options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? readLedgerSessionId(options.projectRoot);
     if (options.outcome !== void 0) {
       const recorded = recordEditOutcome({
         projectRoot: options.projectRoot,
-        sessionHint: sessionHint2,
+        sessionHint: sessionHint3,
         rule: options.rule,
         file: options.file,
         toolUseId: options.toolUseId,
@@ -36157,7 +36160,7 @@ ${applicability.loadedRuleText}
     }
     const outcome = applyRuleOverride({
       projectRoot: options.projectRoot,
-      sessionHint: sessionHint2,
+      sessionHint: sessionHint3,
       rule: options.rule,
       file: options.file,
       token: options.token ?? "",
@@ -40076,8 +40079,8 @@ function collectArtifact(value, previous = []) {
 }
 function runStageSettings(options) {
   const root = options.projectRoot;
-  const sessionHint2 = explicitSessionHint(options.session);
-  const sessionId = sessionHint2?.trim() ? sessionHint2.trim() : resolveSessionId(root, null);
+  const sessionHint3 = explicitSessionHint(options.session);
+  const sessionId = sessionHint3?.trim() ? sessionHint3.trim() : resolveSessionId(root, null);
   try {
     const settings = writeStageSettings(root, sessionId);
     console.log(JSON.stringify(stageSettingsReport(settings), null, 2));
@@ -40372,9 +40375,9 @@ function createStageCommand() {
       return;
     }
     const root = options.projectRoot;
-    const sessionHint2 = explicitSessionHint(options.session);
-    const sessionId = resolveSessionId(root, sessionHint2);
-    const sessionSource = sessionHint2?.trim() ? "env" : "cache";
+    const sessionHint3 = explicitSessionHint(options.session);
+    const sessionId = resolveSessionId(root, sessionHint3);
+    const sessionSource = sessionHint3?.trim() ? "env" : "cache";
     let artifactPaths;
     if (phase === "end" && options.artifact) {
       let normalized;
@@ -40454,6 +40457,17 @@ function createStageCommand() {
 // src/cli/commands/status.ts
 init_esm_shims();
 import { resolve as resolve27 } from "path";
+function renderVerdictText(reading) {
+  if (reading.status !== "found") return `${NO_VERDICT_RECORD}: ${reading.why}`;
+  const { record: record2 } = reading;
+  const lines3 = [record2.word];
+  for (const reason2 of record2.reasons ?? []) lines3.push(`- ${reason2}`);
+  for (const gap of record2.record_gaps ?? []) lines3.push(`- record gap: ${gap}`);
+  return lines3.join("\n");
+}
+function sessionHint2(options) {
+  return options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null;
+}
 function renderHudText(snapshot2) {
   const lines3 = [`paqad \xB7 ${snapshot2.headline.text}`];
   if (snapshot2.change) {
@@ -40499,8 +40513,12 @@ function createStatusCommand() {
     "Print the paqad HUD snapshot for this session instead of the dashboard report",
     false
   ).option(
+    "--verdict",
+    "Print the verdict word and its reasons from this session's HUD verdict record",
+    false
+  ).option(
     "--session <id>",
-    "Session id for --hud (defaults to SE_SESSION / CLAUDE_SESSION_ID, then the shared ledger-session cache)"
+    "Session id for --hud or --verdict (defaults to SE_SESSION / CLAUDE_SESSION_ID, then the shared ledger-session cache)"
   ).option(
     "--fail-on-drift",
     "Exit non-zero when module-map drift, stale module-health, expired MD-XXXX decisions, or MM-DOC-MISSING findings are present",
@@ -40516,11 +40534,32 @@ function createStatusCommand() {
       process.exitCode = 2;
       return;
     }
-    if (options.hud) {
-      const snapshot2 = buildHudSnapshot(
+    if (options.verdict) {
+      const reading = readHudVerdict(
         projectRoot,
-        options.session ?? process.env.SE_SESSION ?? process.env.CLAUDE_SESSION_ID ?? null
+        hudSessionId(projectRoot, sessionHint2(options))
       );
+      const out = fmt === "json" ? JSON.stringify(
+        reading.status === "found" ? {
+          status: "found",
+          path: reading.path,
+          word: reading.record.word,
+          kind: reading.record.kind,
+          reasons: reading.record.reasons ?? [],
+          record_gaps: reading.record.record_gaps ?? [],
+          change: reading.record.change,
+          written_at: reading.record.written_at
+        } : reading,
+        null,
+        2
+      ) : renderVerdictText(reading);
+      process.stdout.write(`${out}
+`);
+      if (reading.status !== "found") process.exitCode = 1;
+      return;
+    }
+    if (options.hud) {
+      const snapshot2 = buildHudSnapshot(projectRoot, sessionHint2(options));
       const out = fmt === "json" ? JSON.stringify(snapshot2, null, 2) : renderHudText(snapshot2);
       process.stdout.write(`${out}
 `);

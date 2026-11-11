@@ -1,6 +1,7 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   classifyStage,
+  helperEditStage,
   liveEditStage,
   liveStageToStart,
   preCodeStagesRecorded,
@@ -9,26 +10,26 @@ import {
   recordMarkedStage,
   stageIsOpen,
   stagesWithKind
-} from "../chunk-2AM5OSQL.js";
-import "../chunk-YA2OBGYO.js";
+} from "../chunk-LW464W7H.js";
+import "../chunk-ODHC5LYM.js";
 import "../chunk-P4RPU2KB.js";
 import "../chunk-LYNDVGNE.js";
 import {
   activeChangeKey,
   peekActiveChangeKey
-} from "../chunk-DBYGVM5Q.js";
+} from "../chunk-EUNKBU4N.js";
 import "../chunk-TINPSX3N.js";
 import "../chunk-BTDDEK7C.js";
 import {
   ORCHESTRATOR_AGENT,
   resolveAgentIdentity
-} from "../chunk-YDQKDCXK.js";
+} from "../chunk-GFNSXLBN.js";
 import "../chunk-RJMJYPHL.js";
-import "../chunk-YUYQHVVS.js";
-import "../chunk-OAGMHQY5.js";
+import "../chunk-6CNQ7DRB.js";
+import "../chunk-235KYAJR.js";
 import "../chunk-BOEVU2BD.js";
 import "../chunk-NJE7NS7E.js";
-import "../chunk-7PD3OGSQ.js";
+import "../chunk-DT3SVU2K.js";
 import "../chunk-YA6SCYMC.js";
 import "../chunk-Z3NGWHFX.js";
 import "../chunk-YWAORJG6.js";
@@ -42,6 +43,7 @@ export {
   ORCHESTRATOR_AGENT,
   activeChangeKey,
   classifyStage,
+  helperEditStage,
   liveEditStage,
   liveStageToStart,
   peekActiveChangeKey,
