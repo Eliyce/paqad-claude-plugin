@@ -1,5 +1,11 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
+  addRule,
+  cleanRuleText,
+  editRuleText,
+  removeRuleBullet
+} from "../chunk-ASIDKSRO.js";
+import {
   addRuleEntry,
   applyRuleScriptMap,
   archiveRule,
@@ -24,7 +30,7 @@ import {
   setVerifiability,
   snapshotRuleScriptMap,
   upsertScriptEntry
-} from "../chunk-NWWRI4FD.js";
+} from "../chunk-PUZTQ677.js";
 import {
   HEADER_MARKER,
   RULE_SCRIPT_MAP_SCHEMA_VERSION,
@@ -49,47 +55,50 @@ import {
   serializeRuleScriptMap,
   validateFindings,
   validateScriptHeader
-} from "../chunk-72GVSZKP.js";
-import "../chunk-ZFTFBUXP.js";
-import "../chunk-JXL35R47.js";
-import "../chunk-KKFSSPUD.js";
-import "../chunk-OTATRRDF.js";
-import "../chunk-O77JBFWW.js";
+} from "../chunk-5VXDW5TC.js";
+import "../chunk-GHQXK4A5.js";
+import "../chunk-LBNBI3D6.js";
+import "../chunk-WVMFHGJK.js";
+import "../chunk-UUBQQJVE.js";
+import "../chunk-EDQPZHXV.js";
+import "../chunk-MDXUST3Z.js";
 import {
   require_out
-} from "../chunk-DNG6DDRS.js";
-import "../chunk-4K4CM3QN.js";
-import "../chunk-6J44MDJE.js";
-import "../chunk-NUSNYHWM.js";
-import "../chunk-B4PUCHRN.js";
-import "../chunk-4MVEUCYU.js";
-import "../chunk-4MQZPCLY.js";
-import "../chunk-4BEZCXS2.js";
-import "../chunk-AINYJ3Q2.js";
-import "../chunk-RMTAX7L3.js";
+} from "../chunk-P4RPU2KB.js";
+import "../chunk-LYNDVGNE.js";
+import "../chunk-53V3JKAD.js";
+import "../chunk-TINPSX3N.js";
+import "../chunk-BTDDEK7C.js";
+import "../chunk-KLM2SM57.js";
+import "../chunk-RJMJYPHL.js";
+import "../chunk-RAKAXHZ5.js";
+import "../chunk-SCQTSYE4.js";
+import "../chunk-BOEVU2BD.js";
+import "../chunk-NJE7NS7E.js";
 import {
   embedRuleMarker,
   isRuleId,
   mintRuleId,
   parseRuleMarker,
+  parseRuleMarkerRun,
   ruleTextHash,
   sha256,
   stripRuleMarker
-} from "../chunk-3GFZQZPX.js";
-import "../chunk-N7PDT64R.js";
-import "../chunk-ER3R2ZPY.js";
-import "../chunk-VVRAO2BK.js";
-import "../chunk-4VFZMH6Y.js";
-import "../chunk-FCULNH3A.js";
-import "../chunk-PEDNW63C.js";
-import "../chunk-47TQR4LW.js";
+} from "../chunk-IUKM7KYA.js";
+import "../chunk-YA6SCYMC.js";
+import "../chunk-Z3NGWHFX.js";
+import "../chunk-YWAORJG6.js";
+import "../chunk-Q353EDKY.js";
+import "../chunk-SG6LXLDH.js";
+import "../chunk-FMQ5YRSP.js";
+import "../chunk-AZLA53A6.js";
 import {
   PATHS
-} from "../chunk-G3YYQOXJ.js";
+} from "../chunk-IHMBVS6H.js";
 import {
   __toESM,
   init_esm_shims
-} from "../chunk-EMKBJVIL.js";
+} from "../chunk-IDFRWBMN.js";
 
 // src/rule-scripts/index.ts
 init_esm_shims();
@@ -119,99 +128,14 @@ function checkOverFlag(scriptPath, kind, projectRoot, files, threshold = OVER_FL
   };
 }
 
-// src/rule-scripts/editor.ts
-init_esm_shims();
-import { readFileSync, writeFileSync } from "fs";
-import { join } from "path";
-function takenIds(projectRoot) {
-  const taken = /* @__PURE__ */ new Set();
-  for (const r of loadRuleScriptMap(projectRoot)?.rules ?? []) {
-    taken.add(r.id);
-  }
-  for (const r of loadRuleScriptMap(projectRoot)?.archived ?? []) {
-    taken.add(r.id);
-  }
-  for (const rel of collectRuleFiles(projectRoot)) {
-    for (const line of readFileSync(join(projectRoot, rel), "utf8").split("\n")) {
-      const id = parseRuleMarker(line);
-      if (id) {
-        taken.add(id);
-      }
-    }
-  }
-  return taken;
-}
-function cleanRuleText(input) {
-  return input.trim().replace(/^[-*]\s+/, "");
-}
-function assertRuleSource(sourceRel) {
-  const normalized = sourceRel.split("\\").join("/");
-  if (!normalized.startsWith(`${PATHS.RULES_DIR}/`) || !normalized.endsWith(".md")) {
-    throw new Error(
-      `addRule: source must be a .md file under ${PATHS.RULES_DIR}/ (got "${sourceRel}")`
-    );
-  }
-}
-function addRule(projectRoot, sourceRel, text) {
-  assertRuleSource(sourceRel);
-  const abs = join(projectRoot, sourceRel);
-  const clean = cleanRuleText(text);
-  const id = mintRuleId(sourceRel, clean, takenIds(projectRoot));
-  const bullet = embedRuleMarker(`- ${clean}`, id);
-  let existing = "";
-  try {
-    existing = readFileSync(abs, "utf8");
-  } catch (err) {
-    if (err.code !== "ENOENT") {
-      throw err;
-    }
-  }
-  const sep2 = existing.length > 0 && !existing.endsWith("\n") ? "\n" : "";
-  writeFileSync(abs, `${existing}${sep2}${bullet}
-`, "utf8");
-  return { id, source: sourceRel, text: clean, text_hash: ruleTextHash(clean) };
-}
-function locateRule(projectRoot, ruleId) {
-  for (const rel of collectRuleFiles(projectRoot)) {
-    const lines = readFileSync(join(projectRoot, rel), "utf8").split("\n");
-    const line = lines.findIndex((l) => parseRuleMarker(l) === ruleId);
-    if (line >= 0) {
-      return { source: rel, line, lines };
-    }
-  }
-  return null;
-}
-function editRuleText(projectRoot, ruleId, newText) {
-  const located = locateRule(projectRoot, ruleId);
-  if (!located) {
-    return null;
-  }
-  const original = located.lines[located.line];
-  const indent = /^(\s*)/.exec(original)?.[1] ?? "";
-  const marker = /^[-*]/.exec(stripRuleMarker(original).text.trim())?.[0] ?? "-";
-  const clean = cleanRuleText(newText);
-  located.lines[located.line] = embedRuleMarker(`${indent}${marker} ${clean}`, ruleId);
-  writeFileSync(join(projectRoot, located.source), located.lines.join("\n"), "utf8");
-  return { source: located.source };
-}
-function removeRuleBullet(projectRoot, ruleId) {
-  const located = locateRule(projectRoot, ruleId);
-  if (!located) {
-    return null;
-  }
-  located.lines.splice(located.line, 1);
-  writeFileSync(join(projectRoot, located.source), located.lines.join("\n"), "utf8");
-  return { source: located.source };
-}
-
 // src/rule-scripts/prune.ts
 init_esm_shims();
 var import_fast_glob = __toESM(require_out(), 1);
 import { existsSync, readdirSync, rmSync } from "fs";
-import { join as join2, sep } from "path";
+import { join, sep } from "path";
 function pruneOrphanScripts(projectRoot, map) {
   const baseRel = PATHS.RULE_SCRIPTS_DIR;
-  const baseAbs = join2(projectRoot, baseRel);
+  const baseAbs = join(projectRoot, baseRel);
   if (!existsSync(baseAbs)) {
     return [];
   }
@@ -223,13 +147,13 @@ function pruneOrphanScripts(projectRoot, map) {
   });
   const deleted = [];
   for (const sub of found) {
-    const rel = join2(baseRel, sub);
+    const rel = join(baseRel, sub);
     if (referenced.has(rel)) {
       continue;
     }
-    rmSync(join2(projectRoot, rel), { force: true });
-    const stemDir = join2(projectRoot, rel.replace(/\.mjs$/, ""));
-    const fixturesDir = join2(stemDir, "__fixtures__");
+    rmSync(join(projectRoot, rel), { force: true });
+    const stemDir = join(projectRoot, rel.replace(/\.mjs$/, ""));
+    const fixturesDir = join(stemDir, "__fixtures__");
     if (existsSync(fixturesDir)) {
       rmSync(fixturesDir, { recursive: true, force: true });
       try {
@@ -280,6 +204,7 @@ export {
   missingBinaries,
   parseRuleFile,
   parseRuleMarker,
+  parseRuleMarkerRun,
   parseScriptHeader,
   projectRelativeTargets,
   pruneOrphanScripts,

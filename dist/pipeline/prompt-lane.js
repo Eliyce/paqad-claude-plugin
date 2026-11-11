@@ -2,36 +2,37 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   PipelineRouter,
   RequestClassifier
-} from "../chunk-62W3GEJZ.js";
+} from "../chunk-AGCXG33M.js";
+import "../chunk-AGOIMCKA.js";
 import {
   hasOpenUnendedStage
-} from "../chunk-GAZRRHB6.js";
+} from "../chunk-KFMELGYZ.js";
 import {
   appendRouteTurn
-} from "../chunk-32KCHRKV.js";
-import "../chunk-KLDN6OUQ.js";
+} from "../chunk-FHVLX3ZN.js";
 import {
   paqadFrameLead
-} from "../chunk-5QVCE2TS.js";
-import "../chunk-RT3UCM3E.js";
-import "../chunk-5WYQR22H.js";
-import "../chunk-2JWK5TCO.js";
+} from "../chunk-VZJTQQG2.js";
+import "../chunk-WVSL2Y6U.js";
+import "../chunk-MV4PBF4I.js";
+import "../chunk-MAJ23OHN.js";
+import "../chunk-NWOJWWU7.js";
+import "../chunk-CECHOUNN.js";
 import {
   appendHooksLog
-} from "../chunk-5CVEVYVX.js";
-import "../chunk-7TWUXZG7.js";
-import "../chunk-I5MEZHWF.js";
-import "../chunk-GAEJHX3P.js";
-import "../chunk-STZ6VIJT.js";
-import "../chunk-VNMVILDR.js";
-import "../chunk-XINDDYVT.js";
-import "../chunk-JXL35R47.js";
-import "../chunk-KKFSSPUD.js";
-import "../chunk-OTATRRDF.js";
-import "../chunk-O77JBFWW.js";
+} from "../chunk-4S3XFJAH.js";
+import "../chunk-LX53V7FT.js";
+import "../chunk-7PAZZ5LP.js";
+import "../chunk-6XDDIYNJ.js";
+import "../chunk-6IMHPEFY.js";
+import "../chunk-I2G54BH7.js";
+import "../chunk-WVMFHGJK.js";
+import "../chunk-UUBQQJVE.js";
+import "../chunk-EDQPZHXV.js";
+import "../chunk-MDXUST3Z.js";
 import {
   writeSessionRoute
-} from "../chunk-M4ZVMG25.js";
+} from "../chunk-SZMH7YGC.js";
 import {
   changeKindForWorkflow,
   isFeatureDevelopmentRoute,
@@ -39,48 +40,49 @@ import {
   resolveRoutedWorkflow,
   routeWorkflow,
   writeWorkflowState
-} from "../chunk-E3HMMAVP.js";
+} from "../chunk-WY5PFENQ.js";
 import {
   writePendingImpact,
   writePendingKind,
   writePendingLane
-} from "../chunk-GIWYAEH5.js";
-import "../chunk-TAQPGYUE.js";
-import "../chunk-DNG6DDRS.js";
-import "../chunk-4K4CM3QN.js";
+} from "../chunk-S3LDWCDP.js";
+import "../chunk-F4YYZSAS.js";
+import "../chunk-P4RPU2KB.js";
+import "../chunk-LYNDVGNE.js";
 import {
   readFeatureStageUnit
-} from "../chunk-6J44MDJE.js";
-import "../chunk-NUSNYHWM.js";
-import "../chunk-B4PUCHRN.js";
+} from "../chunk-53V3JKAD.js";
+import "../chunk-TINPSX3N.js";
+import "../chunk-BTDDEK7C.js";
 import {
   isBundleClosed,
   laneRank,
   liveStageAgents,
   readChangeConstants
-} from "../chunk-4MVEUCYU.js";
-import "../chunk-4MQZPCLY.js";
+} from "../chunk-KLM2SM57.js";
+import "../chunk-RJMJYPHL.js";
 import {
   STAGE_ORDER
-} from "../chunk-4BEZCXS2.js";
-import "../chunk-AINYJ3Q2.js";
-import "../chunk-RMTAX7L3.js";
-import "../chunk-3GFZQZPX.js";
-import "../chunk-N7PDT64R.js";
-import "../chunk-ER3R2ZPY.js";
-import "../chunk-VVRAO2BK.js";
-import "../chunk-4VFZMH6Y.js";
+} from "../chunk-RAKAXHZ5.js";
+import "../chunk-SCQTSYE4.js";
+import "../chunk-BOEVU2BD.js";
+import "../chunk-NJE7NS7E.js";
+import "../chunk-IUKM7KYA.js";
+import "../chunk-YA6SCYMC.js";
+import "../chunk-Z3NGWHFX.js";
+import "../chunk-YWAORJG6.js";
+import "../chunk-Q353EDKY.js";
 import {
   resolveSessionId
-} from "../chunk-FCULNH3A.js";
+} from "../chunk-SG6LXLDH.js";
 import {
   readSessionControl
-} from "../chunk-PEDNW63C.js";
-import "../chunk-47TQR4LW.js";
-import "../chunk-G3YYQOXJ.js";
+} from "../chunk-FMQ5YRSP.js";
+import "../chunk-AZLA53A6.js";
+import "../chunk-IHMBVS6H.js";
 import {
   init_esm_shims
-} from "../chunk-EMKBJVIL.js";
+} from "../chunk-IDFRWBMN.js";
 
 // src/pipeline/prompt-lane.ts
 init_esm_shims();
@@ -101,6 +103,7 @@ var ROUTE_REASON = {
   "rules-analyze": "analysing which rules can become scripts",
   "root-cause-analysis": "a post-incident root-cause analysis",
   discovery: "shaping an uncertain idea into a practical next step \u2014 no code yet",
+  "rules-discovery": "bringing the rules and stack docs up to date with the real stack",
   "no-workflow": "just chatting \u2014 nothing to set up"
 };
 var SYSTEM_NOTIFICATION_ELEMENTS = [
