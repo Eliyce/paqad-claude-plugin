@@ -4,40 +4,43 @@ import {
   hasOpenUnendedStage,
   hostProcessAlive,
   isBetweenStages,
+  onboardingStopNudge,
   releaseStageAgentsAtSessionStart,
   stageAgentTaskCount,
   tasksCarryAgentType
-} from "../chunk-FVFH4UAE.js";
-import "../chunk-4ZAWKFXT.js";
+} from "../chunk-ZVONEL62.js";
+import "../chunk-2L4DHZJ6.js";
 import "../chunk-CECHOUNN.js";
-import "../chunk-AK3HYELM.js";
-import "../chunk-6XDDIYNJ.js";
-import "../chunk-I2G54BH7.js";
-import "../chunk-7D5MLTG3.js";
-import "../chunk-Y3O45QYV.js";
+import "../chunk-IV3YOX6V.js";
+import "../chunk-HX3IC62P.js";
+import "../chunk-G5I52VOH.js";
+import "../chunk-CK4KV2B2.js";
+import "../chunk-BHLWN7MT.js";
+import "../chunk-WLFUMAJW.js";
+import "../chunk-MN67TZD6.js";
 import "../chunk-P4RPU2KB.js";
-import "../chunk-LYNDVGNE.js";
-import "../chunk-5M55PDWL.js";
+import "../chunk-Y2ZLYYTT.js";
+import "../chunk-3RMUOOZL.js";
 import "../chunk-TINPSX3N.js";
 import "../chunk-BTDDEK7C.js";
 import {
   STAGE_AGENT_SESSION_RELEASE,
   liveStageAgents
-} from "../chunk-7TBVBCDH.js";
-import "../chunk-RJMJYPHL.js";
-import "../chunk-NCYDV2N5.js";
-import "../chunk-D6VEUSB6.js";
+} from "../chunk-6BQ3LK3W.js";
+import "../chunk-6KTWDVJB.js";
+import "../chunk-ABZDAL5H.js";
+import "../chunk-4UZQY3YQ.js";
 import "../chunk-BOEVU2BD.js";
 import "../chunk-NJE7NS7E.js";
-import "../chunk-ACJQW7SB.js";
+import "../chunk-X25GN7Q4.js";
 import "../chunk-YA6SCYMC.js";
 import "../chunk-Z3NGWHFX.js";
 import "../chunk-YWAORJG6.js";
-import "../chunk-Q353EDKY.js";
-import "../chunk-SG6LXLDH.js";
-import "../chunk-FMQ5YRSP.js";
-import "../chunk-AZLA53A6.js";
-import "../chunk-IHMBVS6H.js";
+import "../chunk-FNORANTL.js";
+import "../chunk-WPHHUTLG.js";
+import "../chunk-OFCFJ7RN.js";
+import "../chunk-6ZK23QLX.js";
+import "../chunk-UIFRWT3J.js";
 import "../chunk-IDFRWBMN.js";
 export {
   STAGE_AGENT_SESSION_RELEASE,
@@ -46,6 +49,7 @@ export {
   hostProcessAlive,
   isBetweenStages,
   liveStageAgents,
+  onboardingStopNudge,
   releaseStageAgentsAtSessionStart,
   stageAgentTaskCount,
   tasksCarryAgentType

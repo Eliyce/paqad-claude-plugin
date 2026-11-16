@@ -4,8 +4,9 @@ import {
   cleanRuleText,
   editRuleText,
   removeRuleBullet
-} from "../chunk-2FKMXGSE.js";
+} from "../chunk-7IZ2LNTC.js";
 import {
+  ONBOARDING_REASON_PREFIX,
   addRuleEntry,
   applyRuleScriptMap,
   archiveRule,
@@ -30,7 +31,7 @@ import {
   setVerifiability,
   snapshotRuleScriptMap,
   upsertScriptEntry
-} from "../chunk-YME53X5M.js";
+} from "../chunk-T3SMOLTE.js";
 import {
   HEADER_MARKER,
   RULE_SCRIPT_MAP_SCHEMA_VERSION,
@@ -55,24 +56,24 @@ import {
   serializeRuleScriptMap,
   validateFindings,
   validateScriptHeader
-} from "../chunk-SS625UO5.js";
-import "../chunk-3UV6TK6X.js";
+} from "../chunk-T5MY2FWT.js";
 import "../chunk-LBNBI3D6.js";
-import "../chunk-5ETIY5I3.js";
+import "../chunk-MVHA2RWU.js";
 import "../chunk-UUBQQJVE.js";
-import "../chunk-EQYAXXZO.js";
+import "../chunk-6MMKZ2NI.js";
 import "../chunk-MDXUST3Z.js";
+import "../chunk-BHLWN7MT.js";
 import {
   require_out
 } from "../chunk-P4RPU2KB.js";
-import "../chunk-LYNDVGNE.js";
-import "../chunk-5M55PDWL.js";
+import "../chunk-Y2ZLYYTT.js";
+import "../chunk-3RMUOOZL.js";
 import "../chunk-TINPSX3N.js";
 import "../chunk-BTDDEK7C.js";
-import "../chunk-7TBVBCDH.js";
-import "../chunk-RJMJYPHL.js";
-import "../chunk-NCYDV2N5.js";
-import "../chunk-D6VEUSB6.js";
+import "../chunk-6BQ3LK3W.js";
+import "../chunk-6KTWDVJB.js";
+import "../chunk-ABZDAL5H.js";
+import "../chunk-4UZQY3YQ.js";
 import "../chunk-BOEVU2BD.js";
 import "../chunk-NJE7NS7E.js";
 import {
@@ -84,17 +85,17 @@ import {
   ruleTextHash,
   sha256,
   stripRuleMarker
-} from "../chunk-ACJQW7SB.js";
+} from "../chunk-X25GN7Q4.js";
 import "../chunk-YA6SCYMC.js";
 import "../chunk-Z3NGWHFX.js";
 import "../chunk-YWAORJG6.js";
-import "../chunk-Q353EDKY.js";
-import "../chunk-SG6LXLDH.js";
-import "../chunk-FMQ5YRSP.js";
-import "../chunk-AZLA53A6.js";
+import "../chunk-FNORANTL.js";
+import "../chunk-WPHHUTLG.js";
+import "../chunk-OFCFJ7RN.js";
+import "../chunk-6ZK23QLX.js";
 import {
   PATHS
-} from "../chunk-IHMBVS6H.js";
+} from "../chunk-UIFRWT3J.js";
 import {
   __toESM,
   init_esm_shims
@@ -169,6 +170,7 @@ function pruneOrphanScripts(projectRoot, map) {
 }
 export {
   HEADER_MARKER,
+  ONBOARDING_REASON_PREFIX,
   OVER_FLAG_THRESHOLDS,
   RULE_SCRIPT_MAP_SCHEMA_VERSION,
   SCRIPT_ABORTED_ERROR,

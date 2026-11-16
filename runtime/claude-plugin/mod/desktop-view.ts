@@ -1,3 +1,5 @@
+import type { JourneyBandModel } from './journey-model';
+import type { JourneyLedger } from './journey-ledger';
 import { ACTIVITY_LINES } from './agents';
 import { changeChip } from './band';
 import {
@@ -13,8 +15,10 @@ import {
 import { needsAnswers, roleInitials, tableStatus } from './instruments';
 import { stageRuns, stageSegments, type SegmentState } from './model';
 import type { Signal } from './palette';
+import { featureScopeRow, scopeRowWords } from './scope-rows';
 import { shipRail, type ShipStepState } from './ship';
 import {
+  FEATURE_ROUTE,
   FEATURE_WORDS,
   readyFeatureRoute,
   routeFromEarlierTurn,
@@ -794,6 +798,7 @@ export interface FeatureCard {
 
 export type DesktopBand =
   | { kind: 'none' }
+  | { kind: 'onboarding'; model: JourneyBandModel; columns: number }
   | { kind: 'ready' }
   | { kind: 'unreadable'; reason: Unreadable; headline: string }
   | { kind: 'missing'; line: string; hint: string }
@@ -805,6 +810,7 @@ export type DesktopBand =
       cost: string;
     }
   | { kind: 'closed' | 'hidden'; needsYou: boolean }
+  | { kind: 'scope-row'; reason: 'closed' | 'other-branch' | 'paused'; word: string; words: string }
   | {
       kind: 'closed-change';
       word: string;
@@ -949,7 +955,9 @@ export function buildDesktopBand(input: DesktopBandInput): DesktopBand {
     return workflowBand(snapshot, route, input.now, input.turnStartedAt);
   }
   const closedChange = closedChangeBand(snapshot);
-  if (!snapshot.active && !readyFeatureRoute(snapshot) && !closedChange) return { kind: 'none' };
+  if (!snapshot.active && snapshot.route !== FEATURE_ROUTE && !closedChange) {
+    return { kind: 'none' };
+  }
   const live = input.live ?? IDLE_LIVE;
   const mode = visibilityMode(input.visibility);
   if (mode === 'closed' || mode === 'hidden') {
@@ -957,9 +965,10 @@ export function buildDesktopBand(input: DesktopBandInput): DesktopBand {
   }
   if (closedChange) return closedChange;
   if (!snapshot.active) {
-    return routeFromEarlierTurn(snapshot, input.turnStartedAt)
-      ? { kind: 'none' }
-      : readyFeatureBand(snapshot, input);
+    if (routeFromEarlierTurn(snapshot, input.turnStartedAt)) return { kind: 'none' };
+    const row = featureScopeRow(snapshot);
+    if (row.kind === 'band' || row.kind === 'ready') return readyFeatureBand(snapshot, input);
+    return { kind: 'scope-row', reason: row.kind, ...scopeRowWords(row) };
   }
   const full = desktopHeadline(snapshot, input.now, live);
   const head = { ...full, text: fitLine(full.text, input.columns - HEADLINE_INSET_COLUMNS) };
@@ -1832,6 +1841,7 @@ export function workflowLedger(snapshot: PaqadHudSnapshot, route: string): Workf
 
 export type DesktopLedger =
   | { kind: 'none' }
+  | { kind: 'onboarding'; ledger: JourneyLedger }
   | { kind: 'no-change'; words: string }
   | { kind: 'unreadable'; light: LightView }
   | { kind: 'workflow'; view: WorkflowLedger }

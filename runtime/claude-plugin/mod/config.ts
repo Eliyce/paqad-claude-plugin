@@ -7,6 +7,7 @@ const FALSY = new Set(['false', '0', 'no', 'off']);
 
 export interface StandDownInput {
   onboarded: boolean;
+  journey?: boolean;
   env: {
     CLAUDE_CODE_REMOTE?: string;
     PAQAD_DISABLED?: string;
@@ -193,7 +194,7 @@ export function isEngineNewEnough(engine: StandDownInput['engine']): boolean {
 
 export function standDownReason(input: StandDownInput): PaqadStandDown | null {
   if (isHudViewOff(input)) return 'view-off';
-  if (!input.onboarded) return 'not-onboarded';
+  if (!input.onboarded && input.journey !== true) return 'not-onboarded';
   if (input.env.CLAUDE_CODE_REMOTE?.trim().toLowerCase() === 'true') return 'remote';
   if (isPaqadOff(input)) return 'disabled';
   if (!isEngineNewEnough(input.engine)) return 'old-engine';
@@ -236,17 +237,23 @@ export function ancestorDirs(root: string, home: string | null = null): string[]
   }
 }
 
+export interface SessionBinding {
+  root: string;
+  sessionId: string | null;
+}
+
 export async function nextSessionRoot(
-  opened: boolean,
-  bound: string | null,
-  readRoot: () => Promise<string>,
+  bound: SessionBinding | null,
+  readBinding: () => Promise<SessionBinding>,
 ): Promise<string | null> {
-  if (!opened) return null;
-  let start: string;
+  let current: SessionBinding;
   try {
-    start = await readRoot();
+    current = await readBinding();
   } catch {
     return null;
   }
-  return start === bound ? null : start;
+  if (bound !== null && current.root === bound.root && current.sessionId === bound.sessionId) {
+    return null;
+  }
+  return current.root;
 }

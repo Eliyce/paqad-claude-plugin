@@ -1,5 +1,7 @@
 import { formatTokens } from './cost';
 import './instruments';
+import { journeyHeader, journeyLine, journeyStalled } from './journey-card';
+import { ONBOARDING_WORD, journeyBandShown, type JourneyView } from './journey-model';
 import { judgedHeadline } from './headline';
 import {
   CHANGE_CLOSED,
@@ -10,6 +12,8 @@ import {
 import { buildBandView, type BandView } from './model';
 import {
   BAND_BODIES,
+  BRAND,
+  CONTROL_HOTKEYS,
   layoutShell,
   type BandLayout,
   type BandRow,
@@ -17,11 +21,11 @@ import {
   type BodyContext,
   type ShellHeader,
 } from './shell';
+import { featureScopeRow, scopeRowWords } from './scope-rows';
 import { shipRail } from './ship';
 import {
   FEATURE_WORDS,
   NO_WORKFLOW,
-  readyFeatureRoute,
   routeFromEarlierTurn,
   statusEntryRoute,
   statusEntryRow,
@@ -121,6 +125,17 @@ export function closedChangeRow(snapshot: PaqadHudSnapshot, columns: number): Ba
   return truncateRow(row, columns);
 }
 
+export function featureScopeLine(snapshot: PaqadHudSnapshot, columns: number): BandRow {
+  const row = featureScopeRow(snapshot);
+  if (row.kind === 'band' || row.kind === 'ready') {
+    return truncateRow([{ text: READY_FEATURE_LINE }], columns);
+  }
+  const { word, words } = scopeRowWords(row);
+  const line: BandRow = [{ text: 'paqad' }, { text: `  ${word}` }];
+  if (words) line.push({ text: ` · ${words}`, dim: true });
+  return truncateRow(line, columns);
+}
+
 export function allGreenNow(snapshot: PaqadHudSnapshot | null): boolean {
   return (
     snapshot?.active === true &&
@@ -158,12 +173,48 @@ export function shellHeader(snapshot: PaqadHudSnapshot | null, view: BandView): 
 
 const SHOWN: BandVisibility = { minimised: false, closed: false, hidden: false };
 
+export const ONBOARDING_BODY = 'onboarding';
+
+export function layoutJourney(
+  snapshot: PaqadHudSnapshot | null,
+  journey: JourneyView,
+  size: { columns: number; maxRows: number },
+  context: BodyContext,
+  visibility: BandVisibility = SHOWN,
+): BandLayout {
+  const mode = visibilityMode(visibility);
+  if (mode === 'closed' || mode === 'hidden') {
+    const hint = closedLine(mode, buildBandView(snapshot, context.now, context.live)).slice(1);
+    const reopen: BandSegment = {
+      text: `${BRAND} · ${ONBOARDING_WORD} ▸`,
+      action: 'reopen',
+      hotkey: CONTROL_HOTKEYS.reopen,
+      key: 'paqad-reopen',
+    };
+    return { kind: 'line', row: [reopen, ...hint] };
+  }
+  const stalled = journeyStalled(journey, context.now);
+  const line = truncateRow(journeyLine(journey, stalled), size.columns);
+  if (mode === 'minimised') return { kind: 'line', row: line };
+  const renderer = BAND_BODIES[ONBOARDING_BODY];
+  const body = renderer ? renderer(snapshot, { ...context, journey, columns: size.columns }) : null;
+  const header = {
+    ...journeyHeader(snapshot, journey, stalled),
+    unavailable: context.unavailable === true,
+  };
+  return layoutShell(header, body, size, line);
+}
+
 export function layoutBand(
   snapshot: PaqadHudSnapshot | null,
   size: { columns: number; maxRows: number },
   context: BodyContext,
   visibility: BandVisibility = SHOWN,
 ): BandLayout {
+  const journey = context.journey ?? null;
+  if (journey !== null && journeyBandShown(journey, context.now)) {
+    return layoutJourney(snapshot, journey, size, context, visibility);
+  }
   if (snapshot && (snapshot.route === null || snapshot.route === NO_WORKFLOW)) {
     return { kind: 'none' };
   }
@@ -183,14 +234,10 @@ export function layoutBand(
     const shown = mode !== 'closed' && mode !== 'hidden';
     const closedRow = shown ? closedChangeRow(snapshot, size.columns) : null;
     if (closedRow) return { kind: 'line', row: closedRow };
-    const drawsReady =
-      mode !== 'closed' &&
-      mode !== 'hidden' &&
-      readyFeatureRoute(snapshot) &&
-      !routeFromEarlierTurn(snapshot, context.turnStartedAt ?? null);
-    return drawsReady
-      ? { kind: 'line', row: truncateRow([{ text: READY_FEATURE_LINE }], size.columns) }
-      : { kind: 'none' };
+    if (!shown || routeFromEarlierTurn(snapshot, context.turnStartedAt ?? null)) {
+      return { kind: 'none' };
+    }
+    return { kind: 'line', row: featureScopeLine(snapshot, size.columns) };
   }
   if (mode === 'closed' || mode === 'hidden') {
     return { kind: 'line', row: closedLine(mode, view) };

@@ -2,37 +2,39 @@ import { createRequire as __paqadCreateRequire } from 'module'; const require = 
 import {
   PipelineRouter,
   RequestClassifier
-} from "../chunk-T7QKKKPS.js";
-import "../chunk-YAYHLNWR.js";
+} from "../chunk-NJ4RMXVL.js";
+import "../chunk-6HLIJGQV.js";
 import {
   hasOpenUnendedStage
-} from "../chunk-FVFH4UAE.js";
+} from "../chunk-ZVONEL62.js";
 import {
   appendRouteTurn
-} from "../chunk-FUBOIUNU.js";
+} from "../chunk-QLO5OV2E.js";
 import {
   paqadFrameLead
 } from "../chunk-VZJTQQG2.js";
-import "../chunk-GVVZTJJR.js";
-import "../chunk-7Q65STES.js";
-import "../chunk-K4E6ACLH.js";
-import "../chunk-4ZAWKFXT.js";
+import "../chunk-XXJEO6YM.js";
+import "../chunk-P7EZBA7Y.js";
+import "../chunk-CYAFQOZ5.js";
+import "../chunk-2L4DHZJ6.js";
 import "../chunk-CECHOUNN.js";
 import {
   appendHooksLog
-} from "../chunk-4S3XFJAH.js";
-import "../chunk-HNYZUZ7D.js";
-import "../chunk-AK3HYELM.js";
-import "../chunk-6XDDIYNJ.js";
-import "../chunk-THDANA7U.js";
-import "../chunk-I2G54BH7.js";
-import "../chunk-5ETIY5I3.js";
+} from "../chunk-EGJD2UEP.js";
+import "../chunk-6K7RTPCM.js";
+import "../chunk-IV3YOX6V.js";
+import "../chunk-HX3IC62P.js";
+import "../chunk-G5I52VOH.js";
+import "../chunk-3P4W22QI.js";
+import "../chunk-CK4KV2B2.js";
+import "../chunk-MVHA2RWU.js";
 import "../chunk-UUBQQJVE.js";
-import "../chunk-EQYAXXZO.js";
+import "../chunk-6MMKZ2NI.js";
 import "../chunk-MDXUST3Z.js";
+import "../chunk-BHLWN7MT.js";
 import {
   writeSessionRoute
-} from "../chunk-S3UQUJV2.js";
+} from "../chunk-UDY3MMWJ.js";
 import {
   changeKindForWorkflow,
   isFeatureDevelopmentRoute,
@@ -40,18 +42,18 @@ import {
   resolveRoutedWorkflow,
   routeWorkflow,
   writeWorkflowState
-} from "../chunk-VOJO7HJ6.js";
+} from "../chunk-7KRQ7TSA.js";
 import {
   writePendingImpact,
   writePendingKind,
   writePendingLane
-} from "../chunk-7D5MLTG3.js";
-import "../chunk-Y3O45QYV.js";
+} from "../chunk-WLFUMAJW.js";
+import "../chunk-MN67TZD6.js";
 import "../chunk-P4RPU2KB.js";
-import "../chunk-LYNDVGNE.js";
+import "../chunk-Y2ZLYYTT.js";
 import {
   readFeatureStageUnit
-} from "../chunk-5M55PDWL.js";
+} from "../chunk-3RMUOOZL.js";
 import "../chunk-TINPSX3N.js";
 import "../chunk-BTDDEK7C.js";
 import {
@@ -59,27 +61,27 @@ import {
   laneRank,
   liveStageAgents,
   readChangeConstants
-} from "../chunk-7TBVBCDH.js";
-import "../chunk-RJMJYPHL.js";
+} from "../chunk-6BQ3LK3W.js";
+import "../chunk-6KTWDVJB.js";
 import {
   STAGE_ORDER
-} from "../chunk-NCYDV2N5.js";
-import "../chunk-D6VEUSB6.js";
+} from "../chunk-ABZDAL5H.js";
+import "../chunk-4UZQY3YQ.js";
 import "../chunk-BOEVU2BD.js";
 import "../chunk-NJE7NS7E.js";
-import "../chunk-ACJQW7SB.js";
+import "../chunk-X25GN7Q4.js";
 import "../chunk-YA6SCYMC.js";
 import "../chunk-Z3NGWHFX.js";
 import "../chunk-YWAORJG6.js";
-import "../chunk-Q353EDKY.js";
+import "../chunk-FNORANTL.js";
 import {
   resolveSessionId
-} from "../chunk-SG6LXLDH.js";
+} from "../chunk-WPHHUTLG.js";
 import {
   readSessionControl
-} from "../chunk-FMQ5YRSP.js";
-import "../chunk-AZLA53A6.js";
-import "../chunk-IHMBVS6H.js";
+} from "../chunk-OFCFJ7RN.js";
+import "../chunk-6ZK23QLX.js";
+import "../chunk-UIFRWT3J.js";
 import {
   init_esm_shims
 } from "../chunk-IDFRWBMN.js";
@@ -104,6 +106,7 @@ var ROUTE_REASON = {
   "root-cause-analysis": "a post-incident root-cause analysis",
   discovery: "shaping an uncertain idea into a practical next step \u2014 no code yet",
   "rules-discovery": "bringing the rules and stack docs up to date with the real stack",
+  onboarding: "setting up paqad as one eight-step onboarding journey",
   "no-workflow": "just chatting \u2014 nothing to set up"
 };
 var SYSTEM_NOTIFICATION_ELEMENTS = [
@@ -317,6 +320,15 @@ function namesStageOfOpenChange(projectRoot, sessionId, prior, request) {
   return open !== null && !isBundleClosed(projectRoot, open);
 }
 var RUNNING_CHANGE_REASON = "the change open in this session is still running";
+var RESUME_REASON = "you asked to pick the paused change back up";
+var RESUME_INTENT_RE = /^\s*(?:please\s+)?(?:continue|resume|carry\s+on)(?:\s+(?:with\s+)?(?:the|this|that|my|our)\s+(?:paused\s+)?(?:change|feature|work|task))?(?:\s+please)?\s*[.!]*\s*$/i;
+var QUESTION_LEAD_RE = /^\s*(?:what|why|how|when|where|which|who|whose|does|do|did|is|are|was|were|can|could|should|would|will|has|have|explain|tell me)\b/i;
+function isPlainQuestion(request) {
+  return request.trim().endsWith("?") || QUESTION_LEAD_RE.test(request);
+}
+function featureChangePaused(prior) {
+  return (prior.active === null || !isFeatureDevelopmentRoute(prior.active.workflow)) && prior.paused.some((entry) => isFeatureDevelopmentRoute(entry.workflow));
+}
 var RECORDED_LANE_REASON = "the lane recorded on this change";
 function openChangeOf(projectRoot, sessionId) {
   const open = readSessionControl(projectRoot, sessionId).active;
@@ -366,14 +378,22 @@ async function runPromptRouteSeam(input, deps = {}) {
   }
   const sessionId = resolveSessionId(input.projectRoot, input.sessionId);
   const prior = readWorkflowState(input.projectRoot, sessionId);
-  if (slashName === null && STAGE_NAME_OVERRIDABLE_ROUTES.has(routed) && namesStageOfOpenChange(input.projectRoot, sessionId, prior, input.request)) {
+  const paused = featureChangePaused(prior);
+  const questionWhilePaused = slashName === null && paused && routed === "project-question" && isPlainQuestion(input.request);
+  if (slashName === null && paused && RESUME_INTENT_RE.test(input.request)) {
+    routed = "feature-development";
+    lane = null;
+    kind = void 0;
+    reason = RESUME_REASON;
+  }
+  if (!questionWhilePaused && slashName === null && STAGE_NAME_OVERRIDABLE_ROUTES.has(routed) && namesStageOfOpenChange(input.projectRoot, sessionId, prior, input.request)) {
     routed = "feature-development";
     lane = null;
     kind = void 0;
     reason = OPEN_CHANGE_STAGE_REASON;
   }
   const openChange = openChangeOf(input.projectRoot, sessionId);
-  if (slashName === null && STAGE_NAME_OVERRIDABLE_ROUTES.has(routed) && changeIsRunning(input.projectRoot, openChange)) {
+  if (!questionWhilePaused && slashName === null && !isFeatureDevelopmentRoute(routed) && changeIsRunning(input.projectRoot, openChange)) {
     routed = "feature-development";
     lane = null;
     kind = void 0;
