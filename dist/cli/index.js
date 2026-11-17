@@ -7,20 +7,20 @@ import {
   recordRecipeInjected,
   resolveBriefSession,
   stageCommandLines
-} from "../chunk-UYDMFCMY.js";
+} from "../chunk-CNPTEGAX.js";
 import {
   holdRefreshContextLock
-} from "../chunk-C6W6MMDH.js";
+} from "../chunk-Q2T2YBLE.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-55FJZ4QT.js";
+} from "../chunk-JU36BG4O.js";
 import {
   buildStageReport,
   stageReportOptions,
   stageStartRefusal,
   unknownAgentReport
-} from "../chunk-UM22OC7V.js";
+} from "../chunk-SEHQSGZH.js";
 import {
   allChangedFiles,
   readLastUpdateRecord,
@@ -28,7 +28,7 @@ import {
 } from "../chunk-2IO7D5SZ.js";
 import {
   DISABLED_SESSION_DOC_TYPE
-} from "../chunk-7OBXHOAZ.js";
+} from "../chunk-UBNQS2GA.js";
 import {
   AGENT_MEMORY_MAX_BYTES,
   AGENT_PERMISSION_ALLOW,
@@ -247,19 +247,26 @@ import {
   writeReviewDigest,
   writeStackArtifacts,
   writeWorktreeInclude
-} from "../chunk-KEOCRVTC.js";
+} from "../chunk-54QB2ZSN.js";
 import {
   CHECKS_REPORT_SCHEMA_VERSION,
   DEBT_STATUSES,
   DEGRADED,
   NO_VERDICT_RECORD,
+  OPEN_STATUSES,
+  PROOFS,
+  REVIEW_KINDS,
+  ReviewRefusal,
+  SEVERITIES,
   addDebtItem,
   appendFixProofRow,
   appendRuleOverride,
   appendRuleOverrideOutcome,
   buildAndWriteChangeTraceabilityMap,
   buildHudSnapshot,
+  buildReviewView,
   closeDebtItem,
+  commitReviewRun,
   countedRedRow,
   discoverModuleHealth,
   discoverSourceRoots,
@@ -275,13 +282,15 @@ import {
   readFeatureTechDebtIndex,
   readFixProofRows,
   readHudVerdict,
+  readReviewRun,
   refreshHudSnapshot,
   relaxedItems,
+  reviewStage,
   scanImports,
   techDebtDir,
   writeFeatureTechDebtIndex,
   writeView
-} from "../chunk-JTHCYMZF.js";
+} from "../chunk-FE6X33PB.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -293,7 +302,7 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-JQBNU5XL.js";
+} from "../chunk-SZUUPBSG.js";
 import {
   PROJECT_RULES_DIR,
   RULES_ROOT,
@@ -317,7 +326,7 @@ import {
   runFilePath,
   updateRun as updateRun2,
   writeStackInventory
-} from "../chunk-6IXJCHMI.js";
+} from "../chunk-HFFDY6FZ.js";
 import {
   estimateTokens
 } from "../chunk-F657QMM6.js";
@@ -327,14 +336,14 @@ import {
   recordSeatedRows,
   recordWritingRow,
   scanTranscriptLines
-} from "../chunk-MDA2NCNB.js";
+} from "../chunk-QZQYEDOU.js";
 import "../chunk-XVGJKRBZ.js";
 import {
   stageLedgerEra
 } from "../chunk-WKGFBXSZ.js";
 import {
   legacyAfterWindowLines
-} from "../chunk-VQHW63EU.js";
+} from "../chunk-RKNGMBJT.js";
 import "../chunk-JAQOKAYZ.js";
 import {
   createEvidence,
@@ -342,7 +351,7 @@ import {
   prunePatterns,
   queryPatterns,
   syncModuleHealth
-} from "../chunk-NJ4RMXVL.js";
+} from "../chunk-SK5EVMOH.js";
 import {
   EmbeddingProviderError,
   FileVectorIndex,
@@ -358,7 +367,7 @@ import {
   openRagConversation,
   recordRagEvidence,
   resolveRemovedEmbeddingProvider
-} from "../chunk-6HLIJGQV.js";
+} from "../chunk-HNGEKA52.js";
 import {
   MODULE_REGISTRIES_UNIT,
   ONBOARDING_STAGES,
@@ -374,11 +383,11 @@ import {
   statusLine,
   unitRowsForStage,
   writeChecksRunningMarker
-} from "../chunk-ZVONEL62.js";
+} from "../chunk-QIDCRSC4.js";
 import {
   appendRouteTurn,
   readRouteTurns
-} from "../chunk-QLO5OV2E.js";
+} from "../chunk-BUHSOGJG.js";
 import {
   PAQAD_STATUS_GLYPH
 } from "../chunk-VZJTQQG2.js";
@@ -390,7 +399,7 @@ import {
   cleanRuleText,
   editRuleText,
   removeRuleBullet
-} from "../chunk-7IZ2LNTC.js";
+} from "../chunk-DDU5BA3Z.js";
 import {
   addRuleEntry,
   applyRuleScriptMap,
@@ -403,7 +412,7 @@ import {
   runFixtures,
   setRuleText,
   upsertScriptEntry
-} from "../chunk-T3SMOLTE.js";
+} from "../chunk-UTC3OV6K.js";
 import {
   AGENT_RECORD_WRITER,
   DEFAULT_OBLIGATION_INDEX_PATH,
@@ -557,7 +566,7 @@ import {
   writeStagedText,
   writeTrace,
   writeYamlAtomic
-} from "../chunk-2L6Y5IUE.js";
+} from "../chunk-ZWR7JZMA.js";
 import {
   AdapterFactory,
   BaseAdapter,
@@ -602,9 +611,9 @@ import {
   withDescription,
   withoutDescription,
   writeFileAtomic as writeFileAtomic2
-} from "../chunk-BTURFF4H.js";
-import "../chunk-QVDTWXAE.js";
-import "../chunk-LBGRKXEW.js";
+} from "../chunk-QLEA232X.js";
+import "../chunk-JTIRCRH5.js";
+import "../chunk-IYMINLEM.js";
 import {
   SKIP_NEEDS_REASON_LINE,
   SKIP_NOT_ALLOWED_LINE,
@@ -627,28 +636,28 @@ import {
   stillWaitingLine,
   writeHld,
   writeHldMarkdown
-} from "../chunk-PVG47MG3.js";
+} from "../chunk-MVGL67WV.js";
 import {
   StackSnapshotCache,
   readStackSnapshotSync
-} from "../chunk-CXOGCOSW.js";
+} from "../chunk-OBG3P3CY.js";
 import {
   readExistingOnboardingManifest,
   writeDetectionReport,
   writeFrameworkVersionPreservingTimestamp
-} from "../chunk-G2BSGAGD.js";
+} from "../chunk-OY7VGSBK.js";
 import {
   EXPERT_OWNS
 } from "../chunk-IKAOR4NY.js";
 import {
   ADAPTER_TYPES
 } from "../chunk-BKNKG26S.js";
-import "../chunk-SJKHVGZ5.js";
-import "../chunk-QUJPMFQ4.js";
+import "../chunk-H53JRWLF.js";
+import "../chunk-I5KZFEUV.js";
 import {
   compileRules,
   writeCompiledRules
-} from "../chunk-P7EZBA7Y.js";
+} from "../chunk-HI7M7GNL.js";
 import {
   CONTAINER_PROCESS_CAP,
   CONTAINER_WRAPPERS,
@@ -673,7 +682,7 @@ import {
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-CYAFQOZ5.js";
+} from "../chunk-4VK43QXE.js";
 import {
   AUTO_RESPONDER,
   DECISION_EVIDENCE_DOC_TYPE,
@@ -705,16 +714,16 @@ import {
   recordSuggestionOutcome,
   removeStandingAnswer,
   suggestEarlierAnswer
-} from "../chunk-2L4DHZJ6.js";
+} from "../chunk-7VNFUFHY.js";
 import "../chunk-CECHOUNN.js";
 import {
   appendHooksLog
-} from "../chunk-EGJD2UEP.js";
+} from "../chunk-TFG3KYLM.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   getLegacyCapabilities,
   getPrimaryStack
-} from "../chunk-6K7RTPCM.js";
+} from "../chunk-RFE65CA2.js";
 import {
   ACTIVE_CAPABILITIES,
   DOMAIN_STACK_MAP,
@@ -727,11 +736,11 @@ import {
   syncProjectProfile,
   validateCapabilitiesForStack,
   writeProjectProfile
-} from "../chunk-IV3YOX6V.js";
+} from "../chunk-WM27CNUZ.js";
 import {
   DECISION_CATEGORIES,
   DECISION_CATEGORY_DEFAULTS
-} from "../chunk-HX3IC62P.js";
+} from "../chunk-4ORTSS7A.js";
 import {
   appendEvent,
   createRun,
@@ -742,29 +751,29 @@ import {
   readTextOrNull,
   requireRun,
   updateRun
-} from "../chunk-G5I52VOH.js";
+} from "../chunk-4GW2XENS.js";
 import "../chunk-3P4W22QI.js";
-import "../chunk-CK4KV2B2.js";
+import "../chunk-TL22DBH4.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   parseScriptHeader,
   runPool
-} from "../chunk-T5MY2FWT.js";
+} from "../chunk-EDDB5BEM.js";
 import {
   scanWorkingTree
 } from "../chunk-LBNBI3D6.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-MVHA2RWU.js";
+} from "../chunk-GALSXBNM.js";
 import "../chunk-UUBQQJVE.js";
 import {
   activeChangeFiles,
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-6MMKZ2NI.js";
+} from "../chunk-P6EX37P7.js";
 import {
   execa,
   parseCommandString
@@ -772,33 +781,33 @@ import {
 import {
   hudCostCachePath,
   writeFileAtomic
-} from "../chunk-BHLWN7MT.js";
+} from "../chunk-4UDYC65U.js";
 import {
   markerNarrationLine
-} from "../chunk-DXEUJIJD.js";
+} from "../chunk-TFKU2XUH.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-GTEHETTM.js";
+} from "../chunk-S2S7GCGE.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-UDY3MMWJ.js";
+} from "../chunk-Z3MBOMS7.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-7KRQ7TSA.js";
+} from "../chunk-JNYGWLBM.js";
 import {
   clearPendingLane,
   recordMarkedStage,
   titleActiveFeature
-} from "../chunk-WLFUMAJW.js";
+} from "../chunk-G3M24XX2.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -816,7 +825,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-MN67TZD6.js";
+} from "../chunk-YH62LFCT.js";
 import {
   require_out
 } from "../chunk-P4RPU2KB.js";
@@ -853,7 +862,7 @@ import {
   stampFeatureDocument,
   stampMergeCommit,
   withFileLockSync
-} from "../chunk-3RMUOOZL.js";
+} from "../chunk-HUUCKZRD.js";
 import {
   releaseLock,
   tryAcquireLock
@@ -876,7 +885,7 @@ import {
   readFeatureRecord,
   resolveAgentIdentity,
   validateVisualEvidenceRecord
-} from "../chunk-6BQ3LK3W.js";
+} from "../chunk-WIFSXOJT.js";
 import {
   buildDocumentEnvelope,
   buildTextHeader,
@@ -884,7 +893,7 @@ import {
   rowRecordedAt,
   sha256Hex,
   stampBundleRow
-} from "../chunk-6KTWDVJB.js";
+} from "../chunk-IPSMQB2X.js";
 import {
   AGENT_HOST_TARGETS,
   CHIEF_ARCHITECT_AGENT_NAME,
@@ -906,7 +915,7 @@ import {
   splitSkillFrontmatter,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "../chunk-ABZDAL5H.js";
+} from "../chunk-4OZN3ROM.js";
 import {
   DecisionPacketCorruptError,
   FrameworkError,
@@ -914,7 +923,7 @@ import {
   SchemaVersionError,
   engineLog,
   getProjectSecret
-} from "../chunk-4UZQY3YQ.js";
+} from "../chunk-PF7KWSCM.js";
 import {
   readGitState
 } from "../chunk-BOEVU2BD.js";
@@ -954,7 +963,7 @@ import {
   stripRuleMarker,
   syncFrameworkConfig,
   versionAtLeast
-} from "../chunk-X25GN7Q4.js";
+} from "../chunk-6MIIR3LR.js";
 import {
   DEFAULT_BASE_BRANCH,
   DEFAULT_TRACKER_PATTERNS,
@@ -978,14 +987,14 @@ import {
   readUnitFile,
   sessionLedgerDir,
   stampSessionRow
-} from "../chunk-FNORANTL.js";
+} from "../chunk-UNRAXQSB.js";
 import {
   explicitSessionHint,
   keepingLedgerSessionCache,
   readLedgerSessionId,
   resolveSessionId
-} from "../chunk-WPHHUTLG.js";
-import "../chunk-OFCFJ7RN.js";
+} from "../chunk-L7TVJSIU.js";
+import "../chunk-QJQ4AXUA.js";
 import {
   ULID_BODY,
   chatRagPath,
@@ -998,10 +1007,10 @@ import {
   join,
   parseFeatureDirName,
   ulid
-} from "../chunk-6ZK23QLX.js";
+} from "../chunk-Q65EMUNY.js";
 import {
   PATHS
-} from "../chunk-UIFRWT3J.js";
+} from "../chunk-BNIV2KZF.js";
 import {
   __toESM,
   init_esm_shims
@@ -2799,8 +2808,8 @@ function rescope(result2, changedFiles) {
     evidence_scope: changedFiles.length > 0 ? { related_paths: changedFiles } : {}
   };
 }
-function unreadable(run, result2) {
-  return run.exit_code === 0 && result2.summary.total === 0 && result2.parse_metadata.parse_strategy !== "plain-text-fallback";
+function unreadable(run2, result2) {
+  return run2.exit_code === 0 && result2.summary.total === 0 && result2.parse_metadata.parse_strategy !== "plain-text-fallback";
 }
 function markInconclusive(commands) {
   const index = commands.map((command) => command.logical_command).lastIndexOf("test");
@@ -3418,11 +3427,11 @@ function resolveIndexPath(explicitPath, spec) {
   if (spec) return specIndexPath(spec);
   return DEFAULT_OBLIGATION_INDEX_PATH;
 }
-function formatSpecReviewSummary(report3) {
-  const activeDefects = report3.defects.filter((defect) => defect.status !== "resolved");
+function formatSpecReviewSummary(report4) {
+  const activeDefects = report4.defects.filter((defect) => defect.status !== "resolved");
   const lines3 = [
-    `Spec Review \u2014 ${report3.metadata.spec_file}`,
-    `Reviewed: ${report3.metadata.reviewed_at}`,
+    `Spec Review \u2014 ${report4.metadata.spec_file}`,
+    `Reviewed: ${report4.metadata.reviewed_at}`,
     "",
     `Open defects: ${activeDefects.length}`
   ];
@@ -3436,7 +3445,7 @@ function formatSpecReviewSummary(report3) {
       );
     }
   }
-  const resolved = report3.defects.filter((defect) => defect.status === "resolved");
+  const resolved = report4.defects.filter((defect) => defect.status === "resolved");
   if (resolved.length > 0) {
     lines3.push("");
     lines3.push(`Resolved findings carried forward: ${resolved.length}`);
@@ -3487,12 +3496,12 @@ function createComplianceCommand() {
       project_root: options.projectRoot,
       spec_file: relativeSpec
     });
-    const report3 = reviewSpecification({
+    const report4 = reviewSpecification({
       spec_file: relativeSpec,
       spec_markdown: specMarkdown,
       previous_report: previousReport
     });
-    report3.pattern_advisories = await buildPatternAdvisories({
+    report4.pattern_advisories = await buildPatternAdvisories({
       min_frequency: 1,
       max_age_days: 365,
       storeRoot: resolvePatternStoreRoot(options.projectRoot)
@@ -3500,9 +3509,9 @@ function createComplianceCommand() {
     await saveSpecReviewReport({
       project_root: options.projectRoot,
       spec_file: relativeSpec,
-      report: report3
+      report: report4
     });
-    console.log(options.json ? JSON.stringify(report3, null, 2) : formatSpecReviewSummary(report3));
+    console.log(options.json ? JSON.stringify(report4, null, 2) : formatSpecReviewSummary(report4));
     process.exitCode = 0;
   });
   command.command("check").description("Check project tests for obligation coverage").option("--project-root <path>", "Project root", process.cwd()).option("--spec <path>", "Spec file \u2014 used to auto-derive index and report paths").option("--index-path <path>", "Explicit index path (overrides --spec derivation)").option("--gate", "Apply compliance gate thresholds and exit non-zero if not met").option("--min-ratio <n>", "Minimum compliance ratio required (with --gate)", "0.9").option(
@@ -3528,7 +3537,7 @@ function createComplianceCommand() {
         process.exitCode = 1;
         return;
       }
-      const report3 = await checkSpecCompliance({
+      const report4 = await checkSpecCompliance({
         project_root: options.projectRoot,
         index,
         report_path: reportPath,
@@ -3538,22 +3547,22 @@ function createComplianceCommand() {
         const minRatio = parseFloat(options.minRatio);
         const maxUncoveredCritical = parseInt(options.maxUncoveredCritical, 10);
         const criticalCategories = /* @__PURE__ */ new Set(["acceptance", "edge-case"]);
-        const uncoveredCriticalCount = report3.obligations.filter(
+        const uncoveredCriticalCount = report4.obligations.filter(
           (obligation) => obligation.state === "uncovered" && criticalCategories.has(obligation.category)
         ).length;
-        const failed2 = report3.summary.compliance_ratio < minRatio || uncoveredCriticalCount > maxUncoveredCritical;
+        const failed2 = report4.summary.compliance_ratio < minRatio || uncoveredCriticalCount > maxUncoveredCritical;
         console.log(
           JSON.stringify(
             {
               gate_result: failed2 ? "fail" : "pass",
-              compliance_ratio: report3.summary.compliance_ratio,
-              uncovered_count: report3.summary.uncovered,
+              compliance_ratio: report4.summary.compliance_ratio,
+              uncovered_count: report4.summary.uncovered,
               uncovered_critical_count: uncoveredCriticalCount,
-              uncovered_ids: report3.uncovered_obligations,
+              uncovered_ids: report4.uncovered_obligations,
               min_ratio_threshold: minRatio,
               max_uncovered_critical_threshold: maxUncoveredCritical,
-              spec_defect_count: report3.spec_review?.defect_count ?? 0,
-              spec_defect_warning: report3.spec_review?.warning ?? null
+              spec_defect_count: report4.spec_review?.defect_count ?? 0,
+              spec_defect_warning: report4.spec_review?.warning ?? null
             },
             null,
             2
@@ -3562,8 +3571,8 @@ function createComplianceCommand() {
         process.exitCode = failed2 ? 1 : 0;
         return;
       }
-      console.log(JSON.stringify(report3, null, 2));
-      process.exitCode = report3.summary.uncovered > 0 ? 1 : 0;
+      console.log(JSON.stringify(report4, null, 2));
+      process.exitCode = report4.summary.uncovered > 0 ? 1 : 0;
     }
   );
   command.command("skeleton").description(
@@ -3588,14 +3597,14 @@ function createComplianceCommand() {
       });
       let obligations = index.obligations;
       if (!options.all) {
-        const report3 = await checkSpecCompliance({
+        const report4 = await checkSpecCompliance({
           project_root: options.projectRoot,
           index,
           spec_review: review
         });
         const skeletonStates = /* @__PURE__ */ new Set(["uncovered", "partial"]);
         const activeIds = new Set(
-          report3.obligations.filter((obligation) => skeletonStates.has(obligation.state)).map((obligation) => obligation.obligation_id)
+          report4.obligations.filter((obligation) => skeletonStates.has(obligation.state)).map((obligation) => obligation.obligation_id)
         );
         obligations = index.obligations.filter(
           (obligation) => activeIds.has(obligation.obligation_id)
@@ -3627,29 +3636,29 @@ function createComplianceCommand() {
       project_root: options.projectRoot,
       spec_file: relativeSpec
     });
-    const report3 = await checkSpecCompliance({
+    const report4 = await checkSpecCompliance({
       project_root: options.projectRoot,
       index,
       spec_review: review
     });
     const lines3 = [];
-    lines3.push(`Compliance Report \u2014 ${report3.metadata.spec_file}`);
-    lines3.push(`Generated: ${report3.metadata.generated_at}`);
+    lines3.push(`Compliance Report \u2014 ${report4.metadata.spec_file}`);
+    lines3.push(`Generated: ${report4.metadata.generated_at}`);
     lines3.push("");
     lines3.push("Summary");
-    lines3.push(`  Total obligations:   ${report3.summary.total}`);
-    lines3.push(`  Covered:             ${report3.summary.covered}`);
-    lines3.push(`  Partial:             ${report3.summary.partial}`);
-    lines3.push(`  Uncovered:           ${report3.summary.uncovered}`);
-    lines3.push(`  Indeterminate:       ${report3.summary.indeterminate}`);
-    lines3.push(`  Compliance ratio:    ${(report3.summary.compliance_ratio * 100).toFixed(1)}%`);
-    if (report3.spec_review) {
-      lines3.push(`  Spec defects:        ${report3.spec_review.defect_count}`);
-      if (report3.spec_review.warning) {
-        lines3.push(`  Warning:             ${report3.spec_review.warning}`);
+    lines3.push(`  Total obligations:   ${report4.summary.total}`);
+    lines3.push(`  Covered:             ${report4.summary.covered}`);
+    lines3.push(`  Partial:             ${report4.summary.partial}`);
+    lines3.push(`  Uncovered:           ${report4.summary.uncovered}`);
+    lines3.push(`  Indeterminate:       ${report4.summary.indeterminate}`);
+    lines3.push(`  Compliance ratio:    ${(report4.summary.compliance_ratio * 100).toFixed(1)}%`);
+    if (report4.spec_review) {
+      lines3.push(`  Spec defects:        ${report4.spec_review.defect_count}`);
+      if (report4.spec_review.warning) {
+        lines3.push(`  Warning:             ${report4.spec_review.warning}`);
       }
     }
-    const uncovered = report3.obligations.filter((obligation) => obligation.state === "uncovered");
+    const uncovered = report4.obligations.filter((obligation) => obligation.state === "uncovered");
     if (uncovered.length > 0) {
       lines3.push("");
       lines3.push("Uncovered obligations:");
@@ -3659,7 +3668,7 @@ function createComplianceCommand() {
           lines3.push(`    Pass criteria: ${obligation.pass_criteria}`);
       }
     }
-    const partial = report3.obligations.filter((obligation) => obligation.state === "partial");
+    const partial = report4.obligations.filter((obligation) => obligation.state === "partial");
     if (partial.length > 0) {
       lines3.push("");
       lines3.push("Partial obligations:");
@@ -3668,7 +3677,7 @@ function createComplianceCommand() {
       }
     }
     console.log(lines3.join("\n"));
-    process.exitCode = report3.summary.uncovered > 0 ? 1 : 0;
+    process.exitCode = report4.summary.uncovered > 0 ? 1 : 0;
   });
   command.command("doctor").description("Validate obligation index health").option("--project-root <path>", "Project root", process.cwd()).option("--spec <path>", "Spec file \u2014 used to auto-derive index path").option("--index-path <path>", "Explicit index path (overrides --spec derivation)").action(async (options) => {
     const indexPath = resolveIndexPath(options.indexPath, options.spec);
@@ -3700,8 +3709,8 @@ function createComplianceCommand() {
   });
   command.command("boundary").description("Detect shared-type boundaries across specs and report unhandled variants").option("--project-root <path>", "Project root", process.cwd()).option("--generate", "Generate test stubs for unhandled variants").option("--json", "Print JSON instead of human-readable output").action(async (options) => {
     const results = await scanBoundaries({ project_root: options.projectRoot });
-    const report3 = buildBoundaryReport(results);
-    await saveBoundaryReport(report3, options.projectRoot);
+    const report4 = buildBoundaryReport(results);
+    await saveBoundaryReport(report4, options.projectRoot);
     if (options.generate) {
       for (const result2 of results) {
         const allUnhandled = [...result2.unhandled_by_consumer.values()].flat();
@@ -3713,9 +3722,9 @@ function createComplianceCommand() {
       }
     }
     if (options.json) {
-      console.log(JSON.stringify(report3, null, 2));
+      console.log(JSON.stringify(report4, null, 2));
     } else {
-      console.log(formatBoundaryReport(report3));
+      console.log(formatBoundaryReport(report4));
     }
     process.exitCode = 0;
   });
@@ -3751,18 +3760,18 @@ function createComplianceCommand() {
   );
   return command;
 }
-function formatBoundaryReport(report3) {
+function formatBoundaryReport(report4) {
   const lines3 = [
     `Boundary Report`,
-    `Generated: ${report3.metadata.generated_at}`,
+    `Generated: ${report4.metadata.generated_at}`,
     "",
-    `Total interfaces:  ${report3.total_interfaces}`,
-    `Total states:      ${report3.total_states}`,
-    `Handled:           ${report3.handled_count}`,
-    `Unhandled:         ${report3.unhandled_count}`,
-    `Gate result:       ${report3.gate_result.toUpperCase()}`
+    `Total interfaces:  ${report4.total_interfaces}`,
+    `Total states:      ${report4.total_states}`,
+    `Handled:           ${report4.handled_count}`,
+    `Unhandled:         ${report4.unhandled_count}`,
+    `Gate result:       ${report4.gate_result.toUpperCase()}`
   ];
-  for (const iface of report3.interfaces) {
+  for (const iface of report4.interfaces) {
     if (iface.unhandled_variants.length > 0) {
       lines3.push("");
       lines3.push(`  ${iface.type_name} (${iface.file})`);
@@ -3814,17 +3823,17 @@ function createDuplicationCommand() {
   );
   command.command("scan").description("Scan the changed files for near-duplication of existing code and record a report").option("--project-root <path>", "Project root", process.cwd()).option("--json", "Emit the machine-readable report instead of the human summary", false).option("--no-corroborate", "Skip the optional jscpd corroboration pass").action(async (options) => {
     const changedFiles = (await loadChangeEvidence(options.projectRoot)).files;
-    const report3 = await runDuplicationScan({
+    const report4 = await runDuplicationScan({
       projectRoot: options.projectRoot,
       changedFiles,
       corroborate: options.corroborate
     });
     if (options.json) {
-      console.log(JSON.stringify(report3, null, 2));
+      console.log(JSON.stringify(report4, null, 2));
     } else {
-      printSummary(report3.findings, report3.blocking);
+      printSummary(report4.findings, report4.blocking);
     }
-    if (report3.blocking) {
+    if (report4.blocking) {
       process.exitCode = 1;
     }
   });
@@ -6763,29 +6772,29 @@ function scoreText(section3) {
   if (section3.score === null) return "\u2014";
   return `${section3.score}%`;
 }
-function renderMarkdown(report3) {
+function renderMarkdown(report4) {
   const lines3 = [];
-  const name = report3.projectName ?? "(unnamed project)";
+  const name = report4.projectName ?? "(unnamed project)";
   lines3.push(`# paqad-ai status \u2014 ${name}`);
   lines3.push("");
-  lines3.push(`- Generated: ${report3.generatedAt}`);
-  lines3.push(`- Project root: ${report3.projectRoot}`);
-  if (report3.frameworkVersion !== null) {
-    lines3.push(`- Framework version: ${report3.frameworkVersion}`);
+  lines3.push(`- Generated: ${report4.generatedAt}`);
+  lines3.push(`- Project root: ${report4.projectRoot}`);
+  if (report4.frameworkVersion !== null) {
+    lines3.push(`- Framework version: ${report4.frameworkVersion}`);
   }
-  if (report3.notOnboarded) {
+  if (report4.notOnboarded) {
     lines3.push("");
     lines3.push("> Project is not onboarded. Run `paqad-ai onboard` first.");
     return lines3.join("\n");
   }
   lines3.push(
-    `- Overall: ${BAND_GLYPHS[report3.overallBand]} ${report3.overallScore !== null ? `${report3.overallScore}%` : "\u2014"} (${report3.overallBand})`
+    `- Overall: ${BAND_GLYPHS[report4.overallBand]} ${report4.overallScore !== null ? `${report4.overallScore}%` : "\u2014"} (${report4.overallBand})`
   );
   lines3.push("");
-  if (report3.attention.length > 0) {
+  if (report4.attention.length > 0) {
     lines3.push("## Needs your attention");
     lines3.push("");
-    for (const item2 of report3.attention) {
+    for (const item2 of report4.attention) {
       const tag = item2.severity === "critical" ? "**critical**" : item2.severity;
       lines3.push(`- [${tag}] ${item2.message} (${item2.sectionId})`);
     }
@@ -6795,13 +6804,13 @@ function renderMarkdown(report3) {
   lines3.push("");
   lines3.push("| Section | Score | Band | Summary |");
   lines3.push("| --- | ---: | --- | --- |");
-  for (const section3 of report3.sections) {
+  for (const section3 of report4.sections) {
     const score = scoreText(section3);
     lines3.push(
       `| ${section3.title} | ${score} | ${BAND_GLYPHS[section3.band]} ${section3.band} | ${section3.summary} |`
     );
   }
-  for (const section3 of report3.sections) {
+  for (const section3 of report4.sections) {
     if (section3.metrics.length === 0) continue;
     lines3.push("");
     lines3.push(`### ${section3.title}`);
@@ -8413,7 +8422,7 @@ function assembleSiteMapReport(input) {
   const preExisting = findings.filter(
     (finding) => finding.baseline_status === "pre-existing"
   ).length;
-  const report3 = {
+  const report4 = {
     schema_version: "1",
     generated_by: "paqad-ai",
     framework_version: VERSION,
@@ -8439,7 +8448,7 @@ function assembleSiteMapReport(input) {
     },
     sources_used: [...new Set(input.sources)].sort()
   };
-  return { report: report3, findings, findingIds: findings.map((finding) => finding.id) };
+  return { report: report4, findings, findingIds: findings.map((finding) => finding.id) };
 }
 
 // src/site-map/canonical-trust.ts
@@ -8499,7 +8508,7 @@ async function gatherSiteMapReport(options) {
   if (map !== null) sources.push("app-map.yaml");
   if (journeyCount > 0) sources.push("journeys");
   const baseline = readBaseline(projectRoot);
-  const { report: report3, findingIds } = assembleSiteMapReport({
+  const { report: report4, findingIds } = assembleSiteMapReport({
     workflow: options.workflow,
     now: options.now,
     app: appSummary,
@@ -8512,14 +8521,14 @@ async function gatherSiteMapReport(options) {
     baseline,
     sources
   });
-  return { report: report3, findingIds, extraction, map, journeyCount, baseline };
+  return { report: report4, findingIds, extraction, map, journeyCount, baseline };
 }
 async function runSiteMapAudit(options) {
   const { projectRoot, gatherer } = options;
   const workflow = options.workflow ?? "site-map";
   const now2 = options.now ?? (() => /* @__PURE__ */ new Date());
   const runNow = now2();
-  const { report: report3, findingIds, extraction, baseline, map } = await gatherSiteMapReport({
+  const { report: report4, findingIds, extraction, baseline, map } = await gatherSiteMapReport({
     projectRoot,
     gatherer,
     workflow,
@@ -8527,11 +8536,11 @@ async function runSiteMapAudit(options) {
   });
   const inventory = deriveSiteMapInventory(extraction);
   options.onInventory?.(inventory);
-  await writeJsonFile(join24(projectRoot, report3.bundle_dir, "finding-index.json"), {
-    report_id: report3.report_id,
-    findings: report3.findings
+  await writeJsonFile(join24(projectRoot, report4.bundle_dir, "finding-index.json"), {
+    report_id: report4.report_id,
+    findings: report4.findings
   });
-  await writeJsonFile(join24(projectRoot, report3.bundle_dir, "extraction.json"), extraction);
+  await writeJsonFile(join24(projectRoot, report4.bundle_dir, "extraction.json"), extraction);
   let baselineCreated = false;
   if (baseline === null) {
     await writeBaseline(projectRoot, findingIds, runNow);
@@ -8544,35 +8553,35 @@ async function runSiteMapAudit(options) {
   recordSiteMapRun(
     projectRoot,
     {
-      report_id: report3.report_id,
-      workflow: report3.workflow,
-      surface_count: report3.surface_count,
-      journey_count: report3.journey_count,
-      finding_count: report3.findings.length,
-      blocked_count: report3.blocked_checks.length,
-      new_since_baseline: report3.baseline.new_since_baseline,
-      pre_existing: report3.baseline.pre_existing
+      report_id: report4.report_id,
+      workflow: report4.workflow,
+      surface_count: report4.surface_count,
+      journey_count: report4.journey_count,
+      finding_count: report4.findings.length,
+      blocked_count: report4.blocked_checks.length,
+      new_since_baseline: report4.baseline.new_since_baseline,
+      pre_existing: report4.baseline.pre_existing
     },
     { sessionId: options.sessionId, now: now2 }
   );
   const transitionCount = countMapTransitions(map);
   const verdict = deriveSiteMapVerdict({
-    findingCount: report3.findings.length,
+    findingCount: report4.findings.length,
     hasStoredMap: map !== null,
     hasTransitions: transitionCount > 0,
-    blockedChecks: report3.blocked_checks
+    blockedChecks: report4.blocked_checks
   });
   return {
-    report_id: report3.report_id,
-    bundle_dir: report3.bundle_dir,
-    finding_count: report3.findings.length,
-    blocked_checks: report3.blocked_checks,
+    report_id: report4.report_id,
+    bundle_dir: report4.bundle_dir,
+    finding_count: report4.findings.length,
+    blocked_checks: report4.blocked_checks,
     baseline_created: baselineCreated,
     trust_restamp: trustRestamp,
     verdict,
     inventory,
     transition_count: transitionCount,
-    exit_code: report3.findings.length > 0 ? 1 : 0
+    exit_code: report4.findings.length > 0 ? 1 : 0
   };
 }
 
@@ -8605,11 +8614,11 @@ var DEFAULT_EXECUTORS = {
     progress(
       discovered.source_roots === null ? "No stack pack declares module_health.source_roots \u2014 the reconciler reports blocked." : `Reconciling module-map.yml against: ${discovered.source_roots.join(", ")}.`
     );
-    const report3 = await reconcileModuleMap({
+    const report4 = await reconcileModuleMap({
       projectRoot,
       sourceRoots: discovered.source_roots
     });
-    return { blocked: report3.blocked, findings: report3.findings.length, counts: report3.counts };
+    return { blocked: report4.blocked, findings: report4.findings.length, counts: report4.counts };
   },
   "refresh-context": async (_job, { projectRoot, progress }) => {
     progress("Syncing chunk and vector context indexes.");
@@ -8660,14 +8669,14 @@ var DEFAULT_EXECUTORS = {
       );
     }
     progress(`Checking ${index.obligations.length} obligation(s) against the test suite.`);
-    const report3 = await checkSpecCompliance({ project_root: projectRoot, index });
-    return { checked: true, summary: report3.summary, uncovered: report3.uncovered_obligations };
+    const report4 = await checkSpecCompliance({ project_root: projectRoot, index });
+    return { checked: true, summary: report4.summary, uncovered: report4.uncovered_obligations };
   },
   doctor: async (_job, { projectRoot, progress }) => {
     progress("Running framework health checks.");
-    const report3 = await new HealthChecker().run(projectRoot);
-    progress(`Overall status: ${report3.overall_status}.`);
-    return report3.checks;
+    const report4 = await new HealthChecker().run(projectRoot);
+    progress(`Overall status: ${report4.overall_status}.`);
+    return report4.checks;
   },
   "site-map": async (_job, { projectRoot, progress }) => {
     const result2 = await runSiteMapAudit({
@@ -9663,25 +9672,25 @@ function collectCodebaseHealth(projectRoot, now2 = Date.now()) {
     return emptySection("No health runs yet \u2014 run `paqad-ai health run` when you need one.");
   }
   const latestPath = sidecars.at(-1);
-  const report3 = readHealthSidecar(latestPath);
-  if (!report3) {
+  const report4 = readHealthSidecar(latestPath);
+  if (!report4) {
     return emptySection("Health reports present but the latest sidecar is unreadable.");
   }
-  const updatedMs = Date.parse(report3.generated_at);
-  const findingCount = report3.findings.length;
-  const openFindings = report3.findings.filter((finding) => finding.status === "open").length;
+  const updatedMs = Date.parse(report4.generated_at);
+  const findingCount = report4.findings.length;
+  const openFindings = report4.findings.filter((finding) => finding.status === "open").length;
   const freshness = scoreFreshness(Number.isFinite(updatedMs) ? updatedMs : null, { now: now2 });
   const findingsScore = findingCount === 0 ? 100 : Math.max(0, 100 - findingCount * 10);
   let score = Math.round(freshness * 0.5 + findingsScore * 0.5);
-  if (report3.blocked_checks.length > 0) {
+  if (report4.blocked_checks.length > 0) {
     score = Math.min(score, 80);
   }
   const age = ageInDays(Number.isFinite(updatedMs) ? updatedMs : null, now2);
-  const summary = `${sidecars.length} run(s) \xB7 ${findingCount} finding(s) \xB7 ${report3.blocked_checks.length} blocked${age !== null ? ` \xB7 ${age}d ago` : ""}`;
+  const summary = `${sidecars.length} run(s) \xB7 ${findingCount} finding(s) \xB7 ${report4.blocked_checks.length} blocked${age !== null ? ` \xB7 ${age}d ago` : ""}`;
   const attention = openFindings > 0 ? [
     {
       sectionId: "codebase-health",
-      message: `${openFindings} open codebase-health finding(s) in ${report3.report_id}`,
+      message: `${openFindings} open codebase-health finding(s) in ${report4.report_id}`,
       severity: openFindings >= 5 ? "critical" : "warn"
     }
   ] : [];
@@ -9695,14 +9704,14 @@ function collectCodebaseHealth(projectRoot, now2 = Date.now()) {
       metrics: [
         { label: "runs", value: String(sidecars.length) },
         { label: "open findings", value: String(openFindings) },
-        { label: "blocked", value: String(report3.blocked_checks.length) },
+        { label: "blocked", value: String(report4.blocked_checks.length) },
         { label: "latest", value: age !== null ? `${age}d` : "\u2014" }
       ],
       helper: HELPER9,
       details: {
-        latestReport: report3.report_id,
+        latestReport: report4.report_id,
         findings: findingCount,
-        blockedChecks: report3.blocked_checks
+        blockedChecks: report4.blocked_checks
       }
     },
     attention
@@ -9968,17 +9977,17 @@ function readReport(projectRoot) {
     return null;
   }
 }
-function aggregatePerModule(report3) {
+function aggregatePerModule(report4) {
   const out = {};
-  for (const f of report3.findings) {
+  for (const f of report4.findings) {
     const key = f.module_slug ?? "<undeclared>";
     out[key] = (out[key] ?? 0) + 1;
   }
   return out;
 }
 function collectModuleMapDrift(projectRoot) {
-  const report3 = readReport(projectRoot);
-  if (report3 === null) {
+  const report4 = readReport(projectRoot);
+  if (report4 === null) {
     return {
       section: {
         id: "module-map-drift",
@@ -9992,15 +10001,15 @@ function collectModuleMapDrift(projectRoot) {
       attention: []
     };
   }
-  if (report3.blocked !== null) {
+  if (report4.blocked !== null) {
     return {
       section: {
         id: "module-map-drift",
         title: "Module map drift",
         band: "unknown",
         score: null,
-        summary: `Reconciler blocked: ${report3.blocked}. Add module_health.source_roots to the active stack pack.`,
-        metrics: [{ label: "blocked", value: report3.blocked }],
+        summary: `Reconciler blocked: ${report4.blocked}. Add module_health.source_roots to the active stack pack.`,
+        metrics: [{ label: "blocked", value: report4.blocked }],
         helper: HELPER12
       },
       attention: [
@@ -10012,13 +10021,13 @@ function collectModuleMapDrift(projectRoot) {
       ]
     };
   }
-  const total = report3.findings.length;
+  const total = report4.findings.length;
   const score = Math.max(0, 100 - total * 8);
-  const perModule = aggregatePerModule(report3);
+  const perModule = aggregatePerModule(report4);
   const topModules = Object.entries(perModule).sort((a, b) => b[1] - a[1]).slice(0, 5);
-  const summary = total === 0 ? `No drift \xB7 ${report3.source_roots.join(", ")}` : `${total} finding(s) across ${Object.keys(perModule).length} module(s)`;
+  const summary = total === 0 ? `No drift \xB7 ${report4.source_roots.join(", ")}` : `${total} finding(s) across ${Object.keys(perModule).length} module(s)`;
   const attention = [];
-  const docMissing = report3.findings.filter((f) => f.code === "MM-DOC-MISSING");
+  const docMissing = report4.findings.filter((f) => f.code === "MM-DOC-MISSING");
   if (docMissing.length > 0) {
     attention.push({
       sectionId: "module-map-drift",
@@ -10026,7 +10035,7 @@ function collectModuleMapDrift(projectRoot) {
       severity: "warn"
     });
   }
-  const undeclared = report3.findings.filter((f) => f.code === "MM-ADD" || f.code === "MM-MISMATCH");
+  const undeclared = report4.findings.filter((f) => f.code === "MM-ADD" || f.code === "MM-MISMATCH");
   if (undeclared.length > 0) {
     attention.push({
       sectionId: "module-map-drift",
@@ -10035,7 +10044,7 @@ function collectModuleMapDrift(projectRoot) {
     });
   }
   const codeBreakdown = [];
-  for (const [code, count3] of Object.entries(report3.counts)) {
+  for (const [code, count3] of Object.entries(report4.counts)) {
     if (count3 > 0) codeBreakdown.push({ label: code, value: String(count3) });
   }
   return {
@@ -10047,15 +10056,15 @@ function collectModuleMapDrift(projectRoot) {
       summary,
       metrics: [
         { label: "findings", value: String(total) },
-        { label: "source_roots", value: report3.source_roots.join(", ") || "\u2014" },
+        { label: "source_roots", value: report4.source_roots.join(", ") || "\u2014" },
         ...codeBreakdown
       ],
       helper: HELPER12,
       details: {
-        generated_at: report3.generated_at,
+        generated_at: report4.generated_at,
         per_module: perModule,
         top_modules: topModules,
-        sample_findings: report3.findings.slice(0, 10)
+        sample_findings: report4.findings.slice(0, 10)
       }
     },
     attention
@@ -12213,9 +12222,9 @@ async function restComment(shell, prOrBranch, body) {
   ]);
   return result2.exitCode === 0 ? { ok: true, output: pr.url } : null;
 }
-function checkRunState(run) {
-  if (run.status !== "completed") return "pending";
-  return PASSING_CONCLUSIONS.has(String(run.conclusion)) ? "green" : "red";
+function checkRunState(run2) {
+  if (run2.status !== "completed") return "pending";
+  return PASSING_CONCLUSIONS.has(String(run2.conclusion)) ? "green" : "red";
 }
 function statusState(state) {
   if (state === "success") return "green";
@@ -12233,8 +12242,8 @@ async function readCheckRuns(shell, target, sha) {
     const rows = asRecord(parseJson(result2.stdout))?.check_runs;
     if (!Array.isArray(rows)) return null;
     for (const row2 of rows) {
-      const run = asRecord(row2) ?? {};
-      runs.push({ name: String(run.name ?? "unknown"), state: checkRunState(run) });
+      const run2 = asRecord(row2) ?? {};
+      runs.push({ name: String(run2.name ?? "unknown"), state: checkRunState(run2) });
     }
     if (rows.length < CHECK_RUNS_PAGE_SIZE) break;
   }
@@ -14859,19 +14868,19 @@ function section(title, inner) {
   return `<section><h2>${escapeHtml3(title)}</h2>${inner}</section>`;
 }
 function renderDiscoveryReport(projectRoot, dirName) {
-  const run = readDiscoveryRun(projectRoot, dirName);
+  const run2 = readDiscoveryRun(projectRoot, dirName);
   const brief = readJson2(projectRoot, discoveryRunFilePath(dirName, "brief"));
   const synthesis = readJson2(projectRoot, discoveryRunFilePath(dirName, "synthesis"));
   const readiness = readJson2(projectRoot, discoveryRunFilePath(dirName, "readiness"));
   const handoff = readJson2(projectRoot, discoveryRunFilePath(dirName, "handoff"));
   const folded = foldDiscoveryRun(readDiscoveryStageRows(projectRoot, dirName));
-  const title = run ? escapeHtml3(run.title) : escapeHtml3(dirName);
+  const title = run2 ? escapeHtml3(run2.title) : escapeHtml3(dirName);
   const stageRows = folded.stages.map(
     (s) => `<tr><td>${escapeHtml3(s.stage)}</td><td>${s.complete ? "\u{1F7E2} done" : s.started ? "\u{1F7E1} in progress" : "\u26AA not started"}</td></tr>`
   ).join("");
   const body = [
     `<h1>Discovery \u2014 ${title}</h1>`,
-    `<p class="meta">status <strong>${escapeHtml3(run?.status ?? "unknown")}</strong> \xB7 outcome <strong>${escapeHtml3(run?.outcome ?? "not decided")}</strong> \xB7 revision ${escapeHtml3(run?.revision ?? "?")} \xB7 verdict <strong>${escapeHtml3(folded.verdict)}</strong></p>`,
+    `<p class="meta">status <strong>${escapeHtml3(run2?.status ?? "unknown")}</strong> \xB7 outcome <strong>${escapeHtml3(run2?.outcome ?? "not decided")}</strong> \xB7 revision ${escapeHtml3(run2?.revision ?? "?")} \xB7 verdict <strong>${escapeHtml3(folded.verdict)}</strong></p>`,
     `<p class="note">This is a read-only projection of the canonical records. It cannot set completion state.</p>`,
     section(
       "Stages",
@@ -14895,7 +14904,7 @@ function renderDiscoveryReport(projectRoot, dirName) {
   const header = buildTextHeader({
     docType: DISCOVERY_DOC_TYPES.report,
     change: discoveryRunChangeKey(dirName),
-    sessionId: run?.session_id ?? "unknown",
+    sessionId: run2?.session_id ?? "unknown",
     schemaVersion: DISCOVERY_SCHEMA_VERSION,
     body
   });
@@ -15210,16 +15219,16 @@ function createDiscoveryCommand() {
     if (dirName === null) {
       return fail("no Discovery run to report");
     }
-    const run = readDiscoveryRun(root, dirName);
+    const run2 = readDiscoveryRun(root, dirName);
     const folded = foldDiscoveryRun(readDiscoveryStageRows(root, dirName));
     console.log(
-      `**\u25B8 paqad** \xB7 Discovery run ${dirName} \u2014 status ${run?.status ?? "?"}, verdict ${folded.verdict}`
+      `**\u25B8 paqad** \xB7 Discovery run ${dirName} \u2014 status ${run2?.status ?? "?"}, verdict ${folded.verdict}`
     );
     console.log(
       JSON.stringify({
         run: dirName,
-        status: run?.status ?? null,
-        outcome: run?.outcome ?? null,
+        status: run2?.status ?? null,
+        outcome: run2?.outcome ?? null,
         verdict: folded.verdict,
         missing: folded.missing
       })
@@ -15391,9 +15400,9 @@ function createDisableCommand() {
 init_esm_shims();
 function createDoctorCommand() {
   return new Command("doctor").description("Check framework health and suggest fixes").option("--project-root <path>", "Project root", process.cwd()).action(async (options) => {
-    const report3 = await new HealthChecker().run(options.projectRoot);
-    console.log(JSON.stringify(report3, null, 2));
-    process.exitCode = report3.overall_status === "fail" ? 1 : 0;
+    const report4 = await new HealthChecker().run(options.projectRoot);
+    console.log(JSON.stringify(report4, null, 2));
+    process.exitCode = report4.overall_status === "fail" ? 1 : 0;
   });
 }
 
@@ -15852,9 +15861,9 @@ function commandError(result2) {
   return null;
 }
 function failingIssues(projectRoot, dirName) {
-  const report3 = readChecksReportForFeature(projectRoot, dirName);
-  if (!report3) return [];
-  return report3.results.flatMap((result2) => [
+  const report4 = readChecksReportForFeature(projectRoot, dirName);
+  if (!report4) return [];
+  return report4.results.flatMap((result2) => [
     ...result2.failures.map((issue) => ({
       test_id: issue.test_id,
       message: issue.message,
@@ -15896,33 +15905,33 @@ async function proveFix(input) {
     );
     return lastRun;
   };
-  const rowFrom = (run, fields) => ({
+  const rowFrom = (run2, fields) => ({
     ...base,
-    exit_code: run.exit_code,
-    timed_out: run.timed_out,
-    duration_ms: run.duration_ms,
+    exit_code: run2.exit_code,
+    timed_out: run2.timed_out,
+    duration_ms: run2.duration_ms,
     at: now2().toISOString(),
-    output_tail: tail(run.output),
+    output_tail: tail(run2.output),
     ...fields
   });
   let row2;
   if (input.phase === "red") {
-    const run = await runOnce();
-    const error = commandError(run);
+    const run2 = await runOnce();
+    const error = commandError(run2);
     if (error !== null) {
-      row2 = rowFrom(run, { outcome: "error", reason: error });
-    } else if (run.exit_code === 0) {
-      row2 = rowFrom(run, {
+      row2 = rowFrom(run2, { outcome: "error", reason: error });
+    } else if (run2.exit_code === 0) {
+      row2 = rowFrom(run2, {
         outcome: "not-reproduced",
         reason: `Proof "${input.testId}" passed before the fix, so it does not reproduce the problem.`
       });
-    } else if (!run.output.includes(input.testId)) {
-      row2 = rowFrom(run, {
+    } else if (!run2.output.includes(input.testId)) {
+      row2 = rowFrom(run2, {
         outcome: "error",
         reason: `The command failed without naming "${input.testId}", so it is not counted as the test failing.`
       });
     } else {
-      row2 = rowFrom(run, {
+      row2 = rowFrom(run2, {
         outcome: "red",
         reason: `Proof "${input.testId}" fails before the fix.`,
         baseline_failing: failingIssues(input.projectRoot, input.dirName).map(
@@ -15942,13 +15951,13 @@ async function proveFix(input) {
 async function proveGreen(input, proof, runOnce, rowFrom, lastRun, now2) {
   const red = countedRedRow(readFixProofRows(input.projectRoot, input.dirName));
   if (red === null) {
-    const run2 = await runOnce();
-    const error2 = commandError(run2);
-    if (error2 !== null) return rowFrom(run2, { outcome: "error", reason: error2 });
-    return run2.exit_code === 0 ? rowFrom(run2, {
+    const run3 = await runOnce();
+    const error2 = commandError(run3);
+    if (error2 !== null) return rowFrom(run3, { outcome: "error", reason: error2 });
+    return run3.exit_code === 0 ? rowFrom(run3, {
       outcome: "green",
       reason: `Proof "${input.testId}" passes, but no red run was recorded before the fix.`
-    }) : rowFrom(run2, {
+    }) : rowFrom(run3, {
       outcome: "still-failing",
       reason: `Proof "${input.testId}" still fails.`
     });
@@ -15980,38 +15989,38 @@ async function proveGreen(input, proof, runOnce, rowFrom, lastRun, now2) {
     applyFix: async () => {
     },
     runProofOnFixedTree: async () => {
-      const run2 = await runOnce();
-      return { passed: run2.exit_code === 0 && commandError(run2) === null, output: run2.output };
+      const run3 = await runOnce();
+      return { passed: run3.exit_code === 0 && commandError(run3) === null, output: run3.output };
     },
     runFullSuiteAfterFix: async () => failingIssues(input.projectRoot, input.dirName)
   });
-  const run = lastRun() ?? await runOnce();
-  const error = commandError(run);
+  const run2 = lastRun() ?? await runOnce();
+  const error = commandError(run2);
   if (error !== null) {
-    return rowFrom(run, { outcome: "error", reason: error, protocol_status: result2.status });
+    return rowFrom(run2, { outcome: "error", reason: error, protocol_status: result2.status });
   }
   switch (result2.status) {
     case "fixed":
-      return rowFrom(run, {
+      return rowFrom(run2, {
         outcome: "green",
         reason: result2.reason,
         protocol_status: result2.status,
         guard_path: result2.guard_path
       });
     case "skipped-no-behaviour-change":
-      return rowFrom(run, {
-        outcome: run.exit_code === 0 ? "green" : "still-failing",
+      return rowFrom(run2, {
+        outcome: run2.exit_code === 0 ? "green" : "still-failing",
         reason: result2.reason,
         protocol_status: result2.status
       });
     case "rejected-proof-still-failing":
-      return rowFrom(run, {
+      return rowFrom(run2, {
         outcome: "still-failing",
         reason: result2.reason,
         protocol_status: result2.status
       });
     default:
-      return rowFrom(run, {
+      return rowFrom(run2, {
         outcome: "held",
         reason: result2.reason,
         protocol_status: result2.status
@@ -17369,7 +17378,7 @@ function lintRenderedTemplateAgent(projectRoot, rendered, scope) {
   });
 }
 function lintAllAgents(projectRoot, options = {}) {
-  const report3 = (findings) => options.ownerPowersAsWarnings === true ? findings.map(ownerPowerAsWarning) : findings;
+  const report4 = (findings) => options.ownerPowersAsWarnings === true ? findings.map(ownerPowerAsWarning) : findings;
   const sources = options.agentSources ?? NO_AGENT_SOURCES;
   const dispatched = (name) => sources.dispatched.has(name) ? { invocation: "dispatched" } : {};
   const context2 = options.context ?? readSkillPathContext(projectRoot);
@@ -17409,7 +17418,7 @@ function lintAllAgents(projectRoot, options = {}) {
           group,
           class: "template",
           ...bodyAndDescription(rendered.content),
-          findings: report3(result3.findings)
+          findings: report4(result3.findings)
         });
       }
       continue;
@@ -17426,7 +17435,7 @@ function lintAllAgents(projectRoot, options = {}) {
       group,
       class: "agent",
       ...bodyAndDescription(text3),
-      findings: report3(result2.findings)
+      findings: report4(result2.findings)
     });
   }
   return finishReport(projectRoot, "agent", drafts, personas, options);
@@ -17442,7 +17451,7 @@ function plural(count3, word) {
 function runAudit(projectRoot, kind, options = {}) {
   const groupBy = parseGroupBy(options.groupBy);
   if (options.asOf !== void 0) windowStart(options.asOf);
-  const report3 = kind === "skill" ? lintAllSkills(projectRoot, { groupBy, asOf: options.asOf }) : lintAllAgents(projectRoot, {
+  const report4 = kind === "skill" ? lintAllSkills(projectRoot, { groupBy, asOf: options.asOf }) : lintAllAgents(projectRoot, {
     groupBy,
     asOf: options.asOf,
     agentSources: options.agentSources,
@@ -17451,10 +17460,10 @@ function runAudit(projectRoot, kind, options = {}) {
   const reportPath = options.report ?? (kind === "skill" ? DEFAULT_SKILL_AUDIT_REPORT : DEFAULT_AGENT_AUDIT_REPORT);
   const abs = resolve13(projectRoot, reportPath);
   mkdirSync13(dirname14(abs), { recursive: true });
-  writeFileSync12(abs, formatLintJson(report3), "utf8");
-  const personas = kind === "agent" ? `, ${plural(report3.personas.length, "persona")} listed apart` : "";
-  const summary = `**\u25B8 paqad** \xB7 ${kind} lint --all: ${plural(report3.items_count, kind)}${personas}, ${plural(report3.blocking, "blocking finding")}, ${plural(report3.warnings, "warning")}. Report: ${reportPath}`;
-  return { report: report3, reportPath, summary };
+  writeFileSync12(abs, formatLintJson(report4), "utf8");
+  const personas = kind === "agent" ? `, ${plural(report4.personas.length, "persona")} listed apart` : "";
+  const summary = `**\u25B8 paqad** \xB7 ${kind} lint --all: ${plural(report4.items_count, kind)}${personas}, ${plural(report4.blocking, "blocking finding")}, ${plural(report4.warnings, "warning")}. Report: ${reportPath}`;
+  return { report: report4, reportPath, summary };
 }
 
 // src/authoring/lint/audit-report.ts
@@ -17582,11 +17591,11 @@ function summaryLines(input) {
   }
   const ruleRows = [...rules.entries()].sort(([left], [right]) => compareText(left, right)).map(([rule, counts]) => [rule, counts.blocking, counts.warnings]);
   const groupRows = [];
-  for (const [kind, report3] of [
+  for (const [kind, report4] of [
     ["skills", input.skills],
     ["agents", input.agents]
   ]) {
-    for (const [group, items] of groupsOf(report3.items)) {
+    for (const [group, items] of groupsOf(report4.items)) {
       groupRows.push([
         `${kind}: ${group}`,
         items.length,
@@ -17620,10 +17629,10 @@ function summaryLines(input) {
     ""
   ];
 }
-function detailLines(input, report3, kind, before, agentRival) {
+function detailLines(input, report4, kind, before, agentRival) {
   const exceptions = input.exceptions ?? /* @__PURE__ */ new Map();
   const lines3 = [];
-  for (const [group, items] of groupsOf(report3.items)) {
+  for (const [group, items] of groupsOf(report4.items)) {
     const blocking = sum(items, (item2) => item2.blocking);
     const head = [
       kind === "skill" ? "Skill" : "Agent",
@@ -18029,7 +18038,7 @@ function runEvidence(workspace, input) {
   const installed = input.installed ?? discoverInstalledSkills(workspace.projectRoot, readSkillPathContext(workspace.projectRoot), {
     userHome: input.userHome
   });
-  const report3 = buildOverlapReport({
+  const report4 = buildOverlapReport({
     candidate: {
       kind: "skill",
       name: workspace.name,
@@ -18043,11 +18052,11 @@ function runEvidence(workspace, input) {
   });
   const sourcesArtifact = workspace.write("sources.md", input.sourcesText);
   const lines3 = [];
-  const warning = budgetWarningLine(report3.budget);
+  const warning = budgetWarningLine(report4.budget);
   if (warning) lines3.push(warning);
   const decided = input.decision ? overlapDecision(workspace, input.decision) : null;
-  if (decided?.chosen === EXTEND_OPTION && report3.collisions.length > 0) {
-    const existing = report3.collisions[0].existing;
+  if (decided?.chosen === EXTEND_OPTION && report4.collisions.length > 0) {
+    const existing = report4.collisions[0].existing;
     workspace.clear();
     return {
       ok: false,
@@ -18061,21 +18070,21 @@ function runEvidence(workspace, input) {
   }
   let gate = "passed";
   let reason2;
-  if (report3.shadowing.length > 0) {
+  if (report4.shadowing.length > 0) {
     gate = "failed";
     reason2 = "name shadowing";
-    lines3.push(...report3.shadowing.map(shadowingLine));
-  } else if (report3.collisions.length > 0 && decided?.chosen !== CREATE_OPTION) {
+    lines3.push(...report4.shadowing.map(shadowingLine));
+  } else if (report4.collisions.length > 0 && decided?.chosen !== CREATE_OPTION) {
     gate = "waiting";
     reason2 = "unresolved collision";
   }
   let decisionId;
   if (gate === "waiting") {
-    const collision = report3.collisions[0];
+    const collision = report4.collisions[0];
     decisionId = raiseAuthoringDecision(workspace.projectRoot, {
       category: "authoring.overlap",
       title: `The new skill ${workspace.name} overlaps ${collision.existing}. Extend ${collision.existing}, or create a new skill?`,
-      context: `The overlap check scored ${workspace.name} against ${collision.existing} at ${collision.score.toFixed(2)}, at or above the collision threshold of ${report3.threshold}.`,
+      context: `The overlap check scored ${workspace.name} against ${collision.existing} at ${collision.score.toFixed(2)}, at or above the collision threshold of ${report4.threshold}.`,
       options: [
         option(
           EXTEND_OPTION,
@@ -18108,14 +18117,14 @@ function runEvidence(workspace, input) {
         gate,
         stage: "S2",
         ...reason2 ? { reason: reason2 } : {},
-        collisions: report3.collisions.length,
+        collisions: report4.collisions.length,
         sources: rows.length,
         non_model_sources: grounded.length,
         ...input.sourcesKind ? { sources_kind: input.sourcesKind } : {},
         ...decisionId ? { decision: decisionId } : {},
         ...input.decision ? { resolved_by: input.decision } : {}
       },
-      renderOverlapReport(report3)
+      renderOverlapReport(report4)
     )
   );
   if (gate === "passed") {
@@ -18585,20 +18594,20 @@ function buildSkillCatalogReport(input) {
     pruned
   };
 }
-function renderCatalogLines(report3) {
+function renderCatalogLines(report4) {
   const lines3 = [
-    `Skills added through their checks: ${report3.added}. Skills refused: ${report3.refused}.`
+    `Skills added through their checks: ${report4.added}. Skills refused: ${report4.refused}.`
   ];
-  if (!report3.activation_data) {
-    lines3.push(`activation data: none on ${report3.host}`);
+  if (!report4.activation_data) {
+    lines3.push(`activation data: none on ${report4.host}`);
   }
-  for (const row2 of report3.skills) {
+  for (const row2 of report4.skills) {
     const rate = row2.trigger_rate === null ? "no activation data" : `trigger rate ${row2.trigger_rate}`;
     lines3.push(
-      `${row2.skill}: ${rate}, ${row2.fires} fire${row2.fires === 1 ? "" : "s"} in ${report3.window_days} days, listing ${row2.listing_chars} characters` + (row2.dark ? ", dark" : "") + (row2.user_invoked_without_disable ? ", user-invoked: add disable-model-invocation: true" : "")
+      `${row2.skill}: ${rate}, ${row2.fires} fire${row2.fires === 1 ? "" : "s"} in ${report4.window_days} days, listing ${row2.listing_chars} characters` + (row2.dark ? ", dark" : "") + (row2.user_invoked_without_disable ? ", user-invoked: add disable-model-invocation: true" : "")
     );
   }
-  for (const rival of report3.rivals) {
+  for (const rival of report4.rivals) {
     lines3.push(
       `${rival.left} and ${rival.right} compete for the same requests (${rival.score.toFixed(2)}).`
     );
@@ -18864,20 +18873,20 @@ function retirementDecision(projectRoot, input) {
 }
 function runCatalog(projectRoot, input = {}) {
   const config2 = readAuthoringConfig(projectRoot);
-  const report3 = buildSkillCatalogReport({
+  const report4 = buildSkillCatalogReport({
     projectRoot,
     host: activeHost(projectRoot),
     now: (input.now ?? (() => /* @__PURE__ */ new Date()))(),
     darkWindowDays: config2.authoring_dark_window_days,
     collisionThreshold: config2.authoring_collision_jaccard
   });
-  const lines3 = renderCatalogLines(report3);
+  const lines3 = renderCatalogLines(report4);
   let decision;
   if (input.proposeRetirement) {
-    for (const row2 of report3.skills.filter((entry) => entry.dark)) {
+    for (const row2 of report4.skills.filter((entry) => entry.dark)) {
       decision = retirementDecision(projectRoot, {
         skill: row2.skill,
-        why: `${row2.skill} has not fired in ${report3.window_days} days and costs ${row2.listing_chars} characters of every listing.`,
+        why: `${row2.skill} has not fired in ${report4.window_days} days and costs ${row2.listing_chars} characters of every listing.`,
         change: input.change
       });
       lines3.push(`Proposed retiring ${row2.skill}: decision ${decision}.`);
@@ -18944,10 +18953,10 @@ function readVerdicts(workspace) {
     }
     verdicts.push(row2);
   }
-  for (let run = 1; run <= BASELINE_RUNS; run += 1) {
-    if (!workspace.exists(`baseline/run-${run}.md`)) {
+  for (let run2 = 1; run2 <= BASELINE_RUNS; run2 += 1) {
+    if (!workspace.exists(`baseline/run-${run2}.md`)) {
       throw new AuthoringRefusal(
-        `${workspace.relPath(`baseline/run-${run}.md`)} is missing. ${producerHint(workspace.name)}`
+        `${workspace.relPath(`baseline/run-${run2}.md`)} is missing. ${producerHint(workspace.name)}`
       );
     }
   }
@@ -19213,7 +19222,7 @@ function emptyRound(now2) {
 
 // src/authoring/eval/aggregate.ts
 function latencySummary(runs) {
-  const durations = runs.map((run) => run.duration_ms);
+  const durations = runs.map((run2) => run2.duration_ms);
   return {
     p50_ms: median(durations),
     p95_ms: percentileOf(durations, 0.95),
@@ -19227,7 +19236,7 @@ function percentileOf(values, share3) {
   return sorted[Math.min(sorted.length - 1, Math.max(0, rank2))];
 }
 function costMedian(runs) {
-  const costs = runs.map((run) => run.cost_usd);
+  const costs = runs.map((run2) => run2.cost_usd);
   if (costs.length === 0 || costs.some((cost) => cost === null)) return null;
   return median(costs);
 }
@@ -19252,8 +19261,8 @@ function median(values) {
   const middle = Math.floor(sorted.length / 2);
   return sorted.length % 2 === 1 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 }
-function runPassRate(run) {
-  return run.total === 0 ? 0 : run.passed / run.total;
+function runPassRate(run2) {
+  return run2.total === 0 ? 0 : run2.passed / run2.total;
 }
 function compareText2(left, right) {
   return left < right ? -1 : left > right ? 1 : 0;
@@ -19262,26 +19271,26 @@ function pooledRate(runs) {
   return runs.length === 0 ? 0 : stats(runs.map(runPassRate)).mean;
 }
 function aggregateBenchmark(runs, baselineArm, withArm = "with_skill") {
-  const keys = [...new Set(runs.map((run) => `${run.arm}|${run.tier}`))].sort(compareText2);
-  const tokensAvailable = runs.length > 0 && runs.every((run) => run.tokens !== null);
+  const keys = [...new Set(runs.map((run2) => `${run2.arm}|${run2.tier}`))].sort(compareText2);
+  const tokensAvailable = runs.length > 0 && runs.every((run2) => run2.tokens !== null);
   const configurations = keys.map((key) => {
     const [arm, tier] = key.split("|");
-    const members = runs.filter((run) => run.arm === arm && run.tier === tier);
-    const tokens = members.map((run) => run.tokens).filter((value) => value !== null);
+    const members = runs.filter((run2) => run2.arm === arm && run2.tier === tier);
+    const tokens = members.map((run2) => run2.tokens).filter((value) => value !== null);
     return {
       arm,
       tier,
       runs: members.length,
       pass_rate: stats(members.map(runPassRate)),
-      time_seconds: stats(members.map((run) => run.duration_ms / 1e3)),
+      time_seconds: stats(members.map((run2) => run2.duration_ms / 1e3)),
       tokens: tokens.length === members.length && tokens.length > 0 ? { mean: round(stats(tokens).mean, 1), median: median(tokens) } : null
     };
   });
-  const withRuns = runs.filter((run) => run.arm === withArm);
-  const baseRuns = runs.filter((run) => run.arm === baselineArm);
-  const cases = [...new Set(runs.map((run) => run.case))].sort(compareText2).map((name) => {
-    const withRate2 = pooledRate(withRuns.filter((run) => run.case === name));
-    const baseRate2 = pooledRate(baseRuns.filter((run) => run.case === name));
+  const withRuns = runs.filter((run2) => run2.arm === withArm);
+  const baseRuns = runs.filter((run2) => run2.arm === baselineArm);
+  const cases = [...new Set(runs.map((run2) => run2.case))].sort(compareText2).map((name) => {
+    const withRate2 = pooledRate(withRuns.filter((run2) => run2.case === name));
+    const baseRate2 = pooledRate(baseRuns.filter((run2) => run2.case === name));
     return {
       case: name,
       pass_rate_with: withRate2,
@@ -19291,7 +19300,7 @@ function aggregateBenchmark(runs, baselineArm, withArm = "with_skill") {
   });
   const withRate = pooledRate(withRuns);
   const baseRate = pooledRate(baseRuns);
-  const baseTokens = median(baseRuns.map((run) => run.tokens ?? 0));
+  const baseTokens = median(baseRuns.map((run2) => run2.tokens ?? 0));
   const agentExtras = {};
   if (withArm !== "with_skill") {
     const withLatency = latencySummary(withRuns);
@@ -19318,8 +19327,8 @@ function aggregateBenchmark(runs, baselineArm, withArm = "with_skill") {
     pass_rate_with: withRate,
     pass_rate_baseline: baseRate,
     delta_points: round((withRate - baseRate) * 100, 2),
-    token_multiple: tokensAvailable && baseTokens > 0 ? round(median(withRuns.map((run) => run.tokens ?? 0)) / baseTokens, 3) : null,
-    models: [...new Set(runs.map((run) => run.model))].sort(compareText2),
+    token_multiple: tokensAvailable && baseTokens > 0 ? round(median(withRuns.map((run2) => run2.tokens ?? 0)) / baseTokens, 3) : null,
+    models: [...new Set(runs.map((run2) => run2.model))].sort(compareText2),
     tokens_available: tokensAvailable
   };
 }
@@ -19355,38 +19364,38 @@ var HIGH_VARIANCE_STDDEV = 0.3;
 var COST_OUTLIER_MULTIPLE = 2;
 function analystFacts(input) {
   const relevant = input.runs.filter(
-    (run) => run.arm === (input.withArm ?? "with_skill") || run.arm === input.baselineArm
+    (run2) => run2.arm === (input.withArm ?? "with_skill") || run2.arm === input.baselineArm
   );
   const outcomes = /* @__PURE__ */ new Map();
-  for (const run of relevant) {
-    for (const assertion of run.assertions) {
+  for (const run2 of relevant) {
+    for (const assertion of run2.assertions) {
       if (assertion.passed === null) continue;
       outcomes.set(assertion.text, [...outcomes.get(assertion.text) ?? [], assertion.passed]);
     }
   }
   const names = [...outcomes.keys()].sort(compareText2);
-  const highVariance = [...new Set(input.runs.map((run) => `${run.case}|${run.arm}|${run.tier}`))].sort(compareText2).filter((key) => {
+  const highVariance = [...new Set(input.runs.map((run2) => `${run2.case}|${run2.arm}|${run2.tier}`))].sort(compareText2).filter((key) => {
     const [name, arm, tier] = key.split("|");
-    const rates = input.runs.filter((run) => run.case === name && run.arm === arm && run.tier === tier).map(runPassRate);
+    const rates = input.runs.filter((run2) => run2.case === name && run2.arm === arm && run2.tier === tier).map(runPassRate);
     return stats(rates).stddev > HIGH_VARIANCE_STDDEV;
   }).map((key) => key.replaceAll("|", " / "));
-  const costs = input.runs.map((run) => run.cost_usd).filter((cost) => cost !== null);
+  const costs = input.runs.map((run2) => run2.cost_usd).filter((cost) => cost !== null);
   const costMedian2 = median(costs);
-  const label = (run) => `${run.case} / ${run.arm} / ${run.tier} / run-${run.run}`;
-  const cacheShares = input.runs.map((run) => run.cache_hit_share).filter((share3) => share3 !== null);
+  const label = (run2) => `${run2.case} / ${run2.arm} / ${run2.tier} / run-${run2.run}`;
+  const cacheShares = input.runs.map((run2) => run2.cache_hit_share).filter((share3) => share3 !== null);
   const cacheShare = cacheShares.length === 0 ? null : round(stats(cacheShares).mean);
   return {
     always_pass: names.filter((name) => outcomes.get(name).every(Boolean)),
     always_fail: names.filter((name) => outcomes.get(name).every((passed) => !passed)),
     high_variance: highVariance,
     cost_outliers: costMedian2 > 0 ? input.runs.filter(
-      (run) => run.cost_usd !== null && run.cost_usd > costMedian2 * COST_OUTLIER_MULTIPLE
+      (run2) => run2.cost_usd !== null && run2.cost_usd > costMedian2 * COST_OUTLIER_MULTIPLE
     ).map(label) : [],
     oversize_tool_results: input.runs.filter(
-      (run) => run.max_tool_result_tokens !== null && run.max_tool_result_tokens > input.toolResultMaxTokens
+      (run2) => run2.max_tool_result_tokens !== null && run2.max_tool_result_tokens > input.toolResultMaxTokens
     ).map(label),
     unverifiable: input.runs.filter(
-      (run) => run.truncated || run.assertions.some((assertion) => assertion.passed === null)
+      (run2) => run2.truncated || run2.assertions.some((assertion) => assertion.passed === null)
     ).map(label),
     cache_hit_share: cacheShare,
     cache_hit_below_min: cacheShare !== null && !meetsThreshold(cacheShare, input.cacheHitMin)
@@ -19605,14 +19614,14 @@ function runEvalPlan(workspace, options = {}) {
     for (const entry of cases) {
       for (const arm of arms) {
         for (const tier of tiers) {
-          for (let run = 1; run <= runsPerArm; run += 1) {
+          for (let run2 = 1; run2 <= runsPerArm; run2 += 1) {
             runs.push({
               case: entry.name,
               arm,
               tier: tier.tier,
               model: tier.model,
-              run,
-              workdir: workspace.relPath(`${iterDir}/${entry.name}/${arm}/${tier.tier}/run-${run}`)
+              run: run2,
+              workdir: workspace.relPath(`${iterDir}/${entry.name}/${arm}/${tier.tier}/run-${run2}`)
             });
           }
         }
@@ -19719,9 +19728,9 @@ function readPluginResults(workspace, plan, baselineArm) {
         );
       }
       for (const [runIndex, raw] of caseRuns.entries()) {
-        const run = raw;
+        const run2 = raw;
         const missing = ["arm", "run", "passed", "total", "duration_ms"].filter(
-          (field2) => field2 === "arm" ? run.arm !== "with" && run.arm !== "without" : !numberField(run[field2])
+          (field2) => field2 === "arm" ? run2.arm !== "with" && run2.arm !== "without" : !numberField(run2[field2])
         );
         if (missing.length > 0) {
           throw new AuthoringRefusal(
@@ -19730,19 +19739,19 @@ function readPluginResults(workspace, plan, baselineArm) {
         }
         runs.push({
           case: record2.name,
-          arm: run.arm === "with" ? "with_skill" : baselineArm,
+          arm: run2.arm === "with" ? "with_skill" : baselineArm,
           tier: tier.tier,
-          run: run.run,
+          run: run2.run,
           model: tier.model,
           assertions: [],
-          passed: run.passed,
-          total: run.total,
+          passed: run2.passed,
+          total: run2.total,
           tokens: null,
-          duration_ms: run.duration_ms,
-          cost_usd: numberField(run.cost_usd) ? run.cost_usd : null,
+          duration_ms: run2.duration_ms,
+          cost_usd: numberField(run2.cost_usd) ? run2.cost_usd : null,
           cache_hit_share: null,
           max_tool_result_tokens: null,
-          truncated: run.truncated === true
+          truncated: run2.truncated === true
         });
       }
     }
@@ -19763,7 +19772,7 @@ function readDispatchResults(workspace, plan) {
   const duplicates = [];
   const missing = [];
   const runs = [];
-  const groups = [...new Set(planned.map((run) => `${run.case}/${run.arm}/${run.tier}`))];
+  const groups = [...new Set(planned.map((run2) => `${run2.case}/${run2.arm}/${run2.tier}`))];
   for (const group of groups) {
     const dir = workspace.path(`${iterDir}/${group}`);
     const seen = /* @__PURE__ */ new Map();
@@ -19778,14 +19787,14 @@ function readDispatchResults(workspace, plan) {
       if (names.length > 1) duplicates.push(`${group} run ${number3} (${names.join(", ")})`);
     }
   }
-  for (const run of planned) {
-    const base = `${iterDir}/${run.case}/${run.arm}/${run.tier}/run-${run.run}`;
+  for (const run2 of planned) {
+    const base = `${iterDir}/${run2.case}/${run2.arm}/${run2.tier}/run-${run2.run}`;
     const timing = workspace.readJson(`${base}/timing.json`);
     const grading = workspace.readJson(
       `${base}/grading.json`
     );
     if (timing === null || grading === null || !workspace.exists(`${base}/outputs`)) {
-      missing.push(`${run.case} / ${run.arm} / ${run.tier} / run ${run.run}`);
+      missing.push(`${run2.case} / ${run2.arm} / ${run2.tier} / run ${run2.run}`);
       continue;
     }
     const tokens = tokenTotal(timing.tokens);
@@ -19815,10 +19824,10 @@ function readDispatchResults(workspace, plan) {
     const failedRun = timing.capped === true || numberField(timing.exit_code) && timing.exit_code !== 0;
     const verifiable = assertions.filter((assertion) => assertion.passed !== null);
     runs.push({
-      case: run.case,
-      arm: run.arm,
-      tier: run.tier,
-      run: run.run,
+      case: run2.case,
+      arm: run2.arm,
+      tier: run2.tier,
+      run: run2.run,
       model: timing.model,
       assertions,
       passed: failedRun ? 0 : verifiable.filter((assertion) => assertion.passed).length,
@@ -19875,7 +19884,7 @@ async function runEvalRecord(workspace, options = {}) {
   } else {
     runs = readDispatchResults(workspace, plan);
   }
-  const tiersWithRuns = new Set(runs.map((run) => run.tier));
+  const tiersWithRuns = new Set(runs.map((run2) => run2.tier));
   const lackingTier = plan.tiers.filter((tier) => !tiersWithRuns.has(tier.tier)).map((tier) => tier.tier);
   if (lackingTier.length > 0) {
     throw new AuthoringRefusal(
@@ -20417,7 +20426,7 @@ function readScriptTestResults(input) {
 }
 function scriptReportsPass(reports) {
   return reports.every(
-    (report3) => !report3.all_skipped && report3.checks.every((check) => check.status === "passed" || check.status === "skipped")
+    (report4) => !report4.all_skipped && report4.checks.every((check) => check.status === "passed" || check.status === "skipped")
   );
 }
 
@@ -20538,12 +20547,12 @@ async function runProjectTests(input) {
     );
   }
   const testCommand = skillTestCommand(input.projectRoot, command, input.testDir);
-  const run = await (input.runTests ?? defaultTestRunner)(
+  const run2 = await (input.runTests ?? defaultTestRunner)(
     testCommand,
     input.projectRoot,
     input.env
   );
-  return { run, testCommand };
+  return { run: run2, testCommand };
 }
 function failReport(workspace, reason2, extra) {
   return workspace.writeJson("script-tests.json", {
@@ -20625,14 +20634,14 @@ async function runSkillTest(workspace, options = {}) {
       text: file.bytes.subarray(0, 8e3).includes(0) ? null : file.bytes.toString("utf8")
     }))
   );
-  const { run, testCommand } = await runProjectTests({
+  const { run: run2, testCommand } = await runProjectTests({
     projectRoot,
     testDir: location.dir,
     hasScripts: scripts.length > 0,
     env: { [SKILL_UNDER_TEST_ENV]: folder },
     runTests: options.runTests
   });
-  const reports = readScriptTestResults({ projectRoot, location, scripts, run });
+  const reports = readScriptTestResults({ projectRoot, location, scripts, run: run2 });
   const scriptsPass = scriptReportsPass(reports);
   const passed = references.length === 0 && scriptsPass;
   const reasons = [];
@@ -20645,7 +20654,7 @@ async function runSkillTest(workspace, options = {}) {
     inputs_hash: testInputsHash(workspace.projectRoot, folder, location.dir),
     test_location: location.dir,
     test_command: testCommand,
-    test_exit_code: run.exitCode,
+    test_exit_code: run2.exitCode,
     lint: { blocking: lint.blocking, warnings: lint.warnings },
     references,
     scripts: reports
@@ -20653,14 +20662,14 @@ async function runSkillTest(workspace, options = {}) {
   const lines3 = references.map(
     (finding) => `reference ${finding.file}:${finding.line} ${finding.message}`
   );
-  for (const report3 of reports) {
-    for (const check of report3.checks.filter((entry) => entry.status !== "passed")) {
+  for (const report4 of reports) {
+    for (const check of report4.checks.filter((entry) => entry.status !== "passed")) {
       lines3.push(
-        `${report3.script} ${check.check}: ${check.status}${check.reason ? ` (${check.reason})` : ""}`
+        `${report4.script} ${check.check}: ${check.status}${check.reason ? ` (${check.reason})` : ""}`
       );
     }
-    if (report3.all_skipped)
-      lines3.push(`${report3.script}: every test was skipped, so the gate fails.`);
+    if (report4.all_skipped)
+      lines3.push(`${report4.script}: every test was skipped, so the gate fails.`);
   }
   lines3.push(
     passed ? `S4 passed: no blocking lint finding, every reference check and every script contract check is green.` : `S4 failed: ${reasons.join("; ")}. The details are in ${artifact}.`
@@ -20714,8 +20723,8 @@ function missingTriggerResults(queries, iteration, runs = TRIGGER_RUNS) {
   const seen = new Set(iteration.results.map((result2) => `${result2.id}#${result2.run}`));
   const missing = [];
   for (const query of queries) {
-    for (let run = 1; run <= runs; run += 1) {
-      if (!seen.has(`${query.id}#${run}`)) missing.push(`${query.id} run ${run}`);
+    for (let run2 = 1; run2 <= runs; run2 += 1) {
+      if (!seen.has(`${query.id}#${run2}`)) missing.push(`${query.id} run ${run2}`);
     }
   }
   return missing;
@@ -20916,7 +20925,7 @@ function runTriggerRecord(workspace, resultsText, options = {}) {
   if (overCap)
     reasons.push(`the sweep cost $${cost}, over the cap of $${config2.authoring_run_max_cost_usd}`);
   if (chosenDescription !== null) {
-    const report3 = buildOverlapReport({
+    const report4 = buildOverlapReport({
       candidate: { kind: "skill", name: workspace.name, text: chosenDescription, scope: "project" },
       installed: discoverInstalledSkills(
         workspace.projectRoot,
@@ -20928,7 +20937,7 @@ function runTriggerRecord(workspace, resultsText, options = {}) {
       threshold: config2.authoring_collision_jaccard,
       budgetChars: config2.authoring_description_budget_chars
     });
-    const first = report3.collisions[0];
+    const first = report4.collisions[0];
     if (first) {
       reasons.push(
         `the final description collides with ${first.existing} (${first.score.toFixed(2)})`
@@ -21674,9 +21683,9 @@ function workspaceDraftLintsAsRuntime(projectRoot, folder) {
 function runLintAll(options) {
   const projectRoot = resolve18(options.projectRoot);
   try {
-    const { report: report3, summary } = runAudit(projectRoot, "skill", options);
+    const { report: report4, summary } = runAudit(projectRoot, "skill", options);
     console.log(summary);
-    process.exitCode = lintExitCode(report3);
+    process.exitCode = lintExitCode(report4);
   } catch (error) {
     if (error instanceof AuditUsageError || error instanceof SkillLintUsageError || error instanceof NeverWriteListError) {
       console.error(`skill lint: ${error.message}`);
@@ -22059,8 +22068,8 @@ function fieldFilled2(field2, record2) {
   const value = record2[field2];
   switch (field2) {
     case "report": {
-      const report3 = object(value);
-      return report3 !== null && text(report3.template) && count2(report3.max_tokens);
+      const report4 = object(value);
+      return report4 !== null && text(report4.template) && count2(report4.max_tokens);
     }
     case "tools":
       return Array.isArray(value) && value.length > 0 && value.every(text);
@@ -23096,7 +23105,7 @@ async function runAgentTestGate(workspace, options) {
   }
   clearWaiting(workspace, "S4");
   const location = agentTestLocation(projectRoot, workspace.name);
-  const { run, testCommand } = await runProjectTests({
+  const { run: run2, testCommand } = await runProjectTests({
     projectRoot,
     testDir: location.dir,
     hasScripts: scripts.length > 0,
@@ -23107,10 +23116,10 @@ async function runAgentTestGate(workspace, options) {
     projectRoot,
     location,
     scripts,
-    run,
+    run: run2,
     checks: HOOK_CONTRACT_CHECKS
   });
-  const passed = run.exitCode === 0 && scriptReportsPass(reports);
+  const passed = run2.exitCode === 0 && scriptReportsPass(reports);
   const artifact = workspace.writeJson("script-tests.json", {
     gate: passed ? "passed" : "failed",
     stage: "S4",
@@ -23119,19 +23128,19 @@ async function runAgentTestGate(workspace, options) {
     file_hash: draftAgentHash(workspace),
     test_location: location.dir,
     test_command: testCommand,
-    test_exit_code: run.exitCode,
+    test_exit_code: run2.exitCode,
     lint: { blocking: lint.blocking, warnings: lint.warnings },
     scripts: reports
   });
   const lines3 = [];
-  for (const report3 of reports) {
-    for (const check of report3.checks.filter((entry) => entry.status !== "passed")) {
+  for (const report4 of reports) {
+    for (const check of report4.checks.filter((entry) => entry.status !== "passed")) {
       lines3.push(
-        `${report3.script} ${check.check}: ${check.status}${check.reason ? ` (${check.reason})` : ""}`
+        `${report4.script} ${check.check}: ${check.status}${check.reason ? ` (${check.reason})` : ""}`
       );
     }
-    if (report3.all_skipped) {
-      lines3.push(`${report3.script}: every test was skipped, so the gate fails.`);
+    if (report4.all_skipped) {
+      lines3.push(`${report4.script}: every test was skipped, so the gate fails.`);
     }
   }
   lines3.push(
@@ -23705,12 +23714,12 @@ function agentAnalyst(input) {
       `steady-state cache-hit share is ${facts.cache_hit_share}, below authoring_cache_hit_min (${input.cacheHitMin})`
     );
   }
-  for (const run of facts.oversize_tool_results) {
+  for (const run2 of facts.oversize_tool_results) {
     const record2 = agent.find(
-      (entry) => `${entry.run.case} / ${entry.run.arm} / ${entry.run.tier} / run-${entry.run.run}` === run
+      (entry) => `${entry.run.case} / ${entry.run.arm} / ${entry.run.tier} / run-${entry.run.run}` === run2
     );
     defects.push(
-      `${run} returned a tool result of ${record2?.timing.max_tool_result_tokens} tokens, above authoring_tool_result_max_tokens (${input.toolResultMaxTokens})`
+      `${run2} returned a tool result of ${record2?.timing.max_tool_result_tokens} tokens, above authoring_tool_result_max_tokens (${input.toolResultMaxTokens})`
     );
   }
   return {
@@ -23977,14 +23986,14 @@ function runAgentEvidence(workspace, input) {
   const installed = input.installed ?? discoverInstalledAgents(workspace.projectRoot, readSkillPathContext(workspace.projectRoot), {
     userHome: input.userHome
   });
-  const report3 = buildOverlapReport({
+  const report4 = buildOverlapReport({
     candidate: { kind: "agent", name: workspace.name, text: intake.job, scope: "project" },
     installed,
     threshold: config2.authoring_collision_jaccard,
     budgetChars: Number.MAX_SAFE_INTEGER
   });
-  report3.collisions = mergeCollisions(
-    report3.collisions,
+  report4.collisions = mergeCollisions(
+    report4.collisions,
     findSubsetOverlaps({ name: workspace.name, job: intake.job, tools: intake.tools }, installed)
   );
   const candidate = expertCandidate(workspace, input);
@@ -23996,8 +24005,8 @@ function runAgentEvidence(workspace, input) {
   const sourcesArtifact = workspace.write("sources.md", input.sourcesText);
   const lines3 = [];
   const decided = input.decision ? overlapDecision(workspace, input.decision) : null;
-  if (decided?.chosen === EXTEND_OPTION && report3.collisions.length > 0) {
-    const existing = report3.collisions[0].existing;
+  if (decided?.chosen === EXTEND_OPTION && report4.collisions.length > 0) {
+    const existing = report4.collisions[0].existing;
     workspace.clear();
     return {
       ok: false,
@@ -24011,22 +24020,22 @@ function runAgentEvidence(workspace, input) {
   }
   let gate = "passed";
   let reason2;
-  if (report3.shadowing.length > 0) {
+  if (report4.shadowing.length > 0) {
     gate = "failed";
     reason2 = "name shadowing";
-    lines3.push(...report3.shadowing.map(shadowingLine));
+    lines3.push(...report4.shadowing.map(shadowingLine));
   } else if (experts.length > 0) {
     gate = "failed";
     reason2 = "expert collision";
     lines3.push(...experts.map(expertCollisionLine));
-  } else if (report3.collisions.length > 0 && decided?.chosen !== CREATE_OPTION) {
+  } else if (report4.collisions.length > 0 && decided?.chosen !== CREATE_OPTION) {
     gate = "waiting";
     reason2 = "unresolved collision";
   }
   let decisionId;
   if (gate === "waiting") {
-    const collision = report3.collisions[0];
-    decisionId = raiseOverlap(workspace, collision, report3.threshold, input.change);
+    const collision = report4.collisions[0];
+    decisionId = raiseOverlap(workspace, collision, report4.threshold, input.change);
     const resume = `paqad-ai agent evidence ${workspace.name} <sources.md> --decision ${decisionId}`;
     setWaiting(workspace, { stage: "S2", decision: decisionId, resume });
     lines3.push(
@@ -24042,14 +24051,14 @@ function runAgentEvidence(workspace, input) {
         gate,
         stage: "S2",
         ...reason2 ? { reason: reason2 } : {},
-        collisions: report3.collisions.length,
+        collisions: report4.collisions.length,
         expert_collisions: experts.length,
         sources: rows.length,
         non_model_sources: grounded.length,
         ...decisionId ? { decision: decisionId } : {},
         ...input.decision ? { resolved_by: input.decision } : {}
       },
-      `${renderOverlapReport(report3)}${renderExpertSection(experts)}`
+      `${renderOverlapReport(report4)}${renderExpertSection(experts)}`
     )
   );
   if (gate === "passed") {
@@ -24183,7 +24192,7 @@ function parseDelegationResults(text3) {
     return {
       request: String(entry.request ?? ""),
       should_delegate: entry.should_delegate === true,
-      runs: Array.isArray(entry.runs) ? entry.runs.map((run) => run === true) : [],
+      runs: Array.isArray(entry.runs) ? entry.runs.map((run2) => run2 === true) : [],
       source: typeof entry.source === "string" ? entry.source : "host"
     };
   });
@@ -24370,10 +24379,10 @@ function readAgentBaseline(workspace) {
       );
     }
   }
-  for (let run = 1; run <= AGENT_BASELINE_RUNS; run += 1) {
-    if (!workspace.exists(`baseline/run-${run}.md`)) {
+  for (let run2 = 1; run2 <= AGENT_BASELINE_RUNS; run2 += 1) {
+    if (!workspace.exists(`baseline/run-${run2}.md`)) {
       throw new AuthoringRefusal(
-        `${workspace.relPath(`baseline/run-${run}.md`)} is missing. ${hint}`
+        `${workspace.relPath(`baseline/run-${run2}.md`)} is missing. ${hint}`
       );
     }
   }
@@ -24409,8 +24418,8 @@ function sectionBacking(taskText, heading, said, missing) {
   };
 }
 function reasonBacking(reason2, runs, taskText, reportMaxTokens) {
-  const tokens = median2(runs.map((run) => run.tokens));
-  const verbose = median2(runs.map((run) => run.verbose_tokens_in_main));
+  const tokens = median2(runs.map((run2) => run2.tokens));
+  const verbose = median2(runs.map((run2) => run2.verbose_tokens_in_main));
   switch (reason2) {
     case "verbose-output": {
       const share3 = tokens === 0 ? 0 : verbose / tokens;
@@ -24432,7 +24441,7 @@ function reasonBacking(reason2, runs, taskText, reportMaxTokens) {
         evidence: `median baseline ${tokens} tokens against a report of at most ${reportMaxTokens} tokens`
       };
     case "cheaper-model": {
-      const passed = runs.filter((run) => run.passed).length;
+      const passed = runs.filter((run2) => run2.passed).length;
       return {
         backed: passed >= ROUTINE_PASSES_MIN,
         evidence: `the main conversation passed ${passed} of ${runs.length} runs (routine needs ${ROUTINE_PASSES_MIN}); S5 proves the cheaper tier`
@@ -24473,19 +24482,19 @@ function refused(lines3) {
   return { ...stageResult(false, lines3), stopped: true };
 }
 function baselineSummary(runs) {
-  const passed = runs.filter((run) => run.passed).length;
+  const passed = runs.filter((run2) => run2.passed).length;
   return {
     runs: runs.length,
     passed,
     pass_rate: passed / runs.length,
-    tokens_median: median2(runs.map((run) => run.tokens)),
-    duration_ms_median: median2(runs.map((run) => run.duration_ms)),
-    verbose_tokens_in_main_median: median2(runs.map((run) => run.verbose_tokens_in_main))
+    tokens_median: median2(runs.map((run2) => run2.tokens)),
+    duration_ms_median: median2(runs.map((run2) => run2.duration_ms)),
+    verbose_tokens_in_main_median: median2(runs.map((run2) => run2.verbose_tokens_in_main))
   };
 }
 function baselineTable(runs) {
   const rows = runs.map(
-    (run) => `| ${run.run} | ${run.passed ? "passed" : "failed"} | ${run.tokens} | ${run.duration_ms} | ${run.verbose_tokens_in_main} | ${run.note} |`
+    (run2) => `| ${run2.run} | ${run2.passed ? "passed" : "failed"} | ${run2.tokens} | ${run2.duration_ms} | ${run2.verbose_tokens_in_main} | ${run2.note} |`
   ).join("\n");
   return `| Run | Result | Tokens | Duration (ms) | Verbose tokens in main | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -24739,36 +24748,36 @@ function buildAgentCatalogReport(input) {
     pruned
   };
 }
-function renderAgentCatalogLines(report3) {
+function renderAgentCatalogLines(report4) {
   const lines3 = [];
-  if (!report3.delegation_data) {
+  if (!report4.delegation_data) {
     lines3.push(
-      `delegation data: none on ${report3.host}, which has no delegation hook, so nothing is recorded`
+      `delegation data: none on ${report4.host}, which has no delegation hook, so nothing is recorded`
     );
   }
-  for (const row2 of report3.agents) {
+  for (const row2 of report4.agents) {
     lines3.push(
-      `${row2.agent}: listing ${row2.description_tokens} tokens, last delegated ${row2.last_delegated ?? "never"}` + (row2.dark ? `, dark for ${report3.window_days} days` : "") + (row2.expired_power.length > 0 ? `, holds an expired power approval (${row2.expired_power.join(", ")})` : "")
+      `${row2.agent}: listing ${row2.description_tokens} tokens, last delegated ${row2.last_delegated ?? "never"}` + (row2.dark ? `, dark for ${report4.window_days} days` : "") + (row2.expired_power.length > 0 ? `, holds an expired power approval (${row2.expired_power.join(", ")})` : "")
     );
   }
   return lines3;
 }
 function runAgentCatalog(projectRoot, input = {}) {
   const config2 = readAuthoringConfig(projectRoot);
-  const report3 = buildAgentCatalogReport({
+  const report4 = buildAgentCatalogReport({
     projectRoot,
     host: activeHost(projectRoot),
     now: (input.now ?? (() => /* @__PURE__ */ new Date()))(),
     darkWindowDays: config2.authoring_dark_window_days
   });
-  const lines3 = renderAgentCatalogLines(report3);
+  const lines3 = renderAgentCatalogLines(report4);
   let decision;
   if (input.proposeRetirement) {
-    for (const row2 of report3.agents.filter((entry) => entry.dark)) {
+    for (const row2 of report4.agents.filter((entry) => entry.dark)) {
       decision = retirementDecision(projectRoot, {
         skill: row2.agent,
         kind: "agent",
-        why: `${row2.agent} has not been delegated to in ${report3.window_days} days and costs ${row2.description_tokens} tokens of every listing.`,
+        why: `${row2.agent} has not been delegated to in ${report4.window_days} days and costs ${row2.description_tokens} tokens of every listing.`,
         change: input.change
       });
       lines3.push(`Proposed retiring ${row2.agent}: decision ${decision}.`);
@@ -25186,7 +25195,7 @@ function buildAgentEvidence(input) {
     baseline: {
       arm: benchmark?.baseline_arm ?? null,
       runs: baselineRuns?.length ?? 0,
-      passed: baselineRuns?.filter((run) => run.passed === true).length ?? "unavailable",
+      passed: baselineRuns?.filter((run2) => run2.passed === true).length ?? "unavailable",
       verdict: input.overrides.some((entry) => entry.gate === "S0") ? "overridden" : "needed"
     },
     reliability: benchmark ? {
@@ -25472,12 +25481,12 @@ function printLint2(result2) {
 }
 function runLintAll2(projectRoot, options) {
   try {
-    const { report: report3, summary } = runAudit(projectRoot, "agent", {
+    const { report: report4, summary } = runAudit(projectRoot, "agent", {
       ...options,
       agentSources: STAGE_AGENT_AUDIT_SOURCES
     });
     console.log(summary);
-    process.exitCode = lintExitCode(report3);
+    process.exitCode = lintExitCode(report4);
   } catch (error) {
     if (error instanceof AuditUsageError || error instanceof AgentLintUsageError || error instanceof NeverWriteListError) {
       console.error(`agent lint: ${error.message}`);
@@ -26385,42 +26394,42 @@ function renderSection(title, findings) {
   }
   return lines3;
 }
-function buildHealthMarkdown(report3) {
-  const proven = report3.findings.filter((finding) => finding.tier === "deterministic");
-  const judged = report3.findings.filter((finding) => finding.tier === "ai-judged");
+function buildHealthMarkdown(report4) {
+  const proven = report4.findings.filter((finding) => finding.tier === "deterministic");
+  const judged = report4.findings.filter((finding) => finding.tier === "ai-judged");
   const lines3 = [
-    `# ${report3.report_id}`,
+    `# ${report4.report_id}`,
     "",
     HEALTH_REPORT_HEADER,
     "",
-    `- Workflow: ${report3.workflow}`,
-    `- Generated: ${report3.generated_at}`,
-    `- Stack: ${report3.stack.primary}`,
-    `- Mode: ${report3.offline ? "offline" : "online"}`,
-    report3.source_report_id ? `- Retest of: ${report3.source_report_id}` : "",
+    `- Workflow: ${report4.workflow}`,
+    `- Generated: ${report4.generated_at}`,
+    `- Stack: ${report4.stack.primary}`,
+    `- Mode: ${report4.offline ? "offline" : "online"}`,
+    report4.source_report_id ? `- Retest of: ${report4.source_report_id}` : "",
     "",
     "## Summary",
     "",
     `- Proven findings: ${proven.length}`,
     `- Needs judgment: ${judged.length}`,
-    `- New since baseline: ${report3.baseline.new_since_baseline}`,
-    `- Pre-existing: ${report3.baseline.pre_existing}`,
+    `- New since baseline: ${report4.baseline.new_since_baseline}`,
+    `- Pre-existing: ${report4.baseline.pre_existing}`,
     "",
     ...renderSection("Proven", proven),
     ...renderSection("Needs judgment", judged),
     "## Blocked checks",
     ""
   ];
-  if (report3.blocked_checks.length === 0) {
+  if (report4.blocked_checks.length === 0) {
     lines3.push("_Every check ran._", "");
   } else {
-    for (const blocked of report3.blocked_checks) {
+    for (const blocked of report4.blocked_checks) {
       lines3.push(`- ${blocked.check}: ${blocked.reason} \u2014 ${blocked.install_hint}`);
     }
     lines3.push("");
   }
   lines3.push("## Next remediation priorities", "");
-  for (const priority of report3.next_remediation_priorities) {
+  for (const priority of report4.next_remediation_priorities) {
     lines3.push(`- ${priority}`);
   }
   lines3.push("");
@@ -26457,7 +26466,7 @@ function assembleHealthReport(input) {
   const preExisting = findings.filter(
     (finding) => finding.baseline_status === "pre-existing"
   ).length;
-  const report3 = {
+  const report4 = {
     schema_version: "1",
     generated_by: "paqad-ai",
     framework_version: VERSION,
@@ -26482,7 +26491,7 @@ function assembleHealthReport(input) {
     next_remediation_priorities: nextRemediationPriorities(findings),
     raw_evidence_paths: []
   };
-  return { report: report3, findings, findingIds: findings.map((finding) => finding.id) };
+  return { report: report4, findings, findingIds: findings.map((finding) => finding.id) };
 }
 function stripReportPrefix(reportId) {
   return reportId.replace(/^(?:HEALTH|RETEST)-/, "");
@@ -26731,7 +26740,7 @@ async function runHealthAudit(options) {
   ]);
   blockedChecks.push(...vulns.blocked, ...duplication.blocked, ...deprecations.blocked);
   const baseline = readBaseline2(projectRoot);
-  const { report: report3, findingIds } = assembleHealthReport({
+  const { report: report4, findingIds } = assembleHealthReport({
     workflow,
     now: now2(),
     offline,
@@ -26748,11 +26757,11 @@ async function runHealthAudit(options) {
     sourceReportPath: options.sourceReportPath ?? null,
     sourceReportId: options.sourceReportId ?? null
   });
-  await writeJsonFile2(join80(projectRoot, report3.sidecar_path), report3);
-  await writeMarkdown(join80(projectRoot, report3.report_path), buildHealthMarkdown(report3));
+  await writeJsonFile2(join80(projectRoot, report4.sidecar_path), report4);
+  await writeMarkdown(join80(projectRoot, report4.report_path), buildHealthMarkdown(report4));
   await writeJsonFile2(
-    join80(projectRoot, PATHS.HEALTH_RUNS_DIR, report3.report_id, "finding-index.json"),
-    { report_id: report3.report_id, findings: report3.findings }
+    join80(projectRoot, PATHS.HEALTH_RUNS_DIR, report4.report_id, "finding-index.json"),
+    { report_id: report4.report_id, findings: report4.findings }
   );
   let baselineCreated = false;
   if (baseline === null) {
@@ -26760,22 +26769,22 @@ async function runHealthAudit(options) {
     baselineCreated = true;
   }
   recordHealthRun(projectRoot, {
-    report_id: report3.report_id,
-    workflow: report3.workflow,
+    report_id: report4.report_id,
+    workflow: report4.workflow,
     offline,
-    finding_count: report3.findings.length,
-    blocked_count: report3.blocked_checks.length,
-    new_since_baseline: report3.baseline.new_since_baseline,
-    pre_existing: report3.baseline.pre_existing
+    finding_count: report4.findings.length,
+    blocked_count: report4.blocked_checks.length,
+    new_since_baseline: report4.baseline.new_since_baseline,
+    pre_existing: report4.baseline.pre_existing
   });
   return {
-    report_id: report3.report_id,
-    report_path: report3.report_path,
-    sidecar_path: report3.sidecar_path,
-    finding_count: report3.findings.length,
-    blocked_checks: report3.blocked_checks,
+    report_id: report4.report_id,
+    report_path: report4.report_path,
+    sidecar_path: report4.sidecar_path,
+    finding_count: report4.findings.length,
+    blocked_checks: report4.blocked_checks,
     baseline_created: baselineCreated,
-    exit_code: report3.findings.length > 0 ? 1 : 0
+    exit_code: report4.findings.length > 0 ? 1 : 0
   };
 }
 async function writeMarkdown(target, markdown) {
@@ -26853,15 +26862,15 @@ async function runHealthRetest(options) {
   }
   const current = await gatherCurrentFindings(projectRoot, gatherer, offline, now2);
   const retestFindings = buildHealthRetestFindings(source2.findings, current.findings, offline);
-  const report3 = buildRetestReportIndex({ now: now2(), offline, source: source2, retestFindings });
-  await writeJsonFile2(join82(projectRoot, report3.sidecar_path), report3);
-  await writeMarkdown2(join82(projectRoot, report3.report_path), buildHealthMarkdown(report3));
+  const report4 = buildRetestReportIndex({ now: now2(), offline, source: source2, retestFindings });
+  await writeJsonFile2(join82(projectRoot, report4.sidecar_path), report4);
+  await writeMarkdown2(join82(projectRoot, report4.report_path), buildHealthMarkdown(report4));
   const count3 = (status) => retestFindings.filter((finding) => finding.retest_status === status).length;
   return {
     ok: true,
-    report_id: report3.report_id,
-    report_path: report3.report_path,
-    sidecar_path: report3.sidecar_path,
+    report_id: report4.report_id,
+    report_path: report4.report_path,
+    sidecar_path: report4.sidecar_path,
     fixed: count3("fixed"),
     still_open: count3("still-open"),
     needs_manual_verification: count3("needs-manual-verification"),
@@ -26877,7 +26886,7 @@ async function gatherCurrentFindings(projectRoot, gatherer, offline, now2) {
     gatherer.deprecations(offline),
     gatherer.staleDocs()
   ]);
-  const { report: report3 } = assembleHealthReport({
+  const { report: report4 } = assembleHealthReport({
     workflow: "codebase-health",
     now: now2(),
     offline,
@@ -26892,7 +26901,7 @@ async function gatherCurrentFindings(projectRoot, gatherer, offline, now2) {
     blockedChecks: [],
     baseline: readBaseline2(projectRoot)
   });
-  return { findings: report3.findings };
+  return { findings: report4.findings };
 }
 async function writeMarkdown2(target, markdown) {
   await mkdir6(dirname22(target), { recursive: true });
@@ -31656,16 +31665,16 @@ function createModuleHealthCommand() {
     async (options) => {
       if (options.fromReport || options.fromTestReport) {
         const discovered = discoverModuleHealth(options.projectRoot);
-        const report3 = await rollupModuleHealth({
+        const report4 = await rollupModuleHealth({
           projectRoot: options.projectRoot,
           moduleHealth: discovered.module_health,
           coverageReportPath: options.fromReport,
           testReportPath: options.fromTestReport
         });
         if (!options.silent) {
-          console.log(JSON.stringify(report3, null, 2));
+          console.log(JSON.stringify(report4, null, 2));
         }
-        process.exitCode = report3.blocked === null ? 0 : 1;
+        process.exitCode = report4.blocked === null ? 0 : 1;
         return;
       }
       const result2 = await syncModuleHealth({
@@ -31687,16 +31696,16 @@ function createModuleHealthCommand() {
   ).option("--project-root <path>", "Project root", process.cwd()).option("--from-report <path>", "Override coverage report path").option("--from-test-report <path>", "Override test report path").option("--silent", "Suppress normal output", false).action(
     async (options) => {
       const discovered = discoverModuleHealth(options.projectRoot);
-      const report3 = await rollupModuleHealth({
+      const report4 = await rollupModuleHealth({
         projectRoot: options.projectRoot,
         moduleHealth: discovered.module_health,
         coverageReportPath: options.fromReport,
         testReportPath: options.fromTestReport
       });
       if (!options.silent) {
-        console.log(JSON.stringify(report3, null, 2));
+        console.log(JSON.stringify(report4, null, 2));
       }
-      process.exitCode = report3.blocked === null ? 0 : 1;
+      process.exitCode = report4.blocked === null ? 0 : 1;
     }
   );
   command.command("record").description("Record normalized module health evidence").option("--project-root <path>", "Project root", process.cwd()).option("--provider <provider>", "Provider adapter identifier").option("--session-id <id>", "Provider session identifier").option("--source <source>", "Evidence source", "provider-hook").option("--file <path...>", "Affected file path").option("--module <module...>", "Affected module name").option("--verification-status <status>", "Verification status").option("--coverage <pct>", "Coverage percentage").option("--failed-tests <count>", "Failed test count").option("--silent", "Suppress normal output", false).action(
@@ -31760,26 +31769,26 @@ function createModuleMapCommand() {
     async (options) => {
       const sourceRoots = options.sourceRoots !== void 0 ? options.sourceRoots.split(",").map((s) => s.trim()).filter((s) => s.length > 0) : null;
       const fileExtensions = options.fileExtensions !== void 0 ? options.fileExtensions.split(",").map((s) => s.trim()).filter((s) => s.length > 0) : void 0;
-      const report3 = await reconcileModuleMap({
+      const report4 = await reconcileModuleMap({
         projectRoot: options.projectRoot,
         sourceRoots,
         fileExtensions,
         writeReport: options.write
       });
       if (options.json) {
-        console.log(JSON.stringify(report3, null, 2));
-      } else if (report3.blocked !== null) {
-        console.error(`Reconciler blocked: ${report3.blocked}.`);
+        console.log(JSON.stringify(report4, null, 2));
+      } else if (report4.blocked !== null) {
+        console.error(`Reconciler blocked: ${report4.blocked}.`);
         console.error("Add module_health.source_roots to the active stack pack and retry.");
-      } else if (report3.findings.length === 0) {
+      } else if (report4.findings.length === 0) {
         console.log("No module-map drift detected.");
       } else {
-        console.log(`Found ${report3.findings.length} drift finding(s):`);
-        for (const [code, n] of Object.entries(report3.counts)) {
+        console.log(`Found ${report4.findings.length} drift finding(s):`);
+        for (const [code, n] of Object.entries(report4.counts)) {
           if (n > 0) console.log(`  ${code}: ${n}`);
         }
       }
-      if (options.failOnDrift && driftReportHasFindings(report3)) {
+      if (options.failOnDrift && driftReportHasFindings(report4)) {
         process.exitCode = 1;
       }
     }
@@ -32060,7 +32069,7 @@ import { execFileSync as execFileSync7 } from "child_process";
 import { createHash as createHash12 } from "crypto";
 import { readdirSync as readdirSync24, readFileSync as readFileSync58 } from "fs";
 import { join as join103 } from "path";
-var OPEN_STATUSES = /* @__PURE__ */ new Set(["running", "paused", "failed", "abandoned"]);
+var OPEN_STATUSES2 = /* @__PURE__ */ new Set(["running", "paused", "failed", "abandoned"]);
 function listPendingPackets(projectRoot) {
   try {
     return readdirSync24(join103(projectRoot, PATHS.DECISIONS_PENDING_DIR)).filter((name) => !name.startsWith(".")).sort();
@@ -32127,7 +32136,7 @@ function docsBaseline(projectRoot) {
 }
 function runPreflight(projectRoot, input) {
   const existing = readRun(projectRoot);
-  if (existing && OPEN_STATUSES.has(existing.status)) return { kind: "attach", run: existing };
+  if (existing && OPEN_STATUSES2.has(existing.status)) return { kind: "attach", run: existing };
   if (!input.isTTY && !input.asked && !input.fromTray) {
     return {
       kind: "refused",
@@ -32182,12 +32191,12 @@ function gitWorkflowHashes(projectRoot) {
   }
   return hashes;
 }
-function setupOptions(projectRoot, run) {
-  const detection = run.detection;
+function setupOptions(projectRoot, run2) {
+  const detection = run2.detection;
   if (!detection) throw new JourneyRefusal("Step 1 (Read your project) has no stack recorded.");
   const stack = detection.stack;
   const domain = DOMAIN_STACK_MAP.content.includes(stack) ? "content" : "coding";
-  const providers = run.providers;
+  const providers = run2.providers;
   return {
     projectRoot,
     interactive: false,
@@ -32209,8 +32218,8 @@ function hashWritten(projectRoot, files) {
   }
   return written;
 }
-async function runSetupStage(projectRoot, run, runner, now2) {
-  const output = await runner.run(setupOptions(projectRoot, run));
+async function runSetupStage(projectRoot, run2, runner, now2) {
+  const output = await runner.run(setupOptions(projectRoot, run2));
   const generated = output.generated_files.map((file) => toRelative(projectRoot, file));
   return {
     setup: {
@@ -32223,28 +32232,28 @@ async function runSetupStage(projectRoot, run, runner, now2) {
     setup_hashes: gitWorkflowHashes(projectRoot)
   };
 }
-async function recompileSetup(projectRoot, run, now2) {
-  if (!run.setup) {
+async function recompileSetup(projectRoot, run2, now2) {
+  if (!run2.setup) {
     throw new JourneyRefusal("Run `paqad-ai onboarding setup` before --compile-only.");
   }
   const compiled = await compileOnboardingRules(projectRoot);
   return {
-    ...run.setup,
+    ...run2.setup,
     completed_at: now2().toISOString(),
     step_failures: compiled.step_failures
   };
 }
 async function applySetupStage(projectRoot, input, now2) {
-  const run = requireRun(projectRoot);
-  if (run.stages.setup.status !== "running") {
+  const run2 = requireRun(projectRoot);
+  if (run2.stages.setup.status !== "running") {
     throw new JourneyRefusal("Start step 2 first: `paqad-ai onboarding stage start setup`.");
   }
   if (input.compileOnly) {
-    const setup = await recompileSetup(projectRoot, run, now2);
+    const setup = await recompileSetup(projectRoot, run2, now2);
     updateRun(projectRoot, (draft) => void (draft.setup = setup), { now: now2 });
     return setup;
   }
-  const result2 = await runSetupStage(projectRoot, run, input.runner, now2);
+  const result2 = await runSetupStage(projectRoot, run2, input.runner, now2);
   updateRun(
     projectRoot,
     (draft) => {
@@ -32256,7 +32265,7 @@ async function applySetupStage(projectRoot, input, now2) {
   );
   appendChoice(projectRoot, {
     ts: result2.setup.completed_at,
-    run_id: run.run_id,
+    run_id: run2.run_id,
     stage: "setup",
     kind: "rag",
     choice: "search on with the local provider; the index is built at Wrap up",
@@ -32324,7 +32333,7 @@ function createOnboardCommand() {
   ).action(async (options) => {
     if (options.detect) {
       const detection = await new Detector().detect(options.projectRoot);
-      const report3 = {
+      const report4 = {
         detected_domain: detection.detected_domain,
         detected_stack: detection.detected_stack,
         detected_capabilities: detection.detected_capabilities,
@@ -32332,16 +32341,16 @@ function createOnboardCommand() {
         confidence: detection.confidence
       };
       if (options.json) {
-        process.stdout.write(`${JSON.stringify(report3, null, 2)}
+        process.stdout.write(`${JSON.stringify(report4, null, 2)}
 `);
       } else {
         printBanner();
         process.stdout.write(
-          `Detected: ${report3.detected_domain ?? "unknown"} / ${report3.detected_stack ?? "none"} (${report3.confidence} confidence)
+          `Detected: ${report4.detected_domain ?? "unknown"} / ${report4.detected_stack ?? "none"} (${report4.confidence} confidence)
 `
         );
         process.stdout.write(
-          `Suggested capabilities: ${report3.detected_capabilities.join(", ") || "none"}
+          `Suggested capabilities: ${report4.detected_capabilities.join(", ") || "none"}
 `
         );
       }
@@ -33309,8 +33318,8 @@ function proveRuleScripts(ctx) {
 }
 function proveFinish(ctx) {
   const reportText = readTextOrNull(join109(ctx.projectRoot, PATHS.ONBOARDING_REPORT_JSON));
-  const report3 = reportText ? JSON.parse(reportText) : null;
-  const fresh = report3 !== null && (report3.generated_at ?? "") >= startedAt(ctx, "finish");
+  const report4 = reportText ? JSON.parse(reportText) : null;
+  const fresh = report4 !== null && (report4.generated_at ?? "") >= startedAt(ctx, "finish");
   const markdown = readTextOrNull(join109(ctx.projectRoot, PATHS.ONBOARDING_REPORT_MD)) !== null;
   const readiness = verifyReadinessToDevelop(ctx.projectRoot);
   return [
@@ -33322,12 +33331,12 @@ function proveFinish(ctx) {
     item("readiness", readiness.ready, `Not ready to develop: ${readiness.blockers.join("; ")}`),
     item(
       "rag_ready",
-      report3?.rag === "ready" || report3?.rag === "installing",
+      report4?.rag === "ready" || report4?.rag === "installing",
       "The search index is not ready."
     )
   ];
 }
-var PROOFS = {
+var PROOFS2 = {
   detect: proveDetect,
   setup: proveSetup,
   project_docs: proveProjectDocs,
@@ -33338,11 +33347,11 @@ var PROOFS = {
   finish: proveFinish
 };
 function proveStage(ctx, stage) {
-  return PROOFS[stage](ctx);
+  return PROOFS2[stage](ctx);
 }
-function checkStartGate(run, stage) {
+function checkStartGate(run2, stage) {
   for (const before of stagesBefore(stage)) {
-    const record2 = run.stages[before.id];
+    const record2 = run2.stages[before.id];
     const allowed = record2.status === "degraded" && (record2.degraded ?? []).every((code) => before.allowed_degraded.includes(code));
     if (record2.status === "done" || allowed) continue;
     const why = record2.status === "degraded" ? "ended with a gap that blocks the next step" : "is not done yet";
@@ -33449,7 +33458,7 @@ function validateProviders(providers) {
 }
 function startRun(projectRoot, input, now2) {
   const at2 = now2().toISOString();
-  const run = createRun(projectRoot, {
+  const run2 = createRun(projectRoot, {
     schema_version: 1,
     run_id: `onb-${randomUUID()}`,
     status: "running",
@@ -33467,14 +33476,14 @@ function startRun(projectRoot, input, now2) {
   });
   appendChoice(projectRoot, {
     ts: at2,
-    run_id: run.run_id,
+    run_id: run2.run_id,
     stage: "start",
     kind: "providers",
-    choice: run.providers.join(", "),
+    choice: run2.providers.join(", "),
     reason: input.asked === "tray" ? "answered in the plugin tray" : "the agent says the person answered the opening question",
     by: input.asked
   });
-  return run;
+  return run2;
 }
 function defaultPlan(projectRoot, stage) {
   if (stage === "project_docs") return [...PROJECT_DOC_AREAS];
@@ -33485,13 +33494,13 @@ function defaultPlan(projectRoot, stage) {
   return void 0;
 }
 function startStage(projectRoot, stage, input, now2) {
-  const run = requireRun(projectRoot);
-  assertOpen(run);
-  const gate = checkStartGate(run, stage);
+  const run2 = requireRun(projectRoot);
+  assertOpen(run2);
+  const gate = checkStartGate(run2, stage);
   if (!gate.ok) throw new JourneyRefusal(gate.message);
-  if (run.stages[stage].status !== "not_started") {
+  if (run2.stages[stage].status !== "not_started") {
     throw new JourneyRefusal(
-      `Step ${stageDefinition(stage).index} (${stageDefinition(stage).name}) is already ${run.stages[stage].status}. Use \`onboarding resume\` to continue it.`
+      `Step ${stageDefinition(stage).index} (${stageDefinition(stage).name}) is already ${run2.stages[stage].status}. Use \`onboarding resume\` to continue it.`
     );
   }
   const at2 = now2().toISOString();
@@ -33508,25 +33517,25 @@ function startStage(projectRoot, stage, input, now2) {
       draft.status = "running";
       if (stage === "rules_discovery") draft.rules_before = ruleIds(projectRoot);
     },
-    { expectedRevision: run.revision, now: now2 }
+    { expectedRevision: run2.revision, now: now2 }
   );
-  appendEvent(projectRoot, { ts: at2, run_id: run.run_id, kind: "stage", stage, action: "start" });
+  appendEvent(projectRoot, { ts: at2, run_id: run2.run_id, kind: "stage", stage, action: "start" });
   return saved;
 }
 function endStage(projectRoot, stage, degraded, now2) {
-  const run = requireRun(projectRoot);
+  const run2 = requireRun(projectRoot);
   const gate = checkEndGate(
-    { projectRoot, run, events: readEvents(projectRoot, run.run_id) },
+    { projectRoot, run: run2, events: readEvents(projectRoot, run2.run_id) },
     stage,
     degraded
   );
   if (!gate.ok) throw new JourneyRefusal(gate.message);
   const at2 = now2().toISOString();
-  const flagged = stage === "rule_scripts" ? flagJourneyRuleChecks(projectRoot, run.rules_before ?? []) : [];
+  const flagged = stage === "rule_scripts" ? flagJourneyRuleChecks(projectRoot, run2.rules_before ?? []) : [];
   if (flagged.length > 0) {
     appendChoice(projectRoot, {
       ts: at2,
-      run_id: run.run_id,
+      run_id: run2.run_id,
       stage,
       kind: "rule_checks_warn_only",
       choice: flagged.join(", "),
@@ -33545,11 +33554,11 @@ function endStage(projectRoot, stage, degraded, now2) {
         ...gate.degraded.length > 0 ? { degraded: gate.degraded } : {}
       };
     },
-    { expectedRevision: run.revision, now: now2 }
+    { expectedRevision: run2.revision, now: now2 }
   );
   appendEvent(projectRoot, {
     ts: at2,
-    run_id: run.run_id,
+    run_id: run2.run_id,
     kind: "stage",
     stage,
     action: "end",
@@ -33558,8 +33567,8 @@ function endStage(projectRoot, stage, degraded, now2) {
   return saved;
 }
 function failStage(projectRoot, stage, reason2, now2) {
-  const run = requireRun(projectRoot);
-  if (run.stages[stage].status !== "running") {
+  const run2 = requireRun(projectRoot);
+  if (run2.stages[stage].status !== "running") {
     throw new JourneyRefusal(
       `Step ${stageDefinition(stage).index} (${stageDefinition(stage).name}) is not running.`
     );
@@ -33572,11 +33581,11 @@ function failStage(projectRoot, stage, reason2, now2) {
       draft.stages[stage] = { ...draft.stages[stage], status: "failed", failure: reason2.trim() };
       draft.status = "failed";
     },
-    { expectedRevision: run.revision, now: now2 }
+    { expectedRevision: run2.revision, now: now2 }
   );
   appendEvent(projectRoot, {
     ts: at2,
-    run_id: run.run_id,
+    run_id: run2.run_id,
     kind: "stage",
     stage,
     action: "fail",
@@ -33584,17 +33593,17 @@ function failStage(projectRoot, stage, reason2, now2) {
   });
   return saved;
 }
-function assertOpen(run) {
-  if (run.status === "done") throw new JourneyRefusal("This onboarding journey is finished.");
-  if (run.status !== "running") {
+function assertOpen(run2) {
+  if (run2.status === "done") throw new JourneyRefusal("This onboarding journey is finished.");
+  if (run2.status !== "running") {
     throw new JourneyRefusal(
-      `The journey is ${run.status}. Run \`paqad-ai onboarding resume\` first.`
+      `The journey is ${run2.status}. Run \`paqad-ai onboarding resume\` first.`
     );
   }
 }
-function assertRunning(run, stage) {
-  assertOpen(run);
-  if (run.stages[stage].status !== "running") {
+function assertRunning(run2, stage) {
+  assertOpen(run2);
+  if (run2.stages[stage].status !== "running") {
     throw new JourneyRefusal(
       `Step ${stageDefinition(stage).index} (${stageDefinition(stage).name}) is not running.`
     );
@@ -33604,8 +33613,8 @@ function currentModuleHash(projectRoot, unit) {
   return readModuleUnits(projectRoot)?.find((module) => module.slug === unit)?.source_hash;
 }
 function recordUnit(projectRoot, stage, unit, input, now2) {
-  const run = requireRun(projectRoot);
-  assertRunning(run, stage);
+  const run2 = requireRun(projectRoot);
+  assertRunning(run2, stage);
   if (unit.trim() === "") throw new JourneyRefusal("Name the unit that finished.");
   const sourceHash = stage === "module_docs" ? currentModuleHash(projectRoot, unit) : void 0;
   if (input.kept) {
@@ -33628,14 +33637,14 @@ function recordUnit(projectRoot, stage, unit, input, now2) {
   const at2 = now2().toISOString();
   appendEvent(projectRoot, {
     ts: at2,
-    run_id: run.run_id,
+    run_id: run2.run_id,
     kind: input.kept ? "unit_kept" : "unit",
     stage,
     unit,
     outputs,
     ...sourceHash !== void 0 ? { source_hash: sourceHash } : {}
   });
-  if (Object.keys(outputs).length === 0) return run;
+  if (Object.keys(outputs).length === 0) return run2;
   return updateRun(
     projectRoot,
     (draft) => {
@@ -33645,11 +33654,11 @@ function recordUnit(projectRoot, stage, unit, input, now2) {
   );
 }
 function claimUnit(projectRoot, stage, unit, agent, now2) {
-  const run = requireRun(projectRoot);
-  assertRunning(run, stage);
+  const run2 = requireRun(projectRoot);
+  assertRunning(run2, stage);
   appendEvent(projectRoot, {
     ts: now2().toISOString(),
-    run_id: run.run_id,
+    run_id: run2.run_id,
     kind: "agent_start",
     stage,
     unit,
@@ -33657,14 +33666,14 @@ function claimUnit(projectRoot, stage, unit, agent, now2) {
   });
 }
 function recordProgress(projectRoot, stage, done, total, now2) {
-  const run = requireRun(projectRoot);
-  assertRunning(run, stage);
+  const run2 = requireRun(projectRoot);
+  assertRunning(run2, stage);
   if (!Number.isInteger(done) || !Number.isInteger(total) || done < 0 || total < done) {
     throw new JourneyRefusal("Progress needs whole numbers with done no larger than total.");
   }
   appendEvent(projectRoot, {
     ts: now2().toISOString(),
-    run_id: run.run_id,
+    run_id: run2.run_id,
     kind: "progress",
     stage,
     done,
@@ -33672,12 +33681,12 @@ function recordProgress(projectRoot, stage, done, total, now2) {
   });
 }
 function resumeRun(projectRoot, session2, now2) {
-  const run = requireRun(projectRoot);
-  if (run.status === "done")
+  const run2 = requireRun(projectRoot);
+  if (run2.status === "done")
     throw new JourneyRefusal("This onboarding journey is finished; there is nothing to resume.");
   const at2 = now2().toISOString();
-  const handoverTo = session2 !== null && session2 !== run.owner_session ? session2 : null;
-  const current = foldJourney(run, readEvents(projectRoot, run.run_id), { now: now2 }).current;
+  const handoverTo = session2 !== null && session2 !== run2.owner_session ? session2 : null;
+  const current = foldJourney(run2, readEvents(projectRoot, run2.run_id), { now: now2 }).current;
   const modules = current === "module_docs" ? readModuleUnits(projectRoot) : null;
   const saved = updateRun(
     projectRoot,
@@ -33696,66 +33705,66 @@ function resumeRun(projectRoot, session2, now2) {
         };
       }
     },
-    { expectedRevision: run.revision, now: now2 }
+    { expectedRevision: run2.revision, now: now2 }
   );
   if (handoverTo !== null) {
     appendEvent(projectRoot, {
       ts: at2,
-      run_id: run.run_id,
+      run_id: run2.run_id,
       kind: "handover",
       session: handoverTo,
-      note: `from ${run.owner_session}`
+      note: `from ${run2.owner_session}`
     });
   }
   appendEvent(projectRoot, {
     ts: at2,
-    run_id: run.run_id,
+    run_id: run2.run_id,
     kind: "stage",
     stage: current ?? void 0,
     action: "resume"
   });
   const hashes = modules ? Object.fromEntries(modules.map((module) => [module.slug, module.source_hash])) : void 0;
-  const todo = current ? foldStage(saved, readEvents(projectRoot, run.run_id), current, {
+  const todo = current ? foldStage(saved, readEvents(projectRoot, run2.run_id), current, {
     currentSourceHashes: hashes
   }).units_todo : [];
   return { run: saved, stage: current, units_todo: todo, handover: handoverTo !== null };
 }
 function abandonRun(projectRoot, now2) {
-  const run = requireRun(projectRoot);
-  if (run.status === "done") throw new JourneyRefusal("This onboarding journey is finished.");
+  const run2 = requireRun(projectRoot);
+  if (run2.status === "done") throw new JourneyRefusal("This onboarding journey is finished.");
   const saved = updateRun(
     projectRoot,
     (draft) => {
       draft.status = "abandoned";
       draft.abandoned_at = now2().toISOString();
     },
-    { expectedRevision: run.revision, now: now2 }
+    { expectedRevision: run2.revision, now: now2 }
   );
   return { run: saved, kept: Object.keys(saved.written).sort() };
 }
 function heartbeat(projectRoot, now2) {
-  const run = readRun(projectRoot);
-  if (run)
-    appendEvent(projectRoot, { ts: now2().toISOString(), run_id: run.run_id, kind: "heartbeat" });
+  const run2 = readRun(projectRoot);
+  if (run2)
+    appendEvent(projectRoot, { ts: now2().toISOString(), run_id: run2.run_id, kind: "heartbeat" });
 }
 
 // src/onboarding/journey/auto-decide.ts
 init_esm_shims();
 var AUTO_REASON = "onboarding journey says auto-recommended";
 function autoDecide(projectRoot, decisionId, now2) {
-  const run = requireRun(projectRoot);
-  if (run.status !== "running") {
-    throw new JourneyRefusal(`The journey is ${run.status}; resume it before answering decisions.`);
+  const run2 = requireRun(projectRoot);
+  if (run2.status !== "running") {
+    throw new JourneyRefusal(`The journey is ${run2.status}; resume it before answering decisions.`);
   }
   const store = new DecisionStore(projectRoot);
   const packet = store.readPending(decisionId);
   if (!packet) throw new JourneyRefusal(`Pending decision ${decisionId} not found.`);
-  if (packet.created_at < run.created_at) {
+  if (packet.created_at < run2.created_at) {
     throw new JourneyRefusal(
       `Decision ${decisionId} was opened before this journey; a person answers it.`
     );
   }
-  if (!openedByJourney(projectRoot, run, decisionId)) {
+  if (!openedByJourney(projectRoot, run2, decisionId)) {
     throw new JourneyRefusal(
       `Decision ${decisionId} was not opened by this onboarding journey; a person answers it.`
     );
@@ -33784,8 +33793,8 @@ function autoDecide(projectRoot, decisionId, now2) {
   });
   const choice = appendChoice(projectRoot, {
     ts: at2,
-    run_id: run.run_id,
-    stage: currentStage(run) ?? "finish",
+    run_id: run2.run_id,
+    stage: currentStage(run2) ?? "finish",
     kind: "decision",
     choice: chosen,
     reason: packet.recommendation_reason ?? AUTO_REASON,
@@ -33884,8 +33893,8 @@ var COMMITTABLE_JOURNEY_FILES = [
 ];
 var SECRET = /(^|\/)(\.env[^/]*|[^/]*\.(pem|key|p12|pfx)|id_(rsa|ed25519|ecdsa)[^/]*|secrets?\.[^/]+)$/u;
 var KEPT_FOR_REVIEW = "kept for review: the page existed before onboarding and changed";
-function changedBaselinePage(run, path2, now2) {
-  const before = run.docs_baseline?.[path2];
+function changedBaselinePage(run2, path2, now2) {
+  const before = run2.docs_baseline?.[path2];
   return before !== void 0 && now2 !== before;
 }
 function git2(projectRoot, args) {
@@ -33914,14 +33923,14 @@ function headHash(projectRoot, path2) {
     return null;
   }
 }
-function inAllowedSet(run, path2) {
+function inAllowedSet(run2, path2) {
   if (!isCleanRepoPath(path2)) return false;
-  return path2.startsWith("docs/") || COMMITTABLE_JOURNEY_FILES.includes(path2) || (run.setup?.generated_files ?? []).includes(path2);
+  return path2.startsWith("docs/") || COMMITTABLE_JOURNEY_FILES.includes(path2) || (run2.setup?.generated_files ?? []).includes(path2);
 }
-function planCommit(projectRoot, run) {
+function planCommit(projectRoot, run2) {
   const include = [];
   const leftOut = [];
-  const candidates = { ...run.written };
+  const candidates = { ...run2.written };
   for (const path2 of COMMITTABLE_JOURNEY_FILES) {
     const hash = fileSha256(join112(projectRoot, path2));
     if (hash && candidates[path2] === void 0) candidates[path2] = hash;
@@ -33930,22 +33939,22 @@ function planCommit(projectRoot, run) {
     const now2 = fileSha256(join112(projectRoot, path2));
     if (path2 === SETTINGS_LOCAL)
       leftOut.push({ path: path2, reason: "local allow list, never committed" });
-    else if (!inAllowedSet(run, path2))
+    else if (!inAllowedSet(run2, path2))
       leftOut.push({ path: path2, reason: "outside the files onboarding may commit" });
     else if (SECRET.test(path2)) leftOut.push({ path: path2, reason: "looks like a secret" });
     else if (now2 === null) leftOut.push({ path: path2, reason: "no longer exists" });
-    else if (changedBaselinePage(run, path2, now2)) leftOut.push({ path: path2, reason: KEPT_FOR_REVIEW });
+    else if (changedBaselinePage(run2, path2, now2)) leftOut.push({ path: path2, reason: KEPT_FOR_REVIEW });
     else if (now2 !== hash && !COMMITTABLE_JOURNEY_FILES.includes(path2)) {
       leftOut.push({ path: path2, reason: "changed since onboarding wrote it" });
-    } else if (path2 in run.baseline && run.baseline[path2] !== headHash(projectRoot, path2)) {
+    } else if (path2 in run2.baseline && run2.baseline[path2] !== headHash(projectRoot, path2)) {
       leftOut.push({ path: path2, reason: "already had changes before onboarding started" });
     } else if (isIgnored(projectRoot, path2)) leftOut.push({ path: path2, reason: "git-ignored" });
     else include.push(path2);
   }
-  const others = /* @__PURE__ */ new Set([...Object.keys(run.baseline), ...dirtyPaths(projectRoot)]);
+  const others = /* @__PURE__ */ new Set([...Object.keys(run2.baseline), ...dirtyPaths(projectRoot)]);
   for (const path2 of [...others].sort()) {
     if (candidates[path2] !== void 0) continue;
-    const changed = changedBaselinePage(run, path2, fileSha256(join112(projectRoot, path2)));
+    const changed = changedBaselinePage(run2, path2, fileSha256(join112(projectRoot, path2)));
     leftOut.push({ path: path2, reason: changed ? KEPT_FOR_REVIEW : "not written by onboarding" });
   }
   return { include, left_out: leftOut };
@@ -34019,19 +34028,19 @@ function commitOnNewBranch(projectRoot, branch, message, include) {
   }
 }
 function answerCommit(projectRoot, answer, now2) {
-  const run = requireRun(projectRoot);
-  const finish = run.stages.finish.status;
+  const run2 = requireRun(projectRoot);
+  const finish = run2.stages.finish.status;
   if (finish !== "done" && finish !== "degraded") {
     throw new JourneyRefusal("Ask the commit question only after step 8 (Wrap up) is done.");
   }
-  if (run.commit?.answer === "branch") {
+  if (run2.commit?.answer === "branch") {
     throw new JourneyRefusal("The onboarding changes are already committed.");
   }
   const at2 = now2().toISOString();
   let record2 = { answer: answer.kind, answered_at: at2 };
   if (answer.kind === "branch") {
     const { branch, message } = branchAndMessage(projectRoot, answer);
-    const plan = planCommit(projectRoot, run);
+    const plan = planCommit(projectRoot, run2);
     if (plan.include.length === 0)
       throw new JourneyRefusal("There is nothing onboarding wrote that can be committed.");
     commitOnNewBranch(projectRoot, branch, message, plan.include);
@@ -34119,9 +34128,9 @@ function listMarkdown(root, rel) {
     return [];
   }
 }
-function existingPagesKept(projectRoot, run) {
+function existingPagesKept(projectRoot, run2) {
   return listMarkdown(projectRoot, "docs").filter(
-    (path2) => !path2.startsWith("docs/modules/") && (run.written[path2] === void 0 || run.docs_baseline?.[path2] !== void 0)
+    (path2) => !path2.startsWith("docs/modules/") && (run2.written[path2] === void 0 || run2.docs_baseline?.[path2] !== void 0)
   ).sort();
 }
 function ruleChangesForReview(projectRoot) {
@@ -34130,22 +34139,22 @@ function ruleChangesForReview(projectRoot) {
   const proposal = latest ? readProposal(projectRoot, latest) : null;
   return (proposal?.rows ?? []).filter((row2) => row2.change === "changed" || row2.change === "removed").map((row2) => ({ row_id: row2.row_id, change: row2.change, text: row2.text }));
 }
-function newRuleChecks(projectRoot, run) {
-  const flagged = new Set(run.rule_checks_flagged ?? []);
+function newRuleChecks(projectRoot, run2) {
+  const flagged = new Set(run2.rule_checks_flagged ?? []);
   return (loadRuleScriptMap(projectRoot)?.rules ?? []).filter((rule) => flagged.has(rule.id)).flatMap((rule) => rule.scripts.map((script) => script.path)).sort();
 }
-function buildReport2(projectRoot, run, rag, now2) {
+function buildReport2(projectRoot, run2, rag, now2) {
   const choices = readChoices(projectRoot);
   return {
     generated_at: now2.toISOString(),
-    run_id: run.run_id,
-    providers: run.providers,
+    run_id: run2.run_id,
+    providers: run2.providers,
     rag,
     steps: ONBOARDING_STAGES.map((stage) => ({
       step: stage.name,
-      status: stage.id === "finish" ? rag === "off" ? "degraded" : "done" : run.stages[stage.id].status,
+      status: stage.id === "finish" ? rag === "off" ? "degraded" : "done" : run2.stages[stage.id].status,
       gaps: [
-        ...run.stages[stage.id].degraded ?? [],
+        ...run2.stages[stage.id].degraded ?? [],
         ...stage.id === "finish" && rag === "off" ? ["rag_off"] : []
       ].map((code) => ({
         code,
@@ -34154,52 +34163,52 @@ function buildReport2(projectRoot, run, rag, now2) {
       }))
     })),
     choices: { total: choices.length, unreviewed: choices.filter((row2) => !row2.reviewed).length },
-    written: Object.keys(run.written).sort(),
-    existing_pages_kept: existingPagesKept(projectRoot, run),
+    written: Object.keys(run2.written).sort(),
+    existing_pages_kept: existingPagesKept(projectRoot, run2),
     rule_changes_for_review: ruleChangesForReview(projectRoot),
-    new_rule_checks: newRuleChecks(projectRoot, run),
-    allow_list: run.allow_list ? `The allow list stays in ${SETTINGS_LOCAL}; remove the entries listed in choices.jsonl to undo it.` : null
+    new_rule_checks: newRuleChecks(projectRoot, run2),
+    allow_list: run2.allow_list ? `The allow list stays in ${SETTINGS_LOCAL}; remove the entries listed in choices.jsonl to undo it.` : null
   };
 }
 function section2(title, items) {
   return items.length === 0 ? [] : ["", `## ${title}`, "", ...items.map((item2) => `- ${item2}`)];
 }
-function renderReportMarkdown(report3) {
-  const gaps = report3.steps.flatMap(
+function renderReportMarkdown(report4) {
+  const gaps = report4.steps.flatMap(
     (step) => step.gaps.map((gap) => `${step.step}: ${gap.footnote} ${gap.next_action}`)
   );
   return [
     "# paqad onboarding report",
     "",
-    `Finished ${report3.generated_at} for ${report3.providers.join(", ")}.`,
+    `Finished ${report4.generated_at} for ${report4.providers.join(", ")}.`,
     "",
-    ...report3.steps.map((step) => `- ${step.step}: ${step.status}`),
+    ...report4.steps.map((step) => `- ${step.step}: ${step.status}`),
     ...section2("Gaps", gaps),
-    ...section2("Existing pages kept as they are (review them)", report3.existing_pages_kept),
+    ...section2("Existing pages kept as they are (review them)", report4.existing_pages_kept),
     ...section2(
       "Rule changes listed for review, not applied",
-      report3.rule_changes_for_review.map((row2) => `${row2.row_id} (${row2.change}): ${row2.text}`)
+      report4.rule_changes_for_review.map((row2) => `${row2.row_id} (${row2.change}): ${row2.text}`)
     ),
-    ...section2("New rule checks to review (they only warn until reviewed)", report3.new_rule_checks),
+    ...section2("New rule checks to review (they only warn until reviewed)", report4.new_rule_checks),
     ...section2("Choices", [
-      `${report3.choices.total} automatic choices, ${report3.choices.unreviewed} not yet reviewed: run \`paqad-ai onboarding choices\`.`
+      `${report4.choices.total} automatic choices, ${report4.choices.unreviewed} not yet reviewed: run \`paqad-ai onboarding choices\`.`
     ]),
-    ...section2("Allow list", report3.allow_list ? [report3.allow_list] : []),
+    ...section2("Allow list", report4.allow_list ? [report4.allow_list] : []),
     ""
   ].join("\n");
 }
 function finishJourney(projectRoot, deps, now2) {
-  const run = requireRun(projectRoot);
-  if (run.stages.finish.status !== "running") {
+  const run2 = requireRun(projectRoot);
+  if (run2.stages.finish.status !== "running") {
     throw new JourneyRefusal("Start step 8 first: `paqad-ai onboarding stage start finish`.");
   }
   const rag = deps.rag(projectRoot);
-  const report3 = buildReport2(projectRoot, run, rag, now2());
+  const report4 = buildReport2(projectRoot, run2, rag, now2());
   const jsonPath = join113(projectRoot, PATHS.ONBOARDING_REPORT_JSON);
   const mdPath = join113(projectRoot, PATHS.ONBOARDING_REPORT_MD);
-  writeFileAtomic(jsonPath, `${JSON.stringify(report3, null, 2)}
+  writeFileAtomic(jsonPath, `${JSON.stringify(report4, null, 2)}
 `);
-  writeFileAtomic(mdPath, renderReportMarkdown(report3));
+  writeFileAtomic(mdPath, renderReportMarkdown(report4));
   updateRun(
     projectRoot,
     (draft) => {
@@ -34214,7 +34223,7 @@ function finishJourney(projectRoot, deps, now2) {
     { now: now2 }
   );
   endStage(projectRoot, "finish", rag === "off" ? ["rag_off"] : [], now2);
-  return report3;
+  return report4;
 }
 
 // src/onboarding/journey/install-check.ts
@@ -34238,8 +34247,8 @@ function stagedPath(projectRoot, raw) {
   return { staged, installed: `${INSTALLED_ROOT}${staged.slice(STAGED_CHECKS_ROOT.length)}` };
 }
 function installStagedCheck(projectRoot, input, now2) {
-  const run = requireRun(projectRoot);
-  if (run.status !== "running" || run.stages.rule_scripts.status !== "running") {
+  const run2 = requireRun(projectRoot);
+  if (run2.status !== "running" || run2.stages.rule_scripts.status !== "running") {
     throw new JourneyRefusal("Step 7 (Write the rule checks) is not running.");
   }
   if (!KINDS.includes(input.kind)) {
@@ -34319,13 +34328,13 @@ var MIN_CUT_STEP = 1024;
 function cliCommandRunner(projectRoot) {
   const entry = process.argv[1] ?? "";
   return (args) => {
-    const run = spawnSync3(process.execPath, [entry, ...args], {
+    const run2 = spawnSync3(process.execPath, [entry, ...args], {
       cwd: projectRoot,
       env: process.env,
       encoding: "utf8",
       maxBuffer: 64 * 1024 * 1024
     });
-    return { ok: run.status === 0, stdout: run.stdout ?? "", stderr: run.stderr ?? "" };
+    return { ok: run2.status === 0, stdout: run2.stdout ?? "", stderr: run2.stderr ?? "" };
   };
 }
 function readIfPresent(path2) {
@@ -34436,7 +34445,7 @@ function sessionArgs(input) {
 }
 function runStageBegin(input) {
   const { projectRoot, sessionId, stage } = input;
-  const run = input.run ?? cliCommandRunner(projectRoot);
+  const run2 = input.run ?? cliCommandRunner(projectRoot);
   const before = currentFeature(projectRoot, sessionId);
   const beforeRows = before === null ? [] : readFeatureStageUnit(projectRoot, before);
   if (before !== null) {
@@ -34452,7 +34461,7 @@ function runStageBegin(input) {
   const started = !hasOpenStart(beforeRows, stage);
   if (started) {
     const agent = input.agent ? ["--agent", input.agent] : [];
-    const start = run(["stage", "start", stage, ...agent, ...sessionArgs(input)]);
+    const start = run2(["stage", "start", stage, ...agent, ...sessionArgs(input)]);
     if (!start.ok) return failed(input, "stage start", start.stderr.trim());
   }
   const dirName = currentFeature(projectRoot, sessionId);
@@ -34462,20 +34471,20 @@ function runStageBegin(input) {
   const rulesPath = featureFilePath(dirName, "rulesLoaded");
   let rulesLoaded = false;
   if (stage === "development") {
-    const rules = run(["rules", "load", "--silent", ...sessionArgs(input)]);
+    const rules = run2(["rules", "load", "--silent", ...sessionArgs(input)]);
     if (!rules.ok) return failed(input, "rules load", rules.stderr.trim());
     rulesLoaded = existsSync64(join115(projectRoot, rulesPath));
   }
   let digestPath = null;
   if (stage === "review") {
-    const digest = run(["review", "digest", ...sessionArgs(input)]);
+    const digest = run2(["review", "digest", ...sessionArgs(input)]);
     if (!digest.ok) return failed(input, "review digest", digest.stderr.trim());
     const path2 = lastJsonLine(digest.stdout)?.path;
     digestPath = typeof path2 === "string" ? path2 : null;
   }
   let checksPlan;
   if (stage === "checks") {
-    const plan = run(["checks", "plan", "--json", "--project-root", projectRoot]);
+    const plan = run2(["checks", "plan", "--json", "--project-root", projectRoot]);
     if (!plan.ok) return failed(input, "checks plan", plan.stderr.trim());
     checksPlan = lastJsonLine(plan.stdout) ?? plan.stdout.trim();
   }
@@ -34532,13 +34541,13 @@ function skillScripts(projectRoot, skill) {
 function gitWorkflowAnswersPath() {
   return posix4.join(toSlashPath(tmpdir()), "paqad-onboarding-git-workflow-answers.json");
 }
-function gitWorkflowLine(projectRoot, run) {
+function gitWorkflowLine(projectRoot, run2) {
   const now2 = gitWorkflowHashes(projectRoot);
-  const same = Object.keys(run.setup_hashes).length > 0 && Object.entries(run.setup_hashes).every(([path2, hash]) => now2[path2] === hash) && Object.keys(now2).length === Object.keys(run.setup_hashes).length;
+  const same = Object.keys(run2.setup_hashes).length > 0 && Object.entries(run2.setup_hashes).every(([path2, hash]) => now2[path2] === hash) && Object.keys(now2).length === Object.keys(run2.setup_hashes).length;
   return same ? `Git workflow: the files are untouched since setup, so write the empty answers \`{}\` to ${gitWorkflowAnswersPath()} (outside the repo), apply the recommended workflow with \`paqad-ai git-workflow setup --apply ${gitWorkflowAnswersPath()} --overwrite\` and record each choice as not confirmed.` : "Git workflow: the files changed since setup, so keep them as they are and do not run git-workflow setup.";
 }
 var SENTINEL_LINE = "After writing under docs/instructions/, read AGENT-BOOTSTRAP.md from the install directory again so the entry sentinel is stamped fresh.";
-function stageWork(projectRoot, run, stage) {
+function stageWork(projectRoot, run2, stage) {
   const session2 = "Run every paqad-ai command bare, with no `SE_SESSION=` prefix, so the journey allow list matches it; the onboarding verbs need no session.";
   switch (stage.id) {
     case "detect":
@@ -34555,7 +34564,7 @@ function stageWork(projectRoot, run, stage) {
       return [
         session2,
         `Dispatch the ${stage.agent} agent where agents exist (inline elsewhere) with the doc areas still to do. Follow documentation-workflow Stage 1 for each area; write only pages that are missing.`,
-        gitWorkflowLine(projectRoot, run),
+        gitWorkflowLine(projectRoot, run2),
         "Accept the module map without a review stop; list low-confidence modules in the unit outputs.",
         "Before step 4, re-read docs/stack/ and docs/design-system/.",
         SENTINEL_LINE
@@ -34602,10 +34611,10 @@ function unitsLine(stage, fold) {
   return `${stage.unit.many} still to do, first first:
 - ${fold.units_todo.join("\n- ")}`;
 }
-function proofLine(projectRoot, run, stage) {
-  if (run.stages[stage].status !== "running") return "";
+function proofLine(projectRoot, run2, stage) {
+  if (run2.stages[stage].status !== "running") return "";
   const missing = proveStage(
-    { projectRoot, run, events: readEvents(projectRoot, run.run_id) },
+    { projectRoot, run: run2, events: readEvents(projectRoot, run2.run_id) },
     stage
   ).filter((item2) => !item2.ok).map((item2) => `${item2.item}: ${item2.message}`);
   return missing.length === 0 ? "Proof is complete." : `Proof still missing:
@@ -34619,9 +34628,9 @@ function callbacks(stage) {
     "Then run `paqad-ai onboarding next` again in the same turn."
   ].join("\n");
 }
-function renderBrief(projectRoot, run, fold) {
+function renderBrief(projectRoot, run2, fold) {
   const stage = stageDefinition(fold.id);
-  const record2 = run.stages[stage.id];
+  const record2 = run2.stages[stage.id];
   const header = [
     statusLine(stage.id, fold.total !== null ? `${fold.done} of ${fold.total}` : void 0),
     `Step ${stage.index} of ${STAGE_COUNT}: ${stage.name} (${stage.workflow}).`,
@@ -34629,15 +34638,15 @@ function renderBrief(projectRoot, run, fold) {
     `Policy:
 - ${POLICY}`,
     `Work:
-- ${stageWork(projectRoot, run, stage).join("\n- ")}`
+- ${stageWork(projectRoot, run2, stage).join("\n- ")}`
   ].join("\n\n");
   const slots = [
     { name: "request", full: header, kept: header.length },
     { name: "units", full: unitsLine(stage, fold), kept: unitsLine(stage, fold).length },
     {
       name: "proof",
-      full: proofLine(projectRoot, run, stage.id),
-      kept: proofLine(projectRoot, run, stage.id).length
+      full: proofLine(projectRoot, run2, stage.id),
+      kept: proofLine(projectRoot, run2, stage.id).length
     }
   ];
   const tail2 = callbacks(stage);
@@ -34649,8 +34658,8 @@ function renderBrief(projectRoot, run, fold) {
   return [content.request, ...Object.values(content.pillars), tail2].filter((part) => part !== "").join("\n\n");
 }
 function nextStep(projectRoot, now2) {
-  const run = readRun(projectRoot);
-  if (!run) {
+  const run2 = readRun(projectRoot);
+  if (!run2) {
     return {
       done: false,
       stage: null,
@@ -34658,49 +34667,49 @@ function nextStep(projectRoot, now2) {
       brief: "Run `paqad-ai onboarding start` first."
     };
   }
-  const fold = foldJourney(run, readEvents(projectRoot, run.run_id), { now: now2 });
+  const fold = foldJourney(run2, readEvents(projectRoot, run2.run_id), { now: now2 });
   if (fold.current === null) {
     return {
       done: true,
       stage: null,
       status_line: null,
-      brief: run.commit ? "The journey is done." : 'Every step is done. Ask "Commit these changes on a new branch?" exactly once and answer with `paqad-ai onboarding commit --branch <name>`, `--later` or `--no`.'
+      brief: run2.commit ? "The journey is done." : 'Every step is done. Ask "Commit these changes on a new branch?" exactly once and answer with `paqad-ai onboarding commit --branch <name>`, `--later` or `--no`.'
     };
   }
   return {
     done: false,
     stage: fold.current,
     status_line: statusLine(fold.current),
-    brief: renderBrief(projectRoot, run, fold.stages[fold.current])
+    brief: renderBrief(projectRoot, run2, fold.stages[fold.current])
   };
 }
 
 // src/onboarding/journey/detect.ts
 init_esm_shims();
 async function detectProject(projectRoot, now2) {
-  const report3 = await new Detector().detect(projectRoot, { persist: false });
-  const stack = report3.detected_stack;
-  const unsure = stack === null || report3.confidence === "low";
+  const report4 = await new Detector().detect(projectRoot, { persist: false });
+  const stack = report4.detected_stack;
+  const unsure = stack === null || report4.confidence === "low";
   if (unsure || stack === null) {
     return {
       needs_ai_choice: true,
       detection: null,
       candidates: STACKS.map((id) => ({ stack: id, capabilities: STACK_CAPABILITIES_MAP[id] })),
-      report: report3
+      report: report4
     };
   }
-  const signals = report3.signals.map((signal) => JSON.stringify(signal)).slice(0, 3);
+  const signals = report4.signals.map((signal) => JSON.stringify(signal)).slice(0, 3);
   return {
     needs_ai_choice: false,
     detection: {
       stack,
-      capabilities: validCapabilities(stack, report3.detected_capabilities),
+      capabilities: validCapabilities(stack, report4.detected_capabilities),
       source: "detector",
-      reason: `detected with ${report3.confidence} confidence${signals.length > 0 ? ` from ${signals.join(", ")}` : ""}`,
+      reason: `detected with ${report4.confidence} confidence${signals.length > 0 ? ` from ${signals.join(", ")}` : ""}`,
       detected_at: now2.toISOString()
     },
     candidates: [],
-    report: report3
+    report: report4
   };
 }
 function validCapabilities(stack, capabilities) {
@@ -34708,8 +34717,8 @@ function validCapabilities(stack, capabilities) {
   const invalid = new Set(validateCapabilitiesForStack(stack, capabilities));
   return capabilities.filter((capability) => !invalid.has(capability));
 }
-function chooseStack(run, input, now2) {
-  if (run.stages.setup.status !== "not_started") {
+function chooseStack(run2, input, now2) {
+  if (run2.stages.setup.status !== "not_started") {
     throw new JourneyRefusal("The stack cannot change after step 2 (Set up paqad) has started.");
   }
   if (!isStack(input.stack)) {
@@ -34783,7 +34792,7 @@ async function startVerb(options) {
     return;
   }
   const allowList = options.allowList !== "no";
-  const run = startRun(
+  const run2 = startRun(
     root,
     {
       providers: list3(options.providers),
@@ -34799,16 +34808,16 @@ async function startVerb(options) {
     const result2 = writeAllowList(root, getPackageRoot());
     appendChoice(root, {
       ts: now().toISOString(),
-      run_id: run.run_id,
+      run_id: run2.run_id,
       stage: "start",
       kind: "allow_list",
       choice: "let it work without stopping to ask",
       reason: `remove the added entries from ${result2.path} to undo it`,
-      by: run.asked,
+      by: run2.asked,
       details: { added: result2.added, ignore_line_added: result2.ignore_line_added }
     });
   }
-  emit3(options, run, `**\u25B8 paqad** \xB7 Onboarding started for ${run.providers.join(", ")}.`);
+  emit3(options, run2, `**\u25B8 paqad** \xB7 Onboarding started for ${run2.providers.join(", ")}.`);
 }
 function addStart(command) {
   rootOption(
@@ -34842,19 +34851,19 @@ function addChooseStack(command) {
   ).argument("<stack>").option("--capabilities <list>", "Comma-separated capabilities").option("--reason <text>", "One line on why this stack fits", "").action(
     (stack, options) => runVerb2(options.projectRoot, () => {
       const root = options.projectRoot;
-      const run = requireRun(root);
+      const run2 = requireRun(root);
       const detection = chooseStack(
-        run,
+        run2,
         { stack, capabilities: list3(options.capabilities), reason: options.reason },
         now()
       );
       updateRun(root, (draft) => void (draft.detection = detection), {
-        expectedRevision: run.revision,
+        expectedRevision: run2.revision,
         now
       });
       appendChoice(root, {
         ts: detection.detected_at,
-        run_id: run.run_id,
+        run_id: run2.run_id,
         stage: "detect",
         kind: "stack",
         choice: detection.stack,
@@ -34887,14 +34896,14 @@ function addStage(command) {
   rootOption(stage.command("start").argument("<step>")).option("--planned <count>", "Planned unit count when only a count is known").action(
     (step, options) => runVerb2(options.projectRoot, () => {
       const planned = options.planned === void 0 ? void 0 : Number(options.planned);
-      const run = startStage(options.projectRoot, stageArg(step), { planned }, now);
-      emit3(options, run.stages[stageArg(step)], `**\u25B8 paqad** \xB7 Started ${step}.`);
+      const run2 = startStage(options.projectRoot, stageArg(step), { planned }, now);
+      emit3(options, run2.stages[stageArg(step)], `**\u25B8 paqad** \xB7 Started ${step}.`);
     })
   );
   rootOption(stage.command("end").argument("<step>")).option("--degraded <codes>", "Comma-separated gap codes allowed for this step").action(
     (step, options) => runVerb2(options.projectRoot, () => {
-      const run = endStage(options.projectRoot, stageArg(step), list3(options.degraded), now);
-      emit3(options, run.stages[stageArg(step)], `**\u25B8 paqad** \xB7 Ended ${step}.`);
+      const run2 = endStage(options.projectRoot, stageArg(step), list3(options.degraded), now);
+      emit3(options, run2.stages[stageArg(step)], `**\u25B8 paqad** \xB7 Ended ${step}.`);
     })
   );
   rootOption(stage.command("fail").argument("<step>")).option("--reason <text>", "Why the step failed", "").action(
@@ -35041,10 +35050,10 @@ function addFinish(command) {
     command.command("finish").description("Step 8: build search, write the report and end the step")
   ).action(
     (options) => runVerb2(options.projectRoot, () => {
-      const report3 = finishJourney(options.projectRoot, { rag: rebuildRagInBackground }, now);
+      const report4 = finishJourney(options.projectRoot, { rag: rebuildRagInBackground }, now);
       emit3(
         options,
-        report3,
+        report4,
         `**\u25B8 paqad** \xB7 Onboarding finished. Report: .paqad/onboarding/report.md. Ask: "Commit these changes on a new branch?"`
       );
     })
@@ -35141,6 +35150,354 @@ function createOnboardingCommand(deps = {}) {
   addCommit(command);
   addResume(command);
   addAbandon(command);
+  return command;
+}
+
+// src/cli/commands/review-run.ts
+init_esm_shims();
+
+// src/review-runs/actions.ts
+init_esm_shims();
+import { randomUUID as randomUUID2 } from "crypto";
+import { readFileSync as readFileSync62 } from "fs";
+var NOT_RUN_GAP = "not-run";
+var MISSING_DESIGN_DOCS_GAP = "missing-design-docs";
+var DESIGN_CONTRACT_FILES = [
+  "tokens.md",
+  "components.md",
+  "accessibility.md",
+  "motion.md",
+  "patterns.md",
+  "responsive.md"
+];
+function reviewKind(id) {
+  return REVIEW_KINDS[id];
+}
+function emptyStages2(kind) {
+  return Object.fromEntries(
+    kind.stages.map((stage) => [stage.id, { status: "todo", started_at: null, ended_at: null }])
+  );
+}
+function requireOpen(kind, run2) {
+  if (run2 === null) {
+    throw new ReviewRefusal(
+      `No ${kind.word.toLowerCase()} is open. Run \`paqad-ai ${kind.verb} start\` first.`
+    );
+  }
+  if (!OPEN_STATUSES.has(run2.status)) {
+    throw new ReviewRefusal(
+      `The ${kind.word.toLowerCase()} is ${run2.status}; start a new one first.`
+    );
+  }
+  return run2;
+}
+function requireStage(kind, id) {
+  if (!id) throw new ReviewRefusal("Name the stage with --stage <id>.");
+  const stage = reviewStage(kind, id);
+  if (stage === null) {
+    throw new ReviewRefusal(
+      `Unknown stage "${id}". The ${kind.word.toLowerCase()} stages are ${kind.stages.map((s) => s.id).join(", ")}.`
+    );
+  }
+  return stage.id;
+}
+function startReview(projectRoot, kind, options = {}) {
+  return commitReviewRun(
+    projectRoot,
+    kind,
+    (current, at2) => {
+      if (current !== null && OPEN_STATUSES.has(current.status)) {
+        throw new ReviewRefusal(
+          `A ${kind.word.toLowerCase()} is already open (${current.run_id}). Resume it, finish it or abandon it first.`
+        );
+      }
+      return {
+        schema_version: 1,
+        kind: kind.id,
+        run_id: `${kind.id}-${randomUUID2()}`,
+        revision: 0,
+        status: "running",
+        started_at: at2,
+        updated_at: at2,
+        finished_at: null,
+        current_stage: null,
+        stopped: null,
+        stages: emptyStages2(kind),
+        findings: [],
+        gaps: []
+      };
+    },
+    options
+  );
+}
+function stageReview(projectRoot, kind, stageId, verb, options = {}) {
+  return commitReviewRun(
+    projectRoot,
+    kind,
+    (current, at2) => {
+      const run2 = requireOpen(kind, current);
+      const id = requireStage(kind, stageId);
+      const record2 = run2.stages[id];
+      if (verb === "start") {
+        run2.stages[id] = { status: "running", started_at: at2, ended_at: null };
+        run2.current_stage = id;
+        run2.status = "running";
+        run2.stopped = null;
+      } else if (verb === "done") {
+        if (record2.status !== "running") {
+          throw new ReviewRefusal(`Stage ${id} is not running; run \`stage ${id} start\` first.`);
+        }
+        run2.stages[id] = { ...record2, status: "done", ended_at: at2 };
+      } else {
+        if (record2.status === "done") throw new ReviewRefusal(`Stage ${id} is already done.`);
+        run2.stages[id] = { ...record2, status: "skipped", ended_at: at2 };
+      }
+      return run2;
+    },
+    options
+  );
+}
+function parseSeverity(value) {
+  if (!SEVERITIES.includes(value)) {
+    throw new ReviewRefusal(`--severity must be one of ${SEVERITIES.join(", ")}.`);
+  }
+  return value;
+}
+function parseProof(value) {
+  if (!PROOFS.includes(value)) {
+    throw new ReviewRefusal(`--proof must be one of ${PROOFS.join(", ")}.`);
+  }
+  return value;
+}
+function findingReview(projectRoot, kind, input, options = {}) {
+  const severity = parseSeverity(input.severity);
+  const proof = parseProof(input.proof);
+  return commitReviewRun(
+    projectRoot,
+    kind,
+    (current, at2) => {
+      const run2 = requireOpen(kind, current);
+      run2.findings.push({ severity, proof, id: input.id ?? null, at: at2 });
+      return run2;
+    },
+    options
+  );
+}
+function gapReview(projectRoot, kind, input, options = {}) {
+  if (!input.code.trim()) throw new ReviewRefusal("Name the gap code.");
+  if (!input.say?.trim()) throw new ReviewRefusal("Say what the gap is with --say <words>.");
+  const stageId = requireStage(kind, input.stage);
+  const say2 = input.say.trim();
+  return commitReviewRun(
+    projectRoot,
+    kind,
+    (current, at2) => {
+      const run2 = requireOpen(kind, current);
+      const record2 = run2.stages[stageId];
+      const wasRunning = record2.status === "running";
+      run2.gaps.push({ code: input.code.trim(), stage: stageId, say: say2, at: at2 });
+      if (!wasRunning || input.stop) run2.stages[stageId] = { ...record2, status: "gap" };
+      if (input.stop) {
+        run2.status = "stopped";
+        run2.current_stage = stageId;
+        run2.stopped = { stage: stageId, was_running: wasRunning };
+      }
+      return run2;
+    },
+    options
+  );
+}
+function finishReview(projectRoot, kind, options = {}) {
+  return commitReviewRun(
+    projectRoot,
+    kind,
+    (current, at2) => {
+      const run2 = requireOpen(kind, current);
+      for (const stage of kind.stages) {
+        const record2 = run2.stages[stage.id];
+        if (record2.status === "done" || record2.status === "skipped") continue;
+        const ended = { ...record2, status: "gap", ended_at: record2.ended_at ?? at2 };
+        if (run2.gaps.some((gap) => gap.stage === stage.id)) {
+          run2.stages[stage.id] = ended;
+          continue;
+        }
+        run2.gaps.push({
+          code: NOT_RUN_GAP,
+          stage: stage.id,
+          say: `${stage.label} did not run to the end`,
+          at: at2
+        });
+        run2.stages[stage.id] = ended;
+      }
+      run2.status = "finished";
+      run2.finished_at = at2;
+      run2.stopped = null;
+      return run2;
+    },
+    options
+  );
+}
+function abandonReview(projectRoot, kind, options = {}) {
+  return commitReviewRun(
+    projectRoot,
+    kind,
+    (current, at2) => {
+      const run2 = requireOpen(kind, current);
+      if (run2.stopped === null && run2.current_stage !== null) {
+        run2.stopped = {
+          stage: run2.current_stage,
+          was_running: run2.stages[run2.current_stage]?.status === "running"
+        };
+      }
+      run2.status = "abandoned";
+      run2.finished_at = at2;
+      return run2;
+    },
+    options
+  );
+}
+function designDocsReady(projectRoot) {
+  return DESIGN_CONTRACT_FILES.some((file) => {
+    try {
+      return readFileSync62(join(projectRoot, PATHS.DESIGN_SYSTEM_DIR, file), "utf8").trim() !== "";
+    } catch (error) {
+      if (error.code === "ENOENT") return false;
+      throw new ReviewRefusal(`Could not read the design-system doc ${file}.`, { cause: error });
+    }
+  });
+}
+function resumeReview(projectRoot, kind, options = {}) {
+  const docsReady = kind.id === "design" && designDocsReady(projectRoot);
+  return commitReviewRun(
+    projectRoot,
+    kind,
+    (current) => {
+      if (current === null) {
+        throw new ReviewRefusal(
+          `No ${kind.word.toLowerCase()} to resume. Run \`paqad-ai ${kind.verb} start\`.`
+        );
+      }
+      if (current.status !== "stopped" && current.status !== "abandoned") {
+        throw new ReviewRefusal(
+          `The ${kind.word.toLowerCase()} is ${current.status}; there is nothing to resume.`
+        );
+      }
+      const run2 = current;
+      const stopped3 = run2.stopped;
+      if (docsReady) {
+        run2.gaps = run2.gaps.filter(
+          (gap) => !(gap.code === MISSING_DESIGN_DOCS_GAP && gap.stage === "scope")
+        );
+      }
+      if (stopped3 !== null) {
+        const record2 = run2.stages[stopped3.stage];
+        const stillGap = run2.gaps.some((gap) => gap.stage === stopped3.stage);
+        run2.stages[stopped3.stage] = stopped3.was_running ? { ...record2, status: "running" } : {
+          ...record2,
+          status: stillGap ? "gap" : record2.status === "gap" ? "todo" : record2.status
+        };
+        run2.current_stage = stopped3.stage;
+      }
+      run2.status = "running";
+      run2.finished_at = null;
+      run2.stopped = null;
+      return run2;
+    },
+    options
+  );
+}
+
+// src/cli/commands/review-run.ts
+var STAGE_VERBS = ["start", "done", "skip"];
+function rootOption2(command) {
+  return command.option("--project-root <path>", "Project root", process.cwd()).option("--json", "Print one JSON object");
+}
+function report2(kind, run2, options, now2) {
+  const view = run2 === null ? null : buildReviewView(kind, run2, { now: now2 });
+  if (options.json) {
+    console.log(JSON.stringify({ ok: true, kind: kind.id, run: run2, view }));
+    return;
+  }
+  console.log(view === null ? `${kind.word}: none open` : `${kind.word}: ${view.headline.text}`);
+}
+function refuse(options, error) {
+  const message = error instanceof Error ? error.message : String(error);
+  const line = message.split("\n")[0] ?? message;
+  if (options.json) console.log(JSON.stringify({ ok: false, refusal: line }));
+  else console.error(line);
+  process.exitCode = 1;
+}
+function run(kind, options, now2, work) {
+  try {
+    report2(kind, work(), options, now2);
+  } catch (error) {
+    refuse(options, error);
+  }
+}
+function stageVerb(value) {
+  if (!STAGE_VERBS.includes(value)) {
+    throw new ReviewRefusal(`The stage verb must be one of ${STAGE_VERBS.join(", ")}.`);
+  }
+  return value;
+}
+function createReviewRunCommand(id, deps = {}) {
+  const kind = reviewKind(id);
+  const now2 = deps.now ?? (() => /* @__PURE__ */ new Date());
+  const write = { now: now2 };
+  const command = new Command(kind.verb).description(
+    `Record the ${kind.word.toLowerCase()} stages, findings and gaps for the HUD`
+  );
+  rootOption2(command.command("start").description(`Start a ${kind.word.toLowerCase()} run`)).action(
+    (options) => run(kind, options, now2, () => startReview(options.projectRoot, kind, write))
+  );
+  rootOption2(
+    command.command("stage").description("Start, finish or skip one stage").argument("<id>", kind.stages.map((stage) => stage.id).join(" | ")).argument("<verb>", STAGE_VERBS.join(" | "))
+  ).action(
+    (stage, verb, options) => run(
+      kind,
+      options,
+      now2,
+      () => stageReview(options.projectRoot, kind, stage, stageVerb(verb), write)
+    )
+  );
+  rootOption2(command.command("finding").description("Record one finding")).option("--severity <level>", "critical | high | medium | low | info").option("--proof <proof>", "confirmed | lead").option("--id <id>", `The finding id (${kind.prefix}\u2026)`).action(
+    (options) => run(
+      kind,
+      options,
+      now2,
+      () => findingReview(
+        options.projectRoot,
+        kind,
+        { severity: options.severity, proof: options.proof, id: options.id ?? null },
+        write
+      )
+    )
+  );
+  rootOption2(command.command("gap").description("Record one gap on a stage").argument("<code>")).option("--stage <id>", "The stage the gap belongs to").option("--say <words>", "What the gap is, in plain words").option("--stop", "Stop the run at this stage", false).action(
+    (code, options) => run(
+      kind,
+      options,
+      now2,
+      () => gapReview(
+        options.projectRoot,
+        kind,
+        { code, stage: options.stage, say: options.say, stop: options.stop === true },
+        write
+      )
+    )
+  );
+  rootOption2(command.command("finish").description("Finish the run")).action(
+    (options) => run(kind, options, now2, () => finishReview(options.projectRoot, kind, write))
+  );
+  rootOption2(command.command("abandon").description("Abandon the open run")).action(
+    (options) => run(kind, options, now2, () => abandonReview(options.projectRoot, kind, write))
+  );
+  rootOption2(command.command("resume").description("Resume a stopped or abandoned run")).action(
+    (options) => run(kind, options, now2, () => resumeReview(options.projectRoot, kind, write))
+  );
+  rootOption2(command.command("status").description("Show where the run is")).action(
+    (options) => run(kind, options, now2, () => readReviewRun(options.projectRoot, kind))
+  );
   return command;
 }
 
@@ -35248,7 +35605,7 @@ function createPacksCommand() {
 
 // src/cli/commands/plan.ts
 init_esm_shims();
-import { readFileSync as readFileSync62, rmSync as rmSync8 } from "fs";
+import { readFileSync as readFileSync63, rmSync as rmSync8 } from "fs";
 
 // src/stage-isolation/recipe-check.ts
 init_esm_shims();
@@ -35270,7 +35627,7 @@ function runRecipeScript(stage, args, input, root) {
   }
   const base = { recipe: recipe.name, script: recipe.scriptName, root: recipe.root };
   if (recipe.scriptPath === null) return { status: "pass", errors: [], hash: null, ...base };
-  const run = spawnSync4(process.execPath, [recipe.scriptPath, ...args], {
+  const run2 = spawnSync4(process.execPath, [recipe.scriptPath, ...args], {
     encoding: "utf8",
     timeout: SCRIPT_TIMEOUT_MS,
     maxBuffer: 16 * 1024 * 1024,
@@ -35284,7 +35641,7 @@ function runRecipeScript(stage, args, input, root) {
   });
   let parsed;
   try {
-    parsed = JSON.parse(run.stdout.trim().split("\n").at(-1));
+    parsed = JSON.parse(run2.stdout.trim().split("\n").at(-1));
   } catch {
     return broken("did not run cleanly");
   }
@@ -35303,12 +35660,12 @@ function runRecipeScript(stage, args, input, root) {
 }
 var NOTHING = () => {
 };
-function recipeNotes(run) {
-  if (run.unchecked !== void 0) {
-    return [`**\u25B8 paqad** \xB7 the ${run.recipe} check could not check this: ${run.unchecked}`];
+function recipeNotes(run2) {
+  if (run2.unchecked !== void 0) {
+    return [`**\u25B8 paqad** \xB7 the ${run2.recipe} check could not check this: ${run2.unchecked}`];
   }
-  return run.scope === "all-tests" ? [
-    `**\u25B8 paqad** \xB7 the ${run.recipe} check could not read this change's diff, so it counted every test in the project`
+  return run2.scope === "all-tests" ? [
+    `**\u25B8 paqad** \xB7 the ${run2.recipe} check could not read this change's diff, so it counted every test in the project`
   ] : [];
 }
 function runningAgentId(rows, stage) {
@@ -35324,49 +35681,49 @@ function checkRecipe(input) {
   if (lane === "fast" || lane === "graduated") {
     return { verdict: "skip", run: null, lines: [], record: NOTHING };
   }
-  const run = runRecipeScript(stage, input.args, input.input, input.root);
-  if (run.status === "broken") {
+  const run2 = runRecipeScript(stage, input.args, input.input, input.root);
+  if (run2.status === "broken") {
     return {
       verdict: "warn",
-      run,
-      lines: run.errors.map((line) => `**\u25B8 paqad** \xB7 ${line}`),
+      run: run2,
+      lines: run2.errors.map((line) => `**\u25B8 paqad** \xB7 ${line}`),
       record: NOTHING
     };
   }
-  if (run.status === "fail") {
-    const lines3 = run.errors.map((line) => `- ${line}`);
+  if (run2.status === "fail") {
+    const lines3 = run2.errors.map((line) => `- ${line}`);
     const started = rows.filter((row2) => row2.kind === "stage_start" && row2.stage === stage).at(-1);
     const heldToRecipe = stageLedgerEra(rows, stage) === "v3" && Boolean(started?.agent_id);
     return heldToRecipe ? {
       verdict: "refuse",
-      run,
-      lines: [`**\u25B8 paqad** \xB7 the ${run.recipe} check found problems:`, ...lines3],
+      run: run2,
+      lines: [`**\u25B8 paqad** \xB7 the ${run2.recipe} check found problems:`, ...lines3],
       record: NOTHING
     } : {
       verdict: "warn",
-      run,
-      lines: [`**\u25B8 paqad** \xB7 the ${run.recipe} check found problems (noted only):`, ...lines3],
+      run: run2,
+      lines: [`**\u25B8 paqad** \xB7 the ${run2.recipe} check found problems (noted only):`, ...lines3],
       record: NOTHING
     };
   }
   const agentId = process.env.SE_AGENT_ID?.trim() || runningAgentId(rows, stage);
   return {
     verdict: "pass",
-    run,
-    lines: recipeNotes(run),
+    run: run2,
+    lines: recipeNotes(run2),
     record: () => {
-      if (run.hash === null) return;
+      if (run2.hash === null) return;
       appendFeatureStageRow(projectRoot, sessionId, dirName, {
         kind: SKILL_USED_KIND,
         stage,
         ...agentId ? { agent: agentNameForStage(stage), agent_id: agentId } : {},
-        recipe: run.recipe,
+        recipe: run2.recipe,
         source: "script",
-        script: run.script,
-        output_hash: run.hash,
-        recipe_root: run.root,
-        ...run.unchecked === void 0 ? {} : { unchecked: run.unchecked },
-        ...run.scope === void 0 ? {} : { scope: run.scope },
+        script: run2.script,
+        output_hash: run2.hash,
+        recipe_root: run2.root,
+        ...run2.unchecked === void 0 ? {} : { unchecked: run2.unchecked },
+        ...run2.scope === void 0 ? {} : { scope: run2.scope },
         ...input.staleOk && input.staleOk.length > 0 ? { stale_ok: [...input.staleOk] } : {}
       });
     }
@@ -35536,7 +35893,7 @@ function createPlanCommand() {
   ).option("--keep-input", "Keep the transient input file instead of deleting it", false).action(async (inputFile, options) => {
     let template;
     try {
-      template = JSON.parse(readFileSync62(inputFile, "utf8"));
+      template = JSON.parse(readFileSync63(inputFile, "utf8"));
     } catch {
       console.error(`could not read/parse plan template "${inputFile}" (expected JSON)`);
       process.exitCode = 1;
@@ -35647,12 +36004,12 @@ init_esm_shims();
 
 // src/site-map/preflight-requirements.ts
 init_esm_shims();
-import { existsSync as existsSync65, readFileSync as readFileSync63 } from "fs";
+import { existsSync as existsSync65, readFileSync as readFileSync64 } from "fs";
 import { join as join117 } from "path";
 var VERSION_CHECK_TIMEOUT_MS = 1e4;
 function composerRequiresLaravel(projectRoot) {
   try {
-    const composer = JSON.parse(readFileSync63(join117(projectRoot, "composer.json"), "utf8"));
+    const composer = JSON.parse(readFileSync64(join117(projectRoot, "composer.json"), "utf8"));
     return composer.require?.["laravel/framework"] !== void 0;
   } catch {
     return false;
@@ -35660,7 +36017,7 @@ function composerRequiresLaravel(projectRoot) {
 }
 function nodeCliDiscoverable(projectRoot) {
   try {
-    const pkg = JSON.parse(readFileSync63(join117(projectRoot, "package.json"), "utf8"));
+    const pkg = JSON.parse(readFileSync64(join117(projectRoot, "package.json"), "utf8"));
     const deps = { ...pkg.dependencies, ...pkg.devDependencies };
     if (deps["commander"] !== void 0 || deps["yargs"] !== void 0 || deps["oclif"] !== void 0) {
       return true;
@@ -36143,7 +36500,7 @@ function isOutsidePaqadDir(filePath) {
 
 // src/speed-report/transcripts.ts
 init_esm_shims();
-import { existsSync as existsSync66, readdirSync as readdirSync28, readFileSync as readFileSync64 } from "fs";
+import { existsSync as existsSync66, readdirSync as readdirSync28, readFileSync as readFileSync65 } from "fs";
 import { homedir as homedir3 } from "os";
 import { join as join118, resolve as resolve25, sep as sep7 } from "path";
 var HOUSEKEEPING_SESSION = "paqad-housekeeping";
@@ -36199,7 +36556,7 @@ function isInside(root, path2) {
 }
 function readAgentType(metaPath) {
   try {
-    const parsed = JSON.parse(readFileSync64(metaPath, "utf8"));
+    const parsed = JSON.parse(readFileSync65(metaPath, "utf8"));
     return typeof parsed.agentType === "string" ? parsed.agentType : null;
   } catch {
     return null;
@@ -36293,9 +36650,9 @@ var TimelineBuilder = class {
       const tool = pendingTool(at2, block.name, input);
       const kind = block.name === "Bash" ? bashTestRun(input) : null;
       if (kind !== null) {
-        const run = { at: at2, kind };
-        this.timeline.testRuns.push(run);
-        if (tool.category === CATEGORY2.checksRun) tool.testRun = run;
+        const run2 = { at: at2, kind };
+        this.timeline.testRuns.push(run2);
+        if (tool.category === CATEGORY2.checksRun) tool.testRun = run2;
       }
       this.pending.set(block.id, tool);
     }
@@ -36489,10 +36846,10 @@ function measureChange(ledger, window, timelines) {
         lines3 += edit.lines;
       }
     }
-    for (const run of timeline.testRuns) {
-      if (!inWindow(run.at, window)) continue;
-      if (run.kind === "whole-suite") testRuns.whole_suite += 1;
-      else if (run.kind === "reused") testRuns.reused += 1;
+    for (const run2 of timeline.testRuns) {
+      if (!inWindow(run2.at, window)) continue;
+      if (run2.kind === "whole-suite") testRuns.whole_suite += 1;
+      else if (run2.kind === "reused") testRuns.reused += 1;
       else testRuns.targeted += 1;
     }
   }
@@ -36673,20 +37030,20 @@ function totalsLines(totals) {
     `Test runs (${totals.lane}): ${totals.test_runs.whole_suite} whole-suite, ${totals.test_runs.targeted} targeted, ${totals.test_runs.reused} reused`
   ];
 }
-function renderSpeedReport(report3) {
-  const measured2 = report3.changes.filter((row2) => row2.status === MEASURED).length;
-  const missing = report3.changes.length - measured2;
+function renderSpeedReport(report4) {
+  const measured2 = report4.changes.filter((row2) => row2.status === MEASURED).length;
+  const missing = report4.changes.length - measured2;
   const lines3 = [
     `paqad speed report  (${measured2} change(s) with transcripts, ${missing} without)`,
     "",
     tableLine(COLUMNS.map(([name]) => name)),
-    ...report3.changes.map(rowLine2)
+    ...report4.changes.map(rowLine2)
   ];
-  if (report3.totals.length > 0) lines3.push("");
-  for (const totals of report3.totals) lines3.push(...totalsLines(totals));
-  if (report3.top_categories.length > 0) {
+  if (report4.totals.length > 0) lines3.push("");
+  for (const totals of report4.totals) lines3.push(...totalsLines(totals));
+  if (report4.top_categories.length > 0) {
     lines3.push(
-      `Top busy categories: ${report3.top_categories.map((entry) => `${entry.category} ${formatSpan(entry.ms)}`).join(", ")}`
+      `Top busy categories: ${report4.top_categories.map((entry) => `${entry.category} ${formatSpan(entry.ms)}`).join(", ")}`
     );
   }
   return `${lines3.join("\n")}
@@ -36707,14 +37064,14 @@ function createReportCommand() {
       return;
     }
     try {
-      const report3 = buildSpeedReport({
+      const report4 = buildSpeedReport({
         projectRoot: options.projectRoot,
         change: options.change,
         since: options.since,
         transcriptsRoot: options.transcriptsRoot
       });
-      if (options.json) console.log(JSON.stringify(report3, null, 2));
-      else console.log(renderSpeedReport(report3).trimEnd());
+      if (options.json) console.log(JSON.stringify(report4, null, 2));
+      else console.log(renderSpeedReport(report4).trimEnd());
     } catch (error) {
       if (!(error instanceof SpeedReportInputError)) throw error;
       console.error(error.message);
@@ -36726,7 +37083,7 @@ function createReportCommand() {
 
 // src/cli/commands/review.ts
 init_esm_shims();
-import { readFileSync as readFileSync65, rmSync as rmSync9 } from "fs";
+import { readFileSync as readFileSync66, rmSync as rmSync9 } from "fs";
 var VERDICTS = ["safe-to-merge", "needs-attention", "inconclusive"];
 function judgmentOnlyRefusal(root, sessionId, template) {
   const findings = Array.isArray(template.findings) ? template.findings : [];
@@ -36778,7 +37135,7 @@ function createReviewCommand() {
   ).option("--keep-input", "Keep the transient input file instead of deleting it", false).action((inputFile, options) => {
     let template;
     try {
-      template = JSON.parse(readFileSync65(inputFile, "utf8"));
+      template = JSON.parse(readFileSync66(inputFile, "utf8"));
     } catch {
       console.error(`could not read/parse review template "${inputFile}" (expected JSON)`);
       process.exitCode = 1;
@@ -36846,7 +37203,7 @@ function createReviewCommand() {
 
 // src/cli/commands/debt.ts
 init_esm_shims();
-import { readFileSync as readFileSync66 } from "fs";
+import { readFileSync as readFileSync67 } from "fs";
 import { resolve as resolve26 } from "path";
 
 // src/tech-debt/index.ts
@@ -36941,9 +37298,9 @@ function fail2(message) {
   console.error(message);
   process.exitCode = 1;
 }
-function guarded(run) {
+function guarded(run2) {
   try {
-    run();
+    run2();
   } catch (error) {
     fail2(error.message);
   }
@@ -36966,7 +37323,7 @@ function createDebtCommand() {
   ).action((options) => {
     guarded(() => {
       const root = options.projectRoot;
-      const body = options.bodyFile === void 0 ? "" : readFileSync66(resolve26(root, options.bodyFile), "utf8");
+      const body = options.bodyFile === void 0 ? "" : readFileSync67(resolve26(root, options.bodyFile), "utf8");
       const context2 = resolveDebtContext(root, sessionHint(options));
       const result2 = raiseTechDebt(
         root,
@@ -37378,7 +37735,7 @@ function createRagEvidenceCommand() {
 
 // src/cli/commands/refresh.ts
 init_esm_shims();
-import { existsSync as existsSync68, readFileSync as readFileSync67, writeFileSync as writeFileSync23 } from "fs";
+import { existsSync as existsSync68, readFileSync as readFileSync68, writeFileSync as writeFileSync23 } from "fs";
 import { join as join120 } from "path";
 function createRefreshCommand() {
   return new Command("refresh").description("Refresh derived framework artifacts").option("--project-root <path>", "Project root", process.cwd()).option("--stack", "Refresh the cached stack snapshot").option("--context", "Refresh chunk and vector context indexes").option(
@@ -37441,13 +37798,13 @@ function createRefreshCommand() {
             "paqad-ai refresh: skipping module-map reconciliation \u2014 no stack pack declares module_health.source_roots."
           );
         } else {
-          const report3 = await reconcileModuleMap({
+          const report4 = await reconcileModuleMap({
             projectRoot: options.projectRoot,
             sourceRoots: discovered.source_roots
           });
-          if (report3.findings.length > 0) {
+          if (report4.findings.length > 0) {
             console.error(
-              `paqad-ai refresh: module-map drift detected (${report3.findings.length} finding(s) \u2014 see .paqad/module-map/drift.json).`
+              `paqad-ai refresh: module-map drift detected (${report4.findings.length} finding(s) \u2014 see .paqad/module-map/drift.json).`
             );
             process.exitCode = 1;
           }
@@ -37493,7 +37850,7 @@ function writeRefreshDrift(projectRoot, refreshDrift) {
 }
 function readExistingJson(path2) {
   try {
-    return JSON.parse(readFileSync67(path2, "utf8"));
+    return JSON.parse(readFileSync68(path2, "utf8"));
   } catch {
     return null;
   }
@@ -37595,7 +37952,7 @@ init_esm_shims();
 // src/rule-scripts/override.ts
 init_esm_shims();
 import { timingSafeEqual } from "crypto";
-import { readFileSync as readFileSync68 } from "fs";
+import { readFileSync as readFileSync69 } from "fs";
 var MANAGED_HOOK_MARKER = "paqad-ai hook --managed";
 function hookCommands2(value) {
   const hooks = value && typeof value === "object" ? value.hooks : null;
@@ -37614,7 +37971,7 @@ function managedSettingsEnforcePaqad(paths) {
   return paths.some((path2) => {
     let parsed;
     try {
-      parsed = JSON.parse(readFileSync68(path2, "utf8"));
+      parsed = JSON.parse(readFileSync69(path2, "utf8"));
     } catch {
       return false;
     }
@@ -37787,12 +38144,12 @@ function readFromDecisions(projectRoot, runId) {
 
 // src/rules-discovery/apply.ts
 init_esm_shims();
-import { readFileSync as readFileSync70 } from "fs";
+import { readFileSync as readFileSync71 } from "fs";
 import { join as join122 } from "path";
 
 // src/rules-discovery/flow.ts
 init_esm_shims();
-import { readFileSync as readFileSync69 } from "fs";
+import { readFileSync as readFileSync70 } from "fs";
 import { join as join121 } from "path";
 
 // src/rules-discovery/signoff.ts
@@ -37882,7 +38239,7 @@ function manifestHashes(projectRoot, paths) {
   const hashes = {};
   for (const path2 of paths) {
     try {
-      hashes[path2] = sha256Text(readFileSync69(join121(projectRoot, path2), "utf8"));
+      hashes[path2] = sha256Text(readFileSync70(join121(projectRoot, path2), "utf8"));
     } catch {
       hashes[path2] = "missing";
     }
@@ -38002,7 +38359,7 @@ function syncMap(projectRoot, ruleId, action, mutate, note) {
 function findWrittenRule(projectRoot, target, runId, text3) {
   let body;
   try {
-    body = readFileSync70(join122(projectRoot, target), "utf8");
+    body = readFileSync71(join122(projectRoot, target), "utf8");
   } catch {
     return null;
   }
@@ -38081,11 +38438,11 @@ function plannedTags(proposal, journal, runId, at2) {
   return [...tags.entries()].map(([id, tag]) => ({ id, tag }));
 }
 function assertSignedOff(projectRoot, runId) {
-  const run = readRun2(projectRoot, runId);
-  if (run.state !== "ok") {
-    throw new ApplyRefusedError(`run ${runId} has a ${run.state} run.json; nothing was written`);
+  const run2 = readRun2(projectRoot, runId);
+  if (run2.state !== "ok") {
+    throw new ApplyRefusedError(`run ${runId} has a ${run2.state} run.json; nothing was written`);
   }
-  const record2 = run.record;
+  const record2 = run2.record;
   if (record2.status !== "open" || record2.step !== "sign_off" && record2.step !== "apply") {
     throw new ApplyRefusedError(
       `run ${runId} is ${record2.status} at ${record2.step}; apply needs a run waiting at sign-off`
@@ -38115,8 +38472,8 @@ function assertSignedOff(projectRoot, runId) {
 function applyProposal(projectRoot, runId, options = {}) {
   const now2 = options.now ?? /* @__PURE__ */ new Date();
   const proposal = assertSignedOff(projectRoot, runId);
-  const run = readRun2(projectRoot, runId);
-  if (run.state === "ok" && run.record.step === "sign_off") {
+  const run2 = readRun2(projectRoot, runId);
+  if (run2.state === "ok" && run2.record.step === "sign_off") {
     advanceRun(projectRoot, runId, { step: "apply" }, options.expectedRevision, now2);
   }
   const journal = readApplyJournal(projectRoot, runId);
@@ -38153,7 +38510,7 @@ function applyProposal(projectRoot, runId, options = {}) {
   return applyReport(proposal, journal, baseline?.inventory ?? null);
 }
 function applyReport(proposal, journal, baseline) {
-  const report3 = {
+  const report4 = {
     added: 0,
     changed: 0,
     removed: 0,
@@ -38166,21 +38523,21 @@ function applyReport(proposal, journal, baseline) {
     const applied = journal.rows[row2.row_id];
     if (applied === void 0) continue;
     if (applied.write === "refused") {
-      report3.refused.push({ row_id: row2.row_id, why: applied.why ?? "refused" });
+      report4.refused.push({ row_id: row2.row_id, why: applied.why ?? "refused" });
       continue;
     }
-    if (applied.write === "add") report3.added += 1;
-    if (applied.write === "edit") report3.changed += 1;
-    if (applied.write === "remove") report3.removed += 1;
+    if (applied.write === "add") report4.added += 1;
+    if (applied.write === "edit") report4.changed += 1;
+    if (applied.write === "remove") report4.removed += 1;
     if ((applied.write === "add" || applied.write === "edit") && row2.check === "script") {
-      report3.scriptable += 1;
+      report4.scriptable += 1;
     }
   }
-  return report3;
+  return report4;
 }
-function scriptableOffer(report3) {
-  if (report3.scriptable === 0) return null;
-  return `${report3.scriptable} new or changed rule${report3.scriptable === 1 ? "" : "s"} could be checked by a script. Say "analyze rules" to turn them into checks with rule-analyzer.`;
+function scriptableOffer(report4) {
+  if (report4.scriptable === 0) return null;
+  return `${report4.scriptable} new or changed rule${report4.scriptable === 1 ? "" : "s"} could be checked by a script. Say "analyze rules" to turn them into checks with rule-analyzer.`;
 }
 
 // src/rules-discovery/docs.ts
@@ -38281,7 +38638,7 @@ function statusLines(projectRoot) {
 function writeRunReport(projectRoot, runId, docsUpdated) {
   const proposal = readProposal(projectRoot, runId);
   const applied = proposal === null ? null : applyReport(proposal, readApplyJournal(projectRoot, runId), null);
-  const report3 = {
+  const report4 = {
     run_id: runId,
     rules_added: applied?.added ?? 0,
     rules_changed: applied?.changed ?? 0,
@@ -38290,11 +38647,11 @@ function writeRunReport(projectRoot, runId, docsUpdated) {
     stack_docs_updated: docsUpdated,
     checks_offered: applied === null || scriptableOffer(applied) === null ? 0 : applied.scriptable
   };
-  atomicWriteJson(absRunFile(projectRoot, runId, "report"), report3);
-  return report3;
+  atomicWriteJson(absRunFile(projectRoot, runId, "report"), report4);
+  return report4;
 }
-function reportLine(report3) {
-  return `done \u2014 ${report3.rules_added} rules added, ${report3.rules_changed} changed, ${report3.rules_removed} removed; ${report3.decisions_tagged} decisions tagged; ${report3.stack_docs_updated} stack docs updated; ${report3.checks_offered} checks offered.`;
+function reportLine(report4) {
+  return `done \u2014 ${report4.rules_added} rules added, ${report4.rules_changed} changed, ${report4.rules_removed} removed; ${report4.decisions_tagged} decisions tagged; ${report4.stack_docs_updated} stack docs updated; ${report4.checks_offered} checks offered.`;
 }
 
 // src/rules-discovery/docs.ts
@@ -38308,8 +38665,8 @@ function researchNotes(projectRoot, runId) {
   return notes;
 }
 async function docsStep(projectRoot, runId, now2 = /* @__PURE__ */ new Date(), expectedRevision) {
-  const run = readRun2(projectRoot, runId);
-  if (run.state !== "ok" || run.record.status !== "open" || run.record.step !== "docs") {
+  const run2 = readRun2(projectRoot, runId);
+  if (run2.state !== "ok" || run2.record.status !== "open" || run2.record.step !== "docs") {
     throw new Error(`run ${runId} is not waiting at the docs step`);
   }
   const inventory = readInventoryFile(projectRoot, runId);
@@ -38328,7 +38685,7 @@ async function docsStep(projectRoot, runId, now2 = /* @__PURE__ */ new Date(), e
 function readRunInventory(projectRoot, runId) {
   const read = readJsonFile(absRunFile(projectRoot, runId, "inventory"));
   if (read.state !== "ok") {
-    refuse(`stack-inventory.json is ${read.state} in run ${runId}; run the inventory step first.`);
+    refuse2(`stack-inventory.json is ${read.state} in run ${runId}; run the inventory step first.`);
     return null;
   }
   return read.value;
@@ -38363,19 +38720,19 @@ function guarded2(work) {
   try {
     work();
   } catch (error) {
-    refuse(error instanceof Error ? error.message : String(error));
+    refuse2(error instanceof Error ? error.message : String(error));
   }
 }
 function say(line) {
   console.log(`**\u25B8 paqad** \xB7 rules discovery \xB7 ${line}`);
 }
-function refuse(line) {
+function refuse2(line) {
   console.error(`**\u25B8 paqad** \xB7 rules discovery \xB7 ${line}`);
   process.exitCode = 1;
 }
-function validRunOption(run) {
-  if (run !== void 0 && !isRunId(run)) {
-    refuse(`"${run}" is not a rules discovery run id.`);
+function validRunOption(run2) {
+  if (run2 !== void 0 && !isRunId(run2)) {
+    refuse2(`"${run2}" is not a rules discovery run id.`);
     return false;
   }
   return true;
@@ -38403,12 +38760,12 @@ function registerRulesDiscoveryCommands(command) {
         absRunFile(options.projectRoot, options.check, "fromDecisions")
       );
       if (read.state !== "ok") {
-        refuse(`from-decisions.json is ${read.state} in run ${options.check}.`);
+        refuse2(`from-decisions.json is ${read.state} in run ${options.check}.`);
         return;
       }
       const problems = validateFromDecisions(read.value, new Set(listed.map((d) => d.id)));
       if (problems.length > 0) {
-        refuse(`from-decisions.json has ${problems.length} problem(s): ${problems.join("; ")}`);
+        refuse2(`from-decisions.json has ${problems.length} problem(s): ${problems.join("; ")}`);
         return;
       }
       say("from-decisions.json is valid.");
@@ -38428,7 +38785,7 @@ function registerRulesDiscoveryCommands(command) {
         const files = readResearchFiles(options.projectRoot, options.run);
         const checked = checkResearch({ ...files, inventory, now: /* @__PURE__ */ new Date() });
         if (checked.problems.length > 0) {
-          refuse(
+          refuse2(
             `research has ${checked.problems.length} problem(s): ${checked.problems.join("; ")}`
           );
           return;
@@ -38454,7 +38811,7 @@ function registerRulesDiscoveryCommands(command) {
         })
       );
     } catch (error) {
-      refuse(error instanceof Error ? error.message : String(error));
+      refuse2(error instanceof Error ? error.message : String(error));
     }
   });
   discovery.command("propose").description(
@@ -38495,12 +38852,12 @@ function registerRulesDiscoveryCommands(command) {
       return;
     }
     if (options.row === void 0 || options.verdict === void 0) {
-      refuse("review needs --row and --verdict, or --all-recommended.");
+      refuse2("review needs --row and --verdict, or --all-recommended.");
       return;
     }
     const known = new Set(Object.values(ROW_VERDICTS).flat());
     if (!known.has(options.verdict)) {
-      refuse(`"${options.verdict}" is not a verdict.`);
+      refuse2(`"${options.verdict}" is not a verdict.`);
       return;
     }
     const row2 = options.row;
@@ -38529,16 +38886,16 @@ function registerRulesDiscoveryCommands(command) {
   ).requiredOption("--run <id>", "Rules discovery run id").option("--project-root <path>", "Project root", process.cwd()).option("--expect-revision <n>", "run.json revision the caller last read", parseRevision).action((options) => {
     if (!validRunOption(options.run)) return;
     guarded2(() => {
-      const report3 = applyProposal(options.projectRoot, options.run, {
+      const report4 = applyProposal(options.projectRoot, options.run, {
         expectedRevision: options.expectRevision
       });
       say(
-        `apply \u2014 ${report3.added} added, ${report3.changed} changed, ${report3.removed} removed, ${report3.tagged} decision(s) tagged.`
+        `apply \u2014 ${report4.added} added, ${report4.changed} changed, ${report4.removed} removed, ${report4.tagged} decision(s) tagged.`
       );
-      for (const row2 of report3.refused) say(`refused \u2014 ${row2.row_id}: ${row2.why}.`);
-      const offer = scriptableOffer(report3);
+      for (const row2 of report4.refused) say(`refused \u2014 ${row2.row_id}: ${row2.why}.`);
+      const offer = scriptableOffer(report4);
       if (offer !== null) say(offer);
-      console.log(JSON.stringify(report3));
+      console.log(JSON.stringify(report4));
     });
   });
   discovery.command("docs").description("Refresh the stack docs managed blocks from the run inventory and finish the run").requiredOption("--run <id>", "Rules discovery run id").option("--project-root <path>", "Project root", process.cwd()).option("--expect-revision <n>", "run.json revision the caller last read", parseRevision).action(async (options) => {
@@ -38553,7 +38910,7 @@ function registerRulesDiscoveryCommands(command) {
       say(`docs \u2014 ${result2.updated.length} stack doc(s) updated.`);
       say(reportLine(result2.report));
     } catch (error) {
-      refuse(error instanceof Error ? error.message : String(error));
+      refuse2(error instanceof Error ? error.message : String(error));
     }
   });
   discovery.command("start").description("Open a rules discovery run, or resume the open one").option("--project-root <path>", "Project root", process.cwd()).option("--fresh", "Close the open run as abandoned and open a new one", false).option("--continue", "Continue the open run even when it waits on its sign-off", false).action((options) => {
@@ -38563,7 +38920,7 @@ function registerRulesDiscoveryCommands(command) {
         continueOpen: options.continue
       });
       if (outcome.state === "broken") {
-        refuse(
+        refuse2(
           `run ${outcome.run_id}: ${outcome.reason}. Start fresh with \`paqad-ai rules discovery start --fresh\`.`
         );
         console.log(JSON.stringify(outcome));
@@ -38734,7 +39091,7 @@ var OUTCOME_WORDS = {
 
 // src/cli/commands/setup.ts
 init_esm_shims();
-import { readFileSync as readFileSync72 } from "fs";
+import { readFileSync as readFileSync73 } from "fs";
 
 // src/onboarding/onboard-installed-stack.ts
 init_esm_shims();
@@ -38792,7 +39149,7 @@ function resolveProviders(projectRoot, explicit) {
 
 // src/onboarding/setup-plan.ts
 init_esm_shims();
-import { existsSync as existsSync69, mkdirSync as mkdirSync29, readFileSync as readFileSync71, renameSync as renameSync9, writeFileSync as writeFileSync24 } from "fs";
+import { existsSync as existsSync69, mkdirSync as mkdirSync29, readFileSync as readFileSync72, renameSync as renameSync9, writeFileSync as writeFileSync24 } from "fs";
 import { dirname as dirname28, join as join123 } from "path";
 var SETUP_STEP_STATES = [
   "pending",
@@ -38858,7 +39215,7 @@ function readSetupPlan(projectRoot) {
     return null;
   }
   try {
-    return JSON.parse(readFileSync71(absPath, "utf8"));
+    return JSON.parse(readFileSync72(absPath, "utf8"));
   } catch {
     return null;
   }
@@ -38873,7 +39230,7 @@ function createSetupCommand() {
   plan.command("validate").description("Validate a setup-plan JSON file").argument("<file>", "Path to the setup-plan JSON file").action((file) => {
     let parsed;
     try {
-      parsed = JSON.parse(readFileSync72(file, "utf8"));
+      parsed = JSON.parse(readFileSync73(file, "utf8"));
     } catch (error) {
       console.error(`\u2716 could not read JSON from ${file}: ${errorMessage2(error)}`);
       process.exitCode = 1;
@@ -38963,7 +39320,7 @@ function errorMessage2(error) {
 
 // src/cli/commands/sitemap.ts
 init_esm_shims();
-import { existsSync as existsSync70, readFileSync as readFileSync73 } from "fs";
+import { existsSync as existsSync70, readFileSync as readFileSync74 } from "fs";
 
 // src/site-map/creation-flow.ts
 init_esm_shims();
@@ -39587,7 +39944,7 @@ function createSitemapCommand() {
   });
   command.command("answer").description("Record your answers to those questions and note who decided each").requiredOption("--input <path>", "JSON file of [{ question_id, answer, decided_by }]").option("--project-root <path>", "Project root", process.cwd()).action((options) => {
     try {
-      const raw = readFileSync73(options.input, "utf8");
+      const raw = readFileSync74(options.input, "utf8");
       const decisions = parseCreationDecisions(raw);
       const result2 = recordCreationAnswers(options.projectRoot, decisions);
       if (result2.status === "no-map") {
@@ -39643,12 +40000,12 @@ function createSitemapCommand() {
 
 // src/cli/commands/spec.ts
 init_esm_shims();
-import { readFileSync as readFileSync76, rmSync as rmSync10 } from "fs";
+import { readFileSync as readFileSync77, rmSync as rmSync10 } from "fs";
 import { basename as basename7 } from "path";
 
 // src/cli/commands/spec-pipeline.ts
 init_esm_shims();
-import { readFileSync as readFileSync75 } from "fs";
+import { readFileSync as readFileSync76 } from "fs";
 
 // src/providers/index.ts
 init_esm_shims();
@@ -39877,8 +40234,8 @@ function median4(values) {
 }
 function found(runs, form, pick) {
   const set = /* @__PURE__ */ new Set();
-  for (const run of runs.filter((entry) => entry.form === form)) {
-    for (const item2 of run[pick]) set.add(`${run.change}:${item2}`);
+  for (const run2 of runs.filter((entry) => entry.form === form)) {
+    for (const item2 of run2[pick]) set.add(`${run2.change}:${item2}`);
   }
   return set;
 }
@@ -39914,7 +40271,7 @@ function readPrevious(projectRoot) {
 }
 function recordHighTableBenchmark(input) {
   const runs = parseBenchmarkRuns(input.resultsText).filter(
-    (run) => input.changes.includes(run.change)
+    (run2) => input.changes.includes(run2.change)
   );
   const missing = missingTrials(input.changes, runs);
   if (missing.length > 0) {
@@ -39954,7 +40311,7 @@ function recordHighTableBenchmark(input) {
     changes: [...input.changes],
     trials: BENCHMARK_TRIALS,
     forms,
-    spend_usd: Math.round(runs.reduce((sum4, run) => sum4 + (run.cost_usd ?? 0), 0) * 1e6) / 1e6,
+    spend_usd: Math.round(runs.reduce((sum4, run2) => sum4 + (run2.cost_usd ?? 0), 0) * 1e6) / 1e6,
     worst_case_usd: worstCaseSpend(input.projectRoot, input.changes),
     decision,
     recorded_at: (input.now ?? (() => /* @__PURE__ */ new Date()))().toISOString()
@@ -40560,7 +40917,7 @@ function mergeQuestionBatch(enrichment, expertChief, questionBudget) {
 init_esm_shims();
 var import_fast_glob4 = __toESM(require_out(), 1);
 import { createHash as createHash16 } from "crypto";
-import { existsSync as existsSync72, readFileSync as readFileSync74 } from "fs";
+import { existsSync as existsSync72, readFileSync as readFileSync75 } from "fs";
 import { join as join127 } from "path";
 var GROUNDING_FALLBACK_REASONS = {
   ragDisabled: "rag-disabled",
@@ -40729,7 +41086,7 @@ function readGlossaryFile(projectRoot) {
   let content;
   try {
     if (!existsSync72(join127(projectRoot, rel))) return null;
-    content = readFileSync74(join127(projectRoot, rel), "utf8");
+    content = readFileSync75(join127(projectRoot, rel), "utf8");
   } catch {
     return null;
   }
@@ -40772,7 +41129,7 @@ function groundArea(projectRoot, options = {}) {
   for (const rel of files) {
     let content;
     try {
-      content = readFileSync74(join127(projectRoot, rel), "utf8");
+      content = readFileSync75(join127(projectRoot, rel), "utf8");
     } catch {
       continue;
     }
@@ -41328,7 +41685,7 @@ function reportedTokens(content) {
 async function resolveRequestText(options) {
   if (options.requestFile) {
     try {
-      const text3 = readFileSync75(options.requestFile, "utf8");
+      const text3 = readFileSync76(options.requestFile, "utf8");
       rememberInput(options.projectRoot, options.dirName, options.requestFile);
       return text3;
     } catch {
@@ -41553,7 +41910,7 @@ function createSpecPipelineCommand() {
     }
     let content;
     try {
-      content = readFileSync75(file, "utf8");
+      content = readFileSync76(file, "utf8");
     } catch {
       console.error(`could not read artifact "${file}"`);
       process.exitCode = 1;
@@ -41628,7 +41985,7 @@ function createSpecPipelineCommand() {
         }
         let traceRaw;
         try {
-          traceRaw = JSON.parse(readFileSync75(options.trace, "utf8"));
+          traceRaw = JSON.parse(readFileSync76(options.trace, "utf8"));
         } catch {
           console.error(`could not read or parse trace "${options.trace}"`);
           process.exitCode = 1;
@@ -41752,21 +42109,21 @@ function createSpecPipelineCommand() {
       if (!resolved) return;
       dirNames.push(resolved.dirName);
     }
-    const report3 = aggregateSpecPipelineMetrics(options.projectRoot, dirNames);
-    console.log(JSON.stringify(report3, null, 2));
-    const roles = Object.keys(report3.changed_spec_rate).sort();
+    const report4 = aggregateSpecPipelineMetrics(options.projectRoot, dirNames);
+    console.log(JSON.stringify(report4, null, 2));
+    const roles = Object.keys(report4.changed_spec_rate).sort();
     if (roles.length > 0) {
       console.log(
         "\nrole                    tier      fired  changed  empty rate  voice warnings  tokens"
       );
       for (const role of roles) {
         const key = role;
-        const rate = report3.changed_spec_rate[key];
-        const tokens = report3.tokens_by_role[key] ?? 0;
-        const tier = report3.tier_by_role[key] ?? "on-call";
-        const empty = report3.empty_by_role[key];
+        const rate = report4.changed_spec_rate[key];
+        const tokens = report4.tokens_by_role[key] ?? 0;
+        const tier = report4.tier_by_role[key] ?? "on-call";
+        const empty = report4.empty_by_role[key];
         const emptyRate = empty && empty.fired > 0 ? `${Math.round(empty.empty / empty.fired * 100)}%` : "\u2014";
-        const warnings = report3.voice_warnings_by_role[key] ?? 0;
+        const warnings = report4.voice_warnings_by_role[key] ?? 0;
         console.log(
           `${role.padEnd(22)}  ${tier.padEnd(8)}  ${String(rate.fired).padStart(5)}  ${String(rate.changed).padStart(7)}  ${emptyRate.padStart(10)}  ${String(warnings).padStart(14)}  ${String(tokens).padStart(6)}`
         );
@@ -41812,7 +42169,7 @@ function createExpertsCommand() {
   };
   const readHandedFile = (options, dirName, file, what) => {
     try {
-      const content = readFileSync75(file, "utf8");
+      const content = readFileSync76(file, "utf8");
       rememberInput(options.projectRoot, dirName, file);
       return content;
     } catch {
@@ -42111,7 +42468,7 @@ function createExpertsCommand() {
       const result2 = recordHighTableBenchmark({
         projectRoot: options.projectRoot,
         changes,
-        resultsText: readFileSync75(options.results, "utf8")
+        resultsText: readFileSync76(options.results, "utf8")
       });
       for (const line of result2.lines) console.log(line);
       if (!result2.ok) process.exitCode = 1;
@@ -42165,7 +42522,7 @@ function createSpecCommand() {
       }
       let markdown;
       try {
-        markdown = readFileSync76(specFile, "utf8");
+        markdown = readFileSync77(specFile, "utf8");
       } catch {
         console.error(`could not read spec file "${specFile}"`);
         process.exitCode = 1;
@@ -42330,7 +42687,7 @@ import { join as join129 } from "path";
 
 // src/feature-evidence/chain-repair.ts
 init_esm_shims();
-import { readFileSync as readFileSync77 } from "fs";
+import { readFileSync as readFileSync78 } from "fs";
 import { join as join128 } from "path";
 var DEVELOPER_ACTOR = "developer";
 function repairActor(hasTerminal = process.stdin.isTTY) {
@@ -42340,7 +42697,7 @@ function stageAgentRepairRefusal(agentId) {
   return agentId?.trim() ? "a stage agent cannot repair the ledger. Name the break in your report; the orchestrator or the developer runs this command" : null;
 }
 function repairChainBreak(projectRoot, sessionId, dirName, rowNumber, reason2, actor = ORCHESTRATOR_AGENT) {
-  const raw = readFileSync77(join128(projectRoot, featureFilePath(dirName, "stageEvidence")), "utf8");
+  const raw = readFileSync78(join128(projectRoot, featureFilePath(dirName, "stageEvidence")), "utf8");
   const { breaks } = checkStageChain(raw);
   if (!breaks.includes(rowNumber)) {
     return {
@@ -42580,7 +42937,7 @@ function runStageReport(agentId, options) {
   }
   const root = options.projectRoot;
   try {
-    const report3 = keepingLedgerSessionCache(root, () => {
+    const report4 = keepingLedgerSessionCache(root, () => {
       const sessionId = resolveBriefSession(root, { session_id: options.session }, process.env);
       const dirName = currentFeature(root, sessionId);
       if (dirName === null) return null;
@@ -42590,9 +42947,9 @@ function runStageReport(agentId, options) {
         stageReportOptions(root, dirName)
       );
     });
-    if (report3 === null) process.exitCode = 1;
+    if (report4 === null) process.exitCode = 1;
     console.log(
-      JSON.stringify(report3 ?? unknownAgentReport(agentId, `no stage row names agent ${agentId}`))
+      JSON.stringify(report4 ?? unknownAgentReport(agentId, `no stage row names agent ${agentId}`))
     );
   } catch (error) {
     console.log(
@@ -42774,7 +43131,14 @@ function renderHudText(snapshot2) {
   if (snapshot2.decisions.pending.length > 0) {
     lines3.push(`decisions waiting: ${snapshot2.decisions.pending.length}`);
   }
+  if (snapshot2.review) lines3.push(...renderReviewLines(snapshot2.review));
   return lines3.join("\n");
+}
+function renderReviewLines(review) {
+  const lines3 = [`${review.word}: ${review.headline.text}`];
+  if (review.leads_note) lines3.push(review.leads_note);
+  for (const gap of review.gaps) lines3.push(`gap: ${gap.stage} \xB7 ${gap.say}`);
+  return lines3;
 }
 function renderOnboardingText(onboarding) {
   const lines3 = [`paqad \xB7 Onboarding \xB7 ${onboarding.headline}`];
@@ -42863,8 +43227,8 @@ function createStatusCommand() {
 `);
       return;
     }
-    const report3 = buildReport(projectRoot);
-    const output = fmt === "json" ? JSON.stringify(report3, null, 2) : renderMarkdown(report3);
+    const report4 = buildReport(projectRoot);
+    const output = fmt === "json" ? JSON.stringify(report4, null, 2) : renderMarkdown(report4);
     process.stdout.write(`${output}
 `);
     if (options.failOnDrift) {
@@ -42894,12 +43258,12 @@ init_esm_shims();
 // src/visual-evidence/attach.ts
 init_esm_shims();
 import { createHash as createHash17 } from "crypto";
-import { mkdirSync as mkdirSync32, readFileSync as readFileSync79, writeFileSync as writeFileSync26 } from "fs";
+import { mkdirSync as mkdirSync32, readFileSync as readFileSync80, writeFileSync as writeFileSync26 } from "fs";
 import { basename as basename9, extname as extname4, join as join131 } from "path";
 
 // src/visual-evidence/manifest.ts
 init_esm_shims();
-import { cpSync as cpSync3, mkdirSync as mkdirSync31, readFileSync as readFileSync78, renameSync as renameSync10, writeFileSync as writeFileSync25 } from "fs";
+import { cpSync as cpSync3, mkdirSync as mkdirSync31, readFileSync as readFileSync79, renameSync as renameSync10, writeFileSync as writeFileSync25 } from "fs";
 import { basename as basename8, join as join130 } from "path";
 function slugifyCaption(caption) {
   const slug = caption.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40).replace(/^-+|-+$/g, "");
@@ -42970,7 +43334,7 @@ function normalizeStep(step) {
 }
 function readVisualEvidenceManifest(projectRoot, dirName) {
   try {
-    const raw = readFileSync78(join130(projectRoot, featureFilePath(dirName, "visualEvidence")), "utf8");
+    const raw = readFileSync79(join130(projectRoot, featureFilePath(dirName, "visualEvidence")), "utf8");
     const manifest = JSON.parse(raw);
     return Array.isArray(manifest.steps) ? { ...manifest, steps: manifest.steps.map(normalizeStep) } : manifest;
   } catch {
@@ -43021,7 +43385,7 @@ function checkAcceptanceCriterion(projectRoot, dirName, ac) {
 function readPng(file) {
   let bytes;
   try {
-    bytes = readFileSync79(file);
+    bytes = readFileSync80(file);
   } catch {
     throw new VisualEvidenceAttachError(`cannot read ${file}: the file does not exist.`);
   }
@@ -43283,7 +43647,7 @@ async function bootApp(projectRoot, profile) {
 
 // src/visual-evidence/gif.ts
 init_esm_shims();
-import { readFileSync as readFileSync80 } from "fs";
+import { readFileSync as readFileSync81 } from "fs";
 
 // node_modules/.pnpm/gifenc@1.0.3/node_modules/gifenc/dist/gifenc.esm.js
 init_esm_shims();
@@ -43430,7 +43794,7 @@ var CAPTION_BAR = {
   color: "#333333"
 };
 function toDataUrl(imageAbsPath) {
-  const bytes = readFileSync80(imageAbsPath);
+  const bytes = readFileSync81(imageAbsPath);
   return `data:image/png;base64,${bytes.toString("base64")}`;
 }
 async function renderFrame(page2, input, frameWidth, frameHeight) {
@@ -43803,7 +44167,7 @@ function createVisualEvidenceCommand() {
     const flag = resolveFrameworkConfig(projectRoot).features.visual_evidence;
     const coding = profile?.active_capabilities?.includes("coding") ?? false;
     if (!flag || !coding) {
-      report2(
+      report3(
         options.json,
         "skipped",
         "visual evidence is off (flag off or coding capability absent)."
@@ -43812,13 +44176,13 @@ function createVisualEvidenceCommand() {
     }
     const dirName = activeFeatureDirOrNull(projectRoot);
     if (!dirName) {
-      report2(options.json, "skipped", "no active feature bundle \u2014 nothing to write into.");
+      report3(options.json, "skipped", "no active feature bundle \u2014 nothing to write into.");
       return;
     }
     const trigger = await triggerOrInstallFault(projectRoot, options.json);
     if (!trigger) return;
     if (!trigger.triggered) {
-      report2(
+      report3(
         options.json,
         "skipped",
         "not-frontend \u2014 no changed file matched a frontend surface."
@@ -43890,12 +44254,12 @@ function createVisualEvidenceCommand() {
   ).action(
     (files, options) => {
       const { projectRoot } = options;
-      const refuse2 = (reason2) => {
+      const refuse3 = (reason2) => {
         console.error(`**\u25B8 paqad** \xB7 visual evidence attach refused: ${reason2}`);
         process.exitCode = 1;
       };
       if (!visualEvidenceFlagOn(projectRoot)) {
-        refuse2("visual evidence is off (flag off or coding capability absent).");
+        refuse3("visual evidence is off (flag off or coding capability absent).");
         return;
       }
       const sessionId = resolveSessionId(
@@ -43904,7 +44268,7 @@ function createVisualEvidenceCommand() {
       );
       const dirName = currentFeature(projectRoot, sessionId);
       if (!dirName) {
-        refuse2("no active feature bundle to attach into. Start the change first.");
+        refuse3("no active feature bundle to attach into. Start the change first.");
         return;
       }
       try {
@@ -43925,7 +44289,7 @@ function createVisualEvidenceCommand() {
         );
       } catch (error) {
         if (!(error instanceof VisualEvidenceAttachError)) throw error;
-        refuse2(error.message);
+        refuse3(error.message);
       }
     }
   );
@@ -43935,17 +44299,17 @@ function createVisualEvidenceCommand() {
     const veRuntime = resolveVeRuntimeDir();
     let status = browserStatus(veRuntime);
     if (status === "provisioned") {
-      report2(options.json, "provisioned", `browser already provisioned at ${veRuntime}.`);
+      report3(options.json, "provisioned", `browser already provisioned at ${veRuntime}.`);
       return;
     }
     console.error("Provisioning Playwright + Chromium (this may take a minute)\u2026");
     try {
       await provisionBrowser(veRuntime);
       status = browserStatus(veRuntime);
-      report2(options.json, status, `browser ${status} at ${veRuntime}.`);
+      report3(options.json, status, `browser ${status} at ${veRuntime}.`);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      report2(options.json, "failed", `provisioning failed: ${message}`);
+      report3(options.json, "failed", `provisioning failed: ${message}`);
       process.exitCode = 1;
     }
   });
@@ -43956,7 +44320,7 @@ async function triggerOrInstallFault(projectRoot, json2) {
     return await evaluateFrontendTrigger(projectRoot);
   } catch (error) {
     if (!(error instanceof PackRegistryEmptyError)) throw error;
-    report2(
+    report3(
       json2,
       "install-fault",
       `${packRegistryFaultDetail(error.runtimeRoot)} Next: ${PACK_REGISTRY_FAULT_REMEDIATION}`
@@ -43965,7 +44329,7 @@ async function triggerOrInstallFault(projectRoot, json2) {
     return null;
   }
 }
-function report2(json2, status, message) {
+function report3(json2, status, message) {
   console.log(`**\u25B8 paqad** \xB7 visual evidence: ${message}`);
   if (json2) {
     console.log(JSON.stringify({ status }));
@@ -43979,39 +44343,39 @@ function countOf(count3, noun) {
 }
 var MANUAL_DETAILS_COMMAND = "paqad-ai update --json";
 var LAST_DETAILS_COMMAND = "paqad-ai update --last --json";
-function versionLine(report3) {
-  const { previous_version: previous, target_version: target } = report3;
+function versionLine(report4) {
+  const { previous_version: previous, target_version: target } = report4;
   if (previous === target) return `paqad is already on ${target}.`;
   return previous === null ? `Updated paqad to ${target}.` : `Updated paqad from ${previous} to ${target}.`;
 }
-function formatUpdateSummary(report3, detailsCommand = MANUAL_DETAILS_COMMAND) {
-  const lines3 = [versionLine(report3)];
-  const changed = allChangedFiles(report3);
+function formatUpdateSummary(report4, detailsCommand = MANUAL_DETAILS_COMMAND) {
+  const lines3 = [versionLine(report4)];
+  const changed = allChangedFiles(report4);
   if (changed.length === 0) {
     lines3.push("No files needed changing.");
   } else {
     lines3.push(`Changed ${countOf(changed.length, "file")}:`);
     lines3.push(...changed.map((path2) => `  ${path2}`));
   }
-  if (report3.skipped.length > 0) {
-    const pronoun = report3.skipped.length === 1 ? "it" : "them";
+  if (report4.skipped.length > 0) {
+    const pronoun = report4.skipped.length === 1 ? "it" : "them";
     lines3.push(
-      `Kept ${countOf(report3.skipped.length, "file")} paqad would write differently. Run ${detailsCommand} to see ${pronoun}.`
+      `Kept ${countOf(report4.skipped.length, "file")} paqad would write differently. Run ${detailsCommand} to see ${pronoun}.`
     );
   }
-  if (report3.config_keys_pruned.length > 0) {
+  if (report4.config_keys_pruned.length > 0) {
     lines3.push(
-      `Removed ${countOf(report3.config_keys_pruned.length, "setting")} paqad no longer has: ${report3.config_keys_pruned.join(", ")}.`
+      `Removed ${countOf(report4.config_keys_pruned.length, "setting")} paqad no longer has: ${report4.config_keys_pruned.join(", ")}.`
     );
   }
   return lines3;
 }
-function formatUpdateReportLines(report3, detailsCommand = MANUAL_DETAILS_COMMAND) {
+function formatUpdateReportLines(report4, detailsCommand = MANUAL_DETAILS_COMMAND) {
   return [
-    ...formatUpdateSummary(report3, detailsCommand),
-    ...report3.team_setup_notes ?? [],
-    ...report3.git_workflow_notes ?? [],
-    ...(report3.plugin_notes ?? []).map((note) => `Warning: ${note}`)
+    ...formatUpdateSummary(report4, detailsCommand),
+    ...report4.team_setup_notes ?? [],
+    ...report4.git_workflow_notes ?? [],
+    ...(report4.plugin_notes ?? []).map((note) => `Warning: ${note}`)
   ];
 }
 function recordAsSummary(record2) {
@@ -44038,16 +44402,16 @@ function createUpdateCommand() {
       return;
     }
     try {
-      const report3 = await new FrameworkUpdater().run(options.projectRoot);
+      const report4 = await new FrameworkUpdater().run(options.projectRoot);
       if (!options.silent) {
         if (options.json) {
-          console.log(JSON.stringify(report3, null, 2));
+          console.log(JSON.stringify(report4, null, 2));
         } else {
-          for (const line of formatUpdateReportLines(report3)) console.log(line);
+          for (const line of formatUpdateReportLines(report4)) console.log(line);
         }
       }
-      if (options.silent) writeLastUpdateRecord(options.projectRoot, report3);
-      appendAuditLog(options.projectRoot, report3.previous_version, report3.target_version);
+      if (options.silent) writeLastUpdateRecord(options.projectRoot, report4);
+      appendAuditLog(options.projectRoot, report4.previous_version, report4.target_version);
       if (options.silent) {
         try {
           maybeMigrateToPlugin(options.projectRoot, {
@@ -44099,6 +44463,8 @@ function createProgram() {
   program.addCommand(createModuleMapCommand());
   program.addCommand(createOnboardCommand());
   program.addCommand(createOnboardingCommand());
+  program.addCommand(createReviewRunCommand("security"));
+  program.addCommand(createReviewRunCommand("design"));
   program.addCommand(createNewProjectCommand());
   program.addCommand(createSetupCommand());
   program.addCommand(createJoinCommand());
