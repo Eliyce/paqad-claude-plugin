@@ -1,5 +1,6 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
+  SLICES_RUNNING_REASON,
   deferCompletionForBackgroundStage,
   hasOpenUnendedStage,
   hostProcessAlive,
@@ -7,32 +8,33 @@ import {
   onboardingStopNudge,
   releaseStageAgentsAtSessionStart,
   stageAgentTaskCount,
+  stoppedSlicesNote,
   tasksCarryAgentType
-} from "../chunk-QIDCRSC4.js";
-import "../chunk-7VNFUFHY.js";
-import "../chunk-CECHOUNN.js";
-import "../chunk-WM27CNUZ.js";
-import "../chunk-4ORTSS7A.js";
-import "../chunk-4GW2XENS.js";
+} from "../chunk-SXJIXXSX.js";
+import "../chunk-YKXOZFAY.js";
+import {
+  sliceEndCommandRefusal
+} from "../chunk-B4ITQDI4.js";
+import "../chunk-5KWOTSVX.js";
+import "../chunk-ZI6NAYWY.js";
+import "../chunk-PIHEVR35.js";
 import "../chunk-TL22DBH4.js";
 import "../chunk-4UDYC65U.js";
-import "../chunk-G3M24XX2.js";
-import "../chunk-YH62LFCT.js";
-import "../chunk-P4RPU2KB.js";
 import "../chunk-Y2ZLYYTT.js";
-import "../chunk-HUUCKZRD.js";
-import "../chunk-TINPSX3N.js";
+import "../chunk-P4RPU2KB.js";
+import "../chunk-TIGPOU33.js";
+import "../chunk-2XQIUIDS.js";
 import "../chunk-BTDDEK7C.js";
 import {
   STAGE_AGENT_SESSION_RELEASE,
   liveStageAgents
-} from "../chunk-WIFSXOJT.js";
-import "../chunk-IPSMQB2X.js";
-import "../chunk-4OZN3ROM.js";
-import "../chunk-PF7KWSCM.js";
+} from "../chunk-T7KPBKCY.js";
+import "../chunk-5G2EOBB5.js";
+import "../chunk-OJJKELCB.js";
+import "../chunk-FTTLICPK.js";
 import "../chunk-BOEVU2BD.js";
 import "../chunk-NJE7NS7E.js";
-import "../chunk-6MIIR3LR.js";
+import "../chunk-UOZGCZD7.js";
 import "../chunk-YA6SCYMC.js";
 import "../chunk-Z3NGWHFX.js";
 import "../chunk-YWAORJG6.js";
@@ -43,6 +45,7 @@ import "../chunk-Q65EMUNY.js";
 import "../chunk-BNIV2KZF.js";
 import "../chunk-IDFRWBMN.js";
 export {
+  SLICES_RUNNING_REASON,
   STAGE_AGENT_SESSION_RELEASE,
   deferCompletionForBackgroundStage,
   hasOpenUnendedStage,
@@ -51,6 +54,8 @@ export {
   liveStageAgents,
   onboardingStopNudge,
   releaseStageAgentsAtSessionStart,
+  sliceEndCommandRefusal,
   stageAgentTaskCount,
+  stoppedSlicesNote,
   tasksCarryAgentType
 };
