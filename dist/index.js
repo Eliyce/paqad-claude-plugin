@@ -1,6 +1,7 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   ACTIVE_CAPABILITY_ORDER,
+  AC_ID_PATTERN,
   AIDetector,
   ANALYTICS_CONFLICTS,
   ANALYTICS_STRICTNESS_MODES,
@@ -9,8 +10,14 @@ import {
   ARTIFACT_OUTPUT_KEYS,
   ARTIFACT_TYPES,
   ATTACHMENT_RETRY_BUDGET_MS,
+  AcTestMappingGate,
+  AdapterFactory,
+  AiAssistantAdapter,
+  AiderAdapter,
+  AntigravityAdapter,
   ArchitectureComplianceGate,
   AttachmentPathError,
+  BACKSTOP_VERIFICATION_ORIGINS,
   BOUNDARY_SCHEMA_VERSION,
   BehavioralCorrectnessGate,
   BudgetAllocator,
@@ -19,21 +26,28 @@ import {
   COLLISION_MAP,
   COMPLIANCE_EVIDENCE_STRENGTHS,
   COMPLIANCE_RELATIONS,
+  COMPLIANCE_SCHEMA_VERSION,
   CONTEXT_LEVELS,
   CacheMetricsTracker,
   CacheWarmer,
   ChangeCompletenessGate,
+  ClaudeCodeAdapter,
   CodeTestsLintGate,
+  CodexCliAdapter,
   ContextBudgetEnforcer,
   ContextBudgetOptimizer,
   ContextDeduplicator,
   ContextEvictor,
   ContextHitTracker,
+  ContinueAdapter,
   ContradictionDetector,
+  CursorAdapter,
   DECISION_ASK_THRESHOLDS,
   DEFAULT_ANALYTICS_STRICTNESS,
   DEFAULT_BOUNDARY_REPORT_PATH,
   DEFAULT_GATE_CODES,
+  DEFAULT_HOOK_ADAPTER,
+  DEFAULT_OBLIGATION_INDEX_PATH,
   DEFAULT_PREDICTIVE_CACHE_OPTIONS,
   DEFAULT_REBUILD_CACHE_MAX_SIZE,
   DEFAULT_REDACTION_ALLOWLIST,
@@ -55,20 +69,33 @@ import {
   EMBEDDING_PROVIDER_NAMES,
   ESCALATION_MODES,
   ESCALATION_REASONS,
+  EVIDENCE_FAILURE_CATEGORIES,
+  EVIDENCE_GATE_STATUSES,
+  EVIDENCE_OVERALL_STATUSES,
   EngineEventBus,
   EvidenceRetriever,
   ExtensionSurfaceGate,
+  FAILURE_PHRASES,
   FINDING_SEVERITIES,
   FileRegistryMapper,
   FrameworkUpdater,
   FreshnessChecker,
+  GATE_CATALOG,
+  GeminiCliAdapter,
+  GithubCopilotAdapter,
   HEALTH_CHECK_STATUSES,
+  HOOK_COVERAGE_MATRIX,
   HOOK_EXIT_CODES,
   HOOK_TRIGGERS,
+  HUD_REFRESH_VERBS,
+  HUD_SNAPSHOT_SCHEMA,
+  HUD_VERDICT_WORDS,
   HealthChecker,
   ImplementationReviewGate,
   InferredTurnClassifierModel,
   InstructionsDocsStructureGate,
+  JunieAdapter,
+  LATE_GATES,
   LEGACY_MCP_OUTPUT_PATHS,
   MANAGEABLE_ACTIVE_CAPABILITIES,
   MCP_SERVERS,
@@ -76,8 +103,23 @@ import {
   McpConfigManager,
   McpServerRegistry,
   ModuleDocsStructureGate,
+  NATIVE_HOOK_EVENTS,
+  NO_VERDICT_RECORD,
   OnboardingOrchestrator,
+  PAQAD_AGENT_TOOL_MATCHER,
+  PAQAD_ANY_SUBAGENT_MATCHER,
+  PAQAD_BASH_TOOL_MATCHER,
+  PAQAD_HANDBACK_TOOL_MATCHER,
+  PAQAD_HOOK_EVENT_ORDER,
+  PAQAD_LIVE_HOOKS,
+  PAQAD_MUTATING_TOOL_MATCHER,
+  PAQAD_ONBOARDING_AGENT_MATCHER,
+  PAQAD_RUNTIME_PREFIX,
   PAQAD_SCHEMA_VERSION,
+  PAQAD_SKILL_READ_MATCHER,
+  PAQAD_STAGE_AGENT_MATCHER,
+  PAQAD_STAGE_HELPER_MATCHER,
+  PAQAD_SUBAGENT_START_MATCHER,
   PDF_PAGE_CAP,
   PENTEST_EFFORTS,
   PENTEST_FINDING_STATUSES,
@@ -89,6 +131,8 @@ import {
   PENTEST_WORKFLOWS,
   PIPELINE_PHASES,
   PLACEHOLDER_DESIGN_TOKENS,
+  PLUGIN_RUNTIME_ROOT,
+  PLUGIN_SESSION_START_HOOK,
   ParallelExecutor,
   PatternCli,
   PatternRecorder,
@@ -108,6 +152,7 @@ import {
   REVIEW_MODES,
   REVIEW_TIERS,
   ROUTING_MECHANISMS,
+  RUNG_WORDS,
   RebuildCache,
   RebuildFailedError,
   RelevanceScorer,
@@ -119,6 +164,7 @@ import {
   SINGLE_TEST_SELECTORS,
   SKILL_MODEL_TIERS,
   SKILL_OUTPUT_FORMATS,
+  SPEC_REVIEW_SCHEMA_VERSION,
   STABILITY_LEVELS,
   STACK_ECOSYSTEMS,
   STRUCTURED_TEST_FORMATS,
@@ -145,14 +191,26 @@ import {
   TICKET_PROVIDER_KINDS,
   TIER_DIMENSIONS,
   TIER_TOKEN_LIMITS,
+  TIMELINE_COMMITS,
+  TIMELINE_ROWS,
   TOKEN_ARTIFACT_CLASSES,
+  TRACK_RECORD_BUNDLES,
+  TURN_END_SOURCES,
+  TemplateEngine,
   TemplateRegistry,
   TransitionLogManager,
   TurnSummarizer,
   UNKNOWN_TEST_OUTPUT_TIMESTAMP,
+  VERIFICATION_EVIDENCE_RELATIVE_PATH,
+  VERIFICATION_EVIDENCE_SCHEMA_VERSION,
+  VERIFICATION_EVIDENCE_STDERR_BUDGET_BYTES,
+  VERIFICATION_GATES,
   VERSION,
   VERSION_UNKNOWN,
   VerificationGateRunner,
+  WAITING_FOR_ANSWER,
+  WATCHING_CI,
+  WindsurfAdapter,
   WorkflowEngine,
   WorkflowRouterService,
   WorkflowTemplateLoader,
@@ -173,9 +231,11 @@ import {
   appendPlanningAudit,
   applyDisclosurePolicy,
   askThresholdForProject,
+  assembleDecisionEvidence,
   assembleIntelligence,
   assertActiveCapability,
   assertComplianceSummaryInvariants,
+  attachSpecDefectsToObligations,
   attachmentCollectionsRoot,
   backstopGates,
   bootstrapFramework,
@@ -188,47 +248,70 @@ import {
   buildControlLayerAudit,
   buildCoverageOverlay,
   buildCurrentPentestReport,
+  buildDecisionPacket,
   buildDesignSystemContext,
   buildDetectionReport,
   buildDocumentationDriftDeltaPayload,
   buildDriftDeltaReasoningPayload,
   buildErrorCatalogContext,
   buildEventDoc,
+  buildHostHookChain,
+  buildHudSnapshot,
   buildIntegrationDocContext,
   buildModuleScaffoldContext,
   buildPatternAdvisories,
+  buildPluginHookChain,
   buildReasoningInputPayload,
+  buildRecordEvents,
   buildRegistryContext,
   buildRegressionWatchList,
   buildRepositoryVerificationContext,
   buildRepositoryVerificationVerdict,
   buildRunnerScriptContext,
+  buildShip,
+  buildSignoff,
   buildSkillIndex,
   buildTestDeltaReasoningPayload,
+  buildTimeline,
+  buildTrackRecords,
   buildVerificationDeltaReasoningPayload,
+  buildVerificationEvidence,
   buildVerificationGateDeltaPayload,
+  capabilityGateCommand,
   checkAndMigrateSchema,
   checkSchemaCompatibility,
   checkSpecCompliance,
   classifyDefect,
   cleanupLegacyMcpFiles,
   clearEphemeralCollection,
+  closedChangeOf,
+  collectObservedAcIds,
   collectScopeDriftPaths,
   collectionVectorPaths,
   compareConfigurations,
   compareConsumerCompatibility,
+  compareDefects,
   compileOnboardingRules,
+  completionRecordCommand,
   computeAcTestMapping,
+  computeDeliveryPlan,
   computeDelta,
+  computeHudFlags,
+  computeHudHeadline,
   computeImplementationReview,
+  computePacketConfidence,
   computePlanVsActual,
   computeReconnect,
   computeSpecReview,
   conflictCategory,
+  countFileReferences,
   createDriftDelta,
   createLogger,
   createTestDelta,
   createVerificationDelta,
+  decisionOptionsForCategory,
+  decisionQuestionForCategory,
+  defaultSimilarityFor,
   deregisterCollection,
   deriveOverallStatus,
   detectAnalyticsSignals,
@@ -254,17 +337,26 @@ import {
   evaluateBenchmarkGates,
   evaluateEscalation,
   evaluateRetrievalGate,
+  expectedGateCodes,
+  extractAcIdFromIssue,
   extractKeywords,
   extractModuleNamesFromRequest,
+  extractObligationIndex,
   extractRelevantTestPaths,
   extractSourceReportPath,
   extractUnhandledVariants,
+  failurePhrase,
   findBracePlaceholders,
   findPathSegmentsInRun,
   findTouchedFilePaths,
   formatAgentContextWarnings,
   formatVerdictSummary,
+  frameworkHomeAbsolute,
   frameworkSymlinkType,
+  gapStages,
+  gateCatalogEntry,
+  gateExpectedOnLane,
+  gateOwner,
   generateBoundaryTests,
   generateDocumentationScaffold,
   generateInitialRegistries,
@@ -280,8 +372,13 @@ import {
   getServersForStack,
   getStackPromptChoices,
   groupBySlug,
+  hasPreMutationBlock,
   hashRelevantInputs,
   hashSourceFiles,
+  hookCommand,
+  hudOnboarding,
+  hudReview,
+  hudSessionId,
   indexAttachment,
   inferSourceArtifacts,
   injectContractBoundaryCriteria,
@@ -289,9 +386,14 @@ import {
   injectRuleCriteria,
   isActiveCapability,
   isAttachmentIndexingDegraded,
+  isBackstopVerificationOrigin,
   isEnoentError,
+  isHudRefreshVerb,
   isIndexAttachmentFailure,
+  isLiveHookCapable,
   isManageableActiveCapability,
+  isRunningUnderPlugin,
+  isUnderPluginPath,
   listAvailableActiveCapabilities,
   listCollections,
   loadBoundaryReport,
@@ -316,18 +418,24 @@ import {
   queryOsv,
   readAttachmentEvents,
   readCostLog,
+  readHudVerdict,
   readJsonIfExists,
   readSchemaMarker,
   readSchemaMarkerSync,
+  readVerdictAgreement,
   rebuildApiConversation,
   recordFromComplianceReport,
+  recordGapText,
   redactFields,
+  refreshHudSnapshot,
   registerCollection,
   reloadLoggingConfig,
   removeActiveCapability,
+  renderHookCommand,
   renderReconnectReport,
   renderStackConfirmationSummary,
   renderVitestSkeleton,
+  rendersFullHookChain,
   resetGeneratingEntries,
   resolveActiveLineage,
   resolveAnalyticsStrictness,
@@ -337,6 +445,7 @@ import {
   resolveDocTargets,
   resolveSelections,
   retrieveFromAttachments,
+  reviewSpecification,
   runArtifactsDir,
   runLogsDir,
   runOrphanSweep,
@@ -353,9 +462,14 @@ import {
   schemaMigrationLogPath,
   scoreFile,
   selectModelForTier,
+  selectViableDecisionOptions,
   serializeModuleMap,
   skillPath,
   slugify,
+  slugifySpec,
+  specIndexPath,
+  specReportPath,
+  specReviewPath,
   summarizeCommandAvailability,
   syncAnalyticsDocs,
   toEphemeralCollectionId,
@@ -368,97 +482,68 @@ import {
   validateErrorCatalogMarkdown,
   validateSpecDocument,
   validateUserFlow,
+  verdictSessionId,
   verifyFullSuite,
   withSchemaMigrationLock,
   withoutRemovedRetiredFiles,
+  workIsDone,
+  workKindOf,
   writeGeneratedFiles,
+  writeHudReceipt,
+  writeHudSnapshot,
+  writeHudSnapshotSafe,
   writeJson,
   writeModuleMap,
   writePlanVsActual,
   writeSchemaMarker,
   writeSchemaMarkerSync,
   writeSkillIndex,
-  writeSkillIndexFromArtifacts
-} from "./chunk-IU7W64YM.js";
-import {
-  AC_ID_PATTERN,
-  AcTestMappingGate,
-  BACKSTOP_VERIFICATION_ORIGINS,
-  EVIDENCE_FAILURE_CATEGORIES,
-  EVIDENCE_GATE_STATUSES,
-  EVIDENCE_OVERALL_STATUSES,
-  FAILURE_PHRASES,
-  GATE_CATALOG,
-  HUD_REFRESH_VERBS,
-  HUD_SNAPSHOT_SCHEMA,
-  HUD_VERDICT_WORDS,
-  LATE_GATES,
-  NO_VERDICT_RECORD,
-  RUNG_WORDS,
-  TIMELINE_COMMITS,
-  TIMELINE_ROWS,
-  TRACK_RECORD_BUNDLES,
-  TURN_END_SOURCES,
-  VERIFICATION_EVIDENCE_RELATIVE_PATH,
-  VERIFICATION_EVIDENCE_SCHEMA_VERSION,
-  VERIFICATION_EVIDENCE_STDERR_BUDGET_BYTES,
-  VERIFICATION_GATES,
-  WAITING_FOR_ANSWER,
-  WATCHING_CI,
-  buildHudSnapshot,
-  buildRecordEvents,
-  buildShip,
-  buildSignoff,
-  buildTimeline,
-  buildTrackRecords,
-  buildVerificationEvidence,
-  closedChangeOf,
-  collectObservedAcIds,
-  computeDeliveryPlan,
-  computeHudFlags,
-  computeHudHeadline,
-  expectedGateCodes,
-  extractAcIdFromIssue,
-  failurePhrase,
-  gapStages,
-  gateCatalogEntry,
-  gateExpectedOnLane,
-  gateOwner,
-  hudOnboarding,
-  hudReview,
-  hudSessionId,
-  isBackstopVerificationOrigin,
-  isHudRefreshVerb,
-  readHudVerdict,
-  readVerdictAgreement,
-  recordGapText,
-  refreshHudSnapshot,
-  verdictSessionId,
-  workIsDone,
-  workKindOf,
-  writeHudReceipt,
-  writeHudSnapshot,
-  writeHudSnapshotSafe,
+  writeSkillIndexFromArtifacts,
   writeVerdictAgreement,
   writeVerificationEvidence
-} from "./chunk-C2W2AEG5.js";
-import "./chunk-AJVRXOZR.js";
+} from "./chunk-MNDIAGVL.js";
+import "./chunk-YT7KYIQP.js";
+import "./chunk-NWKNIJBO.js";
+import "./chunk-HH727BKB.js";
+import "./chunk-QZYGLSRK.js";
 import {
   EcosystemParserRegistry,
   StackIntrospector,
+  StackSnapshotCache,
   createDefaultEcosystemParserRegistry,
-  expandManifestNames
-} from "./chunk-APLZYCOS.js";
-import "./chunk-F657QMM6.js";
-import "./chunk-4QLK2APG.js";
-import "./chunk-XVGJKRBZ.js";
-import "./chunk-WKGFBXSZ.js";
-import "./chunk-ABGKJMKV.js";
+  expandManifestNames,
+  readExistingOnboardingManifest,
+  readFrameworkVersion,
+  readStackSnapshotSync,
+  resolveFrameworkInstallPath,
+  sanitizeStackSnapshotRepository,
+  writeDetectionReport,
+  writeFrameworkMetadata,
+  writeFrameworkVersionPreservingTimestamp,
+  writeJsonPreservingTimestamp,
+  writeOnboardingManifest,
+  writeProjectProfile
+} from "./chunk-NJCFQXHN.js";
+import "./chunk-FQVAS2WV.js";
+import {
+  AGENT_ROLES,
+  CONTEXT_LEVEL_BUDGETS,
+  DEFAULT_CONTEXT_BUDGET,
+  ROLE_TOKEN_BUDGETS,
+  resolveContextBudgetForModel,
+  resolveContextBudgetForModelTier
+} from "./chunk-XT45N7K2.js";
+import {
+  ADAPTER_TYPES
+} from "./chunk-C3FH5AYD.js";
+import "./chunk-QIHQFCHB.js";
+import "./chunk-DKFOHIMU.js";
+import "./chunk-TBR64PVU.js";
 import {
   HEURISTIC_TOKENIZER_VERSION,
   clearTokenizerCache,
   getOrLoad
-} from "./chunk-JAQOKAYZ.js";
+} from "./chunk-BDNBTMZL.js";
 import {
   CRITERION_STATUSES,
   DEFECT_PATTERN_SCHEMA_VERSION,
@@ -475,11 +560,14 @@ import {
   REQUIREMENT_TYPES,
   ROLLBACK_CLASSES,
   RequestClassifier,
+  compileRules,
   computeClassificationConfidence,
   computeManifestHash,
+  computeSourceHash,
   createEvidence,
   defaultStoreRoot,
   deriveHealthTier,
+  detectDecisionForks,
   detectDeltaCandidate,
   ensureStoreDir,
   estimateContextBudgetHint,
@@ -487,32 +575,41 @@ import {
   hasCodeNegation,
   initializeModuleHealth,
   isAboutWorkPrompt,
+  isAlwaysLoadRule,
+  isCompiledRulesStale,
   isCreateArtifactAsk,
   isQuestionRoute,
   listManifestSlugs,
   loadEntry,
   loadIndex,
   loadManifest,
+  looksLikeTriggerPattern,
   manifestExists,
   markStaleEntries,
+  matchRuleTriggers,
+  matchesGlobish,
   moduleHealthPath,
   persistEvidence,
   prunePatterns,
   queryPatterns,
   readAllModuleHealth,
+  readCompiledRules,
   readModuleHealth,
   recordFindings,
   resolveImpacts,
   resolveScope,
+  ruleTriggersMatch,
   saveManifest,
   shouldSkipLlm,
   syncModuleHealth,
   syncModuleHealthFromVerification,
   toProjectRelative,
   toProjectRelativeModule,
+  writeCompiledRules,
   writeModuleHealth,
   writeModuleHealthProfile
-} from "./chunk-5ABS4VF7.js";
+} from "./chunk-FBUUUOJ6.js";
+import "./chunk-IVPPGREZ.js";
 import {
   AstChunker,
   CHUNKER_VERSION,
@@ -520,10 +617,12 @@ import {
   CorruptVectorIndexError,
   CrsBacklogQueue,
   DEFAULT_CRS_BACKLOG_CAP,
+  DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
   EmbeddingBacklogOverflow,
   EmbeddingProviderError,
   FileVectorIndex,
   LocalEmbeddingProvider,
+  MCP_SERVER_TYPES,
   OpenAiEmbeddingProvider,
   PatternStore,
   PatternSuggester,
@@ -533,168 +632,46 @@ import {
   RagService,
   SUPPORTED_EXTRACTION_KINDS,
   SUPPORTED_VISION_EXTENSIONS,
+  SkillAuditBuffer,
+  StackPackLoader,
   appendRagAudit,
+  appendSkillAuditEvent,
+  assertSafeCloneSource,
   castMerge,
+  clearShownSkillMetadataDeprecations,
   compileProjectGlob,
   createEmbeddingProvider,
+  createPack,
   crsCollectionDir,
   crsCollectionLayout,
   crsCollectionPaths,
+  emitSkillAuditEvent,
   enableEmbeddingProviderCache,
   escapeCollectionId,
   getGlobalPatternVectorPaths,
-  isEmbeddingBacklogOverflow,
-  isEmbeddingProviderError,
-  isRagIngestError,
-  lexicalDocumentText,
-  localModelDir,
-  localModelsRoot,
-  resetEmbeddingProviderCache,
-  suggestPatternsForProject,
-  toCrsCollectionId
-} from "./chunk-YFU3CUA5.js";
-import "./chunk-SXJIXXSX.js";
-import "./chunk-XHAUVSIZ.js";
-import "./chunk-YKXOZFAY.js";
-import "./chunk-VZJTQQG2.js";
-import "./chunk-XXJEO6YM.js";
-import "./chunk-QWRGUU2Y.js";
-import "./chunk-S7PJ7EBJ.js";
-import {
-  COMPLIANCE_SCHEMA_VERSION,
-  DEFAULT_OBLIGATION_INDEX_PATH,
-  SPEC_REVIEW_SCHEMA_VERSION,
-  assembleDecisionEvidence,
-  attachSpecDefectsToObligations,
-  buildDecisionPacket,
-  compareDefects,
-  computePacketConfidence,
-  countFileReferences,
-  decisionOptionsForCategory,
-  decisionQuestionForCategory,
-  defaultSimilarityFor,
-  extractObligationIndex,
-  reviewSpecification,
-  selectViableDecisionOptions,
-  slugifySpec,
-  specIndexPath,
-  specReportPath,
-  specReviewPath
-} from "./chunk-36EFHBNS.js";
-import {
-  AdapterFactory,
-  AiAssistantAdapter,
-  AiderAdapter,
-  AntigravityAdapter,
-  ClaudeCodeAdapter,
-  CodexCliAdapter,
-  ContinueAdapter,
-  CursorAdapter,
-  DEFAULT_HOOK_ADAPTER,
-  GeminiCliAdapter,
-  GithubCopilotAdapter,
-  HOOK_COVERAGE_MATRIX,
-  JunieAdapter,
-  NATIVE_HOOK_EVENTS,
-  PAQAD_AGENT_TOOL_MATCHER,
-  PAQAD_ANY_SUBAGENT_MATCHER,
-  PAQAD_BASH_TOOL_MATCHER,
-  PAQAD_HANDBACK_TOOL_MATCHER,
-  PAQAD_HOOK_EVENT_ORDER,
-  PAQAD_LIVE_HOOKS,
-  PAQAD_MUTATING_TOOL_MATCHER,
-  PAQAD_ONBOARDING_AGENT_MATCHER,
-  PAQAD_RUNTIME_PREFIX,
-  PAQAD_SKILL_READ_MATCHER,
-  PAQAD_STAGE_AGENT_MATCHER,
-  PAQAD_STAGE_HELPER_MATCHER,
-  PAQAD_SUBAGENT_START_MATCHER,
-  PLUGIN_RUNTIME_ROOT,
-  PLUGIN_SESSION_START_HOOK,
-  TemplateEngine,
-  WindsurfAdapter,
-  buildHostHookChain,
-  buildPluginHookChain,
-  capabilityGateCommand,
-  completionRecordCommand,
-  frameworkHomeAbsolute,
-  hasPreMutationBlock,
-  hookCommand,
-  isLiveHookCapable,
-  isRunningUnderPlugin,
-  isUnderPluginPath,
-  renderHookCommand,
-  rendersFullHookChain
-} from "./chunk-U2SCMHDT.js";
-import "./chunk-OR466VEX.js";
-import "./chunk-7FJSWQHQ.js";
-import "./chunk-VEHHF6YK.js";
-import {
-  StackSnapshotCache,
-  readStackSnapshotSync
-} from "./chunk-7CZVDRYP.js";
-import {
-  readExistingOnboardingManifest,
-  readFrameworkVersion,
-  resolveFrameworkInstallPath,
-  sanitizeStackSnapshotRepository,
-  writeDetectionReport,
-  writeFrameworkMetadata,
-  writeFrameworkVersionPreservingTimestamp,
-  writeJsonPreservingTimestamp,
-  writeOnboardingManifest,
-  writeProjectProfile
-} from "./chunk-MBA6FOQV.js";
-import {
-  AGENT_ROLES,
-  CONTEXT_LEVEL_BUDGETS,
-  DEFAULT_CONTEXT_BUDGET,
-  ROLE_TOKEN_BUDGETS,
-  resolveContextBudgetForModel,
-  resolveContextBudgetForModelTier
-} from "./chunk-IKAOR4NY.js";
-import {
-  ADAPTER_TYPES
-} from "./chunk-BKNKG26S.js";
-import "./chunk-ODFN6AHU.js";
-import "./chunk-ZV4UFERV.js";
-import {
-  compileRules,
-  computeSourceHash,
-  detectDecisionForks,
-  isAlwaysLoadRule,
-  isCompiledRulesStale,
-  looksLikeTriggerPattern,
-  matchRuleTriggers,
-  matchesGlobish,
-  readCompiledRules,
-  ruleTriggersMatch,
-  writeCompiledRules
-} from "./chunk-523UKSAA.js";
-import {
-  DEFAULT_SKILL_AUDIT_BUFFER_CAPACITY,
-  MCP_SERVER_TYPES,
-  SkillAuditBuffer,
-  StackPackLoader,
-  appendSkillAuditEvent,
-  assertSafeCloneSource,
-  clearShownSkillMetadataDeprecations,
-  createPack,
-  emitSkillAuditEvent,
   getPackManifestMap,
   getPackTestRunners,
   getPacksForFrameworks,
   getSharedSkillAuditBuffer,
   installPack,
+  isEmbeddingBacklogOverflow,
+  isEmbeddingProviderError,
+  isRagIngestError,
+  lexicalDocumentText,
   listPacks,
   loadProjectPackRegistry,
+  localModelDir,
+  localModelsRoot,
   readSkillAuditEvents,
   recordSkillMetadataDeprecation,
   removePack,
+  resetEmbeddingProviderCache,
   resolvePackManagerRoots,
+  suggestPatternsForProject,
+  toCrsCollectionId,
   validatePackAt
-} from "./chunk-BWWJ7GLA.js";
-import "./chunk-TFG3KYLM.js";
+} from "./chunk-BCVUX5PS.js";
+import "./chunk-DO526IFP.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   buildDetectedStackProfile,
@@ -702,19 +679,22 @@ import {
   getLegacyCapabilities,
   getPrimaryStack,
   summarizeStack
-} from "./chunk-4GY44WMW.js";
-import "./chunk-3P4W22QI.js";
-import "./chunk-HYEASKUK.js";
-import "./chunk-LWALU6JC.js";
-import "./chunk-LBNBI3D6.js";
-import "./chunk-MZ4SXCNT.js";
-import "./chunk-UUBQQJVE.js";
-import "./chunk-3ZRKJOJE.js";
-import "./chunk-MDXUST3Z.js";
-import "./chunk-HEJZDQZ5.js";
-import "./chunk-AX64WQJL.js";
-import "./chunk-6R44EMVN.js";
-import "./chunk-BXMHKFAF.js";
+} from "./chunk-DBSQ7PHD.js";
+import "./chunk-K6MOAHMA.js";
+import "./chunk-HZXK65J2.js";
+import "./chunk-VAHAQVOV.js";
+import "./chunk-Y4BY35LG.js";
+import "./chunk-TFX4MDFC.js";
+import "./chunk-HULYX26E.js";
+import "./chunk-7GJRFLQ5.js";
+import "./chunk-2GKPBFKP.js";
+import "./chunk-HEJGITDA.js";
+import "./chunk-XD6J4ZQJ.js";
+import "./chunk-F6LIB6DF.js";
+import "./chunk-VLT7T3KD.js";
+import "./chunk-73HRB4RX.js";
+import "./chunk-OXEBFC57.js";
+import "./chunk-THNFPAD7.js";
 import {
   ALWAYS_LABEL,
   DECISION_AUDIT_EVENTS,
@@ -791,9 +771,9 @@ import {
   titleCheckFor,
   toDecisionRecord,
   validateDecisionPacket
-} from "./chunk-B4ITQDI4.js";
-import "./chunk-5KWOTSVX.js";
-import "./chunk-ZI6NAYWY.js";
+} from "./chunk-PWOOSANH.js";
+import "./chunk-ANTLLTOX.js";
+import "./chunk-CJ4B24JG.js";
 import {
   ACTIVE_CAPABILITIES,
   CAPABILITIES,
@@ -803,8 +783,8 @@ import {
   STACK_CAPABILITIES_MAP,
   isStack,
   validateCapabilitiesForStack
-} from "./chunk-PIHEVR35.js";
-import "./chunk-TL22DBH4.js";
+} from "./chunk-3K27FBMG.js";
+import "./chunk-Y7R46KRJ.js";
 import {
   HUD_COST_CACHE_SUFFIX,
   hudCostCachePath,
@@ -815,14 +795,13 @@ import {
   hudVerdictPath,
   safeSessionId,
   writeFileAtomic
-} from "./chunk-4UDYC65U.js";
-import "./chunk-Y2ZLYYTT.js";
-import "./chunk-P4RPU2KB.js";
-import "./chunk-TIGPOU33.js";
-import "./chunk-2XQIUIDS.js";
-import "./chunk-BTDDEK7C.js";
-import "./chunk-T7KPBKCY.js";
-import "./chunk-5G2EOBB5.js";
+} from "./chunk-RLWC6XFR.js";
+import "./chunk-DE72RWA7.js";
+import "./chunk-5KDVEW3I.js";
+import "./chunk-I4T6ZSTJ.js";
+import "./chunk-DPRQWAIN.js";
+import "./chunk-IYZNK7Q2.js";
+import "./chunk-WEFEQHGZ.js";
 import {
   ANALYTICS_DECISION_PATH,
   ANALYTICS_PROVIDERS,
@@ -863,7 +842,7 @@ import {
   skillMetadataDeprecations,
   splitSkillFrontmatter,
   toLoadedSkill
-} from "./chunk-OJJKELCB.js";
+} from "./chunk-LDKFDN3R.js";
 import {
   CancelledError,
   DecisionPacketCorruptError,
@@ -900,9 +879,9 @@ import {
   setEngineLogger,
   toEngineError,
   writeProjectSecret
-} from "./chunk-FTTLICPK.js";
-import "./chunk-BOEVU2BD.js";
-import "./chunk-NJE7NS7E.js";
+} from "./chunk-H3JU5RBI.js";
+import "./chunk-YPOHZLD5.js";
+import "./chunk-YI7GGGDM.js";
 import {
   COMPLEXITY_LEVELS,
   LANES,
@@ -910,27 +889,26 @@ import {
   RISK_LEVELS,
   SchemaValidator,
   selectLane
-} from "./chunk-UOZGCZD7.js";
-import "./chunk-YA6SCYMC.js";
-import "./chunk-Z3NGWHFX.js";
+} from "./chunk-XK65VKUF.js";
+import "./chunk-TZCIQC7B.js";
+import "./chunk-DZSC6KCZ.js";
 import {
   findPackageRoot,
   getPackageRoot,
   getRuntimeRoot,
   getRuntimeTemplatesRoot
-} from "./chunk-YWAORJG6.js";
-import "./chunk-UNRAXQSB.js";
-import "./chunk-L7TVJSIU.js";
-import "./chunk-QJQ4AXUA.js";
+} from "./chunk-NCABIBTI.js";
+import "./chunk-2XQX5CIB.js";
+import "./chunk-F6BUWMKO.js";
 import {
   deriveSlug,
   isSlugSafe
-} from "./chunk-Q65EMUNY.js";
+} from "./chunk-4UM6CK6G.js";
 import {
   PATHS,
   REGISTRIES
-} from "./chunk-BNIV2KZF.js";
-import "./chunk-IDFRWBMN.js";
+} from "./chunk-UMPIHMXN.js";
+import "./chunk-G5ZPBAMA.js";
 export {
   ACTIVE_CAPABILITIES,
   ACTIVE_CAPABILITY_ORDER,

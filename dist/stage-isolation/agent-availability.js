@@ -1,18 +1,18 @@
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
   pluginLoadState
-} from "../chunk-3P4W22QI.js";
+} from "../chunk-Y4BY35LG.js";
 import {
   MANDATORY_STAGE_AGENTS
-} from "../chunk-OJJKELCB.js";
-import "../chunk-FTTLICPK.js";
-import "../chunk-UOZGCZD7.js";
-import "../chunk-YA6SCYMC.js";
-import "../chunk-YWAORJG6.js";
-import "../chunk-BNIV2KZF.js";
+} from "../chunk-LDKFDN3R.js";
+import "../chunk-H3JU5RBI.js";
+import "../chunk-XK65VKUF.js";
+import "../chunk-TZCIQC7B.js";
+import "../chunk-NCABIBTI.js";
+import "../chunk-UMPIHMXN.js";
 import {
   init_esm_shims
-} from "../chunk-IDFRWBMN.js";
+} from "../chunk-G5ZPBAMA.js";
 
 // src/stage-isolation/agent-availability.ts
 init_esm_shims();
@@ -29,8 +29,8 @@ function projectOnboardedForClaudeCode(projectRoot) {
     return false;
   }
 }
-var STAGE_AGENT_MISSING_MESSAGE = "**\u25B8 paqad** \xB7 stage agents are missing\n> \u{1F534} Needs your attention \u2014 Claude Code has neither the paqad plugin agents nor a copy in this repo's `.claude/agents/` or in `~/.claude/agents/`, so a stage cannot be dispatched to its own agent. Install the paqad plugin (`/plugin install paqad@eliyce`) and start a new session. paqad stops here instead of running the stage in the main session.";
-var STAGE_AGENT_MISSING_CONTEXT = `paqad stage agents are not available in this Claude Code session. When a stage needs its own agent, stop and show the Developer this message instead of running the stage in the main session:
+var STAGE_AGENT_MISSING_MESSAGE = "paqad's stage agents load from the next session. Start a new session to continue.";
+var STAGE_AGENT_MISSING_CONTEXT = `paqad stage agents are not available in this Claude Code session. When a stage needs its own agent, stop and show the Developer this one line instead of running the stage in the main session or handing it to a general agent:
 
 ${STAGE_AGENT_MISSING_MESSAGE}`;
 function fullCopyPresent(root) {

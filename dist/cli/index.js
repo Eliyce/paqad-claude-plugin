@@ -1,45 +1,60 @@
 #!/usr/bin/env node
 import { createRequire as __paqadCreateRequire } from 'module'; const require = __paqadCreateRequire(import.meta.url);
 import {
+  holdRefreshContextLock
+} from "../chunk-EWDG4DVZ.js";
+import {
   buildStageBrief,
   candidatesNeedingDecision,
   extractCandidates,
   recordRecipeInjected,
   resolveBriefSession,
   stageCommandLines
-} from "../chunk-3B7ZHKPV.js";
-import {
-  holdRefreshContextLock
-} from "../chunk-VV3V5DI3.js";
+} from "../chunk-YIQMWKTG.js";
 import {
   stageSettingsReport,
   writeStageSettings
-} from "../chunk-W5KEP2ZZ.js";
+} from "../chunk-4BR5HLS3.js";
 import {
   buildStageReport,
   stageReportOptions,
   stageStartRefusal,
   unknownAgentReport
-} from "../chunk-B7JW2XA4.js";
+} from "../chunk-UNCCJLHQ.js";
 import {
   allChangedFiles,
   readLastUpdateRecord,
   writeLastUpdateRecord
-} from "../chunk-2IO7D5SZ.js";
+} from "../chunk-53M3TVUZ.js";
 import {
   DISABLED_SESSION_DOC_TYPE
-} from "../chunk-UBNQS2GA.js";
+} from "../chunk-5WKOV45V.js";
+import {
+  addRule,
+  cleanRuleText,
+  editRuleText,
+  removeRuleBullet
+} from "../chunk-VY2TKYNL.js";
 import {
   AGENT_MEMORY_MAX_BYTES,
   AGENT_PERMISSION_ALLOW,
+  AGENT_RECORD_WRITER,
   AGENT_TRACKED_ROOT,
+  AdapterFactory,
   AgentLintUsageError,
   AgentWorkspace,
   AuthoringRefusal,
+  BaseAdapter,
+  CHECKS_REPORT_SCHEMA_VERSION,
   CODE_KNOWLEDGE_SCHEMA_VERSION,
+  ClaudeCodeAdapter,
   Command,
+  DEBT_STATUSES,
   DEFAULT_GROUNDING_BUDGET_MS,
+  DEFAULT_OBLIGATION_INDEX_PATH,
   DEFAULT_PR_BODY,
+  DEGRADED,
+  DELIVERY_EVIDENCE_DOC_TYPE,
   DESIGN_TOKENS_PLACEHOLDER_NOTE,
   DesignTokenService,
   DesignTokensMissingError,
@@ -47,21 +62,42 @@ import {
   Detector,
   DifferentialRefresh,
   FrameworkUpdater,
+  GIT_WORKFLOW_PATH,
   HealthChecker,
   InvalidArgumentError,
+  MAX_EXPERT_QUESTIONS,
+  MISSING_LABEL_HINT,
   MODE_FILE,
   McpConfigManager,
+  NO_VERDICT_RECORD,
   NeverWriteListError,
+  NoActiveFeatureError,
+  OPEN_STATUSES,
   OVERRIDES_FILE,
   OVERRIDE_ADD_UNVERIFIED,
   OnboardingOrchestrator,
+  PACK_REGISTRY_FAULT_REMEDIATION,
+  PAQAD_LIVE_HOOKS,
+  PAQAD_MUTATING_TOOL_MATCHER,
+  PAQAD_REPO_AGENT_ROOTS,
   PERMISSIONS_FILE,
   POWER_RULES,
+  PROJECT_AGENTS_DIR,
+  PROOFS,
+  PackRegistryEmptyError,
   PatternCli,
+  RECIPE_HEADING,
+  REVIEW_KINDS,
   Resolver,
+  ReuseDeclarationError,
+  ReviewRefusal,
+  SEVERITIES,
+  SKILL_FILE,
   SOURCE_GLOBS,
+  SiteMapSchemaError,
   SkillLintUsageError,
   SkillWorkspace,
+  SlicingRuleError,
   TEST_OUTPUT_SCHEMA_VERSION,
   TRACKED_ROOT,
   UNKNOWN_TEST_OUTPUT_TIMESTAMP,
@@ -69,147 +105,309 @@ import {
   WORKSPACE_ROOT,
   activeFeatureDirOrNull,
   addActiveCapability,
+  addDebtItem,
   affectsBehaviour,
   agentHookScripts,
+  agentOrchestratorEnabled,
+  agentRoots,
+  aggregateSpecPipelineMetrics,
   allStageStates,
   appendAuditLog,
   appendAuditLogFailure,
+  appendFixProofRow,
+  appendRuleOverride,
+  appendRuleOverrideOutcome,
+  appendSpecStepRow,
+  assembleExpertRun,
   assertActiveCapability,
+  authoringRaiseEnabled,
   behaviourChangeOf,
   bodyHeadingOrderProblem,
   bootstrapFramework,
   bootstrapFrameworkHome,
+  branchFinding,
+  browserStatus,
   budgetWarningLine,
+  buildAndWriteChangeTraceabilityMap,
   buildBoundaryReport,
   buildCodeKnowledgeIndex,
   buildEdges,
   buildEvidenceComment,
   buildExpertBriefs,
+  buildFeatureSpec,
+  buildHudSnapshot,
   buildOverlapReport,
   buildPatternAdvisories,
+  buildProvenance,
+  buildReviewView,
+  buildRunMetrics,
+  buildSpecChangePacket,
   buildStatusOf,
   builtinSecretScan,
   candidateText,
+  canonicalAppMapPath,
+  carriesManagedMarker,
+  carryForwardIds,
   catalogBudget,
+  changeLane,
   checkSchemaCompatibility,
   checkSpecCompliance,
   checkSpecShape,
   checkStageChain,
   checksSessionId,
+  classifyAgentPath,
   claudeConfigDir,
   cleanDiscoveredText,
   cleanupLegacyMcpFiles,
+  clearClarificationSection,
+  clearExpertSynthesis,
+  clearFrozenRun,
+  clearStaged,
   clearWaiting,
+  closeDebtItem,
   collectMachineFindings,
   collectMapEvidence,
   collectQualityMeasures,
   collectVerificationFindings,
+  commitFindings,
+  commitReviewRun,
+  commitStep,
   compareConfigurations,
   compareText,
+  compileFailureReason,
   compileOnboardingRules,
   computeDependencyUsage,
   computeReachability,
   computeTreeIdentityResult,
   contractScriptPaths,
   countFindings,
+  countedRedRow,
   createBaseline,
   createConfigCommand,
   createDeliveryShell,
   createRagProgressReporter,
   createTestDelta,
+  currentBranch,
+  decideFinish,
   defaultClaudeVersion,
   defaultManagedSettingsPaths,
+  deriveCaption,
   deriveMapFreshness,
+  deriveRecordedProviders,
   deriveTestingForProfile,
+  designSignOffApplies,
   designSignOffPrLine,
   discoverInstalledAgents,
   discoverInstalledSkills,
+  discoverModuleHealth,
+  discoverSourceRoots,
   dist_default,
   dist_default2,
   dist_default3,
   doctorBoundaryReport,
   doctorObligationIndex,
   doctorSpecReview,
+  dynamicRecord,
+  editedDevelopmentThisTurn,
+  editedFiles,
+  enabledAdapters,
+  evaluateFrontendTrigger,
+  evaluateSpecFreeze,
+  execaCommandRunner,
   expertCollisionLine,
   expertCollisions,
   expertsActive,
   exportFeatureBundle,
+  extractObligationIndex,
   extractSymbols,
+  extractTitlesAndTags,
   featureReportEnabled,
+  findAgentPaths,
+  findSkillPaths,
   findSubsetOverlaps,
+  followsBranchShape,
   formatEvidenceMigration,
   formatLintJson,
   formatSkillLintJson,
+  freezeNudge,
+  freezeSpec,
   gateRetrieval,
   gateSatisfied,
   gatherStaleDocCandidates,
   generateBoundaryTests,
   generateVitestSkeletons,
+  hashAgentFile,
+  hashAgentText,
+  hashFiles,
+  hashFolder,
+  hashFolderWithoutDescription,
+  hashRuleSources,
   hashSourceFiles,
+  hashText,
+  hudSessionId,
   installGitHooks,
+  isAgentTemplatePath,
+  isConfiguredBase,
+  isEditOutcome,
+  isFrameworkDisabledForRoot,
+  isGitIgnored,
+  isHudRefreshVerb,
+  isMissingPathError,
   isNpmAvailable,
+  isPaqadRepository,
   isPaqadRuntimeSkill,
   isSlug,
   isStale,
+  laneMayRise,
   lensFocus,
+  linkTicket,
   lintAgentInProject,
   lintExitCode,
   lintSkillFolder,
   listAvailableActiveCapabilities,
+  listDebtItems,
+  listFolderFiles,
+  listRunDirs,
   loadBoundaryReport,
+  loadCaptureScripts,
   loadModuleMap,
   loadModuleSlugResolver,
   loadObligationIndex,
   loadSpecReviewReport,
   locate,
   lockfileHash,
+  markRuleStopAllowedOnce,
+  matchTicketSource,
   maybeMigrateToPlugin,
   meetsThreshold,
+  mergeExpertNotes,
+  mergedKind,
   migrateFeatureEvidence,
   migrationSessionId,
+  missingHeadings,
+  namesCriterion,
+  newestFirst,
   normalizeEvidence,
   normalizeForMatch,
+  openIfPresent,
   option,
   overlapScore,
+  overrideAwaitsOutcome,
+  packRegistryFaultDetail,
+  parseDegradedCodes,
   parseGitleaksJson,
   parseJscpdJson,
   parseNpmAuditJson,
   parseOsvScannerJson,
   parseTestOutput,
+  parseTraceArtifact,
+  pathTriggeredSeats,
   pendingMoveRefusal,
   permissionPacketNamesFile,
+  pickBranchType,
+  placeholdersIn,
+  planBranch,
+  planFiles,
+  pluginAutoUpdate,
+  pluginSettingsKeys,
+  projectRelative,
+  promoteDebtItem,
+  provisionBrowser,
   pruneFeatureBundles,
+  queryCodeKnowledge,
+  queryFrameworkApi,
   queryOsv,
   raiseAgentPermissionDecision,
   raiseAuthoringDecision,
+  raiseLaneForAuthoring,
+  raiseLaneIfGrown,
   raiseOverrideDecision,
+  readAllFeatureChangeMetrics,
+  readAllFeatureEvidence,
+  readAllFeatureRag,
+  readAllFeatureRuleRuns,
+  readAllFeatureStageRows,
+  readAllJourneys,
+  readAuthoringConfig,
   readAuthoringDecision,
+  readBytesIfPresent,
+  readCanonicalSiteMap,
   readChangeDiff,
   readChecksReportForFeature,
+  readCodeKnowledgeIndex,
+  readDebtItems,
+  readExpertNeed,
+  readExpertNotes,
+  readExpertSynthesis,
+  readExperts,
+  readFeatureChangeMetricsWindow,
+  readFeatureChecks,
+  readFeaturePlan,
+  readFeatureSpecification,
+  readFeatureTechDebtIndex,
+  readFixProofRows,
+  readFrameworkApiIndex,
+  readFreezeSections,
+  readGrounding,
+  readHudVerdict,
+  readJourney,
+  readLabel,
   readMode,
   readOverrides,
   readPermissionDecisionIds,
   readPipelineConfig,
   readQualityBaseline,
+  readQuestions,
+  readRegularFile,
+  readRequest,
+  readReviewRun,
+  readRuleStopRecord,
   readSchemaMarkerSync,
+  readSkillPathContext,
   readSourceFiles,
+  readStagedExpertQuestions,
+  readStagedJson,
+  readStagedText,
+  readTextIfPresent,
+  readTrace,
   readVerificationEvidence,
+  readYaml,
+  recipeRepairAdvice,
   recordMigrationSession,
+  refreshDelivery,
+  refreshHudSnapshot,
+  refreshPaqadProjectFiles,
+  refreshRuleContext,
   refreshStackDocsFromInventory,
+  regularFiles,
+  relaxedItems,
+  rememberInput,
   remoteDefaultBranch,
   removeActiveCapability,
   removeGeneratedFiles,
+  removeJourney,
   removeObsoleteContractDocs,
+  renderDelivery,
   renderEvidenceMarkdown,
   renderExpertBrief,
   renderGateMarkdown,
   renderOverlapReport,
+  renderStageAgentFiles,
   replaceMarkerBlock,
   requireEarlierGates,
+  requireTicket,
+  resolveBase,
   resolveChecksFlakyMode,
   resolveEntryPoints,
   resolvePackageEcosystem,
+  resolvePlaywrightModulePath,
+  resolveRecipe,
   resolveReportFeatureRef,
+  resolveRuleApplicabilityForChange,
+  resolveUpdatePolicy,
+  resolveVeRuntimeDir,
+  reviewSpecification,
+  reviewStage,
   rollbackPlugin,
   rollupModuleHealth,
   rosterEntryFor,
@@ -221,81 +419,86 @@ import {
   saveObligationIndex,
   saveSpecReviewReport,
   scanBoundaries,
+  scanImports,
   scopeFindingsToChange,
+  seatExpertsForLane,
   selectTestRunner,
+  sensitivePaths,
   sessionChecksTarget,
+  setFrameworkEnabled,
   setWaiting,
   sha256Text,
   shadowingLine,
+  skillFolderOf,
   skillLintExitCode,
+  skillOrchestratorEnabled,
+  skillRoots,
   slugify,
   sortFindings,
   source_default,
+  specIndexPath,
+  specReportPath,
   stageById,
   stageState,
   stampMapFreshness,
+  strongestSeverity,
   studlySkillName,
+  styleVerdict,
   symbolKey,
+  teamSetupMissing,
+  techDebtDir,
+  ticketInBranch,
+  uniqueInOrder,
   upsertStackDocCommandRow,
   validateAgentName,
+  validateCodeKnowledgeIndex,
+  validateCraftTrace,
+  validateExpertNeed,
+  validateExpertNotes,
+  validateFrameworkApiIndex,
+  validateQuestion,
+  validateSiteMapAnswers,
+  veBrowsersPath,
+  visualAcRequiredFiles,
+  visualEvidenceFlagOn,
+  withDescription,
   withinLimit,
+  withoutDescription,
+  writeAgentRecord,
+  writeCanonicalSiteMap,
   writeChecksReportForFeature,
+  writeCodeKnowledgeIndex,
+  writeExpertFindings,
+  writeExpertNotes,
+  writeExpertRoster,
+  writeExpertSynthesis,
   writeFeatureDecisionsIndex,
+  writeFeaturePlan,
   writeFeatureReport,
+  writeFeatureReview,
+  writeFeatureSpecification,
+  writeFeatureTechDebtIndex,
+  writeFileAtomic as writeFileAtomic2,
+  writeFrameworkApiIndex,
   writeGeneratedFiles,
   writeGitignore,
-  writeQualityBaseline,
-  writeReviewDigest,
-  writeStackArtifacts,
-  writeWorktreeInclude
-} from "../chunk-IU7W64YM.js";
-import {
-  CHECKS_REPORT_SCHEMA_VERSION,
-  DEBT_STATUSES,
-  DEGRADED,
-  NO_VERDICT_RECORD,
-  OPEN_STATUSES,
-  PROOFS,
-  REVIEW_KINDS,
-  ReviewRefusal,
-  SEVERITIES,
-  addDebtItem,
-  appendFixProofRow,
-  appendRuleOverride,
-  appendRuleOverrideOutcome,
-  buildAndWriteChangeTraceabilityMap,
-  buildHudSnapshot,
-  buildReviewView,
-  closeDebtItem,
-  commitReviewRun,
-  countedRedRow,
-  discoverModuleHealth,
-  discoverSourceRoots,
-  extractTitlesAndTags,
-  hudSessionId,
-  isEditOutcome,
-  isHudRefreshVerb,
-  listDebtItems,
-  namesCriterion,
-  newestFirst,
-  overrideAwaitsOutcome,
-  parseDegradedCodes,
-  promoteDebtItem,
-  readDebtItems,
-  readFeatureChecks,
-  readFeatureTechDebtIndex,
-  readFixProofRows,
-  readHudVerdict,
-  readReviewRun,
-  refreshHudSnapshot,
-  relaxedItems,
-  reviewStage,
-  scanImports,
-  techDebtDir,
-  writeFeatureTechDebtIndex,
   writeHudReceipt,
-  writeView
-} from "../chunk-C2W2AEG5.js";
+  writeJourney,
+  writeLabel,
+  writeQualityBaseline,
+  writeQuestions,
+  writeRequest,
+  writeReviewDigest,
+  writeRuleContext,
+  writeRulesLoaded,
+  writeSkillRecord,
+  writeStackArtifacts,
+  writeStagedText,
+  writeTrace,
+  writeView,
+  writeWorktreeInclude,
+  writeYamlAtomic
+} from "../chunk-MNDIAGVL.js";
 import {
   decodeReceiptStatement,
   latestFeatureReceipt,
@@ -307,328 +510,9 @@ import {
   readReceiptEvidenceRows,
   verifyEvidenceSeal,
   verifyReceiptSeal
-} from "../chunk-AJVRXOZR.js";
-import {
-  PROJECT_RULES_DIR,
-  RULES_ROOT,
-  RUN_DOC_TYPE,
-  StackIntrospector,
-  absRunFile,
-  atomicWriteJson,
-  atomicWriteText,
-  clearNudgeState,
-  findOpenRunId,
-  inventorySummary,
-  isRunId,
-  jvmParser,
-  listRunIds,
-  mintRunId,
-  moveBaselineToRun,
-  openRun,
-  packageKey,
-  readJsonFile,
-  readRun as readRun2,
-  runFilePath,
-  updateRun as updateRun2,
-  writeStackInventory
-} from "../chunk-APLZYCOS.js";
-import {
-  estimateTokens
-} from "../chunk-F657QMM6.js";
-import {
-  CHIEF_ROLE,
-  recordDoneRow,
-  recordSeatedRows,
-  recordWritingRow,
-  scanTranscriptLines
-} from "../chunk-4QLK2APG.js";
-import "../chunk-XVGJKRBZ.js";
-import {
-  stageLedgerEra
-} from "../chunk-WKGFBXSZ.js";
-import {
-  legacyAfterWindowLines
-} from "../chunk-ABGKJMKV.js";
-import "../chunk-JAQOKAYZ.js";
-import {
-  createEvidence,
-  persistEvidence,
-  prunePatterns,
-  queryPatterns,
-  syncModuleHealth
-} from "../chunk-5ABS4VF7.js";
-import {
-  EmbeddingProviderError,
-  FileVectorIndex,
-  PatternStore,
-  REMOVED_EMBEDDING_PROVIDER_MESSAGE,
-  RagService,
-  appendRagAudit,
-  assertEmbeddingProviderAvailable,
-  buildModuleRoleResolver,
-  cosineSimilarity,
-  enableEmbeddingProviderCache,
-  findRemovedEmbeddingProvider,
-  openRagConversation,
-  recordRagEvidence,
-  resolveRemovedEmbeddingProvider
-} from "../chunk-YFU3CUA5.js";
-import {
-  MODULE_REGISTRIES_UNIT,
-  ONBOARDING_STAGES,
-  PROJECT_DOC_AREAS,
-  STAGE_COUNT,
-  currentStage,
-  foldJourney,
-  foldStage,
-  isStageId,
-  stageDefinition,
-  stagesBefore,
-  statusLine,
-  unitRowsForStage
-} from "../chunk-SXJIXXSX.js";
-import {
-  appendRouteTurn,
-  readRouteTurns
-} from "../chunk-XHAUVSIZ.js";
-import {
-  CHECKS_RUNNING_CEILING_MS,
-  clearAgentRunRecord,
-  clearChecksRunningMarker,
-  processGroupOf,
-  processStartTime,
-  writeAgentRunRecord,
-  writeChecksRunningMarker
-} from "../chunk-YKXOZFAY.js";
-import {
-  PAQAD_STATUS_GLYPH
-} from "../chunk-VZJTQQG2.js";
-import {
-  describeOptionalEngine
-} from "../chunk-XXJEO6YM.js";
-import {
-  addRule,
-  cleanRuleText,
-  editRuleText,
-  removeRuleBullet
-} from "../chunk-K33IDLBM.js";
-import {
-  addRuleEntry,
-  applyRuleScriptMap,
-  archiveRule,
-  collectRuleFiles,
-  compileRuleScripts,
-  computeRuleFilesHash,
-  fixturesRoot,
-  readDrift,
-  runFixtures,
-  setRuleText,
-  upsertScriptEntry
-} from "../chunk-QWRGUU2Y.js";
-import {
-  isFrameworkDisabledForRoot,
-  markRuleStopAllowedOnce,
-  readRuleStopRecord,
-  setFrameworkEnabled
-} from "../chunk-S7PJ7EBJ.js";
-import {
-  AGENT_RECORD_WRITER,
-  DEFAULT_OBLIGATION_INDEX_PATH,
-  DELIVERY_EVIDENCE_DOC_TYPE,
-  GIT_WORKFLOW_PATH,
-  MAX_EXPERT_QUESTIONS,
-  MISSING_LABEL_HINT,
-  NoActiveFeatureError,
-  PACK_REGISTRY_FAULT_REMEDIATION,
-  PackRegistryEmptyError,
-  ReuseDeclarationError,
-  SiteMapSchemaError,
-  SlicingRuleError,
-  agentOrchestratorEnabled,
-  aggregateSpecPipelineMetrics,
-  appendSpecStepRow,
-  assembleExpertRun,
-  authoringRaiseEnabled,
-  branchFinding,
-  browserStatus,
-  buildFeatureSpec,
-  buildProvenance,
-  buildRunMetrics,
-  buildSpecChangePacket,
-  canonicalAppMapPath,
-  carryForwardIds,
-  changeLane,
-  clearClarificationSection,
-  clearExpertSynthesis,
-  clearFrozenRun,
-  clearStaged,
-  commitFindings,
-  commitStep,
-  compileFailureReason,
-  currentBranch,
-  decideFinish,
-  deriveCaption,
-  designSignOffApplies,
-  dynamicRecord,
-  editedDevelopmentThisTurn,
-  editedFiles,
-  evaluateFrontendTrigger,
-  evaluateSpecFreeze,
-  execaCommandRunner,
-  extractObligationIndex,
-  followsBranchShape,
-  freezeNudge,
-  freezeSpec,
-  hashRuleSources,
-  isConfiguredBase,
-  laneMayRise,
-  linkTicket,
-  listRunDirs,
-  loadCaptureScripts,
-  matchTicketSource,
-  mergeExpertNotes,
-  mergedKind,
-  missingHeadings,
-  packRegistryFaultDetail,
-  parseTraceArtifact,
-  pathTriggeredSeats,
-  pickBranchType,
-  placeholdersIn,
-  planBranch,
-  planFiles,
-  projectRelative,
-  provisionBrowser,
-  queryCodeKnowledge,
-  queryFrameworkApi,
-  raiseLaneForAuthoring,
-  raiseLaneIfGrown,
-  readAllFeatureChangeMetrics,
-  readAllFeatureEvidence,
-  readAllFeatureRag,
-  readAllFeatureRuleRuns,
-  readAllFeatureStageRows,
-  readAllJourneys,
-  readAuthoringConfig,
-  readCanonicalSiteMap,
-  readCodeKnowledgeIndex,
-  readExpertNeed,
-  readExpertNotes,
-  readExpertSynthesis,
-  readExperts,
-  readFeatureChangeMetricsWindow,
-  readFeaturePlan,
-  readFeatureSpecification,
-  readFrameworkApiIndex,
-  readFreezeSections,
-  readGrounding,
-  readJourney,
-  readLabel,
-  readQuestions,
-  readRequest,
-  readStagedExpertQuestions,
-  readStagedJson,
-  readStagedText,
-  readTrace,
-  readYaml,
-  refreshDelivery,
-  refreshRuleContext,
-  rememberInput,
-  removeJourney,
-  renderDelivery,
-  requireTicket,
-  resolveBase,
-  resolvePlaywrightModulePath,
-  resolveRuleApplicabilityForChange,
-  resolveVeRuntimeDir,
-  reviewSpecification,
-  seatExpertsForLane,
-  sensitivePaths,
-  skillOrchestratorEnabled,
-  specIndexPath,
-  specReportPath,
-  strongestSeverity,
-  styleVerdict,
-  ticketInBranch,
-  uniqueInOrder,
-  validateCodeKnowledgeIndex,
-  validateCraftTrace,
-  validateExpertNeed,
-  validateExpertNotes,
-  validateFrameworkApiIndex,
-  validateQuestion,
-  validateSiteMapAnswers,
-  veBrowsersPath,
-  visualAcRequiredFiles,
-  visualEvidenceFlagOn,
-  writeAgentRecord,
-  writeCanonicalSiteMap,
-  writeCodeKnowledgeIndex,
-  writeExpertFindings,
-  writeExpertNotes,
-  writeExpertRoster,
-  writeExpertSynthesis,
-  writeFeaturePlan,
-  writeFeatureReview,
-  writeFeatureSpecification,
-  writeFrameworkApiIndex,
-  writeJourney,
-  writeLabel,
-  writeQuestions,
-  writeRequest,
-  writeRuleContext,
-  writeRulesLoaded,
-  writeSkillRecord,
-  writeStagedText,
-  writeTrace,
-  writeYamlAtomic
-} from "../chunk-36EFHBNS.js";
-import {
-  AdapterFactory,
-  BaseAdapter,
-  ClaudeCodeAdapter,
-  PAQAD_LIVE_HOOKS,
-  PAQAD_MUTATING_TOOL_MATCHER,
-  PAQAD_REPO_AGENT_ROOTS,
-  PROJECT_AGENTS_DIR,
-  RECIPE_HEADING,
-  SKILL_FILE,
-  agentRoots,
-  carriesManagedMarker,
-  classifyAgentPath,
-  deriveRecordedProviders,
-  enabledAdapters,
-  findAgentPaths,
-  findSkillPaths,
-  hashAgentFile,
-  hashAgentText,
-  hashFiles,
-  hashFolder,
-  hashFolderWithoutDescription,
-  hashText,
-  isAgentTemplatePath,
-  isGitIgnored,
-  isMissingPathError,
-  isPaqadRepository,
-  listFolderFiles,
-  openIfPresent,
-  pluginSettingsKeys,
-  readBytesIfPresent,
-  readRegularFile,
-  readSkillPathContext,
-  readTextIfPresent,
-  recipeRepairAdvice,
-  regularFiles,
-  renderStageAgentFiles,
-  resolveRecipe,
-  skillFolderOf,
-  skillRoots,
-  teamSetupMissing,
-  withDescription,
-  withoutDescription,
-  writeFileAtomic as writeFileAtomic2
-} from "../chunk-U2SCMHDT.js";
-import "../chunk-OR466VEX.js";
-import "../chunk-7FJSWQHQ.js";
+} from "../chunk-YT7KYIQP.js";
+import "../chunk-NWKNIJBO.js";
+import "../chunk-HH727BKB.js";
 import {
   SKIP_NEEDS_REASON_LINE,
   SKIP_NOT_ALLOWED_LINE,
@@ -651,109 +535,204 @@ import {
   stillWaitingLine,
   writeHld,
   writeHldMarkdown
-} from "../chunk-VEHHF6YK.js";
+} from "../chunk-QZYGLSRK.js";
 import {
+  PROJECT_RULES_DIR,
+  RULES_ROOT,
+  RUN_DOC_TYPE,
+  StackIntrospector,
   StackSnapshotCache,
-  readStackSnapshotSync
-} from "../chunk-7CZVDRYP.js";
-import {
+  absRunFile,
+  atomicWriteJson,
+  atomicWriteText,
+  clearNudgeState,
+  findOpenRunId,
+  inventorySummary,
+  isRunId,
+  jvmParser,
+  listRunIds,
+  mintRunId,
+  moveBaselineToRun,
+  openRun,
+  packageKey,
   readExistingOnboardingManifest,
+  readJsonFile,
+  readRun as readRun2,
+  readStackSnapshotSync,
+  runFilePath,
+  updateRun as updateRun2,
   writeDetectionReport,
-  writeFrameworkVersionPreservingTimestamp
-} from "../chunk-MBA6FOQV.js";
+  writeFrameworkVersionPreservingTimestamp,
+  writeStackInventory
+} from "../chunk-NJCFQXHN.js";
 import {
-  EXPERT_OWNS
-} from "../chunk-IKAOR4NY.js";
+  estimateTokens
+} from "../chunk-FQVAS2WV.js";
 import {
-  ADAPTER_TYPES
-} from "../chunk-BKNKG26S.js";
-import "../chunk-ODFN6AHU.js";
-import "../chunk-ZV4UFERV.js";
+  CHIEF_ROLE,
+  EXPERT_OWNS,
+  recordDoneRow,
+  recordSeatedRows,
+  recordWritingRow,
+  scanTranscriptLines
+} from "../chunk-XT45N7K2.js";
+import {
+  ADAPTER_TYPES,
+  stageLedgerEra
+} from "../chunk-C3FH5AYD.js";
+import "../chunk-QIHQFCHB.js";
+import "../chunk-DKFOHIMU.js";
+import {
+  legacyAfterWindowLines
+} from "../chunk-TBR64PVU.js";
+import "../chunk-BDNBTMZL.js";
 import {
   compileRules,
+  createEvidence,
+  persistEvidence,
+  prunePatterns,
+  queryPatterns,
+  syncModuleHealth,
   writeCompiledRules
-} from "../chunk-523UKSAA.js";
+} from "../chunk-FBUUUOJ6.js";
+import {
+  appendHooksLog,
+  appendRouteTurn,
+  readRouteTurns
+} from "../chunk-IVPPGREZ.js";
 import {
   CONTAINER_PROCESS_CAP,
   CONTAINER_WRAPPERS,
+  EmbeddingProviderError,
   FILES_TOKEN,
+  FileVectorIndex,
   LOW_MEMORY_BYTES,
   LOW_MEMORY_PROCESS_CAP,
   MAX_PROCESSES,
   MIN_CORES_FOR_PARALLEL_TESTS,
   MIN_PROCESSES,
   OUTPUT_TAIL_LINES,
+  PatternStore,
+  REMOVED_EMBEDDING_PROVIDER_MESSAGE,
   RERUN_MAX_FAILURES,
   RERUN_MAX_FAILURE_RATIO,
+  RagService,
   StackPackLoader,
+  appendRagAudit,
+  assertEmbeddingProviderAvailable,
   atomicWriteFile,
+  buildModuleRoleResolver,
+  cosineSimilarity,
   createPack,
+  enableEmbeddingProviderCache,
+  findRemovedEmbeddingProvider,
   getPacksForFrameworks,
   installPack,
   listPacks,
+  openRagConversation,
   parseCommandChain,
+  recordRagEvidence,
   removePack,
   resolvePackManagerRoots,
+  resolveRemovedEmbeddingProvider,
   runCommandChain,
   tokenizeCommand,
   validatePackAt
-} from "../chunk-BWWJ7GLA.js";
+} from "../chunk-BCVUX5PS.js";
 import {
-  appendHooksLog
-} from "../chunk-TFG3KYLM.js";
+  MODULE_REGISTRIES_UNIT,
+  ONBOARDING_STAGES,
+  PROJECT_DOC_AREAS,
+  STAGE_COUNT,
+  currentStage,
+  foldJourney,
+  foldStage,
+  isStageId,
+  stageDefinition,
+  stagesBefore,
+  statusLine,
+  unitRowsForStage
+} from "../chunk-DO526IFP.js";
 import {
   FRAMEWORK_PACKAGE_MAP,
   getLegacyCapabilities,
   getPrimaryStack
-} from "../chunk-4GY44WMW.js";
-import "../chunk-3P4W22QI.js";
-import "../chunk-HYEASKUK.js";
+} from "../chunk-DBSQ7PHD.js";
+import {
+  CHECKS_RUNNING_CEILING_MS,
+  clearAgentRunRecord,
+  clearChecksRunningMarker,
+  processGroupOf,
+  processStartTime,
+  writeAgentRunRecord,
+  writeChecksRunningMarker
+} from "../chunk-K6MOAHMA.js";
+import {
+  PAQAD_STATUS_GLYPH
+} from "../chunk-HZXK65J2.js";
+import {
+  describeOptionalEngine
+} from "../chunk-VAHAQVOV.js";
+import "../chunk-Y4BY35LG.js";
+import {
+  addRuleEntry,
+  applyRuleScriptMap,
+  archiveRule,
+  collectRuleFiles,
+  compileRuleScripts,
+  computeRuleFilesHash,
+  fixturesRoot,
+  readDrift,
+  runFixtures,
+  setRuleText,
+  upsertScriptEntry
+} from "../chunk-TFX4MDFC.js";
 import {
   isOnPath,
   loadRuleScriptMap,
   missingBinaries,
   parseScriptHeader,
   runPool
-} from "../chunk-LWALU6JC.js";
+} from "../chunk-HULYX26E.js";
 import {
   scanWorkingTree
-} from "../chunk-LBNBI3D6.js";
+} from "../chunk-7GJRFLQ5.js";
 import {
   CHANGE_METRICS_RUN_DOC_TYPE,
   RULE_RUN_DOC_TYPE
-} from "../chunk-MZ4SXCNT.js";
-import "../chunk-UUBQQJVE.js";
+} from "../chunk-2GKPBFKP.js";
+import "../chunk-HEJGITDA.js";
 import {
   activeChangeFiles,
   isTestFile,
   loadChangeEvidence,
   readGitChangedFiles
-} from "../chunk-3ZRKJOJE.js";
+} from "../chunk-XD6J4ZQJ.js";
 import {
   execa,
   parseCommandString
-} from "../chunk-MDXUST3Z.js";
+} from "../chunk-F6LIB6DF.js";
 import {
   markerNarrationLine
-} from "../chunk-HEJZDQZ5.js";
+} from "../chunk-VLT7T3KD.js";
 import {
   bundleArtifactFile,
   checkBundleArtifacts,
   classifyBundlePath,
   laneRunsSpecPipeline,
   normalizeArtifactPath
-} from "../chunk-AX64WQJL.js";
+} from "../chunk-73HRB4RX.js";
 import {
   compositionForRoute,
   readSessionRoute,
   writeSessionRoute
-} from "../chunk-6R44EMVN.js";
+} from "../chunk-OXEBFC57.js";
 import {
   ROUTED_WORKFLOWS,
   isFeatureDevelopmentRoute,
   readWorkflowState,
   writeWorkflowState
-} from "../chunk-BXMHKFAF.js";
+} from "../chunk-THNFPAD7.js";
 import {
   AUTO_RESPONDER,
   DECISION_CATEGORIES,
@@ -808,7 +787,7 @@ import {
   slicesView,
   suggestEarlierAnswer,
   titleActiveFeature
-} from "../chunk-B4ITQDI4.js";
+} from "../chunk-PWOOSANH.js";
 import {
   appendModuleMapEvent,
   canTransition,
@@ -826,7 +805,7 @@ import {
   readRawModuleMap,
   reconcileModuleMap,
   writeDecision
-} from "../chunk-5KWOTSVX.js";
+} from "../chunk-ANTLLTOX.js";
 import {
   appendEvent,
   createRun,
@@ -837,7 +816,7 @@ import {
   readTextOrNull,
   requireRun,
   updateRun
-} from "../chunk-ZI6NAYWY.js";
+} from "../chunk-CJ4B24JG.js";
 import {
   ACTIVE_CAPABILITIES,
   DOMAIN_STACK_MAP,
@@ -850,20 +829,20 @@ import {
   syncProjectProfile,
   validateCapabilitiesForStack,
   writeProjectProfile
-} from "../chunk-PIHEVR35.js";
-import "../chunk-TL22DBH4.js";
+} from "../chunk-3K27FBMG.js";
+import "../chunk-Y7R46KRJ.js";
 import {
   hudCostCachePath,
   writeFileAtomic
-} from "../chunk-4UDYC65U.js";
+} from "../chunk-RLWC6XFR.js";
 import {
   toPosixPath,
   toProjectRelativePath,
   toSlashPath
-} from "../chunk-Y2ZLYYTT.js";
+} from "../chunk-DE72RWA7.js";
 import {
   require_out
-} from "../chunk-P4RPU2KB.js";
+} from "../chunk-5KDVEW3I.js";
 import {
   TICKET_ACTION_IDS,
   activeChangeKey,
@@ -892,16 +871,16 @@ import {
   stampFeatureDocument,
   stampMergeCommit,
   withFileLockSync
-} from "../chunk-TIGPOU33.js";
+} from "../chunk-I4T6ZSTJ.js";
 import {
   releaseFileLock,
   releaseLock,
   tryAcquireFileLock,
   tryAcquireLock
-} from "../chunk-2XQIUIDS.js";
+} from "../chunk-DPRQWAIN.js";
 import {
   describeEarlierWork
-} from "../chunk-BTDDEK7C.js";
+} from "../chunk-IYZNK7Q2.js";
 import {
   AGENT_ATTACHED_JOURNEY,
   HEAVY_RUN_RECLAIM_KIND,
@@ -914,22 +893,20 @@ import {
   STAGE_EVIDENCE_DOC_TYPE,
   VISUAL_EVIDENCE_DOC_TYPE,
   VISUAL_EVIDENCE_SCHEMA_VERSION,
+  buildDocumentEnvelope,
+  buildTextHeader,
   laneRank,
   listFeatureDirs,
   liveStageAgents,
   readChangeConstants,
   readFeatureRecord,
-  resolveAgentIdentity,
-  validateVisualEvidenceRecord
-} from "../chunk-T7KPBKCY.js";
-import {
-  buildDocumentEnvelope,
-  buildTextHeader,
   renderHeaderScript,
+  resolveAgentIdentity,
   rowRecordedAt,
   sha256Hex,
-  stampBundleRow
-} from "../chunk-5G2EOBB5.js";
+  stampBundleRow,
+  validateVisualEvidenceRecord
+} from "../chunk-WEFEQHGZ.js";
 import {
   AGENT_HOST_TARGETS,
   CHIEF_ARCHITECT_AGENT_NAME,
@@ -951,7 +928,7 @@ import {
   splitSkillFrontmatter,
   stageForAgentName,
   stripPluginAgentNamespace
-} from "../chunk-OJJKELCB.js";
+} from "../chunk-LDKFDN3R.js";
 import {
   DecisionPacketCorruptError,
   FrameworkError,
@@ -959,14 +936,14 @@ import {
   SchemaVersionError,
   engineLog,
   getProjectSecret
-} from "../chunk-FTTLICPK.js";
+} from "../chunk-H3JU5RBI.js";
 import {
   readGitState
-} from "../chunk-BOEVU2BD.js";
+} from "../chunk-YPOHZLD5.js";
 import {
   detectTicketLinks,
   detectTicketRefs
-} from "../chunk-NJE7NS7E.js";
+} from "../chunk-YI7GGGDM.js";
 import {
   DEFAULT_EXISTING_SURFACE_TOKENS,
   DEFAULT_LOCAL_EMBEDDING_MODEL,
@@ -999,22 +976,22 @@ import {
   stripRuleMarker,
   syncFrameworkConfig,
   versionAtLeast
-} from "../chunk-UOZGCZD7.js";
+} from "../chunk-XK65VKUF.js";
 import {
   DEFAULT_BASE_BRANCH,
   DEFAULT_TRACKER_PATTERNS,
   isNewerTeamFile,
   newerTeamFileLine,
   renderDefaultGitWorkflowFile
-} from "../chunk-YA6SCYMC.js";
+} from "../chunk-TZCIQC7B.js";
 import {
   renameWithRetry,
   renameWithRetrySync
-} from "../chunk-Z3NGWHFX.js";
+} from "../chunk-DZSC6KCZ.js";
 import {
   getPackageRoot,
   getRuntimeRoot
-} from "../chunk-YWAORJG6.js";
+} from "../chunk-NCABIBTI.js";
 import {
   appendStampedRowToUnit,
   foldByOrdinal,
@@ -1023,14 +1000,13 @@ import {
   readUnitFile,
   sessionLedgerDir,
   stampSessionRow
-} from "../chunk-UNRAXQSB.js";
+} from "../chunk-2XQX5CIB.js";
 import {
   explicitSessionHint,
   keepingLedgerSessionCache,
   readLedgerSessionId,
   resolveSessionId
-} from "../chunk-L7TVJSIU.js";
-import "../chunk-QJQ4AXUA.js";
+} from "../chunk-F6BUWMKO.js";
 import {
   ULID_BODY,
   chatRagPath,
@@ -1043,14 +1019,14 @@ import {
   join,
   parseFeatureDirName,
   ulid
-} from "../chunk-Q65EMUNY.js";
+} from "../chunk-4UM6CK6G.js";
 import {
   PATHS
-} from "../chunk-BNIV2KZF.js";
+} from "../chunk-UMPIHMXN.js";
 import {
   __toESM,
   init_esm_shims
-} from "../chunk-IDFRWBMN.js";
+} from "../chunk-G5ZPBAMA.js";
 
 // src/cli/index.ts
 init_esm_shims();
@@ -31066,6 +31042,7 @@ async function joinProject(options) {
   }
   const providers = deriveRecordedProviders(manifest);
   await recreateLocalArtifacts(projectRoot, profile, providers);
+  refreshPaqadProjectFiles(projectRoot);
   await regenerateMachineArtifacts(projectRoot);
   writeWorktreeInclude(projectRoot);
   if (providers.includes("claude-code") && resolveTeamBootstrapEnabled(projectRoot) && teamSetupMissing(projectRoot)) {
@@ -31460,7 +31437,10 @@ function buildManagedSettings(options) {
       ]
     }
   };
-  return options.plugin ? { ...settings, ...pluginSettingsKeys() } : settings;
+  return options.plugin ? {
+    ...settings,
+    ...pluginSettingsKeys(pluginAutoUpdate(resolveUpdatePolicy(process.cwd())))
+  } : settings;
 }
 function createManagedSettingsCommand() {
   return new Command("managed-settings").description("Print or write the Claude Code managed settings that enforce paqad org-wide").option("--project-root <path>", "Project root", process.cwd()).option("--write <dir>", "write <dir>/paqad.json instead of printing").option("--no-plugin", "leave out the paqad plugin marketplace and enablement keys").action((options) => {
@@ -43338,8 +43318,8 @@ function defaultSliceGateSteps(options) {
   const rules = async (files) => {
     if (files.length === 0) return [];
     const [{ enforceRuleScripts }, { resolveRuleComplianceMode }] = await Promise.all([
-      import("../enforce-X4FNRX6W.js"),
-      import("../capability-7KY2XMFK.js")
+      import("../enforce-XNCILYHD.js"),
+      import("../capability-QS3V352C.js")
     ]);
     const result2 = await enforceRuleScripts({
       projectRoot,
@@ -45330,7 +45310,9 @@ function createUpdateCommand() {
       return;
     }
     try {
-      const report4 = await new FrameworkUpdater().run(options.projectRoot);
+      const report4 = await new FrameworkUpdater({ silent: options.silent === true }).run(
+        options.projectRoot
+      );
       if (!options.silent) {
         if (options.json) {
           console.log(JSON.stringify(report4, null, 2));
